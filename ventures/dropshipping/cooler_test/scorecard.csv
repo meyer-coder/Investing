@@ -1,0 +1,11 @@
+supplier,variant,landed_cost_usd,moq,ships_plain_packaging,reply_hours,hold_h_22c,hold_h_32c,froze_payload,gelpack_rest_min,zipper_200x,seam_integrity,gelpack_leak,drop_1m_x3,odor_24h,fit_when_full,closure_inverted,notes
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+# hold_h_* : worst of the two repeats at that ambient, not the average
+# froze_payload : yes/no - any sustained reading below 0 C. This is a veto.
+# gelpack_rest_min : resting interval that eliminated the freeze excursion
+# pass/fail columns : zipper_200x, seam_integrity, gelpack_leak, drop_1m_x3,
+#                     odor_24h, fit_when_full, closure_inverted
+# Weighting: hold at 32C 35%, no freeze 25% (veto), build 20%,
+#            landed cost 15%, supplier responsiveness 5%
