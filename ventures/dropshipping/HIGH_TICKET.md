@@ -92,12 +92,13 @@ audience that would have been quietly disappointed by it.
 |---|---|
 | 5% | $79.32 |
 | 8% | $74.16 |
-| 15% | $62.87 |
-| 25% | $47.18 |
+| 15% | $62.13 |
+| 25% | $44.94 |
 
 The business survives a bad return rate. It does not survive a bad return rate
-*combined with* a high CPA — at 25% returns your breakeven CPA drops to $47 and
-the margin for error is gone. **Measure returns early and honestly.**
+*combined with* a high CPA — at 25% returns your breakeven CPA drops to $45,
+barely above the $45 target CPA, and the margin for error is gone entirely.
+**Measure returns early and honestly.**
 
 ---
 
