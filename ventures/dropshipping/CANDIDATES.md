@@ -1,5 +1,11 @@
 # Candidate Evaluation
 
+> **Superseded in part.** The "passive only" call below was overturned by direct
+> product experience — see [HIGH_TICKET.md](./HIGH_TICKET.md). The plan is now an
+> active-cooling unit at $105/$165. The category verdicts and the trademark and
+> claims rules in section 1 still stand; the passive-vs-active recommendation
+> does not.
+
 Scoring the three named instincts — peptide coolers, mini fridges, metal fidget
 toys — against the seven hard filters in [PLAN.md](./PLAN.md).
 
