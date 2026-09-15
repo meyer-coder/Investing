@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "evotrader-tradingview": {
+      "command": "python",
+      "args": ["-m", "evotrader.mcp_server"],
+      "env": {}
+    }
+  }
+}

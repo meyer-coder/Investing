@@ -4,3 +4,7 @@ numpy>=1.24
 # Needed for Claude-driven breeding (`--breeder llm` / `hybrid`).
 # Offline runs (`--breeder mutation`) work without it.
 anthropic>=1.0
+
+# Needed only to serve the TradingView screener over MCP
+# (`python -m evotrader.mcp_server`). The screener itself is stdlib-only.
+mcp>=2.0

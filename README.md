@@ -109,6 +109,73 @@ alone rather than stopping.
 
 ---
 
+## Choosing what to evolve on
+
+Survivorship bias lives in the symbol list, so the list deserves the same rigour
+as the backtester. `evotrader screen` picks one with a rule, using
+TradingView's public scanner (no key, no account):
+
+```bash
+evotrader screen --preset liquid-large-cap --limit 25
+evotrader screen --filter "mcap > 5e9" --filter "rsi < 35" --sort rsi
+evotrader screen --preset etf-liquid --config configs/etf.json --save
+```
+
+```
+liquid-large-cap  (america, 450 matches, showing 8, captured 2026-09-15)
+
+symbol               price          mcap    avg_volume    rel_volume           rsi
+----------------------------------------------------------------------------------
+NVDA                212.04          5.1T        142.7M          0.37         44.95
+AAPL                329.95          4.8T         52.1M          0.30         59.80
+```
+
+`--config` writes the symbols straight into a run config; `--save` writes a
+dated snapshot under `data/universes/`. Presets: `liquid-large-cap`,
+`liquid-mid-cap`, `high-volatility`, `etf-liquid`, `crypto-major`. Any
+[TradingView column](https://www.tradingview.com/screener/) works in a
+`--filter`, with `evotrader screen`'s aliases (`mcap`, `avg_volume`, `perf_y`…)
+as shorthand.
+
+### The bias this does not fix
+
+**The scanner reports the present.** It has no history, so it cannot feed a
+backtest — bars still come from Yahoo via `data.py`. More importantly, a
+universe screened today and backtested on an earlier window is *selection on
+the outcome*: "market cap > $10B today" silently means "companies that grew".
+Snapshots are stamped with their capture date and the tooling says so out loud:
+
+```
+universe 'liquid-large-cap' was screened on 2026-09-15 but the backtest starts
+2015-01-01. Symbols were selected using data from after the test window, so
+results carry survivorship and look-ahead bias — treat them as a hypothesis,
+not a measurement.
+```
+
+Screening is honest when you screen today and trade *forward*, when you filter
+on slow-moving structural traits (listing venue, instrument type), or when you
+accumulate dated snapshots until you have a real point-in-time universe. It is
+not honest as a way to pick winners for a historical run.
+
+### As an MCP server
+
+The same client is exposed over MCP for interactive research, so a session and
+the evolution loop share one implementation and one cache. `.mcp.json` in this
+repo registers it; `pip install mcp` to enable it.
+
+```bash
+python -m evotrader.mcp_server      # stdio
+```
+
+| tool | does |
+|---|---|
+| `list_presets` / `list_columns` | the screen and column vocabulary |
+| `screen_symbols` | run a screen; takes `backtest_start` and returns the bias warning |
+| `quote` | current values for named tickers, with a `missing` list |
+| `save_universe` | write a dated snapshot |
+
+---
+
 ## How a generation works
 
 1. **Evaluate.** Every genome is backtested over the training window. Decisions
@@ -203,6 +270,7 @@ python -m evotrader.cli fetch --symbols SPY,QQQ,IWM,TLT,GLD --start 2005-01-01
 evotrader/
   indicators.py   vectorised technical indicators
   data.py         fetching, caching, alignment, train/test splitting
+  screener.py     TradingView scanner client; rule-based universe selection
   features.py     the per-bar feature vocabulary agents trade on
   dsl.py          the safe rule language (tokenizer, parser, evaluator)
   genome.py       the agent: thesis, rules, risk limits, lineage
@@ -218,6 +286,7 @@ evotrader/
   store.py        SQLite persistence
   report.py       console, Markdown and HTML reports
   cli.py          command line interface
+  mcp_server.py   the screener exposed as an MCP server
 ```
 
 ## Tests
@@ -245,6 +314,7 @@ features are computed once and shared.
 * Fills assume you can transact at the next open at the modelled slippage.
   Illiquid symbols will flatter themselves.
 * Survivorship bias lives in your symbol list. Picking today's winners and
-  evolving on their history proves nothing.
+  evolving on their history proves nothing — `evotrader screen` makes the
+  choice explicit and dated, which is not the same as making it unbiased.
 * A backtest is not a forecast. This is a research tool for generating and
   stress-testing hypotheses about strategies.

@@ -4,6 +4,7 @@
     evotrader resume run-20260101-120000-ab12
     evotrader report --html reports/run.html
     evotrader inspect <genome-id>
+    evotrader screen --preset liquid-large-cap --save
 """
 from __future__ import annotations
 
@@ -11,6 +12,7 @@ import argparse
 import json
 import os
 import sys
+from dataclasses import replace
 from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
@@ -20,6 +22,8 @@ from .features import build_features
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
 from .report import html_report, lineage, markdown_report, print_report
+from .screener import (UNIVERSE_DIR, Filter, PRESETS, Screen, ScreenerError,
+                       preset, run_screen, yahoo_symbols)
 from .store import Store
 
 
@@ -230,6 +234,80 @@ def cmd_fetch(args: argparse.Namespace) -> int:
     return 0
 
 
+
+def cmd_screen(args: argparse.Namespace) -> int:
+    """Pick a symbol universe with a TradingView screen."""
+    try:
+        if args.preset:
+            screen = preset(args.preset)
+        else:
+            screen = Screen(name=args.name, market=args.market)
+        if args.filter:
+            screen = replace(screen, name=args.name if not args.preset else screen.name,
+                             filters=list(screen.filters) +
+                                     [Filter.parse(f) for f in args.filter])
+        if args.limit:
+            screen = replace(screen, limit=args.limit)
+        if args.sort:
+            screen = replace(screen, sort_by=args.sort)
+        snapshot = run_screen(screen, refresh=args.refresh)
+    except ScreenerError as exc:
+        print(f"screen failed: {exc}", file=sys.stderr)
+        return 1
+
+    symbols = yahoo_symbols(snapshot)
+    if not symbols:
+        print("no symbols matched — loosen the filters")
+        return 1
+
+    display = [c for c in snapshot.columns if c not in ("name", "description")][:5]
+    print(f"{snapshot.screen}  ({snapshot.market}, {snapshot.total_matches} matches, "
+          f"showing {len(symbols)}, captured {snapshot.captured_at[:10]})\n")
+    header = f"{'symbol':<12}" + "".join(f"{c:>14}" for c in display)
+    print(header)
+    print("-" * len(header))
+    for symbol, row in zip(symbols, snapshot.rows):
+        cells = "".join(f"{_cell(row.get(c)):>14}" for c in display)
+        print(f"{symbol:<12}{cells}")
+
+    print(f"\nsymbols: {','.join(symbols)}")
+    if args.save:
+        path = snapshot.save()
+        print(f"saved:   {path}")
+    if args.config:
+        _write_universe_config(args.config, symbols, snapshot)
+        print(f"config:  {args.config}")
+    return 0
+
+
+def _cell(value) -> str:
+    """Render one screener value narrow enough for a terminal column."""
+    if value is None:
+        return "-"
+    if isinstance(value, bool):
+        return "yes" if value else "no"
+    if isinstance(value, (int, float)):
+        for scale, suffix in ((1e12, "T"), (1e9, "B"), (1e6, "M")):
+            if abs(value) >= scale:
+                return f"{value / scale:.1f}{suffix}"
+        return f"{value:,.2f}"
+    return str(value)[:13]
+
+
+def _write_universe_config(path: str, symbols: List[str], snapshot) -> None:
+    """Write a run config using the screened symbols, keeping other settings."""
+    config = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            config = json.load(fh)
+    config["symbols"] = symbols
+    config["note"] = (f"universe from TradingView screen '{snapshot.screen}' "
+                      f"captured {snapshot.captured_at[:10]}")
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(config, fh, indent=2)
+
+
 def cmd_doctor(args: argparse.Namespace) -> int:
     """Check the environment: data access, credentials, dependencies."""
     print(f"python            {sys.version.split()[0]}")
@@ -251,6 +329,12 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     except Exception as exc:  # noqa: BLE001 - this is the diagnostic
         print(f"market data       unavailable: {exc}\n"
               f"                  use --offline to run on synthetic prices")
+    try:
+        snapshot = run_screen(preset("liquid-large-cap"))
+        print(f"tradingview       ok ({snapshot.total_matches} large caps match)")
+    except Exception as exc:  # noqa: BLE001 - this is the diagnostic
+        print(f"tradingview       unavailable: {exc}\n"
+              f"                  screening is optional; runs use --symbols instead")
     return 0
 
 
@@ -313,6 +397,22 @@ def build_parser() -> argparse.ArgumentParser:
     fetch.add_argument("--start", default="2005-01-01")
     fetch.add_argument("--end", default="2030-01-01")
     fetch.set_defaults(func=cmd_fetch)
+
+    scr = sub.add_parser("screen", help="choose a symbol universe from a TradingView screen")
+    scr.add_argument("--preset", choices=sorted(PRESETS),
+                     help="start from a named screen")
+    scr.add_argument("--filter", action="append", metavar="EXPR",
+                     help="add a predicate, e.g. 'mcap > 10e9' (repeatable)")
+    scr.add_argument("--market", default="america")
+    scr.add_argument("--name", default="custom", help="name for the saved snapshot")
+    scr.add_argument("--sort", help="column to rank by")
+    scr.add_argument("--limit", type=int, help="how many symbols to keep")
+    scr.add_argument("--refresh", action="store_true", help="ignore the cache")
+    scr.add_argument("--save", action="store_true",
+                     help=f"write a dated snapshot under {UNIVERSE_DIR}")
+    scr.add_argument("--config", metavar="PATH",
+                     help="write/update a run config with these symbols")
+    scr.set_defaults(func=cmd_screen)
 
     doc = sub.add_parser("doctor", help="check data access, credentials and deps")
     doc.set_defaults(func=cmd_doctor)
