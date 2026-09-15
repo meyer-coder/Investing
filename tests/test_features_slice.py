@@ -67,3 +67,46 @@ def test_volatility_annualisation_follows_the_bar_size(universe):
     i = len(daily.dates) - 1
     ratio = hourly.matrix[symbol]["vol20"][i] / daily.matrix[symbol]["vol20"][i]
     assert ratio == pytest.approx(np.sqrt(6.5), rel=1e-6)
+
+
+def test_restricted_snapshot_matches_the_full_one(features):
+    """The speed optimisation must not change a single value."""
+    symbol = features.symbols[0]
+    full = features.snapshot(symbol, 500)
+    wanted = ["rsi14", "close", "sma200"]
+    restricted = features.snapshot(symbol, 500, wanted)
+    assert set(restricted) == set(wanted)
+    for name in wanted:
+        assert restricted[name] == full[name]
+
+
+def test_snapshot_ignores_names_it_does_not_have(features):
+    """Rules also reference portfolio features, which the runner supplies."""
+    got = features.snapshot(features.symbols[0], 500, ["close", "bars_held"])
+    assert set(got) == {"close"}
+
+
+def test_series_view_returns_the_same_values_as_snapshot(features):
+    symbol = features.symbols[0]
+    view = features.series_view([symbol], ["rsi14", "close"])
+    snap = features.snapshot(symbol, 400, ["rsi14", "close"])
+    assert {n: s[400] for n, s in view[symbol].items()} == snap
+
+
+def test_nans_become_zero_before_warmup(features):
+    """Rules must never see NaN; sma200 is undefined on the first bars."""
+    assert features.snapshot(features.symbols[0], 0, ["sma200"])["sma200"] == 0.0
+
+
+def test_clean_cache_does_not_cross_a_process_boundary(features):
+    import pickle
+    features.snapshot(features.symbols[0], 10, ["close"])
+    assert features._clean, "cache should be populated"
+    assert pickle.loads(pickle.dumps(features))._clean == {}
+
+
+def test_pickled_features_still_produce_the_same_values(features):
+    import pickle
+    symbol = features.symbols[0]
+    revived = pickle.loads(pickle.dumps(features))
+    assert revived.snapshot(symbol, 300) == features.snapshot(symbol, 300)

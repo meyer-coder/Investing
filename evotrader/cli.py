@@ -28,8 +28,8 @@ from .screener import (UNIVERSE_DIR, Filter, PRESETS, Screen, ScreenerError,
                        preset, run_screen, yahoo_symbols)
 from . import strategies as strategy_lib
 from .backtest_api import (Costs, DataSpec, compare as compare_strategies,
-                           load_dataset, make_genome, run as run_backtest_api,
-                           walk_forward)
+                           load_dataset, make_genome, optimize,
+                           run as run_backtest_api, walk_forward)
 from .data import DataError, INTERVALS
 from .store import Store
 
@@ -330,6 +330,29 @@ def _parse_params(items: Optional[Sequence[str]]) -> dict:
     return out
 
 
+def _parse_grid(items: Optional[Sequence[str]]) -> dict:
+    """Turn ``--grid oversold=25,30,35`` flags into a search grid."""
+    grid = {}
+    for item in items or []:
+        if "=" not in item:
+            raise ValueError(f"expected key=v1,v2,..., got {item!r}")
+        key, _, raw = item.partition("=")
+        values = []
+        for piece in raw.split(","):
+            piece = piece.strip()
+            if not piece:
+                continue
+            try:
+                values.append(float(piece) if ("." in piece or "e" in piece.lower())
+                              else int(piece))
+            except ValueError:
+                values.append(piece)
+        if not values:
+            raise ValueError(f"no values given for {key!r}")
+        grid[key.strip()] = values
+    return grid
+
+
 def _sim_spec(args: argparse.Namespace) -> DataSpec:
     symbols = [s.strip().upper() for s in
                (args.symbols or ",".join(DEFAULT_SYMBOLS)).split(",") if s.strip()]
@@ -367,15 +390,40 @@ def cmd_strategies(args: argparse.Namespace) -> int:
 
 def cmd_simulate(args: argparse.Namespace) -> int:
     """Backtest a library strategy, or rules given on the command line."""
+    if args.grid and not args.strategy:
+        print("--grid needs --strategy", file=sys.stderr)
+        return 1
     try:
+        grid = _parse_grid(args.grid)
         genome = make_genome(args.strategy, params=_parse_params(args.param),
                              entries=args.entry, exits=args.exit)
         dataset = load_dataset(_sim_spec(args))
+        costs = _sim_costs(args)
+        report = (optimize(args.strategy, grid, dataset.spec, costs,
+                           workers=args.workers, top=args.top) if grid else None)
     except (ValueError, DataError, strategy_lib.StrategyError) as exc:
         print(f"simulate failed: {exc}", file=sys.stderr)
         return 1
 
-    costs = _sim_costs(args)
+    if report is not None:
+        print(f"{args.strategy}: {report['combinations_tested']} combinations, "
+              f"chosen on {report['train_window'][0]}..{report['train_window'][1]}, "
+              f"scored on {report['test_window'][0]}..{report['test_window'][1]}\n")
+        header = f"{'parameters':<38}{'train':>10}{'held out':>10}{'vs b&h':>10}"
+        print(header)
+        print("-" * len(header))
+        for entry in report["results"]:
+            params = ", ".join(f"{k}={v}" for k, v in sorted(entry["params"].items()))
+            train, test = entry["train"], entry.get("test", {})
+            print(f"{params:<38}{_pct(train['total_return']):>10}"
+                  f"{_pct(test.get('total_return')):>10}"
+                  f"{_pct(test.get('benchmark_return')):>10}")
+        d = report["degradation"]
+        print(f"\n  retained {_num(d.get('return_retained'))} of the in-sample "
+              f"return out of sample — {d['verdict']}")
+        print(f"  {report['note']}")
+        return 0
+
     if args.walk_forward:
         report = walk_forward(genome, dataset.spec, costs, folds=args.folds)
         print(f"{genome.name}  walk-forward over {len(report['folds'])} anchored folds")
@@ -605,6 +653,12 @@ def build_parser() -> argparse.ArgumentParser:
     sim.add_argument("--walk-forward", action="store_true",
                      help="anchored folds instead of one window")
     sim.add_argument("--folds", type=int, default=3)
+    sim.add_argument("--grid", action="append", metavar="K=V1,V2",
+                     help="search these parameter values, scoring the winners "
+                          "on a held-out window (repeatable)")
+    sim.add_argument("--top", type=int, default=5,
+                     help="how many of the best combinations to show")
+    sim.add_argument("--workers", type=int, default=4)
     _add_sim_flags(sim)
     sim.set_defaults(func=cmd_simulate)
 

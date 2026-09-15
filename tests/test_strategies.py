@@ -74,3 +74,25 @@ def test_buy_and_hold_holds():
     """The benchmark-as-strategy must not exit on ordinary drawdowns."""
     genome = build("buy_and_hold")
     assert genome.exit_rules[0].when == "position_return < -0.99"
+
+
+def test_compiled_genome_reports_only_the_features_its_rules_read():
+    compiled = compile_genome(build("rsi"))
+    assert compiled.feature_names == frozenset({"rsi14", "bars_held"})
+
+
+def test_feature_names_unions_entries_and_exits():
+    from evotrader.backtest_api import make_genome
+    compiled = compile_genome(make_genome(
+        entries=["rsi14 < 30 and close > sma200"],
+        exits=["macd > macd_signal", "bars_held > 20"]))
+    assert compiled.feature_names == frozenset(
+        {"rsi14", "close", "sma200", "macd", "macd_signal", "bars_held"})
+
+
+def test_feature_names_sees_through_functions():
+    """cross_above reads its arguments on two bars; both must be requested."""
+    from evotrader.backtest_api import make_genome
+    compiled = compile_genome(make_genome(
+        entries=["cross_above(sma20, sma50)"], exits=["close < prev(low)"]))
+    assert {"sma20", "sma50", "close", "low"} <= compiled.feature_names

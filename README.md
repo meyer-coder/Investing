@@ -242,15 +242,28 @@ Walk-forward runs **fixed** rules across anchored folds, so a train/test gap
 measures *regime dependence*: the same rules worked in one period and not
 another. Nothing was fitted, so nothing was overfitted.
 
-Overfitting needs a *choice* made from the data, which is what `optimize`
+Overfitting needs a *choice* made from the data, which is what `--grid`
 measures — it searches a parameter grid on a training window and reports the
 winners on bars the search never saw:
 
+```bash
+evotrader simulate --strategy rsi --grid "oversold=20,25,30,35,40" \
+                   --grid "overbought=55,60,65,70" --start 2010-01-01
 ```
-optimize: 60 combinations of rsi thresholds
-  best in sample:  +94.3%   held out: +10.2%   (buy-and-hold +27.9%)
-  degradation: return_retained 0.11 — treat the in-sample number as fiction
+
 ```
+rsi: 20 combinations, chosen on 2010-01-04..2021-03-31, scored on 2021-04-01..2024-12-31
+
+parameters                                 train  held out    vs b&h
+--------------------------------------------------------------------
+overbought=65, oversold=35                +70.6%    +19.1%    +27.9%
+overbought=70, oversold=30                +43.2%    +13.1%    +27.9%
+
+  retained 0.27 of the in-sample return out of sample
+```
+
+Keeping 27% of an in-sample result is the normal outcome of a parameter
+search, not a bug in one. That is the number the sweep exists to produce.
 
 Folds slice a feature matrix computed once over the full history. Every feature
 is causal — each bar derives only from bars at or before it — so a slice leaks
@@ -378,20 +391,31 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 198 tests, ~30s
+python -m pytest tests -q      # 212 tests, ~9s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
 indicators, no-look-ahead fills and risk-limit enforcement in the backtester,
 fitness behaviour, the genetic operators, the full Claude breeding path against
-a stubbed client, and a complete run with checkpoint and resume.
+a stubbed client, and a complete run with checkpoint and resume. The newer
+files cover the strategy library, the backtest API and its caches, the screener
+against a stubbed transport, both CLI surfaces, and the invariants the speed
+work depends on — that a restricted feature snapshot equals the full one, and
+that a sliced feature window equals the same bars of the whole series.
 
 ## Performance
 
-About 0.2s per backtest over seven years of five symbols. A 100 x 1000 run is
-~100k backtests: roughly 6 hours single-threaded, or about 1 hour with
-`--workers 8`. Evaluation parallelises across processes; the market data and
-features are computed once and shared.
+About 50ms per backtest over ten years of five symbols, single-threaded. A
+100 x 1000 run is ~100k backtests: roughly 45 minutes single-threaded, or
+under ten with `--workers 8`.
+
+Most of that came from one observation: a rule reads three or four features,
+not the forty-odd that exist, so a compiled genome reports which it needs and
+the backtester builds only those per bar. That alone was a 10x speedup, and it
+applies to evolution and ad-hoc backtests alike. Evaluation also parallelises
+across processes, and market data and features are computed once and shared —
+a prepared window is memoised, so the first backtest over a universe pays for
+the download and the feature build and every later one does not.
 
 ## Limits worth stating plainly
 

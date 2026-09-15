@@ -111,3 +111,32 @@ def test_report_survives_a_metric_that_is_not_finite(capsys):
     })
     out = capsys.readouterr().out
     assert "n/a" in out and "profit factor" in out
+
+
+def test_simulate_grid_reports_held_out_results(capsys):
+    assert cli.main(["simulate", "--strategy", "rsi", "--grid", "oversold=25,30,35",
+                     "--workers", "1", *OFFLINE]) == 0
+    out = capsys.readouterr().out
+    assert "3 combinations" in out and "held out" in out
+    assert "cost of the search" in out
+
+
+def test_simulate_grid_needs_a_strategy(capsys):
+    assert cli.main(["simulate", "--entry", "rsi14 < 25", "--exit", "rsi14 > 70",
+                     "--grid", "oversold=25,30", *OFFLINE]) == 1
+    assert "--grid needs --strategy" in capsys.readouterr().err
+
+
+def test_simulate_rejects_a_malformed_grid(capsys):
+    assert cli.main(["simulate", "--strategy", "rsi", "--grid", "oversold",
+                     *OFFLINE]) == 1
+    assert "key=v1,v2" in capsys.readouterr().err
+
+
+def test_grid_parses_mixed_numeric_types():
+    assert cli._parse_grid(["a=1,2", "b=0.5,1.5"]) == {"a": [1, 2], "b": [0.5, 1.5]}
+
+
+def test_grid_rejects_an_empty_value_list():
+    with pytest.raises(ValueError):
+        cli._parse_grid(["a="])

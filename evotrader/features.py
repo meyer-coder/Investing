@@ -8,8 +8,8 @@ evaluating to zero.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List
+from dataclasses import dataclass, field
+from typing import Any, Dict, Iterable, List, Optional
 
 import numpy as np
 
@@ -109,6 +109,26 @@ class FeatureSet:
     dates: List[str]
     matrix: Dict[str, Dict[str, np.ndarray]]
     warmup: int
+    #: Lazily built NaN-free Python lists, keyed symbol -> feature.  Indexing a
+    #: list of floats is far cheaper per bar than pulling a numpy scalar and
+    #: testing it for NaN, and a backtest does that once per bar per symbol.
+    _clean: Dict[str, Dict[str, List[float]]] = field(
+        default_factory=dict, repr=False, compare=False)
+
+    def __getstate__(self) -> Dict[str, Any]:
+        """Drop the derived cache when crossing a process boundary."""
+        state = dict(self.__dict__)
+        state["_clean"] = {}
+        return state
+
+    def _series(self, symbol: str, name: str) -> List[float]:
+        cache = self._clean.setdefault(symbol, {})
+        series = cache.get(name)
+        if series is None:
+            series = [0.0 if v is None or np.isnan(v) else float(v)
+                      for v in self.matrix[symbol][name]]
+            cache[name] = series
+        return series
 
     def index_slice(self, lo: int, hi: int) -> "FeatureSet":
         """A window of the same features, without recomputing them.
@@ -127,15 +147,32 @@ class FeatureSet:
             {sym: {name: series[lo:hi] for name, series in feats.items()}
              for sym, feats in self.matrix.items()},
             max(0, self.warmup - lo),
-        )
+        )   # the clean cache is per-window, so the slice starts without one
 
-    def snapshot(self, symbol: str, i: int) -> Dict[str, float]:
-        """Market features for one symbol at bar ``i`` (NaN -> 0.0)."""
-        out: Dict[str, float] = {}
-        for name, series in self.matrix[symbol].items():
-            v = series[i]
-            out[name] = 0.0 if (v is None or np.isnan(v)) else float(v)
-        return out
+    def series_view(self, symbols: Iterable[str], names: Iterable[str]
+                    ) -> Dict[str, Dict[str, List[float]]]:
+        """Resolve feature series once, for a loop that will index them per bar.
+
+        The backtester walks thousands of bars; looking the same lists up
+        again on every one is pure overhead.
+        """
+        wanted = list(names)
+        return {symbol: {name: self._series(symbol, name)
+                         for name in wanted if name in self.matrix[symbol]}
+                for symbol in symbols}
+
+    def snapshot(self, symbol: str, i: int,
+                 names: Optional[Iterable[str]] = None) -> Dict[str, float]:
+        """Market features for one symbol at bar ``i`` (NaN -> 0.0).
+
+        ``names`` restricts the result to the features a caller actually reads.
+        A rule typically references three or four of the forty-odd available,
+        and building the rest is the single largest cost in a backtest.
+        """
+        available = self.matrix[symbol]
+        wanted = available.keys() if names is None else names
+        return {name: self._series(symbol, name)[i]
+                for name in wanted if name in available}
 
 
 def _annualised_vol(close: np.ndarray, window: int,

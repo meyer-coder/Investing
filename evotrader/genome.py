@@ -215,6 +215,22 @@ class CompiledGenome:
     def risk(self) -> RiskParams:
         return self.genome.risk
 
+    @property
+    def feature_names(self) -> frozenset:
+        """Every feature any of this genome's rules reads.
+
+        The backtester builds only these per bar rather than the whole
+        vocabulary, which is the difference between a fast backtest and a
+        slow one.  Portfolio features are in here too; the runner supplies
+        those itself and they are simply absent from the market snapshot.
+        """
+        names: set = set()
+        for rule, _ in self.entries:
+            names |= rule.features
+        for rule in self.exits:
+            names |= rule.features
+        return frozenset(names)
+
 
 def compile_genome(genome: Genome, allowed: Sequence[str] | frozenset = FEATURE_SET) -> CompiledGenome:
     """Compile every rule, raising :class:`GenomeError` on the first problem."""

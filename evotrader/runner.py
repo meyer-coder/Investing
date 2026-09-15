@@ -91,6 +91,7 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
     genome = compiled.genome
     risk = compiled.risk
     symbols = features.symbols
+    views = features.series_view(symbols, compiled.feature_names)
     dates = features.dates
     n = len(dates)
     journal = Journal()
@@ -117,7 +118,7 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
 
         snaps: Dict[str, Dict[str, float]] = {}
         for sym in symbols:
-            snap = features.snapshot(sym, i)
+            snap = {name: series[i] for name, series in views[sym].items()}
             snap.update(pf)
             snap.update(_position_context(broker, sym, prices[sym], i, equity, last_exit_bar))
             snaps[sym] = snap
