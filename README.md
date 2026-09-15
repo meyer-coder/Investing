@@ -65,6 +65,9 @@ python -m evotrader.cli run --config configs/offline.json
 
 # the real thing
 python -m evotrader.cli run --config configs/default.json     # 100 x 1000
+
+# or skip evolution entirely and just backtest something
+python -m evotrader.cli compare --symbols SPY,QQQ,IWM,TLT,GLD
 ```
 
 Every run streams progress and writes to `runs/evotrader.sqlite`:
@@ -159,9 +162,9 @@ not honest as a way to pick winners for a historical run.
 
 ### As an MCP server
 
-The same client is exposed over MCP for interactive research, so a session and
-the evolution loop share one implementation and one cache. `.mcp.json` in this
-repo registers it; `pip install mcp` to enable it.
+The screener and the backtester are exposed over MCP, sharing one process and
+one set of caches. `.mcp.json` in this repo registers it; `pip install mcp` to
+enable it.
 
 ```bash
 python -m evotrader.mcp_server      # stdio
@@ -169,10 +172,91 @@ python -m evotrader.mcp_server      # stdio
 
 | tool | does |
 |---|---|
+| `backtest` | one strategy or ad-hoc rules over a universe |
+| `compare_strategies` | rank the library, or a chosen subset |
+| `walk_forward_test` | anchored folds; consistency across regimes |
+| `optimize_strategy` | grid search with a held-out window |
+| `list_strategies` / `describe_strategy` | what can be run, and its rules |
+| `list_features` / `validate_strategy` | the rule vocabulary, and a dry-run check |
+| `data_cache` | which prepared windows are in memory |
+| `screen_symbols` / `quote` / `save_universe` | TradingView screening (above) |
 | `list_presets` / `list_columns` | the screen and column vocabulary |
-| `screen_symbols` | run a screen; takes `backtest_start` and returns the bias warning |
-| `quote` | current values for named tickers, with a `missing` list |
-| `save_universe` | write a dated snapshot |
+
+A prepared window is memoised, so the first backtest over a universe costs a
+download and a feature build and every later one costs ~0.2s of CPU. Comparing
+fourteen strategies over ten years of five symbols takes about 1.5 seconds.
+
+---
+
+## Backtesting anything, without an evolution run
+
+The engine the evolution loop uses is available directly, so a strategy can be
+tested without breeding one. Same fills, same costs, same portfolio accounting,
+and buy-and-hold reported alongside every result.
+
+```bash
+evotrader strategies                       # 28 named strategies
+evotrader simulate --strategy rsi_pullback --symbols SPY,QQQ,IWM
+evotrader simulate --entry "rsi14 < 25 and close > sma200" --exit "rsi14 > 65"
+evotrader compare  --symbols SPY,QQQ,IWM,TLT,GLD --start 2015-01-01
+```
+
+```
+14 strategies over GLD, IWM, QQQ, SPY, TLT  2015-01-02..2024-12-31 (2516 1d bars)
+
+strategy                fitness   return   vs b&h  sharpe   maxdd  trades
+-------------------------------------------------------------------------
+squeeze                    0.71   +83.1%   -90.2%    0.85  -10.4%      75
+triple_ma                  0.63   +79.6%   -93.7%    0.79  -12.5%      71
+ma_cross                   0.46  +108.3%   -65.0%    0.84  -20.5%     102
+
+buy-and-hold over the same window: +173.2%
+```
+
+That last line is the point of the table. Three strategies made money; none of
+them beat owning the index.
+
+### Intraday
+
+`--interval` accepts `1d`, `1h`, `30m`, `15m` and `5m`. Yahoo only serves
+intraday history for a trailing window — 730 days hourly, 60 days finer — and
+requests outside it are refused rather than silently returning nothing.
+Annualisation follows the bar size, so an hourly Sharpe is not a daily Sharpe
+multiplied by a wrong constant.
+
+### Two kinds of validation, which answer different questions
+
+```bash
+evotrader simulate --strategy triple_ma --walk-forward --start 2010-01-01
+```
+
+```
+  fold1   train +94.8% (bh +261.4%)   test  -6.4% (bh -10.5%)  11 trades
+  fold2   train +85.3% (bh +216.4%)   test  -2.6% (bh  +4.9%)   7 trades
+  fold3   train +80.5% (bh +259.3%)   test +13.4% (bh +33.8%)  11 trades
+
+  beat buy-and-hold in 1 of 3 folds
+```
+
+Walk-forward runs **fixed** rules across anchored folds, so a train/test gap
+measures *regime dependence*: the same rules worked in one period and not
+another. Nothing was fitted, so nothing was overfitted.
+
+Overfitting needs a *choice* made from the data, which is what `optimize`
+measures — it searches a parameter grid on a training window and reports the
+winners on bars the search never saw:
+
+```
+optimize: 60 combinations of rsi thresholds
+  best in sample:  +94.3%   held out: +10.2%   (buy-and-hold +27.9%)
+  degradation: return_retained 0.11 — treat the in-sample number as fiction
+```
+
+Folds slice a feature matrix computed once over the full history. Every feature
+is causal — each bar derives only from bars at or before it — so a slice leaks
+nothing forward while arriving already warmed up. Recomputing per fold instead
+would spend the first ~200 bars on indicator warmup, which is most of a short
+validation window.
 
 ---
 
@@ -231,7 +315,7 @@ dist_sma20 < -0.03 and mkt_above_sma200 == 1 and vol20 < 0.35
 position_return > 0.18 or bars_held > 40 or position_drawdown < -0.06
 ```
 
-**Market features:** OHLCV, returns over 1/5/20/60 bars, SMA 10/20/50/200,
+**Market features:** OHLCV, returns over 1/5/20/60 bars, SMA 10/20/50/100/200,
 EMA 12/26, distance from each average, RSI 7/14, MACD and its signal and
 histogram, ATR and ATR%, realised volatility over 20/60 bars and their ratio,
 Bollinger bands and %B, 20-bar z-score, position within the 52-week range,
@@ -271,6 +355,8 @@ evotrader/
   indicators.py   vectorised technical indicators
   data.py         fetching, caching, alignment, train/test splitting
   screener.py     TradingView scanner client; rule-based universe selection
+  strategies.py   named, parameterised strategies in the rule language
+  backtest_api.py cached datasets, comparison, walk-forward and optimisation
   features.py     the per-bar feature vocabulary agents trade on
   dsl.py          the safe rule language (tokenizer, parser, evaluator)
   genome.py       the agent: thesis, rules, risk limits, lineage
@@ -286,13 +372,13 @@ evotrader/
   store.py        SQLite persistence
   report.py       console, Markdown and HTML reports
   cli.py          command line interface
-  mcp_server.py   the screener exposed as an MCP server
+  mcp_server.py   backtesting and screening exposed as an MCP server
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 76 tests, ~30s
+python -m pytest tests -q      # 198 tests, ~30s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
@@ -309,8 +395,8 @@ features are computed once and shared.
 
 ## Limits worth stating plainly
 
-* Long-only, one lot per symbol, daily bars. No shorting, leverage, options or
-  intraday data.
+* Long-only, one lot per symbol. No shorting, leverage or options. Intraday
+  bars are supported but only for as far back as Yahoo serves them.
 * Fills assume you can transact at the next open at the modelled slippage.
   Illiquid symbols will flatter themselves.
 * Survivorship bias lives in your symbol list. Picking today's winners and

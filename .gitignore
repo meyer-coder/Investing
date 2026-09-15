@@ -11,6 +11,7 @@ venv/
 runs/
 data/cache/*.csv
 data/cache/screener/
+data/cache/_coverage.json
 !data/cache/.gitkeep
 *.sqlite
 *.sqlite-journal

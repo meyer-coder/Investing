@@ -20,9 +20,9 @@ from .data import Universe
 MARKET_FEATURES: List[str] = [
     "open", "high", "low", "close", "volume",
     "ret1", "ret5", "ret20", "ret60",
-    "sma10", "sma20", "sma50", "sma200",
+    "sma10", "sma20", "sma50", "sma100", "sma200",
     "ema12", "ema26",
-    "dist_sma20", "dist_sma50", "dist_sma200", "sma20_slope",
+    "dist_sma20", "dist_sma50", "dist_sma100", "dist_sma200", "sma20_slope",
     "rsi7", "rsi14",
     "macd", "macd_signal", "macd_hist",
     "atr14", "atr_pct",
@@ -56,11 +56,13 @@ FEATURE_DOCS: Dict[str, str] = {
     "sma10": "10-bar simple moving average of close",
     "sma20": "20-bar simple moving average",
     "sma50": "50-bar simple moving average",
+    "sma100": "100-bar simple moving average",
     "sma200": "200-bar simple moving average",
     "ema12": "12-bar exponential moving average",
     "ema26": "26-bar exponential moving average",
     "dist_sma20": "(close/sma20)-1, fractional distance above the 20-bar mean",
     "dist_sma50": "(close/sma50)-1",
+    "dist_sma100": "(close/sma100)-1",
     "dist_sma200": "(close/sma200)-1",
     "sma20_slope": "5-bar rate of change of sma20",
     "rsi7": "7-bar RSI, 0-100",
@@ -108,6 +110,25 @@ class FeatureSet:
     matrix: Dict[str, Dict[str, np.ndarray]]
     warmup: int
 
+    def index_slice(self, lo: int, hi: int) -> "FeatureSet":
+        """A window of the same features, without recomputing them.
+
+        Every feature here is causal — each bar is derived only from bars at
+        or before it — so a slice carries no information from outside the
+        window, and the indicators arrive already warmed up.  Rebuilding on
+        the slice instead would throw away the first ~200 bars to warmup,
+        which is most of a short validation fold.
+        """
+        lo = max(0, lo)
+        hi = min(hi, len(self.dates))
+        return FeatureSet(
+            list(self.symbols),
+            self.dates[lo:hi],
+            {sym: {name: series[lo:hi] for name, series in feats.items()}
+             for sym, feats in self.matrix.items()},
+            max(0, self.warmup - lo),
+        )
+
     def snapshot(self, symbol: str, i: int) -> Dict[str, float]:
         """Market features for one symbol at bar ``i`` (NaN -> 0.0)."""
         out: Dict[str, float] = {}
@@ -117,13 +138,15 @@ class FeatureSet:
         return out
 
 
-def _annualised_vol(close: np.ndarray, window: int) -> np.ndarray:
+def _annualised_vol(close: np.ndarray, window: int,
+                    periods_per_year: float = TRADING_DAYS) -> np.ndarray:
     r = ind.returns(close, 1)
     r = np.where(np.isnan(r), 0.0, r)
-    return ind.rolling_std(r, window) * np.sqrt(TRADING_DAYS)
+    return ind.rolling_std(r, window) * np.sqrt(periods_per_year)
 
 
-def build_features(universe: Universe) -> FeatureSet:
+def build_features(universe: Universe,
+                   periods_per_year: float = TRADING_DAYS) -> FeatureSet:
     """Compute every market feature for every symbol on the shared calendar."""
     symbols = universe.symbols
     n = len(universe)
@@ -136,7 +159,7 @@ def build_features(universe: Universe) -> FeatureSet:
     mkt = {
         "mkt_ret20": ind.returns(comp, 20),
         "mkt_above_sma200": (comp > ind.sma(comp, 200)).astype(float),
-        "mkt_vol20": _annualised_vol(comp, 20),
+        "mkt_vol20": _annualised_vol(comp, 20, periods_per_year),
     }
     mkt["mkt_above_sma200"][:200] = np.nan
 
@@ -144,11 +167,13 @@ def build_features(universe: Universe) -> FeatureSet:
     for sym in symbols:
         b = universe.bars[sym]
         c, h, l, o, v = b.close, b.high, b.low, b.open, b.volume
-        sma20, sma50, sma200 = ind.sma(c, 20), ind.sma(c, 50), ind.sma(c, 200)
+        sma20, sma50 = ind.sma(c, 20), ind.sma(c, 50)
+        sma100, sma200 = ind.sma(c, 100), ind.sma(c, 200)
         macd_line, macd_sig, macd_hist = ind.macd(c)
         upper, _, lower, bb_pct = ind.bollinger(c, 20, 2.0)
         atr14 = ind.atr(h, l, c, 14)
-        vol20, vol60 = _annualised_vol(c, 20), _annualised_vol(c, 60)
+        vol20 = _annualised_vol(c, 20, periods_per_year)
+        vol60 = _annualised_vol(c, 60, periods_per_year)
         hi52 = ind.rolling_max(c, min(252, n))
         lo52 = ind.rolling_min(c, min(252, n))
         vol_avg = ind.sma(v, 20)
@@ -158,9 +183,11 @@ def build_features(universe: Universe) -> FeatureSet:
                 "ret1": ind.returns(c, 1), "ret5": ind.returns(c, 5),
                 "ret20": ind.returns(c, 20), "ret60": ind.returns(c, 60),
                 "sma10": ind.sma(c, 10), "sma20": sma20, "sma50": sma50,
-                "sma200": sma200, "ema12": ind.ema(c, 12), "ema26": ind.ema(c, 26),
+                "sma100": sma100, "sma200": sma200,
+                "ema12": ind.ema(c, 12), "ema26": ind.ema(c, 26),
                 "dist_sma20": c / sma20 - 1.0,
                 "dist_sma50": c / sma50 - 1.0,
+                "dist_sma100": c / sma100 - 1.0,
                 "dist_sma200": c / sma200 - 1.0,
                 "sma20_slope": ind.returns(sma20, 5),
                 "rsi7": ind.rsi(c, 7), "rsi14": ind.rsi(c, 14),

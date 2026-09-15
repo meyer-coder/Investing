@@ -5,6 +5,8 @@
     evotrader report --html reports/run.html
     evotrader inspect <genome-id>
     evotrader screen --preset liquid-large-cap --save
+    evotrader simulate --strategy rsi_pullback --symbols SPY,QQQ
+    evotrader compare --symbols SPY,QQQ,IWM --family trend
 """
 from __future__ import annotations
 
@@ -24,6 +26,11 @@ from .llm import PRICING, Claude
 from .report import html_report, lineage, markdown_report, print_report
 from .screener import (UNIVERSE_DIR, Filter, PRESETS, Screen, ScreenerError,
                        preset, run_screen, yahoo_symbols)
+from . import strategies as strategy_lib
+from .backtest_api import (Costs, DataSpec, compare as compare_strategies,
+                           load_dataset, make_genome, run as run_backtest_api,
+                           walk_forward)
+from .data import DataError, INTERVALS
 from .store import Store
 
 
@@ -308,6 +315,161 @@ def _write_universe_config(path: str, symbols: List[str], snapshot) -> None:
         json.dump(config, fh, indent=2)
 
 
+
+def _parse_params(items: Optional[Sequence[str]]) -> dict:
+    """Turn ``--param oversold=25`` flags into a parameter mapping."""
+    out = {}
+    for item in items or []:
+        if "=" not in item:
+            raise ValueError(f"expected key=value, got {item!r}")
+        key, _, raw = item.partition("=")
+        try:
+            out[key.strip()] = float(raw) if ("." in raw or "e" in raw.lower()) else int(raw)
+        except ValueError:
+            out[key.strip()] = raw.strip()
+    return out
+
+
+def _sim_spec(args: argparse.Namespace) -> DataSpec:
+    symbols = [s.strip().upper() for s in
+               (args.symbols or ",".join(DEFAULT_SYMBOLS)).split(",") if s.strip()]
+    return DataSpec.of(symbols, args.start, args.end, interval=args.interval,
+                       offline=args.offline)
+
+
+def _sim_costs(args: argparse.Namespace) -> Costs:
+    return Costs(starting_cash=args.cash, commission_bps=args.commission,
+                 slippage_bps=args.slippage)
+
+
+def cmd_strategies(args: argparse.Namespace) -> int:
+    """List the strategy library."""
+    names = strategy_lib.names(args.family)
+    if not names:
+        print(f"no strategies in family {args.family!r}; "
+              f"try {', '.join(strategy_lib.families())}", file=sys.stderr)
+        return 1
+    width = max(len(n) for n in names)
+    family = None
+    for name in sorted(names, key=lambda n: (strategy_lib.SPECS[n].family, n)):
+        spec = strategy_lib.SPECS[name]
+        if spec.family != family:
+            family = spec.family
+            print(f"\n{family}")
+        params = ", ".join(f"{k}={v}" for k, v in sorted(spec.params.items()))
+        print(f"  {name:<{width}}  {spec.thesis}")
+        if params:
+            print(f"  {'':<{width}}  params: {params}")
+    print(f"\n{len(names)} strategies. Backtest one with: "
+          f"evotrader simulate --strategy <name>")
+    return 0
+
+
+def cmd_simulate(args: argparse.Namespace) -> int:
+    """Backtest a library strategy, or rules given on the command line."""
+    try:
+        genome = make_genome(args.strategy, params=_parse_params(args.param),
+                             entries=args.entry, exits=args.exit)
+        dataset = load_dataset(_sim_spec(args))
+    except (ValueError, DataError, strategy_lib.StrategyError) as exc:
+        print(f"simulate failed: {exc}", file=sys.stderr)
+        return 1
+
+    costs = _sim_costs(args)
+    if args.walk_forward:
+        report = walk_forward(genome, dataset.spec, costs, folds=args.folds)
+        print(f"{genome.name}  walk-forward over {len(report['folds'])} anchored folds")
+        for fold in report["folds"]:
+            if "skipped" in fold:
+                print(f"  {fold['fold']:<7} skipped ({fold['skipped']})")
+                continue
+            train, test = fold["train"], fold["test"]
+            print(f"  {fold['fold']:<7} train {_pct(train['total_return'])} "
+                  f"(bh {_pct(train['benchmark_return'])})   "
+                  f"test {_pct(test['total_return'])} "
+                  f"(bh {_pct(test['benchmark_return'])})  {test['trades']} trades")
+        print(f"\n  {report['consistency']['verdict']}")
+        print(f"  {report['note']}")
+        return 0
+
+    row = run_backtest_api(genome, dataset, costs, include_trades=args.trades > 0,
+                           max_trades=args.trades)
+    if "error" in row:
+        print(f"simulate failed: {row['error']}", file=sys.stderr)
+        return 1
+    _print_result(row)
+    for trade in row.get("trades", []):
+        print("  " + ", ".join(f"{k}={v}" for k, v in list(trade.items())[:6]))
+    return 0
+
+
+def cmd_compare(args: argparse.Namespace) -> int:
+    """Rank the strategy library over one universe."""
+    try:
+        names = ([n.strip() for n in args.names.split(",")] if args.names
+                 else strategy_lib.names(args.family))
+        if not args.names and not args.family:
+            names = [n for n in names if not n.startswith("archetype:")]
+        genomes = [strategy_lib.build(n) for n in names]
+        dataset = load_dataset(_sim_spec(args))
+    except (ValueError, DataError, strategy_lib.StrategyError) as exc:
+        print(f"compare failed: {exc}", file=sys.stderr)
+        return 1
+
+    rows = compare_strategies(genomes, dataset, _sim_costs(args),
+                              rank_by=args.rank_by, workers=args.workers)
+    start, end = dataset.dates
+    print(f"{len(rows)} strategies over {', '.join(dataset.spec.symbols)}  "
+          f"{start}..{end} ({dataset.bars} {dataset.spec.interval} bars), "
+          f"ranked by {args.rank_by}\n")
+    header = f"{'strategy':<22}{'fitness':>9}{'return':>9}{'vs b&h':>9}{'sharpe':>8}{'maxdd':>8}{'trades':>8}"
+    print(header)
+    print("-" * len(header))
+    for row in rows[:args.limit]:
+        if "error" in row:
+            print(f"{row['strategy']:<22}  {row['error'][:50]}")
+            continue
+        m = row["metrics"]
+        print(f"{row['strategy']:<22}{_num(row['fitness']):>9}"
+              f"{_pct(m['total_return']):>9}{_pct(m['excess_return']):>9}"
+              f"{_num(m['sharpe']):>8}{_pct(m['max_drawdown']):>8}{m['trades']:>8}")
+    benchmark = (rows[0].get("metrics") or {}).get("benchmark_return") if rows else None
+    if benchmark is not None:
+        print(f"\nbuy-and-hold over the same window: {_pct(benchmark)}")
+    return 0
+
+
+def _pct(value: Optional[float]) -> str:
+    return "-" if value is None else f"{value * 100:+.1f}%"
+
+
+def _num(value: Optional[float], places: int = 2) -> str:
+    """Metrics are None when they are not finite — an unbeaten strategy has an
+    infinite profit factor, and that must not crash the report."""
+    return "n/a" if value is None else f"{value:.{places}f}"
+
+
+def _print_result(row: dict) -> None:
+    m = row["metrics"]
+    period = row["period"]
+    print(f"{row['strategy']}  {', '.join(row['symbols'])}  "
+          f"{period['start']}..{period['end']}  "
+          f"({period['bars']} {row['interval']} bars, {period['years']}y)\n")
+    print(f"  return          {_pct(m['total_return'])}   "
+          f"(buy-and-hold {_pct(m['benchmark_return'])}, "
+          f"excess {_pct(m['excess_return'])})")
+    print(f"  cagr            {_pct(m['cagr'])}")
+    print(f"  sharpe          {_num(m['sharpe'])}   sortino {_num(m['sortino'])}")
+    print(f"  max drawdown    {_pct(m['max_drawdown'])}   calmar {_num(m['calmar'])}")
+    print(f"  trades          {m['trades']}   win {_pct(m['win_rate'])[1:]}   "
+          f"profit factor {_num(m['profit_factor'])}")
+    print(f"  turnover        {_num(m['turnover'], 1)}x/yr   exposure "
+          f"{_pct(m['exposure'])[1:]}")
+    print(f"  costs paid      {row['costs_paid']:,.0f}   "
+          f"final equity {row['final_equity']:,.0f}")
+    print(f"  fitness         {_num(row['fitness'], 3)}")
+
+
 def cmd_doctor(args: argparse.Namespace) -> int:
     """Check the environment: data access, credentials, dependencies."""
     print(f"python            {sys.version.split()[0]}")
@@ -413,6 +575,47 @@ def build_parser() -> argparse.ArgumentParser:
     scr.add_argument("--config", metavar="PATH",
                      help="write/update a run config with these symbols")
     scr.set_defaults(func=cmd_screen)
+
+    def _add_sim_flags(p: argparse.ArgumentParser) -> None:
+        p.add_argument("--symbols", help="comma separated tickers")
+        p.add_argument("--start", default="2015-01-01")
+        p.add_argument("--end", default="2030-01-01")
+        p.add_argument("--interval", default="1d", choices=list(INTERVALS))
+        p.add_argument("--cash", type=float, default=100_000.0)
+        p.add_argument("--commission", type=float, default=1.0,
+                       help="basis points per side")
+        p.add_argument("--slippage", type=float, default=5.0,
+                       help="basis points per side")
+        p.add_argument("--offline", action="store_true",
+                       help="synthetic prices, no network")
+
+    strat = sub.add_parser("strategies", help="list the strategy library")
+    strat.add_argument("--family")
+    strat.set_defaults(func=cmd_strategies)
+
+    sim = sub.add_parser("simulate", help="backtest a named strategy or ad-hoc rules")
+    sim.add_argument("--strategy", help="name from `evotrader strategies`")
+    sim.add_argument("--param", action="append", metavar="K=V",
+                     help="override a strategy parameter (repeatable)")
+    sim.add_argument("--entry", action="append", metavar="RULE",
+                     help="entry rule, instead of a named strategy (repeatable)")
+    sim.add_argument("--exit", action="append", metavar="RULE",
+                     help="exit rule (repeatable)")
+    sim.add_argument("--trades", type=int, default=0, help="show N trades")
+    sim.add_argument("--walk-forward", action="store_true",
+                     help="anchored folds instead of one window")
+    sim.add_argument("--folds", type=int, default=3)
+    _add_sim_flags(sim)
+    sim.set_defaults(func=cmd_simulate)
+
+    cmp_ = sub.add_parser("compare", help="rank strategies over one universe")
+    cmp_.add_argument("--names", help="comma separated strategy names")
+    cmp_.add_argument("--family")
+    cmp_.add_argument("--rank-by", dest="rank_by", default="fitness")
+    cmp_.add_argument("--limit", type=int, default=20)
+    cmp_.add_argument("--workers", type=int, default=4)
+    _add_sim_flags(cmp_)
+    cmp_.set_defaults(func=cmd_compare)
 
     doc = sub.add_parser("doctor", help="check data access, credentials and deps")
     doc.set_defaults(func=cmd_doctor)
