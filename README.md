@@ -220,6 +220,42 @@ evotrader/
   cli.py          command line interface
 ```
 
+## Knowledge graph (graphify)
+
+[graphify](https://github.com/meyer-coder/graphify) is installed into this repo:
+it maps the codebase into a queryable knowledge graph so an AI assistant can ask
+the graph instead of grepping through files.
+
+Install the tool once (isolated env, so it can't collide with this project's deps):
+
+```bash
+uv tool install graphifyy      # or: pipx install graphifyy
+```
+
+Build the graph. `update` is AST-only, so it costs nothing and needs no API key:
+
+```bash
+graphify update .              # 585 nodes / 1549 edges / 23 communities today
+```
+
+Then query it:
+
+```bash
+graphify query "how does the evolutionary breeding loop work?"
+graphify explain "HybridBreeder"
+graphify path "Genome" "Evaluation"
+```
+
+Output lands in `graphify-out/` (gitignored — it is a build artifact):
+`graph.json` for queries, `graph.html` to click around in a browser, and
+`GRAPH_REPORT.md` for the architecture highlights.
+
+What *is* committed is the wiring: `CLAUDE.md`, `.claude/CLAUDE.md`, the
+`/graphify` skill under `.claude/skills/graphify/`, and `.claude/settings.json`,
+whose PreToolUse hooks nudge Claude Code toward `graphify query` before it greps
+or reads source files one by one. Re-run `graphify update .` after changing code
+to keep the graph honest.
+
 ## Tests
 
 ```bash

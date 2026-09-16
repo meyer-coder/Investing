@@ -15,3 +15,6 @@ data/cache/*.csv
 *.sqlite-journal
 *.db
 reports/
+
+# graphify knowledge graph (regenerate with `graphify update .`)
+graphify-out/
