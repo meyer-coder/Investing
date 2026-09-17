@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Start the MCP server and its tunnel at login, and keep them running.
+
+  Install (edit the two paths first):
+    cp scripts/com.evotrader.mcp.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.evotrader.mcp.plist
+
+  Stop:
+    launchctl unload ~/Library/LaunchAgents/com.evotrader.mcp.plist
+
+  KeepAlive restarts it after a crash and after the Mac wakes. Sleeping the Mac
+  still takes the connector down while it sleeps — nothing local can avoid that.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.evotrader.mcp</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/CHANGE_ME/Investing/scripts/mcp-up.sh</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <!-- For a permanent URL, set these to your named tunnel and hostname. -->
+    <!-- <key>TUNNEL_HOSTNAME</key><string>mcp.example.com</string> -->
+    <!-- <key>TUNNEL_NAME</key><string>evotrader</string> -->
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/CHANGE_ME/Investing</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/evotrader-mcp.out</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/evotrader-mcp.err</string>
+</dict>
+</plist>

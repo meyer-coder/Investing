@@ -480,6 +480,44 @@ Some sharp edges worth knowing before you point the internet at it:
 `GET /health` answers without credentials, which is usually the quickest way to
 tell whether a tunnel is up.
 
+## Keeping the connector up
+
+Both processes — the server and the tunnel — have to be running for the
+connector to work, and a quick tunnel invents a new URL every time it starts,
+which means editing the connector again. Three ways out, in increasing order of
+never thinking about it again.
+
+**One command, new URL each time.**
+
+```bash
+scripts/mcp-up.sh          # starts both, waits, prints the URL to paste
+scripts/mcp-down.sh        # stops both
+```
+
+**A permanent URL.** A *named* Cloudflare tunnel keeps one hostname forever, so
+the connector URL never changes again. It needs a domain on a Cloudflare
+account (the DNS side is free):
+
+```bash
+cloudflared tunnel login
+cloudflared tunnel create evotrader
+cloudflared tunnel route dns evotrader mcp.example.com
+TUNNEL_HOSTNAME=mcp.example.com scripts/mcp-up.sh
+```
+
+The connector URL is then `https://mcp.example.com/mcp`, today and in a year.
+
+**Started for you at login.** `scripts/com.evotrader.mcp.plist` is a launchd
+agent: edit the two paths, drop it in `~/Library/LaunchAgents`, `launchctl
+load` it once, and both processes start at login and restart if they die.
+Combined with a named tunnel there is nothing left to rerun.
+
+None of this survives the Mac sleeping — the connector is down while the
+machine is. If you want it up regardless, run the server on something that
+stays awake (a small VM, Fly, Railway) and skip the tunnel entirely; the
+tradeoff is that the candle store and any training runs then live there rather
+than on your laptop.
+
 ## Layout
 
 ```
@@ -507,12 +545,16 @@ evotrader/
   tvcache.py      the local candle store that deepens with every fetch
   tv_mcp.py       backtesting on TradingView data, served over MCP
   mcp_http.py     Streamable HTTP transport, for a Claude custom connector
+scripts/
+  mcp-up.sh       start the server and tunnel, print the connector URL
+  mcp-down.sh     stop them
+  com.evotrader.mcp.plist   launchd agent, to start both at login
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 235 tests, ~45s
+python -m pytest tests -q      # 241 tests, ~45s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
