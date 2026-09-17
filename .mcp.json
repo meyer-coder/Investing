@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "evotrader": {
+      "command": "python3",
+      "args": ["-m", "evotrader.cli", "mcp"],
+      "env": {
+        "EVOTRADER_DB": "runs/evotrader.sqlite"
+      }
+    }
+  }
+}

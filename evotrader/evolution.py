@@ -110,6 +110,27 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
                    fitness_score(metrics, ctx.fitness), metrics, journal)
 
 
+def replay_genome(genome: Genome, cfg: EvolutionConfig, *,
+                  symbols: Optional[Sequence[str]] = None,
+                  start: str = "", end: str = "") -> Outcome:
+    """Backtest one stored genome over an arbitrary window.
+
+    The evolution loop shares one prepared :class:`Context` across a whole
+    generation; this builds a throwaway one so a single genome can be re-run on
+    dates, or symbols, it never evolved on.  Nothing is written anywhere.
+    """
+    universe = load_universe(list(symbols) if symbols else cfg.symbols,
+                             start or cfg.start, end or cfg.end, offline=cfg.offline)
+    features = build_features(universe)
+    ctx = Context(train=universe, train_features=features,
+                  train_benchmark=buy_and_hold(universe, features,
+                                               starting_cash=cfg.starting_cash),
+                  test=None, test_features=None, test_benchmark=None,
+                  starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
+                  slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
+    return score_genome(genome, ctx)
+
+
 @dataclass
 class GenerationReport:
     generation: int

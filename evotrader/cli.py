@@ -15,8 +15,7 @@ from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
 from .data import load_universe
-from .evolution import Evolution, score_genome
-from .features import build_features
+from .evolution import Evolution, replay_genome
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
 from .report import html_report, lineage, markdown_report, print_report
@@ -196,19 +195,9 @@ def cmd_backtest(args: argparse.Namespace) -> int:
         store.conn.execute("SELECT run_id FROM genomes WHERE id=?",
                            (args.genome_id,)).fetchone()["run_id"]) or {}
     cfg = EvolutionConfig.from_dict(stored)
-    symbols = [s.strip().upper() for s in args.symbols.split(",")] if args.symbols else cfg.symbols
-    universe = load_universe(symbols, args.start or cfg.start, args.end or cfg.end,
-                             offline=cfg.offline)
-    features = build_features(universe)
-    from .evolution import Context
-    from .runner import buy_and_hold
-    ctx = Context(train=universe, train_features=features,
-                  train_benchmark=buy_and_hold(universe, features,
-                                               starting_cash=cfg.starting_cash),
-                  test=None, test_features=None, test_benchmark=None,
-                  starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
-                  slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
-    outcome = score_genome(genome, ctx)
+    symbols = [s.strip().upper() for s in args.symbols.split(",")] if args.symbols else None
+    outcome = replay_genome(genome, cfg, symbols=symbols, start=args.start or "",
+                            end=args.end or "")
     if outcome.error:
         print(f"error: {outcome.error}", file=sys.stderr)
         return 1
@@ -252,6 +241,15 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         print(f"market data       unavailable: {exc}\n"
               f"                  use --offline to run on synthetic prices")
     return 0
+
+
+def cmd_mcp(args: argparse.Namespace) -> int:
+    """Speak MCP on stdin/stdout so Claude Code can watch a run in progress."""
+    from .mcp_server import MCPServer, SERVER_NAME, TrainingView, serve
+
+    view = TrainingView(args.db_path or "")
+    print(f"{SERVER_NAME} on stdio, reading {view.db_path}", file=sys.stderr)
+    return serve(MCPServer(view))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -316,6 +314,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     doc = sub.add_parser("doctor", help="check data access, credentials and deps")
     doc.set_defaults(func=cmd_doctor)
+
+    mcp = sub.add_parser("mcp", help="serve the training view to an MCP client on stdio")
+    mcp.add_argument("--db", dest="db_path")
+    mcp.set_defaults(func=cmd_mcp)
     return p
 
 

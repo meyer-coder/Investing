@@ -197,6 +197,52 @@ random-walk generator so the whole system runs with no network at all.
 python -m evotrader.cli fetch --symbols SPY,QQQ,IWM,TLT,GLD --start 2005-01-01
 ```
 
+## Watching a run from Claude Code
+
+A run is a long-lived process writing to SQLite, which makes it awkward to
+follow from a terminal you also want to use. `evotrader mcp` serves the same
+record over the Model Context Protocol, so a Claude Code session can watch
+training as it happens and reason about what it sees:
+
+```bash
+evotrader mcp --db runs/evotrader.sqlite      # stdio, one client
+```
+
+`.mcp.json` in the repo root already registers it, so a Claude Code session
+started here picks it up with no setup. For any other MCP client:
+
+```json
+{"mcpServers": {"evotrader": {"command": "python3",
+                              "args": ["-m", "evotrader.cli", "mcp"],
+                              "env": {"EVOTRADER_DB": "runs/evotrader.sqlite"}}}}
+```
+
+Then ask in plain English — *how is the run going, and is the champion real?*
+
+| tool | what it answers |
+|---|---|
+| `training_status` | generations done, fitness trend, champion on both windows, spend, whether the run has stalled |
+| `generation_history` | best/mean/median by generation, next to the held-out score of each generation's champion |
+| `leaderboard` | the best distinct strategies, ranked on training **or** held-out fitness |
+| `inspect_genome` | one agent's thesis, rules, risk limits, scores and ancestry |
+| `genome_trades` | the trades it actually made, best or worst first, with the rule that fired |
+| `reflections` | Claude's own analysis of each generation and the lessons carried forward |
+| `overfitting_report` | training against held-out fitness, and the rank correlation between them |
+| `search_genomes` | which agents trade on `rsi14`, `cross_above`, or any word in a thesis |
+| `strategy_language` | the feature and function vocabulary, so rules can be read correctly |
+| `backtest_genome` | replay a stored agent over any window or symbol list |
+| `list_runs` | every run in the database |
+
+Two resources come with it: `evotrader://run/<id>` is the full Markdown report,
+`evotrader://strategy-language` is the rule vocabulary.
+
+The view is read-only — it cannot start, steer or stop a run, and
+`backtest_genome`, the one tool that computes anything, writes nothing back.
+The server speaks JSON-RPC on stdin and stdout itself, so it adds no
+dependencies. It also says out loud, every time it hands over a leaderboard,
+that training fitness is in-sample and the held-out window is the only evidence
+there is.
+
 ## Layout
 
 ```
@@ -218,18 +264,20 @@ evotrader/
   store.py        SQLite persistence
   report.py       console, Markdown and HTML reports
   cli.py          command line interface
+  mcp_server.py   the training view, served over MCP
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 76 tests, ~30s
+python -m pytest tests -q      # 115 tests, ~30s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
 indicators, no-look-ahead fills and risk-limit enforcement in the backtester,
 fitness behaviour, the genetic operators, the full Claude breeding path against
-a stubbed client, and a complete run with checkpoint and resume.
+a stubbed client, a complete run with checkpoint and resume, and the MCP
+training view down to the wire protocol.
 
 ## Performance
 
