@@ -5,7 +5,8 @@ import random
 from evotrader.config import EvolutionConfig
 from evotrader.fitness import Evaluation, Metrics
 from evotrader.journal import Trade
-from evotrader.mcp_server import MCPServer, TOOLS, TrainingView, serve
+from evotrader.mcp_rpc import serve
+from evotrader.mcp_server import TRAINING_TOOLS, build_server
 from evotrader.population import seed_population
 from evotrader.store import Store
 
@@ -47,7 +48,7 @@ def _seeded_db(tmp_path, *, run_id="r1"):
 
 def _server(tmp_path):
     path, pop = _seeded_db(tmp_path)
-    return MCPServer(TrainingView(path)), pop
+    return build_server(path), pop
 
 
 def _call(server, name, **arguments):
@@ -138,7 +139,7 @@ def test_serve_round_trips_over_a_stream(tmp_path):
                     "params": {"name": "training_status", "arguments": {}}}),
     ]
     out = io.StringIO()
-    serve(MCPServer(TrainingView(path)), io.StringIO("\n".join(lines) + "\n"), out)
+    serve(build_server(path), io.StringIO("\n".join(lines) + "\n"), out)
     responses = [json.loads(l) for l in out.getvalue().splitlines()]
     assert len(responses) == 3                       # the notification gets no reply
     assert responses[0]["result"]["serverInfo"]["name"] == "evotrader-training-view"
@@ -276,7 +277,7 @@ def test_overfitting_report_needs_holdout_scores(tmp_path):
     store.save_genomes("r2", pop)
     store.save_evaluations("r2", 0, [Evaluation(pop[0].id, pop[0].name, 0, 1.0, Metrics())])
     store.close()
-    server = MCPServer(TrainingView(path))
+    server = build_server(path)
     result = _call(server, "overfitting_report")
     assert result["isError"] is False
     assert result["structuredContent"]["rank_correlation"] is None
@@ -356,7 +357,7 @@ def test_resource_templates_are_listed(tmp_path):
 # ------------------------------------------------------------------- plumbing
 
 def test_missing_database_is_explained(tmp_path):
-    server = MCPServer(TrainingView(str(tmp_path / "absent.sqlite")))
+    server = build_server(str(tmp_path / "absent.sqlite"))
     result = _call(server, "list_runs")
     assert result["isError"] is True and "no evotrader database" in _text(result)
 
@@ -364,19 +365,19 @@ def test_missing_database_is_explained(tmp_path):
 def test_empty_database_is_not_an_error(tmp_path):
     path = str(tmp_path / "empty.sqlite")
     Store(path).close()
-    server = MCPServer(TrainingView(path))
+    server = build_server(path)
     assert "no runs" in _text(_call(server, "list_runs"))
     assert _call(server, "training_status")["isError"] is True
 
 
 def test_db_argument_overrides_the_default(tmp_path):
     path, _ = _seeded_db(tmp_path)
-    server = MCPServer(TrainingView(str(tmp_path / "absent.sqlite")))
+    server = build_server(str(tmp_path / "absent.sqlite"))
     assert _call(server, "list_runs", db=path)["structuredContent"]["runs"][0]["run_id"] == "r1"
 
 
 def test_every_tool_declares_its_required_arguments(tmp_path):
-    for name, impl in TOOLS.items():
+    for name, impl in TRAINING_TOOLS.tools.items():
         assert impl.title and impl.description, name
         assert impl.spec()["annotations"]["readOnlyHint"] is True, name
 
@@ -394,7 +395,7 @@ def test_overfitting_verdict_separates_rank_from_level(tmp_path):
                    test_score=-0.5 - i * 0.3)
         for i, g in enumerate(pop)])
     store.close()
-    s = _call(MCPServer(TrainingView(path)), "overfitting_report")["structuredContent"]
+    s = _call(build_server(path), "overfitting_report")["structuredContent"]
     assert s["rank_correlation"] > 0.9 and s["median_test_score"] < 0
     assert "do not work" in s["verdict"]
 
@@ -405,7 +406,7 @@ def test_status_on_a_run_that_has_not_finished_a_generation(tmp_path):
     store = Store(path)
     store.create_run("r4", EvolutionConfig(population=20, generations=50).to_dict())
     store.close()
-    server = MCPServer(TrainingView(path))
+    server = build_server(path)
     status = _call(server, "training_status")
     assert status["isError"] is False
     s = status["structuredContent"]

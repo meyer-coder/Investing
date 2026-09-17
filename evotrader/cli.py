@@ -18,6 +18,7 @@ from .data import load_universe
 from .evolution import Evolution, replay_genome
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
+from .mcp_rpc import serve
 from .report import html_report, lineage, markdown_report, print_report
 from .store import Store
 
@@ -245,11 +246,19 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def cmd_mcp(args: argparse.Namespace) -> int:
     """Speak MCP on stdin/stdout so Claude Code can watch a run in progress."""
-    from .mcp_server import MCPServer, SERVER_NAME, TrainingView, serve
+    from .mcp_server import SERVER_NAME, build_server
 
-    view = TrainingView(args.db_path or "")
-    print(f"{SERVER_NAME} on stdio, reading {view.db_path}", file=sys.stderr)
-    return serve(MCPServer(view))
+    server = build_server(args.db_path or "")
+    print(f"{SERVER_NAME} on stdio, reading {server.context.db_path}", file=sys.stderr)
+    return serve(server)
+
+
+def cmd_tv_mcp(args: argparse.Namespace) -> int:
+    """Speak MCP on stdin/stdout so a client can backtest on TradingView data."""
+    from .tv_mcp import SERVER_NAME, build_server
+
+    print(f"{SERVER_NAME} on stdio (bars from {args.source})", file=sys.stderr)
+    return serve(build_server(source=args.source, db_path=args.db_path or ""))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -318,6 +327,14 @@ def build_parser() -> argparse.ArgumentParser:
     mcp = sub.add_parser("mcp", help="serve the training view to an MCP client on stdio")
     mcp.add_argument("--db", dest="db_path")
     mcp.set_defaults(func=cmd_mcp)
+
+    tv = sub.add_parser("tv-mcp", help="serve TradingView-data backtesting to an "
+                                       "MCP client on stdio")
+    tv.add_argument("--source", choices=["tradingview", "yahoo", "synthetic"],
+                    default="tradingview", help="default bar source")
+    tv.add_argument("--db", dest="db_path",
+                    help="evotrader SQLite path, for backtest_evolved_agent")
+    tv.set_defaults(func=cmd_tv_mcp)
     return p
 
 

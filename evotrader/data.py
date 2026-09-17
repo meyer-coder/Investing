@@ -13,6 +13,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Dict, Iterable, List, Sequence, Tuple
@@ -70,6 +71,7 @@ class Universe:
 
     bars: Dict[str, Bars]
     calendar: List[str] = field(default_factory=list)
+    warnings: List[str] = field(default_factory=list)   # symbols that were dropped
 
     @property
     def symbols(self) -> List[str]:
@@ -181,7 +183,10 @@ def synthetic_bars(symbol: str, n: int = 1500, *, seed: int | None = None,
                    drift: float = 0.0003, vol: float = 0.012,
                    start_price: float = 100.0) -> Bars:
     """Deterministic geometric-random-walk bars, for tests and offline runs."""
-    rng = np.random.default_rng(seed if seed is not None else abs(hash(symbol)) % (2 ** 32))
+    # zlib.crc32, not hash(): str hashing is salted per process, which would
+    # make "deterministic" offline data differ between runs.
+    stable = zlib.crc32(symbol.upper().encode()) if seed is None else seed
+    rng = np.random.default_rng(stable % (2 ** 32))
     shocks = rng.normal(drift, vol, n)
     # A slow regime cycle keeps synthetic data from being trivially trending.
     cycle = 0.0006 * np.sin(np.linspace(0, 6 * np.pi, n))
@@ -232,7 +237,21 @@ def load_universe(symbols: Sequence[str], start: str, end: str, *,
             errors.append(f"{sym}: only {len(bars)} bars (need {min_bars})")
     if not loaded:
         raise DataError("no symbols loaded. " + "; ".join(errors))
+    return align(loaded)
+
+
+def align(loaded: Dict[str, Bars]) -> Universe:
+    """Put several symbols on the intersection of their dates.
+
+    Trading on a bar one symbol does not have is a quiet way to invent
+    information, so the shared calendar is the only calendar.
+    """
+    if not loaded:
+        raise DataError("nothing to align")
     common = set.intersection(*(set(b.dates) for b in loaded.values()))
+    if not common:
+        raise DataError("symbols share no common bars: "
+                        + ", ".join(sorted(loaded)))
     calendar = sorted(common)
     aligned: Dict[str, Bars] = {}
     for sym, bars in loaded.items():

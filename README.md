@@ -208,8 +208,9 @@ training as it happens and reason about what it sees:
 evotrader mcp --db runs/evotrader.sqlite      # stdio, one client
 ```
 
-`.mcp.json` in the repo root already registers it, so a Claude Code session
-started here picks it up with no setup. For any other MCP client:
+`.mcp.json` in the repo root registers this server and the backtesting one
+below, so a Claude Code session started here picks both up with no setup. For
+any other MCP client:
 
 ```json
 {"mcpServers": {"evotrader": {"command": "python3",
@@ -243,6 +244,79 @@ dependencies. It also says out loud, every time it hands over a leaderboard,
 that training fitness is in-sample and the held-out window is the only evidence
 there is.
 
+## Backtesting on TradingView data
+
+TradingView is where the chart is. `evotrader tv-mcp` is a second MCP server
+that fetches bars from TradingView's own feed and backtests strategies on them
+with this repo's engine, reporting the result the way a Strategy Tester does:
+
+```bash
+evotrader tv-mcp                       # stdio; bars from TradingView
+evotrader tv-mcp --source yahoo        # or the cached Yahoo daily bars
+```
+
+Ask for a test in plain English, or call the tools directly:
+
+| tool | what it does |
+|---|---|
+| `search_symbols` | AAPL -> `NASDAQ:AAPL`, so you pass symbols TradingView knows |
+| `get_bars` | what the feed actually returned: range, bar count, the last few bars |
+| `backtest` | run a strategy; net profit vs buy-and-hold, drawdown, profit factor, Sharpe, trade list |
+| `compare_strategies` | two to eight strategies over identical bars, ranked |
+| `walk_forward` | re-test on windows the strategy was not chosen on, fold by fold |
+| `backtest_evolved_agent` | take an agent from a training run by id and test it on symbols it never evolved on |
+| `strategy_language` | the rule vocabulary |
+
+A strategy is the same rule language the evolved agents use — not Pine:
+
+```json
+{"symbols": ["NASDAQ:AAPL", "NASDAQ:MSFT"],
+ "entry_rules": [{"when": "rsi14 < 35 and close > sma200", "weight": 0.3}],
+ "exit_rules": [{"when": "rsi14 > 60"}, {"when": "position_return < -0.08"}],
+ "risk": {"stop_loss_pct": 0.08, "max_positions": 3},
+ "timeframe": "1D", "bars": 2000}
+```
+
+and the answer comes back as:
+
+```
+RSI dip — NASDAQ:AAPL, NASDAQ:MSFT · 1D · 2016-12-01..2026-09-16 (2000 bars)
+  net profit          +41.2%   buy & hold  +58.4%   excess -17.2%
+  max drawdown        -14.9%   volatility 16.1%
+  profit factor         1.38   sharpe 0.71   sortino 0.94   calmar 0.31
+  trades                  46   win 61%   avg hold 14 bars
+  exposure               38%   turnover 3.1x/yr   fitness +0.22
+
+  worth noting
+  buy-and-hold beat it over this window
+
+  this window was chosen, not drawn at random — run `walk_forward` before
+  treating it as evidence
+```
+
+Rules are parsed, never executed as code, so a bad rule is an error message
+rather than a surprise. Fills land at the **next** bar's open with commission
+and slippage charged both ways, exactly as in evolution — a strategy tested
+here and an agent bred by a run are measured the same way, which is what makes
+`backtest_evolved_agent` meaningful.
+
+### TradingView specifics
+
+Symbol search is a plain HTTPS call. Bars arrive over the same WebSocket
+protocol the charts use, implemented in `tvdata.py` — a session is opened, the
+symbol resolved, a series requested, and `timescale_update` messages collected
+until the server says `series_completed`. No dependency is added for either.
+
+An anonymous session covers recent history on most symbols. For deeper history,
+or data your account subscribes to, put the `sessionid` cookie from a logged-in
+browser in `TRADINGVIEW_SESSION`; it is sent as the socket's auth token and
+stored nowhere. Intraday timeframes (`1`, `5`, `60`, `240`, or `1h`/`4h`
+aliases) need the TradingView source; `--source yahoo` is daily only.
+
+Bars are taken as TradingView serves them, split-adjusted like a default chart,
+whereas `data.py` gets dividend-adjusted bars from Yahoo. Two conventions —
+pick one per backtest rather than comparing numbers across them.
+
 ## Layout
 
 ```
@@ -264,20 +338,24 @@ evotrader/
   store.py        SQLite persistence
   report.py       console, Markdown and HTML reports
   cli.py          command line interface
+  mcp_rpc.py      the MCP wire protocol, shared by both servers
   mcp_server.py   the training view, served over MCP
+  tvdata.py       TradingView symbol search and OHLCV history
+  tv_mcp.py       backtesting on TradingView data, served over MCP
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 115 tests, ~30s
+python -m pytest tests -q      # 165 tests, ~35s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
 indicators, no-look-ahead fills and risk-limit enforcement in the backtester,
 fitness behaviour, the genetic operators, the full Claude breeding path against
-a stubbed client, a complete run with checkpoint and resume, and the MCP
-training view down to the wire protocol.
+a stubbed client, a complete run with checkpoint and resume, both MCP servers
+down to the wire protocol, and the TradingView client against recorded socket
+frames.
 
 ## Performance
 

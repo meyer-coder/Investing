@@ -6,6 +6,13 @@
       "env": {
         "EVOTRADER_DB": "runs/evotrader.sqlite"
       }
+    },
+    "tradingview-backtest": {
+      "command": "python3",
+      "args": ["-m", "evotrader.cli", "tv-mcp"],
+      "env": {
+        "EVOTRADER_DB": "runs/evotrader.sqlite"
+      }
     }
   }
 }

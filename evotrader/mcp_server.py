@@ -16,31 +16,27 @@ point a client at it::
     {"mcpServers": {"evotrader": {"command": "python3",
                                   "args": ["-m", "evotrader.mcp_server"]}}}
 
-The protocol is spoken directly — newline-delimited JSON-RPC 2.0 over stdin and
-stdout — so the server needs nothing beyond this package.  Only protocol
-messages may go to stdout; diagnostics go to stderr.
+The wire protocol lives in :mod:`evotrader.mcp_rpc`; this module is the tools.
 """
 from __future__ import annotations
 
 import argparse
-import dataclasses
 import json
 import math
 import os
 import sys
 import time
-from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Optional, Sequence, TextIO, Tuple
+from typing import Any, Dict, List, Optional, Sequence
 
 from .config import EvolutionConfig
-from .fitness import Metrics
+from .mcp_rpc import (MCPServer, Registry, ToolError, ToolResult, choice_arg,
+                      clip, int_arg, required_str, score_text, serve, str_arg)
+from .metrics_text import metrics_dict, metrics_line
 from .prompts import genome_schema_text, rule_reference
 from .report import lineage, markdown_report, sparkline
 from .store import Store
 
 SERVER_NAME = "evotrader-training-view"
-PROTOCOL_VERSION = "2025-06-18"
-SUPPORTED_PROTOCOLS = ("2025-06-18", "2025-03-26", "2024-11-05")
 
 INSTRUCTIONS = """\
 A read-only window onto evotrader training runs: populations of paper-trading
@@ -68,110 +64,10 @@ _RUN_PROPERTY = {
     "description": "run id (default: the most recently updated run)",
 }
 
-_METRIC_FIELDS = {f.name for f in dataclasses.fields(Metrics)}
+TRAINING_TOOLS = Registry(common_properties={"db": _DB_PROPERTY})
+tool = TRAINING_TOOLS.tool
 
-
-class ViewError(RuntimeError):
-    """A problem the caller can fix: unknown run, missing database, bad argument."""
-
-
-# --------------------------------------------------------------- tool registry
-
-ToolResult = Tuple[str, Dict[str, Any]]
-Handler = Callable[["TrainingView", Dict[str, Any]], ToolResult]
-
-
-@dataclass
-class Tool:
-    name: str
-    title: str
-    description: str
-    schema: Dict[str, Any]
-    handler: Handler
-
-    def spec(self) -> Dict[str, Any]:
-        return {"name": self.name, "title": self.title,
-                "description": self.description, "inputSchema": self.schema,
-                "annotations": {"readOnlyHint": True, "openWorldHint": False}}
-
-
-TOOLS: Dict[str, Tool] = {}
-
-
-def tool(name: str, title: str, description: str,
-         properties: Optional[Dict[str, Any]] = None,
-         required: Sequence[str] = ()) -> Callable[[Handler], Handler]:
-    """Register one tool.  ``db`` is appended to every schema."""
-
-    def decorate(fn: Handler) -> Handler:
-        props = dict(properties or {})
-        props.setdefault("db", _DB_PROPERTY)
-        TOOLS[name] = Tool(name, title, description,
-                           {"type": "object", "properties": props,
-                            "required": list(required)}, fn)
-        return fn
-
-    return decorate
-
-
-# ------------------------------------------------------------ argument helpers
-
-def _str_arg(args: Dict[str, Any], key: str, default: str = "") -> str:
-    value = args.get(key, default)
-    if value is None:
-        return default
-    if not isinstance(value, str):
-        raise ViewError(f"{key} must be a string")
-    return value.strip()
-
-
-def _required_str(args: Dict[str, Any], key: str) -> str:
-    value = _str_arg(args, key)
-    if not value:
-        raise ViewError(f"{key} is required")
-    return value
-
-
-def _int_arg(args: Dict[str, Any], key: str, default: int, *,
-             lo: int = 1, hi: int = 500) -> int:
-    value = args.get(key, default)
-    if value is None:
-        return default
-    try:
-        n = int(value)
-    except (TypeError, ValueError):
-        raise ViewError(f"{key} must be a whole number") from None
-    return max(lo, min(hi, n))
-
-
-def _choice_arg(args: Dict[str, Any], key: str, allowed: Sequence[str]) -> str:
-    value = _str_arg(args, key, allowed[0]) or allowed[0]
-    if value not in allowed:
-        raise ViewError(f"{key} must be one of {', '.join(allowed)}")
-    return value
-
-
-# ----------------------------------------------------------------- formatting
-
-def _metrics_dict(raw: Optional[str]) -> Optional[Dict[str, Any]]:
-    if not raw:
-        return None
-    try:
-        parsed = json.loads(raw)
-    except (TypeError, ValueError):
-        return None
-    return parsed if isinstance(parsed, dict) else None
-
-
-def _metrics_line(raw: Optional[str]) -> str:
-    d = _metrics_dict(raw)
-    if not d:
-        return "-"
-    return Metrics(**{k: v for k, v in d.items() if k in _METRIC_FIELDS}).summary()
-
-
-def _score(value: Optional[float]) -> str:
-    return f"{value:+.3f}" if value is not None and math.isfinite(value) else "  -   "
+ViewError = ToolError          # the name this module's handlers raise
 
 
 def _age(seconds: float) -> str:
@@ -182,11 +78,6 @@ def _age(seconds: float) -> str:
     if seconds < 172800:
         return f"{seconds / 3600:.1f}h ago"
     return f"{seconds / 86400:.1f}d ago"
-
-
-def _clip(text: str, limit: int = 1200) -> str:
-    text = (text or "").strip()
-    return text if len(text) <= limit else text[:limit].rstrip() + " ..."
 
 
 # -------------------------------------------------------------- the view state
@@ -200,7 +91,7 @@ class TrainingView:
         self._stores: Dict[str, Store] = {}
 
     def store(self, args: Optional[Dict[str, Any]] = None) -> Store:
-        path = _str_arg(args or {}, "db") or self.db_path
+        path = str_arg(args or {}, "db") or self.db_path
         if path not in self._stores:
             if not os.path.exists(path):
                 raise ViewError(f"no evotrader database at {path!r} — run "
@@ -256,7 +147,7 @@ def _history(store: Store, run_id: str) -> List[Dict[str, Any]]:
       {"limit": {"type": "integer", "description": "how many runs (default 20)"}})
 def _list_runs(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    rows = store.list_runs(_int_arg(args, "limit", 20, hi=200))
+    rows = store.list_runs(int_arg(args, "limit", 20, hi=200))
     if not rows:
         return "no runs in this database yet", {"runs": []}
     now = time.time()
@@ -289,7 +180,7 @@ def _list_runs(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
       {"run_id": _RUN_PROPERTY})
 def _training_status(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
     run = store.get_run(run_id)
     cfg = json.loads(run["config"])
     history = _history(store, run_id)
@@ -328,15 +219,15 @@ def _training_status(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
         lines.append(f"\n  champion {champion['name']} (id={champion['genome_id']}, "
                      f"gen {champion['gen']}, {champion['origin']}) "
                      f"fitness {champion['score']:+.3f}")
-        lines.append(f"    training  {_metrics_line(champion['metrics'])}")
-        lines.append(f"    held-out  {_metrics_line(champion['test_metrics'])}"
+        lines.append(f"    training  {metrics_line(champion['metrics'])}")
+        lines.append(f"    held-out  {metrics_line(champion['test_metrics'])}"
                      if champion["test_metrics"] else
                      "    held-out  not scored on the held-out window")
 
     reflections = store.generation_reflections(run_id, limit=1)
     if reflections:
         lines.append(f"\n  Claude after generation {reflections[0]['generation']}:")
-        lines.append("    " + _clip(reflections[0]["analysis"], 700).replace("\n", "\n    "))
+        lines.append("    " + clip(reflections[0]["analysis"], 700).replace("\n", "\n    "))
 
     structured = {
         "run_id": run_id, "status": run["status"], "note": run["note"],
@@ -356,8 +247,8 @@ def _training_status(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
             "genome_id": champion["genome_id"], "name": champion["name"],
             "generation": champion["gen"], "origin": champion["origin"],
             "score": champion["score"], "test_score": champion["test_score"],
-            "metrics": _metrics_dict(champion["metrics"]),
-            "test_metrics": _metrics_dict(champion["test_metrics"]),
+            "metrics": metrics_dict(champion["metrics"]),
+            "test_metrics": metrics_dict(champion["test_metrics"]),
         } if champion else None,
         "latest_analysis": reflections[0] if reflections else None,
     }
@@ -374,9 +265,9 @@ def _training_status(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
                  "description": "most recent N generations (default 40)"}})
 def _generation_history(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
     rows = _history(store, run_id)
-    rows = rows[-_int_arg(args, "limit", 40, hi=1000):]
+    rows = rows[-int_arg(args, "limit", 40, hi=1000):]
     if not rows:
         return f"run {run_id} has no completed generations yet", {
             "run_id": run_id, "generations": []}
@@ -384,9 +275,9 @@ def _generation_history(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
              "  gen |    best |    mean |  median | held-out | cost   | champion"]
     for r in rows:
         lines.append(
-            f"  {r['generation']:>3} | {_score(r['best_score'])} | "
-            f"{_score(r['mean_score'])} | {_score(r['median_score'])} | "
-            f"{_score(r['best_test_score']):>8} | "
+            f"  {r['generation']:>3} | {score_text(r['best_score'])} | "
+            f"{score_text(r['mean_score'])} | {score_text(r['median_score'])} | "
+            f"{score_text(r['best_test_score']):>8} | "
             f"${r['cost_usd'] or 0:>5.2f} | {(r['best_name'] or '')[:34]}")
     best = [r["best_score"] for r in rows if r["best_score"] is not None]
     if len(best) > 1:
@@ -404,9 +295,9 @@ def _generation_history(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
                    "description": "which window to rank on (default train)"}})
 def _leaderboard(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
-    rank_by = _choice_arg(args, "rank_by", ["train", "holdout"])
-    limit = _int_arg(args, "limit", 10, hi=100)
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
+    rank_by = choice_arg(args, "rank_by", ["train", "holdout"])
+    limit = int_arg(args, "limit", 10, hi=100)
     rows = store.leaderboard(run_id, limit=limit, by_test=(rank_by == "holdout"))
     if not rows:
         return f"run {run_id} has no scored genomes yet", {"run_id": run_id, "rows": []}
@@ -416,13 +307,13 @@ def _leaderboard(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     for r in rows:
         primary = r["test_score"] if rank_by == "holdout" else r["score"]
         metrics = r["test_metrics"] if rank_by == "holdout" else r["metrics"]
-        lines.append(f"  {_score(primary)}  gen {r['gen']:>4}  {r['name'][:30]:<30} "
-                     f"{r['genome_id']}  {_metrics_line(metrics)}")
+        lines.append(f"  {score_text(primary)}  gen {r['gen']:>4}  {r['name'][:30]:<30} "
+                     f"{r['genome_id']}  {metrics_line(metrics)}")
         out.append({"genome_id": r["genome_id"], "name": r["name"],
                     "generation": r["gen"], "origin": r["origin"],
                     "score": r["score"], "test_score": r["test_score"],
-                    "metrics": _metrics_dict(r["metrics"]),
-                    "test_metrics": _metrics_dict(r["test_metrics"])})
+                    "metrics": metrics_dict(r["metrics"]),
+                    "test_metrics": metrics_dict(r["test_metrics"])})
     if rank_by == "train":
         lines.append("\n  training fitness is in-sample; check `overfitting_report` "
                      "before believing any of it")
@@ -439,7 +330,7 @@ def _leaderboard(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
       required=["genome_id"])
 def _inspect_genome(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    genome_id = _required_str(args, "genome_id")
+    genome_id = required_str(args, "genome_id")
     genome = store.get_genome(genome_id)
     if genome is None:
         raise ViewError(f"unknown genome {genome_id!r}")
@@ -451,16 +342,16 @@ def _inspect_genome(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
         "SELECT * FROM evaluations WHERE genome_id=? ORDER BY generation",
         (genome_id,)).fetchall()]
     for row in evals:
-        lines.append(f"\n  generation {row['generation']}: fitness {_score(row['score'])}"
-                     + (f" (held-out {_score(row['test_score'])})"
+        lines.append(f"\n  generation {row['generation']}: fitness {score_text(row['score'])}"
+                     + (f" (held-out {score_text(row['test_score'])})"
                         if row["test_score"] is not None else ""))
-        lines.append(f"    training  {_metrics_line(row['metrics'])}")
+        lines.append(f"    training  {metrics_line(row['metrics'])}")
         if row["test_metrics"]:
-            lines.append(f"    held-out  {_metrics_line(row['test_metrics'])}")
+            lines.append(f"    held-out  {metrics_line(row['test_metrics'])}")
         if row["error"]:
             lines.append(f"    error: {row['error']}")
 
-    depth = _int_arg(args, "ancestry", 8, lo=0, hi=40)
+    depth = int_arg(args, "ancestry", 8, lo=0, hi=40)
     chain = lineage(store, genome_id, max_depth=max(depth, 1))[:depth] if depth else []
     if len(chain) > 1:
         lines.append("\n  ancestry (newest first)")
@@ -473,8 +364,8 @@ def _inspect_genome(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
         "evaluations": [{
             "run_id": r["run_id"], "generation": r["generation"],
             "score": r["score"], "test_score": r["test_score"],
-            "metrics": _metrics_dict(r["metrics"]),
-            "test_metrics": _metrics_dict(r["test_metrics"]),
+            "metrics": metrics_dict(r["metrics"]),
+            "test_metrics": metrics_dict(r["test_metrics"]),
             "error": r["error"]} for r in evals],
         "ancestry": [{"id": g.id, "generation": g.generation, "origin": g.origin,
                       "name": g.name} for g in chain],
@@ -492,9 +383,9 @@ def _inspect_genome(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
       required=["genome_id"])
 def _genome_trades(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    genome_id = _required_str(args, "genome_id")
-    order = _choice_arg(args, "order", ["sequence", "best", "worst"])
-    limit = _int_arg(args, "limit", 20, hi=200)
+    genome_id = required_str(args, "genome_id")
+    order = choice_arg(args, "order", ["sequence", "best", "worst"])
+    limit = int_arg(args, "limit", 20, hi=200)
     clause = {"sequence": "generation, seq", "best": "ret DESC", "worst": "ret ASC"}[order]
     rows = [dict(r) for r in store.conn.execute(
         f"SELECT * FROM trades WHERE genome_id=? ORDER BY {clause} LIMIT ?",
@@ -520,8 +411,8 @@ def _genome_trades(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
        "limit": {"type": "integer", "description": "most recent N (default 3)"}})
 def _reflections(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
-    rows = store.generation_reflections(run_id, limit=_int_arg(args, "limit", 3, hi=50))
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
+    rows = store.generation_reflections(run_id, limit=int_arg(args, "limit", 3, hi=50))
     if not rows:
         return (f"run {run_id} has no analyses — a mutation-only run never calls "
                 f"Claude"), {"run_id": run_id, "reflections": []}
@@ -529,7 +420,7 @@ def _reflections(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     for row in rows:
         lessons = json.loads(row["lessons"] or "[]")
         lines.append(f"generation {row['generation']} (${row['cost_usd'] or 0:.2f})")
-        lines.append("  " + _clip(row["analysis"], 2000).replace("\n", "\n  "))
+        lines.append("  " + clip(row["analysis"], 2000).replace("\n", "\n  "))
         for lesson in lessons:
             lines.append(f"    - {lesson}")
         lines.append("")
@@ -549,8 +440,8 @@ def _overfitting_report(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     import numpy as np
 
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
-    limit = _int_arg(args, "limit", 15, hi=100)
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
+    limit = int_arg(args, "limit", 15, hi=100)
     rows = [r for r in store.leaderboard(run_id, limit=limit)
             if r["test_score"] is not None]
     if len(rows) < 2:
@@ -586,7 +477,7 @@ def _overfitting_report(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     lines = [f"run {run_id} — {len(rows)} agents on both windows",
              "  training | held-out |   gap | agent"]
     for r in rows:
-        lines.append(f"  {_score(r['score']):>8} | {_score(r['test_score']):>8} | "
+        lines.append(f"  {score_text(r['score']):>8} | {score_text(r['test_score']):>8} | "
                      f"{r['score'] - r['test_score']:+.3f} | {r['name'][:38]}")
     lines += [f"\n  mean gap (train - held-out): {float(np.mean(gaps)):+.3f}",
               f"  median held-out fitness: {median_test:+.3f}",
@@ -613,9 +504,9 @@ def _overfitting_report(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
       required=["query"])
 def _search_genomes(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     store = view.store(args)
-    run_id = view.resolve_run(store, _str_arg(args, "run_id"))
-    query = _required_str(args, "query")
-    limit = _int_arg(args, "limit", 20, hi=100)
+    run_id = view.resolve_run(store, str_arg(args, "run_id"))
+    query = required_str(args, "query")
+    limit = int_arg(args, "limit", 20, hi=100)
     # The genome body is JSON, so one LIKE covers name, thesis and every rule.
     sql = ("SELECT n.id, n.name, n.generation, n.origin, n.body,"
            " (SELECT MAX(score) FROM evaluations e WHERE e.genome_id = n.id) AS score"
@@ -633,7 +524,7 @@ def _search_genomes(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
         rules = [e["when"] for e in body.get("entry_rules", [])]
         rules += [e["when"] for e in body.get("exit_rules", [])]
         hits = [rule for rule in rules if query.lower() in rule.lower()]
-        lines.append(f"  {_score(r['score'])}  gen {r['generation']:>4}  "
+        lines.append(f"  {score_text(r['score'])}  gen {r['generation']:>4}  "
                      f"{r['name'][:30]:<30} {r['id']}")
         for hit in hits[:3]:
             lines.append(f"      {hit}")
@@ -674,30 +565,30 @@ def _backtest_genome(view: TrainingView, args: Dict[str, Any]) -> ToolResult:
     from .evolution import replay_genome
 
     store = view.store(args)
-    genome_id = _required_str(args, "genome_id")
+    genome_id = required_str(args, "genome_id")
     genome = store.get_genome(genome_id)
     if genome is None:
         raise ViewError(f"unknown genome {genome_id!r}")
     owner = store.conn.execute("SELECT run_id FROM genomes WHERE id=?",
                                (genome_id,)).fetchone()
     cfg = EvolutionConfig.from_dict(store.run_config(owner["run_id"]) or {})
-    raw_symbols = _str_arg(args, "symbols")
+    raw_symbols = str_arg(args, "symbols")
     symbols = [s.strip().upper() for s in raw_symbols.split(",") if s.strip()] or None
     try:
         outcome = replay_genome(genome, cfg, symbols=symbols,
-                                start=_str_arg(args, "start"),
-                                end=_str_arg(args, "end"))
+                                start=str_arg(args, "start"),
+                                end=str_arg(args, "end"))
     except Exception as exc:  # noqa: BLE001 - data fetches fail in ordinary ways
         raise ViewError(f"backtest failed: {type(exc).__name__}: {exc}") from exc
     if outcome.error:
         raise ViewError(outcome.error)
 
-    window = (f"{_str_arg(args, 'start') or cfg.start}..{_str_arg(args, 'end') or cfg.end}"
+    window = (f"{str_arg(args, 'start') or cfg.start}..{str_arg(args, 'end') or cfg.end}"
               f" on {','.join(symbols or cfg.symbols)}")
     lines = [genome.describe(), "",
              f"replayed {window}",
              f"  fitness {outcome.score:+.3f} | {outcome.metrics.summary()}"]
-    sample = outcome.journal.trades[:_int_arg(args, "trades", 10, lo=0, hi=100)] \
+    sample = outcome.journal.trades[:int_arg(args, "trades", 10, lo=0, hi=100)] \
         if outcome.journal else []
     if sample:
         lines.append(f"\n  first {len(sample)} trades")
@@ -744,142 +635,16 @@ def _read_resource(view: TrainingView, uri: str) -> Dict[str, Any]:
     raise ViewError(f"unknown resource {uri!r}")
 
 
-# --------------------------------------------------------------- the protocol
-
-PARSE_ERROR = -32700
-INVALID_REQUEST = -32600
-METHOD_NOT_FOUND = -32601
-INVALID_PARAMS = -32602
-INTERNAL_ERROR = -32603
-
-
-class MCPServer:
-    """Newline-delimited JSON-RPC 2.0, the subset of MCP this view needs."""
-
-    def __init__(self, view: Optional[TrainingView] = None):
-        self.view = view or TrainingView()
-        self.initialized = False
-
-    # --------------------------------------------------------------- routing
-    def handle(self, message: Any) -> Optional[Dict[str, Any]]:
-        """Return the response to one message, or None for a notification."""
-        if not isinstance(message, dict) or message.get("jsonrpc") != "2.0":
-            return _error(None, INVALID_REQUEST, "expected a JSON-RPC 2.0 object")
-        method = message.get("method")
-        msg_id = message.get("id")
-        if not isinstance(method, str):
-            return _error(msg_id, INVALID_REQUEST, "missing method")
-        params = message.get("params") or {}
-        if not isinstance(params, dict):
-            return _error(msg_id, INVALID_PARAMS, "params must be an object")
-
-        if method.startswith("notifications/"):
-            if method == "notifications/initialized":
-                self.initialized = True
-            return None
-        if msg_id is None:
-            return None          # an unknown notification: nothing to answer
-
-        try:
-            if method == "initialize":
-                return _result(msg_id, self._initialize(params))
-            if method == "ping":
-                return _result(msg_id, {})
-            if method == "tools/list":
-                return _result(msg_id, {"tools": [t.spec() for t in TOOLS.values()]})
-            if method == "tools/call":
-                return _result(msg_id, self._call_tool(params))
-            if method == "resources/list":
-                return _result(msg_id, {"resources": _resources(self.view)})
-            if method == "resources/templates/list":
-                return _result(msg_id, {"resourceTemplates": [{
-                    "uriTemplate": "evotrader://run/{run_id}",
-                    "name": "run report",
-                    "description": "Markdown report for one run",
-                    "mimeType": "text/markdown"}]})
-            if method == "resources/read":
-                uri = params.get("uri")
-                if not isinstance(uri, str) or not uri:
-                    return _error(msg_id, INVALID_PARAMS, "uri is required")
-                return _result(msg_id, {"contents": [_read_resource(self.view, uri)]})
-        except ViewError as exc:
-            return _error(msg_id, INVALID_PARAMS, str(exc))
-        except Exception as exc:  # noqa: BLE001 - a bad call must not kill the server
-            return _error(msg_id, INTERNAL_ERROR, f"{type(exc).__name__}: {exc}")
-        return _error(msg_id, METHOD_NOT_FOUND, f"unknown method {method!r}")
-
-    def _initialize(self, params: Dict[str, Any]) -> Dict[str, Any]:
-        asked = params.get("protocolVersion")
-        version = asked if asked in SUPPORTED_PROTOCOLS else PROTOCOL_VERSION
-        return {
-            "protocolVersion": version,
-            "capabilities": {"tools": {"listChanged": False},
-                             "resources": {"listChanged": False, "subscribe": False}},
-            "serverInfo": {"name": SERVER_NAME, "title": "evotrader training view",
-                           "version": _version()},
-            "instructions": INSTRUCTIONS,
-        }
-
-    def _call_tool(self, params: Dict[str, Any]) -> Dict[str, Any]:
-        name = params.get("name")
-        tool_impl = TOOLS.get(name) if isinstance(name, str) else None
-        if tool_impl is None:
-            return _tool_error(f"unknown tool {name!r}; available: "
-                               f"{', '.join(sorted(TOOLS))}")
-        args = params.get("arguments") or {}
-        if not isinstance(args, dict):
-            return _tool_error("arguments must be an object")
-        for key in tool_impl.schema.get("required", []):
-            if not args.get(key):
-                return _tool_error(f"{tool_impl.name} needs {key!r}")
-        try:
-            text, structured = tool_impl.handler(self.view, args)
-        except ViewError as exc:
-            return _tool_error(str(exc))
-        except Exception as exc:  # noqa: BLE001 - report, don't crash the session
-            return _tool_error(f"{type(exc).__name__}: {exc}")
-        return {"content": [{"type": "text", "text": text}],
-                "structuredContent": structured, "isError": False}
-
-
-def _version() -> str:
-    from . import __version__
-    return __version__
-
-
-def _result(msg_id: Any, result: Dict[str, Any]) -> Dict[str, Any]:
-    return {"jsonrpc": "2.0", "id": msg_id, "result": result}
-
-
-def _error(msg_id: Any, code: int, message: str) -> Dict[str, Any]:
-    return {"jsonrpc": "2.0", "id": msg_id, "error": {"code": code, "message": message}}
-
-
-def _tool_error(message: str) -> Dict[str, Any]:
-    return {"content": [{"type": "text", "text": message}], "isError": True}
-
-
-def serve(server: Optional[MCPServer] = None, stdin: Optional[TextIO] = None,
-          stdout: Optional[TextIO] = None) -> int:
-    """Read messages until stdin closes.  Only JSON goes to stdout."""
-    server = server or MCPServer()
-    stdin = stdin or sys.stdin
-    stdout = stdout or sys.stdout
-    for line in stdin:
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            message = json.loads(line)
-        except ValueError as exc:
-            response = _error(None, PARSE_ERROR, f"invalid JSON: {exc}")
-        else:
-            response = server.handle(message)
-        if response is not None:
-            stdout.write(json.dumps(response) + "\n")
-            stdout.flush()
-    server.view.close()
-    return 0
+def build_server(db_path: str = "") -> MCPServer:
+    """The training-view server, ready to serve on stdio."""
+    return MCPServer(TrainingView(db_path), TRAINING_TOOLS, name=SERVER_NAME,
+                     title="evotrader training view", instructions=INSTRUCTIONS,
+                     resources=_resources, read_resource=_read_resource,
+                     resource_templates=[{
+                         "uriTemplate": "evotrader://run/{run_id}",
+                         "name": "run report",
+                         "description": "Markdown report for one run",
+                         "mimeType": "text/markdown"}])
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -890,9 +655,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                         help="SQLite path (default: $EVOTRADER_DB, "
                              "else runs/evotrader.sqlite)")
     args = parser.parse_args(argv)
-    print(f"{SERVER_NAME} {_version()} on stdio", file=sys.stderr)
+    print(f"{SERVER_NAME} on stdio", file=sys.stderr)
     try:
-        return serve(MCPServer(TrainingView(args.db_path)))
+        return serve(build_server(args.db_path))
     except KeyboardInterrupt:  # pragma: no cover - interactive
         return 130
 
