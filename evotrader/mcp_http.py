@@ -36,8 +36,7 @@ import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Optional, Sequence, Tuple
 
-from .mcp_rpc import (INVALID_REQUEST, MCPServer, PARSE_ERROR,
-                      SUPPORTED_PROTOCOLS, error)
+from .mcp_rpc import INVALID_REQUEST, MCPServer, PARSE_ERROR, error
 
 MAX_BODY_BYTES = 4 * 1024 * 1024
 
@@ -93,8 +92,15 @@ class _Handler(BaseHTTPRequestHandler):
         return "*" in allowed or origin in allowed
 
     def _protocol_ok(self) -> bool:
-        version = self.headers.get("MCP-Protocol-Version")
-        return version is None or version in SUPPORTED_PROTOCOLS
+        """Accept any protocol version the client names.
+
+        The spec says to answer 400 to a version the server does not know, but
+        a client one revision ahead then has every request rejected before
+        initialize can negotiate a version both sides speak — which is exactly
+        what a newer client hitting this server did. Negotiation belongs in
+        initialize, which answers with a version this server actually speaks.
+        """
+        return True
 
     def _guard(self) -> Optional[Tuple[int, Dict[str, Any], Dict[str, str]]]:
         if not self._origin_allowed():
@@ -102,9 +108,6 @@ class _Handler(BaseHTTPRequestHandler):
         if not self._authorised():
             return 401, {"error": "a bearer token is required"}, {
                 "WWW-Authenticate": 'Bearer realm="evotrader"'}
-        if not self._protocol_ok():
-            return 400, {"error": "unsupported MCP-Protocol-Version; this "
-                                  f"server speaks {', '.join(SUPPORTED_PROTOCOLS)}"}, {}
         return None
 
     # -------------------------------------------------------------- methods

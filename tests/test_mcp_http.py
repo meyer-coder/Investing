@@ -121,14 +121,15 @@ def test_health_needs_no_credentials(endpoint):
     assert status == 200 and body["status"] == "ok"
 
 
-def test_an_unsupported_protocol_version_is_rejected(endpoint):
+def test_a_newer_protocol_version_is_still_served(endpoint):
+    """A client one revision ahead must not have every request 400'd."""
     port = endpoint()
-    status, _, body = call(port, body=INIT,
-                           headers={"MCP-Protocol-Version": "1999-01-01"})
-    assert status == 400 and "MCP-Protocol-Version" in body["error"]
-    status, _, _ = call(port, body=INIT,
-                        headers={"MCP-Protocol-Version": "2025-06-18"})
-    assert status == 200
+    for version in ("2025-06-18", "2025-11-25", "2026-06-18"):
+        status, _, body = call(port, body=INIT,
+                               headers={"MCP-Protocol-Version": version})
+        assert status == 200, version
+        # initialize negotiates down to what this server actually speaks
+        assert body["result"]["protocolVersion"] in (version, "2025-06-18")
 
 
 # ------------------------------------------------------------------ security
