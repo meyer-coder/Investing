@@ -421,6 +421,54 @@ Bars are taken as TradingView serves them, split-adjusted like a default chart,
 whereas `data.py` gets dividend-adjusted bars from Yahoo. Two conventions —
 pick one per backtest rather than comparing numbers across them.
 
+## Using it from Claude chats (custom connector)
+
+`.mcp.json` covers Claude Code sessions started in this repo. A Claude **custom
+connector** covers everything else — chats on the web, desktop and mobile — by
+pointing Claude at a remote MCP server instead of a subprocess it launches. That
+needs a different transport, which `serve-http` provides:
+
+```bash
+evotrader serve-http --server both --token "$(openssl rand -hex 24)"
+```
+
+```
+listening on http://127.0.0.1:8787/mcp/tradingview
+listening on http://127.0.0.1:8787/mcp/training
+```
+
+Then expose it over public HTTPS — a tunnel (`cloudflared tunnel --url
+http://localhost:8787`, `ngrok http 8787`) or a host with a certificate — and
+add the resulting `https://…/mcp/tradingview` URL under Settings → Connectors →
+Add custom connector.
+
+What Claude requires of the other end:
+
+* **Public HTTPS.** Claude's cloud makes the connection, so localhost, a VPN, or
+  anything behind a firewall will not do. A tunnel is the quickest way to give a
+  laptop a public URL.
+* **Streamable HTTP**, which is what `serve-http` speaks: one endpoint per
+  server taking POST, answering `202` to a notification and a single JSON object
+  to a request, returning `405` to the GET stream it never pushes on, and
+  refusing a protocol version it does not know.
+
+Some sharp edges worth knowing before you point the internet at it:
+
+* **Anyone who reaches the port can use the tools.** `--token` requires
+  `Authorization: Bearer …`; where a client cannot send headers, an unguessable
+  `--path` is the fallback. The server refuses to bind a public interface
+  without a token at all.
+* **`--server both` serves the training view too**, which exposes a run's whole
+  record. `--server tradingview` keeps the training database off the internet.
+* **The `Origin` header is validated**, so a web page your browser happens to
+  open cannot reach a server bound to localhost. `--allow-origin` permits one.
+* **Data still comes from where the server runs.** The candle store and the
+  training database are local to that machine, so a laptop that sleeps takes the
+  connector down with it.
+
+`GET /health` answers without credentials, which is usually the quickest way to
+tell whether a tunnel is up.
+
 ## Layout
 
 ```
@@ -447,12 +495,13 @@ evotrader/
   tvdata.py       TradingView symbol search and OHLCV history
   tvcache.py      the local candle store that deepens with every fetch
   tv_mcp.py       backtesting on TradingView data, served over MCP
+  mcp_http.py     Streamable HTTP transport, for a Claude custom connector
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 215 tests, ~35s
+python -m pytest tests -q      # 235 tests, ~45s
 ```
 
 They cover the rule language (including that hostile input is rejected), the

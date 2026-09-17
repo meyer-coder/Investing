@@ -430,6 +430,21 @@ def cmd_tv_login(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_serve_http(args: argparse.Namespace) -> int:
+    """Serve the MCP servers over HTTP, for use as a Claude custom connector."""
+    from .mcp_http import main as http_main
+
+    argv = ["--server", args.server, "--host", args.host, "--port", str(args.port),
+            "--path", args.path, "--source", args.source]
+    if args.token:
+        argv += ["--token", args.token]
+    if args.db_path:
+        argv += ["--db", args.db_path]
+    for origin in args.allow_origin or []:
+        argv += ["--allow-origin", origin]
+    return http_main(argv)
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -532,6 +547,20 @@ def build_parser() -> argparse.ArgumentParser:
     log.add_argument("--forget", action="store_true", help="remove the stored login")
     log.add_argument("--timeout", type=float, default=20.0)
     log.set_defaults(func=cmd_tv_login)
+
+    http = sub.add_parser("serve-http", help="serve MCP over HTTP (for a Claude "
+                                             "custom connector)")
+    http.add_argument("--server", choices=["tradingview", "training", "both"],
+                      default="both")
+    http.add_argument("--host", default="127.0.0.1")
+    http.add_argument("--port", type=int, default=8787)
+    http.add_argument("--path", default="/mcp")
+    http.add_argument("--token", default=os.environ.get("EVOTRADER_MCP_TOKEN", ""))
+    http.add_argument("--allow-origin", action="append")
+    http.add_argument("--source", choices=["tradingview", "yahoo", "synthetic"],
+                      default="tradingview")
+    http.add_argument("--db", dest="db_path")
+    http.set_defaults(func=cmd_serve_http)
     return p
 
 
