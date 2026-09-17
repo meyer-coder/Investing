@@ -218,3 +218,32 @@ def test_a_reused_connection_survives_a_404(endpoint):
     conn.request("POST", "/mcp", body=body, headers=headers)
     assert conn.getresponse().status == 200
     conn.close()
+
+
+# ------------------------------------------- what a connector's checker sends
+
+def test_options_is_answered_not_501(endpoint):
+    """http.server's default 501 makes a reachable server look broken."""
+    port = endpoint()
+    status, headers, _ = call(port, method="OPTIONS")
+    assert status == 204
+    assert "POST" in headers["Access-Control-Allow-Methods"]
+
+
+def test_head_is_answered(endpoint):
+    port = endpoint()
+    status, _, _ = call(port, method="HEAD")
+    assert status == 200
+
+
+def test_an_empty_post_is_a_reachability_probe(endpoint):
+    port = endpoint()
+    status, _, body = call(port, body="")
+    assert status == 200 and body["status"] == "ok"
+
+
+def test_oauth_discovery_is_a_plain_404(endpoint):
+    port = endpoint()
+    status, _, body = call(port, method="GET",
+                           path="/.well-known/oauth-authorization-server")
+    assert status == 404 and body is None

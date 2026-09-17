@@ -138,6 +138,12 @@ class _Handler(BaseHTTPRequestHandler):
             status, payload, headers = refusal
             return self._send(status, payload, headers=headers)
 
+        if not raw.strip():
+            # A connector's reachability probe, not a message. Answering 400
+            # here reads as "no server", which is how this looked from the
+            # other end.
+            return self._send(200, {"status": "ok",
+                                    "transport": "streamable-http"})
         try:
             message = json.loads(raw.decode("utf-8"))
         except (ValueError, UnicodeDecodeError) as exc:
@@ -159,6 +165,9 @@ class _Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         if self._read_body() is None:
             return
+        if self.path.startswith("/.well-known/"):
+            # No OAuth here. A bare 404 is how a client learns that.
+            return self._send(404)
         if self.path.split("?", 1)[0].rstrip("/") == "/health":
             return self._send(200, {"status": "ok",
                                     "endpoints": sorted(self._routes())})
@@ -171,6 +180,27 @@ class _Handler(BaseHTTPRequestHandler):
         # Nothing is ever pushed from this server, so there is no stream to open.
         return self._send(405, {"error": "this endpoint does not open an SSE stream"},
                           headers={"Allow": "POST, DELETE"})
+
+    def do_OPTIONS(self) -> None:  # noqa: N802
+        """Preflight.  http.server answers 501 otherwise, which looks broken."""
+        self._read_body()
+        origin = self.headers.get("Origin")
+        headers = {"Allow": "GET, POST, DELETE, OPTIONS, HEAD",
+                   "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+                   "Access-Control-Allow-Headers": "Content-Type, Authorization, "
+                                                   "Mcp-Session-Id, MCP-Protocol-Version",
+                   "Access-Control-Expose-Headers": "Mcp-Session-Id",
+                   "Access-Control-Max-Age": "600"}
+        if origin and self._origin_allowed():
+            headers["Access-Control-Allow-Origin"] = origin
+        return self._send(204, headers=headers)
+
+    def do_HEAD(self) -> None:  # noqa: N802
+        self._read_body()
+        if self._endpoint() is None and \
+                self.path.split("?", 1)[0].rstrip("/") != "/health":
+            return self._send(404)
+        return self._send(200)
 
     def do_DELETE(self) -> None:  # noqa: N802
         if self._read_body() is None:
