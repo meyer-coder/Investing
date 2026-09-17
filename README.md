@@ -324,17 +324,40 @@ evotrader tv-check --symbol NASDAQ:AAPL --timeframe 1D
 
 ```
 session cookie    set (32 chars)
-symbol search     ok (NASDAQ:AAPL, NASDAQ:AAPL.P)
-bars              ok (120 x 1D, 2026-03-24..2026-09-16, last close 332.41)
+account           signed in (cookie exchanged for an auth token)
+symbol search     ok (NASDAQ:AAPL, Pyth:AAPL, TSX:AAPL)
+bars              ok (120 x 1D, 2026-03-26..2026-09-16, last close 332.41)
 
 ready: evotrader tv-mcp
 ```
 
-It says which symbols resolved, how many bars came back and how recent the
-newest one is — a newest bar several days old usually means the account is not
-entitled to that symbol's data, which matters far more than the plan you are
-on. For historical backtesting, delayed data is not a problem: yesterday's bar
-is the same bar whether you see it now or in fifteen minutes.
+It says whether the account is actually signed in, which symbols resolved, how
+many bars came back and how recent the newest one is. A newest bar several days
+old means the account is not entitled to that symbol's data. For historical
+backtesting, delayed data is not a problem: yesterday's bar is the same bar
+whether you see it now or in fifteen minutes.
+
+### How much history you actually get
+
+`evotrader tv-depth` measures it, so the question can be settled with numbers
+rather than a pricing page. Signed out, for `NASDAQ:AAPL`:
+
+```
+  tf   |   bars | from             | to               | span
+  1    |  6,630 | 2026-08-24 13:30 | 2026-09-16 19:59 | 23 days
+  5    |  5,070 | 2026-06-15 13:30 | 2026-09-16 19:55 | 3.1 months
+  60   |  6,479 | 2023-01-03 14:30 | 2026-09-16 19:30 | 3.7 years
+  1D   | 11,526 | 1980-12-12       | 2026-09-16       | 45.8 years
+```
+
+Daily and weekly come back complete — 45 years of AAPL with no account at all,
+which is everything a daily backtest needs. Intraday is where the limit bites,
+and it is a server-side cap rather than a paging limit: `fetch_bars` already
+asks for earlier pages until the feed stops adding bars.
+
+So run `tv-depth` signed out, set `TRADINGVIEW_SESSION`, and run it again. Rows
+that do not move are limits a subscription will not lift, and buying one to fix
+them will not work.
 
 Bars are taken as TradingView serves them, split-adjusted like a default chart,
 whereas `data.py` gets dividend-adjusted bars from Yahoo. Two conventions —
@@ -370,7 +393,7 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 173 tests, ~35s
+python -m pytest tests -q      # 187 tests, ~35s
 ```
 
 They cover the rule language (including that hostile input is rejected), the

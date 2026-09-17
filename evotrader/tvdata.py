@@ -13,8 +13,12 @@ that otherwise needs only numpy.
 
 An anonymous session is enough for recent history on most symbols.  For deeper
 history, or for data your account subscribes to, put the ``sessionid`` cookie
-from a logged-in browser in ``TRADINGVIEW_SESSION``; it is sent as the socket's
-auth token and never written anywhere.
+from a logged-in browser in ``TRADINGVIEW_SESSION`` (and ``sessionid_sign`` in
+``TRADINGVIEW_SESSION_SIGN``, which TradingView sets alongside it).  The cookie
+is not itself the socket's auth token: it is exchanged for one, once, and the
+result cached for the process.  Set ``TRADINGVIEW_AUTH_TOKEN`` to skip that and
+supply a token directly.  Nothing is written to disk, and no credential is ever
+put in an error message.
 
 Bars are what TradingView serves for the symbol as asked: ``adjustment`` is set
 to ``splits``, matching a default chart, so dividends are *not* reinjected the
@@ -35,13 +39,17 @@ import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
-from typing import Any, Dict, Iterator, List, Sequence
+from typing import Any, Dict, Iterator, List, Sequence, Tuple
 
 import numpy as np
 
 from .data import Bars, DataError, Universe, align
 
 DATA_HOST = "data.tradingview.com"
+#: One series request tops out a few thousand bars short of a deep intraday
+#: history; earlier bars come a page at a time.
+MAX_PAGES = 12
+PAGE_SIZE = 5_000
 SEARCH_URL = "https://symbol-search.tradingview.com/symbol_search/v3/"
 ORIGIN = "https://www.tradingview.com"
 _UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -119,6 +127,63 @@ def search_symbols(text: str, *, exchange: str = "", limit: int = 20,
 
 def _strip_tags(text: str) -> str:
     return re.sub(r"<[^>]+>", "", text or "")
+
+
+# ------------------------------------------------------------- authentication
+
+ANONYMOUS_TOKEN = "unauthorized_user_token"
+_TOKEN_CACHE: Dict[str, str] = {}
+_AUTH_TOKEN_RE = re.compile(r'"auth_token"\s*:\s*"([^"]+)"')
+
+
+def clear_auth_cache() -> None:
+    _TOKEN_CACHE.clear()
+
+
+def resolve_auth_token(session_id: str, *, sign: str = "",
+                       timeout: float = 20.0) -> str:
+    """Exchange a ``sessionid`` cookie for the socket's auth token.
+
+    The chart feed does not take the cookie; it takes a token the web app holds
+    for a signed-in user.  One authenticated page load carries it.
+    """
+    cached = _TOKEN_CACHE.get(session_id)
+    if cached:
+        return cached
+    cookie = f"sessionid={session_id}"
+    if sign:
+        cookie += f"; sessionid_sign={sign}"
+    req = urllib.request.Request(ORIGIN + "/", headers={
+        "User-Agent": _UA, "Referer": ORIGIN + "/", "Cookie": cookie})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            page = resp.read().decode("utf-8", "replace")
+    except Exception as exc:  # noqa: BLE001 - never let a cookie into the message
+        raise TradingViewError(
+            f"could not reach TradingView to exchange the session cookie: "
+            f"{type(exc).__name__}") from None
+    match = _AUTH_TOKEN_RE.search(page)
+    token = match.group(1) if match else ""
+    if not token or token == ANONYMOUS_TOKEN:
+        raise TradingViewError(
+            "TradingView did not accept the session cookie — it has expired or "
+            "belongs to another device. Log in again and copy a fresh sessionid "
+            "(and sessionid_sign) from the browser's cookies.")
+    _TOKEN_CACHE[session_id] = token
+    return token
+
+
+def auth_token(session_token: str = "", *, sign: str = "",
+               timeout: float = 20.0) -> Tuple[str, str]:
+    """Return ``(token, how)`` — how being anonymous, token, or session."""
+    explicit = os.environ.get("TRADINGVIEW_AUTH_TOKEN", "")
+    if explicit:
+        return explicit, "token"
+    session_id = session_token or os.environ.get("TRADINGVIEW_SESSION", "")
+    if not session_id:
+        return ANONYMOUS_TOKEN, "anonymous"
+    sign = sign or os.environ.get("TRADINGVIEW_SESSION_SIGN", "")
+    return resolve_auth_token(session_id, sign=sign, timeout=timeout), "session"
 
 
 # ------------------------------------------------------------ websocket layer
@@ -284,11 +349,11 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
     """Pull one symbol's OHLCV history from TradingView's chart feed."""
     resolution = normalise_timeframe(timeframe)
     count = max(10, min(int(bars), 20_000))
-    token = session_token or os.environ.get("TRADINGVIEW_SESSION", "")
+    token, _how = auth_token(session_token, timeout=timeout)
     ws = socket_factory(timeout=timeout)
     chart, series, sym_ref = _session_id("cs_"), "sds_1", "sds_sym_1"
     try:
-        ws.send(_packet("set_auth_token", [token or "unauthorized_user_token"]))
+        ws.send(_packet("set_auth_token", [token]))
         ws.send(_packet("chart_create_session", [chart, ""]))
         ws.send(_packet("resolve_symbol", [
             chart, sym_ref,
@@ -296,7 +361,20 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
                              separators=(",", ":"))]))
         ws.send(_packet("create_series",
                         [chart, series, "s1", sym_ref, resolution, count, ""]))
-        points = _read_series(ws, series, timeout=timeout)
+        rows: Dict[int, List[float]] = {}
+        _read_series(ws, series, rows, timeout=timeout)
+        # One series tops out well short of a long intraday history, so ask for
+        # earlier pages until the server stops adding bars.
+        pages = 0
+        while len(rows) < count and pages < MAX_PAGES:
+            before = len(rows)
+            ws.send(_packet("request_more_data",
+                            [chart, series, min(count - before, PAGE_SIZE)]))
+            _read_series(ws, series, rows, timeout=timeout)
+            if len(rows) <= before:
+                break
+            pages += 1
+        points = [rows[i] for i in sorted(rows)]
     except OSError as exc:
         raise TradingViewError(
             f"lost the TradingView connection while reading {symbol!r}: "
@@ -311,10 +389,14 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
     return _to_bars(symbol, resolution, points)
 
 
-def _read_series(ws: _WebSocket, series: str, *, timeout: float) -> List[List[float]]:
-    """Collect ``timescale_update`` payloads until the series is complete."""
+def _read_series(ws: _WebSocket, series: str, rows: Dict[int, List[float]], *,
+                 timeout: float) -> Dict[int, List[float]]:
+    """Collect ``timescale_update`` payloads into ``rows`` until the page ends.
+
+    Bars are keyed by TradingView's own index, which runs negative into the
+    past, so successive pages merge without overlapping or reordering.
+    """
     deadline = time.monotonic() + timeout
-    rows: Dict[int, List[float]] = {}
     for raw in ws.frames():
         if time.monotonic() > deadline:
             raise TradingViewError("timed out waiting for TradingView bars")
@@ -333,14 +415,15 @@ def _read_series(ws: _WebSocket, series: str, *, timeout: float) -> List[List[fl
                     values = point.get("v") or []
                     if len(values) >= 5:
                         rows[int(point.get("i", len(rows)))] = values
-            elif name == "series_completed":
-                return [rows[i] for i in sorted(rows)]
+            elif name in ("series_completed", "series_loading"):
+                if name == "series_completed":
+                    return rows
             elif name in ("symbol_error", "series_error", "critical_error",
                           "protocol_error"):
                 raise TradingViewError(
                     f"TradingView reported {name}: "
                     f"{json.dumps(message.get('p', []))[:200]}")
-    return [rows[i] for i in sorted(rows)]
+    return rows
 
 
 def _to_bars(symbol: str, resolution: str, points: Sequence[Sequence[float]]) -> Bars:

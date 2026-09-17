@@ -118,7 +118,8 @@ class FakeSocket:
     """Replays recorded server frames and records what the client sent."""
 
     def __init__(self, frames):
-        self._frames = list(frames)
+        # One continuous stream, as a socket is: reading twice must not rewind.
+        self._stream = iter(list(frames))
         self.sent = []
         self.closed = False
 
@@ -126,7 +127,7 @@ class FakeSocket:
         self.sent.append(text)
 
     def frames(self):
-        for frame in self._frames:
+        for frame in self._stream:
             yield frame
 
     def close(self):
@@ -198,13 +199,17 @@ def test_fetch_bars_explains_an_empty_series():
     assert "TRADINGVIEW_SESSION" in str(exc.value)
 
 
-def test_fetch_bars_sends_the_session_token_when_given():
+def test_a_session_token_argument_is_exchanged_before_use(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda *a, **k: _Response(
+                            b'{"user": {"auth_token": "exchanged-token"}}'))
     fake = FakeSocket([_timescale("sds_1", [[1700000000, 1, 2, 0.5, 1.5, 1]]),
                        _packet("series_completed", ["cs"])])
     fetch_bars("X", "1D", 100, session_token="secret-cookie",
                socket_factory=lambda **k: fake)
     auth = json.loads(_split_frames(fake.sent[0])[0])
-    assert auth["p"] == ["secret-cookie"]
+    assert auth["p"] == ["exchanged-token"]
+    assert "secret-cookie" not in fake.sent[0]
 
 
 def test_fetch_bars_uses_an_anonymous_token_by_default(monkeypatch):
@@ -317,3 +322,115 @@ def test_a_dropped_connection_is_reported_as_a_tradingview_error():
     with pytest.raises(TradingViewError) as exc:
         fetch_bars("X", "1D", 100, socket_factory=lambda **k: Dropping([]))
     assert "lost the TradingView connection" in str(exc.value)
+
+
+# ------------------------------------------------------------- authentication
+
+@pytest.fixture(autouse=True)
+def _no_ambient_credentials(monkeypatch):
+    for name in ("TRADINGVIEW_SESSION", "TRADINGVIEW_SESSION_SIGN",
+                 "TRADINGVIEW_AUTH_TOKEN"):
+        monkeypatch.delenv(name, raising=False)
+    tvdata.clear_auth_cache()
+
+
+def _page(token="tv-auth-token-abc123"):
+    return _Response(json.dumps({"user": {"auth_token": token}}).encode())
+
+
+def test_anonymous_by_default():
+    assert tvdata.auth_token() == ("unauthorized_user_token", "anonymous")
+
+
+def test_an_explicit_token_is_used_as_is(monkeypatch):
+    monkeypatch.setenv("TRADINGVIEW_AUTH_TOKEN", "given-token")
+    assert tvdata.auth_token() == ("given-token", "token")
+
+
+def test_a_session_cookie_is_exchanged_for_an_auth_token(monkeypatch):
+    seen = {}
+
+    def urlopen(req, *a, **k):
+        seen["cookie"] = req.headers.get("Cookie")
+        return _page()
+
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", urlopen)
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    monkeypatch.setenv("TRADINGVIEW_SESSION_SIGN", "signature-value")
+    token, how = tvdata.auth_token()
+    assert (token, how) == ("tv-auth-token-abc123", "session")
+    assert seen["cookie"] == "sessionid=cookie-value; sessionid_sign=signature-value"
+
+
+def test_the_exchange_happens_once_per_process(monkeypatch):
+    calls = []
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda *a, **k: (calls.append(1), _page())[1])
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    assert tvdata.auth_token()[0] == tvdata.auth_token()[0]
+    assert len(calls) == 1
+
+
+def test_an_expired_cookie_says_so(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda *a, **k: _Response(b"<html>signed out</html>"))
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "stale-cookie")
+    with pytest.raises(TradingViewError) as exc:
+        tvdata.auth_token()
+    assert "expired" in str(exc.value)
+    assert "stale-cookie" not in str(exc.value)
+
+
+def test_an_anonymous_token_in_the_page_counts_as_not_signed_in(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda *a, **k: _page("unauthorized_user_token"))
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    with pytest.raises(TradingViewError):
+        tvdata.auth_token()
+
+
+def test_a_network_failure_during_exchange_hides_the_cookie(monkeypatch):
+    def boom(*a, **k):
+        raise OSError("connect failed for sessionid=cookie-value")
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", boom)
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    with pytest.raises(TradingViewError) as exc:
+        tvdata.auth_token()
+    assert "cookie-value" not in str(exc.value)
+
+
+def test_fetch_bars_sends_the_exchanged_token_not_the_cookie(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", lambda *a, **k: _page())
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    fake = FakeSocket([_timescale("sds_1", [[1700000000, 1, 2, 0.5, 1.5, 1]]),
+                       _packet("series_completed", ["cs"])])
+    fetch_bars("X", "1D", 100, socket_factory=lambda **k: fake)
+    sent = json.loads(_split_frames(fake.sent[0])[0])
+    assert sent["p"] == ["tv-auth-token-abc123"]
+    assert "cookie-value" not in fake.sent[0]
+
+
+def test_more_history_is_requested_a_page_at_a_time():
+    """One series request is shallow; earlier bars are paged in."""
+    first = [[1700000000 + i * 300, 1, 2, 0.5, 1.5, 1] for i in range(3)]
+    earlier = _packet("timescale_update", ["cs", {"sds_1": {"s": [
+        {"i": -2, "v": [1699000000, 1, 2, 0.5, 1.4, 1]},
+        {"i": -1, "v": [1699000300, 1, 2, 0.5, 1.45, 1]}]}}])
+    fake = FakeSocket([_timescale("sds_1", first),
+                       _packet("series_completed", ["cs"]),
+                       earlier, _packet("series_completed", ["cs"]),
+                       _packet("series_completed", ["cs"])])
+    bars = fetch_bars("X", "5", 5, socket_factory=lambda **k: fake)
+    assert "request_more_data" in fake.methods()
+    assert len(bars) == 5
+    assert bars.dates == sorted(bars.dates), "paged bars must stay in time order"
+    assert float(bars.close[0]) == 1.4      # the earliest page sorts first
+
+
+def test_paging_stops_when_the_server_stops_adding_bars():
+    fake = FakeSocket([_timescale("sds_1", [[1700000000, 1, 2, 0.5, 1.5, 1]]),
+                       _packet("series_completed", ["cs"]),
+                       _packet("series_completed", ["cs"])])
+    bars = fetch_bars("X", "1D", 5000, socket_factory=lambda **k: fake)
+    assert len(bars) == 1
+    assert fake.methods().count("request_more_data") == 1, "one try, then give up"

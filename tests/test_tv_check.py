@@ -57,3 +57,48 @@ def test_search_failure_does_not_stop_the_bar_check(feed, capsys, monkeypatch):
     assert cli.main(["tv-check"]) == 0
     out = capsys.readouterr().out
     assert "symbol search     FAILED" in out and "bars              ok" in out
+
+
+def test_reports_a_signed_in_account(feed, capsys, monkeypatch):
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "cookie-value")
+    monkeypatch.setattr(tvdata, "auth_token", lambda **k: ("tok", "session"))
+    cli.main(["tv-check"])
+    out = capsys.readouterr().out
+    assert "account           signed in" in out
+    assert "cookie-value" not in out
+
+
+def test_reports_a_rejected_cookie_without_failing_the_bar_check(feed, capsys,
+                                                                monkeypatch):
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "stale")
+    def boom(**k):
+        raise TradingViewError("cookie has expired")
+    monkeypatch.setattr(tvdata, "auth_token", boom)
+    assert cli.main(["tv-check"]) == 0
+    out = capsys.readouterr().out
+    assert "NOT SIGNED IN" in out and "anonymous data" in out
+
+
+def test_tv_depth_tabulates_history(capsys, monkeypatch):
+    monkeypatch.delenv("TRADINGVIEW_SESSION", raising=False)
+    monkeypatch.setattr(tvdata, "fetch_bars",
+                        lambda symbol, tf, bars, **k: synthetic_bars("AAPL", 500))
+    assert cli.main(["tv-depth", "--timeframes", "60,1D"]) == 0
+    out = capsys.readouterr().out
+    assert "account anonymous" in out
+    assert out.count("|") > 4 and "60 " in out and "1D " in out
+    assert "an upgrade will not lift" in out
+
+
+def test_tv_depth_keeps_going_when_one_timeframe_fails(capsys, monkeypatch):
+    monkeypatch.delenv("TRADINGVIEW_SESSION", raising=False)
+
+    def fetch(symbol, timeframe, bars, **k):
+        if timeframe == "1":
+            raise TradingViewError("no bars at this resolution")
+        return synthetic_bars("AAPL", 500)
+
+    monkeypatch.setattr(tvdata, "fetch_bars", fetch)
+    assert cli.main(["tv-depth", "--timeframes", "1,1D"]) == 0
+    out = capsys.readouterr().out
+    assert "no bars at this resolution" in out and "1D" in out

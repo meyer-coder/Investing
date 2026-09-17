@@ -270,9 +270,20 @@ def cmd_tv_check(args: argparse.Namespace) -> int:
     from .tvdata import (TradingViewError, fetch_bars, normalise_timeframe,
                          search_symbols)
 
-    token = os.environ.get("TRADINGVIEW_SESSION", "")
+    from .tvdata import auth_token
+
+    cookie = os.environ.get("TRADINGVIEW_SESSION", "")
     # Never print the cookie itself: this output ends up in terminals and logs.
-    print(f"session cookie    {f'set ({len(token)} chars)' if token else 'not set — anonymous access'}")
+    print(f"session cookie    {f'set ({len(cookie)} chars)' if cookie else 'not set'}")
+    try:
+        _token, how = auth_token(timeout=args.timeout)
+        print({"anonymous": "account           anonymous — free data only",
+               "token": "account           signed in (TRADINGVIEW_AUTH_TOKEN)",
+               "session": "account           signed in (cookie exchanged for an "
+                          "auth token)"}[how])
+    except TradingViewError as exc:
+        print(f"account           NOT SIGNED IN: {exc}")
+        print("                  the run will fall back to anonymous data")
 
     ticker = args.symbol.split(":")[-1]
     try:
@@ -300,6 +311,42 @@ def cmd_tv_check(args: argparse.Namespace) -> int:
               f"may not be entitled to this symbol's recent data")
     print("\nready: evotrader tv-mcp")
     return 0
+
+
+def cmd_tv_depth(args: argparse.Namespace) -> int:
+    """How much history TradingView actually serves, timeframe by timeframe.
+
+    Run it signed out, then signed in.  If the rows do not change, the
+    subscription is not what is limiting the backtest.
+    """
+    from .tvdata import TradingViewError, auth_token, fetch_bars
+
+    try:
+        _token, how = auth_token(timeout=args.timeout)
+    except TradingViewError as exc:
+        print(f"not signed in: {exc}\n")
+        how = "anonymous"
+    print(f"{args.symbol} · account {how} · asking for {args.bars:,} bars each\n")
+    print("  tf   |   bars | from             | to               | span")
+    rows = []
+    for timeframe in [t.strip() for t in args.timeframes.split(",") if t.strip()]:
+        try:
+            bars = fetch_bars(args.symbol, timeframe, args.bars, timeout=args.timeout)
+        except TradingViewError as exc:
+            print(f"  {timeframe:<4} | {str(exc)[:60]}")
+            continue
+        first, last = bars.dates[0], bars.dates[-1]
+        days = (datetime.strptime(last[:10], "%Y-%m-%d")
+                - datetime.strptime(first[:10], "%Y-%m-%d")).days
+        span = (f"{days / 365.25:.1f} years" if days > 400 else
+                f"{days / 30.4:.1f} months" if days > 60 else f"{days} days")
+        print(f"  {timeframe:<4} | {len(bars):>6,} | {first:<16} | {last:<16} | {span}")
+        rows.append({"timeframe": timeframe, "bars": len(bars),
+                     "start": first, "end": last, "days": days})
+    if rows:
+        print("\n  run this again with TRADINGVIEW_SESSION set and compare: a row "
+              "that\n  does not move is a limit an upgrade will not lift")
+    return 0 if rows else 1
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -383,6 +430,13 @@ def build_parser() -> argparse.ArgumentParser:
     chk.add_argument("--bars", type=int, default=120)
     chk.add_argument("--timeout", type=float, default=30.0)
     chk.set_defaults(func=cmd_tv_check)
+
+    dep = sub.add_parser("tv-depth", help="measure how much history TradingView serves")
+    dep.add_argument("--symbol", default="NASDAQ:AAPL")
+    dep.add_argument("--timeframes", default="1,5,15,60,240,1D,1W")
+    dep.add_argument("--bars", type=int, default=20000)
+    dep.add_argument("--timeout", type=float, default=40.0)
+    dep.set_defaults(func=cmd_tv_depth)
     return p
 
 
