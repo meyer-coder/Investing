@@ -307,14 +307,30 @@ protocol the charts use, implemented in `tvdata.py` — a session is opened, the
 symbol resolved, a series requested, and `timescale_update` messages collected
 until the server says `series_completed`. No dependency is added for either.
 
-An anonymous session covers recent history on most symbols. For deeper history,
-or data your account subscribes to, put the `sessionid` cookie from a logged-in
-browser in `TRADINGVIEW_SESSION`; it is sent as the socket's auth token, kept
-out of error messages, and stored nowhere. Export it in your shell rather than
-writing it into a file in the repo — it is a bearer token, and anyone holding
-it is logged in as you until you log out. Intraday timeframes (`1`, `5`, `60`,
-`240`, or `1h`/`4h` aliases) need the TradingView source; `--source yahoo` is
-daily only.
+An anonymous session covers recent history on most symbols. To sign in:
+
+```bash
+evotrader tv-login          # prompts, hidden; verifies before it stores anything
+```
+
+Take the `sessionid` and `sessionid_sign` cookies from a browser logged in to
+TradingView (DevTools → Application → Cookies). The command exchanges them for
+an auth token to prove they work — a cookie that does not work is never stored
+— and writes them to `~/.config/evotrader/tradingview.json`, created 0600 so
+only you can read it. `evotrader tv-login --forget` removes it.
+
+**Use the stored login, not environment variables, when an MCP client is
+involved.** The client launches the server itself and inherits no shell, so
+anything exported in a terminal never reaches it and the server stays anonymous
+however carefully you exported it. `TRADINGVIEW_SESSION` and
+`TRADINGVIEW_SESSION_SIGN` still work and take precedence where a shell is
+doing the launching.
+
+The cookie is a bearer token: whoever holds it is logged in as you until you
+log out. It is never echoed to a terminal or put in an error message.
+
+Intraday timeframes (`1`, `5`, `60`, `240`, or `1h`/`4h` aliases) need the
+TradingView source; `--source yahoo` is daily only.
 
 Check the feed before trusting a backtest:
 
@@ -323,7 +339,7 @@ evotrader tv-check --symbol NASDAQ:AAPL --timeframe 1D
 ```
 
 ```
-session cookie    set (32 chars)
+credentials       file ~/.config/evotrader/tradingview.json (32 chars)
 account           signed in (cookie exchanged for an auth token)
 symbol search     ok (NASDAQ:AAPL, Pyth:AAPL, TSX:AAPL)
 bars              ok (120 x 1D, 2026-03-26..2026-09-16, last close 332.41)
@@ -436,7 +452,7 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 206 tests, ~35s
+python -m pytest tests -q      # 215 tests, ~35s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
