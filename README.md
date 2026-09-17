@@ -87,6 +87,17 @@ python -m evotrader.cli resume <run-id> --generations 200
 Runs checkpoint every generation, so `resume` picks up exactly where a run
 stopped — which matters when 1000 generations takes hours.
 
+## Installing
+
+```bash
+pip install -r requirements.txt          # numpy: engine, backtests, MCP servers
+pip install -r requirements-llm.txt      # adds anthropic, for breeding with Claude
+```
+
+Python 3.9 has no `anthropic>=1.0`, which is why breeding is a separate file:
+everything else runs on numpy alone, and installing it should not fail over a
+dependency it never uses.
+
 ## Credentials
 
 Breeding uses the Anthropic API. Set `ANTHROPIC_API_KEY`, or run `ant auth

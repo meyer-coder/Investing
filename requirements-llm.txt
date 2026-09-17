@@ -1,0 +1,8 @@
+# Only for breeding with Claude (`--breeder llm` / `hybrid`).
+#
+# Kept out of requirements.txt on purpose: on Python 3.9 no anthropic>=1.0
+# exists, so a hard requirement here fails the whole install — numpy included —
+# and takes the MCP servers down with it for a reason that has nothing to do
+# with them.
+-r requirements.txt
+anthropic>=1.0
