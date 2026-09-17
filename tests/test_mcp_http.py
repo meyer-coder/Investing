@@ -13,8 +13,8 @@ def endpoint():
     """A running server on a loopback port, torn down after the test."""
     servers = {}
 
-    def start(token="", allow=(), which="tradingview"):
-        routes = build_routes(which, source="synthetic")
+    def start(token="", allow=(), which="tradingview", db_path=""):
+        routes = build_routes(which, source="synthetic", db_path=db_path)
         httpd = serve_http(routes, host="127.0.0.1", port=0, token=token,
                            allowed_origins=allow)
         thread = threading.Thread(target=httpd.serve_forever, daemon=True)
@@ -248,3 +248,68 @@ def test_oauth_discovery_is_a_plain_404(endpoint):
     status, _, body = call(port, method="GET",
                            path="/.well-known/oauth-authorization-server")
     assert status == 404 and body is None
+
+
+def test_a_chunked_body_is_read(endpoint):
+    """Without chunked support the message is lost and the reply says 'ok'."""
+    import socket as _socket
+
+    port = endpoint()
+    body = json.dumps(INIT).encode()
+    request = (b"POST /mcp HTTP/1.1\r\nHost: 127.0.0.1\r\n"
+               b"Content-Type: application/json\r\n"
+               b"Transfer-Encoding: chunked\r\n\r\n"
+               + f"{len(body):x}".encode() + b"\r\n" + body + b"\r\n0\r\n\r\n")
+    sock = _socket.create_connection(("127.0.0.1", port), timeout=30)
+    sock.sendall(request)
+    raw = b""
+    while b"\r\n\r\n" not in raw or len(raw.split(b"\r\n\r\n", 1)[1]) < 10:
+        part = sock.recv(65536)
+        if not part:
+            break
+        raw += part
+    sock.close()
+    head, _, payload = raw.partition(b"\r\n\r\n")
+    assert b"200" in head.split(b"\r\n")[0]
+    parsed = json.loads(payload.decode())
+    assert parsed["result"]["serverInfo"]["name"] == "tradingview-backtest", \
+        "the chunked body was dropped and answered as a probe"
+
+
+def test_concurrent_calls_all_succeed(endpoint, tmp_path):
+    """http.server gives each request its own thread; SQLite and the caches
+    behind these tools were written for one."""
+    from evotrader.config import EvolutionConfig
+    from evotrader.store import Store
+
+    db = str(tmp_path / "runs.sqlite")
+    store = Store(db)
+    store.create_run("r1", EvolutionConfig(population=4).to_dict(), "concurrent")
+    store.close()
+
+    port = endpoint(which="training", db_path=db)
+    results = []
+
+    def hit():
+        try:
+            results.append(call(port, body={
+                "jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                "params": {"name": "list_runs", "arguments": {}}}))
+        except Exception as exc:  # noqa: BLE001 - recorded, asserted below
+            results.append(("raised", exc))
+
+    threads = [threading.Thread(target=hit) for _ in range(6)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=60)
+
+    assert len(results) == 6
+    for result in results:
+        assert result[0] != "raised", f"request failed: {result[1]}"
+        status, _, body = result
+        assert status == 200
+        assert body["result"]["isError"] is False, body["result"]["content"][0]["text"]
+        # The real run comes back, so the SQLite connection was genuinely used
+        # from each of these threads.
+        assert "r1" in body["result"]["content"][0]["text"]

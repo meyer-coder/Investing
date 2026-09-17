@@ -33,6 +33,7 @@ import json
 import os
 import secrets
 import sys
+import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any, Dict, Optional, Sequence, Tuple
 
@@ -69,6 +70,13 @@ class _Handler(BaseHTTPRequestHandler):
         self.end_headers()
         if body and self.command != "HEAD":
             self.wfile.write(body)
+
+    def _lock_for(self, endpoint: MCPServer) -> threading.Lock:
+        locks = getattr(self.server, "locks", None)
+        if locks is None:
+            locks = {}
+            self.server.locks = locks            # type: ignore[attr-defined]
+        return locks.setdefault(id(endpoint), threading.Lock())
 
     def _endpoint(self) -> Optional[MCPServer]:
         path = self.path.split("?", 1)[0].rstrip("/") or "/"
@@ -111,6 +119,40 @@ class _Handler(BaseHTTPRequestHandler):
         return None
 
     # -------------------------------------------------------------- methods
+    def _too_large(self) -> None:
+        self._send(413, {"error": "message too large"},
+                   headers={"Connection": "close"})
+        self.close_connection = True
+
+    def _read_chunked(self) -> Optional[bytes]:
+        """Read a chunked body.  Without this the message is silently lost."""
+        chunks: list = []
+        total = 0
+        while True:
+            line = self.rfile.readline(1024)
+            if not line:
+                return None                      # the client went away
+            try:
+                size = int(line.split(b";", 1)[0].strip() or b"0", 16)
+            except ValueError:
+                self._send(400, {"error": "malformed chunked body"},
+                           headers={"Connection": "close"})
+                self.close_connection = True
+                return None
+            if size == 0:
+                while True:                      # trailing headers, if any
+                    trailer = self.rfile.readline(1024)
+                    if not trailer or trailer in (b"\r\n", b"\n"):
+                        break
+                break
+            total += size
+            if total > MAX_BODY_BYTES:
+                self._too_large()
+                return None
+            chunks.append(self.rfile.read(size))
+            self.rfile.read(2)                   # the CRLF after each chunk
+        return b"".join(chunks)
+
     def _read_body(self) -> Optional[bytes]:
         """Drain the request body before answering, whatever the answer is.
 
@@ -118,14 +160,16 @@ class _Handler(BaseHTTPRequestHandler):
         next request on a keep-alive connection, and every later request on it
         fails to parse.  Clients reuse connections, so this has to happen on
         the error paths too.
+
+        Returns None when the request has already been answered.
         """
+        if "chunked" in (self.headers.get("Transfer-Encoding") or "").lower():
+            return self._read_chunked()
         length = int(self.headers.get("Content-Length") or 0)
         if length > MAX_BODY_BYTES:
-            self._send(413, {"error": "message too large"},
-                       headers={"Connection": "close"})
-            self.close_connection = True
+            self._too_large()
             return None
-        return self.rfile.read(length) if length else b""
+        return self.rfile.read(length) if length else b"" 
 
     def do_POST(self) -> None:  # noqa: N802 - the name http.server requires
         raw = self._read_body()
@@ -156,7 +200,11 @@ class _Handler(BaseHTTPRequestHandler):
             return self._send(400, error(None, INVALID_REQUEST,
                                          "expected a single JSON-RPC object"))
 
-        response = endpoint.handle(message)
+        # One message at a time per endpoint: these servers hold a SQLite
+        # connection and in-memory caches built for a single-threaded stdio
+        # client, and http.server hands every request to a new thread.
+        with self._lock_for(endpoint):
+            response = endpoint.handle(message)
         if response is None:
             # A notification or a response: accepted, nothing to say back.
             return self._send(202)

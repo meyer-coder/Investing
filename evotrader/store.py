@@ -64,7 +64,9 @@ class Store:
         directory = os.path.dirname(os.path.abspath(path))
         if directory:
             os.makedirs(directory, exist_ok=True)
-        self.conn = sqlite3.connect(path, timeout=30.0)
+        # check_same_thread=False: an HTTP client is served on a new thread per
+        # request, and the MCP layer serialises access with a lock.
+        self.conn = sqlite3.connect(path, timeout=30.0, check_same_thread=False)
         self.conn.row_factory = sqlite3.Row
         self.conn.execute("PRAGMA journal_mode=WAL")
         self.conn.executescript(SCHEMA)
