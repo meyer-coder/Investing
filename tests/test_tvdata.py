@@ -460,3 +460,60 @@ def test_interval_seconds_matches_the_timeframe():
     assert interval_seconds("1D") == 86_400
     assert interval_seconds("4h") == 14_400
     assert interval_seconds("5") == 300
+
+
+# -------------------------------------------------------- stored credentials
+
+def test_a_stored_file_is_used_when_the_environment_is_empty(tmp_path, monkeypatch):
+    """An MCP client starts the server itself and inherits no shell exports."""
+    path = tmp_path / "tradingview.json"
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    tvdata.save_credentials("cookie-from-file", sign="sig", path=str(path))
+    stored, source = tvdata.load_credentials()
+    assert stored["sessionid"] == "cookie-from-file"
+    assert stored["sessionid_sign"] == "sig"
+    assert source.startswith("file ")
+
+
+def test_the_credentials_file_is_not_world_readable(tmp_path, monkeypatch):
+    import stat
+    path = tmp_path / "tradingview.json"
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    tvdata.save_credentials("secret", path=str(path))
+    mode = stat.S_IMODE(path.stat().st_mode)
+    assert mode == 0o600, f"a credential readable by others: {oct(mode)}"
+
+
+def test_the_environment_wins_over_a_stored_file(tmp_path, monkeypatch):
+    path = tmp_path / "tradingview.json"
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    tvdata.save_credentials("from-file", path=str(path))
+    monkeypatch.setenv("TRADINGVIEW_SESSION", "from-env")
+    stored, source = tvdata.load_credentials()
+    assert stored["sessionid"] == "from-env" and source == "environment"
+
+
+def test_a_stored_login_is_exchanged_like_any_other(tmp_path, monkeypatch):
+    path = tmp_path / "tradingview.json"
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    tvdata.save_credentials("cookie-from-file", path=str(path))
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", lambda *a, **k: _page())
+    token, how = tvdata.auth_token()
+    assert token == "tv-auth-token-abc123" and how.startswith("file ")
+
+
+def test_a_corrupt_credentials_file_falls_back_to_anonymous(tmp_path, monkeypatch):
+    path = tmp_path / "tradingview.json"
+    path.write_text("{not json")
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    assert tvdata.load_credentials() == ({}, "none")
+    assert tvdata.auth_token()[1] == "anonymous"
+
+
+def test_forgetting_a_login(tmp_path, monkeypatch):
+    path = tmp_path / "tradingview.json"
+    monkeypatch.setenv("TRADINGVIEW_CREDENTIALS", str(path))
+    tvdata.save_credentials("secret", path=str(path))
+    assert tvdata.forget_credentials(str(path)) is True
+    assert tvdata.forget_credentials(str(path)) is False
+    assert tvdata.load_credentials() == ({}, "none")

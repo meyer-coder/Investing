@@ -272,9 +272,13 @@ def cmd_tv_check(args: argparse.Namespace) -> int:
 
     from .tvdata import auth_token
 
-    cookie = os.environ.get("TRADINGVIEW_SESSION", "")
-    # Never print the cookie itself: this output ends up in terminals and logs.
-    print(f"session cookie    {f'set ({len(cookie)} chars)' if cookie else 'not set'}")
+    from .tvdata import load_credentials
+
+    stored, source = load_credentials()
+    # Never print the credential itself: this output ends up in terminals and logs.
+    print(f"credentials       {source}"
+          + (f" ({len(stored.get('sessionid', '')) or len(stored.get('auth_token', ''))} chars)"
+             if stored else " — run `evotrader tv-login` to sign in"))
     try:
         _token, how = auth_token(timeout=args.timeout)
         print({"anonymous": "account           anonymous — free data only",
@@ -388,6 +392,44 @@ def cmd_tv_fetch(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_tv_login(args: argparse.Namespace) -> int:
+    """Store a TradingView login so every client picks it up.
+
+    An MCP client starts the server itself and does not inherit the shell you
+    exported variables in, so a saved file is what actually reaches it.
+    """
+    from getpass import getpass
+
+    from .tvdata import (TradingViewError, credentials_path, forget_credentials,
+                         resolve_auth_token, save_credentials)
+
+    if args.forget:
+        path = args.path or credentials_path()
+        print(f"removed {path}" if forget_credentials(path)
+              else f"nothing stored at {path}")
+        return 0
+
+    print("Paste the cookies from a browser logged in to TradingView:")
+    print("  DevTools -> Application -> Cookies -> https://www.tradingview.com")
+    print("Input is hidden, and only ever written to the credentials file.\n")
+    sessionid = getpass("sessionid: ").strip()
+    if not sessionid:
+        print("nothing entered", file=sys.stderr)
+        return 1
+    sign = getpass("sessionid_sign (press enter if you do not have one): ").strip()
+
+    try:
+        resolve_auth_token(sessionid, sign=sign, timeout=args.timeout)
+    except TradingViewError as exc:
+        # Storing a cookie that does not work is worse than storing nothing.
+        print(f"\nnot saved: {exc}", file=sys.stderr)
+        return 1
+    path = save_credentials(sessionid, sign=sign, path=args.path or "")
+    print(f"\nsigned in. stored at {path} (readable only by you)")
+    print("check what it buys you:  evotrader tv-depth")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -484,6 +526,12 @@ def build_parser() -> argparse.ArgumentParser:
     tvf.add_argument("--bars", type=int, default=20000)
     tvf.add_argument("--timeout", type=float, default=40.0)
     tvf.set_defaults(func=cmd_tv_fetch)
+
+    log = sub.add_parser("tv-login", help="store a TradingView login for every client")
+    log.add_argument("--path", help="where to store it (default ~/.config/evotrader)")
+    log.add_argument("--forget", action="store_true", help="remove the stored login")
+    log.add_argument("--timeout", type=float, default=20.0)
+    log.set_defaults(func=cmd_tv_login)
     return p
 
 

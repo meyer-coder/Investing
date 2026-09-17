@@ -11,14 +11,13 @@ that otherwise needs only numpy.
     bars = fetch_bars("NASDAQ:AAPL", "1D", 2000)
     universe = load_universe(["NASDAQ:AAPL", "NASDAQ:MSFT"], "1D", 2000)
 
-An anonymous session is enough for recent history on most symbols.  For deeper
-history, or for data your account subscribes to, put the ``sessionid`` cookie
-from a logged-in browser in ``TRADINGVIEW_SESSION`` (and ``sessionid_sign`` in
-``TRADINGVIEW_SESSION_SIGN``, which TradingView sets alongside it).  The cookie
-is not itself the socket's auth token: it is exchanged for one, once, and the
-result cached for the process.  Set ``TRADINGVIEW_AUTH_TOKEN`` to skip that and
-supply a token directly.  Nothing is written to disk, and no credential is ever
-put in an error message.
+An anonymous session is enough for recent history on most symbols.  To sign in,
+``evotrader tv-login`` stores the browser's ``sessionid`` cookie for this user
+only; ``TRADINGVIEW_SESSION`` and ``TRADINGVIEW_SESSION_SIGN`` override it where
+a shell is doing the launching.  The cookie is not itself the socket's auth
+token: it is exchanged for one, once, and the result cached for the process.
+``TRADINGVIEW_AUTH_TOKEN`` supplies a token directly.  No credential is ever put
+in an error message.
 
 Bars are what TradingView serves for the symbol as asked: ``adjustment`` is set
 to ``splits``, matching a default chart, so dividends are *not* reinjected the
@@ -144,6 +143,7 @@ def _strip_tags(text: str) -> str:
 # ------------------------------------------------------------- authentication
 
 ANONYMOUS_TOKEN = "unauthorized_user_token"
+CREDENTIALS_ENV = "TRADINGVIEW_CREDENTIALS"
 _TOKEN_CACHE: Dict[str, str] = {}
 _AUTH_TOKEN_RE = re.compile(r'"auth_token"\s*:\s*"([^"]+)"')
 
@@ -185,17 +185,83 @@ def resolve_auth_token(session_id: str, *, sign: str = "",
     return token
 
 
+def credentials_path() -> str:
+    """Where a stored login lives, if one has been saved."""
+    return os.environ.get(CREDENTIALS_ENV) or os.path.join(
+        os.path.expanduser("~"), ".config", "evotrader", "tradingview.json")
+
+
+def load_credentials() -> Tuple[Dict[str, str], str]:
+    """Find a login, and say where it came from.
+
+    The environment wins, but a desktop client does not inherit the shell it
+    was never launched from, so a saved file is what actually works when an
+    MCP client starts the server itself.
+    """
+    env = {
+        "auth_token": os.environ.get("TRADINGVIEW_AUTH_TOKEN", ""),
+        "sessionid": os.environ.get("TRADINGVIEW_SESSION", ""),
+        "sessionid_sign": os.environ.get("TRADINGVIEW_SESSION_SIGN", ""),
+    }
+    if env["auth_token"] or env["sessionid"]:
+        return {k: v for k, v in env.items() if v}, "environment"
+    for path in (os.path.join(os.getcwd(), ".tradingview.json"),
+                 credentials_path()):
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path) as fh:
+                stored = json.load(fh)
+        except (OSError, ValueError):
+            continue
+        if isinstance(stored, dict) and (stored.get("sessionid")
+                                         or stored.get("auth_token")):
+            return {k: str(v) for k, v in stored.items() if v}, f"file {path}"
+    return {}, "none"
+
+
+def save_credentials(sessionid: str, *, sign: str = "",
+                     path: str = "") -> str:
+    """Store a login for this user only (0600), never in the repo by default."""
+    target = path or credentials_path()
+    directory = os.path.dirname(os.path.abspath(target))
+    if directory:
+        os.makedirs(directory, mode=0o700, exist_ok=True)
+    payload = {"sessionid": sessionid}
+    if sign:
+        payload["sessionid_sign"] = sign
+    # Create with restrictive permissions before anything is written to it.
+    handle = os.open(target, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(handle, "w") as fh:
+        json.dump(payload, fh)
+    os.chmod(target, 0o600)
+    return target
+
+
+def forget_credentials(path: str = "") -> bool:
+    target = path or credentials_path()
+    if os.path.exists(target):
+        os.remove(target)
+        return True
+    return False
+
+
 def auth_token(session_token: str = "", *, sign: str = "",
                timeout: float = 20.0) -> Tuple[str, str]:
-    """Return ``(token, how)`` — how being anonymous, token, or session."""
-    explicit = os.environ.get("TRADINGVIEW_AUTH_TOKEN", "")
-    if explicit:
-        return explicit, "token"
-    session_id = session_token or os.environ.get("TRADINGVIEW_SESSION", "")
+    """Return ``(token, how)`` — how being anonymous, token, session, or a file."""
+    if session_token:
+        return (resolve_auth_token(session_token, sign=sign, timeout=timeout),
+                "session")
+    stored, source = load_credentials()
+    if stored.get("auth_token"):
+        return stored["auth_token"], "token"
+    session_id = stored.get("sessionid", "")
     if not session_id:
         return ANONYMOUS_TOKEN, "anonymous"
-    sign = sign or os.environ.get("TRADINGVIEW_SESSION_SIGN", "")
-    return resolve_auth_token(session_id, sign=sign, timeout=timeout), "session"
+    token = resolve_auth_token(session_id,
+                               sign=sign or stored.get("sessionid_sign", ""),
+                               timeout=timeout)
+    return token, "session" if source == "environment" else source
 
 
 # ------------------------------------------------------------ websocket layer

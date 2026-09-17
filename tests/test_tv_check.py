@@ -20,7 +20,7 @@ def test_reports_a_working_feed(feed, capsys, monkeypatch):
     monkeypatch.delenv("TRADINGVIEW_SESSION", raising=False)
     assert cli.main(["tv-check"]) == 0
     out = capsys.readouterr().out
-    assert "session cookie    not set" in out
+    assert "credentials       none" in out
     assert "symbol search     ok (NASDAQ:AAPL" in out
     assert "bars              ok (120 x 1D" in out
     assert "evotrader tv-mcp" in out
@@ -31,7 +31,7 @@ def test_never_prints_the_cookie(feed, capsys, monkeypatch):
     cli.main(["tv-check"])
     out = capsys.readouterr().out
     assert "super-secret-cookie" not in out
-    assert "set (19 chars)" in out
+    assert "credentials       environment (19 chars)" in out
 
 
 def test_stale_data_is_called_out(feed, capsys, monkeypatch):
@@ -102,3 +102,38 @@ def test_tv_depth_keeps_going_when_one_timeframe_fails(capsys, monkeypatch):
     assert cli.main(["tv-depth", "--timeframes", "1,1D"]) == 0
     out = capsys.readouterr().out
     assert "no bars at this resolution" in out and "1D" in out
+
+
+def test_tv_login_verifies_before_storing(tmp_path, monkeypatch, capsys):
+    """A cookie that does not work must not be written to disk."""
+    path = tmp_path / "creds.json"
+    monkeypatch.setattr(cli, "input", lambda *a: "", raising=False)
+    monkeypatch.setattr("getpass.getpass", lambda prompt="": "bad-cookie")
+
+    def reject(*a, **k):
+        raise TradingViewError("cookie has expired")
+
+    monkeypatch.setattr(tvdata, "resolve_auth_token", reject)
+    assert cli.main(["tv-login", "--path", str(path)]) == 1
+    assert not path.exists(), "a rejected cookie was stored anyway"
+
+
+def test_tv_login_stores_a_working_cookie(tmp_path, monkeypatch, capsys):
+    path = tmp_path / "creds.json"
+    answers = iter(["good-cookie", "the-signature"])
+    monkeypatch.setattr("getpass.getpass", lambda prompt="": next(answers))
+    monkeypatch.setattr(tvdata, "resolve_auth_token", lambda *a, **k: "token")
+    assert cli.main(["tv-login", "--path", str(path)]) == 0
+    import json
+    stored = json.loads(path.read_text())
+    assert stored == {"sessionid": "good-cookie", "sessionid_sign": "the-signature"}
+    out = capsys.readouterr().out
+    assert "good-cookie" not in out, "the cookie was echoed to the terminal"
+
+
+def test_tv_login_forget(tmp_path, monkeypatch, capsys):
+    path = tmp_path / "creds.json"
+    tvdata.save_credentials("secret", path=str(path))
+    assert cli.main(["tv-login", "--forget", "--path", str(path)]) == 0
+    assert not path.exists()
+    assert "removed" in capsys.readouterr().out

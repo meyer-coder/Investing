@@ -22,3 +22,6 @@ reports/
 
 # TradingView candle store
 data/cache/tv/
+
+# Stored TradingView login
+.tradingview.json
