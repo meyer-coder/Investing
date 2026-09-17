@@ -309,9 +309,32 @@ until the server says `series_completed`. No dependency is added for either.
 
 An anonymous session covers recent history on most symbols. For deeper history,
 or data your account subscribes to, put the `sessionid` cookie from a logged-in
-browser in `TRADINGVIEW_SESSION`; it is sent as the socket's auth token and
-stored nowhere. Intraday timeframes (`1`, `5`, `60`, `240`, or `1h`/`4h`
-aliases) need the TradingView source; `--source yahoo` is daily only.
+browser in `TRADINGVIEW_SESSION`; it is sent as the socket's auth token, kept
+out of error messages, and stored nowhere. Export it in your shell rather than
+writing it into a file in the repo — it is a bearer token, and anyone holding
+it is logged in as you until you log out. Intraday timeframes (`1`, `5`, `60`,
+`240`, or `1h`/`4h` aliases) need the TradingView source; `--source yahoo` is
+daily only.
+
+Check the feed before trusting a backtest:
+
+```bash
+evotrader tv-check --symbol NASDAQ:AAPL --timeframe 1D
+```
+
+```
+session cookie    set (32 chars)
+symbol search     ok (NASDAQ:AAPL, NASDAQ:AAPL.P)
+bars              ok (120 x 1D, 2026-03-24..2026-09-16, last close 332.41)
+
+ready: evotrader tv-mcp
+```
+
+It says which symbols resolved, how many bars came back and how recent the
+newest one is — a newest bar several days old usually means the account is not
+entitled to that symbol's data, which matters far more than the plan you are
+on. For historical backtesting, delayed data is not a problem: yesterday's bar
+is the same bar whether you see it now or in fifteen minutes.
 
 Bars are taken as TradingView serves them, split-adjusted like a default chart,
 whereas `data.py` gets dividend-adjusted bars from Yahoo. Two conventions —
@@ -347,7 +370,7 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 165 tests, ~35s
+python -m pytest tests -q      # 173 tests, ~35s
 ```
 
 They cover the rule language (including that hostile input is rejected), the

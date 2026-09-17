@@ -11,6 +11,7 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime, timezone
 from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
@@ -241,6 +242,9 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     except Exception as exc:  # noqa: BLE001 - this is the diagnostic
         print(f"market data       unavailable: {exc}\n"
               f"                  use --offline to run on synthetic prices")
+    token = os.environ.get("TRADINGVIEW_SESSION", "")
+    print(f"tradingview       {'session cookie set' if token else 'anonymous'}"
+          f" — check the feed with `evotrader tv-check`")
     return 0
 
 
@@ -259,6 +263,43 @@ def cmd_tv_mcp(args: argparse.Namespace) -> int:
 
     print(f"{SERVER_NAME} on stdio (bars from {args.source})", file=sys.stderr)
     return serve(build_server(source=args.source, db_path=args.db_path or ""))
+
+
+def cmd_tv_check(args: argparse.Namespace) -> int:
+    """Prove the TradingView feed works from this machine, before trusting a backtest."""
+    from .tvdata import (TradingViewError, fetch_bars, normalise_timeframe,
+                         search_symbols)
+
+    token = os.environ.get("TRADINGVIEW_SESSION", "")
+    # Never print the cookie itself: this output ends up in terminals and logs.
+    print(f"session cookie    {f'set ({len(token)} chars)' if token else 'not set — anonymous access'}")
+
+    ticker = args.symbol.split(":")[-1]
+    try:
+        matches = search_symbols(ticker, limit=3)
+        print(f"symbol search     ok ({', '.join(m['symbol'] for m in matches) or 'no matches'})")
+    except TradingViewError as exc:
+        print(f"symbol search     FAILED: {exc}")
+
+    try:
+        bars = fetch_bars(args.symbol, args.timeframe, args.bars, timeout=args.timeout)
+    except TradingViewError as exc:
+        print(f"bars              FAILED: {exc}")
+        print("                  if this is a network refusal, the feed is a "
+              "WebSocket to data.tradingview.com:443")
+        print("                  if it is an empty series, check the exchange "
+              "prefix (NASDAQ:AAPL, AMEX:SPY) and set TRADINGVIEW_SESSION")
+        return 1
+    first, last = bars.dates[0], bars.dates[-1]
+    print(f"bars              ok ({len(bars)} x {normalise_timeframe(args.timeframe)}, "
+          f"{first}..{last}, last close {bars.close[-1]:.2f})")
+    age_days = (datetime.now(timezone.utc)
+                - datetime.strptime(last[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)).days
+    if age_days > 4:
+        print(f"                  newest bar is {age_days} days old — the account "
+              f"may not be entitled to this symbol's recent data")
+    print("\nready: evotrader tv-mcp")
+    return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -335,6 +376,13 @@ def build_parser() -> argparse.ArgumentParser:
     tv.add_argument("--db", dest="db_path",
                     help="evotrader SQLite path, for backtest_evolved_agent")
     tv.set_defaults(func=cmd_tv_mcp)
+
+    chk = sub.add_parser("tv-check", help="check the TradingView feed works from here")
+    chk.add_argument("--symbol", default="NASDAQ:AAPL")
+    chk.add_argument("--timeframe", default="1D")
+    chk.add_argument("--bars", type=int, default=120)
+    chk.add_argument("--timeout", type=float, default=30.0)
+    chk.set_defaults(func=cmd_tv_check)
     return p
 
 

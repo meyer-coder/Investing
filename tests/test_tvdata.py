@@ -298,3 +298,22 @@ def test_load_universe_reports_why_nothing_loaded():
 def test_load_universe_needs_symbols():
     with pytest.raises(TradingViewError):
         load_universe([], "1D", 400, fetch=_bars_for)
+
+
+def test_the_session_token_never_appears_in_an_error():
+    """A credential in an error message ends up in logs and transcripts."""
+    fake = FakeSocket([_packet("critical_error", ["cs", "bad session"])])
+    with pytest.raises(TradingViewError) as exc:
+        fetch_bars("X", "1D", 100, session_token="super-secret-cookie",
+                   socket_factory=lambda **k: fake)
+    assert "super-secret-cookie" not in str(exc.value)
+
+
+def test_a_dropped_connection_is_reported_as_a_tradingview_error():
+    class Dropping(FakeSocket):
+        def frames(self):
+            raise ConnectionResetError("connection reset by peer")
+
+    with pytest.raises(TradingViewError) as exc:
+        fetch_bars("X", "1D", 100, socket_factory=lambda **k: Dropping([]))
+    assert "lost the TradingView connection" in str(exc.value)
