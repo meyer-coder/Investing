@@ -93,6 +93,18 @@ def bars_per_year(timeframe: str) -> float:
     return TIMEFRAMES[normalise_timeframe(timeframe)]
 
 
+def interval_seconds(timeframe: str) -> float:
+    """How long one bar of this timeframe covers."""
+    tf = normalise_timeframe(timeframe)
+    if tf == "1D":
+        return 86_400.0
+    if tf == "1W":
+        return 604_800.0
+    if tf == "1M":
+        return 2_592_000.0
+    return float(tf) * 60.0
+
+
 # ------------------------------------------------------------- symbol search
 
 def search_symbols(text: str, *, exchange: str = "", limit: int = 20,
@@ -345,7 +357,7 @@ def _session_id(prefix: str) -> str:
 
 def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
                session_token: str = "", timeout: float = 30.0,
-               socket_factory=open_socket) -> Bars:
+               drop_forming: bool = True, socket_factory=open_socket) -> Bars:
     """Pull one symbol's OHLCV history from TradingView's chart feed."""
     resolution = normalise_timeframe(timeframe)
     count = max(10, min(int(bars), 20_000))
@@ -381,6 +393,12 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
             f"{type(exc).__name__}: {exc}") from exc
     finally:
         ws.close()
+    if drop_forming and points:
+        # The newest bar is the one still being traded; a backtest that fills on
+        # it is trading a candle that has not closed.
+        newest = float(points[-1][0])
+        if time.time() - newest < interval_seconds(resolution):
+            points = points[:-1]
     if not points:
         raise TradingViewError(
             f"TradingView returned no bars for {symbol!r} at {resolution}; "

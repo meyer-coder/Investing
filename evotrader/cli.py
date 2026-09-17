@@ -349,6 +349,45 @@ def cmd_tv_depth(args: argparse.Namespace) -> int:
     return 0 if rows else 1
 
 
+def cmd_tv_fetch(args: argparse.Namespace) -> int:
+    """Pull candles into the local store and report how deep it now goes.
+
+    TradingView serves a rolling window of a few thousand bars per timeframe.
+    Run this on a schedule and the store keeps what the window leaves behind,
+    so the 5-minute record grows past anything one request returns.
+    """
+    from .tvcache import cache_summary, cached_bars
+    from .tvdata import TradingViewError
+
+    symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
+    timeframes = [t.strip() for t in args.timeframes.split(",") if t.strip()]
+    print(f"{len(symbols)} symbols x {len(timeframes)} timeframes into "
+          f"{os.environ.get('EVOTRADER_TV_CACHE', 'data/cache/tv')}\n")
+    print("  symbol           | tf   |   bars | from             | to               | added")
+    failures = 0
+    for symbol in symbols:
+        for timeframe in timeframes:
+            try:
+                before = cached_bars(symbol, timeframe, args.bars, refresh=False)
+            except Exception:  # noqa: BLE001 - an empty cache is not an error
+                before = None
+            try:
+                bars = cached_bars(symbol, timeframe, args.bars, force=True,
+                                   timeout=args.timeout)
+            except TradingViewError as exc:
+                print(f"  {symbol:<16} | {timeframe:<4} | {str(exc)[:54]}")
+                failures += 1
+                continue
+            added = len(bars) - (len(before) if before is not None else 0)
+            print(f"  {symbol:<16} | {timeframe:<4} | {len(bars):>6,} | "
+                  f"{bars.dates[0]:<16} | {bars.dates[-1]:<16} | {added:>+6,}")
+    total = sum(int(row["bars"]) for row in cache_summary())
+    print(f"\n  store now holds {total:,} bars across {len(cache_summary())} series")
+    if failures:
+        print(f"  {failures} series failed; the store kept what it already had")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -437,6 +476,14 @@ def build_parser() -> argparse.ArgumentParser:
     dep.add_argument("--bars", type=int, default=20000)
     dep.add_argument("--timeout", type=float, default=40.0)
     dep.set_defaults(func=cmd_tv_depth)
+
+    tvf = sub.add_parser("tv-fetch", help="pull candles into the local store, "
+                                          "deepening it each run")
+    tvf.add_argument("--symbols", default="NASDAQ:AAPL")
+    tvf.add_argument("--timeframes", default="5,15,60,240,1D")
+    tvf.add_argument("--bars", type=int, default=20000)
+    tvf.add_argument("--timeout", type=float, default=40.0)
+    tvf.set_defaults(func=cmd_tv_fetch)
     return p
 
 

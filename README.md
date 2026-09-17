@@ -359,6 +359,48 @@ So run `tv-depth` signed out, set `TRADINGVIEW_SESSION`, and run it again. Rows
 that do not move are limits a subscription will not lift, and buying one to fix
 them will not work.
 
+The limit is a **bar count, not a date**: AAPL and SPY return the same 5,070
+five-minute bars and the same 6,479 hourly ones, and a 24/7 crypto symbol gets
+the same few thousand bars spread over fewer days. So the deeper the timeframe,
+the further back the same window reaches.
+
+### The candle store
+
+`evotrader tv-fetch` pulls candles into `data/cache/tv` and merges them with
+what is already there, keyed by timestamp:
+
+```bash
+evotrader tv-fetch --symbols NASDAQ:AAPL,AMEX:SPY --timeframes 5,15,60,240,1D
+```
+
+```
+  symbol           | tf   |   bars | from             | to               | added
+  NASDAQ:AAPL      | 60   |  6,479 | 2023-01-03 14:30 | 2026-09-16 19:30 | +6,479
+  NASDAQ:AAPL      | 240  |  5,368 | 2016-01-04 14:30 | 2026-09-16 17:30 | +5,368
+  NASDAQ:AAPL      | 1D   | 11,525 | 1980-12-12       | 2026-09-15       | +11,525
+```
+
+This is how the intraday history gets past TradingView's window. The feed
+serves a rolling few thousand bars; the store keeps what rolls off the back, so
+a weekly cron accumulates a 5-minute record no single request will ever return:
+
+```cron
+0 6 * * 1  cd /path/to/evotrader && evotrader tv-fetch --symbols NASDAQ:AAPL,AMEX:SPY --timeframes 1,5,15
+```
+
+Re-fetching an overlapping window adds nothing (bars are keyed by timestamp),
+a bar TradingView later revises replaces the stored one, and a gap in the store
+is filled by the next pull. The still-forming candle is dropped — a backtest
+that fills on a bar which has not closed is trading a candle that does not
+exist yet.
+
+Backtests read the store first and only pull when a series is missing or stale,
+which is what makes them fast: a three-fold walk-forward over 4,995 four-hour
+bars takes about a second warm, against a minute or more cold. A cold pull of
+several symbols can exceed an MCP client's tool timeout, so warm new symbols
+with `tv-fetch` before backtesting a basket of them. If the feed is down, the
+store answers anyway and the result says so.
+
 Bars are taken as TradingView serves them, split-adjusted like a default chart,
 whereas `data.py` gets dividend-adjusted bars from Yahoo. Two conventions —
 pick one per backtest rather than comparing numbers across them.
@@ -387,13 +429,14 @@ evotrader/
   mcp_rpc.py      the MCP wire protocol, shared by both servers
   mcp_server.py   the training view, served over MCP
   tvdata.py       TradingView symbol search and OHLCV history
+  tvcache.py      the local candle store that deepens with every fetch
   tv_mcp.py       backtesting on TradingView data, served over MCP
 ```
 
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 187 tests, ~35s
+python -m pytest tests -q      # 206 tests, ~35s
 ```
 
 They cover the rule language (including that hostile input is rejected), the

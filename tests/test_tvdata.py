@@ -9,6 +9,7 @@ import io
 import json
 import socket
 import struct
+import time
 
 import pytest
 
@@ -434,3 +435,28 @@ def test_paging_stops_when_the_server_stops_adding_bars():
     bars = fetch_bars("X", "1D", 5000, socket_factory=lambda **k: fake)
     assert len(bars) == 1
     assert fake.methods().count("request_more_data") == 1, "one try, then give up"
+
+
+def test_the_still_forming_bar_is_dropped():
+    """Filling on a candle that has not closed is trading the future."""
+    now = int(time.time())
+    points = [[now - 7200, 1, 2, 0.5, 1.5, 1],      # closed hours ago
+              [now - 60, 2, 3, 1.5, 2.5, 1]]        # this minute, still open
+    fake = FakeSocket([_timescale("sds_1", points),
+                       _packet("series_completed", ["cs"])])
+    bars = fetch_bars("X", "1D", 100, socket_factory=lambda **k: fake)
+    assert len(bars) == 1 and float(bars.close[0]) == 1.5
+
+
+def test_closed_bars_are_kept():
+    old = int(time.time()) - 86_400 * 5
+    fake = FakeSocket([_timescale("sds_1", [[old, 1, 2, 0.5, 1.5, 1]]),
+                       _packet("series_completed", ["cs"])])
+    assert len(fetch_bars("X", "1D", 100, socket_factory=lambda **k: fake)) == 1
+
+
+def test_interval_seconds_matches_the_timeframe():
+    from evotrader.tvdata import interval_seconds
+    assert interval_seconds("1D") == 86_400
+    assert interval_seconds("4h") == 14_400
+    assert interval_seconds("5") == 300

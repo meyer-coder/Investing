@@ -32,6 +32,7 @@ from datetime import date, timedelta
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from . import data as marketdata
+from . import tvcache
 from . import tvdata
 from .config import EvolutionConfig
 from .data import Universe, walk_forward_splits
@@ -55,6 +56,11 @@ a strategy and reports it the way a Strategy Tester does; `compare_strategies`
 runs several on identical bars; `walk_forward` re-tests on windows the strategy
 was not chosen on. `strategy_language` is the rule vocabulary — read it before
 writing rules.
+
+Bars are read from the local store first (`evotrader tv-fetch` fills it). A
+symbol that is not in the store yet is pulled live, which takes seconds per
+symbol and can exceed a client's tool timeout — warm new symbols with
+`tv-fetch` before backtesting a basket of them.
 
 Say these plainly when reporting a result, because they are what separates a
 backtest from evidence: a window picked after looking at the chart is
@@ -108,8 +114,9 @@ class Backtester:
     """Holds the bar cache, so comparing ten strategies fetches data once."""
 
     def __init__(self, *, source: str = "tradingview", session_token: str = "",
-                 db_path: str = ""):
+                 db_path: str = "", refresh: bool = True):
         self.default_source = source
+        self.refresh = refresh
         self.session_token = session_token or os.environ.get("TRADINGVIEW_SESSION", "")
         self.db_path = db_path or os.environ.get("EVOTRADER_DB") or EvolutionConfig().db_path
         self._bars: Dict[Tuple[str, ...], Universe] = {}
@@ -128,7 +135,8 @@ class Backtester:
         if source == "tradingview":
             universe = tvdata.load_universe(
                 symbols, timeframe, bars, session_token=self.session_token,
-                min_bars=min(250, max(50, bars // 4)))
+                min_bars=min(250, max(50, bars // 4)),
+                fetch=self._cached_fetch)
         else:
             if tvdata.normalise_timeframe(timeframe) != "1D":
                 raise ToolError(f"the {source} source serves daily bars only; "
@@ -152,6 +160,11 @@ class Backtester:
                             f"the symbol with the shortest history")
         self._bars[key] = universe
         return universe
+
+    def _cached_fetch(self, symbol: str, timeframe: str, bars: int, **kwargs):
+        """Fetch through the local store, so history outlives the feed's window."""
+        return tvcache.cached_bars(symbol, timeframe, bars,
+                                   refresh=self.refresh, **kwargs)
 
     def features(self, universe: Universe) -> FeatureSet:
         key = id(universe)
@@ -633,8 +646,9 @@ def _read_resource(view: Backtester, uri: str) -> Dict[str, Any]:
 
 
 def build_server(*, source: str = "tradingview", db_path: str = "",
-                 session_token: str = "") -> MCPServer:
-    view = Backtester(source=source, db_path=db_path, session_token=session_token)
+                 session_token: str = "", refresh: bool = True) -> MCPServer:
+    view = Backtester(source=source, db_path=db_path, session_token=session_token,
+                      refresh=refresh)
     return MCPServer(view, TV_TOOLS, name=SERVER_NAME,
                      title="TradingView backtesting", instructions=INSTRUCTIONS,
                      resources=_resources, read_resource=_read_resource)
