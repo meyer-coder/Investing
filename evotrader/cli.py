@@ -254,6 +254,17 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_serve_http(args: argparse.Namespace) -> int:
+    """Serve the read-only MCP tools over Streamable HTTP."""
+    from .mcp_server import serve
+    if args.db_path:
+        os.environ["EVOTRADER_DB"] = args.db_path
+    token = args.token or os.environ.get("EVOTRADER_MCP_TOKEN", "")
+    origins = tuple(o.strip() for o in (args.allow_origin or "").split(",") if o.strip())
+    return serve(host=args.host, port=args.port, endpoint=args.endpoint,
+                 token=token, allowed_origins=origins)
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -313,6 +324,20 @@ def build_parser() -> argparse.ArgumentParser:
     fetch.add_argument("--start", default="2005-01-01")
     fetch.add_argument("--end", default="2030-01-01")
     fetch.set_defaults(func=cmd_fetch)
+
+    srv = sub.add_parser("serve-http",
+                         help="serve read-only MCP tools over Streamable HTTP")
+    srv.add_argument("--host", default="127.0.0.1",
+                     help="bind address; keep 127.0.0.1 and put a tunnel in front")
+    srv.add_argument("--port", type=int, default=8787)
+    srv.add_argument("--endpoint", default="/mcp",
+                     help="request path; a random path can act as a shared secret")
+    srv.add_argument("--token", default="",
+                     help="require 'Authorization: Bearer <token>' (or $EVOTRADER_MCP_TOKEN)")
+    srv.add_argument("--allow-origin", default="",
+                     help="comma-separated Origin allowlist; empty allows any")
+    srv.add_argument("--db-path", default="")
+    srv.set_defaults(func=cmd_serve_http)
 
     doc = sub.add_parser("doctor", help="check data access, credentials and deps")
     doc.set_defaults(func=cmd_doctor)
