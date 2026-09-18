@@ -19,6 +19,7 @@ from .evolution import Evolution, score_genome
 from .features import build_features
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
+from .population import FOCUSES
 from .report import html_report, lineage, markdown_report, print_report
 from .store import Store
 
@@ -36,6 +37,9 @@ def _add_run_flags(p: argparse.ArgumentParser) -> None:
                    help="how many top agents Claude reads in detail")
     p.add_argument("--breeder", choices=["hybrid", "llm", "mutation"],
                    help="who writes the offspring")
+    p.add_argument("--focus", choices=list(FOCUSES),
+                   help="theme the run: seeds, mutation bank and breeding brief "
+                        "(liquidity = sweeps and order flow)")
     p.add_argument("--llm-share", type=float,
                    help="fraction of each generation written by Claude (hybrid)")
     p.add_argument("--llm-every", type=int, help="call Claude every N generations")
@@ -58,7 +62,8 @@ def _config_from_args(args: argparse.Namespace) -> EvolutionConfig:
     cfg = EvolutionConfig.load(args.config) if getattr(args, "config", None) else EvolutionConfig()
     for name in ("start", "end", "population", "generations", "elites", "breeder",
                  "llm_share", "llm_every", "model", "effort", "budget_usd", "seed",
-                 "workers", "db_path", "test_frac", "note", "survivor_reports"):
+                 "workers", "db_path", "test_frac", "note", "survivor_reports",
+                 "focus"):
         value = getattr(args, name, None)
         if value is not None:
             setattr(cfg, name, value)

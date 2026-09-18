@@ -153,11 +153,13 @@ class Evolution:
     def _make_breeder(self):
         if self.cfg.breeder == "mutation":
             m = MutationBreeder(self.rng, crossover_rate=self.cfg.crossover_rate,
-                                immigrant_rate=self.cfg.immigrant_rate)
+                                immigrant_rate=self.cfg.immigrant_rate,
+                                focus=self.cfg.focus)
             return _MutationOnly(m)
         share = 1.0 if self.cfg.breeder == "llm" else self.cfg.llm_share
         breeder = HybridBreeder(self.claude, rng=self.rng, llm_share=share,
-                                llm_every=self.cfg.llm_every, verbose=self.cfg.verbose)
+                                llm_every=self.cfg.llm_every, verbose=self.cfg.verbose,
+                                focus=self.cfg.focus)
         breeder.mutation.crossover_rate = self.cfg.crossover_rate
         breeder.mutation.immigrant_rate = self.cfg.immigrant_rate
         return breeder
@@ -200,9 +202,11 @@ class Evolution:
         if self.ctx is None:
             self.prepare()
         self.store.create_run(self.run_id, self.cfg.to_dict(), self.cfg.note)
-        self.population = seed_population(self.cfg.population, self.rng, generation=0)
+        self.population = seed_population(self.cfg.population, self.rng, generation=0,
+                                          focus=self.cfg.focus)
         self.generation = 0
-        self._log(f"run {self.run_id}: seeded {len(self.population)} agents")
+        self._log(f"run {self.run_id}: seeded {len(self.population)} agents"
+                  + (f", focus: {self.cfg.focus}" if self.cfg.focus != "all" else ""))
         if not self.claude.available and self.cfg.breeder != "mutation":
             self._log(f"note: {self.claude.unavailable_reason}")
 

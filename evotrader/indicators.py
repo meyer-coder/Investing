@@ -12,6 +12,7 @@ import numpy as np
 __all__ = [
     "sma", "ema", "rsi", "macd", "atr", "bollinger", "rolling_std",
     "rolling_max", "rolling_min", "zscore", "returns", "drawdown_series",
+    "shift", "rolling_sum", "bars_since", "true_range", "obv",
 ]
 
 
@@ -59,6 +60,69 @@ def rolling_std(values, window: int) -> np.ndarray:
     var = np.maximum((s2 - s1 * s1 / window) / (window - 1), 0.0)
     out[window - 1:] = np.sqrt(var)
     return out
+
+
+def rolling_sum(values, window: int) -> np.ndarray:
+    v = _as_float(values)
+    out = np.full(v.shape, np.nan)
+    if window <= 0 or window > v.size:
+        return out
+    csum = np.cumsum(np.insert(v, 0, 0.0))
+    out[window - 1:] = csum[window:] - csum[:-window]
+    return out
+
+
+def shift(values, periods: int = 1) -> np.ndarray:
+    """Move a series forward in time: ``out[i] = values[i - periods]``.
+
+    This is the workhorse of lag-safety: any level a rule compares against
+    ("the high of the previous 20 bars") must be built from shifted data so the
+    current bar cannot define the level it is being measured against.
+    """
+    v = _as_float(values)
+    if periods <= 0:
+        return v.copy()
+    out = np.full(v.shape, np.nan)
+    if periods < v.size:
+        out[periods:] = v[:-periods]
+    return out
+
+
+def bars_since(flags, cap: float = 999.0) -> np.ndarray:
+    """Bars elapsed since ``flags`` was last true; 0 on the event bar itself.
+
+    ``cap`` is returned for bars before the first event, so "never happened"
+    reads as a large number rather than as "happened just now".
+    """
+    f = np.asarray(flags, dtype=float)
+    out = np.full(f.shape, float(cap))
+    last = -1
+    for i in range(f.size):
+        if f[i] > 0:
+            last = i
+        if last >= 0:
+            out[i] = float(i - last)
+    return out
+
+
+def true_range(high, low, close) -> np.ndarray:
+    """Per-bar true range, including the overnight gap."""
+    h, l, c = _as_float(high), _as_float(low), _as_float(close)
+    if c.size == 0:
+        return np.zeros(0)
+    prev_close = np.concatenate(([np.nan], c[:-1]))
+    tr = np.maximum(h - l, np.maximum(np.abs(h - prev_close), np.abs(l - prev_close)))
+    tr[0] = h[0] - l[0]
+    return tr
+
+
+def obv(close, volume) -> np.ndarray:
+    """On-balance volume: volume signed by the direction of the close."""
+    c, v = _as_float(close), _as_float(volume)
+    if c.size == 0:
+        return np.zeros(0)
+    direction = np.sign(np.concatenate(([0.0], np.diff(c))))
+    return np.cumsum(direction * v)
 
 
 def rolling_max(values, window: int) -> np.ndarray:

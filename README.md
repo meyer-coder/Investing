@@ -65,6 +65,9 @@ python -m evotrader.cli run --config configs/offline.json
 
 # the real thing
 python -m evotrader.cli run --config configs/default.json     # 100 x 1000
+
+# a themed run: every agent trades liquidity sweeps and order flow
+python -m evotrader.cli run --config configs/liquidity.json
 ```
 
 Every run streams progress and writes to `runs/evotrader.sqlite`:
@@ -171,6 +174,16 @@ Bollinger bands and %B, 20-bar z-score, position within the 52-week range,
 relative volume, plus three market-regime features computed from the
 equal-weighted universe.
 
+**Liquidity and order-flow features:** the levels where resting orders sit
+(`prior_high_20`/`prior_low_20`, `equal_highs_20`/`equal_lows_20`), whether a
+level was swept or accepted (`sweep_low`, `sweep_high`, `sweep_low_depth`,
+`bars_since_sweep_low`, `breakout_20`), how the bar closed inside its own range
+(`clv`, `upper_wick`, `lower_wick`, `range_atr`, `displacement`, `gap_pct`),
+signed-volume pressure (`net_flow`, `cum_flow_20`, `cmf20`, `obv_slope`,
+`absorption`, `effort_result`), volume-weighted reference prices (`vwap20`,
+`vwap60`, `dist_vwap20`, `volume_below_pct`) and untraded imbalances (`fvg_up`,
+`fvg_down`). See [Liquidity sweeps and order flow](#liquidity-sweeps-and-order-flow).
+
 **Portfolio features** (mostly for exits): `in_position`, `bars_held`,
 `position_return`, `position_drawdown`, `position_weight`, `cash_pct`,
 `gross_exposure`, `position_count`, `bars_since_exit`, `portfolio_return`,
@@ -182,6 +195,69 @@ equal-weighted universe.
 To add a feature, compute it in `features.py` and name it in `MARKET_FEATURES`
 with a line in `FEATURE_DOCS` — the docs are what Claude is shown, so the
 breeder can use a new feature the moment it exists.
+
+---
+
+## Liquidity sweeps and order flow
+
+`--focus liquidity` themes a whole run around one family of ideas: that the
+obvious highs and lows on a chart are where stop orders rest, that price goes
+looking for them, and that what happens *after* a level breaks matters more than
+the break.
+
+A level taken out intrabar and given straight back is a **sweep** — stops were
+harvested, the move failed:
+
+```
+Stop Run Reclaim (id=b41c7e02aa19, gen=42, origin=llm)
+  thesis: Price dips through the 20-bar low to trigger sell stops, then closes
+          back above it. Buy the reclaim while the long-term trend is intact.
+  BUY  30% when: sweep_low == 1 and close > sma200 and cmf20 > 0
+  SELL when: dist_prior_high_20 > -0.005
+  SELL when: sweep_high == 1 or bars_held > 20
+  risk: max_pos=30% max_open=4 stop=5% cooldown=3
+```
+
+The same level taken out and *held* into the close is acceptance
+(`breakout_20`), which means the opposite. Telling those two apart is most of
+the edge in this family, and it is why the feature set names them separately
+instead of leaving a rule to reconstruct them from raw OHLC.
+
+The order-flow half asks whether volume agrees with the move. These are daily
+bars: there is no order book and no trade tape, so nothing here is real order
+flow. What a daily bar does carry is a footprint — `clv` reads who won the bar
+from where it closed in its range, `net_flow` weights that by volume, `cmf20`
+and `obv_slope` accumulate it, `absorption` flags heavy volume that went
+nowhere, and `effort_result` measures price moved per unit of volume. They are
+evidence, not measurement, and the breeding brief says so in as many words.
+
+Every level is built from *shifted* data, so a bar can never sweep a level it
+set itself; `tests/test_liquidity.py` checks that by recomputing features on a
+truncated history and asserting no past value moves.
+
+What `--focus liquidity` changes:
+
+* **Generation 0** seeds from fourteen liquidity archetypes — stop-run reclaims,
+  failed breakdowns, absorption, flow divergence, VWAP reclaims, imbalance
+  continuation, gap fades — plus a few classic trend seeds, because a population
+  with exactly one idea in it has nothing to recombine.
+* **Mutation** samples the sweep and order-flow clause bank three to one against
+  the classic one, so random drift stays on theme.
+* **Claude's briefing** gains a playbook for the theme: what separates a real
+  sweep edge from a curve fit (direction against the trend, depth of the raid,
+  confirmation from flow rather than more price, enough occurrences to believe),
+  and the instruction that every offspring's entry logic must turn on liquidity
+  or order flow.
+
+`configs/liquidity.json` runs it on ten liquid ETFs, where the levels are real
+levels, with a fitness function tuned for the style: a wider turnover allowance
+because sweep trades are short-lived, and a higher minimum trade count, because
+an agent claiming a sweep edge on eight trades has not shown one.
+
+```bash
+python -m evotrader.cli run --config configs/liquidity.json
+python -m evotrader.cli run --focus liquidity --symbols SPY,QQQ,IWM --generations 50
+```
 
 ---
 
@@ -210,7 +286,7 @@ evotrader/
   runner.py       the backtest engine (decide on close, fill at next open)
   journal.py      trades and thoughts — what the breeder reads
   fitness.py      metrics and the composite fitness function
-  population.py   seed archetypes, mutation, crossover
+  population.py   seed archetypes (classic + liquidity), mutation, crossover
   llm.py          Claude client: structured output, retries, cost ceiling
   prompts.py      the breeding briefing and its JSON schema
   breeder.py      LLM / mutation / hybrid breeders
@@ -223,13 +299,14 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 76 tests, ~30s
+python -m pytest tests -q      # 98 tests, ~70s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
 indicators, no-look-ahead fills and risk-limit enforcement in the backtester,
-fitness behaviour, the genetic operators, the full Claude breeding path against
-a stubbed client, and a complete run with checkpoint and resume.
+fitness behaviour, the genetic operators, the liquidity features (including
+that none of them can see the future), the full Claude breeding path against a
+stubbed client, and a complete run with checkpoint and resume.
 
 ## Performance
 

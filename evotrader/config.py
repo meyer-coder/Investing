@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from .fitness import FitnessConfig
 from .llm import DEFAULT_MODEL
+from .population import FOCUSES
 
 DEFAULT_SYMBOLS = ["SPY", "QQQ", "IWM", "EFA", "TLT", "GLD", "XLE", "XLF", "XLK", "XLV"]
 
@@ -42,6 +43,8 @@ class EvolutionConfig:
     budget_usd: float = 0.0            # 0 = no ceiling
     immigrant_rate: float = 0.10
     crossover_rate: float = 0.35
+    focus: str = "all"                 # all | liquidity — seeds, mutation bank
+                                       # and breeding brief for a themed run
 
     # --- fitness
     fitness: FitnessConfig = field(default_factory=FitnessConfig)
@@ -90,5 +93,7 @@ class EvolutionConfig:
             raise ValueError("generations must be at least 1")
         if self.breeder not in ("hybrid", "llm", "mutation"):
             raise ValueError("breeder must be hybrid, llm or mutation")
+        if self.focus not in FOCUSES:
+            raise ValueError(f"focus must be one of {', '.join(FOCUSES)}")
         if not self.symbols:
             raise ValueError("at least one symbol is required")

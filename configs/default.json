@@ -33,6 +33,7 @@
   "budget_usd": 0.0,
   "immigrant_rate": 0.1,
   "crossover_rate": 0.35,
+  "focus": "all",
   "fitness": {
     "sharpe_weight": 1.0,
     "excess_weight": 1.5,

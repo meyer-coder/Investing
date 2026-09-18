@@ -47,29 +47,35 @@ class MutationBreeder:
     """Elitist mutation + crossover + random immigrants.  No API needed."""
 
     def __init__(self, rng: Optional[random.Random] = None, *,
-                 crossover_rate: float = 0.35, immigrant_rate: float = 0.10):
+                 crossover_rate: float = 0.35, immigrant_rate: float = 0.10,
+                 focus: str = "all"):
         self.rng = rng or random.Random()
         self.crossover_rate = crossover_rate
         self.immigrant_rate = immigrant_rate
+        self.focus = focus
 
     def breed(self, elites: Sequence[Elite], count: int, *, generation: int,
               parent_pool: Optional[Sequence[Genome]] = None) -> BreedResult:
         parents = [g for g, _, _ in elites] or list(parent_pool or [])
         out: List[Genome] = []
         if not parents:
-            return BreedResult(genomes=[random_genome(self.rng, generation=generation)
+            return BreedResult(genomes=[random_genome(self.rng, generation=generation,
+                                                      focus=self.focus)
                                         for _ in range(count)])
         pool = list(parent_pool or parents)
         for _ in range(count):
             roll = self.rng.random()
             if roll < self.immigrant_rate:
-                out.append(random_genome(self.rng, generation=generation))
+                out.append(random_genome(self.rng, generation=generation,
+                                         focus=self.focus))
             elif roll < self.immigrant_rate + self.crossover_rate and len(pool) > 1:
                 a, b = self.rng.sample(pool, 2)
-                out.append(crossover(a, b, self.rng, generation=generation))
+                out.append(crossover(a, b, self.rng, generation=generation,
+                                     focus=self.focus))
             else:
                 parent = _tournament(pool, self.rng)
-                out.append(mutate(parent, self.rng, generation=generation))
+                out.append(mutate(parent, self.rng, generation=generation,
+                                  focus=self.focus))
         return BreedResult(genomes=out)
 
 
@@ -83,10 +89,11 @@ class LLMBreeder:
     """Claude-authored offspring, with validation and graceful degradation."""
 
     def __init__(self, claude: Claude, *, rng: Optional[random.Random] = None,
-                 verbose: bool = True):
+                 verbose: bool = True, focus: str = "all"):
         self.claude = claude
         self.rng = rng or random.Random()
         self.verbose = verbose
+        self.focus = focus
         self.lessons: List[str] = []
         self.last_analysis: str = ""
 
@@ -103,6 +110,7 @@ class LLMBreeder:
         prompt = build_breeding_prompt(
             generation=generation, elites=elites, evals=evals, history=history,
             n_offspring=count, lessons=self.lessons, window=window, extra=extra,
+            focus=self.focus,
         )
         try:
             response = self.claude.complete(prompt, system=SYSTEM_PROMPT,
@@ -159,10 +167,12 @@ class HybridBreeder:
 
     def __init__(self, claude: Optional[Claude] = None, *,
                  rng: Optional[random.Random] = None, llm_share: float = 0.5,
-                 llm_every: int = 1, verbose: bool = True):
+                 llm_every: int = 1, verbose: bool = True, focus: str = "all"):
         self.rng = rng or random.Random()
-        self.mutation = MutationBreeder(self.rng)
-        self.llm = LLMBreeder(claude, rng=self.rng, verbose=verbose) if claude else None
+        self.focus = focus
+        self.mutation = MutationBreeder(self.rng, focus=focus)
+        self.llm = (LLMBreeder(claude, rng=self.rng, verbose=verbose, focus=focus)
+                    if claude else None)
         self.llm_share = max(0.0, min(1.0, llm_share))
         self.llm_every = max(1, llm_every)
         self.verbose = verbose

@@ -10,7 +10,8 @@ from __future__ import annotations
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
 from .dsl import FUNCTION_DOCS
-from .features import FEATURE_DOCS, MARKET_FEATURES, PORTFOLIO_FEATURES
+from .features import (FEATURE_DOCS, LIQUIDITY_FEATURES, PORTFOLIO_FEATURES,
+                       PRICE_FEATURES)
 from .fitness import Evaluation
 from .genome import MAX_ENTRY_RULES, MAX_EXIT_RULES, Genome
 from .journal import Journal
@@ -47,9 +48,14 @@ Hard constraints, applied by the runtime whatever you write:
 """
 
 
+def _docs_for(names) -> str:
+    return "\n".join(f"  {name}: {FEATURE_DOCS.get(name, '')}" for name in names)
+
+
 def _rule_reference() -> str:
-    feats = "\n".join(f"  {name}: {FEATURE_DOCS.get(name, '')}" for name in MARKET_FEATURES)
-    port = "\n".join(f"  {name}: {FEATURE_DOCS.get(name, '')}" for name in PORTFOLIO_FEATURES)
+    feats = _docs_for(PRICE_FEATURES)
+    liquidity = _docs_for(LIQUIDITY_FEATURES)
+    port = _docs_for(PORTFOLIO_FEATURES)
     funcs = "\n".join(f"  {sig}: {doc}" for sig, doc in FUNCTION_DOCS.items())
     return f"""\
 RULE LANGUAGE
@@ -57,8 +63,11 @@ Rules are boolean expressions. Operators: < <= > >= == != + - * / and or not,
 parentheses. Numbers are plain decimals. Nothing else is allowed — no Python,
 no function definitions, no lookups.
 
-Market features (available in entry and exit rules):
+Price and technical features (available in entry and exit rules):
 {feats}
+
+Liquidity and order-flow features (available in entry and exit rules):
+{liquidity}
 
 Portfolio features (most useful in exit rules):
 {port}
@@ -72,6 +81,65 @@ Examples of valid rules:
   dist_sma20 < -0.03 and mkt_above_sma200 == 1 and vol20 < 0.35
   position_return > 0.18 or bars_held > 40 or position_drawdown < -0.06
 """
+
+
+LIQUIDITY_PLAYBOOK = """\
+=== FOCUS: LIQUIDITY SWEEPS AND ORDER FLOW ===
+
+This run breeds agents that trade liquidity and order flow, not indicators.
+The premise, and its limits, stated plainly:
+
+* Resting orders cluster where everyone can see them — under obvious lows, above
+  obvious highs, and the tighter the cluster of equal highs or lows, the thicker
+  the pool (`equal_highs_20`, `equal_lows_20`).
+* Price is drawn to those pools, and what matters is what happens *after* it
+  gets there. A level taken intrabar and given straight back is a sweep
+  (`sweep_low`, `sweep_high`): stops were harvested and the move failed. A level
+  taken and held into the close is acceptance (`breakout_20`, `breakdown_20`):
+  the move is real. The same broken level means opposite things in the two cases,
+  and telling them apart is most of the edge here.
+* What the bar cost tells you as much as what it did. Heavy volume with no range
+  is absorption (`absorption`, `effort_result`); a large range on thin volume is
+  a move nobody is defending. Signed volume (`net_flow`, `cum_flow_20`, `cmf20`,
+  `obv_slope`) says which side the volume leaned to.
+* These are daily bars. There is no order book and no trade tape here, so every
+  "order flow" feature is a bar-derived proxy: `clv` infers who won the bar from
+  where it closed in its range, `net_flow` weights that by volume. Treat them as
+  evidence, not as measurement, and do not write a thesis that claims to see
+  individual participants.
+
+What tends to separate a real edge from a curve fit in this family:
+* Direction of the sweep versus the trend. A sweep of the lows inside an
+  uptrend (`close > sma200`) is a different trade from one in a downtrend.
+* Depth and rejection. `sweep_low_depth > 0.5` with a long `lower_wick` is a
+  genuine raid; a two-tick poke is noise.
+* Confirmation from flow rather than more price. A sweep with `cmf20` already
+  positive is an accumulation signal; the same sweep with flow falling is a
+  falling knife.
+* Time. Sweep reversals resolve in days, not quarters — `bars_since_sweep_low`
+  and a `max_hold_bars` cap keep an agent from turning a failed sweep trade into
+  an accidental long-term hold.
+* Frequency. Sweeps of a 20-bar level happen often; sweeps of a 60-bar level are
+  rare. An agent keyed only to the rare case will show a handful of trades and a
+  meaningless Sharpe. Prefer edges with enough occurrences to believe.
+
+Long-only, so the bearish reads are exits and filters: `sweep_high` and a
+rolling-over `cmf20` are reasons to be out, not reasons to be short.
+
+Breed inside this theme. Classic trend and mean-reversion features are still
+available and are useful as *context* (regime, trend, volatility) around a
+liquidity trigger, but the entry logic of every offspring should turn on
+liquidity or order flow, and the set as a whole should test several different
+claims about it rather than re-tuning one.
+"""
+
+#: focus name -> extra briefing inserted into the breeding prompt.
+FOCUS_BRIEFS: Dict[str, str] = {"liquidity": LIQUIDITY_PLAYBOOK}
+
+
+def focus_brief(focus: str) -> str:
+    """The themed briefing for a run's focus (empty for an unfocused run)."""
+    return FOCUS_BRIEFS.get(focus or "all", "")
 
 
 def _genome_schema_text() -> str:
@@ -230,7 +298,7 @@ def history_summary(history: Sequence[Dict[str, Any]], *, limit: int = 8) -> str
 def build_breeding_prompt(*, generation: int, elites: Sequence[tuple],
                           evals: Sequence[Evaluation], history: Sequence[Dict[str, Any]],
                           n_offspring: int, lessons: Sequence[str] = (),
-                          window: str = "", extra: str = "") -> str:
+                          window: str = "", extra: str = "", focus: str = "all") -> str:
     """Assemble the full briefing for one breeding call.
 
     ``elites`` is a sequence of ``(genome, evaluation, journal)`` triples.
@@ -240,6 +308,11 @@ def build_breeding_prompt(*, generation: int, elites: Sequence[tuple],
         "",
         _rule_reference(),
         _genome_schema_text(),
+    ]
+    brief = focus_brief(focus)
+    if brief:
+        parts += ["", brief]
+    parts += [
         "",
         "=== TOP PERFORMERS THIS GENERATION ===",
     ]
@@ -266,6 +339,10 @@ def build_breeding_prompt(*, generation: int, elites: Sequence[tuple],
         "Do not simply restate the elites: every offspring must differ from its "
         "parents in a way you can justify, and the set as a whole must cover "
         "more than one hypothesis about what makes money in this market.",
+        *([f"Every offspring must trade the run's focus: {focus}. Keep the "
+           "entry logic anchored in the liquidity and order-flow features, and "
+           "say in each `rationale` which claim about liquidity it tests."]
+          if focus_brief(focus) else []),
         "Before the genomes, write the `analysis` — the honest read on what the "
         "evidence above supports — and `lessons`, the short claims you want the "
         "next generation to test.",
