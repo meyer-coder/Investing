@@ -507,6 +507,27 @@ TUNNEL_HOSTNAME=mcp.example.com scripts/mcp-up.sh
 
 The connector URL is then `https://mcp.example.com/mcp`, today and in a year.
 
+**Someone else's machine, your domain.** Create a second tunnel and its DNS
+record on the account that owns the domain:
+
+```bash
+cloudflared tunnel create partner
+cloudflared tunnel route dns partner mcp2.example.com      # a different hostname
+```
+
+Send them the credentials file that prints (`~/.cloudflared/<uuid>.json`) — it
+is a credential, so send it the way you would a password — and they run:
+
+```bash
+TUNNEL_HOSTNAME=mcp2.example.com TUNNEL_NAME=<uuid> \
+TUNNEL_CREDENTIALS=~/.cloudflared/<uuid>.json scripts/mcp-up.sh
+```
+
+They never need your Cloudflare login. Give each machine its own tunnel and
+hostname: two machines sharing one tunnel become two replicas of it, and
+Cloudflare will split requests between them — different caches, different
+answers, at random.
+
 **Started for you at login.** `scripts/com.evotrader.mcp.plist` is a launchd
 agent: edit the two paths, drop it in `~/Library/LaunchAgents`, `launchctl
 load` it once, and both processes start at login and restart if they die.

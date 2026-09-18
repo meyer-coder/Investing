@@ -41,8 +41,15 @@ echo "MCP server up on port $PORT"
 
 if [ -n "${TUNNEL_HOSTNAME:-}" ]; then
     # A named tunnel keeps one hostname forever, so the connector URL never
-    # has to change again.
-    cloudflared tunnel --url "http://localhost:$PORT" run "${TUNNEL_NAME:-evotrader}" \
+    # has to change again.  TUNNEL_CREDENTIALS lets a machine run a tunnel that
+    # was created on someone else's Cloudflare account: they send the JSON, and
+    # this machine never needs their login.
+    CRED_ARGS=()
+    if [ -n "${TUNNEL_CREDENTIALS:-}" ]; then
+        CRED_ARGS=(--credentials-file "$TUNNEL_CREDENTIALS")
+    fi
+    cloudflared tunnel --url "http://localhost:$PORT" \
+        "${CRED_ARGS[@]}" run "${TUNNEL_NAME:-evotrader}" \
         >"$LOG_DIR/tunnel.log" 2>&1 &
     TUNNEL_PID=$!
     echo "$TUNNEL_PID" > "$LOG_DIR/tunnel.pid"
