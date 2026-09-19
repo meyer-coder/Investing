@@ -517,3 +517,99 @@ def test_forgetting_a_login(tmp_path, monkeypatch):
     assert tvdata.forget_credentials(str(path)) is True
     assert tvdata.forget_credentials(str(path)) is False
     assert tvdata.load_credentials() == ({}, "none")
+
+
+# --------------------------------------------------------------- the scanner
+
+def _scan_response(payload):
+    return _Response(json.dumps(payload).encode())
+
+
+def test_quotes_map_columns_back_to_names(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", lambda *a, **k: _scan_response(
+        {"totalCount": 1, "data": [{"s": "NASDAQ:AAPL",
+                                    "d": ["AAPL", "Apple Inc.", 336.13, -0.25,
+                                          -0.87, 86588048, 4905541689620]}]}))
+    rows = tvdata.quotes(["NASDAQ:AAPL"])
+    assert rows[0]["symbol"] == "NASDAQ:AAPL"
+    assert rows[0]["close"] == 336.13 and rows[0]["description"] == "Apple Inc."
+
+
+def test_quotes_reject_an_unknown_field():
+    with pytest.raises(TradingViewError) as exc:
+        tvdata.quotes(["NASDAQ:AAPL"], fields=["moon_phase"])
+    assert "moon_phase" in str(exc.value)
+
+
+def test_quotes_need_a_symbol():
+    with pytest.raises(TradingViewError):
+        tvdata.quotes([])
+
+
+def test_screen_builds_the_request(monkeypatch):
+    sent = {}
+
+    def urlopen(req, *a, **k):
+        sent["body"] = json.loads(req.data.decode())
+        return _scan_response({"data": [{"s": "NYSE:BAC", "d": ["BAC", "Bank",
+                                                                57.73, -0.77,
+                                                                29.1, 52483860,
+                                                                4.0e11, "Finance"]}]})
+
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", urlopen)
+    rows = tvdata.screen([{"field": "rsi", "op": "less", "value": 35}], limit=5)
+    body = sent["body"]
+    # TradingView's own spelling goes on the wire, not ours
+    assert {"left": "RSI", "operation": "less", "right": 35} in body["filter"]
+    assert body["range"] == [0, 5]
+    assert body["sort"]["sortBy"] == "market_cap_basic"
+    assert rows[0]["symbol"] == "NYSE:BAC" and rows[0]["rsi"] == 29.1
+
+
+def test_screen_excludes_preferred_shares_by_default(monkeypatch):
+    sent = {}
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda req, *a, **k: (sent.update(body=json.loads(req.data.decode())),
+                                              _scan_response({"data": []}))[1])
+    tvdata.screen([{"field": "rsi", "op": "less", "value": 35}])
+    lefts = [f["left"] for f in sent["body"]["filter"]]
+    assert "type" in lefts and "is_primary" in lefts and "typespecs" in lefts
+
+    tvdata.screen([{"field": "rsi", "op": "less", "value": 35}],
+                  common_stock_only=False)
+    assert [f["left"] for f in sent["body"]["filter"]] == ["RSI"]
+
+
+def test_screen_rejects_unknown_fields_and_operations():
+    with pytest.raises(TradingViewError):
+        tvdata.screen([{"field": "vibes", "op": "less", "value": 1}])
+    with pytest.raises(TradingViewError):
+        tvdata.screen([{"field": "rsi", "op": "wobbles", "value": 1}])
+    with pytest.raises(TradingViewError):
+        tvdata.screen([{"field": "rsi", "op": "less", "value": 1}], sort_by="vibes")
+
+
+def test_technicals_returns_one_row(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", lambda *a, **k: _scan_response(
+        {"data": [{"s": "NASDAQ:AAPL",
+                   "d": [336.13, -0.25, 64.25, 5.51, 3.91, 330.0, 320.14,
+                         286.34, 7.3, 1.2, 0.5, 2.0, 23.46, 0.3]}]}))
+    row = tvdata.technicals("NASDAQ:AAPL")
+    assert row["rsi"] == 64.25 and row["sma200"] == 286.34
+
+
+def test_technicals_explains_an_empty_answer(monkeypatch):
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen",
+                        lambda *a, **k: _scan_response({"data": []}))
+    with pytest.raises(TradingViewError) as exc:
+        tvdata.technicals("NOPE")
+    assert "exchange prefix" in str(exc.value)
+
+
+def test_a_scanner_failure_is_a_tradingview_error(monkeypatch):
+    def boom(*a, **k):
+        raise OSError("connection reset")
+    monkeypatch.setattr(tvdata.urllib.request, "urlopen", boom)
+    with pytest.raises(TradingViewError) as exc:
+        tvdata.quotes(["NASDAQ:AAPL"])
+    assert "scanner refused" in str(exc.value)

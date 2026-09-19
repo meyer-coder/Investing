@@ -276,6 +276,9 @@ Ask for a test in plain English, or call the tools directly:
 | `compare_strategies` | two to eight strategies over identical bars, ranked |
 | `walk_forward` | re-test on windows the strategy was not chosen on, fold by fold |
 | `backtest_evolved_agent` | take an agent from a training run by id and test it on symbols it never evolved on |
+| `screener` | scan the market for symbols matching conditions — where a list of candidates comes from |
+| `quote` | last price, change and volume for a symbol |
+| `technicals` | TradingView's own indicator snapshot for a symbol |
 | `strategy_language` | the rule vocabulary |
 
 A strategy is the same rule language the evolved agents use — not Pine:
@@ -310,6 +313,38 @@ rather than a surprise. Fills land at the **next** bar's open with commission
 and slippage charged both ways, exactly as in evolution — a strategy tested
 here and an agent bred by a run are measured the same way, which is what makes
 `backtest_evolved_agent` meaningful.
+
+### Finding something to test
+
+`screener` turns a strategy into a list worth running it on:
+
+```json
+{"filters": [{"field": "rsi", "op": "less", "value": 35},
+             {"field": "market_cap", "op": "greater", "value": 50000000000},
+             {"field": "close", "op": "greater", "value": 10}],
+ "sort_by": "market_cap", "limit": 25}
+```
+
+```
+42 matches — rsi less 35, market_cap greater 50000000000, close greater 10
+  NYSE:BAC           close     57.73  change     -0.77  rsi     29.16  Bank of America Corporation
+  NYSE:GE            close    314.27  change     -1.02  rsi     34.21  GE Aerospace
+  ...
+  a screen is a list of candidates, not signals — `backtest` them before
+  believing any of it
+```
+
+Filters run over `close`, `change`, `volume`, `relative_volume`, `market_cap`,
+`pe`, `rsi`, `macd`, `sma20/50/200`, `atr`, `volatility`, `perf_week/month/ytd`,
+`gap` and `sector`. Results are common stock only by default — without that the
+top of a large-cap screen fills with preferred shares and second listings of the
+same company, which is a good way to backtest a bank's preferred stock by
+accident.
+
+These three tools use TradingView's scanner, which is a plain HTTPS endpoint —
+no WebSocket, no session needed. `technicals` reports what TradingView computes;
+the backtest computes its own indicators from bars and never reads them, so the
+two can disagree at the edges.
 
 ### TradingView specifics
 

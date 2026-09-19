@@ -81,7 +81,7 @@ def test_tools_are_listed(endpoint):
     port = endpoint()
     status, _, body = call(port, body={"jsonrpc": "2.0", "id": 3,
                                        "method": "tools/list"})
-    assert status == 200 and len(body["result"]["tools"]) == 7
+    assert status == 200 and len(body["result"]["tools"]) == 10
 
 
 def test_malformed_json_is_a_parse_error(endpoint):

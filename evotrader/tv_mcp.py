@@ -295,6 +295,14 @@ def _common(args: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _fmt_num(value: Any, places: int = 2) -> str:
+    if value is None:
+        return "-"
+    if isinstance(value, (int, float)):
+        return f"{value:,.{places}f}"
+    return str(value)
+
+
 def _symbols(args: Dict[str, Any], key: str = "symbols") -> List[str]:
     symbols = [str(s).strip().upper() for s in list_arg(args, key) if str(s).strip()]
     if not symbols:
@@ -603,6 +611,118 @@ def _backtest_evolved_agent(view: Backtester, args: Dict[str, Any]) -> ToolResul
         "trades": [t.to_dict() for t in run["journal"].trades],
         "caveats": [c.strip() for c in caveats],
     }
+
+
+@tool("quote", "Quote",
+      "Last price, the day's change and volume for one or more symbols. A "
+      "snapshot, not history — `get_bars` is what a backtest runs on.",
+      {"symbols": _SYMBOLS_PROPERTY,
+       "fields": {"type": "array", "items": {"type": "string"},
+                  "description": "close, change, volume, market_cap, rsi, "
+                                 "sma50, sma200, perf_ytd, sector, ..."}},
+      required=["symbols"])
+def _quote(view: Backtester, args: Dict[str, Any]) -> ToolResult:
+    symbols = _symbols(args)
+    try:
+        rows = tvdata.quotes(symbols, fields=list_arg(args, "fields"))
+    except tvdata.TradingViewError as exc:
+        raise ToolError(str(exc)) from exc
+    if not rows:
+        return f"no data for {', '.join(symbols)}", {"quotes": []}
+    lines = []
+    for r in rows:
+        change = r.get("change")
+        lines.append(f"  {r['symbol']:<16} {_fmt_num(r.get('close')):>10}  "
+                     f"{('%+.2f%%' % change) if isinstance(change, (int, float)) else '    -':>8}  "
+                     f"vol {_fmt_num(r.get('volume'), 0):>14}  "
+                     f"{str(r.get('description') or '')[:34]}")
+    return "\n".join(lines), {"quotes": rows}
+
+
+@tool("technicals", "Technical snapshot",
+      "TradingView's own indicator values for one symbol — RSI, MACD, the "
+      "moving averages, ATR, performance — as the chart shows them. Useful for "
+      "checking a rule against what TradingView displays; the backtest computes "
+      "its own indicators from bars and does not read these.",
+      {"symbol": {"type": "string", "description": "e.g. NASDAQ:AAPL"}},
+      required=["symbol"])
+def _technicals(view: Backtester, args: Dict[str, Any]) -> ToolResult:
+    symbol = required_str(args, "symbol")
+    try:
+        row = tvdata.technicals(symbol)
+    except tvdata.TradingViewError as exc:
+        raise ToolError(str(exc)) from exc
+    order = [("close", "close"), ("change", "change %"), ("rsi", "RSI(14)"),
+             ("macd", "MACD"), ("macd_signal", "MACD signal"),
+             ("sma20", "SMA20"), ("sma50", "SMA50"), ("sma200", "SMA200"),
+             ("atr", "ATR"), ("volatility", "volatility %"),
+             ("perf_week", "week %"), ("perf_month", "month %"),
+             ("perf_ytd", "YTD %")]
+    lines = [f"{row['symbol']}"]
+    for key, label in order:
+        if row.get(key) is not None:
+            lines.append(f"  {label:<14} {_fmt_num(row[key])}")
+    close, sma200 = row.get("close"), row.get("sma200")
+    if isinstance(close, (int, float)) and isinstance(sma200, (int, float)):
+        lines.append(f"  {'vs SMA200':<14} "
+                     f"{'above' if close > sma200 else 'below'} "
+                     f"({(close / sma200 - 1) * 100:+.1f}%)")
+    return "\n".join(lines), {"technicals": row}
+
+
+@tool("screener", "Screen the market",
+      "Find symbols matching conditions — the way to turn a strategy into a "
+      "list worth testing it on. Filters are {field, op, value} over close, "
+      "change, volume, relative_volume, market_cap, pe, rsi, macd, sma20/50/200, "
+      "atr, volatility, perf_week/month/ytd, gap, sector. Results are common "
+      "stock only unless you say otherwise, so no preferred shares or second "
+      "listings.",
+      {"filters": {"type": "array", "items": {"type": "object"},
+                   "description": "[{\"field\": \"rsi\", \"op\": \"less\", "
+                                  "\"value\": 35}, ...]; op is greater, less, "
+                                  "egreater, eless, equal, nequal, in_range"},
+       "fields": {"type": "array", "items": {"type": "string"},
+                  "description": "columns to return"},
+       "sort_by": {"type": "string", "description": "field to sort on (default market_cap)"},
+       "ascending": {"type": "boolean", "description": "smallest first (default false)"},
+       "limit": {"type": "integer", "description": "rows (default 25, max 100)"},
+       "market": {"type": "string", "description": "america (default), crypto, forex, ..."},
+       "include_all_share_classes": {"type": "boolean",
+                                     "description": "keep preferred shares and "
+                                                    "second listings (default false)"}},
+      required=["filters"])
+def _screener(view: Backtester, args: Dict[str, Any]) -> ToolResult:
+    filters = list_arg(args, "filters")
+    if not filters:
+        raise ToolError("give at least one filter, e.g. "
+                        "[{\"field\": \"rsi\", \"op\": \"less\", \"value\": 35}]")
+    if not all(isinstance(f, dict) for f in filters):
+        raise ToolError("each filter must be an object with field, op and value")
+    try:
+        rows = tvdata.screen(
+            filters, fields=list_arg(args, "fields"),
+            sort_by=str_arg(args, "sort_by", "market_cap") or "market_cap",
+            descending=not bool(args.get("ascending")),
+            limit=int_arg(args, "limit", 25, hi=100),
+            market=str_arg(args, "market", "america") or "america",
+            common_stock_only=not bool(args.get("include_all_share_classes")))
+    except tvdata.TradingViewError as exc:
+        raise ToolError(str(exc)) from exc
+    if not rows:
+        return "nothing matched those filters", {"matches": []}
+    described = ", ".join(f"{f.get('field')} {f.get('op')} {f.get('value')}"
+                          for f in filters)
+    lines = [f"{len(rows)} matches — {described}"]
+    for r in rows:
+        bits = [f"  {r['symbol']:<16}"]
+        for key in ("close", "change", "rsi"):
+            if r.get(key) is not None:
+                bits.append(f"{key} {_fmt_num(r[key]):>9}")
+        bits.append(str(r.get("description") or "")[:30])
+        lines.append("  ".join(bits))
+    lines.append("\n  a screen is a list of candidates, not signals — "
+                 "`backtest` them before believing any of it")
+    return "\n".join(lines), {"matches": rows, "filters": filters}
 
 
 @tool("strategy_language", "Strategy language",

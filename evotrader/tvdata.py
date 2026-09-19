@@ -551,3 +551,133 @@ def load_universe(symbols: Sequence[str], timeframe: str = "1D",
     universe = align(loaded)
     universe.warnings = errors
     return universe
+
+
+# ------------------------------------------------------- scanner (HTTPS only)
+
+SCANNER_URL = "https://scanner.tradingview.com/{market}/scan"
+
+#: Columns worth having by name rather than by TradingView's spelling.
+SCAN_FIELDS: Dict[str, str] = {
+    "close": "close", "change": "change", "change_abs": "change_abs",
+    "volume": "volume", "relative_volume": "relative_volume_10d_calc",
+    "market_cap": "market_cap_basic", "pe": "price_earnings_ttm",
+    "rsi": "RSI", "macd": "MACD.macd", "macd_signal": "MACD.signal",
+    "sma20": "SMA20", "sma50": "SMA50", "sma200": "SMA200",
+    "atr": "ATR", "volatility": "volatility.D",
+    "perf_week": "Perf.W", "perf_month": "Perf.1M", "perf_ytd": "Perf.YTD",
+    "gap": "gap", "sector": "sector", "name": "name",
+    "description": "description", "exchange": "exchange",
+    "recommendation": "Recommend.All",
+}
+
+#: Keeps a screen to real companies: no preferred shares, no second listings.
+COMMON_STOCK_FILTERS = [
+    {"left": "type", "operation": "equal", "right": "stock"},
+    {"left": "is_primary", "operation": "equal", "right": True},
+    {"left": "typespecs", "operation": "has", "right": ["common"]},
+]
+
+
+def _scan(payload: Dict[str, Any], *, market: str = "america",
+          timeout: float = 20.0) -> List[Dict[str, Any]]:
+    body = json.dumps(payload).encode()
+    req = urllib.request.Request(
+        SCANNER_URL.format(market=market), data=body,
+        headers={"Content-Type": "application/json", "User-Agent": _UA,
+                 "Origin": ORIGIN, "Referer": ORIGIN + "/"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            parsed = json.loads(resp.read().decode("utf-8"))
+    except Exception as exc:  # noqa: BLE001 - network, HTTP and JSON alike
+        raise TradingViewError(
+            f"the TradingView scanner refused the request: "
+            f"{type(exc).__name__}: {exc}") from exc
+    return parsed.get("data") or []
+
+
+def _rows(raw: List[Dict[str, Any]], fields: Sequence[str]) -> List[Dict[str, Any]]:
+    out = []
+    for item in raw:
+        values = item.get("d") or []
+        row: Dict[str, Any] = {"symbol": item.get("s", "")}
+        for name, value in zip(fields, values):
+            row[name] = value
+        out.append(row)
+    return out
+
+
+def quotes(symbols: Sequence[str], *, fields: Sequence[str] = (),
+           market: str = "america", timeout: float = 20.0) -> List[Dict[str, Any]]:
+    """Last price and the day's numbers for exchange-qualified symbols."""
+    if not symbols:
+        raise TradingViewError("at least one symbol is required")
+    wanted = list(fields) or ["name", "description", "close", "change",
+                              "change_abs", "volume", "market_cap"]
+    unknown = [f for f in wanted if f not in SCAN_FIELDS]
+    if unknown:
+        raise TradingViewError(f"unknown field(s): {', '.join(unknown)}; "
+                               f"available: {', '.join(sorted(SCAN_FIELDS))}")
+    raw = _scan({"symbols": {"tickers": [s.upper() for s in symbols],
+                             "query": {"types": []}},
+                 "columns": [SCAN_FIELDS[f] for f in wanted]},
+                market=market, timeout=timeout)
+    return _rows(raw, wanted)
+
+
+def screen(filters: Sequence[Dict[str, Any]], *, fields: Sequence[str] = (),
+           sort_by: str = "market_cap", descending: bool = True,
+           limit: int = 25, market: str = "america",
+           common_stock_only: bool = True,
+           timeout: float = 25.0) -> List[Dict[str, Any]]:
+    """Scan a market for symbols matching conditions.
+
+    ``filters`` are ``{"field": "rsi", "op": "less", "value": 35}`` — the field
+    names of :data:`SCAN_FIELDS`, not TradingView's own spelling.
+    """
+    wanted = list(fields) or ["name", "description", "close", "change",
+                              "rsi", "volume", "market_cap", "sector"]
+    unknown = [f for f in wanted if f not in SCAN_FIELDS]
+    if unknown:
+        raise TradingViewError(f"unknown field(s): {', '.join(unknown)}; "
+                               f"available: {', '.join(sorted(SCAN_FIELDS))}")
+    built = list(COMMON_STOCK_FILTERS) if common_stock_only else []
+    for f in filters:
+        field = str(f.get("field", ""))
+        if field not in SCAN_FIELDS:
+            raise TradingViewError(f"unknown filter field {field!r}; "
+                                   f"available: {', '.join(sorted(SCAN_FIELDS))}")
+        op = str(f.get("op", "greater"))
+        if op not in ("greater", "less", "egreater", "eless", "equal",
+                      "nequal", "in_range", "above%", "below%"):
+            raise TradingViewError(f"unknown operation {op!r}")
+        built.append({"left": SCAN_FIELDS[field], "operation": op,
+                      "right": f.get("value")})
+    if sort_by not in SCAN_FIELDS:
+        raise TradingViewError(f"cannot sort by {sort_by!r}")
+    raw = _scan({
+        "filter": built,
+        "options": {"lang": "en"},
+        "symbols": {"query": {"types": []}, "tickers": []},
+        "columns": [SCAN_FIELDS[f] for f in wanted],
+        "sort": {"sortBy": SCAN_FIELDS[sort_by],
+                 "sortOrder": "desc" if descending else "asc"},
+        "range": [0, max(1, min(int(limit), 100))],
+    }, market=market, timeout=timeout)
+    return _rows(raw, wanted)
+
+
+TECHNICAL_FIELDS = ["close", "change", "rsi", "macd", "macd_signal", "sma20",
+                    "sma50", "sma200", "atr", "volatility", "perf_week",
+                    "perf_month", "perf_ytd", "recommendation"]
+
+
+def technicals(symbol: str, *, market: str = "america",
+               timeout: float = 20.0) -> Dict[str, Any]:
+    """TradingView's own indicator snapshot for one symbol."""
+    rows = quotes([symbol], fields=TECHNICAL_FIELDS, market=market,
+                  timeout=timeout)
+    if not rows:
+        raise TradingViewError(f"no data for {symbol!r} — check the exchange "
+                               f"prefix, e.g. NASDAQ:AAPL")
+    return rows[0]

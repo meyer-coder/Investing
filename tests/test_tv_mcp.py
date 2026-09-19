@@ -40,7 +40,8 @@ def test_tools_are_declared_properly():
                            "method": "tools/list"})["result"]["tools"]
     names = {s["name"] for s in specs}
     assert names == {"search_symbols", "get_bars", "backtest", "compare_strategies",
-                     "walk_forward", "backtest_evolved_agent", "strategy_language"}
+                     "walk_forward", "backtest_evolved_agent", "strategy_language",
+                     "quote", "technicals", "screener"}
     for spec in specs:
         assert spec["description"] and spec["inputSchema"]["type"] == "object"
         for key in spec["inputSchema"].get("required", []):
@@ -321,3 +322,85 @@ def test_each_walk_forward_window_gets_its_own_features():
     assert first is not second
     assert first.dates[0] != second.dates[0]
     assert view.features(early) is first          # and caching still works
+
+
+# ------------------------------------------------------------ market scanning
+
+def test_quote_reports_the_day(monkeypatch):
+    monkeypatch.setattr(tv_mcp.tvdata, "quotes", lambda *a, **k: [
+        {"symbol": "NASDAQ:AAPL", "name": "AAPL", "description": "Apple Inc.",
+         "close": 336.13, "change": -0.2581, "volume": 86588048,
+         "market_cap": 4905541689620}])
+    result = _call(_server(), "quote", symbols=["NASDAQ:AAPL"])
+    assert result["isError"] is False
+    assert result["structuredContent"]["quotes"][0]["close"] == 336.13
+    text = _text(result)
+    assert "NASDAQ:AAPL" in text and "-0.26%" in text and "Apple" in text
+
+
+def test_quote_needs_symbols():
+    assert _call(_server(), "quote")["isError"] is True
+
+
+def test_quote_failures_are_reported(monkeypatch):
+    def boom(*a, **k):
+        raise tv_mcp.tvdata.TradingViewError("the scanner refused the request")
+    monkeypatch.setattr(tv_mcp.tvdata, "quotes", boom)
+    result = _call(_server(), "quote", symbols=["NASDAQ:AAPL"])
+    assert result["isError"] is True and "scanner refused" in _text(result)
+
+
+def test_technicals_says_which_side_of_the_200(monkeypatch):
+    monkeypatch.setattr(tv_mcp.tvdata, "technicals", lambda *a, **k: {
+        "symbol": "NASDAQ:AAPL", "close": 336.13, "rsi": 64.25,
+        "sma50": 320.14, "sma200": 286.34, "perf_ytd": 23.46})
+    result = _call(_server(), "technicals", symbol="NASDAQ:AAPL")
+    text = _text(result)
+    assert "RSI(14)" in text and "64.25" in text
+    assert "above" in text and "+17.4%" in text      # 336.13 / 286.34 - 1
+
+
+def test_technicals_needs_a_symbol():
+    assert _call(_server(), "technicals")["isError"] is True
+
+
+def test_screener_passes_filters_through(monkeypatch):
+    seen = {}
+
+    def fake_screen(filters, **kwargs):
+        seen["filters"] = filters
+        seen["kwargs"] = kwargs
+        return [{"symbol": "NYSE:BAC", "description": "Bank of America",
+                 "close": 57.73, "change": -0.77, "rsi": 29.16}]
+
+    monkeypatch.setattr(tv_mcp.tvdata, "screen", fake_screen)
+    result = _call(_server(), "screener",
+                   filters=[{"field": "rsi", "op": "less", "value": 35}],
+                   limit=5, sort_by="close", ascending=True)
+    assert seen["filters"] == [{"field": "rsi", "op": "less", "value": 35}]
+    assert seen["kwargs"]["limit"] == 5
+    assert seen["kwargs"]["sort_by"] == "close"
+    assert seen["kwargs"]["descending"] is False
+    assert seen["kwargs"]["common_stock_only"] is True
+    text = _text(result)
+    assert "NYSE:BAC" in text and "rsi" in text
+    assert "candidates, not signals" in text
+
+
+def test_screener_can_include_every_share_class(monkeypatch):
+    seen = {}
+    monkeypatch.setattr(tv_mcp.tvdata, "screen",
+                        lambda filters, **k: (seen.update(k), [])[1])
+    _call(_server(), "screener", filters=[{"field": "rsi", "op": "less", "value": 35}],
+          include_all_share_classes=True)
+    assert seen["common_stock_only"] is False
+
+
+def test_screener_needs_filters():
+    result = _call(_server(), "screener")
+    assert result["isError"] is True
+
+
+def test_screener_rejects_junk_filters():
+    result = _call(_server(), "screener", filters=["rsi < 35"])
+    assert result["isError"] is True and "object" in _text(result)
