@@ -409,6 +409,8 @@ class MCPHandler(BaseHTTPRequestHandler):
         without reading the body leaves those bytes at the head of the next
         request on a keep-alive connection, and every later request fails to
         parse for no visible reason.
+
+        A failure is answered with 404, not 401 - see _deny().
         """
         if self.token:
             header = self.headers.get("Authorization") or ""
@@ -418,6 +420,20 @@ class MCPHandler(BaseHTTPRequestHandler):
         if origin and self.allowed_origins and origin not in self.allowed_origins:
             return False
         return True
+
+    def _deny(self) -> None:
+        """Answer an unauthorised request with 404, never 401.
+
+        In MCP a 401 means "authenticate with me over OAuth": a client that
+        gets one goes looking for an authorization server, fails to register
+        with the one that does not exist, and reports a broken sign-in service
+        rather than a rejected token.  A bearer token pasted into the client's
+        request headers is not OAuth, so saying 401 sends the client down a
+        road this server has no intention of paving.  404 keeps the endpoint
+        indistinguishable from a wrong path, which is also what you want from
+        a URL on the public internet.
+        """
+        self._respond(404, {"error": "not found"})
 
     def _on_endpoint(self) -> bool:
         return self.path.split("?")[0].rstrip("/") in (self.endpoint.rstrip("/"), "")
@@ -446,7 +462,7 @@ class MCPHandler(BaseHTTPRequestHandler):
             self._respond(404, {"error": "not found"})
             return
         if not self._authorised():
-            self._respond(401, {"error": "unauthorised"})
+            self._deny()
             return
         # This server never pushes; 405 is the spec's answer for "no SSE here".
         self._respond(405, {"error": "this server does not stream"})
@@ -459,7 +475,7 @@ class MCPHandler(BaseHTTPRequestHandler):
         raw = self._read_body()
 
         if not self._authorised():
-            self._respond(401, {"error": "unauthorised"})
+            self._deny()
             return
 
         if self.path.split("?")[0].rstrip("/") == "/health":

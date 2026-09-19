@@ -148,11 +148,31 @@ def test_bearer_token_is_enforced(server):
         msg = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "ping"}).encode()
         status, _ = request(server, "POST", body=msg,
                             headers={"Content-Type": "application/json"})
-        assert status == 401
+        assert status == 404
         status, _ = request(server, "POST", body=msg,
                             headers={"Content-Type": "application/json",
                                      "Authorization": "Bearer secret"})
         assert status == 200
+    finally:
+        MCPHandler.token = ""
+
+
+def test_rejected_token_never_answers_401(server):
+    """401 tells an MCP client to start OAuth discovery.
+
+    A client that gets one looks for an authorization server, fails to
+    register with the one that isn't there, and reports a broken sign-in
+    service instead of a rejected token - so a token-protected server must
+    never answer 401 on any method.
+    """
+    MCPHandler.token = "secret"
+    try:
+        msg = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "ping"}).encode()
+        for method, body in (("POST", msg), ("GET", None), ("HEAD", None)):
+            status, _ = request(server, method, body=body,
+                                headers={"Content-Type": "application/json",
+                                         "Authorization": "Bearer wrong"})
+            assert status != 401, f"{method} answered 401 with a bad token"
     finally:
         MCPHandler.token = ""
 
