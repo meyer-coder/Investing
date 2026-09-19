@@ -23,13 +23,27 @@ warn() { printf '%s\n' "$*" >&2; }
 die()  { printf 'error: %s\n' "$*" >&2; exit 1; }
 
 load_config() {
+    # Repo defaults, then this machine's overrides, then the environment —
+    # which means holding the environment aside while the files are sourced,
+    # since a plain assignment in a file would otherwise clobber it.
+    # Nothing here prompts: `tunnel` should never need an answer to start.
+    local env_host="${TUNNEL_HOSTNAME:-}" env_name="${TUNNEL_NAME:-}"
+    local env_server="${SERVER:-}" env_port="${PORT:-}" env_endpoint="${ENDPOINT:-}"
+    # shellcheck disable=SC1090
+    [ -f "$REPO_DIR/tunnel.conf" ] && . "$REPO_DIR/tunnel.conf"
     # shellcheck disable=SC1090
     [ -f "$CONFIG_FILE" ] && . "$CONFIG_FILE"
+    [ -n "$env_host" ] && TUNNEL_HOSTNAME="$env_host"
+    [ -n "$env_name" ] && TUNNEL_NAME="$env_name"
+    [ -n "$env_server" ] && SERVER="$env_server"
+    [ -n "$env_port" ] && PORT="$env_port"
+    [ -n "$env_endpoint" ] && ENDPOINT="$env_endpoint"
     PORT="${PORT:-8787}"
     ENDPOINT="${ENDPOINT:-/mcp}"
     SERVER="${SERVER:-tradingview}"
     TUNNEL_NAME="${TUNNEL_NAME:-evotrader}"
     TUNNEL_HOSTNAME="${TUNNEL_HOSTNAME:-}"
+    return 0
 }
 
 public_url() {
@@ -51,7 +65,7 @@ alive() { [ -f "$LOG_DIR/$1.pid" ] && kill -0 "$(cat "$LOG_DIR/$1.pid")" 2>/dev/
 # ------------------------------------------------------------------- setup
 
 cmd_setup() {
-    say "Setting up the tunnel. Enter is fine for any default."
+    say "Changing this machine's settings. Enter keeps the current value."
     say ""
     local hostname name port server
     read -r -p "Permanent hostname (blank = a new random URL each run): " hostname
@@ -71,7 +85,7 @@ PORT="${port:-${PORT:-8787}}"
 ENDPOINT="${ENDPOINT:-/mcp}"
 EOF
     say ""
-    say "saved to $CONFIG_FILE"
+    say "saved to $CONFIG_FILE (this machine only; repo defaults are in tunnel.conf)"
     if [ -n "$hostname" ]; then
         say ""
         say "If you have not created that tunnel yet, once only:"
@@ -96,9 +110,28 @@ ensure_deps() {
 
 # ---------------------------------------------------------------------- up
 
+ensure_tunnel() {
+    # A named tunnel that does not exist yet is a one-off setup step, so do it
+    # rather than printing instructions for it.
+    [ -n "$TUNNEL_HOSTNAME" ] || return 0
+    if [ ! -f "$HOME/.cloudflared/cert.pem" ]; then
+        die "cloudflared is not logged in yet — run once, it opens a browser:
+    cloudflared tunnel login"
+    fi
+    if cloudflared tunnel list 2>/dev/null | awk '{print $2}' | grep -qx "$TUNNEL_NAME"; then
+        return 0
+    fi
+    say "creating the tunnel $TUNNEL_NAME..."
+    cloudflared tunnel create "$TUNNEL_NAME" >/dev/null \
+        || die "could not create the tunnel"
+    cloudflared tunnel route dns "$TUNNEL_NAME" "$TUNNEL_HOSTNAME" >/dev/null \
+        || die "could not point $TUNNEL_HOSTNAME at the tunnel"
+    say "created, and $TUNNEL_HOSTNAME now routes to it"
+}
+
 cmd_up() {
-    [ -f "$CONFIG_FILE" ] || { cmd_setup; load_config; }
     ensure_deps
+    ensure_tunnel
     mkdir -p "$LOG_DIR"
 
     if alive server && alive tunnel; then

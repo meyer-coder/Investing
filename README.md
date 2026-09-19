@@ -489,10 +489,15 @@ scripts/tunnel install     # once: adds `tunnel` to your shell
 tunnel                     # starts everything, prints the connector URL
 ```
 
-`tunnel` on a machine with no settings asks four questions, saves them to
-`~/.mcp-tunnel.conf`, installs anything missing (numpy, cloudflared), starts the
-server and the tunnel **detached** so closing the terminal does not kill them,
-and then checks the public URL end to end rather than assuming it works.
+`tunnel` asks nothing. It reads `tunnel.conf` from the repo, installs anything
+missing (numpy, cloudflared), creates the Cloudflare tunnel and its DNS record
+if they do not exist yet, starts the server and the tunnel **detached** so
+closing the terminal does not kill them, and then checks the public URL end to
+end rather than assuming it works.
+
+Settings live in `tunnel.conf` in the repo. Override them for one machine in
+`~/.mcp-tunnel.conf` (or with environment variables, which win over both);
+`tunnel setup` writes that file for you.
 
 ```
 tunnel            start (or report that it is already up)
