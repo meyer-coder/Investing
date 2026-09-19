@@ -1,9 +1,9 @@
 import numpy as np
 
-from evotrader.data import Bars, Universe
-from evotrader.features import build_features
-from evotrader.genome import Genome, compile_genome
-from evotrader.runner import backtest_genome, buy_and_hold
+from investing.data import Bars, Universe
+from investing.features import build_features
+from investing.genome import Genome, compile_genome
+from investing.runner import backtest_genome, buy_and_hold
 
 
 def _ramp_universe(n=400):
@@ -81,7 +81,7 @@ def test_max_positions_limits_concurrent_holdings():
         "risk": {"max_position_pct": 0.5, "max_positions": 2},
     })
     compiled = compile_genome(genome)
-    from evotrader.runner import run_backtest
+    from investing.runner import run_backtest
     result = run_backtest(compiled, universe, features)
     symbols = {t.symbol for t in result.journal.trades}
     assert len(symbols) <= 2

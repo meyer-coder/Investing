@@ -1,4 +1,4 @@
-# evotrader
+# Investing
 
 Evolving paper-trading agents, bred by Claude.
 
@@ -55,19 +55,19 @@ trading* rather than on each bar.
 
 ```bash
 pip install -r requirements.txt
-python -m evotrader.cli doctor          # checks data access, credentials, deps
+python -m investing.cli doctor          # checks data access, credentials, deps
 
 # a cheap first run: 30 agents, 10 generations, capped at $5 of API spend
-python -m evotrader.cli run --config configs/quick.json
+python -m investing.cli run --config configs/quick.json
 
 # no API key and no network: synthetic prices, mutation-only breeding
-python -m evotrader.cli run --config configs/offline.json
+python -m investing.cli run --config configs/offline.json
 
 # the real thing
-python -m evotrader.cli run --config configs/default.json     # 100 x 1000
+python -m investing.cli run --config configs/default.json     # 100 x 1000
 ```
 
-Every run streams progress and writes to `runs/evotrader.sqlite`:
+Every run streams progress and writes to `runs/investing.sqlite`:
 
 ```
 gen   17 | best +1.412 | mean -0.286 | Regime-Gated Dip Buyer  ret +91.2% (bh +43.0%) sharpe 1.21 mdd -12.4% trades 46 win 61% | 6.8s | $0.21 (run $3.44)
@@ -78,10 +78,10 @@ gen   17 | best +1.412 | mean -0.286 | Regime-Gated Dip Buyer  ret +91.2% (bh +4
 Then:
 
 ```bash
-python -m evotrader.cli report --html reports/run.html   # leaderboard + chart + Claude's analysis
-python -m evotrader.cli inspect <genome-id>              # rules, metrics, trades, ancestry
-python -m evotrader.cli backtest <genome-id> --start 2025-01-01 --end 2025-12-31
-python -m evotrader.cli resume <run-id> --generations 200
+python -m investing.cli report --html reports/run.html   # leaderboard + chart + Claude's analysis
+python -m investing.cli inspect <genome-id>              # rules, metrics, trades, ancestry
+python -m investing.cli backtest <genome-id> --start 2025-01-01 --end 2025-12-31
+python -m investing.cli resume <run-id> --generations 200
 ```
 
 Runs checkpoint every generation, so `resume` picks up exactly where a run
@@ -194,13 +194,13 @@ their shared calendar. `--offline` swaps in a deterministic synthetic
 random-walk generator so the whole system runs with no network at all.
 
 ```bash
-python -m evotrader.cli fetch --symbols SPY,QQQ,IWM,TLT,GLD --start 2005-01-01
+python -m investing.cli fetch --symbols SPY,QQQ,IWM,TLT,GLD --start 2005-01-01
 ```
 
 ## Layout
 
 ```
-evotrader/
+investing/
   indicators.py   vectorised technical indicators
   data.py         fetching, caching, alignment, train/test splitting
   features.py     the per-bar feature vocabulary agents trade on

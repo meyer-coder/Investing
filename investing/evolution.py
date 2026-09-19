@@ -247,7 +247,7 @@ class Evolution:
                 reports.append(self.step())
         except KeyboardInterrupt:
             self._log("interrupted; the last checkpoint is intact "
-                      f"(resume with: evotrader resume {self.run_id})")
+                      f"(resume with: investing resume {self.run_id})")
             self.store.set_status(self.run_id, "interrupted")
             return reports
         finally:

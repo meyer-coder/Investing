@@ -1,8 +1,8 @@
-"""evotrader — evolving paper-trading agents, bred by Claude.
+"""investing — evolving paper-trading agents, bred by Claude.
 
 Quick start::
 
-    from evotrader import EvolutionConfig, Evolution
+    from investing import EvolutionConfig, Evolution
 
     cfg = EvolutionConfig(symbols=["SPY", "QQQ"], population=40, generations=10)
     Evolution(cfg).run()

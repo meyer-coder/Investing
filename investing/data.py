@@ -19,9 +19,9 @@ from typing import Dict, Iterable, List, Sequence, Tuple
 
 import numpy as np
 
-CACHE_DIR = os.environ.get("EVOTRADER_CACHE", os.path.join("data", "cache"))
+CACHE_DIR = os.environ.get("INVESTING_CACHE", os.path.join("data", "cache"))
 _YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
-_UA = "Mozilla/5.0 (compatible; evotrader/0.1)"
+_UA = "Mozilla/5.0 (compatible; investing/0.1)"
 
 
 class DataError(RuntimeError):

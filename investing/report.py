@@ -121,7 +121,7 @@ def lineage(store: Store, genome_id: str, *, max_depth: int = 40) -> List[Genome
 def markdown_report(store: Store, run_id: str, *, limit: int = 15) -> str:
     s = run_summary(store, run_id)
     cfg = s["config"]
-    out = [f"# evotrader run `{run_id}`", "",
+    out = [f"# investing run `{run_id}`", "",
            f"* status: **{s['status']}**",
            f"* {cfg['population']} agents x {s['generations']} generations "
            f"(breeder `{cfg['breeder']}`, model `{cfg['model']}`)",
@@ -219,7 +219,7 @@ def html_report(store: Store, run_id: str, *, limit: int = 20) -> str:
                           f"<ul>{lessons}</ul>")
             break
     return f"""<!doctype html>
-<meta charset="utf-8"><title>evotrader {e(run_id)}</title>
+<meta charset="utf-8"><title>investing {e(run_id)}</title>
 <style>
  body{{font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:2rem auto;max-width:52rem;color:#1f2328}}
  table{{border-collapse:collapse;width:100%;font-size:13px}}
@@ -228,7 +228,7 @@ def html_report(store: Store, run_id: str, *, limit: int = 20) -> str:
  pre{{background:#f6f8fa;padding:.75rem;border-radius:6px;overflow-x:auto;white-space:pre-wrap}}
  .meta{{color:#57606a}}
 </style>
-<h1>evotrader run {e(run_id)}</h1>
+<h1>investing run {e(run_id)}</h1>
 <p class=meta>{cfg['population']} agents &times; {s['generations']} generations &middot;
 breeder {e(cfg['breeder'])} &middot; model {e(cfg['model'])} &middot;
 {e(', '.join(cfg['symbols']))} &middot; {e(cfg['start'])} to {e(cfg['end'])}

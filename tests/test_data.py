@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
 
-from evotrader.data import (Bars, DataError, Universe, holdout_split, load_universe,
+from investing.data import (Bars, DataError, Universe, holdout_split, load_universe,
                             synthetic_bars, walk_forward_splits)
-from evotrader.features import FEATURE_SET, MARKET_FEATURES, build_features
+from investing.features import FEATURE_SET, MARKET_FEATURES, build_features
 
 
 def _universe(n=600):

@@ -48,7 +48,7 @@
     "ruin_penalty": 5.0
   },
   "run_id": "",
-  "db_path": "runs/evotrader.sqlite",
+  "db_path": "runs/investing.sqlite",
   "workers": 0,
   "checkpoint_every": 1,
   "validate_top": 10,

@@ -4,11 +4,11 @@ import random
 
 import pytest
 
-from evotrader.config import EvolutionConfig
-from evotrader.evolution import Evolution
-from evotrader.genome import is_valid
-from evotrader.llm import Response, Usage
-from evotrader.store import Store
+from investing.config import EvolutionConfig
+from investing.evolution import Evolution
+from investing.genome import is_valid
+from investing.llm import Response, Usage
+from investing.store import Store
 from tests.test_breeder import _payload
 
 
@@ -107,7 +107,7 @@ def test_llm_breeding_path_end_to_end(tmp_path):
 
 
 def test_a_genome_that_cannot_run_is_recorded_not_fatal(tmp_path):
-    from evotrader.genome import Genome
+    from investing.genome import Genome
     evolution = Evolution(_cfg(tmp_path, generations=1))
     evolution.prepare()
     evolution.start()

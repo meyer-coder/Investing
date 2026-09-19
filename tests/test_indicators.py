@@ -1,6 +1,6 @@
 import numpy as np
 
-from evotrader import indicators as ind
+from investing import indicators as ind
 
 
 def test_sma_matches_manual_mean():

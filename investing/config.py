@@ -48,7 +48,7 @@ class EvolutionConfig:
 
     # --- plumbing
     run_id: str = ""
-    db_path: str = os.path.join("runs", "evotrader.sqlite")
+    db_path: str = os.path.join("runs", "investing.sqlite")
     workers: int = 0                   # 0 = auto
     checkpoint_every: int = 1
     validate_top: int = 10             # genomes scored on the held-out window

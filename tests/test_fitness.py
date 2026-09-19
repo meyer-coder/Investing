@@ -1,8 +1,8 @@
 import numpy as np
 
-from evotrader.fitness import (Evaluation, FitnessConfig, Metrics, compute_metrics,
+from investing.fitness import (Evaluation, FitnessConfig, Metrics, compute_metrics,
                                fitness_score, rank)
-from evotrader.journal import Trade
+from investing.journal import Trade
 
 
 def _trade(ret, pnl, bars=10):

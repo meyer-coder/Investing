@@ -1,7 +1,7 @@
 import pytest
 
-from evotrader.dsl import DslError, compile_rule, parse
-from evotrader.features import FEATURE_SET
+from investing.dsl import DslError, compile_rule, parse
+from investing.features import FEATURE_SET
 
 
 def ev(src, cur, prev=None):

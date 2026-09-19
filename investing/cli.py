@@ -1,9 +1,9 @@
 """Command line interface.
 
-    evotrader run --population 100 --generations 1000
-    evotrader resume run-20260101-120000-ab12
-    evotrader report --html reports/run.html
-    evotrader inspect <genome-id>
+    investing run --population 100 --generations 1000
+    investing resume run-20260101-120000-ab12
+    investing report --html reports/run.html
+    investing inspect <genome-id>
 """
 from __future__ import annotations
 
@@ -48,7 +48,7 @@ def _add_run_flags(p: argparse.ArgumentParser) -> None:
     p.add_argument("--offline", action="store_true",
                    help="use synthetic data instead of fetching prices")
     p.add_argument("--refresh-data", action="store_true", help="re-download price data")
-    p.add_argument("--db", dest="db_path", help="SQLite path (default runs/evotrader.sqlite)")
+    p.add_argument("--db", dest="db_path", help="SQLite path (default runs/investing.sqlite)")
     p.add_argument("--test-frac", type=float, help="held-out tail fraction")
     p.add_argument("--note", help="free text stored with the run")
     p.add_argument("--quiet", action="store_true")
@@ -96,7 +96,7 @@ def cmd_run(args: argparse.Namespace) -> int:
     evolution = Evolution(cfg)
     evolution.run()
     print_report(evolution.store, evolution.run_id, limit=10)
-    print(f"resume with: evotrader resume {evolution.run_id} --db {cfg.db_path}")
+    print(f"resume with: investing resume {evolution.run_id} --db {cfg.db_path}")
     return 0
 
 
@@ -256,7 +256,7 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="evotrader",
+        prog="investing",
         description="Evolve paper-trading agents; Claude breeds each generation "
                     "from the last one's winners.")
     sub = p.add_subparsers(dest="command", required=True)

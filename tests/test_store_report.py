@@ -1,12 +1,12 @@
 import json
 import random
 
-from evotrader.config import EvolutionConfig
-from evotrader.fitness import Evaluation, Metrics
-from evotrader.journal import Trade
-from evotrader.population import seed_population
-from evotrader.report import html_report, lineage, markdown_report, sparkline
-from evotrader.store import Store
+from investing.config import EvolutionConfig
+from investing.fitness import Evaluation, Metrics
+from investing.journal import Trade
+from investing.population import seed_population
+from investing.report import html_report, lineage, markdown_report, sparkline
+from investing.store import Store
 
 
 def _store(tmp_path):
@@ -75,7 +75,7 @@ def test_reports_render(tmp_path):
     store.save_generation("r1", 1, best_score=1.9, mean_score=0.4, median_score=0.3,
                           best_genome_id=pop[0].id)
     html = html_report(store, "r1")
-    assert "evotrader run r1" in html and "<svg" in html and "it bought dips" in html
+    assert "investing run r1" in html and "<svg" in html and "it bought dips" in html
     md = markdown_report(store, "r1")
     assert "## Champion genome" in md and "dips work" in md
 

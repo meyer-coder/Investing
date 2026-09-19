@@ -2,8 +2,8 @@ import random
 
 import pytest
 
-from evotrader.genome import Genome, GenomeError, RiskParams, compile_genome, is_valid
-from evotrader.population import (crossover, mutate, random_genome, seed_population)
+from investing.genome import Genome, GenomeError, RiskParams, compile_genome, is_valid
+from investing.population import (crossover, mutate, random_genome, seed_population)
 
 
 def _genome(**over):

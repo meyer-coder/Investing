@@ -1,4 +1,4 @@
-from evotrader.broker import PaperBroker
+from investing.broker import PaperBroker
 
 
 def test_buy_charges_costs_and_records_position():

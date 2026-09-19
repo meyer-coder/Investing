@@ -1,12 +1,12 @@
 """The Claude-driven breeding path, exercised with a stubbed client."""
 import random
 
-from evotrader.breeder import HybridBreeder, LLMBreeder, MutationBreeder
-from evotrader.fitness import Evaluation, Metrics
-from evotrader.genome import Genome, is_valid
-from evotrader.journal import Journal, Trade
-from evotrader.llm import LLMError, Response
-from evotrader.prompts import GENOME_JSON_SCHEMA, build_breeding_prompt
+from investing.breeder import HybridBreeder, LLMBreeder, MutationBreeder
+from investing.fitness import Evaluation, Metrics
+from investing.genome import Genome, is_valid
+from investing.journal import Journal, Trade
+from investing.llm import LLMError, Response
+from investing.prompts import GENOME_JSON_SCHEMA, build_breeding_prompt
 
 
 class FakeClaude:
