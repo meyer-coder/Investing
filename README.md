@@ -482,6 +482,31 @@ tell whether a tunnel is up.
 
 ## Keeping the connector up
 
+One command does all of it — first-run setup included:
+
+```bash
+scripts/tunnel install     # once: adds `tunnel` to your shell
+tunnel                     # starts everything, prints the connector URL
+```
+
+`tunnel` on a machine with no settings asks four questions, saves them to
+`~/.mcp-tunnel.conf`, installs anything missing (numpy, cloudflared), starts the
+server and the tunnel **detached** so closing the terminal does not kill them,
+and then checks the public URL end to end rather than assuming it works.
+
+```
+tunnel            start (or report that it is already up)
+tunnel stop       stop both
+tunnel status     what is running, and what the public address answers
+tunnel url        print the connector URL
+tunnel setup      change the saved settings
+tunnel logs       the last lines of the server log
+```
+
+The rest of this section is what `tunnel` is doing underneath, and how to do it
+by hand.
+
+
 Both processes — the server and the tunnel — have to be running for the
 connector to work, and a quick tunnel invents a new URL every time it starts,
 which means editing the connector again. Three ways out, in increasing order of
