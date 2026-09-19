@@ -8,6 +8,7 @@
 #   tunnel url       print the connector URL
 #   tunnel setup     change the saved settings
 #   tunnel install   add the `tunnel` command to your shell
+#   tunnel autostart start at login and stay up (macOS); `off` to undo
 #
 # Both processes are started detached, so closing the terminal does not kill
 # them.
@@ -238,6 +239,53 @@ cmd_url() {
     if [ -n "$url" ]; then say "$url"; else say "no URL yet — run \`tunnel\`"; fi
 }
 
+AGENT_LABEL="com.mcp-tunnel"
+AGENT_PLIST="$HOME/Library/LaunchAgents/$AGENT_LABEL.plist"
+
+cmd_autostart() {
+    [ "$(uname)" = "Darwin" ] || die "autostart is macOS only"
+    if [ "${1:-on}" = "off" ]; then
+        launchctl unload "$AGENT_PLIST" 2>/dev/null || true
+        rm -f "$AGENT_PLIST"
+        say "autostart off"
+        return 0
+    fi
+    mkdir -p "$(dirname "$AGENT_PLIST")"
+    # RunAtLoad covers reboots; StartInterval covers anything that dies in
+    # between, because `tunnel` is idempotent — it exits immediately when the
+    # server is already answering.
+    cat > "$AGENT_PLIST" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>$AGENT_LABEL</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>$SCRIPT_DIR/tunnel</string>
+    <string>up</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key><string>$HOME</string>
+  </dict>
+  <key>WorkingDirectory</key><string>$REPO_DIR</string>
+  <key>RunAtLoad</key><true/>
+  <key>StartInterval</key><integer>300</integer>
+  <key>StandardOutPath</key><string>$LOG_DIR/autostart.log</string>
+  <key>StandardErrorPath</key><string>$LOG_DIR/autostart.log</string>
+</dict>
+</plist>
+EOF
+    launchctl unload "$AGENT_PLIST" 2>/dev/null || true
+    launchctl load "$AGENT_PLIST" 2>/dev/null \
+        || die "could not load the agent; check $AGENT_PLIST"
+    say "autostart on — starts at login, and re-checks every 5 minutes"
+    say "  off again with:  tunnel autostart off"
+}
+
 cmd_install() {
     local marker="# >>> mcp tunnel >>>"
     local rc="$HOME/.zshrc"
@@ -264,6 +312,7 @@ case "${1:-up}" in
     url)         cmd_url ;;
     setup)       cmd_setup ;;
     install)     cmd_install ;;
+    autostart)   cmd_autostart "${2:-on}" ;;
     logs)        tail -n "${2:-20}" "$LOG_DIR/server.log" ;;
-    *)           die "unknown command: $1 (try: up, stop, status, url, setup, install, logs)" ;;
+    *)           die "unknown command: $1 (try: up, stop, status, url, setup, install, autostart, logs)" ;;
 esac

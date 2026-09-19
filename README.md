@@ -501,6 +501,7 @@ Settings live in `tunnel.conf` in the repo. Override them for one machine in
 
 ```
 tunnel            start (or report that it is already up)
+tunnel autostart  start at login, and re-check every 5 minutes (macOS)
 tunnel stop       stop both
 tunnel status     what is running, and what the public address answers
 tunnel url        print the connector URL
@@ -562,6 +563,23 @@ answers, at random.
 agent: edit the two paths, drop it in `~/Library/LaunchAgents`, `launchctl
 load` it once, and both processes start at login and restart if they die.
 Combined with a named tunnel there is nothing left to rerun.
+
+### What actually takes it down
+
+A named tunnel does not expire, and neither does its DNS record. `cloudflared`
+reconnects by itself after a dropped connection or a wake from sleep. What ends
+it is more mundane:
+
+| | |
+|---|---|
+| reboot or shutdown | `tunnel`, or `tunnel autostart` once and never again |
+| the Mac asleep | unreachable while it sleeps, back on wake |
+| the domain expiring | the one calendar item — turn on auto-renew |
+| deleting the tunnel or its DNS record | recreated by `tunnel` on the next run |
+| a very old `cloudflared` | `brew upgrade cloudflared` once in a while |
+
+A *quick* tunnel (`trycloudflare.com`) is the one that really is temporary — a
+new hostname every run. That is what the named tunnel replaced.
 
 None of this survives the Mac sleeping — the connector is down while the
 machine is. If you want it up regardless, run the server on something that
