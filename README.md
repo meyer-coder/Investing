@@ -132,26 +132,27 @@ about detecting a sign-in flow.
 ## One command, and never running it again
 
 ```bash
-scripts/tunnel-up.sh        # starts the server and tunnel, prints the URL
-scripts/tunnel-down.sh      # stops both
+scripts/tunnel install     # once: adds `tunnel` to your shell
+tunnel                     # everything: setup, start, print the URL
 ```
 
-Make it a word you can type from anywhere:
+On a machine with no settings, `tunnel` asks four questions, saves them to
+`~/.mcp-tunnel.conf`, installs `cloudflared` if it is missing, starts the server
+and tunnel **detached** — closing the terminal does not kill them — and then
+checks the public URL end to end instead of assuming two live processes mean a
+working connector.
 
-```bash
-cat >> ~/.zshrc <<'EOF'
-
-tunnel() {
-  case "$1" in
-    stop) "$HOME/path/to/repo/scripts/tunnel-down.sh" ;;
-    *) ( cd "$HOME/path/to/repo" && TUNNEL_HOSTNAME=mcp.yourdomain.com scripts/tunnel-up.sh ) ;;
-  esac
-}
-EOF
-source ~/.zshrc
+```
+tunnel            start, or say it is already up
+tunnel stop       stop both
+tunnel status     what is running, and what the public address answers
+tunnel url        print the connector URL
+tunnel setup      change the saved settings
+tunnel logs       last lines of the server log
 ```
 
-Then `tunnel` and `tunnel stop`.
+`scripts/tunnel-up.sh` and `tunnel-down.sh` are the plumbing underneath, if you
+would rather wire it up yourself.
 
 To start both at login and restart them if they die, edit the two paths in
 `scripts/com.mcp-tunnel.plist`, then:
