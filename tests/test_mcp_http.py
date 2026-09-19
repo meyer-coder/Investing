@@ -135,9 +135,12 @@ def test_a_newer_protocol_version_is_still_served(endpoint):
 # ------------------------------------------------------------------ security
 
 def test_a_token_is_required_when_one_is_set(endpoint):
+    """403, never 401: a 401 sends the client hunting for an OAuth server."""
     port = endpoint(token="secret-token")
-    status, headers, _ = call(port, body=INIT)
-    assert status == 401 and "Bearer" in headers["WWW-Authenticate"]
+    status, headers, body = call(port, body=INIT)
+    assert status == 403, "401 makes Claude start an OAuth flow that does not exist"
+    assert "WWW-Authenticate" not in headers
+    assert "Bearer" in body["error"]
     status, _, body = call(port, body=INIT,
                            headers={"Authorization": "Bearer secret-token"})
     assert status == 200 and body["result"]["serverInfo"]
@@ -147,7 +150,7 @@ def test_the_wrong_token_is_refused(endpoint):
     port = endpoint(token="secret-token")
     status, _, _ = call(port, body=INIT,
                         headers={"Authorization": "Bearer wrong"})
-    assert status == 401
+    assert status == 403
 
 
 def test_a_browser_origin_is_refused_by_default(endpoint):
@@ -198,7 +201,7 @@ def test_a_reused_connection_survives_a_refused_request(endpoint):
     body = json.dumps(INIT)
     headers = {"Content-Type": "application/json"}
 
-    conn.request("POST", "/mcp", body=body, headers=headers)      # 401, body unread
+    conn.request("POST", "/mcp", body=body, headers=headers)      # 403, body unread
     assert conn.getresponse().read() is not None
 
     conn.request("POST", "/mcp", body=body,                        # same connection

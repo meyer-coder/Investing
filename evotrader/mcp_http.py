@@ -114,8 +114,13 @@ class _Handler(BaseHTTPRequestHandler):
         if not self._origin_allowed():
             return 403, {"error": "origin not allowed"}, {}
         if not self._authorised():
-            return 401, {"error": "a bearer token is required"}, {
-                "WWW-Authenticate": 'Bearer realm="evotrader"'}
+            # Deliberately not 401. In MCP, 401 means "authenticate with me over
+            # OAuth", so a client that gets one goes looking for an
+            # authorization server — /.well-known/oauth-protected-resource,
+            # /register — finds nothing, and reports the connector as needing a
+            # sign-in that does not exist. 403 says no without starting that.
+            return 403, {"error": "a bearer token is required; send it as "
+                                  "Authorization: Bearer <token>"}, {}
         return None
 
     # -------------------------------------------------------------- methods

@@ -468,7 +468,10 @@ Some sharp edges worth knowing before you point the internet at it:
 * **Anyone who reaches the port can use the tools.** `--token` requires
   `Authorization: Bearer …`; where a client cannot send headers, an unguessable
   `--path` is the fallback. The server refuses to bind a public interface
-  without a token at all.
+  without a token at all. A request without the token gets **403, never 401**:
+  in MCP a 401 means "authenticate with me over OAuth", so a client that
+  receives one goes looking for an authorization server, finds nothing, and
+  reports the connector as needing a sign-in that does not exist.
 * **`--server both` serves the training view too**, which exposes a run's whole
   record. `--server tradingview` keeps the training database off the internet.
 * **The `Origin` header is validated**, so a web page your browser happens to
