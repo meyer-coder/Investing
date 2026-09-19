@@ -426,6 +426,36 @@ five-minute bars and the same 6,479 hourly ones, and a 24/7 crypto symbol gets
 the same few thousand bars spread over fewer days. So the deeper the timeframe,
 the further back the same window reaches.
 
+### Ten years of one-minute data
+
+The pull is not the hard part — 3.5 million bars (ten years of one-minute
+futures) arrives in roughly a minute and a half over the chart socket, if the
+account is entitled to it. What matters is what happens either side of that:
+
+| step | 3.5M bars |
+|---|---|
+| store write | 3.0s |
+| store read | 2.5s, 392 MB |
+| feature build | ~30s |
+| **one backtest** | **~2 minutes** (29,000 bars/sec through the engine) |
+
+So a deep intraday history is comfortable for testing a strategy and useless
+for evolving one: a hundred agents over a thousand generations is a hundred
+thousand backtests, which at two minutes each is not a run you can start.
+Evolve on daily bars; use the minute data to examine a survivor.
+
+The store is `.npz` rather than CSV for exactly this reason — text costs about
+six seconds per million bars to parse and binary about a fifth of a second.
+CSV remains the interchange format:
+
+```bash
+evotrader tv-import --file nq_1min.csv --symbol CME_MINI:NQ1! --timeframe 1
+evotrader tv-export --symbol CME_MINI:NQ1! --timeframe 1D --file out.csv
+```
+
+`tv-import` matches columns by header, so another tool's export loads as long
+as it has a date column and OHLC. Imports merge with what is already stored.
+
 ### The candle store
 
 `evotrader tv-fetch` pulls candles into `data/cache/tv` and merges them with

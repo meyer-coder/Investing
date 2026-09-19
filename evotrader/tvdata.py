@@ -46,9 +46,13 @@ from .data import Bars, DataError, Universe, align
 
 DATA_HOST = "data.tradingview.com"
 #: One series request tops out a few thousand bars short of a deep intraday
-#: history; earlier bars come a page at a time.
-MAX_PAGES = 12
-PAGE_SIZE = 5_000
+#: history; earlier bars come a page at a time.  Ten years of one-minute bars
+#: is roughly 3.5 million of them, which is hundreds of pages — so the ceiling
+#: is a time budget rather than a page count, and an account that is entitled
+#: to the history is what decides how far it actually gets.
+MAX_PAGES = 2_000
+PAGE_SIZE = 20_000
+MAX_BARS = 10_000_000
 SEARCH_URL = "https://symbol-search.tradingview.com/symbol_search/v3/"
 ORIGIN = "https://www.tradingview.com"
 _UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -423,10 +427,18 @@ def _session_id(prefix: str) -> str:
 
 def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
                session_token: str = "", timeout: float = 30.0,
-               drop_forming: bool = True, socket_factory=open_socket) -> Bars:
-    """Pull one symbol's OHLCV history from TradingView's chart feed."""
+               page_timeout: float = 15.0, drop_forming: bool = True,
+               progress=None, socket_factory=open_socket) -> Bars:
+    """Pull one symbol's OHLCV history from TradingView's chart feed.
+
+    ``timeout`` is the budget for the whole pull, not one message: ten years of
+    one-minute bars is millions of them and hundreds of pages, so a deep pull
+    wants minutes, not seconds.  ``progress`` is called with the running bar
+    count every tenth page.
+    """
     resolution = normalise_timeframe(timeframe)
-    count = max(10, min(int(bars), 20_000))
+    count = max(10, min(int(bars), MAX_BARS))
+    deadline = time.monotonic() + max(timeout, page_timeout * 4)
     token, _how = auth_token(session_token, timeout=timeout)
     ws = socket_factory(timeout=timeout)
     chart, series, sym_ref = _session_id("cs_"), "sds_1", "sds_sym_1"
@@ -445,13 +457,17 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
         # earlier pages until the server stops adding bars.
         pages = 0
         while len(rows) < count and pages < MAX_PAGES:
+            if time.monotonic() > deadline:
+                break                      # a deep pull, but not an endless one
             before = len(rows)
             ws.send(_packet("request_more_data",
                             [chart, series, min(count - before, PAGE_SIZE)]))
-            _read_series(ws, series, rows, timeout=timeout)
+            _read_series(ws, series, rows, timeout=page_timeout)
             if len(rows) <= before:
-                break
+                break                      # the feed has nothing older to give
             pages += 1
+            if progress is not None and pages % 10 == 0:
+                progress(len(rows))
         points = [rows[i] for i in sorted(rows)]
     except OSError as exc:
         raise TradingViewError(

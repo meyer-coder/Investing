@@ -445,6 +445,35 @@ def cmd_serve_http(args: argparse.Namespace) -> int:
     return http_main(argv)
 
 
+def cmd_tv_import(args: argparse.Namespace) -> int:
+    """Load bars from a CSV — any tool's export — into the local store."""
+    from .tvcache import cache_path, import_csv
+
+    try:
+        bars = import_csv(args.file, args.symbol, args.timeframe,
+                          merge=not args.replace)
+    except Exception as exc:  # noqa: BLE001 - the message is the useful part
+        print(f"import failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"{args.symbol} {args.timeframe}: {len(bars):,} bars "
+          f"{bars.dates[0]}..{bars.dates[-1]}")
+    print(f"stored at {cache_path(args.symbol, args.timeframe)}")
+    return 0
+
+
+def cmd_tv_export(args: argparse.Namespace) -> int:
+    """Write a stored series out as CSV."""
+    from .tvcache import export_csv
+
+    try:
+        path = export_csv(args.symbol, args.timeframe, args.file or "")
+    except Exception as exc:  # noqa: BLE001
+        print(f"export failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"wrote {path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -534,12 +563,30 @@ def build_parser() -> argparse.ArgumentParser:
     dep.add_argument("--timeout", type=float, default=40.0)
     dep.set_defaults(func=cmd_tv_depth)
 
+    imp = sub.add_parser("tv-import", help="load bars from a CSV into the store")
+    imp.add_argument("--file", required=True)
+    imp.add_argument("--symbol", required=True)
+    imp.add_argument("--timeframe", required=True)
+    imp.add_argument("--replace", action="store_true",
+                     help="discard what is stored rather than merging")
+    imp.set_defaults(func=cmd_tv_import)
+
+    exp = sub.add_parser("tv-export", help="write a stored series out as CSV")
+    exp.add_argument("--symbol", required=True)
+    exp.add_argument("--timeframe", required=True)
+    exp.add_argument("--file")
+    exp.set_defaults(func=cmd_tv_export)
+
     tvf = sub.add_parser("tv-fetch", help="pull candles into the local store, "
                                           "deepening it each run")
     tvf.add_argument("--symbols", default="NASDAQ:AAPL")
     tvf.add_argument("--timeframes", default="5,15,60,240,1D")
-    tvf.add_argument("--bars", type=int, default=20000)
-    tvf.add_argument("--timeout", type=float, default=40.0)
+    tvf.add_argument("--bars", type=int, default=20000,
+                     help="how many bars to ask for; 10 years of 1-minute is "
+                          "about 3,500,000")
+    tvf.add_argument("--timeout", type=float, default=40.0,
+                     help="budget for the whole pull, in seconds — a deep "
+                          "intraday history takes minutes, not seconds")
     tvf.set_defaults(func=cmd_tv_fetch)
 
     log = sub.add_parser("tv-login", help="store a TradingView login for every client")
