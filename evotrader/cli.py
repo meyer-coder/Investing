@@ -474,6 +474,28 @@ def cmd_tv_export(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_tv_archive(args: argparse.Namespace) -> int:
+    """Rebuild a futures archive from every expired quarterly contract."""
+    from .tvarchive import build, describe
+    from .tvdata import TradingViewError
+
+    def progress(symbol: str, bars: int) -> None:
+        print(f"  {symbol:<22} {bars:>7,} bars")
+
+    print(f"pulling {args.root} contracts back to {args.since} at {args.timeframe}")
+    try:
+        report = build(args.exchange, args.root, args.timeframe,
+                       since_year=args.since, bars=args.bars,
+                       back_adjust=not args.raw_prices, pause=args.pause,
+                       progress=progress)
+    except TradingViewError as exc:
+        print(f"archive failed: {exc}", file=sys.stderr)
+        return 1
+    print()
+    print(describe(report))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="evotrader",
@@ -576,6 +598,19 @@ def build_parser() -> argparse.ArgumentParser:
     exp.add_argument("--timeframe", required=True)
     exp.add_argument("--file")
     exp.set_defaults(func=cmd_tv_export)
+
+    arc = sub.add_parser("tv-archive", help="build deep futures history from "
+                                            "expired quarterly contracts")
+    arc.add_argument("--exchange", default="CME_MINI")
+    arc.add_argument("--root", default="NQ", help="NQ, ES, RTY, YM, CL, GC, ...")
+    arc.add_argument("--timeframe", default="5")
+    arc.add_argument("--since", type=int, default=2015, help="first contract year")
+    arc.add_argument("--bars", type=int, default=20000, help="bars per contract")
+    arc.add_argument("--raw-prices", action="store_true",
+                     help="leave the roll jumps in rather than back-adjusting")
+    arc.add_argument("--pause", type=float, default=0.5,
+                     help="seconds between contracts")
+    arc.set_defaults(func=cmd_tv_archive)
 
     tvf = sub.add_parser("tv-fetch", help="pull candles into the local store, "
                                           "deepening it each run")

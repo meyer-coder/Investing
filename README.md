@@ -456,6 +456,47 @@ evotrader tv-export --symbol CME_MINI:NQ1! --timeframe 1D --file out.csv
 `tv-import` matches columns by header, so another tool's export loads as long
 as it has a date column and OHLC. Imports merge with what is already stored.
 
+### Deep futures history, from expired contracts
+
+A futures root is not one series. Every quarterly contract — NQH2016, NQM2016,
+NQU2016, NQZ2016 — is its own symbol with its own window ending at its own
+expiry, so pulling forty of them returns forty windows scattered through a
+decade, none of which the continuous symbol will give you. The idea is
+Charlie's; this is the version with the caveats instrumented.
+
+```bash
+evotrader tv-archive --root NQ --timeframe 5 --since 2015
+```
+
+```
+CME_MINI:NQ#ARCHIVE 5: 81,136 bars from 18 contracts
+  2023-02-20 .. 2026-09-18  ·  320 sessions of 935 weekdays  ·  34% covered
+  largest hole: 73 days  ·  253.6 bars per session present
+  back-adjusted across 17 rolls (14 measured on daily overlap)
+  this is 34% of sessions, not a continuous history — indicators run across
+  the holes will average over months that are not there
+```
+
+**It is a decade of islands, not a decade of bars.** Each contract yields
+about nineteen sessions at 5-minute resolution, four or five at 1-minute, so a
+sixty-three-day quarter arrives about a third covered, and the holes between
+islands run to seventy days. The report says so every time rather than leaving
+it to be discovered in a backtest: a strategy tested on the concatenation is
+holding positions across months that are not in the data.
+
+**Roll basis.** Contracts trade at different levels, so splicing them raw
+leaves a jump at every boundary that nobody traded. Back-adjustment shifts the
+older contracts onto the newest one's scale — returns become continuous,
+absolute prices become fiction, which is the right bargain for testing a
+strategy. `--raw-prices` keeps the jumps.
+
+Measuring that shift needs an overlap, and the intraday windows rarely have
+one: they end three months apart. Each contract's *daily* series spans its
+whole life, though, so consecutive contracts overlap there by months — the
+archive pulls daily bars alongside and measures the basis on those, which took
+the measured rolls from 3 of 17 to 14 of 17. The three that remain are
+reported, not guessed at.
+
 ### The candle store
 
 `evotrader tv-fetch` pulls candles into `data/cache/tv` and merges them with
