@@ -203,6 +203,11 @@ A tunnel URL is the public internet. Before pointing it at anything:
 - Require a token (`Authorization: Bearer …`) if your connector can send
   headers. If it cannot, put a random string in the path and treat the URL
   itself as the credential.
+- **Refuse a missing token with 403, not 401.** In MCP a 401 means
+  "authenticate with me over OAuth", so a client that gets one starts hunting
+  for an authorization server — `/.well-known/oauth-protected-resource`,
+  `/register` — finds nothing, and reports your connector as needing a sign-in
+  that does not exist. On a server that is running perfectly.
 - Serve only what you mean to. If one process can serve several MCP servers,
   publishing "all of them" may expose more than the one you wanted.
 - Validate the `Origin` header and bind to `127.0.0.1`, so a web page your own

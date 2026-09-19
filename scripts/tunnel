@@ -49,6 +49,12 @@ public_url() {
 
 alive() { [ -f "$LOG_DIR/$1.pid" ] && kill -0 "$(cat "$LOG_DIR/$1.pid")" 2>/dev/null; }
 
+serving() {
+    # A live PID is not the same as a working server: a pid file goes stale and
+    # a recycled PID belongs to something else. Ask the port.
+    curl -fsS -m 3 "http://127.0.0.1:$PORT/health" >/dev/null 2>&1
+}
+
 # ------------------------------------------------------------------- setup
 
 cmd_setup() {
@@ -105,8 +111,23 @@ cmd_up() {
     # A half-dead pair is worse than a stopped one.
     if alive server || alive tunnel; then cmd_down >/dev/null 2>&1 || true; fi
 
+    # Something already on the port, started by hand or by an older setup: use
+    # it rather than racing it for the port.
+    local adopted=""
+    if serving; then
+        say "something is already serving on :$PORT — leaving it alone"
+        adopted=1
+    fi
+    # Two cloudflared processes running the same tunnel register as replicas,
+    # and Cloudflare then splits requests between them at random.
+    if ! alive tunnel && pgrep -f "cloudflared tunnel" >/dev/null 2>&1; then
+        die "a cloudflared tunnel is already running (pid $(pgrep -f 'cloudflared tunnel' | head -1)).
+Stop it first — two copies of one tunnel become replicas, and requests get
+split between them."
+    fi
+
     cd "$REPO_DIR"
-    if [ -n "$START_CMD" ]; then
+    if [ -n "$START_CMD" ] && [ -z "$adopted" ]; then
         # shellcheck disable=SC2086
         nohup $START_CMD >"$LOG_DIR/server.log" 2>&1 &
         echo $! > "$LOG_DIR/server.pid"
