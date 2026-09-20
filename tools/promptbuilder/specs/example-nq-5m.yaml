@@ -1,0 +1,86 @@
+# EXAMPLE SPEC — replace the strategy block with your own.
+# Everything under `strategy:` is required; the builder refuses to emit a
+# prompt without it, which is the single failure this tool exists to prevent.
+
+strategy:
+  name: "EXAMPLE — Opening Range Reclaim (NQ 5m)"
+  instrument: "NQ futures (continuous, front month, roll-adjusted)"
+  timeframe: "5-minute"
+  direction: "long and short"
+  thesis: >-
+    Price breaks the first hour's range to trigger resting stops, fails to hold
+    beyond it, and closes back inside. The failed break marks the liquidity
+    grab; the reclaim is the entry.
+  entry_rules:
+    - "Define the opening range as the high/low of the first 12 bars (09:30–10:30 ET)."
+    - "LONG: a bar trades below the opening-range low and closes back above it."
+    - "SHORT: a bar trades above the opening-range high and closes back below it."
+    - "Enter at the open of the bar following the reclaim bar."
+  exit_rules:
+    - "Opposite side of the opening range touched."
+    - "Stop as configured in risk, measured from the reclaim bar's extreme."
+    - "Flat at session close; no positions held overnight."
+  risk:
+    stop: "reclaim bar extreme, ±0.25 ATR(14) buffer"
+    target: "configured per variation (see grid axis `target`)"
+    size: "1 contract, fixed"
+    max_concurrent: 1
+    commission_per_side: "$2.50"
+    slippage: "1 tick per side"
+  session_in_spec: "09:30-11:00 America/New_York"
+  override_session: true
+
+data:
+  sources:
+    - name: "TradingView MCP tunnel"
+      note: "only if the server is attached to the session; check, do not assume"
+    - name: "Databento free-tier NQ futures (GLBX.MDP3)"
+      note: "requires an API key in the environment; a 401 means drop to the next rung"
+    - name: "NQ CFD from any keyless vendor"
+      note: "last resort — note the instrument is not the future and say so"
+  history_days: 1260          # ~5 years of trading days, honestly estimated
+  base_signals_per_day: 3.0   # unfiltered reclaim signals per session
+  timezone: "America/New_York"
+
+grid:
+  target_min: 500
+  target_max: 800
+  seed: 7
+  axes:
+    - name: trend_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "ema20 > ema50", pass_rate: 0.55}
+        - {label: "ema50 > ema200", pass_rate: 0.50}
+        - {label: "close > ema200", pass_rate: 0.52}
+    - name: volume_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "rvol > 1.2", pass_rate: 0.45}
+        - {label: "rvol > 1.5", pass_rate: 0.28}
+    - name: vwap_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "entry above session VWAP", pass_rate: 0.50}
+        - {label: "entry below session VWAP", pass_rate: 0.50}
+    - name: stop
+      values: ["0.5R", "1.0R", "1.5R", "ATR(14) trailing"]
+    - name: target
+      values: ["1R", "2R", "3R", "opposite range edge"]
+
+guardrails:
+  min_trades: 400
+  target_trades: [400, 500]
+  oos_fraction: 0.3
+
+analysis:
+  session_buckets:
+    - "each clock hour of the 24h session, 18:00-17:00 ET"
+    - "New York open 09:30-10:30 (called out separately)"
+    - "New York 10:30-11:30 (called out separately)"
+    - "London 03:00-08:00"
+    - "Asia 19:00-02:00"
+  seasonality: [month, year, day_of_week, week_of_month]
+  events: true
+
+deliverables: [pdf, html_dashboard]

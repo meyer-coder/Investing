@@ -4,3 +4,6 @@ numpy>=1.24
 # Needed for Claude-driven breeding (`--breeder llm` / `hybrid`).
 # Offline runs (`--breeder mutation`) work without it.
 anthropic>=1.0
+
+# Needed for tools/promptbuilder (strategy spec files are YAML).
+PyYAML>=6.0
