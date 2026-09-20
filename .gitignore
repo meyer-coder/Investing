@@ -15,3 +15,6 @@ data/cache/*.csv
 *.sqlite-journal
 *.db
 reports/
+
+# Agent scratch worktrees (transient, auto-removed)
+.claude/worktrees/
