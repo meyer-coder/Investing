@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import random
 import re
-from typing import Callable, Dict, List, Sequence, Tuple
+from typing import Callable, Dict, List, Optional, Sequence, Tuple
 
 from .genome import EntryRule, ExitRule, Genome, GenomeError, RiskParams, compile_genome
 
@@ -305,11 +305,16 @@ def _mutated_name(name: str, rng: random.Random) -> str:
 
 # ---------------------------------------------------------------- seeding
 
-def seed_population(size: int, rng: random.Random, *, generation: int = 0) -> List[Genome]:
+def seed_population(size: int, rng: random.Random, *, generation: int = 0,
+                    archetypes: Optional[Sequence[Tuple]] = None) -> List[Genome]:
     """Generation 0: every archetype once, then jittered variants to fill out
-    the population, then a tail of fully random genomes for diversity."""
+    the population, then a tail of fully random genomes for diversity.
+
+    ``archetypes`` replaces the built-in library; a trading style passes its
+    own archetypes first so they are guaranteed a seat in generation 0."""
+    library = list(archetypes) if archetypes is not None else ARCHETYPES
     out: List[Genome] = []
-    for name, thesis, entries, exits, risk in ARCHETYPES:
+    for name, thesis, entries, exits, risk in library:
         g = Genome(
             name=name, thesis=thesis,
             entry_rules=[EntryRule(_repair(e), round(1.0 / max(len(entries), 1) * 0.5, 2),

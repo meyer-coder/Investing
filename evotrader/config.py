@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from .fitness import FitnessConfig
 from .llm import DEFAULT_MODEL
+from .styles import get_style
 
 DEFAULT_SYMBOLS = ["SPY", "QQQ", "IWM", "EFA", "TLT", "GLD", "XLE", "XLF", "XLK", "XLV"]
 
@@ -42,6 +43,7 @@ class EvolutionConfig:
     budget_usd: float = 0.0            # 0 = no ceiling
     immigrant_rate: float = 0.10
     crossover_rate: float = 0.35
+    style: str = ""                    # a TradingStyle name (styles.py); "" = none
 
     # --- fitness
     fitness: FitnessConfig = field(default_factory=FitnessConfig)
@@ -92,3 +94,5 @@ class EvolutionConfig:
             raise ValueError("breeder must be hybrid, llm or mutation")
         if not self.symbols:
             raise ValueError("at least one symbol is required")
+        if self.style:
+            get_style(self.style)      # raises ValueError for an unknown name

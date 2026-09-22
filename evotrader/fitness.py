@@ -3,7 +3,9 @@
 Fitness is deliberately *not* raw return.  Selecting on return alone breeds
 agents that lever into one lucky regime; the composite below rewards
 risk-adjusted return and excess return over buy-and-hold, then charges for
-drawdown, churn, and statistically meaningless trade counts.
+drawdown, churn, and statistically meaningless trade counts.  Optional style
+terms (see ``styles.py``) reward win rate and charge for long average holds;
+they are zero-weighted unless a config turns them on.
 """
 from __future__ import annotations
 
@@ -127,6 +129,10 @@ class FitnessConfig:
     overtrading_penalty: float = 0.002
     ruin_threshold: float = -0.60       # a drawdown past this is treated as failure
     ruin_penalty: float = 5.0
+    # Style terms.  All off by default so existing configs score identically.
+    win_rate_weight: float = 0.0        # rewards (win_rate - 0.5): many small wins
+    hold_limit_bars: float = 0.0        # average hold longer than this is charged (0 = off)
+    hold_penalty: float = 0.0           # per multiple of hold_limit_bars over the limit
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -149,6 +155,13 @@ def fitness_score(m: Metrics, cfg: Optional[FitnessConfig] = None) -> float:
     if m.trades < cfg.min_trades:
         shortfall = (cfg.min_trades - m.trades) / max(cfg.min_trades, 1)
         score -= cfg.inactivity_penalty * shortfall
+
+    # Style terms: consistency and short holds, only when a config asks for them.
+    if m.trades > 0:
+        score += cfg.win_rate_weight * (_finite(m.win_rate) - 0.5)
+        if cfg.hold_limit_bars > 0 and cfg.hold_penalty > 0:
+            over = max(0.0, _finite(m.avg_bars_held) - cfg.hold_limit_bars)
+            score -= cfg.hold_penalty * over / cfg.hold_limit_bars
     return float(score)
 
 

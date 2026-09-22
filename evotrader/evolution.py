@@ -33,9 +33,10 @@ from .fitness import Evaluation, FitnessConfig, Metrics, compute_metrics, fitnes
 from .genome import Genome, GenomeError, compile_genome
 from .journal import Journal
 from .llm import Claude
-from .population import seed_population
+from .population import ARCHETYPES, seed_population
 from .runner import buy_and_hold, run_backtest
 from .store import Store
+from .styles import TradingStyle, get_style
 
 
 @dataclass
@@ -133,6 +134,7 @@ class Evolution:
                  claude: Optional[Claude] = None):
         cfg.validate()
         self.cfg = cfg
+        self.style: Optional[TradingStyle] = get_style(cfg.style)
         self.run_id = cfg.run_id or f"run-{time.strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:4]}"
         cfg.run_id = self.run_id
         self.rng = random.Random(cfg.seed or None)
@@ -200,9 +202,14 @@ class Evolution:
         if self.ctx is None:
             self.prepare()
         self.store.create_run(self.run_id, self.cfg.to_dict(), self.cfg.note)
-        self.population = seed_population(self.cfg.population, self.rng, generation=0)
+        # A style's archetypes go first so they are guaranteed a seat in gen 0.
+        library = (list(self.style.archetypes) + list(ARCHETYPES)) if self.style else None
+        self.population = seed_population(self.cfg.population, self.rng, generation=0,
+                                          archetypes=library)
         self.generation = 0
         self._log(f"run {self.run_id}: seeded {len(self.population)} agents")
+        if self.style:
+            self._log(f"style {self.style.name!r}: {self.style.summary}")
         if not self.claude.available and self.cfg.breeder != "mutation":
             self._log(f"note: {self.claude.unavailable_reason}")
 
@@ -296,6 +303,7 @@ class Evolution:
             elites[:self.cfg.survivor_reports], n_offspring, generation=gen,
             evals=ranked, history=self.history, window=self.window_label,
             parent_pool=survivors or self.population,
+            extra=self.style.mandate if self.style else "",
         )
         report.cost_usd = breed.cost_usd
         report.analysis = breed.analysis
@@ -437,7 +445,8 @@ class _MutationOnly:
 
     def breed(self, elites: Sequence[Elite], count: int, *, generation: int,
               evals: Sequence[Evaluation] = (), history: Sequence[Dict[str, Any]] = (),
-              window: str = "", parent_pool: Optional[Sequence[Genome]] = None) -> BreedResult:
+              window: str = "", parent_pool: Optional[Sequence[Genome]] = None,
+              extra: str = "") -> BreedResult:
         return self.mutation.breed(elites, count, generation=generation,
                                    parent_pool=parent_pool)
 

@@ -65,6 +65,9 @@ python -m evotrader.cli run --config configs/offline.json
 
 # the real thing
 python -m evotrader.cli run --config configs/default.json     # 100 x 1000
+
+# breed toward a particular trader's style (see "Breeding for a trading style")
+python -m evotrader.cli run --config configs/leveraged_swing.json
 ```
 
 Every run streams progress and writes to `runs/evotrader.sqlite`:
@@ -151,6 +154,64 @@ champion as a hypothesis worth examining, not a signal worth trading.
 
 ---
 
+## Breeding for a trading style
+
+By default the loop breeds toward whatever the fitness function rewards on
+the configured universe, which for `configs/default.json` means low-turnover
+ETF rotation. A **style** points it at a particular way of trading instead.
+A style has two parts, both defined in `styles.py`:
+
+* a **mandate**: plain-English guidance appended to every breeding briefing,
+  so Claude breeds toward that behaviour rather than toward whatever one
+  backtest window happens to reward;
+* **seed archetypes**: hand-written genomes in that style, placed at the
+  front of generation 0 so the population starts with the behaviour instead
+  of having to stumble onto it.
+
+The fitness weights that make a style score well stay in the run config,
+because they are the part worth arguing about per run. Set `"style"` in the
+config or pass `--style` on the command line.
+
+### `leveraged_swing`: leveraged core names, small wins
+
+Modelled on a real account's recent trading: buy 2x/3x ETFs on large,
+well-known names (Nasdaq-100, semis, mega-cap tech), hold one to seven days,
+take a gain of 5-15% on the leveraged product and leave; keep each position
+at 10-15% of equity with up to six or eight open; cut losers slowly, around
+-10%. The portfolio itself is never levered. The leverage lives in the
+instruments, which are just symbols to the engine.
+
+```bash
+python -m evotrader.cli run --config configs/leveraged_swing.json        # 2x mega-cap ETFs + TQQQ/SOXL, since Dec 2022
+python -m evotrader.cli run --config configs/leveraged_swing_long.json   # 3x index and sector funds since 2015
+python -m evotrader.cli run --config configs/quick.json --style leveraged_swing
+```
+
+What the style configs change, and why:
+
+| knob | default | style | reason |
+|---|---|---|---|
+| `turnover_limit` / `turnover_penalty` | 6x / 0.10 | 120x / 0.01 | one-week holds turn the book over 50-100x a year; the default scores that as churn |
+| `excess_weight` | 1.5 | 0.5 | buy-and-hold of leveraged funds through a bull run is not the bar; return still counts, but less than consistency |
+| `win_rate_weight` | 0 | 2.0 | rewards `win_rate - 0.5`: many small wins is the point |
+| `hold_limit_bars` / `hold_penalty` | off | 7 bars / 1.0 | an average hold twice the limit costs a full point; drifting into buy-and-hold is the failure mode |
+| `drawdown_limit` | 20% | 25% | leveraged products swing; the portfolio still has to stay intact |
+| `min_trades` | 10 | 40 | short holds should produce many trades; fewer is noise |
+| `slippage_bps` | 5 | 10 | single-stock leveraged ETFs trade wider than SPY |
+
+Two universes ship because history is the constraint. 2x single-stock ETFs
+on mega-caps only date from late 2022, so `leveraged_swing.json` has under
+four years of bars and a thin held-out window: treat its results as
+hypotheses. `leveraged_swing_long.json` uses 3x index and sector funds with
+history since 2015, which is where a claimed edge can actually be tested.
+Newer single-stock funds (MUU, RIOX, MSTU) fit the style but would truncate
+the whole universe to their own short history, since symbols are aligned on
+their shared calendar.
+
+To add a style, append a `TradingStyle` to `STYLES` in `styles.py`.
+
+---
+
 ## The strategy language
 
 Rules are boolean expressions over a fixed vocabulary, parsed by a small
@@ -211,6 +272,7 @@ evotrader/
   journal.py      trades and thoughts — what the breeder reads
   fitness.py      metrics and the composite fitness function
   population.py   seed archetypes, mutation, crossover
+  styles.py       trading styles: a breeder mandate plus seed archetypes
   llm.py          Claude client: structured output, retries, cost ceiling
   prompts.py      the breeding briefing and its JSON schema
   breeder.py      LLM / mutation / hybrid breeders
@@ -223,7 +285,7 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 76 tests, ~30s
+python -m pytest tests -q      # 87 tests, ~30s
 ```
 
 They cover the rule language (including that hostile input is rejected), the
@@ -240,8 +302,9 @@ features are computed once and shared.
 
 ## Limits worth stating plainly
 
-* Long-only, one lot per symbol, daily bars. No shorting, leverage, options or
-  intraday data.
+* Long-only, one lot per symbol, daily bars. No shorting, no portfolio
+  leverage, no options or intraday data. Leveraged ETFs are just symbols;
+  `configs/leveraged_swing.json` trades them.
 * Fills assume you can transact at the next open at the modelled slippage.
   Illiquid symbols will flatter themselves.
 * Survivorship bias lives in your symbol list. Picking today's winners and

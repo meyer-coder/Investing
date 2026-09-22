@@ -173,14 +173,16 @@ class HybridBreeder:
 
     def breed(self, elites: Sequence[Elite], count: int, *, generation: int,
               evals: Sequence[Evaluation] = (), history: Sequence[Dict[str, Any]] = (),
-              window: str = "", parent_pool: Optional[Sequence[Genome]] = None) -> BreedResult:
+              window: str = "", parent_pool: Optional[Sequence[Genome]] = None,
+              extra: str = "") -> BreedResult:
+        """``extra`` is appended to the briefing verbatim — a style's mandate."""
         use_llm = (self.llm is not None and self.llm.available
                    and self.llm_share > 0 and generation % self.llm_every == 0)
         result = BreedResult()
         if use_llm:
             want = max(1, int(round(count * self.llm_share)))
             llm_result = self.llm.breed(elites, want, generation=generation, evals=evals,
-                                        history=history, window=window)
+                                        history=history, window=window, extra=extra)
             result.genomes.extend(llm_result.genomes)
             result.analysis = llm_result.analysis
             result.lessons = llm_result.lessons

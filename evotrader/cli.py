@@ -21,6 +21,7 @@ from .fitness import FitnessConfig
 from .llm import PRICING, Claude
 from .report import html_report, lineage, markdown_report, print_report
 from .store import Store
+from .styles import STYLES
 
 
 def _add_run_flags(p: argparse.ArgumentParser) -> None:
@@ -39,6 +40,8 @@ def _add_run_flags(p: argparse.ArgumentParser) -> None:
     p.add_argument("--llm-share", type=float,
                    help="fraction of each generation written by Claude (hybrid)")
     p.add_argument("--llm-every", type=int, help="call Claude every N generations")
+    p.add_argument("--style", help="trading style to breed toward: "
+                                   + ", ".join(sorted(STYLES)) + " (see styles.py)")
     p.add_argument("--model", help="Claude model id for breeding")
     p.add_argument("--effort", choices=["low", "medium", "high", "xhigh", "max"])
     p.add_argument("--budget", type=float, dest="budget_usd",
@@ -58,7 +61,7 @@ def _config_from_args(args: argparse.Namespace) -> EvolutionConfig:
     cfg = EvolutionConfig.load(args.config) if getattr(args, "config", None) else EvolutionConfig()
     for name in ("start", "end", "population", "generations", "elites", "breeder",
                  "llm_share", "llm_every", "model", "effort", "budget_usd", "seed",
-                 "workers", "db_path", "test_frac", "note", "survivor_reports"):
+                 "workers", "db_path", "test_frac", "note", "survivor_reports", "style"):
         value = getattr(args, name, None)
         if value is not None:
             setattr(cfg, name, value)
