@@ -74,3 +74,24 @@ def test_cli_evaluate_writes_markdown_and_signals_unprofitable(tmp_path, capsys)
     assert code == 2                       # "Never" trades nothing, so it is not profitable
     assert "Never" in printed and "not profitable" in printed
     assert os.path.exists(out_md) and "## Fast Dip" in open(out_md).read()
+
+
+def test_signals_fire_on_the_latest_bar(tmp_path, capsys):
+    from evotrader.evaluate import latest_signals
+    always = {**GOOD, "name": "Always", "entry_rules": [{"when": "close > 0", "weight": 0.2}]}
+    never = {**GOOD, "name": "Never", "entry_rules": [{"when": "rsi14 < 1", "weight": 0.2}]}
+    slow = {**GOOD, "name": "Slow", "entry_rules": [{"when": "close > sma200 * 0", "weight": 0.2}]}
+    genomes = load_genomes(_write(tmp_path, [always, never, slow]))
+    date, signals, skipped = latest_signals(genomes, _cfg(start="2019-06-01", end="2020-09-29",
+                                                          test_frac=0.0))
+    assert date.startswith("2020")
+    assert {s.symbol for s in signals if s.genome == "Always"} == {"AAA", "BBB"}
+    assert {s.symbol for s in signals if s.genome == "Slow"} == {"AAA", "BBB"}
+    assert not [s for s in signals if s.genome == "Never"]
+    assert skipped == []
+    assert all(s.date == date and s.weight == 0.2 for s in signals)
+    assert all("close" in s.context for s in signals if s.genome == "Always")
+    path = _write(tmp_path, [always, never])
+    assert main(["signals", path, "--offline", "--symbols", "AAA,BBB", "--end", "2020-06-30"]) == 0
+    out = capsys.readouterr().out
+    assert "latest bar 2020-06" in out and "BUY AAA" in out and "Never: no signal" in out

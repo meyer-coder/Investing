@@ -16,7 +16,8 @@ from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
 from .data import load_universe
-from .evaluate import evaluate, format_markdown, format_text, load_genomes
+from .evaluate import (evaluate, format_markdown, format_signals, format_text,
+                       latest_signals, load_genomes)
 from .evolution import Evolution, score_genome
 from .features import build_features
 from .fitness import FitnessConfig
@@ -257,6 +258,26 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
     return 0 if all(r.profitable for r in reports) else 2
 
 
+def cmd_signals(args: argparse.Namespace) -> int:
+    """Which strategies fire on the latest bar — the buys for the next open."""
+    cfg = EvolutionConfig.load(args.config) if args.config else EvolutionConfig()
+    if args.symbols:
+        cfg.symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
+    if args.offline:
+        cfg.offline = True
+    if args.refresh:
+        cfg.refresh_data = True
+    cfg.end = args.end or "2100-01-01"      # the latest bar, whatever the config's window
+    try:
+        genomes = load_genomes(args.file)
+    except (OSError, ValueError) as exc:
+        print(f"could not load {args.file}: {exc}", file=sys.stderr)
+        return 1
+    date, signals, skipped = latest_signals(genomes, cfg)
+    print(format_signals(date, signals, skipped, genomes, cfg.symbols))
+    return 0
+
+
 def cmd_fetch(args: argparse.Namespace) -> int:
     symbols = [s.strip().upper() for s in (args.symbols or ",".join(DEFAULT_SYMBOLS)).split(",")]
     universe = load_universe(symbols, args.start, args.end, refresh=True)
@@ -362,6 +383,16 @@ def build_parser() -> argparse.ArgumentParser:
     ev.add_argument("--markdown", help="write a Markdown report here")
     ev.add_argument("--title", help="title for the Markdown report")
     ev.set_defaults(func=cmd_evaluate)
+
+    sig = sub.add_parser("signals", help="which strategies fire on the latest bar "
+                                          "(each one is a buy at the next open)")
+    sig.add_argument("file", help="JSON file of genomes, as for evaluate")
+    sig.add_argument("--config", help="run config supplying the symbols")
+    sig.add_argument("--symbols", help="override the universe, comma separated")
+    sig.add_argument("--end", help="pretend this is the latest date, YYYY-MM-DD")
+    sig.add_argument("--refresh", action="store_true", help="re-download prices first")
+    sig.add_argument("--offline", action="store_true")
+    sig.set_defaults(func=cmd_signals)
 
     fetch = sub.add_parser("fetch", help="download and cache price data")
     fetch.add_argument("--symbols")

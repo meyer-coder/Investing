@@ -164,6 +164,79 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     return reports
 
 
+# ------------------------------------------------------------------- signals
+
+@dataclass
+class Signal:
+    """An entry rule that is true on the latest bar: a buy at the next open."""
+
+    genome: str
+    symbol: str
+    date: str
+    rule: str
+    weight: float
+    context: Dict[str, float]
+
+
+_FLAT = {"in_position": 0.0, "bars_held": 0.0, "position_return": 0.0,
+         "position_drawdown": 0.0, "position_weight": 0.0, "cash_pct": 1.0,
+         "gross_exposure": 0.0, "position_count": 0.0, "bars_since_exit": 9999.0,
+         "portfolio_return": 0.0, "portfolio_drawdown": 0.0}
+
+
+def latest_signals(genomes: Sequence[Genome], cfg: EvolutionConfig
+                   ) -> tuple:
+    """Evaluate every genome's entry rules on the last bar of the universe,
+    as if flat.  Returns ``(date, signals, skipped)`` where ``skipped`` names
+    genomes whose features are not yet defined on that bar."""
+    universe = load_universe(cfg.symbols, cfg.start, cfg.end, offline=cfg.offline,
+                             refresh=cfg.refresh_data)
+    features = build_features(universe)
+    i = len(features.dates) - 1
+    date = features.dates[i]
+    signals: List[Signal] = []
+    skipped: List[str] = []
+    for genome in genomes:
+        compiled = compile_genome(genome)
+        names = compiled.feature_names()
+        if i < 1 or not features.defined_at(names, i):
+            skipped.append(f"{genome.name}: its features are not yet defined on {date}")
+            continue
+        for sym in features.symbols:
+            cur = features.snapshot(sym, i)
+            cur.update(_FLAT)
+            prev = features.snapshot(sym, i - 1)
+            prev.update(_FLAT)
+            for rule, weight in compiled.entries:
+                if rule(cur, prev):
+                    context = {k: round(cur[k], 4) for k in sorted(rule.features) if k in cur}
+                    signals.append(Signal(genome.name, sym, date, rule.source, weight, context))
+                    break
+    return date, signals, skipped
+
+
+def format_signals(date: str, signals: Sequence[Signal], skipped: Sequence[str],
+                   genomes: Sequence[Genome], symbols: Sequence[str]) -> str:
+    lines = [f"latest bar {date} across {', '.join(symbols)}",
+             "(a signal is a buy at the NEXT open; if this bar is today's, it is "
+             "incomplete until the close)", ""]
+    by_genome: Dict[str, List[Signal]] = {}
+    for s in signals:
+        by_genome.setdefault(s.genome, []).append(s)
+    for g in genomes:
+        hits = by_genome.get(g.name, [])
+        if hits:
+            lines.append(f"{g.name}:")
+            for s in hits:
+                ctx = " ".join(f"{k}={v:g}" for k, v in s.context.items())
+                lines.append(f"  BUY {s.symbol:<6} {s.weight:.0%} of equity   [{s.rule}]   {ctx}")
+        else:
+            lines.append(f"{g.name}: no signal")
+    for note in skipped:
+        lines.append(f"skipped {note}")
+    return "\n".join(lines)
+
+
 # ------------------------------------------------------------------ formatting
 
 def _row(w: WindowResult) -> str:

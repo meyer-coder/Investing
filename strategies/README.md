@@ -23,7 +23,7 @@ average hold of three bars or less. The four windows:
 | window | universe | bars | role |
 |---|---|---|---|
 | Nasdaq 2010-2022 | TQQQ, SQQQ, SOXL, SOXS, QLD, QID | 3,100 | search |
-| Nasdaq 2022-2026 | same | 1,050 | held out, never used to pick |
+| Nasdaq 2022-2026 | same | 1,040 | held out, never used to pick |
 | Names 2025-2026 | TQQQ, SQQQ, MUU, MUD, RIOX, SOXL, SOXS | 430 | your names |
 | Mega-cap pairs 2023-2026 | AAPU/AAPD, TSLL/TSLS, AMZU/AMZD, MSFU/MSFD, GGLL/GGLS, NVDL/NVDD | 760 | single-stock check |
 
@@ -74,9 +74,9 @@ about 2.7%. MUU and RIOX are 2x, so halve those.
 
 **1. Capitulation Close.** Today's close is down at least 4%, it sits in
 the bottom quarter of today's range, and volume is at least 1.3 times its
-20-day average. No trend filter. The strongest single setup and the only
-one that needs no moving average, which is why it was live on RIOX and MUU
-from their first month. Rule: `ret1 < -0.04 and (close - low) / (high - low
+20-day average. No trend filter. The highest-returning single setup on
+three of the four windows, and the only one that needs no moving average,
+which is why it was live on RIOX and MUU from their first month. Rule: `ret1 < -0.04 and (close - low) / (high - low
 + 0.0001) < 0.25 and volume_ratio > 1.3`.
 
 **2. Red Day Above the 50.** Today's close is down at least 4.5%, still
@@ -86,8 +86,9 @@ funds; without it the same rule loses there. Rule: `ret1 < -0.045 and close
 > sma50 and volume_ratio > 1.0`.
 
 **3. Oversold Dip Above the 50.** Seven-day RSI below 40 with the close
-above the 50-day average. Stop is 10% instead of 8%. The best risk-adjusted
-setup out of sample (held-out Sharpe 0.80, max drawdown -9%). On 3x
+above the 50-day average. Stop is 10% instead of 8%. Among the single
+setups it has the best held-out profit factor (2.02) with a max drawdown
+under 9%, and the shallowest losing years. On 3x
 products the classic "RSI below 25 in an uptrend" almost never fires; the
 threshold has to scale. Rule: `rsi7 < 40 and close > sma50`.
 
@@ -104,11 +105,13 @@ inverse funds alone. Without the volume gate it loses. Rule: `close <
 prev(low) and close > sma50 and volume_ratio > 1.2`.
 
 **6. Combo: Capitulation or Oversold.** Setups 1 and 3 in one book, first
-match wins, five slots of 20%. Best held-out Sharpe of the set (1.09) and
-about one trade a week on the Nasdaq universe.
+match wins, five slots of 20%. The best held-out profit factor and win rate
+of the two combos (1.69, 64%) and about one trade a week on the Nasdaq
+universe.
 
-**7. Combo: All Five Setups.** All five setups, five slots of 20%. About 64
-trades a year; use it when you want a signal most weeks.
+**7. Combo: All Five Setups.** All five setups, five slots of 20%. The best
+held-out Sharpe of the set (1.16) and about 64 trades a year; use it when
+you want a signal most weeks.
 
 ## What the checks showed
 
@@ -157,6 +160,7 @@ python -m evotrader.cli evaluate strategies/quick_leveraged.json --config config
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --symbols TQQQ,SOXL,QLD      # long funds only
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --symbols SQQQ,SOXS,QID      # inverse funds only
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --slippage 15                # cost sensitivity
+python -m evotrader.cli signals strategies/quick_leveraged.json --config configs/quick_names.json --refresh                       # what fires on the latest bar
 ```
 
 Prices come from Yahoo Finance and are cached under `data/cache/`; the

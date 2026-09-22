@@ -87,3 +87,13 @@ def test_fast_genome_is_benchmarked_over_its_own_window():
     slow = score_genome(_genome("close > sma200 * 0.01", "slow"), ctx)
     glob = ctx.train_benchmark
     assert abs(slow.metrics.benchmark_return - (glob[-1] / glob[0] - 1.0)) < 1e-9
+
+
+def test_defined_at_is_strict_where_warmup_for_is_capped():
+    features = build_features(_universe(120))
+    last = len(features.dates) - 1
+    assert features.warmup_for({"sma200"}) <= last          # capped so a backtest can run
+    assert not features.defined_at({"sma200"}, last)         # but the value is not real
+    assert features.defined_at({"rsi7", "sma20"}, last)
+    assert features.defined_at({"in_position"}, last)        # portfolio features always are
+    assert not features.defined_at({"rsi7"}, 0)

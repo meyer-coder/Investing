@@ -123,6 +123,14 @@ class FeatureSet:
         first = max(first, 1)                     # prev() needs one bar of history
         return min(first, max(len(self.dates) - 30, 0))
 
+    def defined_at(self, names: Iterable[str], i: int) -> bool:
+        """True when every named market feature is genuinely defined on bar
+        ``i`` for every symbol — unlike ``warmup_for`` this is never capped, so
+        it is the right check before reading a single bar's features."""
+        if not self.first_valid:
+            return i >= self.warmup
+        return all(self.first_valid.get(x, 0) <= i for x in names)
+
     def snapshot(self, symbol: str, i: int) -> Dict[str, float]:
         """Market features for one symbol at bar ``i`` (NaN -> 0.0)."""
         out: Dict[str, float] = {}

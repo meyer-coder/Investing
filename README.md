@@ -258,6 +258,13 @@ so it works as a check in a script. A strategy counts as profitable on a
 window when it made at least ten trades with a positive net return and a
 profit factor above one.
 
+`signals` is the daily use of a strategy file: it evaluates every entry
+rule on the latest bar, as if flat, and prints the buys for the next open.
+
+```bash
+python -m evotrader.cli signals strategies/quick_leveraged.json --config configs/quick_names.json --refresh
+```
+
 `strategies/quick_leveraged.json` holds seven quick-trade strategies found
 this way for the leveraged Nasdaq, semiconductor and single-stock funds;
 `strategies/README.md` is the report on them, and `strategies/reports/`
