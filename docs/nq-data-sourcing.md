@@ -204,3 +204,131 @@ compare.
 
 These are not exclusive: 2 and 1 together cost nothing and answer most of the
 question while the data for 4 accumulates or is purchased.
+
+---
+
+# Getting around the cap — brainstorm, with what was actually tested
+
+*2026-09-22. Every "tested" line below is a measurement from this session, not
+an assumption.*
+
+## The cap's shape is the whole opportunity
+
+Three properties, all measured: the wall is **per symbol**, **per timeframe**,
+and **anchored to the end of the series**. Signing in did not move it; paying
+did not move it; a different vendor's listing of the same underlying did not
+move it (below). So it is not a quota to be bought through — it is a fixed
+window, ~5,200 bars wide, hung off the last bar of whatever series you ask for.
+
+That means two levers, and nothing else: **pick series whose last bar is in the
+past** (expired contracts), and **pick a bar size where 5,200 bars covers the
+stretch you need**. Combined, they are the way around.
+
+## Route 1 — tested, works today: coarser bars × expired contracts
+
+Each quarterly contract's window ends at *its* expiry. At 5-minute that window
+is ~19 sessions, a third of a quarter. At 15-minute it is nearly the whole
+quarter; at 30-minute it is more than the quarter:
+
+| Contract | TF | Bars | Window | Notes |
+|---|---|---|---|---|
+| `NQH2026` | 15m | 5,090 | 2026-01-01 → 03-20 | full front-month quarter |
+| `NQM2026` | 15m | 5,167 | 2026-03-31 → 06-18 | expiry pulled to Thu by Juneteenth |
+| `NQU2026` | 15m | 5,274 | 2026-06-30 → 09-18 | full front-month quarter |
+| `NQM2026` | **30m** | 5,223 | **2026-01-01 → 06-18** | its quarter *and* the one before |
+
+| TF | Trading days per contract | Share of a 63-day quarter | Stitched gaps |
+|---|---|---|---|
+| 5m | 19 | 31% | ~2 months per quarter; Jan/Apr/Jul/Oct never covered |
+| **15m** | **57** | **90%** | ~8 trading days after each roll |
+| **30m** | 114 | 100% | none — windows overlap |
+
+So **NQ futures at 15-minute can be rebuilt back to 2015 at ~90% coverage, and
+at 30-minute with no gaps at all** — real futures, not an ETF proxy, with every
+calendar month present. Against the 576-variation grid at the 400-trade floor,
+a stitched 3-year 15-minute NQ series clears **304/576**, identical to what
+true continuous data would clear.
+
+The tool already exists on the `mcp` branch and takes a timeframe:
+
+```bash
+evotrader tv-archive --root NQ --timeframe 15 --since 2023 --pause 1
+evotrader tv-archive --root NQ --timeframe 30 --since 2015 --pause 1
+```
+
+It back-adjusts the roll jumps by default and — this is the part that makes it
+work here — measures each roll's basis on the contracts' *daily* overlap when
+the intraday windows do not touch, so the seams are priced rather than guessed.
+It reports `largest_gap_days` per run; check it. Two things to treat carefully:
+a position should never be carried across a seam (the 8-day hole at 15m is
+counted in bars by `max_hold_bars`, not in days), and an expiry that lands on a
+holiday moves — `NQM2026` expired on a Thursday because of Juneteenth.
+
+For the six-month window specifically: `NQH2026 + NQM2026 + NQU2026 + NQ1!` at
+15-minute is January to today on actual NQ, with two ~8-day holes. Put beside
+QQQ at 15-minute (9.7 months, continuous, RTH only) that is **two independent
+instruments over the window that matters**, which is a robustness check nobody
+has to pay for.
+
+## Route 2 — tested, dead: another vendor's listing of the same thing
+
+| Symbol | TF | Bars | Span |
+|---|---|---|---|
+| `NASDAQ:NDX` (the index) | 5m | 5,056 | 3.0 months |
+| `OANDA:NAS100USD` (FX-broker CFD) | 5m | 5,818 | 1.0 month |
+| `CFI:US100` (CFD) | 5m | 5,779 | 1.0 month |
+
+Same window everywhere. The cap sits on the chart feed, not on any vendor's
+data. Do not spend further effort here. (Supported bar sizes, for reference:
+1, 3, 5, 15, 30, 45, 60, 120, 180, 240, 1D, 1W, 1M — no 10-minute.)
+
+## Route 3 — untested, an engineering spike: replay-mode anchoring
+
+The chart protocol has a *bar replay* mode that positions a chart at a past
+instant; the feed then serves its ~5,200-bar window ending **there** instead of
+now. If the server honours `replay_reset` to arbitrary timestamps for this
+account, that is backward pagination by another name — every step back is a
+fresh window on the *same* symbol, which would give continuous 5-minute NQ1!
+history with no contract seams at all. Intraday replay is a paid-plan feature
+on the web app, so entitlement may bind here where it did not bind above.
+Half a day in `tvdata.py` to find out; the websocket client is already there.
+Highest ceiling of anything on this page, and the least certain.
+
+## Route 4 — external sources, ranked by friction
+
+| Source | Cost | Instrument | Depth | Friction |
+|---|---|---|---|---|
+| **Databento** (GLBX.MDP3, `ohlcv-1m`) | free credit on signup; OHLCV is their cheapest schema | NQ futures, true continuous | years | API key — the original brief asked for this |
+| **Alpaca** market data | free key | QQQ and every Nasdaq name | 5-minute back to ~2016 | endpoint reachable (401 without key) |
+| **Polygon / Massive** free tier | free key, 5 calls/min | QQQ, equities | ~2 years intraday | endpoint reachable (401 without key) |
+| **FirstRateData** | ~one-time, tens of dollars | NQ 1-minute, full history | 10+ years | download, one file |
+| **Dukascopy** | free, keyless | USA100 index CFD, tick | back to ~2013 | reachable but returned `429` on a single request — throttled, needs pacing |
+| **Interactive Brokers** TWS API | free with an account | NQ futures | years, paced | only if an account exists |
+
+Databento is the one that matches the brief exactly; Alpaca is the one that
+costs nothing and needs ten minutes.
+
+## Route 5 — accumulate forward, starting today
+
+`evotrader tv-fetch` deepens the local store on every run. A daily cron makes
+5-minute NQ1! and QQQ continuous from now on, no gaps, no seams. It does
+nothing for the past and everything for the future; there is no reason not to
+start it regardless of which route above wins.
+
+## Route 6 — the reframe
+
+The stated priority is the last six months. That window is **already served**:
+QQQ at 15-minute (9.7 months, continuous), NQ at 15-minute (stitched, two
+small holes), QQQ at 5-minute for the most recent 3.2 months of it. Three years
+of 5-minute was the original ask; six months weighted heavily is the stated
+goal, and the second is achievable today while the first is not.
+
+## Recommendation, in order
+
+1. `tv-archive --root NQ --timeframe 15 --since 2023` — tonight, on the Mac.
+   Real futures, three years, ~90% coverage, tool already written.
+2. Start the `tv-fetch` cron the same evening.
+3. Sign up for Alpaca (free) for a second continuous 5-minute equity feed.
+4. If 5-minute *futures* history specifically proves necessary, Databento's
+   free credit before anything paid.
+5. The replay spike only if all of the above still leaves a gap that matters.
