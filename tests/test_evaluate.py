@@ -114,3 +114,26 @@ def test_since_rows_report_the_trailing_window(tmp_path):
     assert "since 2020-06-01" in text and "worst day" in text
     md = format_markdown(reports, title="T")
     assert "| since 2019-01-01 |" in md and "| worst day |" in md
+
+
+def test_recent_mode_judges_and_ranks_on_the_trailing_window(tmp_path, capsys):
+    from evotrader.evaluate import parse_recent
+    assert [parse_recent(x) for x in ("6m", "3m", "1y", "2w", "90")] == [126, 63, 252, 10, 90]
+    never = {**GOOD, "name": "Never", "entry_rules": [{"when": "rsi14 < 1", "weight": 0.2}]}
+    genomes = load_genomes(_write(tmp_path, [never, GOOD]))
+    reports = evaluate(genomes, _cfg(test_frac=0.0), recent_bars=126)
+    assert [r.genome.name for r in reports] == ["Fast Dip", "Never"]      # ranked by the window
+    good, idle = reports
+    assert good.recent is not None and good.recent.label == "last 126 bars"
+    assert good.recent.metrics.trades > 0
+    assert idle.recent is not None and idle.recent.metrics.trades == 0 and not idle.profitable
+    assert idle.verdict.startswith("too few trades over the last 126 bars")
+    assert idle.windows and idle.windows[0].verdict == "too few trades (0)"
+    text = format_text(reports)
+    assert "over the last 126 bars" in text and "<-- too few trades (0)" in text
+    md = format_markdown(reports, title="T")
+    assert "| last 126 bars |" in md
+    code = main(["evaluate", _write(tmp_path, [GOOD]), "--offline", "--symbols", "AAA,BBB",
+                 "--start", "2015-01-01", "--end", "2025-12-31", "--test-frac", "0", "--recent", "6m"])
+    assert code in (0, 2)
+    assert "strategies profitable over the last 126 bars" in capsys.readouterr().out

@@ -94,7 +94,7 @@ two-thirds of the daily limit. For a 4% limit that is the 15% sizing above
 for the combos and Squeeze Days, and 20% for Volume Climax.
 
 **Recency in the breeder.** The three `quick_*` configs now set
-`recent_bars` to 126 and `recent_weight` to 0.5, so half of every agent's
+`recent_bars` to 126 and `recent_weight` to 0.7, so most of every agent's
 fitness is earned on the last six months of its window, and the
 `quick_leveraged` mandate tells Claude the same. Re-run
 `configs/quick_names.json` with an API key to breed against the current
@@ -103,8 +103,9 @@ regime directly.
 Reproduce:
 
 ```bash
+python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --recent 6m
+python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_nasdaq.json --recent 6m
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --test-frac 0 --since 2026-03-22,2025-12-22,2025-09-22
-python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_nasdaq.json --test-frac 0 --since 2026-03-22,2025-09-22
 python -m evotrader.cli signals strategies/recent_regime.json --config configs/quick_names.json --refresh
 ```
 

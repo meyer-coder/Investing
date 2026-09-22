@@ -10,6 +10,7 @@ venv/
 # Run artifacts
 runs/
 data/cache/*.csv
+data/cache/*.meta.json
 !data/cache/.gitkeep
 *.sqlite
 *.sqlite-journal

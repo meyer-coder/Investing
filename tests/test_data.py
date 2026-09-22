@@ -65,3 +65,29 @@ def test_warmup_skips_undefined_indicator_history():
 def test_missing_symbols_raise_a_clear_error():
     with pytest.raises(DataError):
         load_universe([], "2020-01-01", "2021-01-01", offline=True)
+
+
+def test_cache_extends_backwards_and_a_refresh_never_shrinks_it(tmp_path, monkeypatch):
+    from evotrader import data
+    monkeypatch.setattr(data, "CACHE_DIR", str(tmp_path))
+    calls = []
+
+    def fake_fetch(symbol, start, end, **kwargs):
+        calls.append(start)
+        return data.synthetic_bars(symbol).slice(start, end)     # 2015-01-01..2020-09-29
+
+    monkeypatch.setattr(data, "fetch_yahoo", fake_fetch)
+    short = data.load_symbol("AAA", "2019-01-01", "2020-12-31", refresh=True)
+    assert short.dates[0] >= "2019-01-01" and calls == ["2019-01-01"]
+    # asking further back must not be served from the truncated cache
+    long = data.load_symbol("AAA", "2015-06-01", "2020-12-31")
+    assert long.dates[0] <= "2015-06-05" and calls[-1] == "2015-06-01"
+    # a refresh from the short config re-downloads from the earliest date ever asked
+    data.load_symbol("AAA", "2019-01-01", "2020-12-31", refresh=True)
+    assert calls[-1] == "2015-06-01"
+    assert data._read_cache("AAA").dates[0] <= "2015-06-05"
+    # a symbol that simply started trading after the requested date is fetched once, not every time
+    data.load_symbol("AAA", "2010-01-01", "2020-12-31")
+    n = len(calls)
+    again = data.load_symbol("AAA", "2010-01-01", "2020-12-31")
+    assert len(calls) == n and again.dates[0] == "2015-01-01"

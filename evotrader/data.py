@@ -107,6 +107,28 @@ def _write_cache(bars: Bars) -> None:
     os.replace(tmp, path)
 
 
+def _meta_path(symbol: str) -> str:
+    return _cache_path(symbol)[:-4] + ".meta.json"
+
+
+def _read_meta(symbol: str) -> Dict[str, str]:
+    path = _meta_path(symbol)
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path) as fh:
+            meta = json.load(fh)
+        return meta if isinstance(meta, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _write_meta(symbol: str, **fields: str) -> None:
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    with open(_meta_path(symbol), "w") as fh:
+        json.dump({**_read_meta(symbol), **fields}, fh)
+
+
 def _read_cache(symbol: str) -> Bars | None:
     path = _cache_path(symbol)
     if not os.path.exists(path):
@@ -205,18 +227,30 @@ def synthetic_bars(symbol: str, n: int = 1500, *, seed: int | None = None,
 
 def load_symbol(symbol: str, start: str, end: str, *, offline: bool = False,
                 refresh: bool = False) -> Bars:
-    """Cache-first symbol load; falls back to synthetic data when offline."""
-    if not refresh:
-        cached = _read_cache(symbol)
-        if cached is not None:
-            window = cached.slice(start, end)
-            if len(window) > 50:
-                return window
+    """Cache-first symbol load; falls back to synthetic data when offline.
+
+    The cache remembers the earliest date it was ever asked for.  A request
+    that reaches further back than the cache was built for refetches from the
+    earlier date instead of silently returning the truncated window, and a
+    refresh re-downloads from the earliest date ever requested, so a refresh
+    driven by a short-history config can never shrink the cache.
+    """
+    cached = _read_cache(symbol)
+    known_from = _read_meta(symbol).get("fetched_start")
+    covers = cached is not None and (
+        (known_from is not None and known_from <= start) or cached.dates[0] <= start)
+    if cached is not None and not refresh and (covers or offline):
+        window = cached.slice(start, end)
+        if len(window) > 50:
+            return window
     if offline:
         return synthetic_bars(symbol).slice(start, end)
-    bars = fetch_yahoo(symbol, start, end)
+    fetch_from = min([start] + ([known_from] if known_from else [])
+                     + ([cached.dates[0]] if cached is not None else []))
+    bars = fetch_yahoo(symbol, fetch_from, end)
     _write_cache(bars)
-    return bars
+    _write_meta(symbol, fetched_start=fetch_from, fetched_end=end)
+    return bars.slice(start, end)
 
 
 def load_universe(symbols: Sequence[str], start: str, end: str, *,

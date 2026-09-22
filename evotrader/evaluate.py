@@ -30,9 +30,15 @@ class WindowResult:
     score: float
 
     @property
-    def profitable(self) -> bool:
+    def verdict(self) -> str:
         m = self.metrics
-        return m.trades >= 10 and m.total_return > 0 and m.profit_factor > 1.0
+        if m.trades < 10:
+            return f"too few trades ({m.trades})"
+        return "profitable" if (m.total_return > 0 and m.profit_factor > 1.0) else "not profitable"
+
+    @property
+    def profitable(self) -> bool:
+        return self.verdict == "profitable"
 
 
 @dataclass
@@ -72,12 +78,35 @@ class StrategyReport:
     worst: List[Trade] = field(default_factory=list)
     symbols: List[SymbolRow] = field(default_factory=list)
     periods: List[PeriodRow] = field(default_factory=list)  # --since windows
+    recent: Optional[PeriodRow] = None                       # --recent window
     error: str = ""
+
+    RECENT_MIN_TRADES = 5
 
     @property
     def profitable(self) -> bool:
-        """Positive net return and a profit factor above 1 on every window."""
-        return not self.error and bool(self.windows) and all(w.profitable for w in self.windows)
+        """With a recent window: positive with a profit factor above 1 there.
+        Otherwise: positive with a profit factor above 1 on every window."""
+        if self.error:
+            return False
+        if self.recent is not None:
+            m = self.recent.metrics
+            return (m.trades >= self.RECENT_MIN_TRADES and m.total_return > 0
+                    and m.profit_factor > 1.0)
+        return bool(self.windows) and all(w.profitable for w in self.windows)
+
+    @property
+    def verdict(self) -> str:
+        if self.error:
+            return "error"
+        if self.recent is not None:
+            m = self.recent.metrics
+            span = f"over the {self.recent.label} ({self.recent.start}..{self.recent.end})"
+            if m.trades < self.RECENT_MIN_TRADES:
+                return f"too few trades {span}: {m.trades}"
+            return ("PROFITABLE " if self.profitable else "not profitable ") + span
+        return "PROFITABLE on every window" if self.profitable else "not profitable"
+
 
 
 def load_genomes(path: str) -> List[Genome]:
@@ -117,7 +146,7 @@ def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
 
 
 def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
-             since: Sequence[str] = ()) -> List[YearRow]:
+             since: Sequence[str] = (), recent_bars: int = 0) -> List[YearRow]:
     """One full-window backtest, then calendar-year buckets from the equity
     curve (returns) and the trade list (counts, by exit date).  Also records
     the best and worst trades, so gap risk is visible."""
@@ -140,6 +169,13 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
         row = _period(journal, start, ctx_cfg(ctx))
         if row is not None:
             report.periods.append(row)
+    if recent_bars > 0:
+        dates = journal.equity_dates
+        start = dates[-recent_bars] if len(dates) > recent_bars else dates[0]
+        row = _period(journal, start, ctx_cfg(ctx))
+        if row is not None:
+            row.label = f"last {recent_bars} bars"
+            report.recent = row
     last_of_year: Dict[str, float] = {}
     order: List[str] = []
     for date, eq in zip(journal.equity_dates, journal.equity):
@@ -166,10 +202,13 @@ def ctx_cfg(ctx: Context) -> EvolutionConfig:
 
 
 def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
-             by_year: bool = False, since: Sequence[str] = ()) -> List[StrategyReport]:
+             by_year: bool = False, since: Sequence[str] = (),
+             recent_bars: int = 0) -> List[StrategyReport]:
     """Score each genome on the config's training and held-out windows.
     ``since`` dates add trailing-window rows (return, trades, worst day...)
-    from one full-window backtest; they imply ``by_year``'s full backtest."""
+    from one full-window backtest.  ``recent_bars`` adds the trailing window
+    that the verdict and the ranking are then based on: the last six months
+    rather than the whole history."""
     universe = load_universe(cfg.symbols, cfg.start, cfg.end, offline=cfg.offline,
                              refresh=cfg.refresh_data)
     windows: List[tuple] = []
@@ -181,7 +220,7 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     else:
         windows.append(("full", universe))
     contexts = [(label, _context(u, cfg)) for label, u in windows]
-    full_ctx = _context(universe, cfg) if (by_year or since) else None
+    full_ctx = _context(universe, cfg) if (by_year or since or recent_bars > 0) else None
 
     reports: List[StrategyReport] = []
     for genome in genomes:
@@ -194,12 +233,31 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
                 a, b = ctx.train.date_range()
                 report.windows.append(WindowResult(label, a, b, out.metrics, out.score))
             if full_ctx is not None:
-                years = _by_year(genome, full_ctx, report, since=since)
+                years = _by_year(genome, full_ctx, report, since=since, recent_bars=recent_bars)
                 report.years = years if by_year else []
         except (GenomeError, ValueError) as exc:
             report.error = str(exc)
         reports.append(report)
+    if recent_bars > 0:
+        # rank by the recent window: what works now comes first, and a strategy
+        # that barely traded there goes last whatever its return says
+        def key(r):
+            m = r.recent.metrics if r.recent else None
+            thin = m is None or m.trades < StrategyReport.RECENT_MIN_TRADES
+            return (r.recent is None, thin, -(m.total_return if m else 0.0))
+        reports.sort(key=key)
     return reports
+
+
+def parse_recent(text: str) -> int:
+    """'6m' -> 126 bars, '3m' -> 63, '1y' -> 252, '2w' -> 10, '90' -> 90."""
+    t = text.strip().lower()
+    if t.isdigit():
+        return int(t)
+    units = {"w": 5, "m": 21, "y": 252}
+    if t and t[-1] in units and t[:-1].isdigit():
+        return int(t[:-1]) * units[t[-1]]
+    raise ValueError(f"cannot parse a bar count from {text!r}; use e.g. 6m, 3m, 1y or 126")
 
 
 # ------------------------------------------------------------------- signals
@@ -286,7 +344,7 @@ def _row(w: WindowResult) -> str:
             f"mdd {m.max_drawdown * 100:6.1f}%  trades {m.trades:4d}  win {m.win_rate * 100:3.0f}%  "
             f"pf {m.profit_factor:4.2f}  avg {m.avg_trade_return * 100:+5.2f}%/t  "
             f"hold {m.avg_bars_held:4.1f}b  worst day {m.worst_day * 100:5.1f}%  score {w.score:+.3f}"
-            f"{'' if w.profitable else '  <-- not profitable'}")
+            f"{'' if w.profitable else '  <-- ' + w.verdict}")
 
 
 def format_text(reports: Sequence[StrategyReport]) -> str:
@@ -300,7 +358,7 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
         if r.years:
             lines.append("  by year: " + "  ".join(
                 f"{y.year} {y.ret * 100:+.0f}%/{y.trades}t" for y in r.years))
-        for p in r.periods:
+        for p in ([r.recent] if r.recent else []) + list(r.periods):
             m = p.metrics
             lines.append(f"  {p.label} ({p.start}..{p.end}): ret {m.total_return * 100:+6.1f}%  "
                          f"trades {m.trades:3d}  win {m.win_rate * 100:3.0f}%  pf {m.profit_factor:4.2f}  "
@@ -310,10 +368,12 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
             lines.append("  by symbol: " + "  ".join(
                 f"{s.symbol} {s.trades}t {s.win_rate * 100:.0f}% {s.avg_ret * 100:+.2f}%"
                 for s in r.symbols))
-        lines.append(f"  verdict: {'PROFITABLE on every window' if r.profitable else 'not profitable'}")
+        lines.append(f"  verdict: {r.verdict}")
         lines.append("")
     n_ok = sum(1 for r in reports if r.profitable)
-    lines.append(f"{n_ok} of {len(reports)} strategies profitable on every window")
+    recent = next((r.recent for r in reports if r.recent is not None), None)
+    where = f"over the {recent.label}" if recent is not None else "on every window"
+    lines.append(f"{n_ok} of {len(reports)} strategies profitable {where}")
     return "\n".join(lines)
 
 
@@ -350,10 +410,11 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
                        f"{m.profit_factor:.2f} | {m.avg_trade_return * 100:+.2f}% | "
                        f"{m.avg_bars_held:.1f} bars | {w.score:+.2f} |")
         out.append("")
-        if r.periods:
+        periods = ([r.recent] if r.recent else []) + list(r.periods)
+        if periods:
             out.append("| period | dates | return | trades | win | profit factor | avg trade | max dd | worst day |")
             out.append("|---|---|---|---|---|---|---|---|---|")
-            for p in r.periods:
+            for p in periods:
                 m = p.metrics
                 out.append(f"| {p.label} | {p.start} to {p.end} | {m.total_return * 100:+.1f}% | "
                            f"{m.trades} | {m.win_rate * 100:.0f}% | {m.profit_factor:.2f} | "
@@ -380,6 +441,6 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
                 out.append(f"- {t.symbol} {t.entry_date} to {t.exit_date}, {t.bars_held} bars, "
                            f"{t.ret * 100:+.1f}%: {t.exit_reason}")
             out.append("")
-        out.append(f"Verdict: **{'profitable on every window' if r.profitable else 'not profitable'}**")
+        out.append(f"Verdict: **{r.verdict}**")
         out.append("")
     return "\n".join(out)

@@ -53,7 +53,7 @@
     "hold_limit_bars": 3.0,
     "hold_penalty": 1.5,
     "recent_bars": 126,
-    "recent_weight": 0.5
+    "recent_weight": 0.7
   },
   "run_id": "",
   "db_path": "runs/evotrader.sqlite",

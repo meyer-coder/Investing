@@ -18,7 +18,7 @@ from typing import List, Optional, Sequence
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
 from .data import load_universe
 from .evaluate import (evaluate, format_markdown, format_signals, format_text,
-                       latest_signals, load_genomes)
+                       latest_signals, load_genomes, parse_recent)
 from .evolution import Evolution, replay_genome
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
@@ -230,8 +230,11 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
         cfg.symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
     if args.offline:
         cfg.offline = True
+    if args.refresh:
+        cfg.refresh_data = True
     try:
         genomes = load_genomes(args.file)
+        recent_bars = parse_recent(args.recent) if args.recent else 0
     except (OSError, ValueError) as exc:
         print(f"could not load {args.file}: {exc}", file=sys.stderr)
         return 1
@@ -239,7 +242,7 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
         print(f"no genomes in {args.file}", file=sys.stderr)
         return 1
     since = [s.strip() for s in (args.since or "").split(",") if s.strip()]
-    reports = evaluate(genomes, cfg, by_year=args.by_year, since=since)
+    reports = evaluate(genomes, cfg, by_year=args.by_year, since=since, recent_bars=recent_bars)
     print(format_text(reports))
     if args.markdown:
         os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
@@ -625,6 +628,9 @@ def build_parser() -> argparse.ArgumentParser:
                     help="also break the full window down by calendar year")
     ev.add_argument("--since", help="comma-separated YYYY-MM-DD dates; adds trailing-window "
                                     "rows (return, trades, max dd, worst day) from each date")
+    ev.add_argument("--recent", help="judge and rank on the trailing window instead of the whole "
+                                     "history: 6m, 3m, 1y or a bar count (6m = 126 bars)")
+    ev.add_argument("--refresh", action="store_true", help="re-download prices first")
     ev.add_argument("--markdown", help="write a Markdown report here")
     ev.add_argument("--title", help="title for the Markdown report")
     ev.set_defaults(func=cmd_evaluate)
