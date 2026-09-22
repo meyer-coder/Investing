@@ -85,8 +85,81 @@ unusual volume regime. Stitched data is therefore usable as a **regime
 robustness check** (does the edge survive 2022's bear, 2023–24's rally,
 2025–26?) and unusable as the basis for a seasonality claim.
 
+## Equities and ETFs reach much further than futures
+
+The cap is a bar count, so **a shorter session stretches the same budget over
+more calendar time**. Regular trading hours spend ~78 five-minute bars a day
+against a future's ~276:
+
+| Symbol | TF | Bars | Bars/day | Trading days | Span |
+|---|---|---|---|---|---|
+| `NQ1!` | 5m | 5,798 | 276 | 21 | 1.0 month |
+| `QQQ` / `SPY` / `NVDA` | 5m | 5,304 | 78 | 68 | **3.2 months** |
+| `NQ1!` | 15m | 5,413 | 92 | 59 | 2.8 months |
+| `QQQ` | 15m | 5,240 | 26 | 202 | **9.6 months** |
+| `NQ1!` | 60m | 10,154 | 23 | 441 | 1.8 years |
+| `QQQ` | 60m | 6,500 | 7 | 929 | **3.7 years** |
+
+`QQQ` at 60-minute covers the full 3-year window continuously, with every
+calendar month present — which stitched futures contracts can never do. It
+tracks the same index as NQ, so for the question "does this edge exist on the
+Nasdaq" it is a legitimate instrument, not a compromise.
+
+Caveats worth stating: RTH only, so "around the clock" testing is impossible on
+equities; splits-adjusted rather than dividend-adjusted (do not mix with Yahoo
+series in one backtest); and day-trading equities under \$25k runs into the
+pattern-day-trader rule, which futures do not have.
+
+## Breadth: many symbols instead of many years
+
+Trade counts pool across symbols, so a short window over a wide universe clears
+the 400-trade floor that a single instrument cannot. In the 68 trading days a
+5-minute equity pull returns, at one signal per symbol per day:
+
+| Variation selectivity | Symbols needed for 400 trades |
+|---|---|
+| 1.00 (no filters) | 6 |
+| 0.50 | 12 |
+| 0.25 | 24 |
+| 0.07 (heaviest stack in the grid) | 84 |
+
+**This fixes the arithmetic, not the evidence.** Thirty Nasdaq names over one
+quarter samples one stretch of history thirty times over, not thirty stretches.
+At an average pairwise correlation of 0.55 the basket is worth roughly **2
+independent symbols**, not 30 — `n / (1 + (n-1) x rho)`, a conservative bound.
+The builder computes this and every generated prompt now demands the effective
+figure be quoted next to every pooled trade count, plus per-symbol counts and a
+re-run with the top contributor removed.
+
+## Account entitlement is the real wall
+
+From the tunnel's own source (`evotrader/tvdata.py` on the `mcp` branch):
+
+> One series request tops out a few thousand bars short of a deep intraday
+> history; earlier bars come a page at a time. ... the ceiling is a time budget
+> rather than a page count, **and an account that is entitled to the history is
+> what decides how far it actually gets.**
+
+The paging machinery exists — `request_more_data`, `MAX_PAGES = 2_000`,
+`PAGE_SIZE = 20_000`, up to 10M bars. The wall hit above is therefore **an
+entitlement wall, not a technical one**: the client asks for earlier pages and
+the feed declines to serve them, because the session is anonymous
+(`ANONYMOUS_TOKEN = "unauthorized_user_token"` is the fallback when no
+credential is found).
+
+Signing in is consequently the highest-leverage change available, and it costs a
+login rather than a data purchase. On the machine running the tunnel:
+`evotrader tv-login` stores the browser `sessionid` cookie, or set
+`TRADINGVIEW_SESSION` / `TRADINGVIEW_SESSION_SIGN`, or `TRADINGVIEW_AUTH_TOKEN`
+directly. How much further it reaches depends on the plan tier and is worth
+re-measuring immediately after signing in — rerun the depth probes above and
+compare.
+
 ## The four options, ranked
 
+0. **Sign in to TradingView on the tunnel host, then re-measure.** Cheapest by
+   far, and the source says entitlement is what caps the pull. Do this before
+   deciding anything else.
 1. **Start accumulating forward today.** The MCP server reads from a local store
    that `evotrader tv-fetch` fills. A scheduled weekly pull grows true
    continuous 5-minute history from now on — six months from now you have six

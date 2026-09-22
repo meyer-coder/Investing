@@ -249,6 +249,46 @@ def test_no_emphasis_means_no_recency_section():
     assert "No recency emphasis" in text
 
 
+# -------------------------------------------------------------- universe
+def test_universe_size_multiplies_attainable_trades():
+    one = parse_spec(_minimal(data={"sources": ["y"], "history_days": 100,
+                                    "base_signals_per_day": 1.0}))
+    many = parse_spec(_minimal(data={"sources": ["y"], "history_days": 100,
+                                     "base_signals_per_day": 1.0, "universe_size": 30}))
+    a, b = build_grid(one).variations[0], build_grid(many).variations[0]
+    assert a.attainable_trades == 100
+    assert b.attainable_trades == 3000
+    assert b.required_days * 30 <= a.required_days + 30      # 30x fewer days needed
+
+
+def test_effective_breadth_discounts_correlated_symbols():
+    from promptbuilder.feasibility import effective_breadth
+    assert effective_breadth(1, 0.5) == 1.0
+    assert effective_breadth(100, 0.0) == 100.0              # independent: no discount
+    assert 1.5 < effective_breadth(100, 0.55) < 2.5          # correlated: heavy discount
+    assert effective_breadth(100, 0.55) < effective_breadth(100, 0.3)
+
+
+def test_universe_block_reports_effective_not_nominal_breadth():
+    spec = parse_spec(_minimal(data={"sources": ["y"], "history_days": 756,
+                                     "base_signals_per_day": 1.0,
+                                     "universe_size": 30, "avg_pairwise_corr": 0.55}))
+    grid = build_grid(spec)
+    text = render(spec, grid, assess(spec, grid), spec_path="s", manifest_path="m")
+    assert "30 symbols traded in parallel" in text
+    assert "independent symbols" in text
+    assert "breadth, not depth" in text
+
+
+def test_bad_universe_inputs_are_rejected():
+    with pytest.raises(SpecError, match="universe_size"):
+        parse_spec(_minimal(data={"sources": ["y"], "history_days": 10,
+                                  "base_signals_per_day": 1.0, "universe_size": 0}))
+    with pytest.raises(SpecError, match="avg_pairwise_corr"):
+        parse_spec(_minimal(data={"sources": ["y"], "history_days": 10,
+                                  "base_signals_per_day": 1.0, "avg_pairwise_corr": 1.0}))
+
+
 # ------------------------------------------------------------- end to end
 def test_example_spec_builds_and_flags_infeasible_variations(tmp_path):
     from promptbuilder.cli import main

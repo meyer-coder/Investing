@@ -67,10 +67,26 @@ class FeasibilityReport:
     min_trades_recent: int = 0
     n_feasible_recent: int = 0
     n_feasible_both: int = 0
+    universe_size: int = 1
+    effective_breadth: float = 1.0
 
     @property
     def all_feasible(self) -> bool:
         return self.n_infeasible == 0
+
+
+def effective_breadth(n_symbols: int, avg_corr: float) -> float:
+    """How many *independent* symbols a correlated basket is worth.
+
+    ``n / (1 + (n-1) * rho)`` is the variance-reduction breadth of an equally
+    weighted basket.  It is a conservative bound for trade-level sampling —
+    trades do not all fire at the same instant, so the true figure sits between
+    this and ``n`` — but it is the right order of magnitude, and it is the
+    number that stops "100 symbols" being mistaken for "100x the evidence".
+    """
+    if n_symbols <= 1:
+        return 1.0
+    return n_symbols / (1.0 + (n_symbols - 1) * avg_corr)
 
 
 def assess(spec: Spec, grid: Grid) -> FeasibilityReport:
@@ -94,4 +110,6 @@ def assess(spec: Spec, grid: Grid) -> FeasibilityReport:
         min_trades_recent=spec.window.min_trades_recent,
         n_feasible_recent=sum(1 for v in grid.variations if v.feasible_recent),
         n_feasible_both=len(grid.feasible_both),
+        universe_size=spec.universe_size,
+        effective_breadth=effective_breadth(spec.universe_size, spec.avg_pairwise_corr),
     )

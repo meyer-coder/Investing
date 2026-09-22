@@ -80,10 +80,12 @@ def build_grid(spec: Spec) -> Grid:
     for i, combo in enumerate(combos):
         selectivity = math.prod(v.pass_rate for v in combo)
         per_day = spec.base_signals_per_day * selectivity
-        attainable = int(per_day * spec.history_days)
-        required = math.ceil(spec.min_trades / per_day) if per_day > 0 else 10**9
+        attainable = int(per_day * spec.history_days * spec.universe_size)
+        per_day_universe = per_day * spec.universe_size
+        required = (math.ceil(spec.min_trades / per_day_universe)
+                    if per_day_universe > 0 else 10**9)
         emph = spec.window.emphasis_days
-        recent = int(per_day * emph)
+        recent = int(per_day * emph * spec.universe_size)
         variations.append(Variation(
             index=i,
             choices={ax.name: v.label for ax, v in zip(axes, combo)},

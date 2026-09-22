@@ -52,12 +52,18 @@ Rules that apply whichever rung you land on:
   transitions and holiday half-days.
 * The test window is **{{LOOKBACK_CLAIM}}**. This brief assumes roughly
   **{{HISTORY_CLAIM}}** is obtainable. If what you actually get is
-  materially less, do not silently rescale the analysis — jump to §6 and follow
+  materially less, do not silently rescale the analysis — jump to §7 and follow
   the fallback there.
 
 ---
 
-## 3. Sessions — test around the clock
+## 3. Universe
+
+{{UNIVERSE_BLOCK}}
+
+---
+
+## 4. Sessions — test around the clock
 
 {{SESSION_BUCKETS}}
 
@@ -66,7 +72,7 @@ the point: a number from one session with nothing beside it is not a finding.
 
 ---
 
-## 4. Seasonality and events
+## 5. Seasonality and events
 
 {{SEASONALITY}}
 
@@ -74,7 +80,7 @@ the point: a number from one session with nothing beside it is not a finding.
 
 ---
 
-## 5. Variations — {{VARIATION_COUNT}} of them
+## 6. Variations — {{VARIATION_COUNT}} of them
 
 The grid is already enumerated in `{{MANIFEST_PATH}}`; run what is in that file
 rather than inventing your own, so results stay comparable across runs.
@@ -89,7 +95,7 @@ extension rather than folding it into the main grid.
 
 ---
 
-## 6. Guardrails — non-negotiable
+## 7. Guardrails — non-negotiable
 
 These exist because a {{VARIATION_COUNT}}-way search will always produce a
 winner, whether or not an edge exists.
@@ -120,13 +126,13 @@ make variations qualify.
 
 ---
 
-## 7. Recency
+## 8. Recency
 
 {{RECENCY_BLOCK}}
 
 ---
 
-## 8. Deliverables
+## 9. Deliverables
 
 {{DELIVERABLES}}
 

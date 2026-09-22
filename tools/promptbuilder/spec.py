@@ -95,6 +95,8 @@ class Spec:
     sources: List[DataSource]
     history_days: int
     base_signals_per_day: float
+    universe_size: int
+    avg_pairwise_corr: float
     timezone: str
     axes: List[Axis]
     grid_min: int
@@ -167,10 +169,16 @@ def parse_spec(raw: Dict[str, Any]) -> Spec:
     if history_days <= 0:
         raise SpecError("data.history_days must be a positive number of trading days "
                         "(what you believe the best source can actually deliver)")
+    universe_size = int(data.get("universe_size", 1))
+    if universe_size < 1:
+        raise SpecError("data.universe_size must be at least 1")
+    corr = float(data.get("avg_pairwise_corr", 0.5))
+    if not 0.0 <= corr < 1.0:
+        raise SpecError("data.avg_pairwise_corr must be in [0, 1)")
     base_rate = float(data.get("base_signals_per_day", 0))
     if base_rate <= 0:
         raise SpecError("data.base_signals_per_day must be > 0 — your estimate of how often "
-                        "the unfiltered strategy fires per trading day. Feasibility "
+                        "the unfiltered strategy fires per trading day, per symbol. Feasibility "
                         "depends on it; a guess you state beats a guess you hide.")
 
     guards = raw.get("guardrails") or {}
@@ -223,7 +231,8 @@ def parse_spec(raw: Dict[str, Any]) -> Spec:
 
     return Spec(
         strategy=strategy, sources=sources, history_days=history_days,
-        base_signals_per_day=base_rate, timezone=str(data.get("timezone", "America/New_York")),
+        base_signals_per_day=base_rate, universe_size=universe_size,
+        avg_pairwise_corr=corr, timezone=str(data.get("timezone", "America/New_York")),
         axes=axes, grid_min=int(grid.get("target_min", 500)),
         grid_max=int(grid.get("target_max", 800)), seed=int(grid.get("seed", 7)),
         min_trades=min_trades, target_trades=target, oos_fraction=oos,

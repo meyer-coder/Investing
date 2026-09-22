@@ -89,6 +89,28 @@ def _feasibility_block(spec: Spec, rep: FeasibilityReport) -> str:
         f"makes a variation both attractive-looking and unprovable.")
 
 
+def _universe_block(spec: Spec, rep) -> str:
+    n = spec.universe_size
+    if n <= 1:
+        return ("Single instrument: every trade comes from one symbol, so the trade "
+                "count and the calendar window rise and fall together.")
+    return (
+        f"**{n} symbols traded in parallel.** Trade counts in §7.1 are pooled across the "
+        f"whole basket, which is what makes the {spec.min_trades}-trade floor reachable "
+        f"on a window this short.\n\n"
+        f"**State the pooled count and the per-symbol count separately, always.** "
+        f"{n} symbols over {spec.history_days} trading days is breadth, not depth: it "
+        f"samples one stretch of market history {n} times over, not {n} stretches. At an "
+        f"assumed average pairwise correlation of {spec.avg_pairwise_corr:.1f}, the basket "
+        f"is worth roughly **{rep.effective_breadth:.1f} independent symbols**, not {n} — "
+        f"`n / (1 + (n-1) x rho)`, a conservative bound, since trades do not all fire at "
+        f"the same instant. Report that effective figure next to every pooled trade count. "
+        f"A result resting on 400 pooled trades from one quarter is a claim about that "
+        f"quarter, however many tickers it spans.\n\n"
+        f"Also report: per-symbol trade counts (so one runaway name cannot carry the "
+        f"basket), and results with the top-contributing symbol removed.")
+
+
 def _recent_floor_clause(spec: Spec) -> str:
     w = spec.window
     if not w.emphasis_days:
@@ -230,6 +252,7 @@ def render(spec: Spec, grid: Grid, rep: FeasibilityReport, *,
         "OOS_PCT": str(oos),
         "STATS_BLOCK": _stats_block(rep),
         "RECENCY_BLOCK": _recency_block(spec, rep),
+        "UNIVERSE_BLOCK": _universe_block(spec, rep),
         "RECENT_FLOOR_CLAUSE": _recent_floor_clause(spec),
         "LOOKBACK_CLAIM": f"the last {spec.window.lookback_years:g} years"
                           + (f", weighted toward the last {spec.window.emphasis_months:g} months"

@@ -1,0 +1,96 @@
+# The route that is actually available today, measured rather than assumed:
+# Nasdaq equities and ETFs at 60-minute reach back 3.7 years on this feed
+# (QQQ: 6,500 bars from 2023-01-03), because RTH spends ~7 bars/day against a
+# future's ~23. That covers the full 3-year window, continuously, with every
+# calendar month present — which stitched futures contracts can never do.
+#
+# Replace the strategy block with your own; the rest is the recommended shape.
+
+strategy:
+  name: "EXAMPLE — Opening Range Reclaim (Nasdaq equities, 60m)"
+  instrument: "QQQ plus Nasdaq-100 constituents"
+  timeframe: "60-minute"
+  direction: "long and short"
+  thesis: >-
+    Price breaks the prior session's range to trigger resting stops, fails to
+    hold beyond it, and closes back inside. The failed break marks the
+    liquidity grab; the reclaim is the entry.
+  entry_rules:
+    - "Reference range = prior session's high and low."
+    - "LONG: a bar trades below the prior-session low and closes back above it."
+    - "SHORT: a bar trades above the prior-session high and closes back below it."
+    - "Enter at the open of the bar following the reclaim bar."
+  exit_rules:
+    - "Opposite side of the reference range touched."
+    - "Stop as configured in risk, from the reclaim bar's extreme."
+    - "Flat at session close; regular trading hours only, no overnight holds."
+  risk:
+    stop: "reclaim bar extreme, ±0.25 ATR(14) buffer"
+    target: "configured per variation (grid axis `target`)"
+    size: "equal dollar weight per position"
+    max_concurrent: 5
+    commission_bps: 1.0
+    slippage_bps: 5.0
+  session_in_spec: ""
+  override_session: true
+
+data:
+  sources:
+    - name: "TradingView MCP tunnel — NASDAQ:QQQ and constituents, 60m"
+      note: "measured 3.7 years of depth; the rung that actually reaches the window"
+    - name: "TradingView 15m"
+      note: "fallback if 60m is too coarse for the signal — reaches ~10 months"
+    - name: "TradingView 5m, multi-symbol"
+      note: "last resort — only ~3.2 months per symbol; breadth, not depth"
+  universe_size: 30           # symbols traded in parallel
+  avg_pairwise_corr: 0.55     # Nasdaq names are tightly correlated; discounts breadth
+  base_signals_per_day: 0.4   # reclaim signals per symbol per session at 60m
+  timezone: "America/New_York"
+
+window:
+  lookback_years: 3           # 756 trading days, inside the measured 3.7y
+  emphasis_months: 6
+  recent_weight: 0.6
+  method: weighted
+  require_recent_positive: true
+
+grid:
+  target_min: 500
+  target_max: 800
+  seed: 7
+  axes:
+    - name: trend_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "ema20 > ema50", pass_rate: 0.55}
+        - {label: "ema50 > ema200", pass_rate: 0.50}
+        - {label: "close > ema200", pass_rate: 0.52}
+    - name: volume_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "rvol > 1.2", pass_rate: 0.45}
+        - {label: "rvol > 1.5", pass_rate: 0.28}
+    - name: vwap_filter
+      values:
+        - {label: "none", pass_rate: 1.0}
+        - {label: "entry above session VWAP", pass_rate: 0.50}
+        - {label: "entry below session VWAP", pass_rate: 0.50}
+    - name: stop
+      values: ["0.5R", "1.0R", "1.5R", "ATR(14) trailing"]
+    - name: target
+      values: ["1R", "2R", "3R", "opposite range edge"]
+
+guardrails:
+  min_trades: 400
+  target_trades: [400, 500]
+  oos_fraction: 0.3
+
+analysis:
+  session_buckets:
+    - "each RTH hour, 09:30-16:00 ET"
+    - "New York open 09:30-10:30 (called out separately)"
+    - "New York 10:30-11:30 (called out separately)"
+  seasonality: [month, year, day_of_week, week_of_month]
+  events: true
+
+deliverables: [pdf, html_dashboard]
