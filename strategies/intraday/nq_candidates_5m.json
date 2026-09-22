@@ -1,0 +1,224 @@
+{
+  "symbol": "CME_MINI:NQ1!",
+  "timeframe": "5",
+  "costs": {
+    "commission_bps": 0.2,
+    "slippage_bps": 0.8
+  },
+  "note": "Long-only first pass. weight 1.0 is 100% of equity in index notional, about 0.4 MNQ per $25,000 at NQ 31,000; one MNQ is 2.5x.",
+  "strategies": [
+    {
+      "name": "VWAP reclaim, morning",
+      "thesis": "NQ stretched 0.4% under the day's VWAP in the first 2.5 hours, RSI washed out, first up bar: buy the snap back to VWAP.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minutes_since_open >= 15 and minutes_since_open <= 150 and dist_session_vwap < -0.004 and rsi7 < 30 and ret1 > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "dist_session_vwap >= 0"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.004,
+        "take_profit_pct": 0.005,
+        "max_hold_bars": 24,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Opening-range breakout",
+      "thesis": "Buy the first close just above the 60-minute opening range high; out when price falls back inside the range.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and or_broken_up == 1 and dist_or_high > 0 and dist_or_high < 0.0025 and minutes_since_open < 180 and ret1 > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "close < opening_range_high"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.004,
+        "take_profit_pct": 0.008,
+        "max_hold_bars": 36,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Failed breakdown of the opening range",
+      "thesis": "Price broke below the opening-range low and reclaimed it: the sellers failed, target VWAP.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and or_broken_down == 1 and dist_or_low > 0 and prev(dist_or_low) < 0 and minutes_since_open < 240",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "dist_session_vwap >= 0"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.004,
+        "take_profit_pct": 0.006,
+        "max_hold_bars": 24,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Pullback to VWAP on an up day",
+      "thesis": "A rising 20-bar mean and a dip to the day's VWAP: buy the pullback, hold an hour.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minutes_since_open >= 60 and minutes_since_open <= 300 and dist_session_vwap > -0.0005 and dist_session_vwap < 0.0015 and ret5 < -0.002 and rsi7 < 40 and sma20_slope > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "bars_held >= 12"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.003,
+        "take_profit_pct": 0.004,
+        "max_hold_bars": 12,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "First-hour capitulation",
+      "thesis": "A 0.6% flush in the opening hour with RSI under 25 that closes in the top half of its bar: the intraday version of Capitulation Close.",
+      "entry_rules": [
+        {
+          "when": "is_first_hour == 1 and minutes_since_open >= 10 and ret5 < -0.006 and rsi7 < 25 and (close - low) / (high - low + 0.25) > 0.5",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "dist_session_vwap >= 0"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.006,
+        "max_hold_bars": 24,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Power-hour dip",
+      "thesis": "Under VWAP and washed out after 15:00: buy the last-hour bounce, flat before the close.",
+      "entry_rules": [
+        {
+          "when": "is_power_hour == 1 and minute_of_day <= 935 and dist_session_vwap < -0.003 and rsi7 < 30 and ret1 > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.003,
+        "take_profit_pct": 0.004,
+        "max_hold_bars": 12,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Midday 2-sigma dip in an uptrend",
+      "thesis": "Above the 50-bar mean, two standard deviations under the 20-bar mean, first up bar: buy the dip, out at the mean.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minutes_since_open >= 120 and minutes_since_open <= 330 and dist_sma50 > 0 and zscore20 < -2.0 and ret1 > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "zscore20 > 0"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.004,
+        "take_profit_pct": 0.005,
+        "max_hold_bars": 24,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Breakout pullback",
+      "thesis": "Above the opening range and VWAP, a small pullback that turns up: trend continuation, out on a close under VWAP.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and or_broken_up == 1 and dist_or_high > 0.001 and dist_session_vwap > 0.001 and ret5 < -0.0015 and ret1 > 0 and minutes_since_open < 300",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "close < session_vwap"
+        },
+        {
+          "when": "minute_of_day >= 955"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.004,
+        "take_profit_pct": 0.006,
+        "max_hold_bars": 36,
+        "cooldown_bars": 2
+      }
+    }
+  ]
+}

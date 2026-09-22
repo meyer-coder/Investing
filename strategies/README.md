@@ -114,6 +114,54 @@ month, Capitulation Close +0.4%, Oversold Dip +0.5%, with 48% to 58% of
 months positive. The 3% months are the last two years on RIOX, MUU and
 SOXL.
 
+**Daily numbers.** What one session does to the account, from
+`evaluate --daily`, on the long funds at the file's sizing over the last
+six months (126 sessions). "In market" is the share of sessions with any
+P&L; the rest are flat. The percentile columns run over every session,
+flat ones included, so "flat" means the strategy was out of the market
+on that decile. Dollar figures are on $25,000.
+
+| strategy | in market | mean per session | typical active session | 10th / 90th pct session | best session | worst session | sessions below -2% |
+|---|---|---|---|---|---|---|---|
+| Combo: All Five Setups | 37% | +0.21% ($52) | +0.03% | -1.0% / +2.4% (-$253 / +$603) | +9.4% (+$2,350) | -7.8% (-$1,950) | 5.6% |
+| Combo: Recent Winners | 33% | +0.21% ($52) | 0.0% | -0.6% / +1.8% (-$150 / +$455) | +8.5% (+$2,125) | -4.5% (-$1,125) | 3.2% |
+| Band Break on Volume | 9% | +0.20% ($50) | +1.3% ($333) | flat / flat | +7.5% (+$1,875) | -3.9% (-$975) | 0.8% |
+| Capitulation Close | 21% | +0.15% ($38) | +0.35% ($88) | flat / +0.4% | +7.5% (+$1,875) | -6.5% (-$1,625) | 3.2% |
+| Squeeze Days (evolved) | 16% | +0.14% ($35) | -0.1% | flat / flat | +11.6% (+$2,900) | -4.2% (-$1,050) | 0.8% |
+| Pullback Cluster (recent set) | 16% | +0.14% ($35) | -0.3% | flat / flat | +14.6% (+$3,650) | -5.3% (-$1,325) | 2.4% |
+| Two Red Days (evolved) | 13% | +0.12% ($30) | -0.3% | flat / flat | +11.6% (+$2,900) | -4.2% (-$1,050) | 0.8% |
+| Combo: Capitulation or Oversold | 27% | +0.11% ($28) | 0.0% | -0.5% / +1.1% | +6.0% (+$1,500) | -7.2% (-$1,800) | 4.0% |
+| Red Day Near the Mean | 19% | +0.09% ($23) | -0.2% | flat / flat | +5.7% | -5.7% | 1.6% |
+| Volume Climax | 9% | +0.05% ($13) | +0.5% | flat / flat | +3.4% | -1.6% | 0% |
+| Red Day Above the 50 | 23% | +0.04% ($10) | -0.5% | -0.8% / flat | +11.3% | -9.7% | 5.6% |
+| Prior-Low Break on Volume | 14% | +0.01% ($3) | 0.0% | flat / flat | +4.9% | -5.7% | 2.4% |
+| Oversold Dip Above the 50 | 11% | -0.05% (-$13) | -1.0% | flat / flat | +3.7% | -6.6% | 2.4% |
+
+There is no daily paycheck in these. A typical active session is within a
+few tenths of a percent of flat; the return is the top decile of sessions,
++1.8% to +2.4% for the combos ($450 to $600), and a handful of squeeze
+days. Against that, one session in twenty to thirty loses more than 2%
+($500), and the worst runs -4% to -8% ($1,000 to $2,000) at the file's
+sizing. The mean per calendar session, +0.10% to +0.21% ($25 to $52), is
+where the +3% to +4.5% a month above comes from.
+
+Over the whole window (January 2025 to September 2026) the tails are
+wider: Combo: All Five Setups best +29.2% (+$7,300), worst -9.3%
+(-$2,325), 5.5% of sessions below -2% and 2.9% below -4%; Capitulation
+Close best +36.5% (+$9,125), worst -11.0% (-$2,750), 3.3% and 1.4%; Two
+Red Days best +11.6%, worst -7.0% (-$1,750), 1.3% and 0.8%.
+
+At the funded slots in the sizing table below (7%, 10% and 13%) the daily
+figures scale with the slot: Combo: All Five Setups at 7% slots is +0.07%
+a session on average ($18), a 90th-percentile session of +0.8% ($210) and
+a worst six-month session of -2.7% (-$680); Capitulation Close at 10% is
++0.06% ($15) a session, +0.14% ($35) on a typical active one, worst -2.6%
+(-$650); Two Red Days at 13% is +0.08% ($20) a session, worst -2.7%
+(-$680). Over the whole window the worst sessions at those slots are
+-3.3%, -4.4% and -4.6%, above a $1,000 limit on $25,000, which is why the
+slots are set on the six-month lens and the daily limit still has to be
+watched on the day.
+
 **FundedNext.** FundedNext Futures trades NQ, MNQ, ES, MES, RTY, M2K, CME
 FX and energy futures, and no stocks or ETFs. Its $25,000 Legacy account
 has a $1,250 profit target, a $1,250 maximum loss during evaluation, a
@@ -134,7 +182,11 @@ They fit a brokerage account on the leveraged funds, a much larger futures
 account, or a CFD index account with fractional lots. If the goal is a
 FundedNext NQ account, the research to do is intraday, and the repo's
 session, VWAP and opening-range features with the TradingView data store
-are the tools for it.
+are the tools for it. A first pass is in `intraday/`: on 21 months of
+hourly bars and twelve weeks of 15-minute bars, no long-only session rule
+on NQ earns more than 5 to 18 points a trade, $10 to $36 per MNQ, against
+ordinary worst sessions of 285 points, so that account stays unfunded by
+this research for now (`intraday/README.md`).
 
 **Forward test.** The rules in this directory are frozen as of commit
 `272364f` on 2026-09-22 (also tagged `strategies-frozen-2026-09-22` in a

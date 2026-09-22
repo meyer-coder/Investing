@@ -1,0 +1,155 @@
+{
+  "symbol": "CME_MINI:NQ1!",
+  "timeframe": "60",
+  "costs": {
+    "commission_bps": 0.2,
+    "slippage_bps": 0.8
+  },
+  "note": "Hourly bars, the deepest intraday history the anonymous TradingView feed gives (21 months). Long-only. weight 1.0 is 100% of equity in index notional, about 0.4 MNQ per $25,000 at NQ 31,000; one MNQ is 2.5x.",
+  "strategies": [
+    {
+      "name": "Last-hour reversal after a red 14:00 hour",
+      "thesis": "The 14:00-15:00 hour fell 0.4% or more: buy the 15:00 open, sell at the 16:00 open. The last hour tends to reverse an afternoon sell-off.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day == 840 and ret1 < -0.004",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.02,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Last hour under VWAP",
+      "thesis": "At 15:00 the index is at least 0.1% under the day's VWAP: buy the 15:00 open, sell at the 16:00 open.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day == 840 and dist_session_vwap < -0.001",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.02,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Last hour above VWAP (the mirror; expected to lose)",
+      "thesis": "Control: the same last-hour trade when the index is above VWAP. If the reversal is real this side should lose.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day == 840 and dist_session_vwap > 0",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.02,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Red morning hour, hold to 15:00",
+      "thesis": "A 10:00, 11:00 or 12:00 hour that fell 0.6% or more: buy the next open, hold to the 15:00 bar's close, 0.5% stop, 2% target. Strong through 2025, flat since March 2026.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day >= 600 and minute_of_day <= 720 and ret1 < -0.006",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.02,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Morning stretch under VWAP",
+      "thesis": "Between 10:00 and 12:00, 0.5% under the day's VWAP with RSI(7) under 30: buy, out at VWAP or 15:00.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day >= 600 and minute_of_day <= 720 and dist_session_vwap < -0.005 and rsi7 < 30",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "dist_session_vwap >= 0"
+        },
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.01,
+        "cooldown_bars": 2
+      }
+    },
+    {
+      "name": "Midday z-score dip",
+      "thesis": "Between 10:00 and 14:00, 2.5 standard deviations under the 20-bar mean: buy, out at the mean or 15:00.",
+      "entry_rules": [
+        {
+          "when": "is_rth == 1 and minute_of_day >= 600 and minute_of_day <= 840 and zscore20 < -2.5",
+          "weight": 1.0
+        }
+      ],
+      "exit_rules": [
+        {
+          "when": "zscore20 > 0"
+        },
+        {
+          "when": "minute_of_day >= 900"
+        }
+      ],
+      "risk": {
+        "max_position_pct": 1.0,
+        "max_positions": 1,
+        "max_gross_exposure": 1.0,
+        "stop_loss_pct": 0.005,
+        "take_profit_pct": 0.01,
+        "cooldown_bars": 2
+      }
+    }
+  ]
+}
