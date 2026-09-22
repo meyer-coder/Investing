@@ -136,9 +136,10 @@ FundedNext NQ account, the research to do is intraday, and the repo's
 session, VWAP and opening-range features with the TradingView data store
 are the tools for it.
 
-**Forward test.** The rules are frozen at the git tag
-`strategies-frozen-2026-09-22`. Every bar after that date is out of sample
-for every file in this directory, and the ledger is one command:
+**Forward test.** The rules in this directory are frozen as of commit
+`272364f` on 2026-09-22 (also tagged `strategies-frozen-2026-09-22` in a
+local clone). Every bar after that date is out of sample for every file
+here, and the ledger is one command:
 
 ```bash
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names_long.json --test-frac 0 --since 2026-09-23
