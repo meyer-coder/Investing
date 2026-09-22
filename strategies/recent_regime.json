@@ -171,7 +171,7 @@
   },
   {
    "name": "Pullback Cluster",
-   "thesis": "Two red closes and a 3% weekly loss above the 50-day mean on above-average volume.",
+   "thesis": "Two red closes and a 3% loss over five sessions, above the 50-day mean; out at the first close up 1% or after three bars, 10% stop. No volume gate: this is the original version, not the volume-gated one in the durable set.",
    "entry_rules": [
     {
      "when": "ret1 < 0 and prev(ret1) < 0 and ret5 < -0.03 and close > sma50",
@@ -197,7 +197,7 @@
     "min_hold_bars": 0,
     "cooldown_bars": 1
    },
-   "rationale": "Profitable in the last six months on your names and the Nasdaq set, and on every long-history window: the most durable of the recent winners."
+   "rationale": "Positive over the last six and twelve months on your names and the Nasdaq set; loses over 2010-2022 without the volume gate, so a recent-regime pick."
   },
   {
    "name": "Squeeze Days (evolved)",

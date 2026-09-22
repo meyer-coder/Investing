@@ -39,10 +39,44 @@ positions that were open when the period began. 25% slots unless noted.
 | Squeeze Days (evolved) | +10%, 19 trades, PF 1.46, 63% | +17%, 12 trades, PF 10.9 | +21%, 31 trades, PF 1.67 | -6.4% |
 | Combo: All Five Setups | +15%, 55 trades, PF 1.24, 45% | -1%, 35 trades, PF 0.99 | +48%, 123 trades, PF 1.42 | -5.2% |
 
+The Pullback Cluster in this set is the original, ungated version (no
+volume filter, out at the first 1% up close or three bars, 10% stop), not
+the volume-gated one in the durable set below; it loses over 2010-2022.
+
 Note on the combo: it was built after this re-ranking, from the five
 setups that led it, so its six-month row is in-sample by construction.
 Judge it on the twelve-month row and on its 2010-2026 Nasdaq record: +216%,
 PF 1.37, 818 trades, worst day -16%.
+
+**Bottom line: what has real evidence.** Judged the hard way, on the
+long funds only, with the whole history and the last six months both
+required, three strategies stand:
+
+| strategy | 2010-2026, long Nasdaq funds | last 6 months, your long funds | last 6 months, long Nasdaq funds |
+|---|---|---|---|
+| Combo: All Five Setups | +294%, PF 1.58, 746 trades | +26.8%, PF 1.95, 33 trades | +8.1%, PF 1.72, 18 trades |
+| Capitulation Close | +111%, PF 1.36, 375 trades | +18.5%, PF 2.06, 16 trades | +4.1%, PF 1.40, 9 trades |
+| Two Red Days (evolved) | +60%, PF 3.74, 69 trades | +14.6%, PF 2.16, 13 trades | +9.0%, PF 6.33, 5 trades |
+
+Oversold Dip Above the 50 has the best sixteen-year record of all (+158%,
+PF 2.09, 252 trades, 72% winners on the long Nasdaq funds) and has lost
+every one of its handful of trades since March. Keep it, do not trade it
+until it turns.
+
+**Drop the inverse funds.** In every strategy MUD, SQQQ and SOXS are the
+losing side: MUD wins 20% to 35% of its trades whatever the setup. Over
+the last six months on your names, excluding them lifts Combo: All Five
+Setups from +14% at PF 1.28 to +27% at PF 1.95, and Capitulation Close
+from +6% at PF 1.13 to +19% at PF 2.06; the durable set goes from five of
+eight profitable to seven of eight. `configs/quick_names_long.json` is
+the same config on TQQQ, MUU, RIOX and SOXL only, for `evaluate` and
+`signals` alike.
+
+One reading note: on a universe this short the held-out window loses its
+first fifty to sixty bars to indicator warm-up, so a held-out row and a
+"last 126 bars" row over nearly the same dates can disagree (Squeeze Days:
+-1.2% held out, +10.3% over the last 126 bars). The trailing-window row is
+the one to read.
 
 **What went cold.** Four of the durable eight have been flat to negative
 since March on your names and on the Nasdaq set: Capitulation Close (+6%
@@ -103,6 +137,7 @@ regime directly.
 Reproduce:
 
 ```bash
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names_long.json --recent 6m   # long funds only
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --recent 6m
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_nasdaq.json --recent 6m
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --test-frac 0 --since 2026-03-22,2025-12-22,2025-09-22
