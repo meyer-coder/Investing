@@ -1,11 +1,11 @@
 # Quick-trade strategies for leveraged Nasdaq, semiconductor and single-stock funds
 
-Seven strategies, each holding one to three sessions, each profitable on
+Eight strategies, each holding one to three sessions, each profitable on
 every window it was tested on: the leveraged Nasdaq and semiconductor
 long/short funds over 2010-2022 and, held out, 2022-2026; the funds you
 actually trade (TQQQ/SQQQ, MUU/MUD, RIOX, SOXL/SOXS) over 2025-2026; and
 the 2x long/short pairs on AAPL, TSLA, AMZN, MSFT, GOOGL and NVDA over
-2023-2026. All seven also survive three times the assumed slippage.
+2023-2026. All eight also survive three times the assumed slippage.
 
 Every number here is a backtest on daily bars with the signal read at the
 close and the fill at the next open, paying 1 bp commission and 5 bp
@@ -31,10 +31,13 @@ Buying the inverse fund is the short trade: a rule that fires on SQQQ is a
 short on the Nasdaq. Every rule below is evaluated on each fund's own
 prices, so the same rule trades both directions.
 
-The evolutionary run on the same data overfit: its champion made +538% on
-2010-2022 and +14% held out, from 78 trades in twelve years. These seven
+The evolutionary runs on the same data mostly overfit: the Nasdaq
+champion made +538% on 2010-2022 and +14% held out, from 78 trades in
+twelve years, and of 53 evolved champions scored across all four windows
+(`search/evolved_candidates.json`) one passed. The first seven strategies
 were bred by hand from five rounds of candidates (`search/`) and kept for
-consistency across universes, not for the best single number.
+consistency across universes, not for the best single number; the eighth
+is that one evolved survivor.
 
 ## Results
 
@@ -50,15 +53,17 @@ Nasdaq universe.
 | Prior-Low Break on Volume | +62%, PF 1.27, 58% | +35%, PF 1.71, 59% | +19%, PF 1.36, 63% | +27%, PF 1.27, 51% | 30 | 2.4 |
 | Combo: Capitulation or Oversold | +93%, PF 1.25, 59% | +91%, PF 1.69, 64% | +67%, PF 1.59, 58% | +40%, PF 1.30, 55% | 48 | 2.4 |
 | Combo: All Five Setups | +89%, PF 1.20, 57% | +113%, PF 1.57, 60% | +76%, PF 1.44, 57% | +48%, PF 1.24, 52% | 64 | 2.4 |
+| Two Red Days (evolved) | +15%, PF 1.37, 64% | +24%, PF 2.94, 69% | +29%, PF 1.96, 71% | +21%, PF 2.96, 63% | 6 | 2.0 |
 
-Max drawdowns on the Nasdaq held-out window run from -8% (Oversold Dip,
-Pullback Cluster) to -17% (Capitulation Close); on the 2010-2022 window
-from -19% to -37% (Prior-Low Break). Average return per trade on the
-held-out window is +1.2% to +1.9% of the position.
+Max drawdowns on the Nasdaq held-out window run from -4% (Two Red Days)
+and -8% (Oversold Dip, Pullback Cluster) to -17% (Capitulation Close); on
+the 2010-2022 window from -9% to -37% (Prior-Low Break). Average return per
+trade on the held-out window is +1.2% to +1.9% of the position, and +3.0%
+for the low-frequency Two Red Days.
 
 ## The strategies
 
-Mechanics shared by all seven, unless noted:
+Mechanics shared by all eight, unless noted:
 
 - Signals are read at the daily close. Entry is at the next open.
 - Exit at the open after the first close at or above +3% from entry, or at
@@ -113,13 +118,25 @@ universe.
 held-out Sharpe of the set (1.16) and about 64 trades a year; use it when
 you want a signal most weeks.
 
+**8. Two Red Days (evolved).** Yesterday closed down more than 2.8%, today
+closed down again, the five-day return is worse than -7.8%, and the close
+is still above the 50-day average. Exit at the open after the first close
+that is up more than 2% on the day, or after three bars; stop 6%, no
+target, 20% of equity per position, no cooldown. The one genome from the
+evolutionary runs that stayed profitable on all four windows: a jittered
+copy of a seed archetype from the first generation of the mega-cap run.
+About six trades a year on the Nasdaq universe, so its numbers are a small
+sample; on the long funds alone it won 83% of 23 held-out trades. Rule:
+`ret1 < 0 and prev(ret1) < -0.028 and close > sma50 and ret5 < -0.078`.
+
 ## What the checks showed
 
 **The edge is on the long side.** Scored on the long funds alone (TQQQ,
 SOXL, QLD) the held-out profit factors rise to 1.8 to 4.2; Oversold Dip
 wins 83% of its trades. On the inverse funds alone (SQQQ, SOXS, QID) only
 Capitulation Close (PF 1.15 and 1.08) and Prior-Low Break (1.42 and 1.43)
-stay above 1.0 on both windows; the trend-gated setups lose money there,
+stay above 1.0 on both windows; the trend-gated setups, Two Red Days
+included, lose money there,
 because "above its 50-day" on an inverse fund means a bear market, and
 buying dips in a bear market is what the gate exists to avoid. On your
 names alone (TQQQ, MUU, RIOX, SOXL) Capitulation Close made +101% with a
@@ -127,9 +144,9 @@ names alone (TQQQ, MUU, RIOX, SOXL) Capitulation Close made +101% with a
 the short side at all, take it only from setups 1 and 5.
 
 **Costs.** At 15 bp slippage per side, three times the assumption, all
-seven stay profitable on both Nasdaq windows; the 2010-2022 profit factors
+eight stay profitable on both Nasdaq windows; the 2010-2022 profit factors
 fall to 1.08 (Pullback Cluster) through 1.31 (Oversold Dip). On your names
-at 20 bp per side all seven stay profitable.
+at 20 bp per side the seven hand-bred strategies stay profitable.
 
 **Losing years happen.** 2018 was negative for every strategy on the
 Nasdaq universe (-3% to -21%). Capitulation Close lost 19% in 2011 and 11%

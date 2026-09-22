@@ -229,6 +229,40 @@
     "min_hold_bars": 0,
     "cooldown_bars": 1
    }
+  },
+  {
+   "name": "Two Red Days (evolved)",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "rationale": "The one genome from the evolutionary runs that stayed profitable on all four windows: a jittered seed from the bigcaps run, generation 0. Low frequency.",
+   "origin": "llm",
+   "entry_rules": [
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
   }
  ]
 }

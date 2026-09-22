@@ -1,0 +1,3137 @@
+{
+ "genomes": [
+  {
+   "id": "6916f5aadf3e",
+   "name": "[names g3] Bolder Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < -0.004 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.2274,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.6420355
+  },
+  {
+   "id": "20f172e7050e",
+   "name": "[names g3] Cautious Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.07 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.48, held-out score +2.79",
+   "created_at": 1790098116.637726
+  },
+  {
+   "id": "da36d7f1aebf",
+   "name": "[names g2] Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 1,
+   "parents": [
+    "079b1b8c43a7",
+    "a0fd925dadbc"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098115.859309
+  },
+  {
+   "id": "56e3106bd397",
+   "name": "[names g3] Patient Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.09) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_of_52w_high < 0.905 and cross_below(close, sma200) and cross_above(sma20, sma50)",
+     "weight": 0.38,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.6324053
+  },
+  {
+   "id": "c7e50a50d9d2",
+   "name": "[names g3] Adaptive Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(macd, macd_signal) and mkt_vol20 < 0.43 and zscore20 > 1.04",
+     "weight": 0.15,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.6326125
+  },
+  {
+   "id": "d3f5b77aadc1",
+   "name": "[names g3] Leaner Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.04 and dist_sma200 > -0.08) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 16",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.634482
+  },
+  {
+   "id": "a6a72f8136be",
+   "name": "[names g3] Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "1d2a55288ee7",
+    "da36d7f1aebf"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.6338713
+  },
+  {
+   "id": "a8b131d09aa4",
+   "name": "[names g3] Greedier Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.3461,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(bb_pct < 0.06 and dist_sma200 > -0.07) or cross_below(macd, macd_signal)",
+     "weight": 0.3023,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bb_pct > 0.75",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 20",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 2,
+   "parents": [
+    "da36d7f1aebf"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +8.49, held-out score +2.79",
+   "created_at": 1790098116.6395984
+  },
+  {
+   "id": "c374442a4a9b",
+   "name": "[names g0] Cautious One-Day Dip",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "(ret1 <= -0.03 and close > sma20) or pct_off_52w_low < 0.41",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.05,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 2,
+    "cooldown_bars": 1
+   },
+   "generation": 0,
+   "parents": [
+    "56bb397ab144"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on names: train score +1.71, held-out score +2.26",
+   "created_at": 1790098113.7288043
+  },
+  {
+   "id": "2424695d6923",
+   "name": "[names g59] Adaptive Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.2407,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "d90240179220"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.45, held-out score +1.10",
+   "created_at": 1790098147.2752926
+  },
+  {
+   "id": "c83b1848d641",
+   "name": "[names g56] Leaner Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.3362,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 55,
+   "parents": [
+    "a685009bb8f0"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.33, held-out score +1.02",
+   "created_at": 1790098145.5815961
+  },
+  {
+   "id": "f3256f41885d",
+   "name": "[names g58] Sharper Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.18 and dist_sma50 < -0.006) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 57,
+   "parents": [
+    "902d59dc4177"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +1.02",
+   "created_at": 1790098146.7330055
+  },
+  {
+   "id": "3a1b0d5b49c1",
+   "name": "[names g59] Adaptive Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 16",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "79cca34e124d"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.2846239
+  },
+  {
+   "id": "a9303f27ee05",
+   "name": "[names g59] Patient Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.055",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "fb8eefed4707"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.2859852
+  },
+  {
+   "id": "3d869cedd9bb",
+   "name": "[names g59] Faster Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 21",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "ec8082df558c"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.2927194
+  },
+  {
+   "id": "e6830966bf8e",
+   "name": "[names g59] Wider Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.46) and bb_pct < 1.13",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.4427,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "d90240179220"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.2769244
+  },
+  {
+   "id": "db1d0672e3e0",
+   "name": "[names g59] Stubborn Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 0.92",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.3922,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "d90240179220"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.2798963
+  },
+  {
+   "id": "4303d95a80d2",
+   "name": "[names g59] Cautious Patient-Cautious-Days-Cautious-Days-Reverter",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: Price stretched below the band snaps back to the mean.",
+   "entry_rules": [
+    {
+     "when": "((ret1 < -0.034 and prev(ret1) < -0.028 and close > sma50) or dist_sma200 < -0.213) or rsi14 < 34",
+     "weight": 0.346,
+     "note": "archetype"
+    },
+    {
+     "when": "((ret5 > -0.181 and dist_sma50 < -0.005) and pct_of_52w_high < 0.75) or macd_hist > 1.08",
+     "weight": 0.3502,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "((ret1 <= -0.04 and close > sma20) or pct_off_52w_low < 0.42) and bb_pct < 1.14",
+     "weight": 0.3052,
+     "note": "archetype"
+    },
+    {
+     "when": "(cross_below(close, sma50)) and pct_of_52w_high > 0.764",
+     "weight": 0.6193,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 18",
+     "note": "archetype"
+    },
+    {
+     "when": "dist_sma200 > -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_below(close, sma200)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.3716,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0608,
+    "take_profit_pct": 0.131,
+    "trailing_stop_pct": 0.154,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 58,
+   "parents": [
+    "ec8082df558c"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on names: train score +15.39, held-out score +nan",
+   "created_at": 1790098147.282793
+  },
+  {
+   "id": "0573290ef2d0",
+   "name": "[bigcaps g0] Bolder Two Red Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "340838dcd711"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.98, held-out score +1.24",
+   "created_at": 1790097857.9391038
+  },
+  {
+   "id": "b4dd6a9beeae",
+   "name": "[bigcaps g0] Bolder RSI7 Snap",
+   "thesis": "Deeply oversold on a 7-bar RSI snaps back within three sessions.",
+   "entry_rules": [
+    {
+     "when": "(rsi7 < 25) and pct_off_52w_low < 0.83",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "cross_above(close, bb_upper) and rsi14 > 68",
+     "weight": 0.45,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 50",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.07,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 0,
+   "parents": [
+    "f52e6b4ff4ca"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.41, held-out score +0.76",
+   "created_at": 1790097857.9341085
+  },
+  {
+   "id": "04d757f996a0",
+   "name": "[bigcaps g1] Squeeze-Days",
+   "thesis": "Volatility contraction followed by a close above the upper band; ride the release for two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "vol_ratio_20_60 < 0.8 and cross_above(close, bb_upper)",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.08,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "664c09e76e9c",
+    "0573290ef2d0"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on bigcaps: train score +2.29, held-out score +0.27",
+   "created_at": 1790097862.8166053
+  },
+  {
+   "id": "614ed216f653",
+   "name": "[bigcaps g0] Patient One-Day Dip",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "(ret1 < -0.05 and close > sma20) or atr_pct > 0.0528",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.05,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 0,
+   "parents": [
+    "279585330708"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.59, held-out score +0.15",
+   "created_at": 1790097857.9366784
+  },
+  {
+   "id": "443750133a4d",
+   "name": "[bigcaps g0] Random 8096",
+   "thesis": "randomly generated; no prior belief",
+   "entry_rules": [
+    {
+     "when": "mkt_vol20 < 0.35",
+     "weight": 0.39,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "volume_ratio < 0.86",
+     "note": "random"
+    },
+    {
+     "when": "position_drawdown < -0.018 and cross_below(close, sma200)",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.33,
+    "max_positions": 1,
+    "max_gross_exposure": 0.81,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.15,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.01, held-out score -0.65",
+   "created_at": 1790097857.9355927
+  },
+  {
+   "id": "cc9737786914",
+   "name": "[bigcaps g0] Leaner Gap Fader",
+   "thesis": "Fade one-day overreactions against the prevailing trend.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.025 and close > sma200",
+     "weight": 0.5021,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret5 > 0.03",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 10",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [
+    "3a367d56cb06"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.07, held-out score -0.85",
+   "created_at": 1790097857.937177
+  },
+  {
+   "id": "3a367d56cb06",
+   "name": "[bigcaps g0] Gap Fader",
+   "thesis": "Fade one-day overreactions against the prevailing trend.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.025 and close > sma200",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret5 > 0.03",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held > 10",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +0.07, held-out score -0.85",
+   "created_at": 1790097857.93308
+  },
+  {
+   "id": "a06fd576ae2f",
+   "name": "[bigcaps g2] Stubborn Two Red Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "(ret1 < -0.028 and prev(ret1) < 0.008 and close > sma50) and volume_ratio > 1.39",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.33,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.177,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 1,
+   "parents": [
+    "20057238add5"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +2.61, held-out score -1.27",
+   "created_at": 1790097868.1304512
+  },
+  {
+   "id": "58de86ed7fad",
+   "name": "[bigcaps g1] Faster-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0.008 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.33,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "346b8611e6ee",
+    "340838dcd711"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on bigcaps: train score +1.87, held-out score -1.63",
+   "created_at": 1790097862.8105743
+  },
+  {
+   "id": "346b8611e6ee",
+   "name": "[bigcaps g0] Faster Two Red Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0.008 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.33,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "340838dcd711"
+   ],
+   "origin": "seed",
+   "rationale": "evolved on bigcaps: train score +1.87, held-out score -1.63",
+   "created_at": 1790097857.9332235
+  },
+  {
+   "id": "0f64aebebeb1",
+   "name": "[bigcaps g1] Leaner-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and close > sma50",
+     "weight": 0.4754,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.33,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0.008 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "383aa1f8adc3",
+    "346b8611e6ee"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on bigcaps: train score +1.87, held-out score -1.63",
+   "created_at": 1790097862.811112
+  },
+  {
+   "id": "50fd92bdaee4",
+   "name": "[bigcaps g1] Adaptive Two Red Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0.008 and close > sma50",
+     "weight": 0.6539,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.33,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "346b8611e6ee"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +1.87, held-out score -1.63",
+   "created_at": 1790097862.8118818
+  },
+  {
+   "id": "2c1bfa825bde",
+   "name": "[bigcaps g59] Faster Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.5244,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 58,
+   "parents": [
+    "20024c69e9af"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.03, held-out score -2.73",
+   "created_at": 1790098103.3466575
+  },
+  {
+   "id": "20024c69e9af",
+   "name": "[bigcaps g58] Patient Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.5244,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 57,
+   "parents": [
+    "95b3a2aaa1e2"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.03, held-out score -2.73",
+   "created_at": 1790098098.5243616
+  },
+  {
+   "id": "edd93023b066",
+   "name": "[bigcaps g59] Leaner Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.7346,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 5,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 58,
+   "parents": [
+    "20024c69e9af"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.03, held-out score -2.73",
+   "created_at": 1790098103.3402495
+  },
+  {
+   "id": "5b3f720e899c",
+   "name": "[bigcaps g59] Stubborn Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.5997,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 58,
+   "parents": [
+    "44c5dce4a7a9"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.03, held-out score -2.73",
+   "created_at": 1790098103.3512034
+  },
+  {
+   "id": "5219a805334b",
+   "name": "[bigcaps g57] Leaner Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.4924,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.177",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 56,
+   "parents": [
+    "f39bbf918df1"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.02, held-out score -2.73",
+   "created_at": 1790098094.7972567
+  },
+  {
+   "id": "b49f845ad66a",
+   "name": "[bigcaps g58] Calmer Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.4924,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1757,
+    "max_hold_bars": 9,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 57,
+   "parents": [
+    "95b3a2aaa1e2"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.02, held-out score +nan",
+   "created_at": 1790098098.5253437
+  },
+  {
+   "id": "8b287f3ff7bc",
+   "name": "[bigcaps g59] Stubborn Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.4924,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.176",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.1556,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 58,
+   "parents": [
+    "8fd3ab2eac7b"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.02, held-out score +nan",
+   "created_at": 1790098103.3410723
+  },
+  {
+   "id": "3d2a1699b657",
+   "name": "[bigcaps g57] Patient Tighter-Calmer-Days",
+   "thesis": "Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.031 and prev(ret1) < 0.007 and close > sma50",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "mkt_ret20 < -0.063",
+     "weight": 0.3289,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(bb_pct > 0.88 and bb_pct < 0.93) and vol20 > 0.25",
+     "weight": 0.02,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma50) and rsi14 < 44",
+     "weight": 0.4924,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bb_pct < 0.02 and dist_sma50 > 0.147",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(close, sma50) and cross_above(sma20, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.5241,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0598,
+    "take_profit_pct": 0.1992,
+    "trailing_stop_pct": 0.2023,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 56,
+   "parents": [
+    "f39bbf918df1"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on bigcaps: train score +5.02, held-out score -2.73",
+   "created_at": 1790098094.8059416
+  },
+  {
+   "id": "d135bff3e1f5",
+   "name": "[nasdaq g0] Random 7667",
+   "thesis": "randomly generated; no prior belief",
+   "entry_rules": [
+    {
+     "when": "pct_of_52w_high > 0.812",
+     "weight": 0.37,
+     "note": "random"
+    },
+    {
+     "when": "vol_ratio_20_60 < 1.33 and cross_below(close, sma200)",
+     "weight": 0.14,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "dist_sma200 > -0.28",
+     "note": "random"
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.94 or ret60 > 0.088 or bb_pct > 0.33",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.27,
+    "max_positions": 4,
+    "max_gross_exposure": 0.83,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 2,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "evolved on nasdaq: train score -0.95, held-out score +1.64",
+   "created_at": 1790096916.175953
+  },
+  {
+   "id": "20200f1fc604",
+   "name": "[nasdaq g3] Bolder Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.5144,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.03",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 2,
+   "parents": [
+    "a2e4837c8f5a"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +0.57, held-out score +1.10",
+   "created_at": 1790096978.1417608
+  },
+  {
+   "id": "a2e4837c8f5a",
+   "name": "[nasdaq g2] Calmer Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 1,
+   "parents": [
+    "5c9246bfc831"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +0.54, held-out score +0.97",
+   "created_at": 1790096959.195718
+  },
+  {
+   "id": "69fbaa67a18b",
+   "name": "[nasdaq g1] Random-Days",
+   "thesis": "randomly generated; no prior belief Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    },
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.23,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.08,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [
+    "ece37e71a172",
+    "953bfe2c5c48"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +0.05, held-out score +0.94",
+   "created_at": 1790096938.5265026
+  },
+  {
+   "id": "a4772638a00c",
+   "name": "[nasdaq g4] Adaptive Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.7526,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.29",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.03",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2651,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 3,
+   "parents": [
+    "20200f1fc604"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +0.62, held-out score +0.78",
+   "created_at": 1790096997.5378351
+  },
+  {
+   "id": "5c9246bfc831",
+   "name": "[nasdaq g1] Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 0,
+   "parents": [
+    "ece37e71a172",
+    "893292ff787e"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +0.40, held-out score +0.77",
+   "created_at": 1790096938.532873
+  },
+  {
+   "id": "83afd4d808a9",
+   "name": "[nasdaq g2] Random-Days-Sharper-5823",
+   "thesis": "randomly generated; no prior belief Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief",
+   "entry_rules": [
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.3362,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.23,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.05,
+    "trailing_stop_pct": 0.08,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 1,
+   "parents": [
+    "69fbaa67a18b",
+    "048ca57bcb71"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +0.42, held-out score +0.71",
+   "created_at": 1790096959.197714
+  },
+  {
+   "id": "9e6cd334a988",
+   "name": "[nasdaq g1] Sharper-5823",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief",
+   "entry_rules": [
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    },
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.3362,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.189,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 0,
+   "parents": [
+    "8170a5b5460a",
+    "ece37e71a172"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score -0.03, held-out score +0.66",
+   "created_at": 1790096938.5293474
+  },
+  {
+   "id": "048ca57bcb71",
+   "name": "[nasdaq g1] Sharper-5823",
+   "thesis": "A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief",
+   "entry_rules": [
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    },
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.3362,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.23,
+    "max_positions": 4,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.05,
+    "trailing_stop_pct": 0.189,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 0,
+   "parents": [
+    "8170a5b5460a",
+    "ece37e71a172"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +0.15, held-out score +0.60",
+   "created_at": 1790096938.52724
+  },
+  {
+   "id": "fb97a90c5e9d",
+   "name": "[nasdaq g2] Random-Days-Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    },
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 1,
+   "parents": [
+    "69fbaa67a18b",
+    "5c9246bfc831"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +0.41, held-out score +0.57",
+   "created_at": 1790096959.2007725
+  },
+  {
+   "id": "f2b370b46bc7",
+   "name": "[nasdaq g2] Greedier Random-Dip",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and close > sma20",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "pct_off_52w_low > 0.06 and bb_pct > 0.92 and macd_hist < -0.89",
+     "weight": 0.43,
+     "note": "random"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.39",
+     "note": "random"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.063",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.1695,
+    "max_positions": 1,
+    "max_gross_exposure": 0.57,
+    "stop_loss_pct": 0.2,
+    "take_profit_pct": 0.15,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 5,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 1,
+   "parents": [
+    "5c9246bfc831"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +0.48, held-out score +0.54",
+   "created_at": 1790096959.1975982
+  },
+  {
+   "id": "afe9120dffb2",
+   "name": "[nasdaq g53] Leaner Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbor",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.2969,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 52,
+   "parents": [
+    "4c7448c3251e"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.37, held-out score +0.46",
+   "created_at": 1790097793.2832148
+  },
+  {
+   "id": "8b26766ac404",
+   "name": "[nasdaq g54] Patient Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbo",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.6086,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "938f4756da62"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.40, held-out score +0.46",
+   "created_at": 1790097810.6432717
+  },
+  {
+   "id": "7d1edd050124",
+   "name": "[nasdaq g54] Tighter-Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbo",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.8329,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "2470ab34bd21",
+    "b988c6360954"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +2.40, held-out score +0.15",
+   "created_at": 1790097810.6361723
+  },
+  {
+   "id": "d2bcbd009d80",
+   "name": "[nasdaq g54] Wider-Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubborn",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    },
+    {
+     "when": "(((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238) and rsi14 > 26",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "938f4756da62",
+    "afde9d8db357"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +2.40, held-out score +0.15",
+   "created_at": 1790097810.6398814
+  },
+  {
+   "id": "ccddb0d64d10",
+   "name": "[nasdaq g54] Tighter-Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbo",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "2470ab34bd21",
+    "938f4756da62"
+   ],
+   "origin": "crossover",
+   "rationale": "evolved on nasdaq: train score +2.40, held-out score +0.15",
+   "created_at": 1790097810.637402
+  },
+  {
+   "id": "9824a125069e",
+   "name": "[nasdaq g54] Tighter Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbo",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.9595,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "2470ab34bd21"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.39, held-out score +nan",
+   "created_at": 1790097810.662819
+  },
+  {
+   "id": "37183aa65969",
+   "name": "[nasdaq g54] Patient Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbo",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.12) and cross_above(close, sma200)) and ret60 > 0.225",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "aef23552c524"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.39, held-out score +nan",
+   "created_at": 1790097810.6574025
+  },
+  {
+   "id": "37a93cb86ed4",
+   "name": "[nasdaq g54] Leaner Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubbor",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.9765,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 53,
+   "parents": [
+    "938f4756da62"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.39, held-out score +nan",
+   "created_at": 1790097810.6486852
+  },
+  {
+   "id": "4c7448c3251e",
+   "name": "[nasdaq g52] Wider Stubborn-Cautious-Adaptive-Sharper-Greedier-Stubborn-Stubborn",
+   "thesis": "randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: New highs on heavy volume tend to keep going. Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two sessions. Combined with: randomly generated; no prior belief Combined with: A 4% down day in a leveraged fund still above its 20-day mean is usually bought back within two s",
+   "entry_rules": [
+    {
+     "when": "((pct_off_52w_low > 0.06 and bb_pct > 0.88 and macd_hist < -1.1) and cross_above(close, sma200)) and ret60 > 0.238",
+     "weight": 0.4873,
+     "note": "random"
+    },
+    {
+     "when": "(((((pct_of_52w_high > 0.98 and volume_ratio > 1.75) and dist_sma50 > -0.015) and vol_ratio_20_60 < 1.76) or rsi14 < 18) and ret60 > -0.157) and ret5 < 0.042",
+     "weight": 0.83,
+     "note": "archetype"
+    },
+    {
+     "when": "((((ret1 < -0.05 and close > sma20) and ret5 > -0.07) and mkt_ret20 > -0.002) and volume_ratio < 1.77) and pct_off_52w_low > 0.24",
+     "weight": 0.8741,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.04",
+     "note": "archetype"
+    },
+    {
+     "when": "ret20 < 0.036",
+     "note": "random"
+    },
+    {
+     "when": "ret5 > 0.011 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol20 > 0.477 and pct_of_52w_high > 0.927 and ret1 < 0.022",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.6514,
+    "max_positions": 3,
+    "max_gross_exposure": 0.6453,
+    "stop_loss_pct": 0.3607,
+    "take_profit_pct": 0.208,
+    "trailing_stop_pct": 0.2398,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 5
+   },
+   "generation": 51,
+   "parents": [
+    "0d19f7bb5018"
+   ],
+   "origin": "mutation",
+   "rationale": "evolved on nasdaq: train score +2.39, held-out score +0.46",
+   "created_at": 1790097776.674432
+  }
+ ]
+}

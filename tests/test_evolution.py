@@ -136,3 +136,14 @@ def test_config_survives_a_json_roundtrip(tmp_path):
     again = EvolutionConfig.load(path)
     assert again.symbols == ["SPY"] and again.population == 8
     assert again.fitness.drawdown_limit == 0.11
+
+
+def test_outcome_cache_is_bounded_and_keeps_survivors(tmp_path):
+    evolution = Evolution(_cfg(tmp_path, generations=4, population=24, elites=3))
+    evolution.CACHE_LIMIT = 10
+    reports = evolution.run()
+    assert len(evolution._cache) <= 10
+    assert len(reports) == 4 and len(evolution.population) == 24
+    # the best score never regressed, so the elites' cached outcomes survived eviction
+    bests = [r.best.score for r in reports]
+    assert all(b >= a - 1e-9 for a, b in zip(bests, bests[1:])), bests

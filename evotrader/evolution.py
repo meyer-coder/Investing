@@ -21,6 +21,7 @@ import random
 import statistics
 import time
 import uuid
+from collections import OrderedDict
 from concurrent.futures import ProcessPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Sequence, Tuple
@@ -135,6 +136,12 @@ class GenerationReport:
 class Evolution:
     """Owns one run: data, population, breeder, persistence."""
 
+    #: Evaluated outcomes kept in memory, journals included, so unchanged agents
+    #: (the elites) are not re-run.  Bounded and least-recently-used, because a
+    #: journal is hundreds of trades and an unbounded cache over a long run is
+    #: how a 100 x 1000 evolution gets killed for memory.
+    CACHE_LIMIT = 1_000
+
     def __init__(self, cfg: EvolutionConfig, *, store: Optional[Store] = None,
                  claude: Optional[Claude] = None):
         cfg.validate()
@@ -152,7 +159,7 @@ class Evolution:
         self.population: List[Genome] = []
         self.history: List[Dict[str, Any]] = []
         self.generation = 0
-        self._cache: Dict[str, Outcome] = {}
+        self._cache: "OrderedDict[str, Outcome]" = OrderedDict()
         self._pool: Optional[ProcessPoolExecutor] = None
         self.window_label = ""
 
@@ -362,6 +369,7 @@ class Evolution:
         for genome in population:
             cached = self._cache.get(genome.fingerprint())
             if cached is not None:
+                self._cache.move_to_end(genome.fingerprint())   # survivors stay resident
                 outcomes.append(Outcome(genome.id, genome.name, genome.generation,
                                         cached.score, cached.metrics, cached.journal,
                                         cached.error))
@@ -377,8 +385,9 @@ class Evolution:
             else:
                 fresh = [score_genome(g, self.ctx) for g in todo]
             for genome, outcome in zip(todo, fresh):
-                if len(self._cache) < 50_000:
-                    self._cache[genome.fingerprint()] = outcome
+                self._cache[genome.fingerprint()] = outcome
+                while len(self._cache) > self.CACHE_LIMIT:
+                    self._cache.popitem(last=False)             # evict the least recently used
                 outcomes.append(outcome)
         return outcomes
 

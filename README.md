@@ -265,8 +265,9 @@ rule on the latest bar, as if flat, and prints the buys for the next open.
 python -m evotrader.cli signals strategies/quick_leveraged.json --config configs/quick_names.json --refresh
 ```
 
-`strategies/quick_leveraged.json` holds seven quick-trade strategies found
-this way for the leveraged Nasdaq, semiconductor and single-stock funds;
+`strategies/quick_leveraged.json` holds eight quick-trade strategies for
+the leveraged Nasdaq, semiconductor and single-stock funds, seven bred by
+hand this way and one evolved;
 `strategies/README.md` is the report on them, and `strategies/reports/`
 the generated per-universe tables.
 
