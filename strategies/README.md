@@ -127,6 +127,24 @@ Rule of thumb: keep the historical worst day at your size inside
 two-thirds of the daily limit. For a 4% limit that is the 15% sizing above
 for the combos and Squeeze Days, and 20% for Volume Climax.
 
+On the long funds only, which is the book to trade, the worst days are
+larger, because the inverse funds no longer dilute RIOX, MUU and SOXL, so
+the slots have to shrink further. From the last six months on TQQQ, MUU,
+RIOX and SOXL at the file's sizing, for a 4% daily limit:
+
+| strategy | worst day at file sizing | slot for a 4% daily limit | six-month return at that slot, approx. |
+|---|---|---|---|
+| Combo: All Five Setups | -7.8% at 20% | 7% | +9% |
+| Capitulation Close | -6.5% at 25% | 10% | +8% |
+| Two Red Days (evolved) | -4.2% at 20% | 13% | +9% |
+| Combo: Capitulation or Oversold | -7.2% at 20% | 7% | +5% |
+| Pullback Cluster | -6.5% at 25% | 10% | +4% |
+
+Returns scale with the slot, so a larger daily limit buys proportionally
+larger slots. Over the same six months, holding the four long funds lost
+22% (early June to late September): the strategies' gains came against a
+falling basket, not with it.
+
 **Recency in the breeder.** The three `quick_*` configs now set
 `recent_bars` to 126 and `recent_weight` to 0.7, so most of every agent's
 fitness is earned on the last six months of its window, and the
