@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Oversold Dip Above the 50",
+   "thesis": "A 7-bar RSI under 40 with the fund above its 50-day mean: multi-day selling inside an uptrend, sold into the first bounce.",
+   "rationale": "RSI thresholds have to be scaled for 3x products: under 25 almost never fires above the 50-day; under 40 does, and it is the best risk-adjusted setup out of sample.",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 40 and close > sma50",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

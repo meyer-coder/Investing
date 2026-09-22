@@ -1,0 +1,38 @@
+{
+ "genomes": [
+  {
+   "name": "Combo: Capitulation or Oversold",
+   "thesis": "Trade the two best setups as one book: capitulation prints in any regime, oversold dips only above the 50-day. Five 20% slots.",
+   "rationale": "More trades and a smoother curve than either setup alone; the best held-out profit factor and win rate of the two combos.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and (close - low) / (high - low + 0.0001) < 0.25 and volume_ratio > 1.3",
+     "weight": 0.2
+    },
+    {
+     "when": "rsi7 < 40 and close > sma50",
+     "weight": 0.2
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

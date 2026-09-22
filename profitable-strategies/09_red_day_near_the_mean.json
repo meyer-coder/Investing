@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Red Day Near the Mean",
+   "thesis": "A 4% down day within 3% of the 20-day mean on 1.2x volume.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "rationale": "Profitable over the last six and twelve months on your names and on the Nasdaq set, and on the long Nasdaq history; loses on the single-stock pairs."
+  }
+ ]
+}

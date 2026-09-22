@@ -1,0 +1,50 @@
+{
+ "genomes": [
+  {
+   "name": "Combo: Recent Winners",
+   "thesis": "The five setups that have worked over the last six months, in one book; first match wins, five 20% slots.",
+   "rationale": "Built after the six-month re-ranking from the five setups that led it, so its six-month row is in-sample by construction; judge it on the twelve-month row and the 2010-2026 Nasdaq record.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 2.0 and ret1 < -0.03",
+     "weight": 0.2
+    },
+    {
+     "when": "bb_pct < 0.0 and volume_ratio > 1.2",
+     "weight": 0.2
+    },
+    {
+     "when": "ret1 < -0.04 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.2
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and ret5 < -0.03 and close > sma50 and volume_ratio > 1.1",
+     "weight": 0.2
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < -0.028 and close > sma50 and ret5 < -0.078",
+     "weight": 0.2
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

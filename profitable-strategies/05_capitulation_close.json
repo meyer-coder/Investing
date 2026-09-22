@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Capitulation Close",
+   "thesis": "A 4% down day that closes in the bottom quarter of its range on 1.3x volume is a capitulation print; the leveraged fund is usually bought back within two sessions.",
+   "rationale": "The strongest single setup found: profitable on every window including the 2x single-stock pairs, with no trend filter needed.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and (close - low) / (high - low + 0.0001) < 0.25 and volume_ratio > 1.3",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+//@version=6
+// Pullback Cluster (volume-gated) — from evotrader, profitable-strategies/10_pullback_cluster_volume_gated.json.
+//
+// Buys at the next open when the close shows:
+//   1. pullback cluster on volume: two red closes, five-day return under -3%, above the 50-day mean, volume 1.1x
+// Exit at the open after the first close 3% above entry or after 2 bars;
+// 8% stop and 4% target checked on the close; 1 bar(s) of cooldown.
+//
+// Daily bars; the signal is read on the close, the fill is the next open;
+// stops and targets are checked on the close, not intrabar. The Python
+// backtest runs this as a book of 25% slots across TQQQ, MUU, RIOX and
+// SOXL; a Pine strategy holds one symbol, so run one chart per fund. On an
+// NQ/QQQ chart set "Threshold scale" to 0.333 (the rules were tuned on 3x funds).
+strategy("Pullback Cluster (volume-gated) [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity,
+     default_qty_value=25, commission_type=strategy.commission.percent,
+     commission_value=0.01, slippage=1, process_orders_on_close=false)
+
+scale     = input.float(1.0, "Threshold scale (1 = leveraged fund chart, 0.333 = NQ/QQQ chart)", step=0.001)
+takePct   = input.float(3.0, "Exit after a close this far above entry, %") / 100 * scale
+targetPct = input.float(4.0, "Hard target, % (checked on the close)") / 100 * scale
+stopPct   = input.float(8.0, "Hard stop, % (checked on the close)") / 100 * scale
+maxBars   = input.int(2, "Exit after this many bars held")
+cooldown  = input.int(1, "Bars to wait after an exit before re-entering")
+
+ret1   = close / close[1] - 1
+ret5   = close / close[5] - 1
+sma50  = ta.sma(close, 50)
+volAvg = ta.sma(volume, 20)
+volRat = volAvg > 0 ? volume / volAvg : 1.0
+
+s1 = ret1 < 0 and ret1[1] < 0 and ret5 < -0.03 * scale and close > sma50 and volRat > 1.1
+setup = s1
+
+var int lastExitBar = -100000
+var int closedSeen = 0
+if strategy.closedtrades > closedSeen
+    closedSeen := strategy.closedtrades
+    lastExitBar := bar_index
+
+flat     = strategy.position_size == 0
+canEnter = flat and (bar_index - lastExitBar) >= cooldown
+
+if canEnter and setup
+    strategy.entry("L", strategy.long)
+
+if not flat
+    barsHeld = bar_index - strategy.opentrades.entry_bar_index(strategy.opentrades - 1)
+    posRet   = close / strategy.position_avg_price - 1
+    if posRet <= -stopPct or posRet >= targetPct or posRet > takePct or barsHeld >= maxBars
+        strategy.close("L")
+
+plotshape(setup and canEnter, title="Setup", style=shape.triangleup, location=location.belowbar,
+     color=color.new(color.teal, 0), size=size.small)
+alertcondition(setup and canEnter, "Pullback Cluster (volume-gated): buy at next open",
+     "Pullback Cluster (volume-gated) setup on {{ticker}}: buy at the next open")

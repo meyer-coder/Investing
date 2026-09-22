@@ -1,0 +1,71 @@
+//@version=6
+// Combo: Recent Winners — from evotrader, profitable-strategies/01_combo_recent_winners.json.
+//
+// Buys at the next open when the close shows any of:
+//   1. volume climax: volume twice its 20-day average on a 3% down day
+//   2. band break on volume: close under the lower Bollinger band (20, 2 sd) on 1.2x volume
+//   3. red day near the mean: down 4%, close within 3% of the 20-day mean, volume 1.2x
+//   4. pullback cluster on volume: two red closes, five-day return under -3%, above the 50-day mean, volume 1.1x
+//   5. two red days: yesterday down more than 2.8%, today down again, five-day return under -7.8%, close above the 50-day mean
+// Exit at the open after the first close 3% above entry or after 2 bars;
+// 8% stop and 4% target checked on the close; 1 bar(s) of cooldown.
+//
+// Daily bars; the signal is read on the close, the fill is the next open;
+// stops and targets are checked on the close, not intrabar. The Python
+// backtest runs this as a book of 20% slots across TQQQ, MUU, RIOX and
+// SOXL; a Pine strategy holds one symbol, so run one chart per fund. On an
+// NQ/QQQ chart set "Threshold scale" to 0.333 (the rules were tuned on 3x funds).
+strategy("Combo: Recent Winners [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity,
+     default_qty_value=20, commission_type=strategy.commission.percent,
+     commission_value=0.01, slippage=1, process_orders_on_close=false)
+
+scale     = input.float(1.0, "Threshold scale (1 = leveraged fund chart, 0.333 = NQ/QQQ chart)", step=0.001)
+takePct   = input.float(3.0, "Exit after a close this far above entry, %") / 100 * scale
+targetPct = input.float(4.0, "Hard target, % (checked on the close)") / 100 * scale
+stopPct   = input.float(8.0, "Hard stop, % (checked on the close)") / 100 * scale
+maxBars   = input.int(2, "Exit after this many bars held")
+cooldown  = input.int(1, "Bars to wait after an exit before re-entering")
+use1 = input.bool(true, "Use setup 1: volume climax")
+use2 = input.bool(true, "Use setup 2: band break on volume")
+use3 = input.bool(true, "Use setup 3: red day near the mean")
+use4 = input.bool(true, "Use setup 4: pullback cluster on volume")
+use5 = input.bool(true, "Use setup 5: two red days")
+
+ret1   = close / close[1] - 1
+ret5   = close / close[5] - 1
+sma20  = ta.sma(close, 20)
+sma50  = ta.sma(close, 50)
+volAvg = ta.sma(volume, 20)
+volRat = volAvg > 0 ? volume / volAvg : 1.0
+[bbMid, bbUp, bbLo] = ta.bb(close, 20, 2.0)
+
+s1 = use1 and volRat > 2.0 and ret1 < -0.03 * scale
+s2 = use2 and close < bbLo and volRat > 1.2
+s3 = use3 and ret1 < -0.04 * scale and close > sma20 * (1 - 0.03 * scale) and volRat > 1.2
+s4 = use4 and ret1 < 0 and ret1[1] < 0 and ret5 < -0.03 * scale and close > sma50 and volRat > 1.1
+s5 = use5 and ret1 < 0 and ret1[1] < -0.028 * scale and close > sma50 and ret5 < -0.078 * scale
+setup = s1 or s2 or s3 or s4 or s5
+
+var int lastExitBar = -100000
+var int closedSeen = 0
+if strategy.closedtrades > closedSeen
+    closedSeen := strategy.closedtrades
+    lastExitBar := bar_index
+
+flat     = strategy.position_size == 0
+canEnter = flat and (bar_index - lastExitBar) >= cooldown
+
+if canEnter and setup
+    strategy.entry("L", strategy.long)
+
+if not flat
+    barsHeld = bar_index - strategy.opentrades.entry_bar_index(strategy.opentrades - 1)
+    posRet   = close / strategy.position_avg_price - 1
+    if posRet <= -stopPct or posRet >= targetPct or posRet > takePct or barsHeld >= maxBars
+        strategy.close("L")
+
+plotshape(setup and canEnter, title="Setup", style=shape.triangleup, location=location.belowbar,
+     color=color.new(color.teal, 0), size=size.small)
+alertcondition(setup and canEnter, "Combo: Recent Winners: buy at next open",
+     "Combo: Recent Winners setup on {{ticker}}: buy at the next open")

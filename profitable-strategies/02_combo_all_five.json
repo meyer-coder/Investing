@@ -1,0 +1,50 @@
+{
+ "genomes": [
+  {
+   "name": "Combo: All Five Setups",
+   "thesis": "Every setup above in one agent, first match wins, five 20% slots. The most active book and the broadest evidence base.",
+   "rationale": "About 60 trades a year on the Nasdaq universe and the best held-out Sharpe of the set; use it when you want the signal every week rather than every month.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and (close - low) / (high - low + 0.0001) < 0.25 and volume_ratio > 1.3",
+     "weight": 0.2
+    },
+    {
+     "when": "rsi7 < 40 and close > sma50",
+     "weight": 0.2
+    },
+    {
+     "when": "ret1 < -0.045 and close > sma50 and volume_ratio > 1.0",
+     "weight": 0.2
+    },
+    {
+     "when": "close < prev(low) and close > sma50 and volume_ratio > 1.2",
+     "weight": 0.2
+    },
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and ret5 < -0.03 and close > sma50 and volume_ratio > 1.1",
+     "weight": 0.2
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

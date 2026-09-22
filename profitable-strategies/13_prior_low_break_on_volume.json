@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Prior-Low Break on Volume",
+   "thesis": "A close below yesterday's low, above the 50-day mean, on 1.2x volume: a one-day shakeout that is bought back.",
+   "rationale": "Highest trade count of the single setups; without the volume gate it is a loser, so the volume is the signal.",
+   "entry_rules": [
+    {
+     "when": "close < prev(low) and close > sma50 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

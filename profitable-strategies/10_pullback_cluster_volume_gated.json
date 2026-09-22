@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Pullback Cluster (volume-gated)",
+   "thesis": "Two consecutive red closes and a 3% loss over five sessions, above the 50-day mean, on above-average volume: a short, sharp pullback that mean-reverts.",
+   "rationale": "The volume gate matters: the same rule without it is flat on the long Nasdaq history.",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < 0 and ret5 < -0.03 and close > sma50 and volume_ratio > 1.1",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}

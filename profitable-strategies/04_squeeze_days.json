@@ -1,0 +1,46 @@
+{
+ "genomes": [
+  {
+   "name": "Squeeze Days (evolved)",
+   "thesis": "Volatility contraction followed by a close above the upper band; ride the release for two sessions. Combined with: Two consecutive down days inside a rising 50-day trend: buy the second, sell the first green close.",
+   "entry_rules": [
+    {
+     "when": "vol_ratio_20_60 < 0.8 and cross_above(close, bb_upper)",
+     "weight": 0.5,
+     "note": "archetype"
+    },
+    {
+     "when": "(ret1 < 0 and prev(ret1) < -0.028 and close > sma50) and ret5 < -0.078",
+     "weight": 0.5,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.02",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 3",
+     "note": "archetype"
+    },
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.2,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.08,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "rationale": "Evolved on the mega-cap pairs; positive over the last six and twelve months on all three universes."
+  }
+ ]
+}

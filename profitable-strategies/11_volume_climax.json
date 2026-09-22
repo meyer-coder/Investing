@@ -1,0 +1,34 @@
+{
+ "genomes": [
+  {
+   "name": "Volume Climax",
+   "thesis": "Twice normal volume on a 3% down day, any regime: a flush that gets bought within two sessions.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 2.0 and ret1 < -0.03",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "rationale": "Top of the last six months on your names and on the Nasdaq set; weak on the 2x single-stock pairs and flat in 2018-2020."
+  }
+ ]
+}
