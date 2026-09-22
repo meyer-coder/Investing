@@ -9,6 +9,46 @@ range — see `prompt-anatomy.md` §3).
 
 ---
 
+## Can Claude pull these directly? (tested 2026-09-22)
+
+**No.** This environment's egress proxy answers **403 to CONNECT** for every
+market-data vendor. Measured, not assumed:
+
+| Blocked (403) | Works |
+|---|---|
+| api.binance.com, fapi.binance.com | **raw.githubusercontent.com** (200, real content) |
+| api.bybit.com, api.kraken.com, api.exchange.coinbase.com | **api.github.com** (200) |
+| query1.finance.yahoo.com | **Google Drive connector** (verified: lists and reads CSVs) |
+| api.polygon.io | **TradingView MCP** (the 1000-bar tunnel) |
+| histdata.com, datafeed.dukascopy.com | pypi / npm (so libraries install fine) |
+| kaggle.com, firstratedata.com, hist.databento.com, stooq.com | git push/pull to this repo |
+
+Note `codeload.github.com` is also 403, so whole-repo tarballs do not work —
+individual files via raw.githubusercontent.com do.
+
+Worth knowing: `evotrader/data.py` fetches from Yahoo Finance, which is blocked
+here. Existing cached CSVs under `data/cache/` still work, and `--offline` works,
+but a fresh `cli fetch` will fail in this environment.
+
+### Four ways to get data in
+
+1. **Google Drive** — best for large files. Drop the CSV in Drive and it can be
+   read through the connector. No repo bloat. Verified working.
+2. **Public GitHub repo** — best for self-service. Files served over
+   raw.githubusercontent.com are fetchable directly with no per-file action.
+3. **Commit to this repo** — works, but a 60-80MB CSV in git is clumsy. Prefer
+   Git LFS or one of the two options above.
+4. **Change the environment's network policy** — the egress allowlist is chosen
+   when the environment is created. A more permissive policy would allow direct
+   pulls from Binance, Yahoo, Polygon and the rest, which is the real fix if
+   live data pulls are wanted routinely.
+   See https://code.claude.com/docs/en/claude-code-on-the-web
+
+Regardless of path, download scripts can be written here and run on your own
+machine, where none of these restrictions apply.
+
+---
+
 ## FREE ONLY — ranked by how much of the problem each one actually solves
 
 Everything in this section costs nothing. Ranked by usefulness for intraday
