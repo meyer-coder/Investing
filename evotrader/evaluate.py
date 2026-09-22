@@ -146,7 +146,8 @@ def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
 
 
 def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
-             since: Sequence[str] = (), recent_bars: int = 0) -> List[YearRow]:
+             since: Sequence[str] = (), recent_bars: int = 0,
+             monthly: bool = False) -> List[YearRow]:
     """One full-window backtest, then calendar-year buckets from the equity
     curve (returns) and the trade list (counts, by exit date).  Also records
     the best and worst trades, so gap risk is visible."""
@@ -176,17 +177,18 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
         if row is not None:
             row.label = f"last {recent_bars} bars"
             report.recent = row
+    width = 7 if monthly else 4                  # YYYY-MM or YYYY
     last_of_year: Dict[str, float] = {}
     order: List[str] = []
     for date, eq in zip(journal.equity_dates, journal.equity):
-        year = date[:4]
+        year = date[:width]
         if year not in last_of_year:
             order.append(year)
         last_of_year[year] = eq
     rows: List[YearRow] = []
     prev = journal.equity[0]
     for year in order:
-        trades = [t for t in journal.trades if t.exit_date[:4] == year]
+        trades = [t for t in journal.trades if t.exit_date[:width] == year]
         wins = sum(1 for t in trades if t.ret > 0)
         rows.append(YearRow(year=year, ret=last_of_year[year] / prev - 1.0 if prev else 0.0,
                             trades=len(trades), win_rate=wins / len(trades) if trades else 0.0,
@@ -203,7 +205,7 @@ def ctx_cfg(ctx: Context) -> EvolutionConfig:
 
 def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
              by_year: bool = False, since: Sequence[str] = (),
-             recent_bars: int = 0) -> List[StrategyReport]:
+             recent_bars: int = 0, by_month: bool = False) -> List[StrategyReport]:
     """Score each genome on the config's training and held-out windows.
     ``since`` dates add trailing-window rows (return, trades, worst day...)
     from one full-window backtest.  ``recent_bars`` adds the trailing window
@@ -220,7 +222,7 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     else:
         windows.append(("full", universe))
     contexts = [(label, _context(u, cfg)) for label, u in windows]
-    full_ctx = _context(universe, cfg) if (by_year or since or recent_bars > 0) else None
+    full_ctx = _context(universe, cfg) if (by_year or by_month or since or recent_bars > 0) else None
 
     reports: List[StrategyReport] = []
     for genome in genomes:
@@ -233,8 +235,9 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
                 a, b = ctx.train.date_range()
                 report.windows.append(WindowResult(label, a, b, out.metrics, out.score))
             if full_ctx is not None:
-                years = _by_year(genome, full_ctx, report, since=since, recent_bars=recent_bars)
-                report.years = years if by_year else []
+                years = _by_year(genome, full_ctx, report, since=since, recent_bars=recent_bars,
+                                 monthly=by_month)
+                report.years = years if (by_year or by_month) else []
         except (GenomeError, ValueError) as exc:
             report.error = str(exc)
         reports.append(report)
@@ -356,8 +359,9 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
         for w in r.windows:
             lines.append("  " + _row(w))
         if r.years:
-            lines.append("  by year: " + "  ".join(
-                f"{y.year} {y.ret * 100:+.0f}%/{y.trades}t" for y in r.years))
+            label = "by month" if len(r.years[0].year) == 7 else "by year"
+            lines.append(f"  {label}: " + "  ".join(
+                f"{y.year} {y.ret * 100:+.1f}%/{y.trades}t" for y in r.years))
         for p in ([r.recent] if r.recent else []) + list(r.periods):
             m = p.metrics
             lines.append(f"  {p.label} ({p.start}..{p.end}): ret {m.total_return * 100:+6.1f}%  "
@@ -422,7 +426,7 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
                            f"{m.worst_day * 100:.1f}% |")
             out.append("")
         if r.years:
-            out.append("| year | return | trades | win |")
+            out.append("| period | return | trades | win |")
             out.append("|---|---|---|---|")
             for y in r.years:
                 out.append(f"| {y.year} | {y.ret * 100:+.1f}% | {y.trades} | {y.win_rate * 100:.0f}% |")

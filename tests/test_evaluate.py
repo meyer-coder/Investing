@@ -137,3 +137,17 @@ def test_recent_mode_judges_and_ranks_on_the_trailing_window(tmp_path, capsys):
                  "--start", "2015-01-01", "--end", "2025-12-31", "--test-frac", "0", "--recent", "6m"])
     assert code in (0, 2)
     assert "strategies profitable over the last 126 bars" in capsys.readouterr().out
+
+
+def test_by_month_buckets_by_calendar_month(tmp_path):
+    genomes = load_genomes(_write(tmp_path, [GOOD]))
+    reports = evaluate(genomes, _cfg(test_frac=0.0), by_month=True)
+    months = [y.year for y in reports[0].years]
+    assert months[0] == "2015-01" and all(len(m) == 7 for m in months) and months == sorted(months)
+    yearly = evaluate(genomes, _cfg(test_frac=0.0), by_year=True)[0].years
+    # the monthly returns compound to the yearly return
+    import math
+    for y in yearly:
+        comp = math.prod(1 + m.ret for m in reports[0].years if m.year.startswith(y.year)) - 1
+        assert abs(comp - y.ret) < 1e-9, y.year
+    assert "by month" in format_text(reports)

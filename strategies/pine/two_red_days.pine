@@ -1,0 +1,44 @@
+//@version=6
+// Two Red Days (evolved) — from evotrader strategies/quick_leveraged.json.
+//
+// Yesterday closed down more than 2.8%, today closed down again, the five-day
+// return is worse than -7.8%, and the close is still above the 50-day mean.
+// Out at the open after the first close up more than 2% on the day, or after
+// three bars; 6% stop checked on the close; no target; no cooldown.
+//
+// Daily bars; signal on the close, fill at the next open. On an NQ/QQQ chart set
+// "Threshold scale" to 0.333 (the rules were tuned on 3x and 2x funds).
+strategy("Two Red Days (evotrader)", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity,
+     default_qty_value=20, commission_type=strategy.commission.percent,
+     commission_value=0.01, slippage=1, process_orders_on_close=false)
+
+scale    = input.float(1.0, "Threshold scale (1 = leveraged fund chart, 0.333 = NQ/QQQ chart)", step=0.001)
+yday     = input.float(2.8, "Yesterday's drop worse than, %") / 100 * scale
+week     = input.float(7.8, "Five-day return worse than, %") / 100 * scale
+upClose  = input.float(2.0, "Exit after a close up this much on the day, %") / 100 * scale
+stopPct  = input.float(6.0, "Hard stop, % (checked on the close)") / 100 * scale
+maxBars  = input.int(3, "Exit after this many bars held")
+smaLen   = input.int(50, "Trend gate: close above this SMA")
+
+ret1  = close / close[1] - 1
+ret5  = close / close[5] - 1
+sma50 = ta.sma(close, smaLen)
+
+setup = ret1 < 0 and ret1[1] < -yday and close > sma50 and ret5 < -week
+flat  = strategy.position_size == 0
+
+if flat and setup
+    strategy.entry("L", strategy.long)
+
+if not flat
+    barsHeld = bar_index - strategy.opentrades.entry_bar_index(strategy.opentrades - 1)
+    posRet   = close / strategy.position_avg_price - 1
+    if posRet <= -stopPct or ret1 > upClose or barsHeld >= maxBars
+        strategy.close("L")
+
+plotshape(setup and flat, title="Two Red Days setup", style=shape.triangleup,
+     location=location.belowbar, color=color.new(color.orange, 0), size=size.small,
+     text="buy next open")
+alertcondition(setup and flat, "Two Red Days: buy at next open",
+     "Two Red Days setup on {{ticker}}: buy at the next open")

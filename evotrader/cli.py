@@ -242,7 +242,8 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
         print(f"no genomes in {args.file}", file=sys.stderr)
         return 1
     since = [s.strip() for s in (args.since or "").split(",") if s.strip()]
-    reports = evaluate(genomes, cfg, by_year=args.by_year, since=since, recent_bars=recent_bars)
+    reports = evaluate(genomes, cfg, by_year=args.by_year, since=since, recent_bars=recent_bars,
+                       by_month=args.by_month)
     print(format_text(reports))
     if args.markdown:
         os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
@@ -626,6 +627,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="override commission in basis points per side")
     ev.add_argument("--by-year", action="store_true", dest="by_year",
                     help="also break the full window down by calendar year")
+    ev.add_argument("--by-month", action="store_true", dest="by_month",
+                    help="break the full window down by calendar month instead")
     ev.add_argument("--since", help="comma-separated YYYY-MM-DD dates; adds trailing-window "
                                     "rows (return, trades, max dd, worst day) from each date")
     ev.add_argument("--recent", help="judge and rank on the trailing window instead of the whole "

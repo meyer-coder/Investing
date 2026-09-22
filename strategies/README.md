@@ -90,6 +90,63 @@ first fifty to sixty bars to indicator warm-up, so a held-out row and a
 -1.2% held out, +10.3% over the last 126 bars). The trailing-window row is
 the one to read.
 
+**Monthly numbers.** Net return per calendar month at the file's sizing on
+the long funds (TQQQ, MUU, RIOX, SOXL), from `evaluate --by-month`, over
+the 19 to 21 months of data. "Positive" is the share of months that ended
+up; a month with no trades counts as flat.
+
+| strategy | mean per month | last 12 months | positive months | worst month | trades per month |
+|---|---|---|---|---|---|
+| Capitulation Close | +3.5% | +5.3% | 62% | -6.2% | 2.6 |
+| Combo: All Five Setups | +3.3% | +4.4% | 68% | -6.3% | 5.8 |
+| Combo: Capitulation or Oversold | +3.2% | +4.5% | 63% | -6.9% | 3.4 |
+| Combo: Recent Winners | +3.2% | +4.8% | 68% | -3.6% | 4.5 |
+| Band Break on Volume | +2.0% | +3.4% | 43% | -2.0% | 1.5 |
+| Two Red Days (evolved) | +1.3% | +2.0% | 42% | -8.2% | 1.5 |
+| Pullback Cluster (durable) | +0.8% | +1.5% | 32% | -11.4% | 1.5 |
+
+On a $25,000 account at the file sizing that is about $870 a month for
+Capitulation Close and $820 for Combo: All Five Setups on average, with one
+month in three negative. At the funded sizing in the table above (10% and 7%
+slots) it is about $350 and $290 a month. The sixteen-year figure on the
+long Nasdaq funds (TQQQ, SOXL, QLD) is far lower: Combo: All Five +0.7% a
+month, Capitulation Close +0.4%, Oversold Dip +0.5%, with 48% to 58% of
+months positive. The 3% months are the last two years on RIOX, MUU and
+SOXL.
+
+**FundedNext.** FundedNext Futures trades NQ, MNQ, ES, MES, RTY, M2K, CME
+FX and energy futures, and no stocks or ETFs. Its $25,000 Legacy account
+has a $1,250 profit target, a $1,250 maximum loss during evaluation, a
+$1,000 end-of-day trailing drawdown once funded, and a 40% consistency
+rule. Two consequences for these strategies:
+
+- Only the Nasdaq leg is tradeable there, and on TQQQ alone the rules are
+  thin: Capitulation Close made +0.85% per trade over 127 trades since 2010,
+  about 0.6 trades a month, which at a 25% slot is 0.1% to 0.2% a month and
+  roughly zero over the last six months.
+- One MNQ is about 2.3 times a $25,000 account in index exposure, three
+  times the tested slot. The tested worst days become about -6% (last
+  twelve months) to -24% (March 2020) in a single session, against a 4%
+  limit.
+
+So these daily-bar strategies are not a fit for a $25,000 futures account.
+They fit a brokerage account on the leveraged funds, a much larger futures
+account, or a CFD index account with fractional lots. If the goal is a
+FundedNext NQ account, the research to do is intraday, and the repo's
+session, VWAP and opening-range features with the TradingView data store
+are the tools for it.
+
+**Forward test.** The rules are frozen at the git tag
+`strategies-frozen-2026-09-22`. Every bar after that date is out of sample
+for every file in this directory, and the ledger is one command:
+
+```bash
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names_long.json --test-frac 0 --since 2026-09-23
+```
+
+TradingView versions of the three best-evidenced strategies, with alerts
+for paper trading, are in `pine/`.
+
 **What went cold.** Four of the durable eight have been flat to negative
 since March on your names and on the Nasdaq set: Capitulation Close (+6%
 and -4%, PF 1.13 and 0.88), Oversold Dip Above the 50 (-6% and -6%),
@@ -168,6 +225,8 @@ Reproduce:
 
 ```bash
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names_long.json --recent 6m   # long funds only
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names_long.json --test-frac 0 --by-month
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --test-frac 0 --by-month --symbols TQQQ
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --recent 6m
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_nasdaq.json --recent 6m
 python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --test-frac 0 --since 2026-03-22,2025-12-22,2025-09-22

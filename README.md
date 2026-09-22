@@ -271,7 +271,7 @@ python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/
 
 `--test-frac 0` scores one full window. `--by-year` adds calendar-year
 returns and trade counts, a per-symbol breakdown, and the best and worst
-trades. `--since` adds trailing-window rows from a date (return, trades,
+trades; `--by-month` does the same by calendar month. `--since` adds trailing-window rows from a date (return, trades,
 profit factor, max drawdown, worst day). `--recent 6m` goes further: the
 verdict and the ranking are then based on the last 126 bars rather than
 the whole history, which is the right lens for a funded account that
@@ -289,8 +289,9 @@ python -m evotrader.cli signals strategies/quick_leveraged.json --config configs
 
 `strategies/quick_leveraged.json` holds eight quick-trade strategies for
 the leveraged Nasdaq, semiconductor and single-stock funds, seven bred by
-hand this way and one evolved, and `strategies/recent_regime.json` the set
-ranked by the last six months;
+hand this way and one evolved, `strategies/recent_regime.json` the set
+ranked by the last six months, and `strategies/pine/` TradingView Pine
+versions of the three best-evidenced ones;
 `strategies/README.md` is the report on them, and `strategies/reports/`
 the generated per-universe tables.
 
