@@ -332,3 +332,54 @@ goal, and the second is achievable today while the first is not.
 4. If 5-minute *futures* history specifically proves necessary, Databento's
    free credit before anything paid.
 5. The replay spike only if all of the above still leaves a gap that matters.
+
+---
+
+# First session breakdown on real NQ — 2026-09-22
+
+The archive built on the Mac (`tv-archive --root NQ --timeframe 15 --since 2023`):
+**83,960 bars, 18 contracts, 2022-12-01 → 2026-09-22, 925 of 994 weekday
+sessions = 93% covered, largest hole 17 days, 17 rolls back-adjusted.** Better
+than the 90% predicted; the 2023 contracts served ~7,000 bars each.
+
+With the session features live, the same crude rule — lower-band poke and
+reclaim, trend filter — run over the most recent 20,000 bars (Oct 2025 → Sep
+2026, the window that contains the six months that matter), split by session:
+
+| Session filter | Trades | Return | Profit factor | Win rate |
+|---|---|---|---|---|
+| A. 24h, no filter | 168 | −11.3% | 0.38 | 43% |
+| F. Overnight only | 138 | −9.9% | 0.36 | 43% |
+| B. RTH 09:30–16:00 | 46 | −1.2% | 0.72 | 48% |
+| C. **First hour 09:30–10:30** | 22 | −0.2% | 0.97 | 50% |
+| D. Second hour 10:30–11:30 | 13 | −0.3% | 0.67 | 46% |
+| H. RTH, Tue–Thu | 25 | −0.6% | 0.77 | 52% |
+| G. RTH + above session VWAP | 10 | −0.0% | 1.08 | 40% |
+| E. Power hour 15:00–16:00 | 4 | +0.0% | 1.41 | 75% |
+
+Buy-and-hold over the window: **+13.8%**.
+
+What it says, and what it does not. **The rule's losses are an overnight
+phenomenon**: 138 of its 168 trades and almost all of its drawdown come from
+outside regular hours, at a profit factor of 0.36. Restricted to the opening
+hour it is roughly flat. That is a genuine session finding — the first the
+engine has been able to produce — and it is the shape the brief predicted:
+the edge, if there is one, lives in a session, not around the clock.
+
+It is **not** evidence of an edge anywhere. No bucket reaches even the
+67-trade recent-window floor, let alone 400; the buckets that look best (E,
+G) are the ones with four and ten trades. This is one crude rule with no
+opening-range logic, no short side, long-only, on eleven months. It is the
+pipeline proving it can answer the question, not the answer.
+
+**Engine bug found in this run:** the report says `years: 3.02` for an
+eleven-month window. `compute_metrics` derives years from *bar count* divided
+by a fixed per-timeframe table that assumes regular-hours density; a 23-hour
+futures session produces ~3.5x more bars per year, so `years` is overstated
+3.5x and CAGR, Sharpe and turnover are deflated by the same factor. Total
+return, profit factor, win rate, trade count and drawdown are unaffected. Fix:
+derive years from the actual calendar span of the series.
+
+**Per-call cap:** the MCP tools clamp `bars` to 20,000, so a single call sees
+11 months of the 3.7-year archive. The full grid should be run locally from
+the exported CSV rather than through 500 capped tool calls.
