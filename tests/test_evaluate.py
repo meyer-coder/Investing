@@ -151,3 +151,13 @@ def test_by_month_buckets_by_calendar_month(tmp_path):
         comp = math.prod(1 + m.ret for m in reports[0].years if m.year.startswith(y.year)) - 1
         assert abs(comp - y.ret) < 1e-9, y.year
     assert "by month" in format_text(reports)
+
+
+def test_a_since_date_past_the_data_is_reported_not_silent(tmp_path):
+    genomes = load_genomes(_write(tmp_path, [GOOD]))
+    reports = evaluate(genomes, _cfg(test_frac=0.0), since=["2030-01-01", "2019-01-01"])
+    r = reports[0]
+    assert r.empty_periods == ["2030-01-01"] and [p.label for p in r.periods] == ["since 2019-01-01"]
+    text = format_text(reports)
+    assert "since 2030-01-01: no completed bars" in text and "nothing out of sample so far" in text
+    assert "Since 2030-01-01: no completed bars" in format_markdown(reports, title="T")

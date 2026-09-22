@@ -78,6 +78,7 @@ class StrategyReport:
     worst: List[Trade] = field(default_factory=list)
     symbols: List[SymbolRow] = field(default_factory=list)
     periods: List[PeriodRow] = field(default_factory=list)  # --since windows
+    empty_periods: List[str] = field(default_factory=list)  # --since dates with no bars yet
     recent: Optional[PeriodRow] = None                       # --recent window
     error: str = ""
 
@@ -170,6 +171,8 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
         row = _period(journal, start, ctx_cfg(ctx))
         if row is not None:
             report.periods.append(row)
+        else:
+            report.empty_periods.append(start)
     if recent_bars > 0:
         dates = journal.equity_dates
         start = dates[-recent_bars] if len(dates) > recent_bars else dates[0]
@@ -368,6 +371,9 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
                          f"trades {m.trades:3d}  win {m.win_rate * 100:3.0f}%  pf {m.profit_factor:4.2f}  "
                          f"avg {m.avg_trade_return * 100:+5.2f}%/t  mdd {m.max_drawdown * 100:5.1f}%  "
                          f"worst day {m.worst_day * 100:5.1f}%")
+        for start in r.empty_periods:
+            lines.append(f"  since {start}: no completed bars on or after this date yet "
+                         f"(data ends {r.windows[-1].end if r.windows else '?'}); nothing out of sample so far")
         if r.symbols:
             lines.append("  by symbol: " + "  ".join(
                 f"{s.symbol} {s.trades}t {s.win_rate * 100:.0f}% {s.avg_ret * 100:+.2f}%"
@@ -437,6 +443,9 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
             for s in r.symbols:
                 out.append(f"| {s.symbol} | {s.trades} | {s.win_rate * 100:.0f}% | "
                            f"{s.avg_ret * 100:+.2f}% | {s.pnl:+,.0f} |")
+            out.append("")
+        for start in r.empty_periods:
+            out.append(f"Since {start}: no completed bars on or after this date yet; nothing out of sample so far.")
             out.append("")
         if r.worst:
             out.append("Worst trades over the full window, then best:")
