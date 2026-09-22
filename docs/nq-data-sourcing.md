@@ -131,7 +131,34 @@ The builder computes this and every generated prompt now demands the effective
 figure be quoted next to every pooled trade count, plus per-symbol counts and a
 re-run with the top contributor removed.
 
-## Account entitlement is the real wall
+## Signing in changed nothing — measured, 2026-09-22
+
+The tunnel was signed in with a stored TradingView session
+(`~/.config/evotrader/tradingview.json`) and `evotrader tv-depth` re-run against
+both symbols. Every row came back identical to the anonymous measurements:
+
+| Symbol | TF | Anonymous | Signed in | |
+|---|---|---|---|---|
+| QQQ | 5m | 5,304 | 5,304 | identical |
+| QQQ | 15m | 5,240 | 5,240 | identical |
+| QQQ | 60m | 6,500 | 6,500 | identical |
+| NQ1! | 5m | 5,798 | 5,805 | identical (7 bars of elapsed time) |
+| NQ1! | 15m | 5,413 | 5,415 | identical |
+| NQ1! | 60m | 10,154 | 10,154 | identical |
+
+In `tv-depth`'s own words: *a row that does not move is a limit an upgrade will
+not lift.* So the entitlement hypothesis below was **wrong for this account** —
+the caps are imposed by the chart feed on this access path, not withheld pending
+a login. Whether a *paid* tier would lift them is still untested and should not
+be assumed; do not buy a TradingView upgrade expecting more intraday depth
+without measuring it first.
+
+The same run surfaced the one genuinely deep series:
+
+| QQQ | 1D | 6,925 bars | 1999-03-10 → 2026-09-18 | **27.5 years** |
+|---|---|---|---|---|
+
+## What the entitlement hypothesis got right and wrong
 
 From the tunnel's own source (`evotrader/tvdata.py` on the `mcp` branch):
 
@@ -157,9 +184,9 @@ compare.
 
 ## The four options, ranked
 
-0. **Sign in to TradingView on the tunnel host, then re-measure.** Cheapest by
-   far, and the source says entitlement is what caps the pull. Do this before
-   deciding anything else.
+0. ~~Sign in to TradingView and re-measure.~~ **Done — it changed nothing.**
+   Every row identical to anonymous. Keep the login (it costs nothing and the
+   screener/quote endpoints may want it), but it is not the answer to depth.
 1. **Start accumulating forward today.** The MCP server reads from a local store
    that `evotrader tv-fetch` fills. A scheduled weekly pull grows true
    continuous 5-minute history from now on — six months from now you have six
