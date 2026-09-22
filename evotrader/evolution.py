@@ -101,6 +101,11 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
         return Outcome(genome.id, genome.name, genome.generation, float("-inf"),
                        Metrics(), None, f"backtest failed: {type(exc).__name__}: {exc}")
 
+    if result.start_bar != features.warmup:
+        # A fast genome starts before the slow features exist; benchmark it over
+        # the bars it actually traded rather than the global warm-up window.
+        benchmark = buy_and_hold(universe, features, starting_cash=ctx.starting_cash,
+                                 start=result.start_bar)
     metrics = compute_metrics(result.journal.equity, result.journal.trades,
                               benchmark=benchmark, turnover=result.turnover,
                               exposure=result.exposure)

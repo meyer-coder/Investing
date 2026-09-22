@@ -4,6 +4,7 @@
     evotrader resume run-20260101-120000-ab12
     evotrader report --html reports/run.html
     evotrader inspect <genome-id>
+    evotrader evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
 from .data import load_universe
+from .evaluate import evaluate, format_markdown, format_text, load_genomes
 from .evolution import Evolution, score_genome
 from .features import build_features
 from .fitness import FitnessConfig
@@ -225,6 +227,36 @@ def cmd_backtest(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_evaluate(args: argparse.Namespace) -> int:
+    """Score hand-written genomes from a JSON file over a config's windows."""
+    cfg = EvolutionConfig.load(args.config) if args.config else EvolutionConfig()
+    for name in ("start", "end", "test_frac", "slippage_bps", "commission_bps"):
+        value = getattr(args, name, None)
+        if value is not None:
+            setattr(cfg, name, value)
+    if args.symbols:
+        cfg.symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
+    if args.offline:
+        cfg.offline = True
+    try:
+        genomes = load_genomes(args.file)
+    except (OSError, ValueError) as exc:
+        print(f"could not load {args.file}: {exc}", file=sys.stderr)
+        return 1
+    if not genomes:
+        print(f"no genomes in {args.file}", file=sys.stderr)
+        return 1
+    reports = evaluate(genomes, cfg, by_year=args.by_year)
+    print(format_text(reports))
+    if args.markdown:
+        os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
+        with open(args.markdown, "w") as fh:
+            fh.write(format_markdown(reports, title=args.title or os.path.basename(args.file),
+                                     cfg=cfg))
+        print(f"wrote {args.markdown}")
+    return 0 if all(r.profitable for r in reports) else 2
+
+
 def cmd_fetch(args: argparse.Namespace) -> int:
     symbols = [s.strip().upper() for s in (args.symbols or ",".join(DEFAULT_SYMBOLS)).split(",")]
     universe = load_universe(symbols, args.start, args.end, refresh=True)
@@ -310,6 +342,26 @@ def build_parser() -> argparse.ArgumentParser:
     bt.add_argument("--end")
     bt.add_argument("--trades", type=int, default=10)
     bt.set_defaults(func=cmd_backtest)
+
+    ev = sub.add_parser("evaluate", help="score hand-written genomes from a JSON file "
+                                         "(exit code 2 if any is unprofitable)")
+    ev.add_argument("file", help="JSON: a list of genomes, or {\"genomes\": [...]}")
+    ev.add_argument("--config", help="run config supplying symbols, dates, costs, fitness")
+    ev.add_argument("--symbols", help="override the universe, comma separated")
+    ev.add_argument("--start")
+    ev.add_argument("--end")
+    ev.add_argument("--test-frac", type=float, dest="test_frac",
+                    help="held-out tail fraction; 0 scores one full window")
+    ev.add_argument("--offline", action="store_true")
+    ev.add_argument("--slippage", type=float, dest="slippage_bps",
+                    help="override slippage in basis points per side (cost sensitivity)")
+    ev.add_argument("--commission", type=float, dest="commission_bps",
+                    help="override commission in basis points per side")
+    ev.add_argument("--by-year", action="store_true", dest="by_year",
+                    help="also break the full window down by calendar year")
+    ev.add_argument("--markdown", help="write a Markdown report here")
+    ev.add_argument("--title", help="title for the Markdown report")
+    ev.set_defaults(func=cmd_evaluate)
 
     fetch = sub.add_parser("fetch", help="download and cache price data")
     fetch.add_argument("--symbols")

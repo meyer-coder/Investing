@@ -68,6 +68,9 @@ python -m evotrader.cli run --config configs/default.json     # 100 x 1000
 
 # breed toward a particular trader's style (see "Breeding for a trading style")
 python -m evotrader.cli run --config configs/leveraged_swing.json
+
+# score hand-written strategies on a config's windows (see "Hand-written strategies")
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --by-year
 ```
 
 Every run streams progress and writes to `runs/evotrader.sqlite`:
@@ -208,7 +211,57 @@ Newer single-stock funds (MUU, RIOX, MSTU) fit the style but would truncate
 the whole universe to their own short history, since symbols are aligned on
 their shared calendar.
 
+### `quick_leveraged`: one to three sessions, long and short funds
+
+For funded accounts, where a trade lasts a session or three. The universe is
+leveraged funds in both directions on the same underlying (TQQQ and SQQQ,
+SOXL and SOXS, MUU and MUD...), so in this long-only engine buying the inverse
+fund *is* the short trade. The mandate asks for 1-3 bar holds, 3-8% targets,
+fast features only, and rules that make sense in both directions; the fitness
+in its configs charges for an average hold over 3 bars.
+
+```bash
+python -m evotrader.cli run --config configs/quick_nasdaq.json    # TQQQ/SQQQ, SOXL/SOXS, QLD/QID since 2010
+python -m evotrader.cli run --config configs/quick_names.json     # TQQQ/SQQQ, MUU/MUD, RIOX, SOXL/SOXS since 2025
+python -m evotrader.cli run --config configs/quick_bigcaps.json   # 2x long/short pairs on AAPL, TSLA, AMZN, MSFT, GOOGL, NVDA
+```
+
+A genome starts trading on the first bar at which the features *it* reads
+are defined, not at the 200-bar mean the slowest feature needs. That is what
+makes a fund with a year of history (RIOX, MUU) tradeable in a backtest: a
+rule on `rsi7` and `sma50` is live after 50 bars. Buy-and-hold is benchmarked
+over the same bars the genome traded.
+
 To add a style, append a `TradingStyle` to `STYLES` in `styles.py`.
+
+---
+
+## Hand-written strategies
+
+The loop writes genomes; `evaluate` goes the other way. Put genomes in a JSON
+file (a list, or `{"genomes": [...]}`, in the same shape the breeder emits)
+and score them on a config's training and held-out windows, on any other
+symbol set, year by year, and at any cost assumption:
+
+```bash
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --by-year
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_names.json --test-frac 0 --by-year
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --symbols TQQQ,SOXL,QLD
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --slippage 15
+python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --by-year --markdown strategies/reports/quick_nasdaq.md
+```
+
+`--test-frac 0` scores one full window. `--by-year` adds calendar-year
+returns and trade counts, a per-symbol breakdown, and the best and worst
+trades. The exit code is 2 when any strategy is unprofitable on any window,
+so it works as a check in a script. A strategy counts as profitable on a
+window when it made at least ten trades with a positive net return and a
+profit factor above one.
+
+`strategies/quick_leveraged.json` holds seven quick-trade strategies found
+this way for the leveraged Nasdaq, semiconductor and single-stock funds;
+`strategies/README.md` is the report on them, and `strategies/reports/`
+the generated per-universe tables.
 
 ---
 
@@ -273,6 +326,7 @@ evotrader/
   fitness.py      metrics and the composite fitness function
   population.py   seed archetypes, mutation, crossover
   styles.py       trading styles: a breeder mandate plus seed archetypes
+  evaluate.py     score hand-written genomes over windows, years and symbol sets
   llm.py          Claude client: structured output, retries, cost ceiling
   prompts.py      the breeding briefing and its JSON schema
   breeder.py      LLM / mutation / hybrid breeders
@@ -285,7 +339,7 @@ evotrader/
 ## Tests
 
 ```bash
-python -m pytest tests -q      # 87 tests, ~30s
+python -m pytest tests -q      # 96 tests, ~30s
 ```
 
 They cover the rule language (including that hostile input is rejected), the

@@ -29,6 +29,7 @@ class BacktestResult:
     final_equity: float
     starting_cash: float
     bars: int
+    start_bar: int           # first bar the genome was allowed to trade on
     symbols: List[str]
     start_date: str
     end_date: str
@@ -96,7 +97,10 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
     journal = Journal()
     broker = PaperBroker(starting_cash, commission_bps=commission_bps,
                          slippage_bps=slippage_bps, journal=journal)
-    first = features.warmup if start_bar is None else max(start_bar, 1)
+    # A genome trades from the bar its own features are defined, not from the
+    # slowest feature in the vocabulary — see FeatureSet.warmup_for.
+    first = (features.warmup_for(compiled.feature_names()) if start_bar is None
+             else max(start_bar, 1))
     if n - first < 5:
         first = max(n - 5, 1)
 
@@ -217,6 +221,7 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
         final_equity=final_equity,
         starting_cash=starting_cash,
         bars=max(n - first, 0),
+        start_bar=first,
         symbols=list(symbols),
         start_date=dates[first] if first < n else "",
         end_date=dates[last] if n else "",
@@ -233,12 +238,14 @@ def backtest_genome(genome: Genome, universe: Universe, features: FeatureSet,
 
 
 def buy_and_hold(universe: Universe, features: FeatureSet, *,
-                 starting_cash: float = 100_000.0) -> List[float]:
+                 starting_cash: float = 100_000.0,
+                 start: Optional[int] = None) -> List[float]:
     """Equal-weight buy-and-hold equity curve over the same window, as the
-    benchmark every genome is scored against."""
+    benchmark every genome is scored against.  ``start`` defaults to the
+    global warm-up; pass a genome's own start bar to compare like with like."""
     symbols = features.symbols
     n = len(features.dates)
-    start = features.warmup
+    start = features.warmup if start is None else max(int(start), 0)
     if start >= n - 1:
         return [starting_cash] * max(n - start, 1)
     per = starting_cash / len(symbols)

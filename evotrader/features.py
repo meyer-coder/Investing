@@ -8,8 +8,8 @@ evaluating to zero.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List
+from dataclasses import dataclass, field
+from typing import Dict, Iterable, List
 
 import numpy as np
 
@@ -106,7 +106,22 @@ class FeatureSet:
     symbols: List[str]
     dates: List[str]
     matrix: Dict[str, Dict[str, np.ndarray]]
-    warmup: int
+    warmup: int                                   # first bar every slow feature is defined
+    first_valid: Dict[str, int] = field(default_factory=dict)   # per market feature
+
+    def warmup_for(self, names: Iterable[str]) -> int:
+        """First bar at which every named market feature is defined for every
+        symbol.  Portfolio features are always defined, so a genome that reads
+        only fast features (rsi7, ret1, sma20...) can start trading long before
+        the 200-bar mean exists — which is what makes symbols with a year of
+        history tradeable.  Falls back to the global warm-up when the
+        per-feature table is missing."""
+        if not self.first_valid:
+            return self.warmup
+        need = [self.first_valid[x] for x in names if x in self.first_valid]
+        first = max(need) if need else 0
+        first = max(first, 1)                     # prev() needs one bar of history
+        return min(first, max(len(self.dates) - 30, 0))
 
     def snapshot(self, symbol: str, i: int) -> Dict[str, float]:
         """Market features for one symbol at bar ``i`` (NaN -> 0.0)."""
@@ -189,4 +204,13 @@ def build_features(universe: Universe) -> FeatureSet:
             valid = np.flatnonzero(~np.isnan(series))
             warmup = max(warmup, int(valid[0]) if valid.size else n)
     warmup = min(warmup, max(n - 30, 0))
-    return FeatureSet(symbols, list(universe.calendar), matrix, warmup)
+
+    # Per-feature warm-up, so a genome can start as soon as *its* features exist.
+    first_valid: Dict[str, int] = {}
+    for name in MARKET_FEATURES:
+        first = 0
+        for sym in symbols:
+            valid = np.flatnonzero(~np.isnan(matrix[sym][name]))
+            first = max(first, int(valid[0]) if valid.size else n)
+        first_valid[name] = first
+    return FeatureSet(symbols, list(universe.calendar), matrix, warmup, first_valid)

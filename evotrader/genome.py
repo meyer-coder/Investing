@@ -215,6 +215,15 @@ class CompiledGenome:
     def risk(self) -> RiskParams:
         return self.genome.risk
 
+    def feature_names(self) -> frozenset:
+        """Every feature any entry or exit rule reads."""
+        names: set = set()
+        for rule, _ in self.entries:
+            names |= rule.features
+        for rule in self.exits:
+            names |= rule.features
+        return frozenset(names)
+
 
 def compile_genome(genome: Genome, allowed: Sequence[str] | frozenset = FEATURE_SET) -> CompiledGenome:
     """Compile every rule, raising :class:`GenomeError` on the first problem."""

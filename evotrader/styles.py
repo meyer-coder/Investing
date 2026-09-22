@@ -94,6 +94,88 @@ _LEVERAGED_SWING_ARCHETYPES: List[Archetype] = [
       "max_hold_bars": 5}),
 ]
 
+# --------------------------------------------------------------- quick leveraged
+#
+# Funded-account trading: one to three sessions per trade, in leveraged funds
+# that exist in both directions on the same underlying.  In a long-only engine,
+# buying the inverse fund *is* the short trade.
+
+_QUICK_LEVERAGED_MANDATE = """\
+=== STYLE MANDATE: quick trades in leveraged long and short funds ===
+This population trades for funded accounts, where a trade lasts one to three
+sessions and the aim is a steady stream of small realised gains. The universe
+is leveraged funds in both directions on the same underlyings (TQQQ and SQQQ
+on the Nasdaq-100, MUU and MUD on Micron, RIOX on Riot, SOXL and SOXS on
+semiconductors). Buying the inverse fund IS the short trade, so a rule that
+buys a dip in TQQQ also buys a dip in SQQQ: write rules that make sense in
+both directions, or gate them on the symbol's own short-term trend.
+
+Target behaviour:
+  - hold 1 to 3 bars: decide on the close, fill at the next open, be flat
+    again within three sessions. max_hold_bars of 1-3 is the norm
+  - take-profit targets of +3% to +8% on the leveraged product; stops of 4-8%
+  - position sizes of 0.10-0.25 of equity, 2-5 positions open at once
+  - trade often: a rule that fires a few times a year is useless here
+  - prefer fast features (ret1, ret5, rsi7, sma10, sma20, bb_pct, volume_ratio,
+    atr_pct, vol_ratio_20_60); a 200-bar mean is not available on the newer
+    single-stock funds and is too slow to matter for a two-day trade
+Avoid: trend-following holds, anything that needs weeks to play out, and
+rules that only work in one direction of the market. An agent that sits in a
+3x fund is beta, not this style; the hold-time penalty charges for it. The
+portfolio stays unlevered (gross exposure at or below 100%).
+"""
+
+_QUICK_LEVERAGED_ARCHETYPES: List[Archetype] = [
+    ("One-Day Dip",
+     "A 4% down day in a leveraged fund still above its 20-day mean is usually "
+     "bought back within two sessions.",
+     ["ret1 < -0.04 and close > sma20"],
+     ["position_return > 0.04", "bars_held >= 2"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.06,
+      "take_profit_pct": 0.05, "max_hold_bars": 2, "cooldown_bars": 1}),
+    ("Gap Continuation",
+     "A strong close on heavy volume tends to follow through at the next open; "
+     "take that and leave.",
+     ["ret1 > 0.05 and volume_ratio > 1.3 and close > sma10"],
+     ["bars_held >= 1"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.05,
+      "take_profit_pct": 0.06, "max_hold_bars": 2}),
+    ("RSI7 Snap",
+     "Deeply oversold on a 7-bar RSI snaps back within three sessions.",
+     ["rsi7 < 25"],
+     ["rsi7 > 50", "bars_held >= 3"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.07,
+      "max_hold_bars": 3, "cooldown_bars": 1}),
+    ("Band Snap",
+     "A close below the lower Bollinger band while volatility is expanding "
+     "mean-reverts fast.",
+     ["bb_pct < 0.0 and vol_ratio_20_60 > 1.1"],
+     ["bb_pct > 0.5", "bars_held >= 3"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.07,
+      "max_hold_bars": 3}),
+    ("Two Red Days",
+     "Two consecutive down days inside a rising 50-day trend: buy the second, "
+     "sell the first green close.",
+     ["ret1 < 0 and prev(ret1) < 0 and close > sma50"],
+     ["ret1 > 0.02", "bars_held >= 3"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.06,
+      "max_hold_bars": 3}),
+    ("Squeeze Pop",
+     "Volatility contraction followed by a close above the upper band; ride the "
+     "release for two sessions.",
+     ["vol_ratio_20_60 < 0.8 and cross_above(close, bb_upper)"],
+     ["bars_held >= 2", "ret1 < -0.02"],
+     {"max_position_pct": 0.20, "max_positions": 4, "stop_loss_pct": 0.06,
+      "take_profit_pct": 0.08, "max_hold_bars": 3}),
+]
+
+QUICK_LEVERAGED = TradingStyle(
+    name="quick_leveraged",
+    summary="1-3 session trades in leveraged long and short funds on core names",
+    mandate=_QUICK_LEVERAGED_MANDATE,
+    archetypes=_QUICK_LEVERAGED_ARCHETYPES,
+)
+
 LEVERAGED_SWING = TradingStyle(
     name="leveraged_swing",
     summary="2x/3x ETFs on core names, held 1-7 days, sold for a 5-15% gain",
@@ -102,7 +184,10 @@ LEVERAGED_SWING = TradingStyle(
 )
 
 #: Every style a config can name.  Add a ``TradingStyle`` here to make it available.
-STYLES: Dict[str, TradingStyle] = {LEVERAGED_SWING.name: LEVERAGED_SWING}
+STYLES: Dict[str, TradingStyle] = {
+    LEVERAGED_SWING.name: LEVERAGED_SWING,
+    QUICK_LEVERAGED.name: QUICK_LEVERAGED,
+}
 
 
 def get_style(name: str) -> Optional[TradingStyle]:

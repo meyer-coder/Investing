@@ -21,7 +21,8 @@ def test_orders_fill_at_the_next_bar_open_not_the_signal_bar_close():
     features = build_features(universe)
     genome = Genome.from_dict({
         "name": "always in",
-        "entry_rules": [{"when": "close > 0", "weight": 1.0}],
+        # reads sma200, so it is held to the slow warm-up like any slow genome
+        "entry_rules": [{"when": "close > 0 and sma200 > 0", "weight": 1.0}],
         "exit_rules": ["close < 0"],
         "risk": {"max_position_pct": 1.0, "max_positions": 1, "stop_loss_pct": 0.0},
     })

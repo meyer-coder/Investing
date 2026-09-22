@@ -1,0 +1,523 @@
+{
+ "genomes": [
+  {
+   "name": "Big Red Day",
+   "thesis": "Baseline: 5% down day near the 20-day mean on volume; +3% or two bars.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Big Red Day, 1-Bar",
+   "thesis": "Same entry, always out at the next open after one full bar.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 1"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 1,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Red Day -4%",
+   "thesis": "Looser trigger: a 4% down day.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Red Day -6%",
+   "thesis": "Stricter trigger: a 6% down day, a little further under the mean allowed.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.06 and close > sma20 * 0.95 and volume_ratio > 1.0",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Red Day Above 50",
+   "thesis": "Location gate on the 50-day mean instead of the 20-day.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma50 and volume_ratio > 1.0",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Red Day, No Volume",
+   "thesis": "Drop the volume gate entirely.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "ATR Drop",
+   "thesis": "A drop of more than two ATRs near the 20-day mean; out at 1.5 ATR or two bars.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -2.0 * atr_pct and close > sma20 * 0.97",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 1.5 * atr_pct"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Hammer Reversal",
+   "thesis": "Down 3% but closing in the top 30% of the day's range, still near the 50-day.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.03 and (close - low) / (high - low + 0.0001) > 0.7 and close > sma50 * 0.95",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Capitulation Close",
+   "thesis": "Down 4% closing in the bottom quarter of the range on heavy volume.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and (close - low) / (high - low + 0.0001) < 0.25 and volume_ratio > 1.3",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Two-Day Drop",
+   "thesis": "Two-day loss beyond 8% while still within 5% of the 50-day mean.",
+   "entry_rules": [
+    {
+     "when": "ret1 + prev(ret1) < -0.08 and close > sma50 * 0.95",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Two Big Red Days",
+   "thesis": "Back-to-back 3% down days, not in a collapse.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.03 and prev(ret1) < -0.03 and close > sma50 * 0.90",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "5-Day Slide in Uptrend",
+   "thesis": "A 10% five-day slide that has not broken the 50-day mean.",
+   "entry_rules": [
+    {
+     "when": "ret5 < -0.10 and close > sma50 * 0.97",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "RSI7 < 35 Above 50",
+   "thesis": "The RSI dip with a threshold scaled for 3x products.",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 35 and close > sma50",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 55"
+    },
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "RSI7 < 30 Near 20",
+   "thesis": "RSI dip within 6% of the 20-day mean.",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 30 and dist_sma20 > -0.06",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 50"
+    },
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Big Red Day, Wide Stop",
+   "thesis": "Baseline with a 15% stop: does the tight stop cost money?",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.15,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Big Red Day, No Stop",
+   "thesis": "Baseline with no stop at all.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97 and volume_ratio > 1.2",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Big Red Day, Calm Vol",
+   "thesis": "Baseline, skipped when 20-day vol is 1.5x the 60-day (crash regimes).",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.05 and close > sma20 * 0.97 and volume_ratio > 1.2 and vol_ratio_20_60 < 1.5",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.04,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  },
+  {
+   "name": "Panic Volume Above 50",
+   "thesis": "4% down on 1.5x volume, within 5% of the 50-day mean.",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.04 and volume_ratio > 1.5 and close > sma50 * 0.95",
+     "weight": 0.25
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.03"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 0.25,
+    "max_positions": 4,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.08,
+    "take_profit_pct": 0.05,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   }
+  }
+ ]
+}
