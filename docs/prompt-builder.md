@@ -84,6 +84,48 @@ edge. The builder computes and embeds the numbers:
 
 ---
 
+## The test window and recency emphasis
+
+```yaml
+window:
+  lookback_years: 3          # drives history_days (x252) unless stated explicitly
+  emphasis_months: 6         # the recent period that carries extra weight
+  recent_weight: 0.6         # 60% of the ranking score comes from it
+  method: weighted           # weighted | half_life | gate
+  require_recent_positive: true
+```
+
+Three ways to express "the market is changing, weight the recent stuff":
+
+* **`weighted`** — score the full window and the recent window separately, rank on
+  `recent_weight x recent + (1 - recent_weight) x full`, and report both parts so
+  the blend can be undone by eye.
+* **`half_life`** — weight each trade by `0.5 ** (age / half_life_days)`. The
+  prompt also demands the *effective* sample size `(Σw)² / Σw²`, because decay
+  shrinks it more than people expect.
+* **`gate`** — rank on the full window but disqualify anything not also profitable
+  recently. Recency as a filter rather than a weight.
+
+### The two things recency breaks, and how the builder handles them
+
+**1. It shrinks the sample, so it needs its own floor.** The emphasis window is a
+fraction of the whole, so demanding the same absolute trade count inside it is
+arithmetically impossible. `min_trades_recent` therefore defaults to the full
+floor scaled by window length — 400 x 126/756 = **67** for a 3-year/6-month
+split — and the spec is rejected if you set it above the full-window floor. A
+variation clearing one floor but not the other is reported as `full window only`
+and is not ranked.
+
+**2. Emphasising and validating on the same bars is circular.** The
+out-of-sample split is chronological, so it lands on exactly the recent period
+being emphasised: select on it and test on it and you have done one act twice.
+Every generated prompt carries the fix — walk-forward folds, recency weighting
+applied only inside each fold's training portion, the final emphasis window kept
+as a fold nothing was selected on, reported separately. If walk-forward is not
+run, the prompt requires the whole result be labelled in-sample.
+
+---
+
 ## The two standing constraints
 
 Both are baked into every generated prompt:
@@ -102,17 +144,41 @@ programme. Holding the example grid fixed and varying only available history:
 
 | History available | Variations reaching 400 trades |
 |---|---|
-| Yahoo free 5-minute (60 calendar days ≈ 42 trading days) | **0 of 576** |
+| 60 calendar days (≈42 trading days) | **0 of 576** |
 | 1 year | 32 of 576 |
+| 3 years (the standing window) | 304 of 576 |
 | 5 years | 480 of 576 |
 | 10 years | **576 of 576** |
 
-**A 400-trade floor across a 500–800 grid needs roughly ten years of 5-minute
-data.** No keyless source supplies that: Yahoo's intraday API is hard-capped at
-60 days, which yields zero qualifying variations — not a degraded run, a
-categorically impossible one. This programme requires a paid historical feed
-(Databento GLBX.MDP3 or equivalent). That is a purchasing decision, not a
-modelling one, and it is better to know before the first backtest than after.
+At the standing 3-year window, **304 of 576** variations clear the 400-trade
+floor and the rest are correctly reported as insufficient. That is a healthy
+outcome, not a failure: the excluded 272 are the most heavily filtered
+variations, which are precisely the ones that would otherwise top the
+leaderboard on a sample too small to mean anything.
+
+### What the data actually supports — measured, not assumed
+
+Bar depth from the TradingView feed, probed directly rather than estimated:
+
+| Symbol | Timeframe | Bars returned | Span |
+|---|---|---|---|
+| `CME_MINI:NQ1!` (E-mini future) | 5-minute | 5,798 | **≈1 month** |
+| `CME_MINI:NQ1!` | 15-minute | 5,413 | ≈3 months |
+| `CME_MINI:NQ1!` | 60-minute | 10,154 | **≈1.7 years** |
+| `CFI:US100` (CFD) | 5-minute | 5,779 | ≈1 month |
+
+The feed caps intraday history by bar count (~5–6k below hourly, ~10k hourly),
+not by date. Two consequences:
+
+* **The CFD rung does not deepen 5-minute history.** It returns the same one
+  month as the future, so as a fallback for *depth* it is useless — it is a
+  fallback for *availability* only.
+* **Three years at 5-minute is not obtainable from this feed.** The honest
+  choices are: run 5-minute on ~1 month and treat it as a pilot, not evidence;
+  run the 3-year window at 60-minute where the history exists; or buy the
+  history from a vendor (Databento GLBX.MDP3 or equivalent) and keep 5-minute.
+  The generated prompt's fallback clause covers the first two; the third is a
+  purchasing decision, better made before the first backtest than after.
 
 ---
 

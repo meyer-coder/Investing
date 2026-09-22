@@ -51,7 +51,17 @@ def main(argv=None) -> int:
                        "oos_fraction": spec.oos_fraction,
                        "bonferroni_alpha": report.stats.bonferroni_alpha,
                        "expected_max_t_under_null": report.stats.expected_max_t},
+        "window": {"lookback_years": spec.window.lookback_years,
+                   "lookback_days": spec.history_days,
+                   "emphasis_months": spec.window.emphasis_months,
+                   "emphasis_days": spec.window.emphasis_days,
+                   "method": spec.window.method,
+                   "recent_weight": spec.window.recent_weight,
+                   "min_trades_recent": spec.window.min_trades_recent,
+                   "require_recent_positive": spec.window.require_recent_positive},
         "feasibility": {"feasible": report.n_feasible, "infeasible": report.n_infeasible,
+                        "feasible_recent": report.n_feasible_recent,
+                        "feasible_both": report.n_feasible_both,
                         "history_days": report.history_days},
         "variations": [v.to_dict() for v in grid.variations],
     }
@@ -71,6 +81,11 @@ def main(argv=None) -> int:
         if report.n_infeasible:
             print(f"  sample: worst case needs {report.worst_required_days} days "
                   f"({report.years_needed_for_all:.1f}y) — reported as insufficient")
+        if spec.window.emphasis_days:
+            print(f"  recent: emphasis window {spec.window.emphasis_days}d "
+                  f"({spec.window.emphasis_months:g}mo), floor {spec.window.min_trades_recent} "
+                  f"trades -> {report.n_feasible_recent}/{report.n_total} qualify; "
+                  f"{report.n_feasible_both}/{report.n_total} clear both floors")
         print(f"  stats: E[max t] under null = {report.stats.expected_max_t:.2f}, "
               f"Bonferroni alpha = {report.stats.bonferroni_alpha:.2e}")
         print(f"  wrote: {prompt_path}")

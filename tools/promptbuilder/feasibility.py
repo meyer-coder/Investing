@@ -63,6 +63,10 @@ class FeasibilityReport:
     years_needed_for_all: float
     tightest: List[Dict[str, object]]
     stats: Statistics
+    emphasis_days: int = 0
+    min_trades_recent: int = 0
+    n_feasible_recent: int = 0
+    n_feasible_both: int = 0
 
     @property
     def all_feasible(self) -> bool:
@@ -86,4 +90,8 @@ def assess(spec: Spec, grid: Grid) -> FeasibilityReport:
         median_required_days=median, days_needed_for_all=worst,
         years_needed_for_all=worst / TRADING_DAYS_PER_YEAR,
         tightest=tightest, stats=statistics_for(len(grid.variations)),
+        emphasis_days=spec.window.emphasis_days,
+        min_trades_recent=spec.window.min_trades_recent,
+        n_feasible_recent=sum(1 for v in grid.variations if v.feasible_recent),
+        n_feasible_both=len(grid.feasible_both),
     )

@@ -26,13 +26,17 @@ class Variation:
     attainable_trades: int
     required_days: int
     feasible: bool
+    attainable_recent: int = 0
+    feasible_recent: bool = True
 
     def to_dict(self) -> Dict[str, object]:
         return {"index": self.index, "choices": dict(self.choices),
                 "selectivity": round(self.selectivity, 6),
                 "trades_per_day": round(self.trades_per_day, 4),
                 "attainable_trades": self.attainable_trades,
-                "required_days": self.required_days, "feasible": self.feasible}
+                "required_days": self.required_days, "feasible": self.feasible,
+                "attainable_trades_recent": self.attainable_recent,
+                "feasible_recent": self.feasible_recent}
 
 
 @dataclass
@@ -49,6 +53,11 @@ class Grid:
     @property
     def infeasible(self) -> List[Variation]:
         return [v for v in self.variations if not v.feasible]
+
+    @property
+    def feasible_both(self) -> List[Variation]:
+        """Variations that clear the full-window floor AND the emphasis-window floor."""
+        return [v for v in self.variations if v.feasible and v.feasible_recent]
 
 
 def _combos(axes: List[Axis]) -> itertools.product:
@@ -73,12 +82,16 @@ def build_grid(spec: Spec) -> Grid:
         per_day = spec.base_signals_per_day * selectivity
         attainable = int(per_day * spec.history_days)
         required = math.ceil(spec.min_trades / per_day) if per_day > 0 else 10**9
+        emph = spec.window.emphasis_days
+        recent = int(per_day * emph)
         variations.append(Variation(
             index=i,
             choices={ax.name: v.label for ax, v in zip(axes, combo)},
             selectivity=selectivity, trades_per_day=per_day,
             attainable_trades=attainable, required_days=required,
             feasible=attainable >= spec.min_trades,
+            attainable_recent=recent,
+            feasible_recent=(not emph) or recent >= spec.window.min_trades_recent,
         ))
     return Grid(variations=variations, full_product=full, reduced=reduced,
                 axis_sizes=axis_sizes)

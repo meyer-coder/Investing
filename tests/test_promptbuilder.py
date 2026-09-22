@@ -161,6 +161,94 @@ def test_session_override_is_explicit_when_the_spec_restricts_hours():
     assert "Session override" in text and "Ignore that restriction" in text
 
 
+# --------------------------------------------------------------- recency
+def test_lookback_years_drives_history_days():
+    spec = parse_spec(_minimal(window={"lookback_years": 3}, data={
+        "sources": ["y"], "base_signals_per_day": 2.0}))
+    assert spec.history_days == 756
+    assert spec.window.lookback_days == 756
+
+
+def test_recent_floor_defaults_proportionally_and_is_never_the_full_floor():
+    spec = parse_spec(_minimal(
+        window={"lookback_years": 3, "emphasis_months": 6},
+        data={"sources": ["y"], "base_signals_per_day": 2.0},
+        guardrails={"min_trades": 400}))
+    assert spec.window.emphasis_days == 126
+    assert spec.window.min_trades_recent == 67        # 400 * 126/756
+    assert spec.window.min_trades_recent < spec.min_trades
+
+
+def test_recent_floor_cannot_exceed_the_full_window_floor():
+    with pytest.raises(SpecError, match="cannot exceed"):
+        parse_spec(_minimal(
+            window={"lookback_years": 3, "emphasis_months": 6, "min_trades_recent": 500},
+            data={"sources": ["y"], "base_signals_per_day": 2.0},
+            guardrails={"min_trades": 400}))
+
+
+def test_emphasis_window_must_be_shorter_than_the_lookback():
+    with pytest.raises(SpecError, match="must be\\s+shorter"):
+        parse_spec(_minimal(
+            window={"lookback_years": 1, "emphasis_months": 18},
+            data={"sources": ["y"], "base_signals_per_day": 2.0}))
+
+
+def test_recent_weight_of_one_is_rejected():
+    with pytest.raises(SpecError, match="recent_weight"):
+        parse_spec(_minimal(
+            window={"lookback_years": 3, "emphasis_months": 6, "recent_weight": 1.0},
+            data={"sources": ["y"], "base_signals_per_day": 2.0}))
+
+
+def test_unknown_recency_method_is_rejected():
+    with pytest.raises(SpecError, match="window.method"):
+        parse_spec(_minimal(
+            window={"lookback_years": 3, "emphasis_months": 6, "method": "vibes"},
+            data={"sources": ["y"], "base_signals_per_day": 2.0}))
+
+
+def test_recent_window_feasibility_is_tracked_separately():
+    spec = parse_spec(_minimal(
+        window={"lookback_years": 3, "emphasis_months": 6},
+        data={"sources": ["y"], "base_signals_per_day": 1.0},
+        guardrails={"min_trades": 400},
+        grid={"axes": [
+            {"name": "f", "values": [{"label": "none", "pass_rate": 1.0},
+                                     {"label": "tight", "pass_rate": 0.2}]},
+            {"name": "g", "values": ["p", "q"]}]}))
+    grid = build_grid(spec)
+    rep = assess(spec, grid)
+    loose = [v for v in grid.variations if v.choices["f"] == "none"]
+    tight = [v for v in grid.variations if v.choices["f"] == "tight"]
+    assert all(v.feasible_recent for v in loose)      # 1/day x 126d = 126 >= 67
+    assert not any(v.feasible_recent for v in tight)  # 0.2/day x 126d = 25 < 67
+    assert rep.n_feasible_both == 2
+
+
+@pytest.mark.parametrize("method,marker", [
+    ("weighted", "60% x recent"),
+    ("half_life", "Exponential decay"),
+    ("gate", "disqualify any variation")])
+def test_each_recency_method_renders_its_own_instruction(method, marker):
+    spec = parse_spec(_minimal(
+        window={"lookback_years": 3, "emphasis_months": 6, "recent_weight": 0.6,
+                "method": method},
+        data={"sources": ["y"], "base_signals_per_day": 2.0}))
+    grid = build_grid(spec)
+    text = render(spec, grid, assess(spec, grid), spec_path="s", manifest_path="m")
+    assert marker in text
+    assert "walk-forward" in text          # the selection-leak warning is always present
+
+
+def test_no_emphasis_means_no_recency_section():
+    spec = parse_spec(_minimal(window={"lookback_years": 3},
+                               data={"sources": ["y"], "base_signals_per_day": 2.0}))
+    grid = build_grid(spec)
+    text = render(spec, grid, assess(spec, grid), spec_path="s", manifest_path="m")
+    assert "No recency emphasis" in text
+
+
 # ------------------------------------------------------------- end to end
 def test_example_spec_builds_and_flags_infeasible_variations(tmp_path):
     from promptbuilder.cli import main
@@ -168,8 +256,11 @@ def test_example_spec_builds_and_flags_infeasible_variations(tmp_path):
     assert main([EXAMPLE, "-o", str(out), "--quiet"]) == 0
     manifest = json.loads((out / "example-nq-5m.variations.json").read_text())
     assert manifest["grid"]["emitted"] == 576
-    assert manifest["feasibility"]["feasible"] == 480
-    assert manifest["feasibility"]["infeasible"] == 96
+    assert manifest["window"]["lookback_days"] == 756       # 3 years
+    assert manifest["window"]["emphasis_days"] == 126       # 6 months
+    assert manifest["window"]["min_trades_recent"] == 67    # 400 scaled by 126/756
+    assert manifest["feasibility"]["feasible"] == 304
+    assert manifest["feasibility"]["infeasible"] == 272
     prompt = (out / "example-nq-5m.prompt.md").read_text()
     assert "{{" not in prompt
     assert "576" in prompt

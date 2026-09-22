@@ -50,7 +50,8 @@ Rules that apply whichever rung you land on:
   interpolated. A result without provenance is not reviewable.
 * Timestamps in {{TIMEZONE}}. State explicitly how you handled daylight-saving
   transitions and holiday half-days.
-* This brief assumes roughly **{{HISTORY_CLAIM}}**. If what you actually get is
+* The test window is **{{LOOKBACK_CLAIM}}**. This brief assumes roughly
+  **{{HISTORY_CLAIM}}** is obtainable. If what you actually get is
   materially less, do not silently rescale the analysis — jump to §6 and follow
   the fallback there.
 
@@ -94,9 +95,10 @@ These exist because a {{VARIATION_COUNT}}-way search will always produce a
 winner, whether or not an edge exists.
 
 1. **Sample size.** Every variation needs **at least {{MIN_TRADES}} trades**
-   (target {{TARGET_TRADES}}). A variation below that floor is reported as
-   `insufficient sample`, with its trade count, and is **excluded from all
-   rankings** — never shown as a result, however good its numbers look.
+   over the full window (target {{TARGET_TRADES}}). A variation below that floor
+   is reported as `insufficient sample`, with its trade count, and is **excluded
+   from all rankings** — never shown as a result, however good its numbers look.
+   {{RECENT_FLOOR_CLAUSE}}
 2. **Out of sample.** Split {{IS_PCT}}/{{OOS_PCT}} chronologically, never
    randomly. Tune nothing on the out-of-sample portion. **Rank on the
    out-of-sample numbers.** Report both, side by side, for every variation.
@@ -118,7 +120,13 @@ make variations qualify.
 
 ---
 
-## 7. Deliverables
+## 7. Recency
+
+{{RECENCY_BLOCK}}
+
+---
+
+## 8. Deliverables
 
 {{DELIVERABLES}}
 

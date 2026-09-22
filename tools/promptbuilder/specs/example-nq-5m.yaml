@@ -38,9 +38,18 @@ data:
       note: "requires an API key in the environment; a 401 means drop to the next rung"
     - name: "NQ CFD from any keyless vendor"
       note: "last resort — note the instrument is not the future and say so"
-  history_days: 1260          # ~5 years of trading days, honestly estimated
   base_signals_per_day: 3.0   # unfiltered reclaim signals per session
   timezone: "America/New_York"
+
+# Test window and recency emphasis. history_days is derived from lookback_years
+# (252 trading days/yr) unless you state it explicitly.
+window:
+  lookback_years: 3
+  emphasis_months: 6
+  recent_weight: 0.6            # 60% of the ranking score from the last 6 months
+  method: weighted              # weighted | half_life | gate
+  require_recent_positive: true
+  # min_trades_recent defaults to min_trades scaled by window length (=67 here)
 
 grid:
   target_min: 500

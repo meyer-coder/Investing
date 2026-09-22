@@ -89,6 +89,78 @@ def _feasibility_block(spec: Spec, rep: FeasibilityReport) -> str:
         f"makes a variation both attractive-looking and unprovable.")
 
 
+def _recent_floor_clause(spec: Spec) -> str:
+    w = spec.window
+    if not w.emphasis_days:
+        return ""
+    return (
+        f"The emphasis window carries its **own, lower floor of "
+        f"{w.min_trades_recent} trades** — it is {w.emphasis_days} of "
+        f"{spec.history_days} days, so demanding {spec.min_trades} trades inside it "
+        f"would be arithmetically impossible. A variation that clears the full-window "
+        f"floor but not the recent one is reported as `full window only`, and its "
+        f"recent-period numbers are shown with an explicit health warning rather than "
+        f"used for ranking.")
+
+
+def _recency_block(spec: Spec, rep) -> str:
+    w = spec.window
+    if not w.emphasis_days:
+        return ("No recency emphasis: every trade in the window counts equally, and "
+                "results are reported on the whole period.")
+
+    method = {
+        "weighted": (
+            f"**Weighted score.** Compute every metric twice — once over the full "
+            f"{spec.history_days}-day window, once over the last {w.emphasis_days} days — "
+            f"and rank on `{w.recent_weight:.0%} x recent + {1 - w.recent_weight:.0%} x full`. "
+            f"Report both components next to the blended figure so the weighting can be "
+            f"undone by eye."),
+        "half_life": (
+            f"**Exponential decay.** Weight each trade by `0.5 ** (age_in_days / "
+            f"{w.half_life_days})`, so a trade {w.half_life_days} days old counts half as "
+            f"much as today's. Report the effective sample size "
+            f"(`(sum w)^2 / sum(w^2)`) alongside the raw trade count — decay shrinks it, "
+            f"often by more than people expect."),
+        "gate": (
+            f"**Gate.** Rank on the full window, but disqualify any variation that is not "
+            f"also profitable over the last {w.emphasis_days} days. Recency acts as a "
+            f"filter rather than a weight."),
+    }[w.method]
+
+    parts = [
+        f"The market is assumed to be changing, so the last "
+        f"**{w.emphasis_months:g} months ({w.emphasis_days} trading days)** of the "
+        f"{w.lookback_years:g}-year window carry extra weight.",
+        "",
+        method,
+    ]
+    if w.require_recent_positive:
+        parts += ["", "A variation whose recent-window performance is negative is reported "
+                      "as `regime-failed`, whatever its full-window numbers say. A strategy "
+                      "that stopped working six months ago is not a strategy that works."]
+    parts += [
+        "",
+        "**Two warnings that matter more than the weighting itself.**",
+        "",
+        f"1. *Recency shrinks the sample.* Only **{rep.n_feasible_recent} of "
+        f"{rep.n_total}** variations produce even {w.min_trades_recent} trades inside the "
+        f"emphasis window, and **{rep.n_feasible_both}** clear both floors. A variation "
+        f"that looks transformed in the recent window on a few dozen trades is noise "
+        f"wearing a regime-change costume. Say the trade count every single time you "
+        f"quote a recent-window number.",
+        f"2. *Do not both emphasise and validate on the same bars.* The out-of-sample "
+        f"split in §6.2 is chronological, which means it lands on exactly the recent "
+        f"period being emphasised — selecting on it and testing on it are then the same "
+        f"act. Resolve it with **walk-forward**: roll the window forward in folds, apply "
+        f"the recency weighting only inside each fold's training portion, and keep the "
+        f"final {w.emphasis_days} days as a fold that nothing was selected on. Report "
+        f"that last fold separately from everything else. If you cannot run walk-forward, "
+        f"say so and treat the entire result as in-sample.",
+    ]
+    return "\n".join(parts)
+
+
 def _seasonality(spec: Spec) -> str:
     names = {"month": "**Month to month** — calendar-month buckets pooled across years.",
              "year": "**Year to year** — one row per year, so a single exceptional year "
@@ -157,6 +229,11 @@ def render(spec: Spec, grid: Grid, rep: FeasibilityReport, *,
         "IS_PCT": str(100 - oos),
         "OOS_PCT": str(oos),
         "STATS_BLOCK": _stats_block(rep),
+        "RECENCY_BLOCK": _recency_block(spec, rep),
+        "RECENT_FLOOR_CLAUSE": _recent_floor_clause(spec),
+        "LOOKBACK_CLAIM": f"the last {spec.window.lookback_years:g} years"
+                          + (f", weighted toward the last {spec.window.emphasis_months:g} months"
+                             if spec.window.emphasis_days else ""),
         "FEASIBILITY_BLOCK": _feasibility_block(spec, rep),
         "DELIVERABLES": _bullets([_deliverable(d) for d in spec.deliverables]),
         "MANIFEST_PATH": manifest_path,
