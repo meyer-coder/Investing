@@ -451,13 +451,21 @@ def _session_id(prefix: str) -> str:
 def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
                session_token: str = "", timeout: float = 30.0,
                page_timeout: float = 15.0, drop_forming: bool = True,
-               progress=None, socket_factory=open_socket) -> Bars:
+               progress=None, socket_factory=open_socket,
+               backadjust: bool = False, trading_dates: bool = False) -> Bars:
     """Pull one symbol's OHLCV history from TradingView's chart feed.
 
     ``timeout`` is the budget for the whole pull, not one message: ten years of
     one-minute bars is millions of them and hundreds of pages, so a deep pull
     wants minutes, not seconds.  ``progress`` is called with the running bar
     count every tenth page.
+
+    ``backadjust`` asks for a continuous futures contract (``NQ1!``) with the
+    roll gaps removed; TradingView removes them additively, see
+    ``data.ratio_adjust`` for turning that into returns a holder earned.
+    ``trading_dates`` labels daily bars by the session they settle in rather
+    than the evening they open: a futures session that opens Sunday 18:00 New
+    York is Monday's bar.
     """
     resolution = normalise_timeframe(timeframe)
     count = max(10, min(int(bars), MAX_BARS))
@@ -468,10 +476,11 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
     try:
         ws.send(_packet("set_auth_token", [token]))
         ws.send(_packet("chart_create_session", [chart, ""]))
+        spec = {"symbol": symbol, "adjustment": "splits"}
+        if backadjust:
+            spec["backadjustment"] = "default"
         ws.send(_packet("resolve_symbol", [
-            chart, sym_ref,
-            "=" + json.dumps({"symbol": symbol, "adjustment": "splits"},
-                             separators=(",", ":"))]))
+            chart, sym_ref, "=" + json.dumps(spec, separators=(",", ":"))]))
         ws.send(_packet("create_series",
                         [chart, series, "s1", sym_ref, resolution, count, ""]))
         rows: Dict[int, List[float]] = {}
@@ -509,7 +518,7 @@ def fetch_bars(symbol: str, timeframe: str = "1D", bars: int = 2000, *,
             f"TradingView returned no bars for {symbol!r} at {resolution}; "
             f"check the exchange prefix (for example NASDAQ:AAPL) and, for long "
             f"history, set TRADINGVIEW_SESSION")
-    return _to_bars(symbol, resolution, points)
+    return _to_bars(symbol, resolution, points, trading_dates=trading_dates)
 
 
 def _read_series(ws: _WebSocket, series: str, rows: Dict[int, List[float]], *,
@@ -549,12 +558,20 @@ def _read_series(ws: _WebSocket, series: str, rows: Dict[int, List[float]], *,
     return rows
 
 
-def _to_bars(symbol: str, resolution: str, points: Sequence[Sequence[float]]) -> Bars:
+#: Added to a daily bar's opening stamp before taking its date when bars are
+#: labelled by trading date: an evening open (futures 22:00-23:00 UTC, FX 21:00)
+#: rolls to the next day, a 13:30 UTC stock open or 00:00 UTC crypto bar does not.
+TRADING_DATE_SHIFT_S = 6 * 3600
+
+
+def _to_bars(symbol: str, resolution: str, points: Sequence[Sequence[float]], *,
+             trading_dates: bool = False) -> Bars:
     intraday = resolution not in ("1D", "1W", "1M")
+    shift = TRADING_DATE_SHIFT_S if (trading_dates and not intraday) else 0
     dates: List[str] = []
     cols: List[List[float]] = [[], [], [], [], []]
     for values in points:
-        stamp = datetime.fromtimestamp(float(values[0]), tz=timezone.utc)
+        stamp = datetime.fromtimestamp(float(values[0]) + shift, tz=timezone.utc)
         dates.append(stamp.strftime("%Y-%m-%d %H:%M" if intraday else "%Y-%m-%d"))
         for col, value in zip(cols, values[1:6]):
             col.append(float(value))

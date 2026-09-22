@@ -1,0 +1,90 @@
+{
+ "genomes": [
+  {
+   "name": "Pullback Book, Clean",
+   "thesis": "Two-sigma dips above the 200-day, deep 20-day pullbacks, prior-low breaks above the 50-day; out after two bars, on a MACD downturn, or if the index is 15% off its high.",
+   "rationale": "round 3, Claude: the pullback leader without its junk clauses",
+   "entry_rules": [
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)"
+    },
+    {
+     "when": "pct_of_52w_high < 0.853"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.042,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Pullback Book + Quiet Dip",
+   "thesis": "The clean book plus a 2% dip under the 50-day in a quiet market.",
+   "rationale": "round 3, Claude: keeps the leader's quiet-dip leg",
+   "entry_rules": [
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0
+    },
+    {
+     "when": "dist_sma50 < -0.023 and mkt_vol20 < 0.181",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)"
+    },
+    {
+     "when": "pct_of_52w_high < 0.853"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.042,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

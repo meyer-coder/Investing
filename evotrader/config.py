@@ -22,6 +22,8 @@ class EvolutionConfig:
     offline: bool = False              # use synthetic data instead of fetching
     refresh_data: bool = False
     test_frac: float = 0.25            # held-out tail, never used for selection
+    test_start: str = ""               # held-out window from this date instead (overrides test_frac)
+    leverage: float = 1.0              # account notional per unit of equity (2.0 = 2x futures)
 
     # --- the loop
     population: int = 100
@@ -44,6 +46,7 @@ class EvolutionConfig:
     immigrant_rate: float = 0.10
     crossover_rate: float = 0.35
     style: str = ""                    # a TradingStyle name (styles.py); "" = none
+    seed_file: str = ""                # genome JSON that seeds generation 0 instead of archetypes
 
     # --- fitness
     fitness: FitnessConfig = field(default_factory=FitnessConfig)
@@ -94,5 +97,7 @@ class EvolutionConfig:
             raise ValueError("breeder must be hybrid, llm or mutation")
         if not self.symbols:
             raise ValueError("at least one symbol is required")
+        if not 1.0 <= float(self.leverage) <= 10.0:
+            raise ValueError("leverage must be between 1 and 10")
         if self.style:
             get_style(self.style)      # raises ValueError for an unknown name

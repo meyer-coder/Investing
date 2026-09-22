@@ -1,0 +1,189 @@
+{
+ "genomes": [
+  {
+   "name": "Deep 20-Day Pullback",
+   "thesis": "A 20-day loss of more than 8% is a deep pullback; buy it and sell two sessions later or on a MACD downturn.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret20 < -0.086 and rsi7 < 81",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Z-Score Dip Above the 200",
+   "thesis": "Two standard deviations under the 20-day mean inside a long uptrend.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "zscore20 > 0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Prior-Low Break Above the 50",
+   "thesis": "A close under yesterday's low inside a trend is a shakeout.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Pullback Book",
+   "thesis": "All three pullback entries in one book.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret20 < -0.086 and rsi7 < 81",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Stretched Under the 50",
+   "thesis": "5% under the 50-day mean while above the 200-day: a pullback in a bull market.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "dist_sma50 < -0.05 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "dist_sma20 > 0"
+    },
+    {
+     "when": "bars_held >= 5"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Monthly Washout",
+   "thesis": "A 6% 20-day loss with RSI(7) under 35.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret20 < -0.06 and rsi7 < 35",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 55"
+    },
+    {
+     "when": "bars_held >= 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 5,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "genomes": [
+  {
+   "name": "Turn of the Month",
+   "thesis": "The last trading days of a month and the first of the next carry much of the index's drift.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "day_of_month >= 27 and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 5,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Turn of the Month, Wide",
+   "thesis": "From the 26th through the 3rd, above the 200-day.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "(day_of_month >= 26 or day_of_month <= 3) and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "day_of_month >= 5 and day_of_month <= 20"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 8,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Red Monday",
+   "thesis": "A red Monday above the 50-day is bought for the rest of the week.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "day_of_week == 0 and ret1 < 0 and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.008"
+    },
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Friday Dip to Monday",
+   "thesis": "A red Friday is bought for the next session.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "day_of_week == 4 and ret1 < -0.005",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 1"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Month Start in an Uptrend",
+   "thesis": "The first three days of a month above the 20-day mean.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "day_of_month <= 3 and close > sma20",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Mid-Month Dip",
+   "thesis": "A dip in the middle of the month, bought into the turn.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "day_of_month >= 15 and day_of_month <= 22 and ret5 < -0.015 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "day_of_month >= 1 and day_of_month <= 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

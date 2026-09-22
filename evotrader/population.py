@@ -341,6 +341,32 @@ def seed_population(size: int, rng: random.Random, *, generation: int = 0,
     return out[:size]
 
 
+def seed_from_genomes(seeds: Sequence[Genome], size: int, rng: random.Random, *,
+                      generation: int = 0, random_share: float = 0.1) -> List[Genome]:
+    """Generation 0 from hand-written genomes: each seed once, then jittered
+    variants of them, then a small tail of random genomes for diversity."""
+    out: List[Genome] = []
+    for seed in seeds:
+        g = seed.copy(generation=generation, origin="seed",
+                      rationale=seed.rationale or "hand-written seed")
+        g.name = seed.name
+        if _compiles(g):
+            out.append(g)
+        if len(out) >= size:
+            return out[:size]
+    base = list(out)
+    n_random = int(round(size * random_share))
+    while len(out) < size - n_random and base:
+        parent = rng.choice(base)
+        child = mutate(parent, rng, generation=generation, strength=1.5)
+        child.origin = "seed"
+        child.rationale = f"jittered variant of {parent.name!r}"
+        out.append(child)
+    while len(out) < size:
+        out.append(random_genome(rng, generation=generation))
+    return out[:size]
+
+
 def random_genome(rng: random.Random, *, generation: int = 0) -> Genome:
     """A genome assembled entirely from random clauses."""
     for _ in range(20):

@@ -220,13 +220,14 @@ def _strategy_from(args: Dict[str, Any], *, name_default: str = "strategy") -> G
 
 def _run(view: Backtester, genome: Genome, universe: Universe, timeframe: str, *,
          starting_cash: float, commission_bps: float, slippage_bps: float,
-         fitness: Optional[FitnessConfig] = None) -> Dict[str, Any]:
+         fitness: Optional[FitnessConfig] = None, leverage: float = 1.0) -> Dict[str, Any]:
     """One backtest, reported the way a Strategy Tester reports one."""
     features = view.features(universe)
     compiled = compile_genome(genome)
     result = run_backtest(compiled, universe, features,
                           starting_cash=starting_cash,
-                          commission_bps=commission_bps, slippage_bps=slippage_bps)
+                          commission_bps=commission_bps, slippage_bps=slippage_bps,
+                          leverage=leverage)
     benchmark = buy_and_hold(universe, features, starting_cash=starting_cash)
     per_year = tvdata.effective_bars_per_year(universe.bars[universe.symbols[0]].dates, timeframe)
     metrics = compute_metrics(result.journal.equity, result.journal.trades,
@@ -286,12 +287,18 @@ def _caveats(m: Metrics, trades_needed: int = 10) -> List[str]:
     return out
 
 
+_LEVERAGE_PROPERTY = {"type": "number",
+                      "description": "account notional per unit of equity: 1 (default) for cash, "
+                                     "2 for a futures account trading twice its size"}
+
+
 def _common(args: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "starting_cash": float_arg(args, "starting_cash", 100_000.0, lo=100.0,
                                    hi=1e12),
         "commission_bps": float_arg(args, "commission_bps", 1.0, hi=500.0),
         "slippage_bps": float_arg(args, "slippage_bps", 5.0, hi=500.0),
+        "leverage": float_arg(args, "leverage", 1.0, lo=1.0, hi=10.0),
     }
 
 
@@ -397,6 +404,7 @@ def _get_bars(view: Backtester, args: Dict[str, Any]) -> ToolResult:
        "starting_cash": {"type": "number", "description": "default 100000"},
        "commission_bps": {"type": "number", "description": "per side, default 1"},
        "slippage_bps": {"type": "number", "description": "per side, default 5"},
+       "leverage": _LEVERAGE_PROPERTY,
        "trades": {"type": "integer", "description": "sample trades to show (default 10)"}},
       required=["symbols", "entry_rules", "exit_rules"])
 def _backtest(view: Backtester, args: Dict[str, Any]) -> ToolResult:
@@ -440,7 +448,7 @@ def _backtest(view: Backtester, args: Dict[str, Any]) -> ToolResult:
        "timeframe": _TIMEFRAME_PROPERTY, "bars": _BARS_PROPERTY,
        "source": _SOURCE_PROPERTY,
        "starting_cash": {"type": "number"}, "commission_bps": {"type": "number"},
-       "slippage_bps": {"type": "number"}},
+       "slippage_bps": {"type": "number"}, "leverage": _LEVERAGE_PROPERTY},
       required=["symbols", "strategies"])
 def _compare_strategies(view: Backtester, args: Dict[str, Any]) -> ToolResult:
     symbols = _symbols(args)
@@ -501,7 +509,7 @@ def _compare_strategies(view: Backtester, args: Dict[str, Any]) -> ToolResult:
        "source": _SOURCE_PROPERTY,
        "folds": {"type": "integer", "description": "how many folds (default 3)"},
        "starting_cash": {"type": "number"}, "commission_bps": {"type": "number"},
-       "slippage_bps": {"type": "number"}},
+       "slippage_bps": {"type": "number"}, "leverage": _LEVERAGE_PROPERTY},
       required=["symbols", "entry_rules", "exit_rules"])
 def _walk_forward(view: Backtester, args: Dict[str, Any]) -> ToolResult:
     symbols = _symbols(args)
@@ -574,7 +582,7 @@ def _walk_forward(view: Backtester, args: Dict[str, Any]) -> ToolResult:
        "db": {"type": "string", "description": "SQLite path (default $EVOTRADER_DB)"},
        "trades": {"type": "integer", "description": "sample trades to show (default 10)"},
        "starting_cash": {"type": "number"}, "commission_bps": {"type": "number"},
-       "slippage_bps": {"type": "number"}},
+       "slippage_bps": {"type": "number"}, "leverage": _LEVERAGE_PROPERTY},
       required=["genome_id", "symbols"])
 def _backtest_evolved_agent(view: Backtester, args: Dict[str, Any]) -> ToolResult:
     genome_id = required_str(args, "genome_id")

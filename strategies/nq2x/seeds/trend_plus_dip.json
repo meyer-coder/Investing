@@ -1,0 +1,165 @@
+{
+ "genomes": [
+  {
+   "name": "Trend or Washout",
+   "thesis": "Long in a rising trend and after a washout; out when both fail.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "close > sma20 and sma20_slope > 0",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 30",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma20 and rsi7 > 30"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Calm Trend or Z-Dip",
+   "thesis": "The calm uptrend, plus a two-sigma dip above the 200-day.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.7 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    },
+    {
+     "when": "vol20 > 0.35"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "MACD Trend or Deep Pullback",
+   "thesis": "MACD trend, plus a deep 20-day pullback.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "macd_hist > 0 and close > sma50",
+     "weight": 1.0
+    },
+    {
+     "when": "ret20 < -0.08",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "macd_hist < 0 and bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "EMA Trend or Prior-Low Break",
+   "thesis": "EMA trend plus the one-day shakeout.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ema12 > ema26 and close > sma20",
+     "weight": 1.0
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma20 and bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Above the 50 or Flushed",
+   "thesis": "Above the 50-day, or after a volume flush anywhere.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and ret1 > -0.015",
+     "weight": 1.0
+    },
+    {
+     "when": "volume_ratio > 1.6 and bb_pct < 0.15",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 < -0.015 and bars_held >= 1"
+    },
+    {
+     "when": "close < sma50 and rsi7 > 50"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.06,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

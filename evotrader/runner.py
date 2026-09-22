@@ -87,16 +87,22 @@ def _risk_exit(pos, price: float, bar: int, risk) -> Optional[str]:
 def run_backtest(compiled: CompiledGenome, universe: Universe, features: FeatureSet, *,
                  starting_cash: float = 100_000.0, commission_bps: float = 1.0,
                  slippage_bps: float = 5.0, record_thoughts: bool = True,
-                 start_bar: Optional[int] = None) -> BacktestResult:
-    """Simulate one genome and return its journal plus summary statistics."""
+                 start_bar: Optional[int] = None, leverage: float = 1.0) -> BacktestResult:
+    """Simulate one genome and return its journal plus summary statistics.
+
+    ``leverage`` is the account's, not the genome's: a rule's weight is a share
+    of buying power, so on a 2x futures account a 1.0 weight is twice equity in
+    notional and a 0.5 weight is one times equity.
+    """
     genome = compiled.genome
     risk = compiled.risk
     symbols = features.symbols
     dates = features.dates
     n = len(dates)
     journal = Journal()
+    leverage = max(1.0, float(leverage))
     broker = PaperBroker(starting_cash, commission_bps=commission_bps,
-                         slippage_bps=slippage_bps, journal=journal)
+                         slippage_bps=slippage_bps, journal=journal, leverage=leverage)
     # A genome trades from the bar its own features are defined, not from the
     # slowest feature in the vocabulary — see FeatureSet.warmup_for.
     first = (features.warmup_for(compiled.feature_names()) if start_bar is None
@@ -168,8 +174,8 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
                 if open_after_sells >= risk.max_positions:
                     journal.rejected_entries += 1
                     break
-                target = min(weight, risk.max_position_pct) * equity
-                headroom = risk.max_gross_exposure * equity - invested_after
+                target = min(weight, risk.max_position_pct) * equity * leverage
+                headroom = risk.max_gross_exposure * equity * leverage - invested_after
                 target = min(target, headroom)
                 if target < broker.min_trade_value:
                     journal.rejected_entries += 1
@@ -199,7 +205,7 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
                 if record_thoughts and len(journal.thoughts) < MAX_THOUGHTS:
                     journal.thoughts.append(Thought(
                         date=fill_date, kind="entry", symbol=sym,
-                        text=f"{reason}; sized {notional / equity:.0%} of equity",
+                        text=f"{reason}; sized {notional / equity:.0%} of equity in notional",
                         context={k: round(snaps[sym].get(k, 0.0), 4)
                                  for k in ("rsi14", "dist_sma200", "ret20", "atr_pct",
                                            "mkt_above_sma200")},

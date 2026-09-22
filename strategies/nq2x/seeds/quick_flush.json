@@ -1,0 +1,178 @@
+{
+ "genomes": [
+  {
+   "name": "Capitulation Close",
+   "thesis": "A 1.2% down day in the bottom quarter of its range.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.012 and (close - low) / (high - low + 0.0001) < 0.25",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.008"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Red Day Above the 200",
+   "thesis": "A 1% down day in a long-term uptrend.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.01 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "position_return > 0.006"
+    },
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Two Red Days",
+   "thesis": "A red day after a 0.9% red day with a 2.5% five-day loss.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret1 < 0 and prev(ret1) < -0.009 and ret5 < -0.025 and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.007"
+    },
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.02,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Any 1.5% Drop",
+   "thesis": "Any 1.5% down day, held one session.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.015",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 1"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "2% Drop in a Bull Market",
+   "thesis": "A 2% drop above the 200-day, held two sessions.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret1 < -0.02 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Oversold Close Above the 50",
+   "thesis": "RSI(7) under 35 above the 50-day, out on the first up day.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 35 and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 > 0.004"
+    },
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 3,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

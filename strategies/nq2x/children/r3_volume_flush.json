@@ -1,0 +1,156 @@
+{
+ "genomes": [
+  {
+   "name": "Flush, Washout or Crash",
+   "thesis": "A volume flush at the lower band, an RSI(7) washout or a 17% 60-day crash; out when RSI(7) recovers past 62 or after four bars.",
+   "rationale": "round 3, Claude: the flush book with its redundant clauses removed",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0
+    },
+    {
+     "when": "ret60 < -0.168",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62"
+    },
+    {
+     "when": "bars_held > 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.035,
+    "trailing_stop_pct": 0.067,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Flush, Washout or Squeeze",
+   "thesis": "The flush book plus the volatility-contraction entry near the lows.",
+   "rationale": "round 3, Claude: keeps the squeeze leg the leader relied on",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.68 and pct_off_52w_low < 0.43",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62"
+    },
+    {
+     "when": "bars_held > 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.035,
+    "trailing_stop_pct": 0.067,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Flush or Stretch",
+   "thesis": "A volume flush at the band, or 12% under the 50-day mean.",
+   "rationale": "round 3, Claude: the stretch leg on its own terms",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0
+    },
+    {
+     "when": "dist_sma50 < -0.121",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62"
+    },
+    {
+     "when": "bars_held > 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.035,
+    "trailing_stop_pct": 0.067,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Flush Book, No Target",
+   "thesis": "The flush book without the fixed 3.5% target.",
+   "rationale": "round 3, Claude: in training the target cut rebounds early",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0
+    },
+    {
+     "when": "ret60 < -0.168",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62"
+    },
+    {
+     "when": "bars_held > 4"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.067,
+    "max_hold_bars": 7,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

@@ -112,12 +112,17 @@ def test_session_state_resets_on_a_new_day():
     assert f["session_vwap"][8] == pytest.approx((h2[0] + l2[0] + c2[0]) / 3.0)
 
 
-def test_daily_bars_yield_no_session_features():
+def test_daily_bars_yield_only_the_calendar_features():
     dates = ["1999-03-10", "1999-03-11", "1999-03-12"]
     arr = np.array([1.0, 2.0, 3.0])
     f = session_features(dates, arr, arr, arr, arr)
+    calendar = {"day_of_week", "day_of_month"}
     for name in SESSION_FEATURES:
+        if name in calendar:
+            continue
         assert np.all(np.isnan(f[name])), f"{name} should be NaN on daily bars"
+    assert list(f["day_of_week"]) == [2.0, 3.0, 4.0]      # Wednesday to Friday
+    assert list(f["day_of_month"]) == [10.0, 11.0, 12.0]
 
 
 # --------------------------------------------------------------- wiring

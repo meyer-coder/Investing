@@ -1,0 +1,178 @@
+{
+ "genomes": [
+  {
+   "name": "Squeeze Breakout",
+   "thesis": "Volatility contracted, then a close through the upper band.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "vol_ratio_20_60 < 0.8 and cross_above(close, bb_upper)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 < -0.01"
+    },
+    {
+     "when": "bars_held >= 5"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 5,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Near the High",
+   "thesis": "Within 2% of the 52-week high with a positive week.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "pct_of_52w_high > 0.98 and ret5 > 0",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma10"
+    },
+    {
+     "when": "bars_held >= 8"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 8,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Strong Close",
+   "thesis": "A 0.5% up day closing in its top fifth above the 20-day.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "(close - low) / (high - low + 0.0001) > 0.8 and ret1 > 0.005 and close > sma20",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.025,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 2,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Reclaim the 50",
+   "thesis": "A close back over the 50-day mean.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 5"
+    },
+    {
+     "when": "close < sma50"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.04,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 6,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Quiet Thrust",
+   "thesis": "A 2% week above the 50-day in a quiet market.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "ret5 > 0.02 and close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Breakout Over Yesterday's High",
+   "thesis": "A close over yesterday's high above the 50-day.",
+   "rationale": "generation 0, written by Claude for this island",
+   "entry_rules": [
+    {
+     "when": "close > prev(high) and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 3"
+    },
+    {
+     "when": "close < prev(low)"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

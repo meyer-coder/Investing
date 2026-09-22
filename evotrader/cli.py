@@ -57,6 +57,10 @@ def _add_run_flags(p: argparse.ArgumentParser) -> None:
     p.add_argument("--refresh-data", action="store_true", help="re-download price data")
     p.add_argument("--db", dest="db_path", help="SQLite path (default runs/evotrader.sqlite)")
     p.add_argument("--test-frac", type=float, help="held-out tail fraction")
+    p.add_argument("--test-start", dest="test_start",
+                   help="hold out every bar from this date (overrides --test-frac)")
+    p.add_argument("--leverage", type=float,
+                   help="account notional per unit of equity, e.g. 2 for a 2x futures account")
     p.add_argument("--note", help="free text stored with the run")
     p.add_argument("--quiet", action="store_true")
 
@@ -65,7 +69,8 @@ def _config_from_args(args: argparse.Namespace) -> EvolutionConfig:
     cfg = EvolutionConfig.load(args.config) if getattr(args, "config", None) else EvolutionConfig()
     for name in ("start", "end", "population", "generations", "elites", "breeder",
                  "llm_share", "llm_every", "model", "effort", "budget_usd", "seed",
-                 "workers", "db_path", "test_frac", "note", "survivor_reports", "style"):
+                 "workers", "db_path", "test_frac", "note", "survivor_reports", "style",
+                 "test_start", "leverage"):
         value = getattr(args, name, None)
         if value is not None:
             setattr(cfg, name, value)
@@ -222,10 +227,13 @@ def cmd_backtest(args: argparse.Namespace) -> int:
 def cmd_evaluate(args: argparse.Namespace) -> int:
     """Score hand-written genomes from a JSON file over a config's windows."""
     cfg = EvolutionConfig.load(args.config) if args.config else EvolutionConfig()
-    for name in ("start", "end", "test_frac", "slippage_bps", "commission_bps"):
+    for name in ("start", "end", "test_frac", "slippage_bps", "commission_bps",
+                 "test_start", "leverage", "starting_cash"):
         value = getattr(args, name, None)
         if value is not None:
             setattr(cfg, name, value)
+    if getattr(args, "test_frac", None) is not None and getattr(args, "test_start", None) is None:
+        cfg.test_start = ""                  # an explicit --test-frac wins over a config date
     if args.symbols:
         cfg.symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
     if args.offline:
@@ -244,7 +252,7 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
     since = [s.strip() for s in (args.since or "").split(",") if s.strip()]
     reports = evaluate(genomes, cfg, by_year=args.by_year, since=since, recent_bars=recent_bars,
                        by_month=args.by_month, daily=args.daily)
-    print(format_text(reports))
+    print(format_text(reports, account=cfg.starting_cash))
     if args.markdown:
         os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
         with open(args.markdown, "w") as fh:
@@ -263,6 +271,10 @@ def cmd_signals(args: argparse.Namespace) -> int:
         cfg.offline = True
     if args.refresh:
         cfg.refresh_data = True
+    if getattr(args, "leverage", None) is not None:
+        cfg.leverage = args.leverage
+    if getattr(args, "starting_cash", None) is not None:
+        cfg.starting_cash = args.starting_cash
     cfg.end = args.end or "2100-01-01"      # the latest bar, whatever the config's window
     try:
         genomes = load_genomes(args.file)
@@ -270,7 +282,54 @@ def cmd_signals(args: argparse.Namespace) -> int:
         print(f"could not load {args.file}: {exc}", file=sys.stderr)
         return 1
     date, signals, skipped = latest_signals(genomes, cfg)
-    print(format_signals(date, signals, skipped, genomes, cfg.symbols))
+    print(format_signals(date, signals, skipped, genomes, cfg.symbols,
+                         account=cfg.starting_cash))
+    return 0
+
+
+def cmd_inject(args: argparse.Namespace) -> int:
+    """Put hand-bred genomes into a run's next generation.
+
+    This is the breeding step done by hand: read the leaderboard, write the
+    children as a genome JSON file, inject them, then ``resume`` the run.  The
+    children replace the newest non-elite offspring, so the population size
+    and the carried-over elites are unchanged, and they are recorded with
+    origin "llm" like any Claude-written agent.
+    """
+    import uuid
+    store = Store(args.db_path or EvolutionConfig().db_path)
+    stored = store.run_config(args.run_id)
+    checkpoint = store.latest_checkpoint(args.run_id) if stored else None
+    if checkpoint is None:
+        print(f"no checkpoint for run {args.run_id!r}", file=sys.stderr)
+        return 1
+    try:
+        children = load_genomes(args.file)
+    except (OSError, ValueError) as exc:
+        print(f"could not load {args.file}: {exc}", file=sys.stderr)
+        return 1
+    cfg = EvolutionConfig.from_dict(stored)
+    population = list(checkpoint["population"])
+    gen = int(checkpoint["generation"]) + 1          # the checkpoint holds the next generation
+    room = max(len(population) - cfg.elites, 0)
+    if len(children) > room:
+        print(f"only {room} non-elite slots; injecting the first {room} of {len(children)}",
+              file=sys.stderr)
+        children = children[:room]
+    for child in children:
+        child.id = uuid.uuid4().hex[:12]
+        child.generation = gen
+        child.origin = "llm"
+        child.rationale = (child.rationale or "bred by hand from the leaderboard")[:2000]
+    keep = population[:len(population) - len(children)]
+    lessons = list(checkpoint["lessons"])
+    if args.lesson:
+        lessons.extend(args.lesson)
+    store.save_checkpoint(args.run_id, int(checkpoint["generation"]), keep + children,
+                          lessons[-24:], checkpoint["rng_state"], checkpoint["usage"])
+    print(f"injected {len(children)} genomes into generation {gen} of {args.run_id} "
+          f"(population {len(keep) + len(children)}); continue with: "
+          f"evotrader resume {args.run_id} --generations N")
     return 0
 
 
@@ -620,6 +679,12 @@ def build_parser() -> argparse.ArgumentParser:
     ev.add_argument("--end")
     ev.add_argument("--test-frac", type=float, dest="test_frac",
                     help="held-out tail fraction; 0 scores one full window")
+    ev.add_argument("--test-start", dest="test_start",
+                    help="hold out every bar from this date (overrides the config)")
+    ev.add_argument("--leverage", type=float,
+                    help="account leverage, e.g. 2 for a 2x futures account")
+    ev.add_argument("--account", type=float, dest="starting_cash",
+                    help="starting equity; the daily profile is also shown in dollars on it")
     ev.add_argument("--offline", action="store_true")
     ev.add_argument("--slippage", type=float, dest="slippage_bps",
                     help="override slippage in basis points per side (cost sensitivity)")
@@ -648,7 +713,19 @@ def build_parser() -> argparse.ArgumentParser:
     sig.add_argument("--end", help="pretend this is the latest date, YYYY-MM-DD")
     sig.add_argument("--refresh", action="store_true", help="re-download prices first")
     sig.add_argument("--offline", action="store_true")
+    sig.add_argument("--leverage", type=float, help="account leverage (default: the config's)")
+    sig.add_argument("--account", type=float, dest="starting_cash",
+                     help="account size for contract counts (default: the config's)")
     sig.set_defaults(func=cmd_signals)
+
+    inj = sub.add_parser("inject", help="put hand-bred genomes into a run's next generation "
+                                        "(then resume it)")
+    inj.add_argument("run_id")
+    inj.add_argument("file", help="JSON file of genomes, as for evaluate")
+    inj.add_argument("--lesson", action="append",
+                     help="a lesson to record with the checkpoint (repeatable)")
+    inj.add_argument("--db", dest="db_path")
+    inj.set_defaults(func=cmd_inject)
 
     fetch = sub.add_parser("fetch", help="download and cache price data")
     fetch.add_argument("--symbols")

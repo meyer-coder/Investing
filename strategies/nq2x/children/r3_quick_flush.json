@@ -1,0 +1,38 @@
+{
+ "genomes": [
+  {
+   "name": "Second Red Day or 2% Drop",
+   "thesis": "A red day after a 1% red day in a 1.9% five-day dip above the 50-day, or a 2% drop above the 200-day; out on the first 0.5% up day or after two bars.",
+   "rationale": "round 3, Claude: the quick-flush leader without its trend legs",
+   "entry_rules": [
+    {
+     "when": "prev(ret1) < -0.01 and ret5 < -0.019 and close > sma50",
+     "weight": 1.0
+    },
+    {
+     "when": "ret1 < -0.02 and close > sma200",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2"
+    },
+    {
+     "when": "ret1 > 0.005"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.026,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 4,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  }
+ ]
+}

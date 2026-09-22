@@ -28,14 +28,14 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from .breeder import BreedResult, Elite, HybridBreeder, LLMBreeder, MutationBreeder
 from .config import EvolutionConfig
-from .data import Universe, holdout_split, load_universe
+from .data import Universe, date_cut, holdout_split, load_universe
 from .features import FeatureSet, build_features
 from .fitness import (Evaluation, FitnessConfig, Metrics, blended_score, compute_metrics,
                       fitness_score, rank, recency_score)
 from .genome import Genome, GenomeError, compile_genome
 from .journal import Journal
 from .llm import Claude
-from .population import ARCHETYPES, seed_population
+from .population import ARCHETYPES, seed_from_genomes, seed_population
 from .runner import buy_and_hold, run_backtest
 from .store import Store
 from .styles import TradingStyle, get_style
@@ -55,6 +55,10 @@ class Context:
     commission_bps: float
     slippage_bps: float
     fitness: FitnessConfig
+    leverage: float = 1.0
+    # When set, the held-out window is the full series traded from this bar:
+    # indicators are warm on day one instead of losing fifty bars to warm-up.
+    test_start_bar: Optional[int] = None
 
 
 @dataclass
@@ -93,9 +97,14 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
                        Metrics(), None, "no data for window")
     try:
         compiled = compile_genome(genome)
+        start_bar = None
+        if window == "test" and ctx.test_start_bar is not None:
+            start_bar = max(ctx.test_start_bar,
+                            features.warmup_for(compiled.feature_names()))
         result = run_backtest(
             compiled, universe, features, starting_cash=ctx.starting_cash,
-            commission_bps=ctx.commission_bps, slippage_bps=ctx.slippage_bps)
+            commission_bps=ctx.commission_bps, slippage_bps=ctx.slippage_bps,
+            leverage=ctx.leverage, start_bar=start_bar)
     except GenomeError as exc:
         return Outcome(genome.id, genome.name, genome.generation, float("-inf"),
                        Metrics(), None, f"invalid genome: {exc}")
@@ -140,7 +149,8 @@ def replay_genome(genome: Genome, cfg: EvolutionConfig, *,
                                                starting_cash=cfg.starting_cash),
                   test=None, test_features=None, test_benchmark=None,
                   starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
-                  slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
+                  slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
+                  leverage=cfg.leverage)
     return score_genome(genome, ctx)
 
 
@@ -211,25 +221,40 @@ class Evolution:
                   f"{' (offline/synthetic)' if cfg.offline else ''}")
         universe = load_universe(cfg.symbols, cfg.start, cfg.end,
                                  offline=cfg.offline, refresh=cfg.refresh_data)
-        train, test = holdout_split(universe, cfg.test_frac)
+        test_start_bar: Optional[int] = None
+        if cfg.test_start:
+            cut = date_cut(universe, cfg.test_start)
+            train = universe.slice(0, cut)
+            test = universe                      # traded from ``cut``, warm from bar 0
+            test_start_bar = cut
+            test_features = build_features(test) if len(universe) - cut > 20 else None
+        else:
+            train, test = holdout_split(universe, cfg.test_frac)
+            test_features = build_features(test) if len(test) > 60 else None
         train_features = build_features(train)
-        test_features = build_features(test) if len(test) > 60 else None
         self.ctx = Context(
             train=train, train_features=train_features,
             train_benchmark=buy_and_hold(train, train_features,
                                          starting_cash=cfg.starting_cash),
             test=test if test_features else None, test_features=test_features,
-            test_benchmark=(buy_and_hold(test, test_features,
-                                         starting_cash=cfg.starting_cash)
+            test_benchmark=(buy_and_hold(test, test_features, starting_cash=cfg.starting_cash,
+                                         start=test_start_bar)
                             if test_features else None),
             starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
             slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
+            leverage=cfg.leverage, test_start_bar=test_start_bar,
         )
         a, b = train.date_range()
         self.window_label = f"train {a}..{b} ({len(train)} bars, {len(train.symbols)} symbols)"
         if self.ctx.test is not None:
-            ta, tb = self.ctx.test.date_range()
-            self.window_label += f"; held-out {ta}..{tb} ({len(self.ctx.test)} bars)"
+            if test_start_bar is not None:
+                ta, tb = universe.calendar[test_start_bar], universe.calendar[-1]
+                n_test = len(universe) - test_start_bar
+            else:
+                (ta, tb), n_test = self.ctx.test.date_range(), len(self.ctx.test)
+            self.window_label += f"; held-out {ta}..{tb} ({n_test} bars)"
+        if cfg.leverage != 1.0:
+            self.window_label += f"; account leverage {cfg.leverage:g}x"
         self._log(self.window_label)
         bh = self.ctx.train_benchmark
         if bh:
@@ -241,10 +266,16 @@ class Evolution:
         if self.ctx is None:
             self.prepare()
         self.store.create_run(self.run_id, self.cfg.to_dict(), self.cfg.note)
-        # A style's archetypes go first so they are guaranteed a seat in gen 0.
-        library = (list(self.style.archetypes) + list(ARCHETYPES)) if self.style else None
-        self.population = seed_population(self.cfg.population, self.rng, generation=0,
-                                          archetypes=library)
+        if self.cfg.seed_file:
+            # An island: generation 0 is these genomes and their variants only.
+            self.population = seed_from_genomes(load_seed_genomes(self.cfg.seed_file),
+                                                self.cfg.population, self.rng, generation=0)
+        else:
+            # A style's archetypes go first so they are guaranteed a seat in gen 0.
+            library = (list(self.style.archetypes) + list(ARCHETYPES)) if self.style else None
+            self.population = seed_population(self.cfg.population, self.rng, generation=0,
+                                              archetypes=library)
+        self._apply_style_size(self.population)
         self.generation = 0
         self._log(f"run {self.run_id}: seeded {len(self.population)} agents")
         if self.style:
@@ -301,11 +332,24 @@ class Evolution:
         self.store.set_status(self.run_id, "finished")
         return reports
 
+    def _apply_style_size(self, genomes: Sequence[Genome]) -> None:
+        """A style with a fixed size owns sizing: every entry trades it."""
+        size = self.style.fixed_size if self.style else None
+        if not size:
+            return
+        for g in genomes:
+            for rule in g.entry_rules:
+                rule.weight = size
+            g.risk.max_position_pct = size
+            g.risk.max_gross_exposure = max(g.risk.max_gross_exposure, size)
+
     def step(self) -> GenerationReport:
         """Evaluate the current population, then breed the next one."""
         assert self.ctx is not None, "call prepare() or start() first"
         started = time.time()
         gen = self.generation
+        # Covers the seeded generation, bred children and hand-injected ones.
+        self._apply_style_size(self.population)
 
         outcomes = self._evaluate(self.population)
         by_id = {o.genome_id: o for o in outcomes}
@@ -359,6 +403,7 @@ class Evolution:
         next_population = [g.copy(generation=gen + 1, origin="elite",
                                   parents=[g.id], rationale="carried over as elite")
                            for g in survivors] + children[:n_offspring]
+        self._apply_style_size(next_population)     # checkpoints hold what will be run
 
         scores = report.scores
         self.store.save_generation(
@@ -490,6 +535,22 @@ class _MutationOnly:
               extra: str = "") -> BreedResult:
         return self.mutation.breed(elites, count, generation=generation,
                                    parent_pool=parent_pool)
+
+
+def load_seed_genomes(path: str) -> List[Genome]:
+    """A JSON list of genomes, or ``{"genomes": [...]}``; every rule must compile."""
+    import json
+    with open(path) as fh:
+        raw = json.load(fh)
+    items = raw.get("genomes", []) if isinstance(raw, dict) else raw
+    out: List[Genome] = []
+    for item in items:
+        g = Genome.from_dict(item)
+        compile_genome(g)
+        out.append(g)
+    if not out:
+        raise ValueError(f"no genomes in seed file {path}")
+    return out
 
 
 def _restore_state(state: Any) -> tuple:

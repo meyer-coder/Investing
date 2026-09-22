@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Sequence
 
 from .config import EvolutionConfig
-from .data import Universe, holdout_split, load_universe
+from .data import Universe, date_cut, holdout_split, load_universe
 from .evolution import Context, score_genome
 from .features import build_features
 from .fitness import Metrics, compute_metrics
@@ -163,7 +163,20 @@ def _context(universe: Universe, cfg: EvolutionConfig) -> Context:
                                                 starting_cash=cfg.starting_cash),
                    test=None, test_features=None, test_benchmark=None,
                    starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
-                   slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
+                   slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
+                   leverage=cfg.leverage)
+
+
+def _held_out_context(universe: Universe, cut: int, cfg: EvolutionConfig) -> Context:
+    """The whole series, traded from ``cut``: warm indicators on the first day."""
+    features = build_features(universe)
+    return Context(train=universe, train_features=features, train_benchmark=[],
+                   test=universe, test_features=features,
+                   test_benchmark=buy_and_hold(universe, features,
+                                               starting_cash=cfg.starting_cash, start=cut),
+                   starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
+                   slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
+                   leverage=cfg.leverage, test_start_bar=cut)
 
 
 def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
@@ -187,7 +200,8 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
     the best and worst trades, so gap risk is visible."""
     result = run_backtest(compile_genome(genome), ctx.train, ctx.train_features,
                           starting_cash=ctx.starting_cash, commission_bps=ctx.commission_bps,
-                          slippage_bps=ctx.slippage_bps, record_thoughts=False)
+                          slippage_bps=ctx.slippage_bps, record_thoughts=False,
+                          leverage=ctx.leverage)
     journal = result.journal
     report.best = journal.best_trades(3)
     report.worst = journal.worst_trades(3)
@@ -258,15 +272,22 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     rather than the whole history."""
     universe = load_universe(cfg.symbols, cfg.start, cfg.end, offline=cfg.offline,
                              refresh=cfg.refresh_data)
-    windows: List[tuple] = []
-    if cfg.test_frac > 0:
+    # (label, context, window): "train" windows are scored as a whole,
+    # "test" windows from the context's test_start_bar on.
+    contexts: List[tuple] = []
+    if cfg.test_start:
+        cut = date_cut(universe, cfg.test_start)
+        if cut > 60:
+            contexts.append(("train", _context(universe.slice(0, cut), cfg), "train"))
+        if len(universe) - cut > 5:
+            contexts.append(("held-out", _held_out_context(universe, cut, cfg), "test"))
+    elif cfg.test_frac > 0:
         train, test = holdout_split(universe, cfg.test_frac)
-        windows.append(("train", train))
+        contexts.append(("train", _context(train, cfg), "train"))
         if len(test) > 60:
-            windows.append(("held-out", test))
+            contexts.append(("held-out", _context(test, cfg), "train"))
     else:
-        windows.append(("full", universe))
-    contexts = [(label, _context(u, cfg)) for label, u in windows]
+        contexts.append(("full", _context(universe, cfg), "train"))
     full_ctx = _context(universe, cfg) if (by_year or by_month or since or recent_bars > 0
                                           or daily) else None
 
@@ -274,11 +295,14 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     for genome in genomes:
         report = StrategyReport(genome=genome)
         try:
-            for label, ctx in contexts:
-                out = score_genome(genome, ctx)
+            for label, ctx, window in contexts:
+                out = score_genome(genome, ctx, window=window)
                 if out.error:
                     raise GenomeError(out.error)
-                a, b = ctx.train.date_range()
+                if window == "test" and ctx.test_start_bar is not None:
+                    a, b = ctx.test.calendar[ctx.test_start_bar], ctx.test.calendar[-1]
+                else:
+                    a, b = ctx.train.date_range()
                 report.windows.append(WindowResult(label, a, b, out.metrics, out.score))
             if full_ctx is not None:
                 years = _by_year(genome, full_ctx, report, since=since, recent_bars=recent_bars,
@@ -321,6 +345,8 @@ class Signal:
     rule: str
     weight: float
     context: Dict[str, float]
+    notional: float = 0.0      # weight x account leverage: notional per unit of equity
+    price: float = 0.0         # the signal bar's close
 
 
 _FLAT = {"in_position": 0.0, "bars_held": 0.0, "position_return": 0.0,
@@ -357,13 +383,34 @@ def latest_signals(genomes: Sequence[Genome], cfg: EvolutionConfig
                     context = {k: round(cur[k], 4) for k in sorted(rule.features) if k in cur}
                     # the broker caps a rule's weight at the genome's position limit
                     size = min(weight, compiled.risk.max_position_pct)
-                    signals.append(Signal(genome.name, sym, date, rule.source, size, context))
+                    signals.append(Signal(genome.name, sym, date, rule.source, size, context,
+                                          notional=size * cfg.leverage,
+                                          price=float(universe.bars[sym].close[i])))
                     break
     return date, signals, skipped
 
 
+#: Dollars per index point for micro and full-size contracts, by futures root.
+CONTRACT_POINT_VALUE: Dict[str, tuple] = {
+    "NQ": (("MNQ", 2.0), ("NQ", 20.0)), "MNQ": (("MNQ", 2.0), ("NQ", 20.0)),
+    "ES": (("MES", 5.0), ("ES", 50.0)), "MES": (("MES", 5.0), ("ES", 50.0)),
+    "RTY": (("M2K", 5.0), ("RTY", 50.0)), "M2K": (("M2K", 5.0), ("RTY", 50.0)),
+    "YM": (("MYM", 0.5), ("YM", 5.0)), "MYM": (("MYM", 0.5), ("YM", 5.0)),
+}
+
+
+def contracts_for(symbol: str, notional: float, price: float) -> str:
+    """'1.61 MNQ (0.16 NQ)' for a futures symbol, '' otherwise."""
+    root = symbol.upper().split(":")[-1].rstrip("!").rstrip("0123456789")
+    sizes = CONTRACT_POINT_VALUE.get(root)
+    if not sizes or price <= 0 or notional <= 0:
+        return ""
+    return " (".join(f"{notional / (price * mult):.2f} {name}" for name, mult in sizes) + ")"
+
+
 def format_signals(date: str, signals: Sequence[Signal], skipped: Sequence[str],
-                   genomes: Sequence[Genome], symbols: Sequence[str]) -> str:
+                   genomes: Sequence[Genome], symbols: Sequence[str], *,
+                   account: float = 0.0) -> str:
     lines = [f"latest bar {date} across {', '.join(symbols)}",
              "(a signal is a buy at the NEXT open; if this bar is today's, it is "
              "incomplete until the close)", ""]
@@ -376,7 +423,14 @@ def format_signals(date: str, signals: Sequence[Signal], skipped: Sequence[str],
             lines.append(f"{g.name}:")
             for s in hits:
                 ctx = " ".join(f"{k}={v:g}" for k, v in s.context.items())
-                lines.append(f"  BUY {s.symbol:<6} {s.weight:.0%} of equity   [{s.rule}]   {ctx}")
+                size = f"{s.weight:.0%} of equity"
+                if s.notional and abs(s.notional - s.weight) > 1e-9:
+                    size = f"{s.weight:.0%} of buying power = {s.notional:.2f}x equity in notional"
+                if account > 0:
+                    held = contracts_for(s.symbol, s.notional * account, s.price)
+                    if held:
+                        size += f", {held} on ${account:,.0f}"
+                lines.append(f"  BUY {s.symbol:<6} {size}   [{s.rule}]   {ctx}")
         else:
             lines.append(f"{g.name}: no signal")
     for note in skipped:
@@ -396,7 +450,13 @@ def _row(w: WindowResult) -> str:
             f"{'' if w.profitable else '  <-- ' + w.verdict}")
 
 
-def format_text(reports: Sequence[StrategyReport]) -> str:
+def _usd(frac: float, account: float) -> str:
+    v = frac * account
+    return f"{'-' if v < 0 else '+'}${abs(v):,.0f}"
+
+
+def format_text(reports: Sequence[StrategyReport], *, account: float = 0.0) -> str:
+    """``account``: show the daily profile in dollars on an account this size."""
     lines: List[str] = []
     for r in reports:
         lines.append(r.genome.describe())
@@ -415,11 +475,14 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
                          f"avg {m.avg_trade_return * 100:+5.2f}%/t  mdd {m.max_drawdown * 100:5.1f}%  "
                          f"worst day {m.worst_day * 100:5.1f}%")
         for d in r.daily:
+            usd = (f" = {_usd(d.mean, account)}/day on ${account:,.0f} "
+                   f"(best {_usd(d.best, account)}, worst {_usd(d.worst, account)})"
+                   if account > 0 else "")
             lines.append(f"  daily ({d.label}): {d.days} days, {d.active_share * 100:.0f}% with P&L; "
                          f"mean {d.mean * 100:+.2f}%/day; median active day {d.median_active * 100:+.2f}%; "
                          f"p10 {d.p10 * 100:+.2f}% p90 {d.p90 * 100:+.2f}%; best {d.best * 100:+.1f}% "
                          f"worst {d.worst * 100:+.1f}%; days below -2%: {d.share_below_2 * 100:.1f}%, "
-                         f"below -4%: {d.share_below_4 * 100:.1f}%")
+                         f"below -4%: {d.share_below_4 * 100:.1f}%{usd}")
         for start in r.empty_periods:
             lines.append(f"  since {start}: no completed bars on or after this date yet "
                          f"(data ends {r.windows[-1].end if r.windows else '?'}); nothing out of sample so far")
@@ -440,9 +503,13 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
                     cfg: Optional[EvolutionConfig] = None) -> str:
     out: List[str] = [f"# {title}", ""]
     if cfg is not None:
+        held = (f"held out from {cfg.test_start}" if cfg.test_start
+                else f"held-out tail {cfg.test_frac:.0%}")
+        lev = f"; account leverage {cfg.leverage:g}x" if cfg.leverage != 1.0 else ""
         out += [f"Universe: {', '.join(cfg.symbols)}; {cfg.start} to {cfg.end}; "
-                f"held-out tail {cfg.test_frac:.0%}; commission {cfg.commission_bps:g} bp, "
-                f"slippage {cfg.slippage_bps:g} bp per side; fills at the next open.", ""]
+                f"{held}; commission {cfg.commission_bps:g} bp, "
+                f"slippage {cfg.slippage_bps:g} bp per side; fills at the next open{lev}; "
+                f"starting equity ${cfg.starting_cash:,.0f}.", ""]
     for r in reports:
         g = r.genome
         out.append(f"## {g.name}")
@@ -494,13 +561,16 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
                            f"{s.avg_ret * 100:+.2f}% | {s.pnl:+,.0f} |")
             out.append("")
         if r.daily:
-            out.append("| daily profile | days | with P&L | mean day | median active day | p10 | p90 | best | worst | days below -2% | below -4% |")
-            out.append("|---|---|---|---|---|---|---|---|---|---|---|")
+            acct = cfg.starting_cash if cfg is not None else 0.0
+            usd_head = f" | mean day on ${acct:,.0f}" if acct else ""
+            out.append("| daily profile | days | with P&L | mean day | median active day | p10 | p90 | best | worst | days below -2% | below -4%" + usd_head + " |")
+            out.append("|---|---|---|---|---|---|---|---|---|---|---|" + ("---|" if acct else ""))
             for d in r.daily:
+                usd_cell = f" | {_usd(d.mean, acct)}" if acct else ""
                 out.append(f"| {d.label} | {d.days} | {d.active_share * 100:.0f}% | {d.mean * 100:+.2f}% | "
                            f"{d.median_active * 100:+.2f}% | {d.p10 * 100:+.2f}% | {d.p90 * 100:+.2f}% | "
                            f"{d.best * 100:+.1f}% | {d.worst * 100:+.1f}% | {d.share_below_2 * 100:.1f}% | "
-                           f"{d.share_below_4 * 100:.1f}% |")
+                           f"{d.share_below_4 * 100:.1f}%{usd_cell} |")
             out.append("")
         for start in r.empty_periods:
             out.append(f"Since {start}: no completed bars on or after this date yet; nothing out of sample so far.")

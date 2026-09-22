@@ -1,0 +1,380 @@
+{
+ "genomes": [
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "thesis": "Long while NQ is above its 50-day mean in a calm market, also after a two-sigma dip above the 200-day or a reclaim of the 50-day; out on a volatility blow-out or a break of the 50-day that is not oversold.",
+   "rationale": "round 3, Claude: the trend-plus-dip leader with its clutter removed",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip, No Cooldown",
+   "thesis": "The core, re-entering the day after an exit.",
+   "rationale": "round 3, Claude: the trend-plus-dip core without the two-bar cooldown, so it misses fewer up days",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip, 10-Bar Holds",
+   "thesis": "The core with holds capped at two weeks.",
+   "rationale": "round 3, Claude: shorter holds, closer to the quick-trade mandate",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip, Let It Run",
+   "thesis": "The core without the fixed target; the trailing stop and the hold cap take profits.",
+   "rationale": "round 3, Claude: the 7.1% target cuts the best trends short in training",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "thesis": "The core with a stricter calm filter, 20-day volatility under 22%.",
+   "rationale": "round 3, Claude: fewer entries in choppy trends",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.22",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip + Month Turn",
+   "thesis": "The core, plus the turn of the month above the 50-day.",
+   "rationale": "round 3, Claude: adds the calendar edge from the calendar island",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    },
+    {
+     "when": "day_of_month >= 27 and close > sma50",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend + Flush",
+   "thesis": "The calm trend, plus a volume flush at the lower band from the volume-flush island.",
+   "rationale": "round 3, Claude: crosses the two best islands",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "thesis": "The calm trend, plus an RSI(7) washout under 24.",
+   "rationale": "round 3, Claude: crosses in the washout entry",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "thesis": "The core with a faster trend exit: a close under the 20-day mean that is not oversold.",
+   "rationale": "round 3, Claude: tests whether the 20-day exit sidesteps drawdowns sooner",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma20 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  },
+  {
+   "name": "Pure Calm Trend",
+   "thesis": "Only the calm-trend entry, with the core's trade management.",
+   "rationale": "round 3, Claude: is the edge the trend filter or the dip entries?",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  }
+ ]
+}

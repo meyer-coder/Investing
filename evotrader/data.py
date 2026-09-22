@@ -1,8 +1,10 @@
 """Market data: fetching, on-disk caching, and train/validation windowing.
 
 Daily OHLCV bars are pulled from Yahoo Finance's public chart endpoint (no key
-required) and cached as CSV under ``data/cache``.  A deterministic synthetic
-generator is available so the whole system can be exercised offline.
+required) and cached as CSV under ``data/cache``.  Continuous futures such as
+``NQ1!`` come from TradingView instead, back-adjusted across rolls (see
+``ratio_adjust``).  A deterministic synthetic generator is available so the
+whole system can be exercised offline.
 """
 from __future__ import annotations
 
@@ -15,7 +17,7 @@ import urllib.parse
 import urllib.request
 import zlib
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, time as dtime, timezone
 from typing import Dict, Iterable, List, Sequence, Tuple
 
 import numpy as np
@@ -201,6 +203,106 @@ def fetch_yahoo(symbol: str, start: str, end: str, *, timeout: int = 30,
     return Bars(symbol.upper(), dates, *[np.asarray(x, dtype=float) for x in (o, h, l, c, v)])
 
 
+#: Exchange for each futures root a config may name as ``ROOT1!``; the loader
+#: asks TradingView for ``EXCHANGE:ROOT1!``.  An exchange-qualified symbol
+#: (``CME_MINI:NQ1!``) works too, it is just an awkward file name.
+FUTURES_EXCHANGES: Dict[str, str] = {
+    "NQ": "CME_MINI", "MNQ": "CME_MINI", "ES": "CME_MINI", "MES": "CME_MINI",
+    "RTY": "CME_MINI", "M2K": "CME_MINI", "YM": "CBOT_MINI", "MYM": "CBOT_MINI",
+    "CL": "NYMEX", "MCL": "NYMEX", "GC": "COMEX", "MGC": "COMEX",
+}
+
+#: CME equity-index futures settle their session at 17:00 New York; a daily bar
+#: is complete only after that.
+FUTURES_SESSION_END = dtime(17, 0)
+
+
+def is_continuous_future(symbol: str) -> bool:
+    """``NQ1!``, ``ES2!``, ``CME_MINI:NQ1!``: TradingView's continuous contracts."""
+    s = symbol.upper()
+    return len(s) > 2 and s.endswith("!") and s[-2].isdigit()
+
+
+def tradingview_future(symbol: str) -> str:
+    s = symbol.upper()
+    if ":" in s:
+        return s
+    root = s[:-2]
+    exchange = FUTURES_EXCHANGES.get(root)
+    if exchange is None:
+        raise DataError(f"{symbol}: unknown futures root {root!r}; name it with its "
+                        f"exchange, for example CME_MINI:NQ1!")
+    return f"{exchange}:{s}"
+
+
+def ratio_adjust(plain: Bars, additive: Bars) -> Bars:
+    """Continuous futures with the roll gaps removed as ratios, not points.
+
+    TradingView back-adjusts by adding each roll's gap to every earlier price,
+    so NQ in 2010 reads 5,600 instead of 1,900 and every early percentage move
+    shrinks threefold.  Here each segment is scaled by the ratio the roll
+    implies instead: the return across a roll is the new contract's own return,
+    which is what a position that rolled actually earned, and returns inside a
+    segment are untouched.  The quarterly gap (about 1% for NQ at 4-5% rates)
+    is carry, not profit, and an unadjusted series books it as a phantom gain.
+    """
+    if list(plain.dates) != list(additive.dates):
+        raise DataError(f"{plain.symbol}: plain and back-adjusted series disagree on dates")
+    n = len(plain)
+    diff = np.asarray(additive.close, dtype=float) - np.asarray(plain.close, dtype=float)
+    factor = np.ones(n)
+    running = 1.0
+    for i in range(n - 1, 0, -1):
+        gap = diff[i - 1] - diff[i]              # points added to bars before the roll
+        base = float(plain.close[i - 1])
+        if abs(gap) > 1e-6 and base > 0:
+            running *= (base + gap) / base
+        factor[i - 1] = running
+    return Bars(plain.symbol, list(plain.dates), plain.open * factor, plain.high * factor,
+                plain.low * factor, plain.close * factor,
+                np.asarray(plain.volume, dtype=float).copy())
+
+
+def _session_complete(date: str, now: datetime | None = None) -> bool:
+    """Has the futures session labelled ``date`` settled yet?"""
+    try:
+        from zoneinfo import ZoneInfo
+        tz = ZoneInfo("America/New_York")
+    except Exception:  # pragma: no cover - no tz database: assume UTC-4
+        from datetime import timedelta
+        tz = timezone(timedelta(hours=-4))
+    end = datetime.combine(datetime.strptime(date, "%Y-%m-%d").date(),
+                           FUTURES_SESSION_END, tzinfo=tz)
+    return (now or datetime.now(timezone.utc)) >= end
+
+
+def fetch_tradingview_future(symbol: str, *, bars: int = 10_000,
+                             timeout: float = 120.0, fetch=None) -> Bars:
+    """Daily bars for a continuous future, ratio back-adjusted, by trading date."""
+    from . import tvdata            # tvdata imports this module; import lazily
+    fetch = fetch or tvdata.fetch_bars
+    tv_symbol = tradingview_future(symbol)
+    kwargs = dict(timeout=timeout, trading_dates=True, drop_forming=False)
+    plain = fetch(tv_symbol, "1D", bars, **kwargs)
+    additive = fetch(tv_symbol, "1D", bars, backadjust=True, **kwargs)
+    shared = sorted(set(plain.dates) & set(additive.dates))
+    if len(shared) < 50:
+        raise DataError(f"{symbol}: TradingView returned too little history")
+    plain, additive = _take_dates(plain, shared), _take_dates(additive, shared)
+    out = ratio_adjust(plain, additive)
+    if out.dates and not _session_complete(out.dates[-1]):
+        out = out.index_slice(0, len(out) - 1)   # still trading: not a bar yet
+    out.symbol = symbol.upper()
+    return out
+
+
+def _take_dates(bars: Bars, dates: Sequence[str]) -> Bars:
+    pos = {d: i for i, d in enumerate(bars.dates)}
+    take = np.asarray([pos[d] for d in dates], dtype=int)
+    return Bars(bars.symbol, list(dates), bars.open[take], bars.high[take],
+                bars.low[take], bars.close[take], bars.volume[take])
+
+
 def synthetic_bars(symbol: str, n: int = 1500, *, seed: int | None = None,
                    drift: float = 0.0003, vol: float = 0.012,
                    start_price: float = 100.0) -> Bars:
@@ -247,6 +349,16 @@ def load_symbol(symbol: str, start: str, end: str, *, offline: bool = False,
         return synthetic_bars(symbol).slice(start, end)
     fetch_from = min([start] + ([known_from] if known_from else [])
                      + ([cached.dates[0]] if cached is not None else []))
+    if is_continuous_future(symbol):
+        # The whole available history comes back either way; remember the
+        # earliest date asked for so a later, earlier request is not a refetch.
+        bars = fetch_tradingview_future(symbol)
+        _write_cache(bars)
+        _write_meta(symbol, fetched_start=min(fetch_from, bars.dates[0]),
+                    fetched_end=bars.dates[-1], source="tradingview",
+                    contract=tradingview_future(symbol),
+                    adjustment="ratio back-adjusted at each roll")
+        return bars.slice(start, end)
     bars = fetch_yahoo(symbol, fetch_from, end)
     _write_cache(bars)
     _write_meta(symbol, fetched_start=fetch_from, fetched_end=end)
@@ -325,6 +437,14 @@ def walk_forward_splits(universe: Universe, folds: int = 3,
                             universe.slice(test_start, test_end)))
     return splits or [Split("full", universe.slice(0, int(n * 0.75)),
                             universe.slice(int(n * 0.75), n))]
+
+
+def date_cut(universe: Universe, test_start: str) -> int:
+    """Index of the first bar on or after ``test_start`` (len when none is)."""
+    for i, d in enumerate(universe.calendar):
+        if d >= test_start:
+            return i
+    return len(universe)
 
 
 def holdout_split(universe: Universe, test_frac: float = 0.2) -> Tuple[Universe, Universe]:

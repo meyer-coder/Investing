@@ -1,0 +1,187 @@
+{
+ "genomes": [
+  {
+   "name": "Calm Rising Trend",
+   "thesis": "Above the 50-day, 20-day volatility under 22%, 20-day mean rising; out on volatility over 30%, a break of the 50-day or a 2% down day.",
+   "rationale": "calm_trend v2, Claude: strict structure after v1 bred itself into buy-and-hold",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.22 and sma20_slope > 0",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.30"
+    },
+    {
+     "when": "close < sma50"
+    },
+    {
+     "when": "ret1 < -0.02"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Low-Range EMA Trend",
+   "thesis": "EMA 12 over 26 above the 50-day with daily range under 1.6%; out when the range widens past 2% or the EMAs cross down.",
+   "rationale": "calm_trend v2, Claude",
+   "entry_rules": [
+    {
+     "when": "ema12 > ema26 and close > sma50 and atr_pct < 0.016",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "atr_pct > 0.02"
+    },
+    {
+     "when": "ema12 < ema26"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Contracting Volatility Over the 50",
+   "thesis": "Above the 20-day and the 50-day while short-term volatility is below long-term; out when it expands 40%.",
+   "rationale": "calm_trend v2, Claude",
+   "entry_rules": [
+    {
+     "when": "close > sma20 and dist_sma50 > 0 and vol_ratio_20_60 < 1.1",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol_ratio_20_60 > 1.4"
+    },
+    {
+     "when": "close < sma50"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Bull Market, Crash-Day Exit",
+   "thesis": "Above the 200-day in a market under 30% volatility; step out after a 1.5% down day.",
+   "rationale": "calm_trend v2, Claude",
+   "entry_rules": [
+    {
+     "when": "close > sma200 and ret1 > -0.015 and vol20 < 0.3",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 < -0.015"
+    },
+    {
+     "when": "vol20 > 0.35"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "thesis": "MACD histogram positive above the 50-day in a quiet market.",
+   "rationale": "calm_trend v2, Claude",
+   "entry_rules": [
+    {
+     "when": "macd_hist > 0 and close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "macd_hist < 0 and bars_held >= 3"
+    },
+    {
+     "when": "vol20 > 0.35"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.05,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   }
+  },
+  {
+   "name": "Calm Trend, Managed",
+   "thesis": "The calm trend with the managed exits that worked in the trend-plus-dip island.",
+   "rationale": "calm_trend v2, Claude",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45"
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.0"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.071,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   }
+  }
+ ]
+}

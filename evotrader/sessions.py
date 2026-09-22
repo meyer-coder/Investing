@@ -36,7 +36,7 @@ RTH_CLOSE_MIN = 16 * 60         # 16:00
 OPENING_RANGE_MINUTES = 60
 
 SESSION_FEATURES: List[str] = [
-    "hour_et", "minute_of_day", "minutes_since_open", "day_of_week",
+    "hour_et", "minute_of_day", "minutes_since_open", "day_of_week", "day_of_month",
     "is_rth", "is_first_hour", "is_second_hour", "is_power_hour",
     "bars_since_open", "session_bar_count",
     "session_vwap", "dist_session_vwap",
@@ -48,7 +48,8 @@ SESSION_FEATURE_DOCS: Dict[str, str] = {
     "hour_et": "hour of the exchange day, 0-23 (9 means 09:00-09:59 New York)",
     "minute_of_day": "minutes since midnight exchange time; 570 = 09:30",
     "minutes_since_open": "minutes since the 09:30 open; negative before it",
-    "day_of_week": "0=Monday ... 4=Friday, 5/6 weekend",
+    "day_of_week": "0=Monday ... 4=Friday, 5/6 weekend (daily bars too)",
+    "day_of_month": "calendar day of the month, 1-31 (daily bars too); 1-3 and 27-31 are the turn of the month",
     "is_rth": "1 during 09:30-16:00 New York, else 0",
     "is_first_hour": "1 during 09:30-10:30, the New York opening hour",
     "is_second_hour": "1 during 10:30-11:30",
@@ -97,7 +98,15 @@ def session_features(dates: Sequence[str], high: np.ndarray, low: np.ndarray,
 
     local = [_parse(d) for d in dates]
     if all(t is None for t in local):
-        return out                      # daily bars: nothing here applies
+        # Daily bars: only the calendar applies.  Dates are trading dates.
+        for i, d in enumerate(dates):
+            try:
+                day = _dt.date.fromisoformat(d.strip()[:10])
+            except ValueError:
+                continue
+            out["day_of_week"][i] = float(day.weekday())
+            out["day_of_month"][i] = float(day.day)
+        return out
 
     # Session state, reset whenever the exchange date changes.
     cur_day: Optional[_dt.date] = None
@@ -126,6 +135,7 @@ def session_features(dates: Sequence[str], high: np.ndarray, low: np.ndarray,
         out["minute_of_day"][i] = float(minute)
         out["minutes_since_open"][i] = float(since_open)
         out["day_of_week"][i] = float(t.weekday())
+        out["day_of_month"][i] = float(t.day)
         out["is_rth"][i] = float(RTH_OPEN_MIN <= minute < RTH_CLOSE_MIN)
         out["is_first_hour"][i] = float(RTH_OPEN_MIN <= minute < RTH_OPEN_MIN + 60)
         out["is_second_hour"][i] = float(RTH_OPEN_MIN + 60 <= minute < RTH_OPEN_MIN + 120)

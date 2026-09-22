@@ -5,7 +5,9 @@ frictionless simulator:
 
 * orders decided on bar *t* fill at bar *t+1*'s open (no look-ahead),
 * every fill pays commission and crosses the spread via a slippage charge,
-* positions are long-only, one lot per symbol, and cannot exceed available cash.
+* positions are long-only, one lot per symbol, and cannot exceed buying power:
+  cash alone by default, or ``leverage`` times equity for a margined account
+  such as futures (2.0 = up to twice the account in notional).
 """
 from __future__ import annotations
 
@@ -45,9 +47,15 @@ class PaperBroker:
 
     def __init__(self, starting_cash: float = 100_000.0, *,
                  commission_bps: float = 1.0, slippage_bps: float = 5.0,
-                 min_trade_value: float = 100.0, journal: Optional[Journal] = None):
+                 min_trade_value: float = 100.0, journal: Optional[Journal] = None,
+                 leverage: float = 1.0):
         self.starting_cash = float(starting_cash)
         self.cash = float(starting_cash)
+        # Notional allowed per unit of equity.  Above 1 the cash balance goes
+        # negative; no interest is charged, as with futures, whose financing is
+        # already in the price.
+        self.leverage = max(1.0, float(leverage))
+        self._last_equity = float(starting_cash)
         self.commission_bps = float(commission_bps)
         self.slippage_bps = float(slippage_bps)
         self.min_trade_value = float(min_trade_value)
@@ -70,6 +78,7 @@ class PaperBroker:
     def mark(self, date: str, prices: Mapping[str, float]) -> float:
         """Record the equity curve point and refresh position peaks."""
         eq = self.equity(prices)
+        self._last_equity = eq
         self.peak_equity = max(self.peak_equity, eq)
         for sym, pos in self.positions.items():
             price = prices.get(sym)
@@ -98,9 +107,10 @@ class PaperBroker:
             return False
         fill = self._buy_price(price)
         comm_rate = self.commission_bps / 10_000.0
-        # Clip the requested notional to what the cash balance can actually
+        # Clip the requested notional to what the buying power can actually
         # cover once commission is added, rather than rejecting the order.
-        budget = min(float(notional), self.cash / (1.0 + comm_rate))
+        power = self.cash + (self.leverage - 1.0) * max(self._last_equity, 0.0)
+        budget = min(float(notional), power / (1.0 + comm_rate))
         if budget < self.min_trade_value:
             return False
         shares = budget / fill

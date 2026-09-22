@@ -29,6 +29,10 @@ class TradingStyle:
     summary: str                                   # one line, shown at startup
     mandate: str                                   # appended to every breeding prompt
     archetypes: List[Archetype] = field(default_factory=list)
+    # When set, every agent trades exactly this share of buying power (1.0 =
+    # all of it, which on a 2x account is twice equity).  Breeding can still
+    # change what an agent trades and when, never how big.
+    fixed_size: Optional[float] = None
 
 
 # --------------------------------------------------------------- leveraged swing
@@ -190,9 +194,153 @@ LEVERAGED_SWING = TradingStyle(
 )
 
 #: Every style a config can name.  Add a ``TradingStyle`` here to make it available.
+# ------------------------------------------------------------- NQ E-mini at 2x
+#
+# One instrument, the Nasdaq-100 E-mini, traded long at twice the account in
+# notional: a $25,000 account holds about $50,000 of NQ, 0.8 of a micro (MNQ)
+# at NQ 31,000.  Thresholds are index-sized: NQ moves about a third as much as
+# the 3x funds the other styles were written for.
+
+_NQ_2X_MANDATE = """\
+=== STYLE MANDATE: Nasdaq-100 E-mini, long only, 2x the account ===
+The population trades one instrument, the NQ E-mini future (back-adjusted
+continuous contract), long only, at twice the account in notional whenever it
+is in a position. Size is fixed by the account: do not breed position sizes.
+Breed what to trade and when:
+  - the target is a high average profit per session over the most recent
+    year, with holds of one to ten sessions; the trader does not want
+    month-long holds
+  - index-sized thresholds: NQ's typical day is +/-1%, a -1.2% day is a real
+    flush, a 3% move is rare. A 0.6% to 1% gain is a good quick trade, and at
+    2x it is 1.2% to 2% of the account
+  - two families work on this index: buying short, sharp dips inside an
+    uptrend (sold within one to three sessions), and staying long while the
+    trend is intact and volatility is calm (out on the first sign of stress)
+  - every session in the market at 2x can cost 4-8% of the account on a bad
+    day: prefer exits that step aside when volatility expands
+  - calendar features exist for daily bars: day_of_week (0 = Monday) and
+    day_of_month; the turn of the month is a known index effect
+"""
+
+_NQ_2X_ARCHETYPES: List[Archetype] = [
+    # --- dips inside an uptrend, out within a few sessions
+    ("NQ Capitulation Close",
+     "A 1.2% down day closing in the bottom quarter of its range is a flush that is usually bought within two sessions.",
+     ["ret1 < -0.012 and (close - low) / (high - low + 0.0001) < 0.25"],
+     ["position_return > 0.008", "bars_held >= 2"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 3}),
+    ("NQ Prior-Low Break",
+     "A close under yesterday's low while above the 50-day mean is a one-day shakeout inside a trend.",
+     ["close < prev(low) and close > sma50"],
+     ["position_return > 0.006", "bars_held >= 2"],
+     {"stop_loss_pct": 0.025, "max_hold_bars": 3}),
+    ("NQ Z-Score Dip",
+     "Two standard deviations under the 20-day mean, above the 200-day: buy, sell back at the mean.",
+     ["zscore20 < -1.5 and close > sma200"],
+     ["zscore20 > 0", "bars_held >= 4"],
+     {"stop_loss_pct": 0.04, "max_hold_bars": 5}),
+    ("NQ RSI Washout",
+     "A 7-day RSI under 25 is a washout; the index snaps back before RSI reaches 50.",
+     ["rsi7 < 25"],
+     ["rsi7 > 50", "bars_held >= 3"],
+     {"stop_loss_pct": 0.04, "max_hold_bars": 4}),
+    ("NQ Red Day Above the 200",
+     "A 1% down day in a long-term uptrend: take 0.6% or two sessions.",
+     ["ret1 < -0.01 and close > sma200"],
+     ["position_return > 0.006", "bars_held >= 2"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 3}),
+    ("NQ Volume Flush",
+     "A 1.2% down day on 1.5x volume is forced selling, bought back within two sessions.",
+     ["volume_ratio > 1.5 and ret1 < -0.012"],
+     ["position_return > 0.008", "bars_held >= 2"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 3}),
+    ("NQ Two Red Days",
+     "A red day after a 0.9% red day with a 2.5% five-day loss, still above the 50-day: sell the first 0.7% up day.",
+     ["ret1 < 0 and prev(ret1) < -0.009 and ret5 < -0.025 and close > sma50"],
+     ["ret1 > 0.007", "bars_held >= 3"],
+     {"stop_loss_pct": 0.02, "max_hold_bars": 3}),
+    ("NQ Pullback in a Rising Market",
+     "A 2% five-day pullback while the 20-day mean is still rising: buy, take 1% or four sessions.",
+     ["ret5 < -0.02 and close > sma50 and sma20_slope > 0"],
+     ["position_return > 0.01", "bars_held >= 4"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 5}),
+    ("NQ Uptrend Dip Buyer",
+     "RSI(7) under 45 above the 50-day: buy the soft patch, sell when RSI is back over 70.",
+     ["rsi7 < 45 and close > sma50"],
+     ["rsi7 > 70", "bars_held >= 5"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 6}),
+    ("NQ Turn of the Month",
+     "The last days of a month and the first of the next carry most of the index's drift.",
+     ["day_of_month >= 27 and close > sma50"],
+     ["bars_held >= 4"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 5}),
+    # --- ride a calm uptrend, step aside on stress
+    ("NQ Calm Uptrend",
+     "Above the 50-day with 20-day volatility under 25%: stay long, out on a break of the 50-day or a volatility spike.",
+     ["close > sma50 and vol20 < 0.25"],
+     ["close < sma50", "vol20 > 0.3"],
+     {"max_hold_bars": 10}),
+    ("NQ MACD Uptrend",
+     "MACD histogram positive above the 50-day: momentum intact; out when the histogram turns.",
+     ["macd_hist > 0 and close > sma50"],
+     ["macd_hist < 0"],
+     {"max_hold_bars": 10}),
+    ("NQ Trend with a Crash Exit",
+     "Long above the 50-day unless the day fell 2%; a 2% day is the exit.",
+     ["close > sma50 and ret1 > -0.02"],
+     ["ret1 < -0.02", "close < sma50"],
+     {"max_hold_bars": 10}),
+    ("NQ EMA Trend",
+     "12-day EMA over the 26-day and the close over the 20-day mean: trend; out under the 20-day.",
+     ["ema12 > ema26 and close > sma20"],
+     ["close < sma20"],
+     {"max_hold_bars": 10}),
+    ("NQ Squeeze Breakout",
+     "Volatility contracted, then a close through the upper band: ride the release for up to a week.",
+     ["vol_ratio_20_60 < 0.8 and cross_above(close, bb_upper)"],
+     ["ret1 < -0.01", "bars_held >= 5"],
+     {"stop_loss_pct": 0.03, "max_hold_bars": 5}),
+    ("NQ Strong Close",
+     "A 0.5% up day closing in the top fifth of its range above the 20-day: the next session tends to follow.",
+     ["(close - low) / (high - low + 0.0001) > 0.8 and ret1 > 0.005 and close > sma20"],
+     ["bars_held >= 2"],
+     {"stop_loss_pct": 0.025, "max_hold_bars": 2}),
+    ("NQ Near the High",
+     "Within 2% of the 52-week high with a positive week: momentum; out under the 10-day mean.",
+     ["pct_of_52w_high > 0.98 and ret5 > 0"],
+     ["close < sma10", "bars_held >= 8"],
+     {"max_hold_bars": 8}),
+    # --- both at once
+    ("NQ Trend or Dip",
+     "Long in a rising trend, and also after a washout; out when both have failed.",
+     ["close > sma20 and sma20_slope > 0", "rsi7 < 30"],
+     ["close < sma20 and rsi7 > 30"],
+     {"stop_loss_pct": 0.05, "max_hold_bars": 10}),
+    ("NQ Inside Day in an Uptrend",
+     "An inside day above the 50-day is a pause; the trend usually resumes.",
+     ["high < prev(high) and low > prev(low) and close > sma50"],
+     ["ret1 < -0.01", "bars_held >= 3"],
+     {"stop_loss_pct": 0.02, "max_hold_bars": 3}),
+    ("NQ Monday Dip",
+     "A red Monday above the 50-day is bought for the rest of the week.",
+     ["day_of_week == 0 and ret1 < 0 and close > sma50"],
+     ["position_return > 0.008", "bars_held >= 3"],
+     {"stop_loss_pct": 0.025, "max_hold_bars": 4}),
+]
+
+NQ_2X = TradingStyle(
+    name="nq_2x",
+    summary="NQ E-mini, long only, always 2x the account in notional, 1-10 session holds",
+    mandate=_NQ_2X_MANDATE,
+    archetypes=_NQ_2X_ARCHETYPES,
+    fixed_size=1.0,
+)
+
+
 STYLES: Dict[str, TradingStyle] = {
     LEVERAGED_SWING.name: LEVERAGED_SWING,
     QUICK_LEVERAGED.name: QUICK_LEVERAGED,
+    NQ_2X.name: NQ_2X,
 }
 
 
