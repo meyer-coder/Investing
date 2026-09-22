@@ -243,7 +243,7 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
         return 1
     since = [s.strip() for s in (args.since or "").split(",") if s.strip()]
     reports = evaluate(genomes, cfg, by_year=args.by_year, since=since, recent_bars=recent_bars,
-                       by_month=args.by_month)
+                       by_month=args.by_month, daily=args.daily)
     print(format_text(reports))
     if args.markdown:
         os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
@@ -629,6 +629,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="also break the full window down by calendar year")
     ev.add_argument("--by-month", action="store_true", dest="by_month",
                     help="break the full window down by calendar month instead")
+    ev.add_argument("--daily", action="store_true",
+                    help="the distribution of daily P&L: active days, median, p10/p90, best, worst")
     ev.add_argument("--since", help="comma-separated YYYY-MM-DD dates; adds trailing-window "
                                     "rows (return, trades, max dd, worst day) from each date")
     ev.add_argument("--recent", help="judge and rank on the trailing window instead of the whole "

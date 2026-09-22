@@ -161,3 +161,18 @@ def test_a_since_date_past_the_data_is_reported_not_silent(tmp_path):
     text = format_text(reports)
     assert "since 2030-01-01: no completed bars" in text and "nothing out of sample so far" in text
     assert "Since 2030-01-01: no completed bars" in format_markdown(reports, title="T")
+
+
+def test_daily_profile_describes_the_distribution_of_days(tmp_path):
+    from evotrader.evaluate import daily_profile
+    prof = daily_profile([100.0, 100.0, 101.0, 99.0, 99.0, 103.95], "t")
+    assert prof.days == 5 and abs(prof.active_share - 0.6) < 1e-9
+    assert abs(prof.worst - (99.0 / 101.0 - 1.0)) < 1e-9 and abs(prof.best - 0.05) < 1e-9
+    assert prof.share_below_2 == 0.0 and prof.p10 <= prof.median_active <= prof.p90
+    genomes = load_genomes(_write(tmp_path, [GOOD]))
+    r = evaluate(genomes, _cfg(test_frac=0.0), daily=True, recent_bars=126)[0]
+    assert [d.label for d in r.daily] == ["full window", "last 126 bars"]
+    assert r.daily[1].days == 126 and 0 < r.daily[0].active_share <= 1
+    text = format_text([r])
+    assert "daily (full window)" in text and "days below -2%" in text
+    assert "| daily profile |" in format_markdown([r], title="T")

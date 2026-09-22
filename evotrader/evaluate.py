@@ -61,6 +61,38 @@ class PeriodRow:
 
 
 @dataclass
+class DailyProfile:
+    """The distribution of daily equity changes: what a funded account lives on."""
+
+    label: str
+    days: int
+    active_share: float        # share of days with any P&L
+    mean: float                # mean daily return over all days
+    median_active: float       # median of days with P&L
+    p10: float
+    p90: float
+    best: float
+    worst: float
+    share_below_2: float       # share of days worse than -2%
+    share_below_4: float       # share of days worse than -4%
+
+
+def daily_profile(equity: Sequence[float], label: str) -> Optional[DailyProfile]:
+    import numpy as np
+    e = np.asarray(equity, dtype=float)
+    if e.size < 3:
+        return None
+    r = e[1:] / e[:-1] - 1.0
+    active = r[np.abs(r) > 1e-9]
+    return DailyProfile(
+        label=label, days=int(r.size), active_share=float(active.size / r.size),
+        mean=float(r.mean()), median_active=float(np.median(active)) if active.size else 0.0,
+        p10=float(np.percentile(r, 10)), p90=float(np.percentile(r, 90)),
+        best=float(r.max()), worst=float(r.min()),
+        share_below_2=float((r < -0.02).mean()), share_below_4=float((r < -0.04).mean()))
+
+
+@dataclass
 class SymbolRow:
     symbol: str
     trades: int
@@ -79,6 +111,7 @@ class StrategyReport:
     symbols: List[SymbolRow] = field(default_factory=list)
     periods: List[PeriodRow] = field(default_factory=list)  # --since windows
     empty_periods: List[str] = field(default_factory=list)  # --since dates with no bars yet
+    daily: List[DailyProfile] = field(default_factory=list)  # --daily: full window, then recent
     recent: Optional[PeriodRow] = None                       # --recent window
     error: str = ""
 
@@ -148,7 +181,7 @@ def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
 
 def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
              since: Sequence[str] = (), recent_bars: int = 0,
-             monthly: bool = False) -> List[YearRow]:
+             monthly: bool = False, daily: bool = False) -> List[YearRow]:
     """One full-window backtest, then calendar-year buckets from the equity
     curve (returns) and the trade list (counts, by exit date).  Also records
     the best and worst trades, so gap risk is visible."""
@@ -180,6 +213,14 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
         if row is not None:
             row.label = f"last {recent_bars} bars"
             report.recent = row
+    if daily:
+        full = daily_profile(journal.equity, "full window")
+        if full is not None:
+            report.daily.append(full)
+        if recent_bars > 0 and len(journal.equity) > recent_bars + 1:
+            tail = daily_profile(journal.equity[-recent_bars - 1:], f"last {recent_bars} bars")
+            if tail is not None:
+                report.daily.append(tail)
     width = 7 if monthly else 4                  # YYYY-MM or YYYY
     last_of_year: Dict[str, float] = {}
     order: List[str] = []
@@ -208,7 +249,8 @@ def ctx_cfg(ctx: Context) -> EvolutionConfig:
 
 def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
              by_year: bool = False, since: Sequence[str] = (),
-             recent_bars: int = 0, by_month: bool = False) -> List[StrategyReport]:
+             recent_bars: int = 0, by_month: bool = False,
+             daily: bool = False) -> List[StrategyReport]:
     """Score each genome on the config's training and held-out windows.
     ``since`` dates add trailing-window rows (return, trades, worst day...)
     from one full-window backtest.  ``recent_bars`` adds the trailing window
@@ -225,7 +267,8 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     else:
         windows.append(("full", universe))
     contexts = [(label, _context(u, cfg)) for label, u in windows]
-    full_ctx = _context(universe, cfg) if (by_year or by_month or since or recent_bars > 0) else None
+    full_ctx = _context(universe, cfg) if (by_year or by_month or since or recent_bars > 0
+                                          or daily) else None
 
     reports: List[StrategyReport] = []
     for genome in genomes:
@@ -239,7 +282,7 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
                 report.windows.append(WindowResult(label, a, b, out.metrics, out.score))
             if full_ctx is not None:
                 years = _by_year(genome, full_ctx, report, since=since, recent_bars=recent_bars,
-                                 monthly=by_month)
+                                 monthly=by_month, daily=daily)
                 report.years = years if (by_year or by_month) else []
         except (GenomeError, ValueError) as exc:
             report.error = str(exc)
@@ -371,6 +414,12 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
                          f"trades {m.trades:3d}  win {m.win_rate * 100:3.0f}%  pf {m.profit_factor:4.2f}  "
                          f"avg {m.avg_trade_return * 100:+5.2f}%/t  mdd {m.max_drawdown * 100:5.1f}%  "
                          f"worst day {m.worst_day * 100:5.1f}%")
+        for d in r.daily:
+            lines.append(f"  daily ({d.label}): {d.days} days, {d.active_share * 100:.0f}% with P&L; "
+                         f"mean {d.mean * 100:+.2f}%/day; median active day {d.median_active * 100:+.2f}%; "
+                         f"p10 {d.p10 * 100:+.2f}% p90 {d.p90 * 100:+.2f}%; best {d.best * 100:+.1f}% "
+                         f"worst {d.worst * 100:+.1f}%; days below -2%: {d.share_below_2 * 100:.1f}%, "
+                         f"below -4%: {d.share_below_4 * 100:.1f}%")
         for start in r.empty_periods:
             lines.append(f"  since {start}: no completed bars on or after this date yet "
                          f"(data ends {r.windows[-1].end if r.windows else '?'}); nothing out of sample so far")
@@ -443,6 +492,15 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
             for s in r.symbols:
                 out.append(f"| {s.symbol} | {s.trades} | {s.win_rate * 100:.0f}% | "
                            f"{s.avg_ret * 100:+.2f}% | {s.pnl:+,.0f} |")
+            out.append("")
+        if r.daily:
+            out.append("| daily profile | days | with P&L | mean day | median active day | p10 | p90 | best | worst | days below -2% | below -4% |")
+            out.append("|---|---|---|---|---|---|---|---|---|---|---|")
+            for d in r.daily:
+                out.append(f"| {d.label} | {d.days} | {d.active_share * 100:.0f}% | {d.mean * 100:+.2f}% | "
+                           f"{d.median_active * 100:+.2f}% | {d.p10 * 100:+.2f}% | {d.p90 * 100:+.2f}% | "
+                           f"{d.best * 100:+.1f}% | {d.worst * 100:+.1f}% | {d.share_below_2 * 100:.1f}% | "
+                           f"{d.share_below_4 * 100:.1f}% |")
             out.append("")
         for start in r.empty_periods:
             out.append(f"Since {start}: no completed bars on or after this date yet; nothing out of sample so far.")
