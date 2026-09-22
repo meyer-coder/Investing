@@ -14,6 +14,100 @@ forecast or advice. The genomes are in `quick_leveraged.json`; the full
 per-universe tables, year by year, per symbol, with best and worst trades,
 are in `reports/`.
 
+For a funded account the ranking that matters is the recent regime, so
+that comes first. The eight durable strategies follow, with their status
+over the last six months.
+
+## Last six months first
+
+A funded account caps the downside at the account, so a bad year in 2011
+or 2018 is background rather than a veto. This section ranks by the last
+six months on your funds (TQQQ/SQQQ, MUU/MUD, RIOX, SOXL/SOXS), with the
+Nasdaq set as the check. The set is `recent_regime.json`; the rows come
+from `evaluate --since`, one backtest over the whole window with the
+trailing period cut out of it, so every trailing number includes the
+positions that were open when the period began. 25% slots unless noted.
+
+| strategy | last 6 months, your names | last 6 months, Nasdaq set | last 12 months, your names | worst day, 6 months |
+|---|---|---|---|---|
+| Combo: Recent Winners (see note) | +37%, 47 trades, PF 1.92, 51% | +18%, 26 trades, PF 2.34 | +67%, 97 trades, PF 1.82 | -4.5% |
+| Band Break on Volume | +17%, 16 trades, PF 2.07, 56% | +11%, 9 trades, PF 4.76 | +33%, 28 trades, PF 2.44 | -3.9% |
+| Volume Climax | +17%, 15 trades, PF 2.44, 53% | +19%, 7 trades, PF 9.95 | +29%, 31 trades, PF 2.38 | -2.7% |
+| Red Day Near the Mean | +16%, 18 trades, PF 1.75, 50% | +6%, 8 trades, PF 1.87 | +21%, 43 trades, PF 1.52 | -5.7% |
+| Two Red Days (evolved) | +15%, 13 trades, PF 2.16, 69% | +9%, 5 trades, PF 6.33 | +26%, 23 trades, PF 2.27 | -4.2% |
+| Pullback Cluster | +13%, 19 trades, PF 1.62, 68% | +8%, 14 trades, PF 2.06 | +38%, 41 trades, PF 1.94 | -5.3% |
+| Squeeze Days (evolved) | +10%, 19 trades, PF 1.46, 63% | +17%, 12 trades, PF 10.9 | +21%, 31 trades, PF 1.67 | -6.4% |
+| Combo: All Five Setups | +15%, 55 trades, PF 1.24, 45% | -1%, 35 trades, PF 0.99 | +48%, 123 trades, PF 1.42 | -5.2% |
+
+Note on the combo: it was built after this re-ranking, from the five
+setups that led it, so its six-month row is in-sample by construction.
+Judge it on the twelve-month row and on its 2010-2026 Nasdaq record: +216%,
+PF 1.37, 818 trades, worst day -16%.
+
+**What went cold.** Four of the durable eight have been flat to negative
+since March on your names and on the Nasdaq set: Capitulation Close (+6%
+and -4%, PF 1.13 and 0.88), Oversold Dip Above the 50 (-6% and -6%),
+Prior-Low Break on Volume (-1% and -10%), Red Day Above the 50 (-2% and
+-4%). All four were positive over the last twelve months and over
+2010-2026. They are on watch, not retired; the six-month lens is exactly
+what shows the switch.
+
+**The three new entries** were set aside in the durable search for their
+long-history records and come back under the six-month lens:
+
+- *Volume Climax*: twice normal volume on a 3% down day, any regime.
+  `volume_ratio > 2.0 and ret1 < -0.03`. Positive over 2010-2026 on the
+  Nasdaq set (+99%, PF 1.77) but loses on the single-stock pairs.
+- *Band Break on Volume*: close under the lower Bollinger band on 1.2x
+  volume. `bb_pct < 0.0 and volume_ratio > 1.2`. Loses over 2010-2026 on
+  the Nasdaq set (-10%, max drawdown -54%, worst day -20%), so this is a
+  bet on the current regime, not a durable edge; size it accordingly.
+- *Squeeze Days (evolved)*: a breakout entry, `vol_ratio_20_60 < 0.8 and
+  cross_above(close, bb_upper)`, or the Two Red Days entry; out on a 2% up
+  close or after two bars, stop 6%, target 8%, 20% slots. The one momentum
+  entry that works in this regime: 12 Nasdaq trades since March, 11
+  winners. Positive over 2010-2026 (+44%, PF 1.39).
+
+Red Day Near the Mean is the durable search's "Red Day -4%": a 4% down
+day within 3% of the 20-day mean on 1.2x volume. It is profitable on both
+Nasdaq windows and on your names, and loses on the single-stock pairs.
+
+**Sizing for a daily loss limit.** The limit is the binding constraint in a
+funded account, and it is the worst day that breaks it, not the drawdown.
+At 25% slots the worst days over the last six months run -2.7% to -6.4%;
+the 2010-2026 history holds -10% to -20% days for the ungated setups. At
+60% of the size, 15% slots and 12% in the combos, over the last six months
+on your names:
+
+| strategy | return | profit factor | max drawdown | worst day |
+|---|---|---|---|---|
+| Combo: Recent Winners | +21.6% | 1.94 | -5.7% | -2.7% |
+| Band Break on Volume | +10.5% | 2.12 | -4.5% | -2.4% |
+| Volume Climax | +9.9% | 2.45 | -3.7% | -1.6% |
+| Red Day Near the Mean | +9.8% | 1.78 | -4.5% | -3.4% |
+| Two Red Days (evolved) | +8.9% | 2.27 | -6.2% | -2.5% |
+| Pullback Cluster | +8.3% | 1.68 | -7.5% | -3.2% |
+| Squeeze Days (evolved) | +6.0% | 1.52 | -10.2% | -3.9% |
+
+Rule of thumb: keep the historical worst day at your size inside
+two-thirds of the daily limit. For a 4% limit that is the 15% sizing above
+for the combos and Squeeze Days, and 20% for Volume Climax.
+
+**Recency in the breeder.** The three `quick_*` configs now set
+`recent_bars` to 126 and `recent_weight` to 0.5, so half of every agent's
+fitness is earned on the last six months of its window, and the
+`quick_leveraged` mandate tells Claude the same. Re-run
+`configs/quick_names.json` with an API key to breed against the current
+regime directly.
+
+Reproduce:
+
+```bash
+python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --test-frac 0 --since 2026-03-22,2025-12-22,2025-09-22
+python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_nasdaq.json --test-frac 0 --since 2026-03-22,2025-09-22
+python -m evotrader.cli signals strategies/recent_regime.json --config configs/quick_names.json --refresh
+```
+
 ## The bar they had to clear
 
 A strategy was kept only if, on each of the four windows, it made at least

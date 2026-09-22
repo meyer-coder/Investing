@@ -37,6 +37,7 @@ class Metrics:
     benchmark_return: float = 0.0
     excess_return: float = 0.0     # total return minus buy-and-hold
     years: float = 0.0
+    worst_day: float = 0.0         # worst single-bar equity change, e.g. -0.065
 
     def to_dict(self) -> Dict[str, Any]:
         return {k: (round(v, 6) if isinstance(v, float) else v)
@@ -79,6 +80,8 @@ def compute_metrics(equity: Sequence[float], trades: Sequence, *,
         m.cagr = -1.0
 
     r = _equity_returns(e)
+    if r.size:
+        m.worst_day = float(np.min(r))
     if r.size > 1:
         sd = float(np.std(r, ddof=1))
         mean = float(np.mean(r))
@@ -133,6 +136,10 @@ class FitnessConfig:
     win_rate_weight: float = 0.0        # rewards (win_rate - 0.5): many small wins
     hold_limit_bars: float = 0.0        # average hold longer than this is charged (0 = off)
     hold_penalty: float = 0.0           # per multiple of hold_limit_bars over the limit
+    # Recency.  The score becomes (1 - w) x whole-window score + w x score over
+    # the last recent_bars bars, so what works now outranks what worked years ago.
+    recent_bars: int = 0                # 0 = off; 126 is about six months
+    recent_weight: float = 0.0          # 0..1
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -163,6 +170,35 @@ def fitness_score(m: Metrics, cfg: Optional[FitnessConfig] = None) -> float:
             over = max(0.0, _finite(m.avg_bars_held) - cfg.hold_limit_bars)
             score -= cfg.hold_penalty * over / cfg.hold_limit_bars
     return float(score)
+
+
+def recency_score(equity: Sequence[float], trades: Sequence, equity_dates: Sequence[str],
+                  cfg: FitnessConfig, *, benchmark: Optional[Sequence[float]] = None,
+                  turnover: float = 0.0, exposure: float = 0.0) -> Optional[float]:
+    """Fitness over the last ``cfg.recent_bars`` bars only, or None when the
+    curve is too short.  ``min_trades`` is scaled to the window's share of the
+    curve so a short tail is not charged as inactivity."""
+    k = int(cfg.recent_bars)
+    if k <= 0 or len(equity) < k + 2:
+        return None
+    tail = list(equity[-k - 1:])
+    since = equity_dates[-k - 1] if len(equity_dates) == len(equity) else None
+    tail_trades = [t for t in trades if since is None or t.exit_date > since]
+    tail_bench = list(benchmark[-k - 1:]) if benchmark is not None and len(benchmark) >= k + 1 else None
+    frac = (k + 1) / len(equity)
+    m = compute_metrics(tail, tail_trades, benchmark=tail_bench,
+                        turnover=turnover * frac, exposure=exposure)
+    scaled = FitnessConfig(**{**cfg.to_dict(),
+                              "min_trades": max(3, int(round(cfg.min_trades * frac)))})
+    return fitness_score(m, scaled)
+
+
+def blended_score(full_score: float, recent: Optional[float], cfg: FitnessConfig) -> float:
+    """Mix the whole-window score with the recent-window score by cfg.recent_weight."""
+    w = max(0.0, min(1.0, cfg.recent_weight))
+    if recent is None or w <= 0:
+        return full_score
+    return float((1.0 - w) * full_score + w * recent)
 
 
 def _finite(x: float) -> float:

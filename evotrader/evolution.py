@@ -30,7 +30,8 @@ from .breeder import BreedResult, Elite, HybridBreeder, LLMBreeder, MutationBree
 from .config import EvolutionConfig
 from .data import Universe, holdout_split, load_universe
 from .features import FeatureSet, build_features
-from .fitness import Evaluation, FitnessConfig, Metrics, compute_metrics, fitness_score, rank
+from .fitness import (Evaluation, FitnessConfig, Metrics, blended_score, compute_metrics,
+                      fitness_score, rank, recency_score)
 from .genome import Genome, GenomeError, compile_genome
 from .journal import Journal
 from .llm import Claude
@@ -111,10 +112,15 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
                               benchmark=benchmark, turnover=result.turnover,
                               exposure=result.exposure)
     journal = result.journal
+    score = fitness_score(metrics, ctx.fitness)
+    if ctx.fitness.recent_bars > 0 and ctx.fitness.recent_weight > 0:
+        score = blended_score(score, recency_score(
+            journal.equity, journal.trades, journal.equity_dates, ctx.fitness,
+            benchmark=benchmark, turnover=result.turnover, exposure=result.exposure),
+            ctx.fitness)
     journal.equity = []          # the curve is large and only metrics need it
     journal.equity_dates = []
-    return Outcome(genome.id, genome.name, genome.generation,
-                   fitness_score(metrics, ctx.fitness), metrics, journal)
+    return Outcome(genome.id, genome.name, genome.generation, score, metrics, journal)
 
 
 @dataclass

@@ -51,7 +51,9 @@
     "ruin_penalty": 5.0,
     "win_rate_weight": 2.0,
     "hold_limit_bars": 3.0,
-    "hold_penalty": 1.5
+    "hold_penalty": 1.5,
+    "recent_bars": 126,
+    "recent_weight": 0.5
   },
   "run_id": "",
   "db_path": "runs/evotrader.sqlite",

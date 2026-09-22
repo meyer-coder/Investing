@@ -123,6 +123,12 @@ Avoid: trend-following holds, anything that needs weeks to play out, and
 rules that only work in one direction of the market. An agent that sits in a
 3x fund is beta, not this style; the hold-time penalty charges for it. The
 portfolio stays unlevered (gross exposure at or below 100%).
+
+Recency: half of the fitness score is earned on the last six months of the
+window. What works now outranks what worked in 2018; a losing year long ago
+is background, not a veto. Funded accounts cap the downside at the account,
+so consistency of small wins and a survivable worst day matter more than
+surviving a recession.
 """
 
 _QUICK_LEVERAGED_ARCHETYPES: List[Archetype] = [

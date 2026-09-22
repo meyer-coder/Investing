@@ -90,8 +90,27 @@ def test_signals_fire_on_the_latest_bar(tmp_path, capsys):
     assert not [s for s in signals if s.genome == "Never"]
     assert skipped == []
     assert all(s.date == date and s.weight == 0.2 for s in signals)
+    capped = {**GOOD, "name": "Capped", "entry_rules": [{"when": "close > 0", "weight": 0.9}],
+              "risk": {**GOOD["risk"], "max_position_pct": 0.15}}
+    _, capped_signals, _ = latest_signals(load_genomes(_write(tmp_path, [capped])), _cfg())
+    assert capped_signals and all(abs(s.weight - 0.15) < 1e-9 for s in capped_signals)
     assert all("close" in s.context for s in signals if s.genome == "Always")
     path = _write(tmp_path, [always, never])
     assert main(["signals", path, "--offline", "--symbols", "AAA,BBB", "--end", "2020-06-30"]) == 0
     out = capsys.readouterr().out
     assert "latest bar 2020-06" in out and "BUY AAA" in out and "Never: no signal" in out
+
+
+def test_since_rows_report_the_trailing_window(tmp_path):
+    genomes = load_genomes(_write(tmp_path, [GOOD]))
+    reports = evaluate(genomes, _cfg(test_frac=0.0), since=["2019-01-01", "2020-06-01"])
+    r = reports[0]
+    assert [p.label for p in r.periods] == ["since 2019-01-01", "since 2020-06-01"]
+    a, b = r.periods
+    assert a.start < "2019-01-01" <= a.end and b.metrics.trades <= a.metrics.trades
+    assert a.metrics.worst_day <= 0.0
+    assert r.years == []                       # since does not imply the year table
+    text = format_text(reports)
+    assert "since 2020-06-01" in text and "worst day" in text
+    md = format_markdown(reports, title="T")
+    assert "| since 2019-01-01 |" in md and "| worst day |" in md

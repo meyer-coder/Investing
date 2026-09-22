@@ -247,7 +247,8 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
     if not genomes:
         print(f"no genomes in {args.file}", file=sys.stderr)
         return 1
-    reports = evaluate(genomes, cfg, by_year=args.by_year)
+    since = [s.strip() for s in (args.since or "").split(",") if s.strip()]
+    reports = evaluate(genomes, cfg, by_year=args.by_year, since=since)
     print(format_text(reports))
     if args.markdown:
         os.makedirs(os.path.dirname(os.path.abspath(args.markdown)), exist_ok=True)
@@ -380,6 +381,8 @@ def build_parser() -> argparse.ArgumentParser:
                     help="override commission in basis points per side")
     ev.add_argument("--by-year", action="store_true", dest="by_year",
                     help="also break the full window down by calendar year")
+    ev.add_argument("--since", help="comma-separated YYYY-MM-DD dates; adds trailing-window "
+                                    "rows (return, trades, max dd, worst day) from each date")
     ev.add_argument("--markdown", help="write a Markdown report here")
     ev.add_argument("--title", help="title for the Markdown report")
     ev.set_defaults(func=cmd_evaluate)

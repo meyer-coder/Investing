@@ -59,3 +59,30 @@ def test_rank_sorts_best_first_and_failures_last():
     bad = Evaluation("b", "bad", 0, 5.0, Metrics(), error="boom")
     mid = Evaluation("c", "mid", 0, 0.5, Metrics())
     assert [e.genome_id for e in rank([mid, bad, good])] == ["a", "c", "b"]
+
+
+def test_worst_day_is_the_minimum_bar_return():
+    m = compute_metrics([100.0, 110.0, 99.0, 104.0], [])
+    assert abs(m.worst_day - (99.0 / 110.0 - 1.0)) < 1e-9
+
+
+def test_recency_score_blends_toward_the_tail():
+    from evotrader.fitness import blended_score, recency_score
+    rng = np.random.default_rng(3)
+    n = 400
+    equity = list(100_000 * np.cumprod(1 + rng.normal(0.0004, 0.01, n)))
+    dates = [f"d{i:04d}" for i in range(n)]
+    trades = [_trade(0.02 if i % 3 else -0.01, 50.0 if i % 3 else -25.0) for i in range(60)]
+    for k, t in enumerate(trades):
+        t.exit_date = dates[int(k * n / 60)]
+    cfg = FitnessConfig(recent_bars=126, recent_weight=0.5, min_trades=10)
+    full = fitness_score(compute_metrics(equity, trades), cfg)
+    recent = recency_score(equity, trades, dates, cfg)
+    assert recent is not None
+    tail_trades = [t for t in trades if t.exit_date > dates[-127]]
+    manual = fitness_score(compute_metrics(equity[-127:], tail_trades),
+                           FitnessConfig(**{**cfg.to_dict(), "min_trades": 3}))
+    assert abs(recent - manual) < 1e-9
+    assert abs(blended_score(full, recent, cfg) - (0.5 * full + 0.5 * recent)) < 1e-9
+    assert blended_score(full, recent, FitnessConfig()) == full          # weight 0: unchanged
+    assert recency_score(equity[:50], trades, dates[:50], cfg) is None   # too short a curve

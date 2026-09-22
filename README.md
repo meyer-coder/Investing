@@ -232,6 +232,11 @@ makes a fund with a year of history (RIOX, MUU) tradeable in a backtest: a
 rule on `rsi7` and `sma50` is live after 50 bars. Buy-and-hold is benchmarked
 over the same bars the genome traded.
 
+Fitness can be tilted toward the present: with `recent_bars` and
+`recent_weight` set (the quick configs use 126 bars and 0.5), an agent's
+score is a blend of its whole-window score and its score over the last
+`recent_bars` bars, so what works now outranks what worked years ago.
+
 To add a style, append a `TradingStyle` to `STYLES` in `styles.py`.
 
 ---
@@ -249,11 +254,14 @@ python -m evotrader.cli evaluate strategies/quick_leveraged.json --config config
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --symbols TQQQ,SOXL,QLD
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --slippage 15
 python -m evotrader.cli evaluate strategies/quick_leveraged.json --config configs/quick_nasdaq.json --by-year --markdown strategies/reports/quick_nasdaq.md
+python -m evotrader.cli evaluate strategies/recent_regime.json --config configs/quick_names.json --test-frac 0 --since 2026-03-22,2025-09-22
 ```
 
 `--test-frac 0` scores one full window. `--by-year` adds calendar-year
 returns and trade counts, a per-symbol breakdown, and the best and worst
-trades. The exit code is 2 when any strategy is unprofitable on any window,
+trades. `--since` adds trailing-window rows from a date (return, trades,
+profit factor, max drawdown, worst day), which is how a strategy is judged
+on the last six months rather than on its whole history. The exit code is 2 when any strategy is unprofitable on any window,
 so it works as a check in a script. A strategy counts as profitable on a
 window when it made at least ten trades with a positive net return and a
 profit factor above one.
@@ -267,7 +275,8 @@ python -m evotrader.cli signals strategies/quick_leveraged.json --config configs
 
 `strategies/quick_leveraged.json` holds eight quick-trade strategies for
 the leveraged Nasdaq, semiconductor and single-stock funds, seven bred by
-hand this way and one evolved;
+hand this way and one evolved, and `strategies/recent_regime.json` the set
+ranked by the last six months;
 `strategies/README.md` is the report on them, and `strategies/reports/`
 the generated per-universe tables.
 

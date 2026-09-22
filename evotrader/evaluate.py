@@ -15,7 +15,7 @@ from .config import EvolutionConfig
 from .data import Universe, holdout_split, load_universe
 from .evolution import Context, score_genome
 from .features import build_features
-from .fitness import Metrics
+from .fitness import Metrics, compute_metrics
 from .genome import Genome, GenomeError, compile_genome
 from .journal import Trade
 from .runner import buy_and_hold, run_backtest
@@ -45,6 +45,16 @@ class YearRow:
 
 
 @dataclass
+class PeriodRow:
+    """Stats over a trailing window of the full backtest, e.g. the last six months."""
+
+    label: str
+    start: str
+    end: str
+    metrics: Metrics
+
+
+@dataclass
 class SymbolRow:
     symbol: str
     trades: int
@@ -61,6 +71,7 @@ class StrategyReport:
     best: List[Trade] = field(default_factory=list)     # over the full window
     worst: List[Trade] = field(default_factory=list)
     symbols: List[SymbolRow] = field(default_factory=list)
+    periods: List[PeriodRow] = field(default_factory=list)  # --since windows
     error: str = ""
 
     @property
@@ -92,7 +103,21 @@ def _context(universe: Universe, cfg: EvolutionConfig) -> Context:
                    slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
 
 
-def _by_year(genome: Genome, ctx: Context, report: StrategyReport) -> List[YearRow]:
+def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
+    """Metrics from the equity curve and trades on or after ``start``."""
+    dates = journal.equity_dates
+    idx = [i for i, d in enumerate(dates) if d >= start]
+    if len(idx) < 2:
+        return None
+    first = max(idx[0] - 1, 0)                     # the bar before, so the first return counts
+    equity = journal.equity[first:]
+    trades = [t for t in journal.trades if t.exit_date >= start]
+    m = compute_metrics(equity, trades, exposure=0.0)
+    return PeriodRow(f"since {start}", dates[first], dates[-1], m)
+
+
+def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
+             since: Sequence[str] = ()) -> List[YearRow]:
     """One full-window backtest, then calendar-year buckets from the equity
     curve (returns) and the trade list (counts, by exit date).  Also records
     the best and worst trades, so gap risk is visible."""
@@ -111,6 +136,10 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport) -> List[YearR
         for sym, ts in sorted(by_symbol.items(), key=lambda kv: -sum(t.pnl for t in kv[1]))]
     if not journal.equity:
         return []
+    for start in since:
+        row = _period(journal, start, ctx_cfg(ctx))
+        if row is not None:
+            report.periods.append(row)
     last_of_year: Dict[str, float] = {}
     order: List[str] = []
     for date, eq in zip(journal.equity_dates, journal.equity):
@@ -130,9 +159,17 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport) -> List[YearR
     return rows
 
 
+def ctx_cfg(ctx: Context) -> EvolutionConfig:
+    """The parts of a Context that period stats might need (costs)."""
+    return EvolutionConfig(starting_cash=ctx.starting_cash, commission_bps=ctx.commission_bps,
+                           slippage_bps=ctx.slippage_bps)
+
+
 def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
-             by_year: bool = False) -> List[StrategyReport]:
-    """Score each genome on the config's training and held-out windows."""
+             by_year: bool = False, since: Sequence[str] = ()) -> List[StrategyReport]:
+    """Score each genome on the config's training and held-out windows.
+    ``since`` dates add trailing-window rows (return, trades, worst day...)
+    from one full-window backtest; they imply ``by_year``'s full backtest."""
     universe = load_universe(cfg.symbols, cfg.start, cfg.end, offline=cfg.offline,
                              refresh=cfg.refresh_data)
     windows: List[tuple] = []
@@ -144,7 +181,7 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
     else:
         windows.append(("full", universe))
     contexts = [(label, _context(u, cfg)) for label, u in windows]
-    full_ctx = _context(universe, cfg) if by_year else None
+    full_ctx = _context(universe, cfg) if (by_year or since) else None
 
     reports: List[StrategyReport] = []
     for genome in genomes:
@@ -157,7 +194,8 @@ def evaluate(genomes: Sequence[Genome], cfg: EvolutionConfig, *,
                 a, b = ctx.train.date_range()
                 report.windows.append(WindowResult(label, a, b, out.metrics, out.score))
             if full_ctx is not None:
-                report.years = _by_year(genome, full_ctx, report)
+                years = _by_year(genome, full_ctx, report, since=since)
+                report.years = years if by_year else []
         except (GenomeError, ValueError) as exc:
             report.error = str(exc)
         reports.append(report)
@@ -210,7 +248,9 @@ def latest_signals(genomes: Sequence[Genome], cfg: EvolutionConfig
             for rule, weight in compiled.entries:
                 if rule(cur, prev):
                     context = {k: round(cur[k], 4) for k in sorted(rule.features) if k in cur}
-                    signals.append(Signal(genome.name, sym, date, rule.source, weight, context))
+                    # the broker caps a rule's weight at the genome's position limit
+                    size = min(weight, compiled.risk.max_position_pct)
+                    signals.append(Signal(genome.name, sym, date, rule.source, size, context))
                     break
     return date, signals, skipped
 
@@ -245,7 +285,7 @@ def _row(w: WindowResult) -> str:
             f"bh {m.benchmark_return * 100:+7.1f}%  sharpe {m.sharpe:5.2f}  "
             f"mdd {m.max_drawdown * 100:6.1f}%  trades {m.trades:4d}  win {m.win_rate * 100:3.0f}%  "
             f"pf {m.profit_factor:4.2f}  avg {m.avg_trade_return * 100:+5.2f}%/t  "
-            f"hold {m.avg_bars_held:4.1f}b  score {w.score:+.3f}"
+            f"hold {m.avg_bars_held:4.1f}b  worst day {m.worst_day * 100:5.1f}%  score {w.score:+.3f}"
             f"{'' if w.profitable else '  <-- not profitable'}")
 
 
@@ -260,6 +300,12 @@ def format_text(reports: Sequence[StrategyReport]) -> str:
         if r.years:
             lines.append("  by year: " + "  ".join(
                 f"{y.year} {y.ret * 100:+.0f}%/{y.trades}t" for y in r.years))
+        for p in r.periods:
+            m = p.metrics
+            lines.append(f"  {p.label} ({p.start}..{p.end}): ret {m.total_return * 100:+6.1f}%  "
+                         f"trades {m.trades:3d}  win {m.win_rate * 100:3.0f}%  pf {m.profit_factor:4.2f}  "
+                         f"avg {m.avg_trade_return * 100:+5.2f}%/t  mdd {m.max_drawdown * 100:5.1f}%  "
+                         f"worst day {m.worst_day * 100:5.1f}%")
         if r.symbols:
             lines.append("  by symbol: " + "  ".join(
                 f"{s.symbol} {s.trades}t {s.win_rate * 100:.0f}% {s.avg_ret * 100:+.2f}%"
@@ -293,16 +339,27 @@ def format_markdown(reports: Sequence[StrategyReport], *, title: str = "Strategi
             out.append(f"Error: {r.error}")
             out.append("")
             continue
-        out.append("| window | dates | return | buy & hold | sharpe | max dd | trades | win | profit factor | avg trade | avg hold | score |")
-        out.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
+        out.append("| window | dates | return | buy & hold | sharpe | max dd | worst day | trades | win | profit factor | avg trade | avg hold | score |")
+        out.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
         for w in r.windows:
             m = w.metrics
             out.append(f"| {w.label} | {w.start} to {w.end} | {m.total_return * 100:+.1f}% | "
                        f"{m.benchmark_return * 100:+.1f}% | {m.sharpe:.2f} | "
-                       f"{m.max_drawdown * 100:.1f}% | {m.trades} | {m.win_rate * 100:.0f}% | "
+                       f"{m.max_drawdown * 100:.1f}% | {m.worst_day * 100:.1f}% | {m.trades} | "
+                       f"{m.win_rate * 100:.0f}% | "
                        f"{m.profit_factor:.2f} | {m.avg_trade_return * 100:+.2f}% | "
                        f"{m.avg_bars_held:.1f} bars | {w.score:+.2f} |")
         out.append("")
+        if r.periods:
+            out.append("| period | dates | return | trades | win | profit factor | avg trade | max dd | worst day |")
+            out.append("|---|---|---|---|---|---|---|---|---|")
+            for p in r.periods:
+                m = p.metrics
+                out.append(f"| {p.label} | {p.start} to {p.end} | {m.total_return * 100:+.1f}% | "
+                           f"{m.trades} | {m.win_rate * 100:.0f}% | {m.profit_factor:.2f} | "
+                           f"{m.avg_trade_return * 100:+.2f}% | {m.max_drawdown * 100:.1f}% | "
+                           f"{m.worst_day * 100:.1f}% |")
+            out.append("")
         if r.years:
             out.append("| year | return | trades | win |")
             out.append("|---|---|---|---|")
