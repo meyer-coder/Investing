@@ -1,6 +1,3 @@
-# Core runtime needs only numpy.
+# Everything except Claude-driven breeding needs only numpy: the MCP servers,
+# the TradingView client and the backtest engine all run on this alone.
 numpy>=1.24
-
-# Needed for Claude-driven breeding (`--breeder llm` / `hybrid`).
-# Offline runs (`--breeder mutation`) work without it.
-anthropic>=1.0

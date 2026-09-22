@@ -16,5 +16,15 @@ data/cache/*.csv
 *.db
 reports/
 
+# Credentials — never commit a TradingView session cookie
+.env
+*.session
+
+# TradingView candle store
+data/cache/tv/
+
+# Stored TradingView login
+.tradingview.json
+
 # Generated strategy tables are part of the research record
 !strategies/reports/

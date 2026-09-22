@@ -47,7 +47,7 @@ Hard constraints, applied by the runtime whatever you write:
 """
 
 
-def _rule_reference() -> str:
+def rule_reference() -> str:
     feats = "\n".join(f"  {name}: {FEATURE_DOCS.get(name, '')}" for name in MARKET_FEATURES)
     port = "\n".join(f"  {name}: {FEATURE_DOCS.get(name, '')}" for name in PORTFOLIO_FEATURES)
     funcs = "\n".join(f"  {sig}: {doc}" for sig, doc in FUNCTION_DOCS.items())
@@ -74,7 +74,7 @@ Examples of valid rules:
 """
 
 
-def _genome_schema_text() -> str:
+def genome_schema_text() -> str:
     return f"""\
 GENOME FIELDS
   name          short distinctive name
@@ -238,8 +238,8 @@ def build_breeding_prompt(*, generation: int, elites: Sequence[tuple],
     parts = [
         f"GENERATION {generation}. Backtest window: {window or 'unspecified'}.",
         "",
-        _rule_reference(),
-        _genome_schema_text(),
+        rule_reference(),
+        genome_schema_text(),
         "",
         "=== TOP PERFORMERS THIS GENERATION ===",
     ]

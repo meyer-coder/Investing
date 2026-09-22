@@ -14,10 +14,11 @@ from typing import Dict, Iterable, List
 import numpy as np
 
 from . import indicators as ind
+from .sessions import SESSION_FEATURE_DOCS, SESSION_FEATURES, session_features
 from .data import Universe
 
 # Features derived from price history alone.
-MARKET_FEATURES: List[str] = [
+MARKET_FEATURES: List[str] = [  # session features are appended below
     "open", "high", "low", "close", "volume",
     "ret1", "ret5", "ret20", "ret60",
     "sma10", "sma20", "sma50", "sma200",
@@ -30,7 +31,7 @@ MARKET_FEATURES: List[str] = [
     "bb_upper", "bb_lower", "bb_pct", "zscore20",
     "pct_of_52w_high", "pct_off_52w_low", "volume_ratio",
     "mkt_ret20", "mkt_above_sma200", "mkt_vol20",
-]
+] + SESSION_FEATURES
 
 # Features injected by the backtest runner, describing the portfolio's own state.
 PORTFOLIO_FEATURES: List[str] = [
@@ -38,6 +39,7 @@ PORTFOLIO_FEATURES: List[str] = [
     "position_weight", "cash_pct", "gross_exposure", "position_count",
     "bars_since_exit", "portfolio_return", "portfolio_drawdown",
 ]
+
 
 FEATURE_NAMES: List[str] = MARKET_FEATURES + PORTFOLIO_FEATURES
 FEATURE_SET = frozenset(FEATURE_NAMES)
@@ -95,6 +97,10 @@ FEATURE_DOCS: Dict[str, str] = {
     "portfolio_return": "total return of the portfolio so far",
     "portfolio_drawdown": "portfolio drop from its equity peak, always <= 0",
 }
+
+#: The intraday features live in their own module; fold their docs in here
+#: so the breeder is shown one vocabulary rather than two.
+FEATURE_DOCS.update(SESSION_FEATURE_DOCS)
 
 TRADING_DAYS = 252.0
 
@@ -196,6 +202,7 @@ def build_features(universe: Universe) -> FeatureSet:
                 "pct_of_52w_high": c / hi52,
                 "pct_off_52w_low": c / lo52 - 1.0,
                 "volume_ratio": np.where(vol_avg > 0, v / vol_avg, 1.0),
+                **session_features(b.dates, h, l, c, v),
             }
         f.update({k: val.copy() for k, val in mkt.items()})
         missing = set(MARKET_FEATURES) - set(f)

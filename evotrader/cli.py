@@ -12,16 +12,17 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime, timezone
 from typing import List, Optional, Sequence
 
 from .config import DEFAULT_SYMBOLS, EvolutionConfig
 from .data import load_universe
 from .evaluate import (evaluate, format_markdown, format_signals, format_text,
                        latest_signals, load_genomes)
-from .evolution import Evolution, score_genome
-from .features import build_features
+from .evolution import Evolution, replay_genome
 from .fitness import FitnessConfig
 from .llm import PRICING, Claude
+from .mcp_rpc import serve
 from .report import html_report, lineage, markdown_report, print_report
 from .store import Store
 from .styles import STYLES
@@ -202,19 +203,9 @@ def cmd_backtest(args: argparse.Namespace) -> int:
         store.conn.execute("SELECT run_id FROM genomes WHERE id=?",
                            (args.genome_id,)).fetchone()["run_id"]) or {}
     cfg = EvolutionConfig.from_dict(stored)
-    symbols = [s.strip().upper() for s in args.symbols.split(",")] if args.symbols else cfg.symbols
-    universe = load_universe(symbols, args.start or cfg.start, args.end or cfg.end,
-                             offline=cfg.offline)
-    features = build_features(universe)
-    from .evolution import Context
-    from .runner import buy_and_hold
-    ctx = Context(train=universe, train_features=features,
-                  train_benchmark=buy_and_hold(universe, features,
-                                               starting_cash=cfg.starting_cash),
-                  test=None, test_features=None, test_benchmark=None,
-                  starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
-                  slippage_bps=cfg.slippage_bps, fitness=cfg.fitness)
-    outcome = score_genome(genome, ctx)
+    symbols = [s.strip().upper() for s in args.symbols.split(",")] if args.symbols else None
+    outcome = replay_genome(genome, cfg, symbols=symbols, start=args.start or "",
+                            end=args.end or "")
     if outcome.error:
         print(f"error: {outcome.error}", file=sys.stderr)
         return 1
@@ -308,6 +299,257 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     except Exception as exc:  # noqa: BLE001 - this is the diagnostic
         print(f"market data       unavailable: {exc}\n"
               f"                  use --offline to run on synthetic prices")
+    token = os.environ.get("TRADINGVIEW_SESSION", "")
+    print(f"tradingview       {'session cookie set' if token else 'anonymous'}"
+          f" — check the feed with `evotrader tv-check`")
+    return 0
+
+
+def cmd_mcp(args: argparse.Namespace) -> int:
+    """Speak MCP on stdin/stdout so Claude Code can watch a run in progress."""
+    from .mcp_server import SERVER_NAME, build_server
+
+    server = build_server(args.db_path or "")
+    print(f"{SERVER_NAME} on stdio, reading {server.context.db_path}", file=sys.stderr)
+    return serve(server)
+
+
+def cmd_tv_mcp(args: argparse.Namespace) -> int:
+    """Speak MCP on stdin/stdout so a client can backtest on TradingView data."""
+    from .tv_mcp import SERVER_NAME, build_server
+
+    print(f"{SERVER_NAME} on stdio (bars from {args.source})", file=sys.stderr)
+    return serve(build_server(source=args.source, db_path=args.db_path or ""))
+
+
+def cmd_tv_check(args: argparse.Namespace) -> int:
+    """Prove the TradingView feed works from this machine, before trusting a backtest."""
+    from .tvdata import (TradingViewError, fetch_bars, normalise_timeframe,
+                         search_symbols)
+
+    from .tvdata import auth_token
+
+    from .tvdata import load_credentials
+
+    stored, source = load_credentials()
+    # Never print the credential itself: this output ends up in terminals and logs.
+    print(f"credentials       {source}"
+          + (f" ({len(stored.get('sessionid', '')) or len(stored.get('auth_token', ''))} chars)"
+             if stored else " — run `evotrader tv-login` to sign in"))
+    try:
+        _token, how = auth_token(timeout=args.timeout)
+        print({"anonymous": "account           anonymous — free data only",
+               "token": "account           signed in (TRADINGVIEW_AUTH_TOKEN)",
+               "session": "account           signed in (cookie exchanged for an "
+                          "auth token)"}[how])
+    except TradingViewError as exc:
+        print(f"account           NOT SIGNED IN: {exc}")
+        print("                  the run will fall back to anonymous data")
+
+    ticker = args.symbol.split(":")[-1]
+    try:
+        matches = search_symbols(ticker, limit=3)
+        print(f"symbol search     ok ({', '.join(m['symbol'] for m in matches) or 'no matches'})")
+    except TradingViewError as exc:
+        print(f"symbol search     FAILED: {exc}")
+
+    try:
+        bars = fetch_bars(args.symbol, args.timeframe, args.bars, timeout=args.timeout)
+    except TradingViewError as exc:
+        print(f"bars              FAILED: {exc}")
+        print("                  if this is a network refusal, the feed is a "
+              "WebSocket to data.tradingview.com:443")
+        print("                  if it is an empty series, check the exchange "
+              "prefix (NASDAQ:AAPL, AMEX:SPY) and set TRADINGVIEW_SESSION")
+        return 1
+    first, last = bars.dates[0], bars.dates[-1]
+    print(f"bars              ok ({len(bars)} x {normalise_timeframe(args.timeframe)}, "
+          f"{first}..{last}, last close {bars.close[-1]:.2f})")
+    age_days = (datetime.now(timezone.utc)
+                - datetime.strptime(last[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)).days
+    if age_days > 4:
+        print(f"                  newest bar is {age_days} days old — the account "
+              f"may not be entitled to this symbol's recent data")
+    print("\nready: evotrader tv-mcp")
+    return 0
+
+
+def cmd_tv_depth(args: argparse.Namespace) -> int:
+    """How much history TradingView actually serves, timeframe by timeframe.
+
+    Run it signed out, then signed in.  If the rows do not change, the
+    subscription is not what is limiting the backtest.
+    """
+    from .tvdata import TradingViewError, auth_token, fetch_bars
+
+    try:
+        _token, how = auth_token(timeout=args.timeout)
+    except TradingViewError as exc:
+        print(f"not signed in: {exc}\n")
+        how = "anonymous"
+    print(f"{args.symbol} · account {how} · asking for {args.bars:,} bars each\n")
+    print("  tf   |   bars | from             | to               | span")
+    rows = []
+    for timeframe in [t.strip() for t in args.timeframes.split(",") if t.strip()]:
+        try:
+            bars = fetch_bars(args.symbol, timeframe, args.bars, timeout=args.timeout)
+        except TradingViewError as exc:
+            print(f"  {timeframe:<4} | {str(exc)[:60]}")
+            continue
+        first, last = bars.dates[0], bars.dates[-1]
+        days = (datetime.strptime(last[:10], "%Y-%m-%d")
+                - datetime.strptime(first[:10], "%Y-%m-%d")).days
+        span = (f"{days / 365.25:.1f} years" if days > 400 else
+                f"{days / 30.4:.1f} months" if days > 60 else f"{days} days")
+        print(f"  {timeframe:<4} | {len(bars):>6,} | {first:<16} | {last:<16} | {span}")
+        rows.append({"timeframe": timeframe, "bars": len(bars),
+                     "start": first, "end": last, "days": days})
+    if rows:
+        print("\n  run this again with TRADINGVIEW_SESSION set and compare: a row "
+              "that\n  does not move is a limit an upgrade will not lift")
+    return 0 if rows else 1
+
+
+def cmd_tv_fetch(args: argparse.Namespace) -> int:
+    """Pull candles into the local store and report how deep it now goes.
+
+    TradingView serves a rolling window of a few thousand bars per timeframe.
+    Run this on a schedule and the store keeps what the window leaves behind,
+    so the 5-minute record grows past anything one request returns.
+    """
+    from .tvcache import cache_summary, cached_bars
+    from .tvdata import TradingViewError
+
+    symbols = [s.strip().upper() for s in args.symbols.split(",") if s.strip()]
+    timeframes = [t.strip() for t in args.timeframes.split(",") if t.strip()]
+    print(f"{len(symbols)} symbols x {len(timeframes)} timeframes into "
+          f"{os.environ.get('EVOTRADER_TV_CACHE', 'data/cache/tv')}\n")
+    print("  symbol           | tf   |   bars | from             | to               | added")
+    failures = 0
+    for symbol in symbols:
+        for timeframe in timeframes:
+            try:
+                before = cached_bars(symbol, timeframe, args.bars, refresh=False)
+            except Exception:  # noqa: BLE001 - an empty cache is not an error
+                before = None
+            try:
+                bars = cached_bars(symbol, timeframe, args.bars, force=True,
+                                   timeout=args.timeout)
+            except TradingViewError as exc:
+                print(f"  {symbol:<16} | {timeframe:<4} | {str(exc)[:54]}")
+                failures += 1
+                continue
+            added = len(bars) - (len(before) if before is not None else 0)
+            print(f"  {symbol:<16} | {timeframe:<4} | {len(bars):>6,} | "
+                  f"{bars.dates[0]:<16} | {bars.dates[-1]:<16} | {added:>+6,}")
+    total = sum(int(row["bars"]) for row in cache_summary())
+    print(f"\n  store now holds {total:,} bars across {len(cache_summary())} series")
+    if failures:
+        print(f"  {failures} series failed; the store kept what it already had")
+    return 0
+
+
+def cmd_tv_login(args: argparse.Namespace) -> int:
+    """Store a TradingView login so every client picks it up.
+
+    An MCP client starts the server itself and does not inherit the shell you
+    exported variables in, so a saved file is what actually reaches it.
+    """
+    from getpass import getpass
+
+    from .tvdata import (TradingViewError, credentials_path, forget_credentials,
+                         resolve_auth_token, save_credentials)
+
+    if args.forget:
+        path = args.path or credentials_path()
+        print(f"removed {path}" if forget_credentials(path)
+              else f"nothing stored at {path}")
+        return 0
+
+    print("Paste the cookies from a browser logged in to TradingView:")
+    print("  DevTools -> Application -> Cookies -> https://www.tradingview.com")
+    print("Input is hidden, and only ever written to the credentials file.\n")
+    sessionid = getpass("sessionid: ").strip()
+    if not sessionid:
+        print("nothing entered", file=sys.stderr)
+        return 1
+    sign = getpass("sessionid_sign (press enter if you do not have one): ").strip()
+
+    try:
+        resolve_auth_token(sessionid, sign=sign, timeout=args.timeout)
+    except TradingViewError as exc:
+        # Storing a cookie that does not work is worse than storing nothing.
+        print(f"\nnot saved: {exc}", file=sys.stderr)
+        return 1
+    path = save_credentials(sessionid, sign=sign, path=args.path or "")
+    print(f"\nsigned in. stored at {path} (readable only by you)")
+    print("check what it buys you:  evotrader tv-depth")
+    return 0
+
+
+def cmd_serve_http(args: argparse.Namespace) -> int:
+    """Serve the MCP servers over HTTP, for use as a Claude custom connector."""
+    from .mcp_http import main as http_main
+
+    argv = ["--server", args.server, "--host", args.host, "--port", str(args.port),
+            "--path", args.path, "--source", args.source]
+    if args.token:
+        argv += ["--token", args.token]
+    if args.db_path:
+        argv += ["--db", args.db_path]
+    for origin in args.allow_origin or []:
+        argv += ["--allow-origin", origin]
+    return http_main(argv)
+
+
+def cmd_tv_import(args: argparse.Namespace) -> int:
+    """Load bars from a CSV — any tool's export — into the local store."""
+    from .tvcache import cache_path, import_csv
+
+    try:
+        bars = import_csv(args.file, args.symbol, args.timeframe,
+                          merge=not args.replace)
+    except Exception as exc:  # noqa: BLE001 - the message is the useful part
+        print(f"import failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"{args.symbol} {args.timeframe}: {len(bars):,} bars "
+          f"{bars.dates[0]}..{bars.dates[-1]}")
+    print(f"stored at {cache_path(args.symbol, args.timeframe)}")
+    return 0
+
+
+def cmd_tv_export(args: argparse.Namespace) -> int:
+    """Write a stored series out as CSV."""
+    from .tvcache import export_csv
+
+    try:
+        path = export_csv(args.symbol, args.timeframe, args.file or "")
+    except Exception as exc:  # noqa: BLE001
+        print(f"export failed: {exc}", file=sys.stderr)
+        return 1
+    print(f"wrote {path}")
+    return 0
+
+
+def cmd_tv_archive(args: argparse.Namespace) -> int:
+    """Rebuild a futures archive from every expired quarterly contract."""
+    from .tvarchive import build, describe
+    from .tvdata import TradingViewError
+
+    def progress(symbol: str, bars: int) -> None:
+        print(f"  {symbol:<22} {bars:>7,} bars")
+
+    print(f"pulling {args.root} contracts back to {args.since} at {args.timeframe}")
+    try:
+        report = build(args.exchange, args.root, args.timeframe,
+                       since_year=args.since, bars=args.bars,
+                       back_adjust=not args.raw_prices, pause=args.pause,
+                       progress=progress)
+    except TradingViewError as exc:
+        print(f"archive failed: {exc}", file=sys.stderr)
+        return 1
+    print()
+    print(describe(report))
     return 0
 
 
@@ -405,6 +647,91 @@ def build_parser() -> argparse.ArgumentParser:
 
     doc = sub.add_parser("doctor", help="check data access, credentials and deps")
     doc.set_defaults(func=cmd_doctor)
+
+    mcp = sub.add_parser("mcp", help="serve the training view to an MCP client on stdio")
+    mcp.add_argument("--db", dest="db_path")
+    mcp.set_defaults(func=cmd_mcp)
+
+    tv = sub.add_parser("tv-mcp", help="serve TradingView-data backtesting to an "
+                                       "MCP client on stdio")
+    tv.add_argument("--source", choices=["tradingview", "yahoo", "synthetic"],
+                    default="tradingview", help="default bar source")
+    tv.add_argument("--db", dest="db_path",
+                    help="evotrader SQLite path, for backtest_evolved_agent")
+    tv.set_defaults(func=cmd_tv_mcp)
+
+    chk = sub.add_parser("tv-check", help="check the TradingView feed works from here")
+    chk.add_argument("--symbol", default="NASDAQ:AAPL")
+    chk.add_argument("--timeframe", default="1D")
+    chk.add_argument("--bars", type=int, default=120)
+    chk.add_argument("--timeout", type=float, default=30.0)
+    chk.set_defaults(func=cmd_tv_check)
+
+    dep = sub.add_parser("tv-depth", help="measure how much history TradingView serves")
+    dep.add_argument("--symbol", default="NASDAQ:AAPL")
+    dep.add_argument("--timeframes", default="1,5,15,60,240,1D,1W")
+    dep.add_argument("--bars", type=int, default=20000)
+    dep.add_argument("--timeout", type=float, default=40.0)
+    dep.set_defaults(func=cmd_tv_depth)
+
+    imp = sub.add_parser("tv-import", help="load bars from a CSV into the store")
+    imp.add_argument("--file", required=True)
+    imp.add_argument("--symbol", required=True)
+    imp.add_argument("--timeframe", required=True)
+    imp.add_argument("--replace", action="store_true",
+                     help="discard what is stored rather than merging")
+    imp.set_defaults(func=cmd_tv_import)
+
+    exp = sub.add_parser("tv-export", help="write a stored series out as CSV")
+    exp.add_argument("--symbol", required=True)
+    exp.add_argument("--timeframe", required=True)
+    exp.add_argument("--file")
+    exp.set_defaults(func=cmd_tv_export)
+
+    arc = sub.add_parser("tv-archive", help="build deep futures history from "
+                                            "expired quarterly contracts")
+    arc.add_argument("--exchange", default="CME_MINI")
+    arc.add_argument("--root", default="NQ", help="NQ, ES, RTY, YM, CL, GC, ...")
+    arc.add_argument("--timeframe", default="5")
+    arc.add_argument("--since", type=int, default=2015, help="first contract year")
+    arc.add_argument("--bars", type=int, default=20000, help="bars per contract")
+    arc.add_argument("--raw-prices", action="store_true",
+                     help="leave the roll jumps in rather than back-adjusting")
+    arc.add_argument("--pause", type=float, default=0.5,
+                     help="seconds between contracts")
+    arc.set_defaults(func=cmd_tv_archive)
+
+    tvf = sub.add_parser("tv-fetch", help="pull candles into the local store, "
+                                          "deepening it each run")
+    tvf.add_argument("--symbols", default="NASDAQ:AAPL")
+    tvf.add_argument("--timeframes", default="5,15,60,240,1D")
+    tvf.add_argument("--bars", type=int, default=20000,
+                     help="how many bars to ask for; 10 years of 1-minute is "
+                          "about 3,500,000")
+    tvf.add_argument("--timeout", type=float, default=40.0,
+                     help="budget for the whole pull, in seconds — a deep "
+                          "intraday history takes minutes, not seconds")
+    tvf.set_defaults(func=cmd_tv_fetch)
+
+    log = sub.add_parser("tv-login", help="store a TradingView login for every client")
+    log.add_argument("--path", help="where to store it (default ~/.config/evotrader)")
+    log.add_argument("--forget", action="store_true", help="remove the stored login")
+    log.add_argument("--timeout", type=float, default=20.0)
+    log.set_defaults(func=cmd_tv_login)
+
+    http = sub.add_parser("serve-http", help="serve MCP over HTTP (for a Claude "
+                                             "custom connector)")
+    http.add_argument("--server", choices=["tradingview", "training", "both"],
+                      default="both")
+    http.add_argument("--host", default="127.0.0.1")
+    http.add_argument("--port", type=int, default=8787)
+    http.add_argument("--path", default="/mcp")
+    http.add_argument("--token", default=os.environ.get("EVOTRADER_MCP_TOKEN", ""))
+    http.add_argument("--allow-origin", action="append")
+    http.add_argument("--source", choices=["tradingview", "yahoo", "synthetic"],
+                      default="tradingview")
+    http.add_argument("--db", dest="db_path")
+    http.set_defaults(func=cmd_serve_http)
     return p
 
 
