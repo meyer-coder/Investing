@@ -30,10 +30,16 @@ Substitutes, in strict order: CME_MINI:MNQ1! (micro, same underlying, cheaper
 Target: 5 years of 5-minute bars (~350,000 bars).
 
 Acquire in this order, stopping once the target is met:
-  1. TradingView MCP `bars`. BE AWARE: it caps at 1000 candles per call and
-     accepts NO date-range argument, only `count`. At 5m that is ~3.6 calendar
-     days, roughly 0.3% of one year. Treat it as a live sanity check on
-     price levels and session boundaries, NOT as the study dataset.
+  1. TradingView MCP `bars`. MEASURED LIMITS, verify them yourself before
+     relying on anything: `count` is HARD-CLAMPED to 1000 (a request for 5000
+     returns 1000 and reports "1000 bars" with no error), and there is NO
+     date-range argument — only `symbol`, `timeframe`, `count`. Every call
+     returns the MOST RECENT bars, so there is no pagination and history cannot
+     be walked backwards. Coverage is always 1000 x timeframe: ~4 trading days
+     at 5m, ~2 months at 1h, ~4 years at 1D.
+     USE IT FOR WHAT IT IS GOOD AT: pull 1D bars for 4 years of regime
+     classification, volatility deciles, seasonality of the MARKET, and event
+     identification. Do NOT use it as the 5m study dataset — it cannot be one.
   2. Databento GLBX.MDP3 (CME Globex) — free signup credit plus free sample
      windows. Use `ohlcv-1m` and aggregate to 5m yourself so you control the
      bar boundaries. Report exactly how many bars the free tier yielded and

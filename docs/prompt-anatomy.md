@@ -45,36 +45,65 @@ These are not interchangeable. A strategy tuned on CFD spreads can fail on futur
 ## 3. The measured data ceiling (this is the finding that matters)
 
 The prompt assumes TradingView is a deep well and the fallbacks are for the tail.
-It is the opposite. Measured directly in this session:
+For **intraday** resolutions it is the opposite. Measured directly against the
+live tunnel, not assumed:
 
-```
-mcp__TradingView__bars(symbol="CME_MINI:NQ1!", timeframe="5m", count=1000)
-  -> first bar 2026-09-15 06:40 UTC
-  -> last  bar 2026-09-18 20:55 UTC
-  -> 3.6 calendar days
-```
+| Request | Bars returned | Coverage |
+|---|---|---|
+| `bars(NQ1!, 5m, count=1000)` | 1000 | 2026-09-16 10:55 -> 2026-09-22 02:10 UTC = **5.6 calendar days** (~4 trading days) |
+| `bars(NQ1!, 5m, count=5000)` | **1000** (clamped) | identical window — the request for 5000 was silently reduced |
+| `bars(NQ1!, 1h, count=1000)` | 1000 | 2026-07-22 -> 2026-09-22 = **61.6 calendar days** |
+| `bars(NQ1!, 1D, count=1000)` | 1000 | 2022-09-29 -> 2026-09-21 = **~4 years** |
 
-The tool caps at **1000 candles** and — decisively — accepts **no date-range
-parameter**, only `count`. There is no way to page backwards. One week is the
-entire well.
+Three facts follow, and together they define what is buildable:
 
-What the requested study actually needs:
+1. **`count` is hard-clamped to 1000.** Asking for 5000 returns 1000 and the
+   response header says "1000 bars". No error, no warning. Code that assumes it
+   got 5000 bars will silently analyse a fifth of the intended window.
+2. **There is no date-range parameter.** The tool accepts `symbol`, `timeframe`
+   and `count` only — no `from`, `to`, `end` or `offset`. Every call returns the
+   *most recent* N bars. Calling it repeatedly returns the same window. **There
+   is no pagination, so history cannot be walked backwards at any resolution.**
+3. **Depth is purely a function of resolution**, because coverage is always
+   `1000 x timeframe`:
 
-- NQ trades 23h/day (the 17:00–18:00 ET CME halt is visible in the data as a gap from 20:55 to 22:00 UTC).
-- 23h = **276** five-minute bars per day; ~252 sessions = **~69,500 bars/year**.
-- Month-to-month seasonality with year-over-year stability needs 5–10 years = **350,000–700,000 bars**.
+| Timeframe | Coverage at the 1000-bar cap |
+|---|---|
+| 5m | ~4 trading days *(measured)* |
+| 15m | ~2 weeks *(derived)* |
+| 1h | ~2 months *(measured)* |
+| 4h | ~8 months *(derived)* |
+| 1D | ~4 years *(measured)* |
+| 1W | ~19 years *(derived)* |
 
-TradingView MCP supplies 1,000 of them: **0.14% of a ten-year study.**
+**The deep history is real — it is simply not available at intraday
+resolution.** The daily feed reaches back four years through the same tunnel.
+That is a genuinely useful dataset, just not the one a 5-minute strategy needs.
 
-Consequences, stated plainly:
+What the requested study actually needs: NQ trades 23h/day, so 276 five-minute
+bars per session, ~252 sessions = **~69,500 bars/year**. Ten years is
+**~695,000 bars** — 695 times the per-call cap, with no mechanism to page back.
 
-- Seasonality, year-over-year, and event studies are **not reachable** from the primary source. The fallback chain is not a contingency — it is the dataset.
-- With 3.6 days you get roughly **4 instances** of the 9–10am hour. Any per-hour ranking from that is noise.
-- The prompt's ordering ("use TradingView for as much as possible, *then* external") inverts the real effort allocation. ~95% of the work is the external data pipeline.
+### The consequence for the work
 
-**Fix:** make the agent *declare its coverage before it tests anything* — bars retrieved, date span, bars per session, gaps — and refuse to run seasonality if span < 3 years. Otherwise it will silently produce a month-by-month chart built on four days and present it with a straight face.
+Split the study by what each resolution can actually support:
 
----
+| Question | Resolution needed | Reachable through the tunnel? |
+|---|---|---|
+| Market regimes, volatility deciles, event identification | Daily | **Yes — 4 years, today** |
+| Month-of-year and year-over-year *market* behaviour | Daily | **Yes — 4 years, today** |
+| Strategy PnL attributed to month/year/regime | 5m | No — needs the strategy run on 5m over the same span |
+| Hour-of-day buckets, opening range, 9-10 vs 10-11am | 5m | No — 4 trading days gives ~4 samples per hour bucket |
+
+The daily feed supplies the **conditioning variables** (which months were
+volatile, which events moved volume) but not strategy returns. Attributing PnL
+to those regimes still requires 5m bars across the same years.
+
+**Design implication:** make the agent *declare its coverage before it tests
+anything* — bars retrieved, date span, bars per session, gaps — and refuse
+seasonality when the span is under three years. Otherwise it will build a
+month-by-month chart from four days and present it with a straight face. That
+is why every brief in the library opens with a coverage gate.
 
 ## 4. The ambiguous clause
 
