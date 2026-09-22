@@ -125,3 +125,24 @@ def test_every_session_feature_is_registered_and_documented():
     for name in SESSION_FEATURES:
         assert name in FEATURE_SET, f"{name} is not usable in a rule"
         assert FEATURE_DOCS.get(name), f"{name} has no description for the breeder"
+
+
+# ------------------------------------------------------- annualisation
+def test_effective_bars_per_year_measures_the_span_not_the_table():
+    from evotrader.tvdata import bars_per_year, effective_bars_per_year
+    # One year of 15-minute bars at futures density: 92 a day, 252 days.
+    dates = []
+    import datetime as dt
+    day = dt.date(2025, 1, 1)
+    while len(dates) < 92 * 252:
+        if day.weekday() < 5:
+            for k in range(92):
+                dates.append(f"{day} {k // 4:02d}:{(k % 4) * 15:02d}")
+        day += dt.timedelta(days=1)
+    dates = dates[:92 * 252]
+    table = bars_per_year("15")                  # assumes 26/day
+    measured = effective_bars_per_year(dates, "15")
+    assert table == pytest.approx(252 * 26)
+    assert measured == pytest.approx(92 * 252, rel=0.06)   # ~3.5x the table; span is 0.96y not 1.0
+    # Too short a span falls back to the table rather than guessing.
+    assert effective_bars_per_year(dates[:50], "15") == table

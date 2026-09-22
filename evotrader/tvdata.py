@@ -96,6 +96,29 @@ def bars_per_year(timeframe: str) -> float:
     return TIMEFRAMES[normalise_timeframe(timeframe)]
 
 
+def effective_bars_per_year(dates: Sequence[str], timeframe: str) -> float:
+    """Bars per year as the series actually delivered them.
+
+    The table above assumes regular-hours density (26 fifteen-minute bars a
+    day).  A CME futures session runs 23 hours and produces ~92, so a year of
+    NQ is 3.5x more bars than the table says and every annualised figure
+    computed from the table — years, CAGR, Sharpe, turnover — is off by that
+    factor.  Measuring the span instead is right for any session, and for a
+    stitched archive whose holes shorten both the bar count and the span.
+    """
+    if len(dates) < 2:
+        return bars_per_year(timeframe)
+    try:
+        first = datetime.strptime(dates[0][:10], "%Y-%m-%d")
+        last = datetime.strptime(dates[-1][:10], "%Y-%m-%d")
+    except ValueError:
+        return bars_per_year(timeframe)
+    years = (last - first).days / 365.25
+    if years < 1 / 12:                   # under a month: the span is too noisy
+        return bars_per_year(timeframe)
+    return len(dates) / years
+
+
 def interval_seconds(timeframe: str) -> float:
     """How long one bar of this timeframe covers."""
     tf = normalise_timeframe(timeframe)

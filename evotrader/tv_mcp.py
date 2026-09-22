@@ -228,7 +228,7 @@ def _run(view: Backtester, genome: Genome, universe: Universe, timeframe: str, *
                           starting_cash=starting_cash,
                           commission_bps=commission_bps, slippage_bps=slippage_bps)
     benchmark = buy_and_hold(universe, features, starting_cash=starting_cash)
-    per_year = tvdata.bars_per_year(timeframe)
+    per_year = tvdata.effective_bars_per_year(universe.bars[universe.symbols[0]].dates, timeframe)
     metrics = compute_metrics(result.journal.equity, result.journal.trades,
                               benchmark=benchmark, turnover=result.turnover,
                               exposure=result.exposure, bars_per_year=per_year)
