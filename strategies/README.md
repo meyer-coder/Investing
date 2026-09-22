@@ -63,6 +63,18 @@ PF 2.09, 252 trades, 72% winners on the long Nasdaq funds) and has lost
 every one of its handful of trades since March. Keep it, do not trade it
 until it turns.
 
+**Where the recent gains come from.** Over the same six months the
+durable set on the six-fund Nasdaq basket (TQQQ/SQQQ, SOXL/SOXS, QLD/QID)
+was negative for seven of eight: Combo: All Five Setups -1%, Capitulation
+Close -4%, Red Day Above the 50 -4%, Prior-Low Break -10%; only Two Red
+Days was positive, on five trades. On the mega-cap pairs two of eight were
+positive. On TQQQ, SOXL and QLD alone the numbers are modest: Combo: All
+Five +8%, Two Red Days +9%, Capitulation Close +4%. The strong six-month
+figures in the table above are carried by RIOX, MUU and SOXL, the three
+most volatile long funds, in a period when they swung hard. That is a
+concentration, not a broad edge: if those three calm down or trend
+straight down, expect the Nasdaq-basket numbers, not the table's.
+
 **Drop the inverse funds.** In every strategy MUD, SQQQ and SOXS are the
 losing side: MUD wins 20% to 35% of its trades whatever the setup. Over
 the last six months on your names, excluding them lifts Combo: All Five
