@@ -19,12 +19,12 @@ Terms: `atr_pct` 14-day average range as a share of price; `bars_held` sessions 
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $312 | +299% | 24 | 75% | +10.8% | -6.9% | 3.59 | -23% | $-3,509 |
-| Last 12 months | $251 | +839% | 39 | 74% | +10.4% | -5.6% | 3.85 | -23% | $-3,509 |
-| 2019 to Mar 2026 (bred on) | $49 | +1072% | 264 | 62% | +6.5% | -7.2% | 1.78 | -65% | $-5,505 |
-| 2012 to 2018 | $60 | +2027% | 271 | 63% | +6.7% | -7.2% | 1.68 | -59% | $-4,586 |
+| Last 6 months (never bred on) | $312 | +299% | 24 | 75% | +10.8% | -6.9% | 3.59 | -23% | -$3,509 |
+| Last 12 months | $251 | +839% | 39 | 74% | +10.4% | -5.6% | 3.85 | -23% | -$3,509 |
+| 2019 to Mar 2026 (bred on) | $49 | +1072% | 264 | 62% | +6.5% | -7.2% | 1.78 | -65% | -$5,505 |
+| 2012 to 2018 | $60 | +2027% | 271 | 63% | +6.7% | -7.2% | 1.68 | -59% | -$4,586 |
 
-Every rolling three-month stretch since 2019 (1878): 65% made money; the typical one made $45 a session and the worst $-312.
+Every rolling three-month stretch since 2019 (1878): 65% made money; the typical one made $45 a session and the worst -$312.
 
 At 3x slippage: $324 a session over the last six months, $38 over 2019 to March 2026.
 
@@ -39,15 +39,15 @@ Buying and holding over the last six months: AMDL $494 a session.
 | 2012 | +34% | $40 | 30 | 50% |
 | 2013 | +23% | $35 | 32 | 62% |
 | 2014 | +3% | $13 | 41 | 58% |
-| 2015 | -20% | $-9 | 32 | 62% |
+| 2015 | -20% | -$9 | 32 | 62% |
 | 2016 | +175% | $136 | 58 | 67% |
 | 2017 | +27% | $37 | 35 | 63% |
 | 2018 | +346% | $167 | 43 | 72% |
 | 2019 | +37% | $42 | 43 | 63% |
 | 2020 | +1% | $27 | 43 | 58% |
 | 2021 | -1% | $11 | 41 | 54% |
-| 2022 | -14% | $-6 | 15 | 47% |
+| 2022 | -14% | -$6 | 15 | 47% |
 | 2023 | +117% | $92 | 42 | 69% |
-| 2024 | -28% | $-21 | 35 | 54% |
+| 2024 | -28% | -$21 | 35 | 54% |
 | 2025 | +294% | $159 | 38 | 76% |
 | 2026 | +554% | $292 | 31 | 77% |

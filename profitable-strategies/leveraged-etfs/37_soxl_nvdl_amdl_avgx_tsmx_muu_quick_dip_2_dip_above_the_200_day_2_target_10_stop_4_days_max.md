@@ -14,12 +14,12 @@ Terms: `bars_held` sessions the trade has been held; `ret1` the day's return; `s
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $266 | +174% | 41 | 68% | +9.7% | -11.4% | 1.77 | -51% | $-4,976 |
-| Last 12 months | $172 | +214% | 79 | 66% | +8.6% | -10.6% | 1.56 | -51% | $-4,976 |
-| 2019 to Mar 2026 (bred on) | $68 | +2544% | 392 | 66% | +6.1% | -8.2% | 1.28 | -54% | $-5,918 |
-| 2012 to 2018 | $60 | +1405% | 382 | 66% | +5.9% | -8.2% | 1.17 | -65% | $-6,941 |
+| Last 6 months (never bred on) | $266 | +174% | 41 | 68% | +9.7% | -11.4% | 1.77 | -51% | -$4,976 |
+| Last 12 months | $172 | +214% | 79 | 66% | +8.6% | -10.6% | 1.56 | -51% | -$4,976 |
+| 2019 to Mar 2026 (bred on) | $68 | +2544% | 392 | 66% | +6.1% | -8.2% | 1.28 | -54% | -$5,918 |
+| 2012 to 2018 | $60 | +1405% | 382 | 66% | +5.9% | -8.2% | 1.17 | -65% | -$6,941 |
 
-Every rolling three-month stretch since 2019 (1878): 77% made money; the typical one made $65 a session and the worst $-191.
+Every rolling three-month stretch since 2019 (1878): 77% made money; the typical one made $65 a session and the worst -$191.
 
 At 3x slippage: $202 a session over the last six months, $50 over 2019 to March 2026.
 
@@ -31,7 +31,7 @@ Buying and holding over the last six months: SOXL $335 a session, NVDL $118 a se
 
 | Year | Return | $ a session | Trades | Win rate |
 | --- | --- | --- | --- | --- |
-| 2012 | -24% | $-20 | 39 | 56% |
+| 2012 | -24% | -$20 | 39 | 56% |
 | 2013 | +191% | $127 | 55 | 71% |
 | 2014 | +16% | $28 | 54 | 67% |
 | 2015 | -6% | $9 | 50 | 56% |

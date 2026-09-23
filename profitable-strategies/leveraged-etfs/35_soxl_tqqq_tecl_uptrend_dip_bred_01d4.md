@@ -18,12 +18,12 @@ Terms: `bb_lower` lower Bollinger band; `cross_above` cross_above(a, b): a close
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $254 | +164% | 84 | 57% | +6.9% | -5.8% | 1.35 | -45% | $-5,145 |
-| Last 12 months | $212 | +422% | 135 | 58% | +6.4% | -5.5% | 1.4 | -45% | $-5,145 |
-| 2019 to Mar 2026 (bred on) | $92 | +10117% | 743 | 60% | +5.3% | -5.7% | 1.45 | -65% | $-7,387 |
-| 2012 to 2018 | $25 | +160% | 610 | 56% | +4.0% | -4.5% | 1.05 | -67% | $-3,929 |
+| Last 6 months (never bred on) | $254 | +164% | 84 | 57% | +6.9% | -5.8% | 1.35 | -45% | -$5,145 |
+| Last 12 months | $212 | +422% | 135 | 58% | +6.4% | -5.5% | 1.4 | -45% | -$5,145 |
+| 2019 to Mar 2026 (bred on) | $92 | +10117% | 743 | 60% | +5.3% | -5.7% | 1.45 | -65% | -$7,387 |
+| 2012 to 2018 | $25 | +160% | 610 | 56% | +4.0% | -4.5% | 1.05 | -67% | -$3,929 |
 
-Every rolling three-month stretch since 2019 (1878): 74% made money; the typical one made $88 a session and the worst $-230.
+Every rolling three-month stretch since 2019 (1878): 74% made money; the typical one made $88 a session and the worst -$230.
 
 At 3x slippage: $206 a session over the last six months, $62 over 2019 to March 2026.
 
@@ -39,11 +39,11 @@ Buying and holding over the last six months: SOXL $335 a session, TQQQ $143 a se
 | 2015 | +17% | $30 | 107 | 56% |
 | 2016 | +1% | $12 | 81 | 54% |
 | 2017 | +107% | $79 | 60 | 65% |
-| 2018 | -50% | $-46 | 110 | 47% |
+| 2018 | -50% | -$46 | 110 | 47% |
 | 2019 | +147% | $104 | 91 | 66% |
 | 2020 | +330% | $198 | 110 | 68% |
 | 2021 | +24% | $40 | 101 | 55% |
-| 2022 | -35% | $-7 | 121 | 50% |
+| 2022 | -35% | -$7 | 121 | 50% |
 | 2023 | +99% | $85 | 85 | 59% |
 | 2024 | -9% | $14 | 101 | 58% |
 | 2025 | +257% | $161 | 111 | 60% |

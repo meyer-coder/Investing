@@ -1,0 +1,63 @@
+//@version=6
+// NVDL / AMDL Volume Momentum: 0% over the 20-day on 1.2x volume, out 2% under — evotrader genome e77b2b4ff109.
+// Leveraged tech strategy 45 of the grind (strategies/etf).
+//
+// Volume Momentum in a Bull Regime 0.0/1.2/0.02
+//
+// Rules, exactly as the engine runs them:
+// BUY when mkt_above_sma200 == 1 and dist_sma20 > 0.0 and volume_ratio > 1.2
+// SELL when dist_sma20 < -0.02
+// SELL when mkt_above_sma200 == 0
+// Risk (checked on the close, filled at the next open): stop 12.00%, no
+// target, no trailing stop, no max hold, cooldown 5 bars.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily AMDL chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 2-fund strategy (NVDL, AMDL): run the script on each fund's chart
+// and hold one position at a time, the first signal wins.
+strategy("NVDL / AMDL Volume Momentum: 0% over the 20-day on 1.2x volu [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(12, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(5, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_sma20 = ta.sma(close, 20)
+f_dist_sma20 = close / f_sma20 - 1
+f_sma200 = ta.sma(close, 200)
+f_mkt_above_sma200 = close > f_sma200 ? 1.0 : 0.0
+f_volavg20 = ta.sma(volume, 20)
+f_volume_ratio = f_volavg20 > 0 ? volume / f_volavg20 : 1.0
+
+warm = bar_index >= 200
+inPos = strategy.position_size > 0
+buySignal = ((((math.abs(f_mkt_above_sma200 - 1.0) <= 1e-9) and (f_dist_sma20 > 0.0)) and (f_volume_ratio > 1.2)))
+sellSignal = ((f_dist_sma20 < (-0.02))) or ((math.abs(f_mkt_above_sma200 - 0.0) <= 1e-9))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "NVDL / AMDL Volume Momentum: 0% over the: buy at next open", "NVDL / AMDL Volume Momentum: 0% over the: buy {{ticker}} at the next open")
+alertcondition(exitNow, "NVDL / AMDL Volume Momentum: 0% over the: sell at next open", "NVDL / AMDL Volume Momentum: 0% over the: sell {{ticker}} at the next open")

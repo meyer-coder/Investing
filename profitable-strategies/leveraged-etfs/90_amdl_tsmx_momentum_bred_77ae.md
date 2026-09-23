@@ -15,12 +15,12 @@ Terms: `atr_pct` 14-day average range as a share of price; `cross_above` cross_a
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $317 | +251% | 18 | 50% | +34.6% | -8.2% | 2.29 | -31% | $-5,438 |
-| Last 12 months | $320 | +1261% | 32 | 47% | +36.1% | -7.2% | 2.45 | -31% | $-5,438 |
-| 2019 to Mar 2026 (bred on) | $110 | +27843% | 201 | 34% | +26.0% | -8.1% | 2.07 | -65% | $-6,940 |
-| 2012 to 2018 | $69 | +1736% | 237 | 41% | +15.3% | -6.9% | 1.34 | -68% | $-12,119 |
+| Last 6 months (never bred on) | $317 | +251% | 18 | 50% | +34.6% | -8.2% | 2.29 | -31% | -$5,438 |
+| Last 12 months | $320 | +1261% | 32 | 47% | +36.1% | -7.2% | 2.45 | -31% | -$5,438 |
+| 2019 to Mar 2026 (bred on) | $110 | +27843% | 201 | 34% | +26.0% | -8.1% | 2.07 | -65% | -$6,940 |
+| 2012 to 2018 | $69 | +1736% | 237 | 41% | +15.3% | -6.9% | 1.34 | -68% | -$12,119 |
 
-Every rolling three-month stretch since 2019 (1878): 80% made money; the typical one made $131 a session and the worst $-292.
+Every rolling three-month stretch since 2019 (1878): 80% made money; the typical one made $131 a session and the worst -$292.
 
 At 3x slippage: $329 a session over the last six months, $96 over 2019 to March 2026.
 
@@ -32,17 +32,17 @@ Buying and holding over the last six months: AMDL $494 a session, TSMX $133 a se
 
 | Year | Return | $ a session | Trades | Win rate |
 | --- | --- | --- | --- | --- |
-| 2012 | -19% | $-3 | 30 | 37% |
+| 2012 | -19% | -$3 | 30 | 37% |
 | 2013 | +47% | $71 | 36 | 39% |
 | 2014 | +95% | $79 | 35 | 37% |
-| 2015 | -35% | $-27 | 25 | 28% |
+| 2015 | -35% | -$27 | 25 | 28% |
 | 2016 | +676% | $236 | 39 | 54% |
 | 2017 | +0% | $44 | 38 | 45% |
 | 2018 | +57% | $80 | 34 | 41% |
 | 2019 | +220% | $148 | 33 | 48% |
 | 2020 | +180% | $144 | 25 | 40% |
 | 2021 | +98% | $95 | 31 | 26% |
-| 2022 | -44% | $-31 | 19 | 16% |
+| 2022 | -44% | -$31 | 19 | 16% |
 | 2023 | +64% | $70 | 28 | 25% |
 | 2024 | +187% | $141 | 26 | 38% |
 | 2025 | +195% | $149 | 33 | 36% |

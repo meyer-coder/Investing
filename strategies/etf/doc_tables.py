@@ -81,6 +81,8 @@ def special_lines(data: dict) -> str:
 
 def readme(data: dict) -> str:
     n = len(data["strategies"])
+    beat = {w: sum(v["windows"][w]["usd_per_session"] > sum(v["buy_and_hold"][w].values()) / len(v["buy_and_hold"][w])
+                   for v in data["strategies"]) for w in ("held_out", "train", "older")}
     return "\n".join([
         "# Leveraged tech strategies: top 50", "",
         "As of 2026-09-23. Backtests on daily bars, not advice.", "",
@@ -97,7 +99,11 @@ def readme(data: dict) -> str:
         "- **Win rate** is the last six months / 2019 to March 2026. **Worst drawdown** is the worst of the three "
         "windows.",
         "- The last six months were extreme for these funds (SOXL +178% with a 69% drop in between, 2x Micron "
-        "+284%), so recent dollars are far above what the same rules made in earlier years.", "",
+        "+284%), so recent dollars are far above what the same rules made in earlier years.",
+        f"- Holding the funds made more than most of these: {beat['held_out']} of the {n} beat buying and holding "
+        f"their funds over the last six months, {beat['train']} over 2019 to March 2026 and {beat['older']} over "
+        "2012 to 2018. What the rules buy is time out of the market: holding these funds fell 81% to 92% in "
+        "2022, and none of these fell more than 70%.", "",
         top50(data), "", "## The two picks you asked for", "", special_lines(data),
         "## Files", "",
         "- `NN_name.md`: rules, every window, the real-fund check, buy-and-hold and year-by-year results.",

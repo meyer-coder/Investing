@@ -18,12 +18,12 @@ Terms: `bb_pct` position inside the bands (0 = lower, 1 = upper); `dist_sma20` d
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $379 | +436% | 22 | 73% | +14.7% | -6.7% | 7.37 | -19% | $-4,527 |
-| Last 12 months | $361 | +2485% | 48 | 73% | +13.0% | -6.2% | 6.2 | -21% | $-4,527 |
-| 2019 to Mar 2026 (bred on) | $53 | +2460% | 181 | 57% | +8.4% | -5.9% | 2.53 | -37% | $-4,053 |
-| 2012 to 2018 | $37 | +782% | 134 | 59% | +7.0% | -5.2% | 1.53 | -36% | $-4,376 |
+| Last 6 months (never bred on) | $379 | +436% | 22 | 73% | +14.7% | -6.7% | 7.37 | -19% | -$4,527 |
+| Last 12 months | $361 | +2485% | 48 | 73% | +13.0% | -6.2% | 6.2 | -21% | -$4,527 |
+| 2019 to Mar 2026 (bred on) | $53 | +2460% | 181 | 57% | +8.4% | -5.9% | 2.53 | -37% | -$4,053 |
+| 2012 to 2018 | $37 | +782% | 134 | 59% | +7.0% | -5.2% | 1.53 | -36% | -$4,376 |
 
-Every rolling three-month stretch since 2019 (1878): 70% made money; the typical one made $40 a session and the worst $-139.
+Every rolling three-month stretch since 2019 (1878): 70% made money; the typical one made $40 a session and the worst -$139.
 
 At 3x slippage: $364 a session over the last six months, $47 over 2019 to March 2026.
 
@@ -35,14 +35,14 @@ Buying and holding over the last six months: MUU $438 a session, SOXL $335 a ses
 
 | Year | Return | $ a session | Trades | Win rate |
 | --- | --- | --- | --- | --- |
-| 2012 | -12% | $-11 | 18 | 61% |
+| 2012 | -12% | -$11 | 18 | 61% |
 | 2013 | +74% | $61 | 24 | 62% |
 | 2014 | +240% | $133 | 22 | 73% |
-| 2015 | -4% | $-2 | 9 | 56% |
+| 2015 | -4% | -$2 | 9 | 56% |
 | 2016 | +2% | $4 | 16 | 50% |
 | 2017 | +15% | $22 | 20 | 50% |
 | 2018 | +50% | $51 | 25 | 56% |
-| 2019 | -10% | $-5 | 23 | 44% |
+| 2019 | -10% | -$5 | 23 | 44% |
 | 2020 | +61% | $56 | 23 | 61% |
 | 2021 | +51% | $53 | 30 | 57% |
 | 2022 | +0% | $7 | 16 | 44% |

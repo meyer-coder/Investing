@@ -16,12 +16,12 @@ Terms: `atr_pct` 14-day average range as a share of price; `cross_above` cross_a
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $350 | +327% | 17 | 53% | +32.6% | -6.1% | 3.66 | -31% | $-5,403 |
-| Last 12 months | $284 | +882% | 27 | 48% | +37.7% | -7.2% | 3.28 | -33% | $-5,403 |
-| 2019 to Mar 2026 (bred on) | $109 | +22142% | 212 | 36% | +25.6% | -7.9% | 1.74 | -68% | $-6,940 |
-| 2012 to 2018 | $68 | +1327% | 227 | 42% | +15.0% | -7.6% | 1.33 | -64% | $-12,119 |
+| Last 6 months (never bred on) | $350 | +327% | 17 | 53% | +32.6% | -6.1% | 3.66 | -31% | -$5,403 |
+| Last 12 months | $284 | +882% | 27 | 48% | +37.7% | -7.2% | 3.28 | -33% | -$5,403 |
+| 2019 to Mar 2026 (bred on) | $109 | +22142% | 212 | 36% | +25.6% | -7.9% | 1.74 | -68% | -$6,940 |
+| 2012 to 2018 | $68 | +1327% | 227 | 42% | +15.0% | -7.6% | 1.33 | -64% | -$12,119 |
 
-Every rolling three-month stretch since 2019 (1878): 76% made money; the typical one made $118 a session and the worst $-278.
+Every rolling three-month stretch since 2019 (1878): 76% made money; the typical one made $118 a session and the worst -$278.
 
 At 3x slippage: $363 a session over the last six months, $99 over 2019 to March 2026.
 
@@ -36,14 +36,14 @@ Buying and holding over the last six months: AMDL $494 a session, TSMX $133 a se
 | 2012 | +0% | $24 | 27 | 37% |
 | 2013 | +27% | $54 | 37 | 40% |
 | 2014 | +64% | $67 | 28 | 46% |
-| 2015 | -28% | $-14 | 28 | 32% |
+| 2015 | -28% | -$14 | 28 | 32% |
 | 2016 | +417% | $201 | 37 | 54% |
 | 2017 | -12% | $34 | 40 | 48% |
 | 2018 | +107% | $111 | 30 | 33% |
 | 2019 | +355% | $189 | 32 | 56% |
 | 2020 | +289% | $179 | 34 | 44% |
 | 2021 | +88% | $87 | 31 | 29% |
-| 2022 | -62% | $-64 | 18 | 11% |
+| 2022 | -62% | -$64 | 18 | 11% |
 | 2023 | +60% | $67 | 28 | 25% |
 | 2024 | +105% | $106 | 35 | 29% |
 | 2025 | +225% | $161 | 30 | 43% |

@@ -18,12 +18,12 @@ Terms: `bars_held` sessions the trade has been held; `bb_lower` lower Bollinger 
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $492 | +692% | 36 | 56% | +17.9% | -6.0% | 2.15 | -34% | $-5,937 |
-| Last 12 months | $418 | +3430% | 71 | 59% | +14.8% | -6.1% | 2.2 | -34% | $-5,937 |
-| 2019 to Mar 2026 (bred on) | $116 | +107323% | 330 | 57% | +8.8% | -5.9% | 2.8 | -37% | $-8,826 |
-| 2012 to 2018 | $41 | +657% | 291 | 55% | +6.9% | -6.0% | 1.2 | -53% | $-4,376 |
+| Last 6 months (never bred on) | $492 | +692% | 36 | 56% | +17.9% | -6.0% | 2.15 | -34% | -$5,937 |
+| Last 12 months | $418 | +3430% | 71 | 59% | +14.8% | -6.1% | 2.2 | -34% | -$5,937 |
+| 2019 to Mar 2026 (bred on) | $116 | +107323% | 330 | 57% | +8.8% | -5.9% | 2.8 | -37% | -$8,826 |
+| 2012 to 2018 | $41 | +657% | 291 | 55% | +6.9% | -6.0% | 1.2 | -53% | -$4,376 |
 
-Every rolling three-month stretch since 2019 (1878): 86% made money; the typical one made $112 a session and the worst $-129.
+Every rolling three-month stretch since 2019 (1878): 86% made money; the typical one made $112 a session and the worst -$129.
 
 At 3x slippage: $470 a session over the last six months, $97 over 2019 to March 2026.
 
@@ -41,7 +41,7 @@ Buying and holding over the last six months: MUU $438 a session, TSMX $133 a ses
 | 2015 | +10% | $21 | 35 | 60% |
 | 2016 | +31% | $39 | 44 | 57% |
 | 2017 | +154% | $107 | 39 | 62% |
-| 2018 | -23% | $-11 | 46 | 52% |
+| 2018 | -23% | -$11 | 46 | 52% |
 | 2019 | +75% | $66 | 39 | 59% |
 | 2020 | +312% | $170 | 49 | 63% |
 | 2021 | +57% | $61 | 52 | 54% |

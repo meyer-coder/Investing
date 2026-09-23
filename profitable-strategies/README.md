@@ -1,5 +1,13 @@
 # Profitable strategies
 
+**New: [leveraged tech top 50](leveraged-etfs/README.md).** A seven-hour grind over
+2x and 3x funds on semiconductors, AI and graphics-card names and big tech kept
+5,024 profitable strategies, 2,454 of them at $80+ a session on $25,000 over
+the last six months. The folder lists the top 50 ($213 to $530 a session
+recently, all also profitable over 2019-2026 and 2012-2018), a $150-$200 pick
+and a $100 low-risk pick. Recent dollars are mostly this year's semis rally;
+each report shows the earlier years too.
+
 **New: [FundedNext day trades](funded/README.md).** FundedNext Futures allows no
 overnight holds, so the NQ strategies below cannot run there as written. This
 folder has the top 10 reworked to be flat every afternoon with a daily stop, and

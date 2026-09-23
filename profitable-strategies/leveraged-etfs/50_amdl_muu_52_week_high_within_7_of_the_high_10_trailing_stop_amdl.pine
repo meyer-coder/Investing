@@ -1,0 +1,64 @@
+//@version=6
+// AMDL / MUU 52-Week High: within 7% of the high, 10% trailing stop — evotrader genome d7f3404715c6.
+// Leveraged tech strategy 50 of the grind (strategies/etf).
+//
+// 52-Week High 0.93/0.1
+//
+// Rules, exactly as the engine runs them:
+// BUY when pct_of_52w_high > 0.93 and close > sma50
+// SELL when pct_of_52w_high < 0.85
+// Risk (checked on the close, filled at the next open): stop 10.00%, no
+// target, trailing 10.00%, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily AMDL chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 2-fund strategy (AMDL, MUU): run the script on each fund's chart
+// and hold one position at a time, the first signal wins.
+strategy("AMDL / MUU 52-Week High: within 7% of the high, 10% trailing [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(10, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(10, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var float posPeak = na
+if strategy.position_size > 0
+    posPeak := na(posPeak) or strategy.opentrades.entry_bar_index(0) == bar_index ? math.max(strategy.position_avg_price, close) : math.max(posPeak, close)
+else
+    posPeak := na
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_pct_of_52w_high = close / ta.highest(close, 252)
+f_position_drawdown = strategy.position_size > 0 ? math.min(close / posPeak - 1, 0.0) : 0.0
+f_sma50 = ta.sma(close, 50)
+
+warm = bar_index >= 252
+inPos = strategy.position_size > 0
+buySignal = (((f_pct_of_52w_high > 0.93) and (close > f_sma50)))
+sellSignal = ((f_pct_of_52w_high < 0.85))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and f_position_drawdown <= -trailPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "AMDL / MUU 52-Week High: within 7% of th: buy at next open", "AMDL / MUU 52-Week High: within 7% of th: buy {{ticker}} at the next open")
+alertcondition(exitNow, "AMDL / MUU 52-Week High: within 7% of th: sell at next open", "AMDL / MUU 52-Week High: within 7% of th: sell {{ticker}} at the next open")

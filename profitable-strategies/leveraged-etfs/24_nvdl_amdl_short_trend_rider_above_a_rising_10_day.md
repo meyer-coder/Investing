@@ -14,12 +14,12 @@ Terms: `ret5` 5-day return; `sma10` 10-day average; `sma20_slope` 5-day change o
 
 | Window | $ a session | Return | Trades | Win rate | Avg win | Avg loss | Profit factor | Max drawdown | Worst day |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Last 6 months (never bred on) | $292 | +213% | 15 | 40% | +51.2% | -6.5% | 2.29 | -49% | $-5,438 |
-| Last 12 months | $111 | +104% | 26 | 31% | +39.7% | -6.0% | 1.68 | -49% | $-5,438 |
-| 2019 to Mar 2026 (bred on) | $60 | +1591% | 120 | 41% | +20.1% | -7.3% | 1.2 | -68% | $-8,492 |
-| 2012 to 2018 | $42 | +387% | 131 | 42% | +16.1% | -7.1% | 1.39 | -67% | $-8,100 |
+| Last 6 months (never bred on) | $292 | +213% | 15 | 40% | +51.2% | -6.5% | 2.29 | -49% | -$5,438 |
+| Last 12 months | $111 | +104% | 26 | 31% | +39.7% | -6.0% | 1.68 | -49% | -$5,438 |
+| 2019 to Mar 2026 (bred on) | $60 | +1591% | 120 | 41% | +20.1% | -7.3% | 1.2 | -68% | -$8,492 |
+| 2012 to 2018 | $42 | +387% | 131 | 42% | +16.1% | -7.1% | 1.39 | -67% | -$8,100 |
 
-Every rolling three-month stretch since 2019 (1878): 63% made money; the typical one made $44 a session and the worst $-244.
+Every rolling three-month stretch since 2019 (1878): 63% made money; the typical one made $44 a session and the worst -$244.
 
 At 3x slippage: $282 a session over the last six months, $55 over 2019 to March 2026.
 
@@ -32,7 +32,7 @@ Buying and holding over the last six months: NVDL $118 a session, AMDL $494 a se
 | Year | Return | $ a session | Trades | Win rate |
 | --- | --- | --- | --- | --- |
 | 2012 | +20% | $27 | 12 | 42% |
-| 2013 | -46% | $-42 | 20 | 35% |
+| 2013 | -46% | -$42 | 20 | 35% |
 | 2014 | -3% | $12 | 17 | 65% |
 | 2015 | +52% | $60 | 20 | 30% |
 | 2016 | +104% | $99 | 27 | 48% |
@@ -41,7 +41,7 @@ Buying and holding over the last six months: NVDL $118 a session, AMDL $494 a se
 | 2019 | +49% | $56 | 18 | 44% |
 | 2020 | +157% | $127 | 20 | 45% |
 | 2021 | +215% | $133 | 15 | 40% |
-| 2022 | -33% | $-24 | 15 | 33% |
+| 2022 | -33% | -$24 | 15 | 33% |
 | 2023 | +94% | $88 | 16 | 50% |
 | 2024 | +67% | $73 | 14 | 43% |
 | 2025 | -16% | $2 | 15 | 47% |
