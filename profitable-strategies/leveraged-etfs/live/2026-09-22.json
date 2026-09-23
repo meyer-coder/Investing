@@ -1,0 +1,431 @@
+{
+ "provisional": false,
+ "strategies": [
+  {
+   "rank": 1,
+   "name": "MUU / TSMX Uptrend Dip (bred 3BAF)",
+   "funds": [
+    "MUU",
+    "TSMX"
+   ],
+   "real": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [],
+    "sells": [],
+    "holding": [],
+    "recent_trades": [
+     {
+      "fund": "MUU",
+      "in": "2026-08-19",
+      "out": "2026-08-25",
+      "ret": -0.0723,
+      "exit": "stop loss hit (-10.6% <= -5.4%)"
+     },
+     {
+      "fund": "TSMX",
+      "in": "2026-08-25",
+      "out": "2026-08-28",
+      "ret": 0.0559,
+      "exit": "exit rule: ret5 > 0.05"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-09-02",
+      "out": "2026-09-08",
+      "ret": 0.2303,
+      "exit": "exit rule: ret5 > 0.05"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-09-11",
+      "out": "2026-09-15",
+      "ret": -0.1145,
+      "exit": "stop loss hit (-13.7% <= -5.4%)"
+     },
+     {
+      "fund": "TSMX",
+      "in": "2026-09-15",
+      "out": "2026-09-22",
+      "ret": 0.0971,
+      "exit": "exit rule: ret5 > 0.05"
+     }
+    ]
+   },
+   "rebuilt": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [],
+    "sells": [],
+    "holding": [],
+    "recent_trades": [
+     {
+      "fund": "MU.2X",
+      "in": "2026-08-19",
+      "out": "2026-08-25",
+      "ret": -0.0701,
+      "exit": "stop loss hit (-10.6% <= -5.4%)"
+     },
+     {
+      "fund": "TSM.2X",
+      "in": "2026-08-25",
+      "out": "2026-08-28",
+      "ret": 0.0598,
+      "exit": "exit rule: ret5 > 0.05"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-09-02",
+      "out": "2026-09-08",
+      "ret": 0.2314,
+      "exit": "exit rule: ret5 > 0.05"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-09-11",
+      "out": "2026-09-15",
+      "ret": -0.1137,
+      "exit": "stop loss hit (-13.8% <= -5.4%)"
+     },
+     {
+      "fund": "TSM.2X",
+      "in": "2026-09-15",
+      "out": "2026-09-22",
+      "ret": 0.094,
+      "exit": "exit rule: ret5 > 0.05"
+     }
+    ]
+   },
+   "levels": {
+    "MUU": [
+     {
+      "action": "buy MUU",
+      "from": -0.25,
+      "to": -0.026015625,
+      "price_from": 29.19,
+      "price_to": 37.91
+     },
+     {
+      "action": "stay in cash",
+      "from": -0.025937500000000002,
+      "to": 0.25,
+      "price_from": 37.91,
+      "price_to": 48.65
+     }
+    ],
+    "TSMX": [
+     {
+      "action": "stay in cash",
+      "from": -0.25,
+      "to": -0.20644531249999998,
+      "price_from": 66.59,
+      "price_to": 70.45
+     },
+     {
+      "action": "buy TSMX",
+      "from": -0.20640624999999999,
+      "to": -0.026015625,
+      "price_from": 70.46,
+      "price_to": 86.47
+     },
+     {
+      "action": "stay in cash",
+      "from": -0.0259765625,
+      "to": 0.25,
+      "price_from": 86.47,
+      "price_to": 110.97
+     }
+    ]
+   }
+  },
+  {
+   "rank": 2,
+   "name": "MUU Trend Breakout (bred D609)",
+   "funds": [
+    "MUU"
+   ],
+   "real": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [],
+    "sells": [],
+    "holding": [
+     {
+      "fund": "MUU",
+      "since": "2026-09-18",
+      "entry": 31.55,
+      "last_close": 38.92,
+      "gain": 0.2334,
+      "sessions": 3,
+      "why": "entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "stop_close": 28.84,
+      "trail_close": 33.39
+     }
+    ],
+    "recent_trades": [
+     {
+      "fund": "MUU",
+      "in": "2026-07-09",
+      "out": "2026-07-14",
+      "ret": -0.0676,
+      "exit": "stop loss hit (-15.3% <= -8.6%)"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-07-20",
+      "out": "2026-07-21",
+      "ret": 0.0844,
+      "exit": "exit rule: zscore20 <= -1.05"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-07-27",
+      "out": "2026-07-29",
+      "ret": -0.2124,
+      "exit": "stop loss hit (-23.6% <= -8.6%)"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-08-04",
+      "out": "2026-08-20",
+      "ret": 0.1361,
+      "exit": "trailing stop hit (-14.8%)"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-08-26",
+      "out": "2026-09-14",
+      "ret": -0.0679,
+      "exit": "exit rule: bars_held > 10"
+     }
+    ]
+   },
+   "rebuilt": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [],
+    "sells": [],
+    "holding": [
+     {
+      "fund": "MU.2X",
+      "since": "2026-09-18",
+      "entry": 424.0,
+      "last_close": 522.23,
+      "gain": 0.2317,
+      "sessions": 3,
+      "why": "entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "stop_close": 387.53,
+      "trail_close": 448.07
+     }
+    ],
+    "recent_trades": [
+     {
+      "fund": "MU.2X",
+      "in": "2026-07-09",
+      "out": "2026-07-14",
+      "ret": -0.0592,
+      "exit": "stop loss hit (-15.1% <= -8.6%)"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-07-20",
+      "out": "2026-07-21",
+      "ret": 0.0867,
+      "exit": "exit rule: zscore20 <= -1.05"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-07-27",
+      "out": "2026-07-29",
+      "ret": -0.2118,
+      "exit": "stop loss hit (-23.4% <= -8.6%)"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-08-04",
+      "out": "2026-08-20",
+      "ret": 0.1396,
+      "exit": "trailing stop hit (-14.8%)"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-08-26",
+      "out": "2026-09-14",
+      "ret": -0.0613,
+      "exit": "exit rule: bars_held > 10"
+     }
+    ]
+   },
+   "levels": {
+    "MUU": [
+     {
+      "action": "sell MUU",
+      "from": -0.25,
+      "to": -0.14203125000000003,
+      "price_from": 29.19,
+      "price_to": 33.39
+     },
+     {
+      "action": "hold MUU",
+      "from": -0.141953125,
+      "to": 0.25,
+      "price_from": 33.4,
+      "price_to": 48.65
+     }
+    ]
+   }
+  },
+  {
+   "rank": 3,
+   "name": "MUU / TSMX Uptrend Dip (bred A903)",
+   "funds": [
+    "MUU",
+    "TSMX"
+   ],
+   "real": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [
+     {
+      "fund": "MUU",
+      "why": "entry rule: (bb_pct > 0.86 or macd_hist > 0.5) and atr_pct > 0.0534"
+     }
+    ],
+    "sells": [
+     {
+      "fund": "TSMX",
+      "why": "take profit hit (10.2% >= 8.7%)",
+      "entry_date": "2026-09-18"
+     }
+    ],
+    "holding": [],
+    "recent_trades": [
+     {
+      "fund": "MUU",
+      "in": "2026-08-03",
+      "out": "2026-08-04",
+      "ret": 0.2098,
+      "exit": "take profit hit (11.3% >= 8.7%)"
+     },
+     {
+      "fund": "TSMX",
+      "in": "2026-08-05",
+      "out": "2026-09-01",
+      "ret": -0.0209,
+      "exit": "exit rule: zscore20 < -0.78 or cross_above(close, bb_upper)"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-09-02",
+      "out": "2026-09-08",
+      "ret": 0.2303,
+      "exit": "take profit hit (18.1% >= 8.7%)"
+     },
+     {
+      "fund": "MUU",
+      "in": "2026-09-10",
+      "out": "2026-09-15",
+      "ret": -0.1245,
+      "exit": "stop loss hit (-14.7% <= -6.0%)"
+     },
+     {
+      "fund": "TSMX",
+      "in": "2026-09-08",
+      "out": "2026-09-15",
+      "ret": -0.0789,
+      "exit": "stop loss hit (-9.1% <= -6.0%)"
+     }
+    ]
+   },
+   "rebuilt": {
+    "last_close_date": "2026-09-22",
+    "next_open": "2026-09-23",
+    "buys": [
+     {
+      "fund": "MU.2X",
+      "why": "entry rule: (bb_pct > 0.86 or macd_hist > 0.5) and atr_pct > 0.0534"
+     }
+    ],
+    "sells": [
+     {
+      "fund": "TSM.2X",
+      "why": "take profit hit (10.7% >= 8.7%)",
+      "entry_date": "2026-09-18"
+     }
+    ],
+    "holding": [],
+    "recent_trades": [
+     {
+      "fund": "MU.2X",
+      "in": "2026-08-03",
+      "out": "2026-08-04",
+      "ret": 0.2131,
+      "exit": "take profit hit (11.4% >= 8.7%)"
+     },
+     {
+      "fund": "TSM.2X",
+      "in": "2026-08-05",
+      "out": "2026-09-01",
+      "ret": -0.0192,
+      "exit": "exit rule: zscore20 < -0.78 or cross_above(close, bb_upper)"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-09-01",
+      "out": "2026-09-04",
+      "ret": 0.0613,
+      "exit": "exit rule: vol_ratio_20_60 < 0.6 and ret20 > 0.14"
+     },
+     {
+      "fund": "TSM.2X",
+      "in": "2026-09-08",
+      "out": "2026-09-15",
+      "ret": -0.0769,
+      "exit": "stop loss hit (-9.3% <= -6.0%)"
+     },
+     {
+      "fund": "MU.2X",
+      "in": "2026-09-15",
+      "out": "2026-09-21",
+      "ret": 0.2331,
+      "exit": "take profit hit (16.7% >= 8.7%)"
+     }
+    ]
+   },
+   "levels": {
+    "MUU": [
+     {
+      "action": "sell MUU",
+      "from": -0.25,
+      "to": -0.059296875,
+      "price_from": 29.19,
+      "price_to": 36.61
+     },
+     {
+      "action": "hold MUU",
+      "from": -0.05921875,
+      "to": 0.088203125,
+      "price_from": 36.62,
+      "price_to": 42.35
+     },
+     {
+      "action": "sell MUU",
+      "from": 0.08828125,
+      "to": 0.25,
+      "price_from": 42.36,
+      "price_to": 48.65
+     }
+    ],
+    "TSMX": [
+     {
+      "action": "hold MUU",
+      "from": -0.25,
+      "to": 0.25,
+      "price_from": 66.59,
+      "price_to": 110.97
+     }
+    ]
+   }
+  }
+ ]
+}

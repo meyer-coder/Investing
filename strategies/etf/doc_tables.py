@@ -105,6 +105,15 @@ def readme(data: dict) -> str:
         "2012 to 2018. What the rules buy is time out of the market: holding these funds fell 81% to 92% in "
         "2022, and none of these fell more than 70%.", "",
         top50(data), "", "## The two picks you asked for", "", special_lines(data),
+        "## Running them live", "",
+        "- `python strategies/etf/live.py --ranks 1,2,3` runs strategies through the latest close on the real "
+        "funds (and, as a check, on the rebuilt series): what each holds, its orders for the next open, and the "
+        "closes today that would change them. It writes `live/<date>.md` and `.json`. Paper signals only; it "
+        "places no orders.",
+        "- In TradingView, add a strategy's `.pine` to a daily chart of its fund, then add an alert on the script "
+        "with the condition \"alert() function calls only\". It fires at each daily close with the order for the "
+        "next open. A strategy on two funds needs both charts, and holds one position at a time: while one fund "
+        "is held, skip the other's buy.", "",
         "## Files", "",
         "- `NN_name.md`: rules, every window, the real-fund check, buy-and-hold and year-by-year results.",
         "- `NN_name.json`: the same as data, with the strategy's rules.",

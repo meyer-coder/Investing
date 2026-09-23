@@ -56,5 +56,13 @@ def test_a_fund_pine_script_puts_the_whole_account_in_each_trade():
                           "exit_rules": [{"when": "bars_held >= 3"}], "risk": {"stop_loss_pct": 0.1}})
     src = genome_to_pine(g, fund="SOXL")
     assert "default_qty_type=strategy.percent_of_equity, default_qty_value=100" in src
-    assert 'strategy.entry("L", strategy.long, comment="in")' in src
+    assert 'strategy.entry("L", strategy.long, comment="in", alert_message=' in src
     assert "daily SOXL chart" in src and "contracts" not in src
+
+
+def test_a_pine_script_alerts_at_the_close_for_the_next_open():
+    g = Genome.from_dict({"name": "Dip", "entry_rules": [{"when": "ret1 < -0.05 and close > sma50", "weight": 1.0}],
+                          "exit_rules": [{"when": "bars_held >= 3"}], "risk": {"stop_loss_pct": 0.1}})
+    src = genome_to_pine(g, fund="SOXL", title="Dip")
+    assert 'alert("Dip: buy " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)' in src
+    assert 'alert("Dip: sell " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)' in src

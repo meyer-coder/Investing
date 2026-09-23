@@ -274,6 +274,8 @@ def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
                         "Use a MNQ1! (micro) chart with back-adjustment on. The backtests run at twice a "
                         f"${account:,.0f} account in notional, about 0.8 MNQ at NQ 31,000; one MNQ is about "
                         "2.5x, so the default of one contract is a little more than the tested size.")
+    out += _comment("Alerts: add an alert on this script with the condition \"alert() function calls only\" "
+                    "to be told at each daily close what to do at the next open.")
     for note in extra_notes:
         out += _comment(note)
     out.append(f'strategy("{title[:60]} [evotrader]", overlay=true, pyramiding=0,')
@@ -324,12 +326,16 @@ def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
                + (" or (trailPct > 0 and f_position_drawdown <= -trailPct)" if needs_peak else "")
                + " or (maxHold > 0 and held >= maxHold)")
     out.append("    if riskExit or (held >= minHold and sellSignal)")
-    out.append('        strategy.close("L", comment="out")')
+    out.append(f'        strategy.close("L", comment="out", alert_message="{title[:40]}: sell " + syminfo.ticker + '
+               f'" at the next open")')
+    out.append(f'        alert("{title[:40]}: sell " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)')
     out.append("        exitNow := true")
     out.append("canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)")
     out.append("if canEnter and buySignal")
-    out.append('    strategy.entry("L", strategy.long, comment="in")' if fund else
-               '    strategy.entry("L", strategy.long, qty=contracts, comment="in")')
+    buy_msg = f'"{title[:40]}: buy " + syminfo.ticker + " at the next open"'
+    out.append(f'    strategy.entry("L", strategy.long, comment="in", alert_message={buy_msg})' if fund else
+               f'    strategy.entry("L", strategy.long, qty=contracts, comment="in", alert_message={buy_msg})')
+    out.append(f"    alert({buy_msg}, alert.freq_once_per_bar_close)")
     out.append("")
     out.append('plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, '
                'location=location.belowbar, color=color.new(color.teal, 0), size=size.small)')

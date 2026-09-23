@@ -78,6 +78,11 @@ At full size: $433 a session over the last six months, $297 over the last 12 mon
 
 Sized to $100 a session (the last six months), with 23% of the account: $69 over the last 12 months, $18 over 2019 to March 2026, worst drawdowns -6% recently, -14% over 2019 to 2026 and -11% over 2012 to 2018. Its three-month stretches since 2019 made money 68% of the time; the typical one $14 a session.
 
+## Running them live
+
+- `python strategies/etf/live.py --ranks 1,2,3` runs strategies through the latest close on the real funds (and, as a check, on the rebuilt series): what each holds, its orders for the next open, and the closes today that would change them. It writes `live/<date>.md` and `.json`. Paper signals only; it places no orders.
+- In TradingView, add a strategy's `.pine` to a daily chart of its fund, then add an alert on the script with the condition "alert() function calls only". It fires at each daily close with the order for the next open. A strategy on two funds needs both charts, and holds one position at a time: while one fund is held, skip the other's buy.
+
 ## Files
 
 - `NN_name.md`: rules, every window, the real-fund check, buy-and-hold and year-by-year results.

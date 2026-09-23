@@ -16,6 +16,8 @@
 // Daily bars; the signal is read on the close and fills at the next open. Use
 // a daily AMDL chart. The backtests put the whole $25,000 account in each
 // trade, one position at a time.
+// Alerts: add an alert on this script with the condition "alert() function
+// calls only" to be told at each daily close what to do at the next open.
 // Part of a 6-fund strategy (SOXL, NVDL, AMDL, AVGX, TSMX, MUU): run the
 // script on each fund's chart and hold one position at a time, the first
 // signal wins.
@@ -62,11 +64,13 @@ if inPos
     posRet = close / strategy.position_avg_price - 1
     riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and f_position_drawdown <= -trailPct) or (maxHold > 0 and held >= maxHold)
     if riskExit or (held >= minHold and sellSignal)
-        strategy.close("L", comment="out")
+        strategy.close("L", comment="out", alert_message="SOXL / NVDL / AMDL / AVGX / TSMX / MUU T: sell " + syminfo.ticker + " at the next open")
+        alert("SOXL / NVDL / AMDL / AVGX / TSMX / MUU T: sell " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)
         exitNow := true
 canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
 if canEnter and buySignal
-    strategy.entry("L", strategy.long, comment="in")
+    strategy.entry("L", strategy.long, comment="in", alert_message="SOXL / NVDL / AMDL / AVGX / TSMX / MUU T: buy " + syminfo.ticker + " at the next open")
+    alert("SOXL / NVDL / AMDL / AVGX / TSMX / MUU T: buy " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)
 
 plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
 plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)

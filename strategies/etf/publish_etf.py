@@ -332,6 +332,13 @@ def write(item: dict, rank: int, folder: Path, tag: str = "") -> dict:
     stem = f"{rank:02d}_{re.sub(r'[^a-z0-9]+', '_', name.lower()).strip('_')}"
     (folder / f"{stem}.json").write_text(json.dumps(item, indent=1))
     (folder / f"{stem}.md").write_text(report_md(item))
+    write_pine(item, folder, stem)
+    return item
+
+
+def write_pine(item: dict, folder: Path, stem: str) -> None:
+    """One compiled Pine script per fund the strategy trades."""
+    rank, funds = item["rank"], item["funds"]
     for sym, fund in zip(item["symbols"], funds):
         chart = REAL.get(sym, sym if "." not in sym else "")
         if not chart:
@@ -348,7 +355,6 @@ def write(item: dict, rank: int, folder: Path, tag: str = "") -> dict:
             continue
         suffix = "" if len(funds) == 1 else f"_{chart.lower()}"
         (folder / f"{stem}{suffix}.pine").write_text(src)
-    return item
 
 
 def _slim_job(args):
@@ -362,7 +368,13 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=50)
     ap.add_argument("--no-slim", action="store_true")
+    ap.add_argument("--pine-only", action="store_true", help="rewrite the published strategies' Pine scripts")
     args = ap.parse_args(argv)
+    if args.pine_only:
+        for f in sorted(OUT.glob("[0-9][0-9]_*.json")):
+            write_pine(json.loads(f.read_text()), OUT, f.stem)
+            print(f"pine {f.stem}", flush=True)
+        return 0
     store = load_store()["strategies"]
     shown = [v for v in store.values() if v["verdict"]["shown"]]
     print(f"store {len(store)} profitable, {len(shown)} at ${SHOW_USD:.0f}+", flush=True)
