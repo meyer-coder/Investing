@@ -73,6 +73,22 @@ def real_parts(ms: List[dict]):
     return parts, last
 
 
+def sizing(windows: Dict[str, np.ndarray]) -> List[str]:
+    """How big the account can run inside a funded account's loss limits: the
+    worst day and drawdown at each share of the balance, per window."""
+    def dd(r):
+        eq = np.cumprod(1.0 + r)
+        return float((eq / np.maximum.accumulate(np.concatenate([[1.0], eq]))[1:] - 1.0).min())
+    rows = ["| Share of the balance | Window | $ a session per $100,000 | Worst day | Days worse than -4% | "
+            "Worst drawdown |", "| --- | --- | --- | --- | --- | --- |"]
+    for f in (1.0, 0.5, 0.33, 0.3, 0.25):
+        for name, r in windows.items():
+            x = f * r
+            rows.append(f"| {f:.0%} | {name} | {money(x.mean() * 100_000)} | {x.min():.1%} | "
+                        f"{int((x < -0.04).sum())} | {dd(x):.1%} |")
+    return rows
+
+
 def money(x: float) -> str:
     return f"-${abs(x):,.0f}" if x < 0 else f"${x:,.0f}"
 
@@ -142,10 +158,19 @@ def main() -> int:
               "- In ordinary years the same account made far less: $46 a session over 2019 to March 2026 and $30 over "
               "2012 to 2018, with drops of 36% and 40%.",
               "- MUU, NVDL and AMDL are 2x funds. The account is a bet that memory and GPU chips keep trending.", "",
+              "## In a funded account", "",
+              "Funded accounts cut a trader off at a daily loss (often 4-5% of the balance) and a total drawdown "
+              "(often 6-10%). At full size this account's worst day was far past those, so it has to run at a share "
+              "of the balance: each bot trades a third of that share. The dollars scale with the balance.", "",
+              *sizing({"Last six months (real funds)": r,
+                       "2019 to March 2026": mixed(rebuilt, *WINDOWS["train"])[1],
+                       "2012 to 2018": mixed(rebuilt, *WINDOWS["older"])[1]}),
+              "", "Check the firm's own rules first: whether it allows 2x single-stock funds and holding overnight, "
+              "and whether its drawdown trails the high-water mark.", "",
               "## Running it", "",
               "- Each bot has a Pine script per fund here, set to trade 33% of equity. Put each on a daily chart of its "
               "fund. A bot on two funds holds one of them at a time: while it holds one, skip the other's buy.",
-              "- The paper trail (`../paper/`) runs it from the September 24 open.", ""]
+              "- The paper trail (`../paper/`) runs it from the September 23 open.", ""]
     (OUT / "README.md").write_text("\n".join(lines))
 
     for i, m in enumerate(ms, 1):

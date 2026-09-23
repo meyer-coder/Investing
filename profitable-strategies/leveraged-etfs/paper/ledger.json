@@ -151,7 +151,7 @@
     "rationale": "",
     "created_at": 1790145370.0400827
    },
-   "start": "2026-09-24",
+   "start": "2026-09-23",
    "start_cash": 8333.33,
    "cash": 8333.33,
    "position": null,
@@ -166,7 +166,8 @@
    },
    "levels": {},
    "last_date": null,
-   "group": "Three-bot split account"
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   },
   {
    "id": "split2",
@@ -216,7 +217,7 @@
     "rationale": "",
     "created_at": 1790139429.1748483
    },
-   "start": "2026-09-24",
+   "start": "2026-09-23",
    "start_cash": 8333.33,
    "cash": 8333.33,
    "position": null,
@@ -227,11 +228,18 @@
     "after_close": "2026-09-22",
     "for_open": "2026-09-23",
     "sells": [],
-    "buys": []
+    "buys": [
+     {
+      "fund": "AMDL",
+      "synced": true,
+      "why": "synced at go-live: the strategy has held AMDL since 2026-09-11 (entry rule: close > sma10 and sma20_slope > 0 and ret5 > 0)"
+     }
+    ]
    },
    "levels": {},
    "last_date": null,
-   "group": "Three-bot split account"
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   },
   {
    "id": "split3",
@@ -285,7 +293,7 @@
     "rationale": "",
     "created_at": 1790139483.7378557
    },
-   "start": "2026-09-24",
+   "start": "2026-09-23",
    "start_cash": 8333.33,
    "cash": 8333.33,
    "position": null,
@@ -300,7 +308,8 @@
    },
    "levels": {},
    "last_date": null,
-   "group": "Three-bot split account"
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   }
  ],
  "updated_after_close": "2026-09-22",

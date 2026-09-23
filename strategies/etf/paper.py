@@ -19,6 +19,7 @@ paper/<date>.md, the notes for the run after that close.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import sys
 from datetime import date as Date, datetime, timezone
@@ -194,12 +195,12 @@ def advance(acct: dict, u: Universe, with_levels: bool = True) -> List[dict]:
     return new
 
 
-def universe_for(acct: dict, cache: Dict[str, Tuple[Bars, bool]]) -> Universe:
+def universe_for(acct: dict, cache: Dict[str, Tuple[Bars, bool]], keep_provisional: bool = False) -> Universe:
     for f in acct["funds"]:
         if f not in cache:
             cache[f] = latest_bars(f)
     u = align({f: cache[f][0] for f in acct["funds"]})
-    if any(cache[f][1] for f in acct["funds"]):
+    if any(cache[f][1] for f in acct["funds"]) and not keep_provisional:
         u = u.slice(0, len(u) - 1)       # the session is still trading: next run
     return u
 
@@ -261,7 +262,8 @@ def orders_md(ledger: dict) -> str:
     for a in ledger["accounts"]:
         o, lv = a["orders"], (a.get("levels") or {}).get("funds", {})
         acts = [f"**sell {x['fund']}** ({_why(x['why'])})" for x in o.get("sells", [])]
-        acts += [f"**buy {x['fund']}**{' (synced)' if x.get('synced') else ''} with {a['size']:.0%} of the account"
+        share = f"its third ({money(a['start_cash'])})" if a.get("group") else f"{a['size']:.0%} of the account"
+        acts += [f"**buy {x['fund']}**{' (synced)' if x.get('synced') else ''} with {share}"
                  for x in o.get("buys", [])]
         p = a["position"]
         now = ("; ".join(acts) if acts else
@@ -326,6 +328,9 @@ def main(argv=None) -> int:
     ap.add_argument("--why", default="")
     ap.add_argument("--add-split", action="store_true", help="open the three-bot split account")
     ap.add_argument("--start", default="", help="first session for bots added now")
+    ap.add_argument("--snapshot", action="store_true",
+                    help="mark every account at the latest prices, the session still trading included; "
+                         "nothing is recorded")
     args = ap.parse_args(argv)
     ledger = load_ledger()
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -342,6 +347,15 @@ def main(argv=None) -> int:
         ledger["accounts"] = [open_account(b, items[b["rank"]]) for b in bots]
     cache: Dict[str, Tuple[Bars, bool]] = {}
     fills: Dict[str, List[dict]] = {}
+    if args.snapshot:
+        view = copy.deepcopy(ledger)
+        for a in view["accounts"]:
+            fills[a["id"]] = advance(a, universe_for(a, cache, keep_provisional=True), with_levels=False)
+        live = any(prov for _, prov in cache.values())
+        stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        print(f"# Snapshot at {stamp}{' (the session is still trading: marks are provisional)' if live else ''}",
+              "", day_md(view, fills), "", accounts_md(view), sep="\n")
+        return 0
     last = ""
     for a in ledger["accounts"]:
         u = universe_for(a, cache)

@@ -35,7 +35,31 @@ On the real funds: 99% of rolling one-month stretches made money, the worst -$20
 - In ordinary years the same account made far less: $46 a session over 2019 to March 2026 and $30 over 2012 to 2018, with drops of 36% and 40%.
 - MUU, NVDL and AMDL are 2x funds. The account is a bet that memory and GPU chips keep trending.
 
+## In a funded account
+
+Funded accounts cut a trader off at a daily loss (often 4-5% of the balance) and a total drawdown (often 6-10%). At full size this account's worst day was far past those, so it has to run at a share of the balance: each bot trades a third of that share. The dollars scale with the balance.
+
+| Share of the balance | Window | $ a session per $100,000 | Worst day | Days worse than -4% | Worst drawdown |
+| --- | --- | --- | --- | --- | --- |
+| 100% | Last six months (real funds) | $1,327 | -13.2% | 10 | -15.2% |
+| 100% | 2019 to March 2026 | $186 | -12.3% | 50 | -36.1% |
+| 100% | 2012 to 2018 | $121 | -14.3% | 36 | -40.4% |
+| 50% | Last six months (real funds) | $664 | -6.6% | 2 | -7.7% |
+| 50% | 2019 to March 2026 | $93 | -6.1% | 4 | -19.4% |
+| 50% | 2012 to 2018 | $61 | -7.1% | 5 | -22.3% |
+| 33% | Last six months (real funds) | $438 | -4.3% | 1 | -5.1% |
+| 33% | 2019 to March 2026 | $61 | -4.1% | 1 | -13.2% |
+| 33% | 2012 to 2018 | $40 | -4.7% | 1 | -15.2% |
+| 30% | Last six months (real funds) | $398 | -4.0% | 0 | -4.7% |
+| 30% | 2019 to March 2026 | $56 | -3.7% | 0 | -12.0% |
+| 30% | 2012 to 2018 | $36 | -4.3% | 1 | -13.9% |
+| 25% | Last six months (real funds) | $332 | -3.3% | 0 | -3.9% |
+| 25% | 2019 to March 2026 | $46 | -3.1% | 0 | -10.1% |
+| 25% | 2012 to 2018 | $30 | -3.6% | 0 | -11.7% |
+
+Check the firm's own rules first: whether it allows 2x single-stock funds and holding overnight, and whether its drawdown trails the high-water mark.
+
 ## Running it
 
 - Each bot has a Pine script per fund here, set to trade 33% of equity. Put each on a daily chart of its fund. A bot on two funds holds one of them at a time: while it holds one, skip the other's buy.
-- The paper trail (`../paper/`) runs it from the September 24 open.
+- The paper trail (`../paper/`) runs it from the September 23 open.
