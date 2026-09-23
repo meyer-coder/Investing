@@ -29,3 +29,5 @@ data/cache/tv/
 
 # Generated strategy tables are part of the research record
 !strategies/reports/
+!profitable-strategies/reports/
+!profitable-strategies/nq-2x/reports/

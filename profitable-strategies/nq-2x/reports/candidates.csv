@@ -1,0 +1,180 @@
+name,origin,held_out_return,held_out_trades,held_out_pf,usd_per_session,train_return,train_trades,train_pf,train_max_drawdown,older_return,older_pf,survives_3x_costs,passes_basic_bar
+Wider Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 7173d608ab59, train score +3.633",0.7188,10,15.74,110.7,17.511,129,3.56,-0.201,1.656,1.29,True,True
+Adaptive Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 9f0e99ecacf1, train score +3.547",0.7188,10,15.74,110.7,18.016,131,3.29,-0.301,1.656,1.29,True,True
+Patient Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 3acfd15b2257, train score +3.498",0.7188,10,15.74,110.7,16.333,129,3.32,-0.201,1.656,1.29,True,True
+Faster Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome b96b9263c31e, train score +3.471",0.7188,10,15.74,110.7,16.111,129,3.27,-0.301,1.656,1.29,True,True
+Bolder Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome d63a6335a2b6, train score +3.469",0.7188,10,15.74,110.7,15.717,129,3.21,-0.201,1.58,1.28,True,True
+Cautious Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 836a2ea6f7d8, train score +3.417",0.7188,10,15.74,110.7,15.922,129,3.27,-0.354,1.656,1.29,True,True
+Greedier Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 1e3423b0afab, train score +3.387",0.7188,10,15.74,110.7,14.331,130,3.16,-0.301,1.678,1.29,True,True
+Bolder Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome baf49ec0e38e, train score +3.284",0.7188,10,15.74,110.7,11.826,134,2.81,-0.234,1.656,1.29,True,True
+Calmer Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome f4dd645e99a2, train score +3.274",0.7188,10,15.74,110.7,21.301,143,2.78,-0.226,3.475,1.45,True,True
+Stubborn Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 236cf137de71, train score +3.263",0.7188,10,15.74,110.7,21.703,140,2.81,-0.23,3.96,1.53,True,True
+Calmer Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 99ec48e9163e, train score +3.262",0.7188,10,15.74,110.7,17.051,132,2.85,-0.301,1.985,1.33,True,True
+Cautious Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome ed6af4f039af, train score +3.270",0.7134,12,5.69,110.1,16.559,134,3.04,-0.193,2.535,1.42,True,True
+Calmer Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 5dc00bb8fdee, train score +3.264",0.6206,10,9.68,99.9,22.765,140,2.88,-0.23,3.96,1.53,True,True
+Quieter Trend + Z-Dip,"round 3, Claude: fewer entries in choppy trends [as written, r3_trend_plus_dip.json]",0.5706,9,6.88,92.7,6.131,99,2.03,-0.282,2.965,1.55,True,True
+"Calm Trend, Fast Exit","round 3, Claude: tests whether the 20-day exit sidesteps drawdowns sooner [as written, r3_trend_plus_dip.json]",0.519,11,6.69,86.1,3.852,122,1.51,-0.269,3.06,1.49,True,True
+Wider Tighter-Faster-Tighter-Z-Dip-Faster-Tighter-Z-Dip,"island trend_plus_dip, run run-20260922-234226-bc54, genome 6ebc07770bbb, train score +3.621",0.5012,11,3.61,84.8,19.358,132,3.06,-0.181,1.544,1.28,True,True
+Calm Trend + Washout,"round 3, Claude: crosses in the washout entry [as written, r3_trend_plus_dip.json]",0.46,9,9.18,79.9,14.979,103,2.39,-0.25,4.06,1.62,True,True
+"Calm Trend + Z-Dip, 10-Bar Holds","round 3, Claude: shorter holds, closer to the quick-trade mandate [as written, r3_trend_plus_dip.json]",0.4231,11,2.57,74.4,4.447,112,1.83,-0.285,2.426,1.48,True,True
+Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome eb2af2c00e6d, train score +3.424",0.417,44,1.75,73.5,4.892,479,1.46,-0.489,1.165,1.12,True,True
+Adaptive Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 9da540b3bb02, train score +3.423",0.417,44,1.75,73.5,4.877,484,1.46,-0.489,0.005,1.01,True,True
+Greedier Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome eadcedaff373, train score +3.422",0.417,44,1.75,73.5,4.952,480,1.46,-0.489,1.178,1.12,True,True
+Cautious Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 7f89e8498840, train score +3.421",0.417,44,1.75,73.5,3.499,636,1.42,-0.507,0.15,1.03,True,True
+Cautious Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome d1237389c3d6, train score +3.420",0.417,44,1.75,73.5,4.262,476,1.45,-0.489,1.165,1.12,True,True
+Stubborn Adaptive-Patient-Uptrend-Calmer-Uptrend-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 76c958ed138b, train score +3.418",0.417,44,1.75,73.5,5.048,480,1.47,-0.489,1.178,1.12,True,True
+Leaner Adaptive-Patient-Uptrend-Calmer-Uptrend-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome a3637d5a9060, train score +3.414",0.417,44,1.75,73.5,5.03,481,1.46,-0.489,1.209,1.12,True,True
+Bolder Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome a10c6a8f90d4, train score +3.409",0.417,44,1.75,73.5,4.69,478,1.46,-0.489,1.165,1.12,True,True
+Tighter Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 752eefb4a387, train score +3.406",0.417,44,1.75,73.5,4.693,480,1.45,-0.489,1.165,1.12,True,True
+Stubborn Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 7be77a87c2af, train score +3.399",0.417,44,1.75,73.5,4.367,486,1.41,-0.489,0.957,1.11,True,True
+Leaner Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome d1cd57b630fd, train score +3.396",0.417,44,1.75,73.5,5.234,480,1.47,-0.489,1.698,1.15,True,True
+Bolder Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 062c172cfa2b, train score +3.391",0.417,44,1.75,73.5,4.498,479,1.45,-0.489,1.165,1.12,True,True
+Adaptive Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 47ea9dfb23d7, train score +3.377",0.417,44,1.75,73.5,4.396,480,1.42,-0.489,1.158,1.12,True,True
+Calm Trend + Z-Dip Core,"round 3, Claude: the trend-plus-dip leader with its clutter removed [as written, r3_trend_plus_dip.json]",0.3882,9,5.53,69.7,6.263,103,1.89,-0.307,3.182,1.61,True,True
+Calm Trend + Z-Dip + Month Turn,"round 3, Claude: adds the calendar edge from the calendar island [as written, r3_trend_plus_dip.json]",0.3882,9,5.53,69.7,6.534,104,1.88,-0.307,2.785,1.55,True,True
+Calm Trend + Flush,"round 3, Claude: crosses the two best islands [as written, r3_trend_plus_dip.json]",0.3776,8,8.11,68.1,7.451,96,2.1,-0.325,2.702,1.54,True,True
+Pure Calm Trend,"round 3, Claude: is the edge the trend filter or the dip entries? [as written, r3_trend_plus_dip.json]",0.3615,6,7.89,64.8,2.119,88,1.63,-0.292,3.293,1.76,True,True
+"Calm Trend, Managed","calm_trend v2, Claude [as written, calm_trend_v2.json]",0.3615,6,7.89,64.8,2.119,88,1.63,-0.292,3.293,1.76,True,True
+Quiet MACD Trend,"calm_trend v2, Claude [as written, calm_trend_v2.json]",0.3474,6,6.21,60.4,1.506,81,1.68,-0.277,1.698,1.62,True,True
+Greedier Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 7e30b050c859, train score +4.114",0.3259,27,2.18,59.4,4.876,279,1.65,-0.278,0.73,1.27,True,True
+Adaptive Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome abb375c69596, train score +4.070",0.3259,27,2.18,59.4,4.429,281,1.63,-0.278,0.73,1.27,True,True
+Wider Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 229156892a25, train score +4.070",0.3259,27,2.18,59.4,4.42,279,1.68,-0.242,0.534,1.21,True,True
+Faster Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 45f843d62bb9, train score +4.059",0.3259,27,2.18,59.4,4.305,280,1.61,-0.295,0.92,1.32,True,True
+Patient Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome b8c6a2bcb82c, train score +4.058",0.3259,27,2.18,59.4,4.281,281,1.61,-0.278,0.635,1.23,True,True
+Tighter Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 6bf178344095, train score +4.055",0.3259,27,2.18,59.4,4.273,281,1.61,-0.295,0.9,1.31,True,True
+Leaner Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 7b6f209fce99, train score +4.053",0.3259,27,2.18,59.4,4.241,280,1.6,-0.293,0.759,1.27,True,True
+Greedier Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome d477b58f4786, train score +4.047",0.3259,27,2.18,59.4,4.186,281,1.6,-0.295,0.638,1.24,True,True
+Sharper Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome fc242e1fd6ba, train score +4.044",0.3259,27,2.18,59.4,4.146,281,1.6,-0.278,0.362,1.15,True,True
+"Flush Book, No Target","round 3, Claude: in training the target cut rebounds early [as written, r3_volume_flush.json]",0.3071,2,99.0,54.3,3.591,41,5.62,-0.323,0.985,1.47,True,False
+Adaptive-Faster-Leaner-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 0416f683fd4e, train score +4.668",0.3015,5,7.45,54.4,7.885,110,3.99,-0.194,1.524,1.49,True,True
+Adaptive Adaptive-Faster-Leaner-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 26eae0d0f6c8, train score +4.661",0.3015,5,7.45,54.4,7.737,110,3.96,-0.194,1.478,1.48,True,True
+Adaptive-Cautious-Wider-Bolder-NQ-Swing-Adaptive-Faster-Leaner-Wider-Bolder-NQ-S,"island quick, run run-20260922-233458-d1bf, genome 2c85f4557f2a, train score +4.634",0.3015,5,7.45,54.4,7.185,108,3.84,-0.273,2.023,1.56,True,True
+Calmer Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 149fdf485934, train score +4.078",0.2938,27,1.96,54.5,4.537,282,1.64,-0.278,0.561,1.22,True,True
+Greedier Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 27fea7ae2db9, train score +4.042",0.2938,27,1.96,54.5,4.138,281,1.59,-0.278,0.594,1.23,True,True
+Patient Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 33325d36c2e8, train score +4.043",0.2838,26,2.03,52.9,4.111,279,1.6,-0.295,0.809,1.29,True,True
+"Calm Trend + Z-Dip, Let It Run","round 3, Claude: the 7.1% target cuts the best trends short in training [as written, r3_trend_plus_dip.json]",0.2789,9,2.47,54.4,4.985,101,1.73,-0.311,3.058,1.6,True,True
+Stubborn Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 0e0e0b03ecc5, train score +4.125",0.2758,25,2.29,50.5,6.13,303,1.97,-0.358,0.231,1.08,True,True
+Adaptive Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 26e25e1fdedd, train score +4.121",0.2758,25,2.29,50.5,6.091,303,1.92,-0.358,0.481,1.14,True,True
+Patient Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 1f846535e57d, train score +5.037",0.2726,6,8.98,49.1,24.801,96,8.79,-0.118,0.798,1.26,True,True
+Cautious Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 4755480da019, train score +5.034",0.2726,6,8.98,49.1,26.587,100,8.08,-0.223,0.696,1.24,True,True
+Adaptive Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome b29eb0bc99a2, train score +5.033",0.2726,6,8.98,49.1,24.954,98,8.56,-0.135,0.989,1.33,True,True
+Faster Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 692bd69924ca, train score +5.022",0.2726,6,8.98,49.1,24.44,95,9.8,-0.118,0.861,1.25,True,True
+Calmer Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 5661367f5133, train score +5.015",0.2726,6,8.98,49.1,24.516,98,8.15,-0.135,0.904,1.31,True,True
+Patient Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 9679a32613e5, train score +4.987",0.2726,6,8.98,49.1,23.812,98,7.92,-0.135,1.242,1.41,True,True
+Cautious Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome e5caa21c379c, train score +3.075",0.2656,16,1.6,52.7,19.301,167,2.07,-0.281,7.018,1.77,True,True
+Tighter Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 1c0ee2cf8a66, train score +3.073",0.2656,16,1.6,52.7,17.118,168,2.05,-0.281,7.018,1.77,True,True
+Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome d01833791718, train score +3.070",0.2656,16,1.6,52.7,15.493,166,2.04,-0.281,4.983,1.65,True,True
+Stubborn Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome e76b4880c5f2, train score +3.067",0.2656,16,1.6,52.7,19.336,167,2.06,-0.281,5.989,1.72,True,True
+Patient-Adaptive-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 043a27c1e821, train score +3.063",0.2656,16,1.6,52.7,15.521,166,2.03,-0.281,4.545,1.63,True,True
+Stubborn-Patient-Adaptive-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome b5f7b8ccecec, train score +3.059",0.2656,16,1.6,52.7,15.144,167,2.01,-0.281,4.545,1.63,True,True
+Sharper Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 1f6e48a9e51c, train score +3.043",0.2656,16,1.6,52.7,18.331,167,2.03,-0.281,8.098,1.8,True,True
+Faster Patient-Adaptive-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome db04d91f7baa, train score +3.032",0.2656,16,1.6,52.7,14.416,163,1.98,-0.304,4.025,1.46,True,True
+Greedier Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome edd4d76e0741, train score +4.949",0.2432,6,8.29,44.4,25.068,96,8.71,-0.118,0.653,1.23,True,True
+Sharper Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 081a2b842b62, train score +4.942",0.2432,6,8.29,44.4,23.548,96,8.61,-0.118,0.63,1.22,True,True
+"Bull Market, Crash-Day Exit","calm_trend v2, Claude [as written, calm_trend_v2.json]",0.2418,16,1.51,48.8,2.306,151,1.3,-0.362,3.692,1.4,True,True
+Second Red Day or 2% Drop,"round 3, Claude: the quick-flush leader without its trend legs [as written, r3_quick_flush.json]",0.2404,5,94.13,43.7,0.667,76,1.58,-0.182,0.639,2.06,True,True
+Cautious-Wider-Bolder-NQ-Swing-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome c6b566e600a9, train score +4.544",0.2304,5,27.54,42.5,9.213,118,3.99,-0.155,2.077,1.72,True,True
+Wider Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome b07cb341f16a, train score +4.094",0.2224,25,2.21,41.8,5.935,308,1.87,-0.353,0.426,1.13,True,True
+Faster Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 9fa8ee490bb9, train score +4.083",0.2224,25,2.21,41.8,5.548,303,1.87,-0.353,0.426,1.13,True,True
+Wider-Adaptive-Managed-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 2998708ef693, train score +3.054",0.22,16,1.48,45.6,15.294,170,2.01,-0.281,5.776,1.63,True,True
+Wider Patient-Adaptive-Managed-Leaner-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 9fe57aead8e2, train score +3.052",0.22,16,1.48,45.6,16.083,169,2.02,-0.281,5.652,1.59,True,True
+Wider Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 05b01a20a323, train score +3.047",0.22,16,1.48,45.6,15.325,170,2.01,-0.281,5.776,1.63,True,True
+Wider-Adaptive-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 34cde7709b60, train score +3.045",0.22,16,1.48,45.6,17.169,170,2.02,-0.281,6.146,1.69,True,True
+Patient-Adaptive-Managed-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 6ad31bf9eade, train score +3.044",0.22,16,1.48,45.6,16.116,169,2.02,-0.281,6.268,1.7,True,True
+Patient-Adaptive-Managed-Adaptive-Managed-Managed,"island calm_trend_v2, run run-20260922-234904-edb6, genome 25cbc17a9ec9, train score +3.037",0.22,16,1.48,45.6,17.204,170,2.02,-0.281,6.01,1.69,True,True
+Faster Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 3d3ef6bfbd1a, train score +4.640",0.2071,4,40.37,38.4,6.605,102,5.59,-0.181,1.321,1.47,True,False
+Cautious Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 71dd7281dd15, train score +4.971",0.2071,4,40.37,38.4,23.446,96,8.43,-0.15,0.912,1.28,True,False
+Leaner Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 4f6dccfd87b7, train score +4.967",0.2071,4,40.37,38.4,23.591,98,8.22,-0.181,0.811,1.28,True,False
+"Flush, Washout or Squeeze","round 3, Claude: keeps the squeeze leg the leader relied on [as written, r3_volume_flush.json]",0.2071,4,40.37,38.4,7.922,81,7.84,-0.181,0.885,1.3,True,False
+Calmer Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 974d836f522a, train score +4.994",0.2063,6,7.04,38.2,27.691,101,8.89,-0.135,1.26,1.43,True,True
+Tighter Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome a2fab92f24ed, train score +4.992",0.2063,6,7.04,38.2,23.845,100,8.73,-0.135,1.389,1.46,True,True
+Leaner Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome a53d3eccdc60, train score +4.952",0.2063,6,7.04,38.2,26.602,101,9.11,-0.135,1.389,1.46,True,True
+Cautious-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 93d2cf7fb244, train score +4.538",0.2049,3,99.0,37.8,8.356,80,4.73,-0.155,1.812,1.85,True,False
+Wider Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 918a86ecc0d6, train score +4.694",0.199,4,8.51,37.1,8.039,102,4.84,-0.155,1.723,1.58,True,False
+Patient Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 1af4ef24e200, train score +4.133",0.196,25,1.95,37.3,6.186,303,1.98,-0.353,0.237,1.08,True,True
+Wider Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 94dea76e6c7c, train score +4.129",0.196,25,1.95,37.3,6.147,303,1.93,-0.353,0.488,1.14,True,True
+Leaner Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 9b4c6fb1a10c, train score +4.127",0.196,25,1.95,37.3,6.034,301,2.0,-0.353,0.265,1.09,True,True
+Bolder Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 7ad6b6cf37ab, train score +4.118",0.196,25,1.95,37.3,5.986,303,1.97,-0.353,0.123,1.04,True,True
+Stubborn Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 88345ad16771, train score +4.113",0.196,25,1.95,37.3,5.941,303,1.95,-0.353,0.206,1.07,True,True
+Stubborn Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 2a1aed3af7fd, train score +4.098",0.196,25,1.95,37.3,5.733,303,1.91,-0.353,0.488,1.14,True,True
+Adaptive Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome b4e15fa0de1a, train score +4.090",0.196,25,1.95,37.3,6.598,306,2.03,-0.353,0.538,1.16,True,True
+Cautious Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 87abb5ce87b0, train score +4.083",0.196,25,1.95,37.3,5.547,303,1.9,-0.353,0.447,1.13,True,True
+Greedier Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 05b7fd0e6b5e, train score +4.082",0.196,25,1.95,37.3,6.485,307,2.02,-0.353,0.376,1.11,True,True
+Sharper Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome 83710cb9e2dc, train score +4.059",0.1935,28,1.53,39.0,4.295,281,1.61,-0.278,0.673,1.25,True,True
+Patient Cautious-Cautious-Faster-Cautious-Calmer-Days,"island quick_flush, run run-20260922-234156-83fb, genome d4b733966b03, train score +4.053",0.1935,28,1.53,39.0,4.222,281,1.6,-0.295,0.673,1.25,True,True
+Wider Stubborn-Leaner-Faster-Dip,"island calendar, run run-20260922-233925-dde1, genome 7f9aca7d934f, train score +4.105",0.184,25,1.84,35.4,5.77,303,1.91,-0.353,0.487,1.14,True,True
+Leaner Adaptive-Patient-Uptrend-Calmer-Uptrend,"island calm_trend, run run-20260922-233956-cb5c, genome 1fd9c3a41276, train score +3.389",0.1825,40,1.28,38.3,4.517,477,1.45,-0.489,1.114,1.11,True,True
+Adaptive-Cautious-Wider-Bolder-NQ-Swing-Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome feea134e0b13, train score +4.645",0.1821,3,99.0,34.3,7.125,101,4.31,-0.224,2.806,1.78,True,False
+Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 9e7e72046e78, train score +4.611",0.1821,3,99.0,34.3,7.015,101,4.26,-0.224,2.806,1.78,True,False
+"Calm Trend + Z-Dip, No Cooldown","round 3, Claude: the trend-plus-dip core without the two-bar cooldown, so it misses fewer up days [as written, r3_trend_",0.1779,12,1.48,38.6,3.096,122,1.54,-0.386,1.793,1.34,True,True
+"Flush, Washout or Crash","round 3, Claude: the flush book with its redundant clauses removed [as written, r3_volume_flush.json]",0.1733,2,99.0,32.5,7.554,45,7.87,-0.237,1.058,1.51,True,False
+Flush or Stretch,"round 3, Claude: the stretch leg on its own terms [as written, r3_volume_flush.json]",0.1733,2,99.0,32.5,6.082,43,6.55,-0.237,1.043,1.5,True,False
+Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 293040a2431c, train score +4.672",0.1653,4,4.95,31.6,7.63,102,4.53,-0.155,1.693,1.61,True,False
+Adaptive-Cautious-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 32207af76730, train score +4.636",0.1653,4,4.95,31.6,6.891,100,4.35,-0.222,2.065,1.65,True,False
+Calmer Faster-Leaner-Wider-Bolder-NQ-Swing-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome a0d77655e85d, train score +4.626",0.1653,4,4.95,31.6,6.683,100,4.23,-0.243,1.243,1.46,True,False
+Leaner Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome ff0a5073dff7, train score +4.552",0.1653,4,4.95,31.6,6.908,119,3.96,-0.222,2.711,1.67,True,False
+Cautious Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome e79aec96e410, train score +2.894",0.1651,17,2.36,31.9,3.904,212,1.82,-0.305,-0.228,0.92,True,True
+Faster Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome a4e7e9c80ac6, train score +2.874",0.1651,17,2.36,31.9,3.451,208,1.8,-0.305,-0.209,0.92,True,True
+Faster Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 04f38b10a371, train score +2.863",0.1651,17,2.36,31.9,3.505,212,1.8,-0.305,-0.228,0.92,True,True
+Cautious Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome d7f910f7ddc7, train score +2.849",0.1651,17,2.36,31.9,3.154,206,1.74,-0.305,-0.207,0.92,True,True
+Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome d20f8b5a81bf, train score +2.835",0.1651,17,2.36,31.9,3.183,209,1.74,-0.305,-0.226,0.91,True,True
+Sharper Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome df80a361c378, train score +2.821",0.1651,17,2.36,31.9,3.076,212,1.71,-0.305,-0.228,0.92,True,True
+Stubborn Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 745b14e9c838, train score +2.819",0.1651,17,2.36,31.9,2.886,205,1.7,-0.305,-0.207,0.92,True,True
+Wider Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 40dcc87365ed, train score +3.539",0.1544,13,2.13,31.3,13.73,200,2.84,-0.271,0.474,1.13,True,True
+Faster Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 6afcec381581, train score +2.814",0.1478,18,2.09,29.0,2.976,210,1.72,-0.305,-0.226,0.91,True,True
+Tighter Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome f624bfedbb6a, train score +3.763",0.1424,12,2.04,29.1,14.627,194,3.16,-0.259,0.827,1.21,True,True
+Tighter Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome bf0ea02232e5, train score +3.681",0.1424,12,2.04,29.1,12.915,193,3.14,-0.271,0.881,1.22,True,True
+Calmer Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome e7a76c3f940b, train score +3.658",0.1424,12,2.04,29.1,12.438,193,3.03,-0.271,0.873,1.22,True,True
+Calmer Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 3b8c52c739dd, train score +3.569",0.1424,12,2.04,29.1,12.778,198,2.86,-0.288,0.783,1.17,True,True
+Leaner Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome d2bb0a79d572, train score +3.566",0.1424,12,2.04,29.1,10.821,189,2.98,-0.287,1.052,1.26,True,True
+Leaner Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 2381feff7b85, train score +3.553",0.1424,12,2.04,29.1,13.893,197,2.79,-0.271,0.546,1.14,True,True
+Tighter Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 469ee13dd56b, train score +3.538",0.1424,12,2.04,29.1,13.628,195,3.03,-0.271,0.531,1.14,True,True
+Tighter Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 7145000fd918, train score +3.538",0.1424,12,2.04,29.1,13.573,196,2.78,-0.271,0.546,1.14,True,True
+Calmer Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 238a3fbba3cd, train score +3.525",0.1424,12,2.04,29.1,9.773,194,2.96,-0.271,0.881,1.22,True,True
+Tighter-Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome b4ff3669c46f, train score +3.521",0.1424,12,2.04,29.1,13.783,185,2.85,-0.287,1.091,1.24,True,True
+Stubborn Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 2fb33cb78909, train score +3.504",0.1424,12,2.04,29.1,12.705,193,2.8,-0.271,0.676,1.17,True,True
+Sharper Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome a0c4f53441f5, train score +3.514",0.1254,9,2.46,25.7,10.312,179,3.14,-0.354,0.859,1.25,True,True
+"Pullback Book, Clean","round 3, Claude: the pullback leader without its junk clauses [as written, r3_deep_pullback.json]",0.1152,12,1.84,24.2,9.111,198,2.75,-0.358,1.098,1.27,True,True
+Tighter Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome ebc90f3dd05d, train score +4.383",0.1055,14,1.57,22.8,13.994,237,2.66,-0.43,0.276,1.07,True,True
+Tighter Adaptive-Wider-Bolder-NQ-Swing,"island quick, run run-20260922-233458-d1bf, genome 7c53c40e3395, train score +4.711",0.0957,8,1.78,19.8,6.174,158,2.83,-0.229,3.481,1.65,True,True
+Faster Tighter-Break-Tighter-Break,"island swing, run run-20260922-233529-a664, genome 8e23b6dd87fd, train score +3.670",0.0926,12,1.68,20.2,12.806,195,3.1,-0.271,0.665,1.18,True,True
+Calmer Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 99a3442603ce, train score +4.406",0.0864,13,1.48,19.4,14.636,230,2.7,-0.289,0.265,1.08,True,True
+Sharper Flush or Washout Book,"island volume_flush, run run-20260922-234258-18fb, genome 2d3409be36e8, train score +4.949",0.0846,4,3.91,16.6,22.167,92,9.35,-0.132,0.271,1.13,True,False
+Leaner Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 577955f9b4fa, train score +2.850",0.0698,17,1.3,15.7,3.157,207,1.73,-0.305,-0.052,0.99,True,True
+Wider Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome c7354e395069, train score +4.453",0.0605,13,1.34,14.6,15.329,218,2.79,-0.289,0.167,1.05,True,True
+Adaptive Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 3b0273b4c5d5, train score +4.451",0.0605,13,1.34,14.6,15.783,217,2.84,-0.28,0.061,1.02,True,True
+Greedier Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome de781060366f, train score +4.450",0.0605,13,1.34,14.6,15.44,218,2.79,-0.289,0.167,1.05,True,True
+Cautious Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 8ed559c08643, train score +4.420",0.0605,13,1.34,14.6,14.515,219,2.69,-0.289,0.231,1.07,True,True
+Sharper Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome dc3ba0739578, train score +4.419",0.0605,13,1.34,14.6,15.827,229,2.79,-0.289,0.237,1.07,True,True
+Cautious Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 05765860420b, train score +4.416",0.0605,13,1.34,14.6,14.345,215,2.77,-0.309,0.091,1.03,True,True
+Faster Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 9381a130da95, train score +4.414",0.0605,13,1.34,14.6,14.815,230,2.71,-0.289,0.237,1.07,True,True
+Adaptive Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 95c4036c8e5c, train score +4.413",0.0605,13,1.34,14.6,14.599,226,2.73,-0.28,0.124,1.04,True,True
+Adaptive Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 9e012bc4d437, train score +4.409",0.0605,13,1.34,14.6,15.009,230,2.72,-0.28,0.215,1.06,True,True
+Cautious Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 6b296ee26872, train score +4.395",0.0605,13,1.34,14.6,14.491,232,2.7,-0.28,0.233,1.07,True,True
+Tighter Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome 278079dbc94d, train score +4.393",0.0605,13,1.34,14.6,14.699,233,2.66,-0.314,0.133,1.04,True,True
+Adaptive Patient-Book,"island deep_pullback, run run-20260922-234031-4e9e, genome b42d5e88876e, train score +4.389",0.0605,13,1.34,14.6,14.188,232,2.65,-0.28,0.638,1.17,True,True
+Pullback Book + Quiet Dip,"round 3, Claude: keeps the leader's quiet-dip leg [as written, r3_deep_pullback.json]",0.0605,13,1.34,14.6,8.963,207,2.55,-0.358,0.716,1.18,True,True
+Contracting Volatility Over the 50,"calm_trend v2, Claude [as written, calm_trend_v2.json]",0.0437,8,1.16,11.5,5.524,100,2.01,-0.278,0.138,1.05,True,True
+Calm Rising Trend,"calm_trend v2, Claude: strict structure after v1 bred itself into buy-and-hold [as written, calm_trend_v2.json]",0.0416,5,1.23,10.2,0.832,101,1.32,-0.284,1.097,1.26,True,True
+Leaner Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 5a4733bc9e1f, train score +2.923",0.0258,17,1.12,7.3,3.139,209,1.74,-0.305,0.024,1.01,True,True
+Cautious Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 64f32a28896c, train score +2.919",0.0258,17,1.12,7.3,3.052,207,1.74,-0.305,0.075,1.03,True,True
+Leaner-Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 9b959a173a46, train score +2.912",0.0258,17,1.12,7.3,3.185,213,1.74,-0.305,-0.008,1.0,True,True
+Bolder Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 0f090ba9023d, train score +2.896",0.0258,17,1.12,7.3,2.985,209,1.73,-0.305,-0.004,1.0,True,True
+Leaner Stubborn-Adaptive-Close-Tighter-Close-Tighter-Close,"island momentum, run run-20260922-234059-d75d, genome 0d2ce47aee1e, train score +2.894",0.0258,17,1.12,7.3,2.871,208,1.7,-0.305,0.024,1.01,True,True
+Mid-Month Dip and Red Friday,"round 3, Claude: the calendar leader's two real legs, cleaned [as written, r3_calendar.json]",0.0212,10,1.19,5.3,2.011,137,1.51,-0.438,0.686,1.38,True,True
+Wider-Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 7a24724750a6, train score +2.447",0.0074,6,1.08,2.1,0.704,86,1.6,-0.198,0.287,1.24,True,True
+Leaner Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 3b6a550f8b03, train score +2.568",0.0012,8,1.03,0.9,0.926,101,1.6,-0.251,0.728,1.38,False,True
+Faster Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 32d69c6344fb, train score +2.552",0.0012,8,1.03,0.9,0.619,95,1.41,-0.347,0.633,1.35,False,True
+Sharper Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 9c6401e138bb, train score +2.528",0.0012,8,1.03,0.9,0.682,108,1.4,-0.255,0.98,1.44,False,True
+Calmer Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome d4cf0927f0c2, train score +2.482",0.0012,8,1.03,0.9,0.675,103,1.42,-0.229,1.087,1.49,False,True
+Faster Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 9f45f76891b3, train score +2.479",0.0012,8,1.03,0.9,0.508,107,1.34,-0.255,1.034,1.45,False,True
+"Calendar Dips, Held Two Days","round 3, Claude: a longer hold to test the one-day exit [as written, r3_calendar.json]",-0.0095,9,0.92,-0.1,4.116,122,1.68,-0.224,0.764,1.31,False,False
+Stubborn Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome ac90f5503b26, train score +2.493",-0.0154,8,0.79,-2.3,0.56,108,1.33,-0.298,0.652,1.28,False,False
+Bolder Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome cc6731d2c701, train score +2.409",-0.0223,11,0.78,-3.7,1.109,138,1.52,-0.239,1.306,1.51,False,False
+Greedier Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome e3969c9ef798, train score +2.431",-0.0465,11,0.76,-7.4,0.409,111,1.24,-0.255,0.904,1.41,False,False
+Calmer Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 63d17f569321, train score +2.528",-0.0567,9,0.34,-10.9,0.917,108,1.63,-0.176,0.731,1.39,False,False
+Sharper Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome c32942bbf654, train score +2.445",-0.0567,9,0.34,-10.9,0.68,112,1.43,-0.278,1.019,1.51,False,False
+Cautious Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 8a69b7de4b02, train score +2.442",-0.0567,9,0.34,-10.9,0.677,111,1.43,-0.279,0.994,1.5,False,False
+Greedier Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome cc25f24998c7, train score +2.432",-0.0567,9,0.34,-10.9,0.604,108,1.4,-0.284,1.031,1.52,False,False
+Greedier Calmer-Tighter-Lows,"island patterns, run run-20260922-234128-fb09, genome 7be6253722ee, train score +2.423",-0.0567,9,0.34,-10.9,0.625,112,1.41,-0.278,0.929,1.48,False,False
+Low-Range EMA Trend,"calm_trend v2, Claude [as written, calm_trend_v2.json]",-0.1062,3,0.12,-20.9,1.127,64,1.56,-0.246,1.533,1.47,False,False

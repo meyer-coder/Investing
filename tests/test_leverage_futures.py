@@ -238,3 +238,54 @@ def test_a_seed_file_makes_an_island_of_one_family(tmp_path):
     assert names[:2] == ["Island Seed A", "Island Seed B"]
     assert len(names) == 10
     assert sum(1 for g in evo.population if g.name.startswith("Random")) <= 2
+
+
+# ------------------------------------------------------------------ resting stops
+
+def _one_bar_universe(rows):
+    """rows: (date, open, high, low, close)."""
+    from evotrader.data import Universe
+    dates = [r[0] for r in rows]
+    cols = [np.asarray([r[k] for r in rows], dtype=float) for k in (1, 2, 3, 4)]
+    bars = Bars("X", dates, cols[0], cols[1], cols[2], cols[3], np.full(len(rows), 1e6))
+    return Universe({"X": bars}, dates)
+
+
+def _stop_genome(stop):
+    return compile_genome(Genome.from_dict({
+        "name": "Stop Test", "entry_rules": [{"when": "close > 0 and in_position == 0", "weight": 1.0}],
+        "exit_rules": [{"when": "bars_held >= 50"}],
+        "risk": {"max_position_pct": 1.0, "stop_loss_pct": stop, "cooldown_bars": 99}}))
+
+
+def test_a_resting_stop_fills_at_the_stop_inside_the_bar():
+    # decisions start on bar 1, so the entry fills at bar 2's open (100)
+    days = [str(np.datetime64("2026-01-01") + np.timedelta64(i, "D")) for i in range(7)]
+    rows = [(days[0], 100, 101, 99, 100), (days[1], 100, 101, 99.5, 100),
+            (days[2], 100, 100.5, 98.9, 99.2), (days[3], 99, 99.5, 98, 99),
+            (days[4], 99, 100, 98, 99), (days[5], 99, 100, 98, 99), (days[6], 99, 100, 98, 99)]
+    u = _one_bar_universe(rows)
+    f = build_features(u)
+    r = run_backtest(_stop_genome(0.01), u, f, starting_cash=10_000, commission_bps=0.0,
+                     slippage_bps=0.0, start_bar=1, intrabar_stops=True)
+    t = r.journal.trades[0]
+    assert t.entry_date == days[2] and t.exit_date == days[2]      # stopped on the entry bar
+    assert t.exit_price == pytest.approx(99.0)                     # 1% under the 100 fill
+    assert "intrabar" in t.exit_reason
+    closed = run_backtest(_stop_genome(0.01), u, f, starting_cash=10_000, commission_bps=0.0,
+                          slippage_bps=0.0, start_bar=1)
+    assert closed.journal.trades[0].exit_date != days[2]          # close-checked: 99.2 is above the stop
+
+
+def test_a_gap_through_a_resting_stop_fills_at_the_open():
+    days = [str(np.datetime64("2026-01-01") + np.timedelta64(i, "D")) for i in range(6)]
+    rows = [(days[0], 100, 101, 99, 100), (days[1], 100, 101, 99.5, 100),
+            (days[2], 100, 101, 99.5, 100.5), (days[3], 97, 98, 96, 97.5),
+            (days[4], 97, 98, 96, 97), (days[5], 97, 98, 96, 97)]
+    u = _one_bar_universe(rows)
+    f = build_features(u)
+    r = run_backtest(_stop_genome(0.01), u, f, starting_cash=10_000, commission_bps=0.0,
+                     slippage_bps=0.0, start_bar=1, intrabar_stops=True)
+    t = r.journal.trades[0]
+    assert t.entry_date == days[2]
+    assert t.exit_date == days[3] and t.exit_price == pytest.approx(97.0)   # the gap, not the stop

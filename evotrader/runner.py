@@ -87,12 +87,19 @@ def _risk_exit(pos, price: float, bar: int, risk) -> Optional[str]:
 def run_backtest(compiled: CompiledGenome, universe: Universe, features: FeatureSet, *,
                  starting_cash: float = 100_000.0, commission_bps: float = 1.0,
                  slippage_bps: float = 5.0, record_thoughts: bool = True,
-                 start_bar: Optional[int] = None, leverage: float = 1.0) -> BacktestResult:
+                 start_bar: Optional[int] = None, leverage: float = 1.0,
+                 intrabar_stops: bool = False) -> BacktestResult:
     """Simulate one genome and return its journal plus summary statistics.
 
     ``leverage`` is the account's, not the genome's: a rule's weight is a share
     of buying power, so on a 2x futures account a 1.0 weight is twice equity in
     notional and a 0.5 weight is one times equity.
+
+    ``intrabar_stops`` turns the stop loss into a resting stop order, as a
+    futures trader would place one: it fires during any bar whose low reaches
+    the stop, from the entry bar on, and fills at the stop price, or at the
+    open when the bar gaps below it.  Off, the stop is checked on the close and
+    filled at the next open like every other exit.
     """
     genome = compiled.genome
     risk = compiled.risk
@@ -117,6 +124,20 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
 
     for i in range(first, n - 1):
         date = dates[i]
+        stopped_now = set()
+        if intrabar_stops and risk.stop_loss_pct > 0:
+            for sym in list(broker.positions):
+                pos = broker.positions[sym]
+                stop_px = pos.entry_price * (1.0 - risk.stop_loss_pct)
+                bar = universe.bars[sym]
+                if float(bar.low[i]) <= stop_px:
+                    opened = float(bar.open[i])
+                    # traded down through the stop, or opened below it
+                    px = stop_px if (i == pos.entry_bar or opened > stop_px) else opened
+                    broker.sell(sym, px, date, i,
+                                f"stop order hit intrabar (-{risk.stop_loss_pct * 100:.2f}% from entry)")
+                    last_exit_bar[sym] = i
+                    stopped_now.add(sym)
         prices = {s: float(universe.bars[s].close[i]) for s in symbols}
         equity = broker.mark(date, prices)
         if equity <= 0:  # wiped out; nothing left to trade
@@ -159,7 +180,7 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
         for sym in symbols:
             if sym in broker.positions and sym not in {s for s, _ in sells}:
                 continue
-            if sym in {s for s, _ in sells}:
+            if sym in {s for s, _ in sells} or sym in stopped_now:
                 continue  # never re-enter on the same bar we exit
             if risk.cooldown_bars > 0:
                 last = last_exit_bar.get(sym)

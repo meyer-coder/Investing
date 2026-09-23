@@ -24,6 +24,7 @@ class EvolutionConfig:
     test_frac: float = 0.25            # held-out tail, never used for selection
     test_start: str = ""               # held-out window from this date instead (overrides test_frac)
     leverage: float = 1.0              # account notional per unit of equity (2.0 = 2x futures)
+    intrabar_stops: bool = False       # stop losses as resting orders filled inside the bar
 
     # --- the loop
     population: int = 100

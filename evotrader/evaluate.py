@@ -164,7 +164,7 @@ def _context(universe: Universe, cfg: EvolutionConfig) -> Context:
                    test=None, test_features=None, test_benchmark=None,
                    starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                    slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
-                   leverage=cfg.leverage)
+                   leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops)
 
 
 def _held_out_context(universe: Universe, cut: int, cfg: EvolutionConfig) -> Context:
@@ -176,7 +176,8 @@ def _held_out_context(universe: Universe, cut: int, cfg: EvolutionConfig) -> Con
                                                starting_cash=cfg.starting_cash, start=cut),
                    starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                    slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
-                   leverage=cfg.leverage, test_start_bar=cut)
+                   leverage=cfg.leverage, test_start_bar=cut,
+                   intrabar_stops=cfg.intrabar_stops)
 
 
 def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
@@ -201,7 +202,7 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
     result = run_backtest(compile_genome(genome), ctx.train, ctx.train_features,
                           starting_cash=ctx.starting_cash, commission_bps=ctx.commission_bps,
                           slippage_bps=ctx.slippage_bps, record_thoughts=False,
-                          leverage=ctx.leverage)
+                          leverage=ctx.leverage, intrabar_stops=ctx.intrabar_stops)
     journal = result.journal
     report.best = journal.best_trades(3)
     report.worst = journal.worst_trades(3)

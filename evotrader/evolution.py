@@ -56,6 +56,7 @@ class Context:
     slippage_bps: float
     fitness: FitnessConfig
     leverage: float = 1.0
+    intrabar_stops: bool = False
     # When set, the held-out window is the full series traded from this bar:
     # indicators are warm on day one instead of losing fifty bars to warm-up.
     test_start_bar: Optional[int] = None
@@ -104,7 +105,8 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
         result = run_backtest(
             compiled, universe, features, starting_cash=ctx.starting_cash,
             commission_bps=ctx.commission_bps, slippage_bps=ctx.slippage_bps,
-            leverage=ctx.leverage, start_bar=start_bar)
+            leverage=ctx.leverage, start_bar=start_bar,
+            intrabar_stops=ctx.intrabar_stops)
     except GenomeError as exc:
         return Outcome(genome.id, genome.name, genome.generation, float("-inf"),
                        Metrics(), None, f"invalid genome: {exc}")
@@ -150,7 +152,7 @@ def replay_genome(genome: Genome, cfg: EvolutionConfig, *,
                   test=None, test_features=None, test_benchmark=None,
                   starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                   slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
-                  leverage=cfg.leverage)
+                  leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops)
     return score_genome(genome, ctx)
 
 
@@ -243,6 +245,7 @@ class Evolution:
             starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
             slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
             leverage=cfg.leverage, test_start_bar=test_start_bar,
+            intrabar_stops=cfg.intrabar_stops,
         )
         a, b = train.date_range()
         self.window_label = f"train {a}..{b} ({len(train)} bars, {len(train.symbols)} symbols)"

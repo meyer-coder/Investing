@@ -820,6 +820,41 @@ time, and a change was kept only if every trade from bar 260 on, in all three
 windows, stayed the same. Every number on this page comes from re-running the
 simplified rules.
 
+## Tighter stops: what a 9-point stop does
+
+A stop sized for a daily loss budget, for example 9 points so that three or
+four losses fit inside a $1,000 drawdown, was tested on all twenty strategies
+as a resting stop order that fills inside the bar, the way a real stop
+fills (`strategies/nq2x/stop_study.py`, results in
+`reports/stop_study.json`).
+
+Nine points is 0.03% of NQ at 31,000. Over the last six months NQ's median
+session range was 514 points, and it traded at least 9 points below the open
+on 94% of sessions. With a 9-point stop, 80% to 100% of trades are stopped
+out on the day they are entered.
+
+| stop, resting order | profitable in the last six months | profitable on all three windows | median $ per session, last six months | loss per stop-out at 1 MNQ |
+|---|---|---|---|---|
+| each strategy's own stop, on the close (as published) | 20 of 20 | 20 of 20 | +$60 | $2,600 at the champion's 4.2% |
+| 9 points | 12 of 20 | 0 of 20 | +$15 | $18 |
+| 25 points | 17 of 20 | 0 of 20 | +$17 | $50 |
+| 50 points | 20 of 20 | 12 of 20 | +$30 | $100 |
+| 100 points | 19 of 20 | 9 of 20 | +$31 | $200 |
+| 150 points | 19 of 20 | 11 of 20 | +$24 | $300 |
+| 250 points | 20 of 20 | 15 of 20 | +$51 | $500 |
+| 400 points | 20 of 20 | 18 of 20 | +$51 | $800 |
+
+At 9 points the median strategy lost 7% over 2019-2026 and 5% over
+2010-2018. The twelve that stayed positive over the last six months did so
+because a strong rally carried the few trades that survived the stop. These
+are daily-bar strategies that hold one to thirteen sessions; they need room
+of a few hundred points. A stop of 100 to 150 points ($200 to $300 a loss on
+one MNQ, three to five losses inside $1,000) keeps 9 to 11 of them profitable
+on every window, led by Quiet MACD Trend (+$57 a session at 2x with a
+100-point stop), Calm Trend, Volume-Checked Dips (+$53), Managed Long (+$45)
+and Calendar Dips (+$43). A true 9-point stop belongs to intraday trading,
+several trades a day on one- to five-minute bars, which is a different system.
+
 ## The data
 
 - NQ1! from TradingView, daily bars since 1999. Each quarterly roll is

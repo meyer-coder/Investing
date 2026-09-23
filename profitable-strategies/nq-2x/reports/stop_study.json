@@ -1,0 +1,5855 @@
+[
+ {
+  "name": "Calm Trend Champion",
+  "rank": 1,
+  "own_stop_pct": 0.0423,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.7187915110673304,
+     "trades": 10,
+     "win_rate": 0.7,
+     "profit_factor": 15.744290768873292,
+     "usd_per_session": 110.66633319369338,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 18.320220183575863,
+     "trades": 131,
+     "win_rate": 0.6335877862595419,
+     "profit_factor": 3.573257560983452,
+     "usd_per_session": 51.096528921229684,
+     "stopped_share": 0.09923664122137404,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 1.719298677716989,
+     "trades": 126,
+     "win_rate": 0.5476190476190477,
+     "profit_factor": 1.2891447693509874,
+     "usd_per_session": 14.73252519311214,
+     "stopped_share": 0.12698412698412698,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.5504602724171055,
+     "trades": 10,
+     "win_rate": 0.6,
+     "profit_factor": 3.62466685558693,
+     "usd_per_session": 89.95219022140391,
+     "stopped_share": 0.1,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 5.786419622211072,
+     "trades": 138,
+     "win_rate": 0.5797101449275363,
+     "profit_factor": 1.8368264818404554,
+     "usd_per_session": 35.14520937764495,
+     "stopped_share": 0.21739130434782608,
+     "stopped_same_day": 0.050724637681159424
+    },
+    "older": {
+     "return": 3.0320183902767672,
+     "trades": 129,
+     "win_rate": 0.5503875968992248,
+     "profit_factor": 1.529632273069451,
+     "usd_per_session": 19.519869604312603,
+     "stopped_share": 0.14728682170542637,
+     "stopped_same_day": 0.007751937984496124
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.14908446780003692,
+     "trades": 22,
+     "win_rate": 0.045454545454545456,
+     "profit_factor": 8.722952237760943,
+     "usd_per_session": 27.966189638820705,
+     "stopped_share": 0.9545454545454546,
+     "stopped_same_day": 0.9545454545454546
+    },
+    "train": {
+     "return": -0.07226923813190811,
+     "trades": 308,
+     "win_rate": 0.006493506493506494,
+     "profit_factor": 0.74853901239998,
+     "usd_per_session": -0.9731272550748369,
+     "stopped_share": 0.9935064935064936,
+     "stopped_same_day": 0.9675324675324676
+    },
+    "older": {
+     "return": -0.04904981631948613,
+     "trades": 278,
+     "win_rate": 0.02158273381294964,
+     "profit_factor": 0.8273543828560378,
+     "usd_per_session": -0.5370379072844377,
+     "stopped_share": 0.9784172661870504,
+     "stopped_same_day": 0.960431654676259
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.14404950637145264,
+     "trades": 19,
+     "win_rate": 0.05263157894736842,
+     "profit_factor": 6.951697885768195,
+     "usd_per_session": 27.75091861398279,
+     "stopped_share": 0.9473684210526315,
+     "stopped_same_day": 0.8947368421052632
+    },
+    "train": {
+     "return": -0.0006458342189650246,
+     "trades": 301,
+     "win_rate": 0.016611295681063124,
+     "profit_factor": 1.0318440983885269,
+     "usd_per_session": 0.355540248889482,
+     "stopped_share": 0.9833887043189369,
+     "stopped_same_day": 0.9501661129568106
+    },
+    "older": {
+     "return": -0.13880850681585377,
+     "trades": 273,
+     "win_rate": 0.02197802197802198,
+     "profit_factor": 0.5766330467099474,
+     "usd_per_session": -1.6939838086317944,
+     "stopped_share": 0.978021978021978,
+     "stopped_same_day": 0.9377289377289377
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.13082180451269543,
+     "trades": 19,
+     "win_rate": 0.05263157894736842,
+     "profit_factor": 4.544981441734712,
+     "usd_per_session": 25.473617015387607,
+     "stopped_share": 0.9473684210526315,
+     "stopped_same_day": 0.8947368421052632
+    },
+    "train": {
+     "return": -0.1667445532570898,
+     "trades": 296,
+     "win_rate": 0.016891891891891893,
+     "profit_factor": 0.6813085746459097,
+     "usd_per_session": -2.4024441934591865,
+     "stopped_share": 0.9831081081081081,
+     "stopped_same_day": 0.9324324324324325
+    },
+    "older": {
+     "return": -0.0613259384585908,
+     "trades": 251,
+     "win_rate": 0.043824701195219126,
+     "profit_factor": 0.8846188156874494,
+     "usd_per_session": -0.5609465606419085,
+     "stopped_share": 0.9561752988047809,
+     "stopped_same_day": 0.8844621513944223
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.23404746005416,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 4.631135053296821,
+     "usd_per_session": 43.14363448773629,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.8421052631578947
+    },
+    "train": {
+     "return": 0.10757248666291264,
+     "trades": 268,
+     "win_rate": 0.048507462686567165,
+     "profit_factor": 1.1263625507754458,
+     "usd_per_session": 2.4348376395858735,
+     "stopped_share": 0.9514925373134329,
+     "stopped_same_day": 0.8880597014925373
+    },
+    "older": {
+     "return": 0.044996130821108205,
+     "trades": 245,
+     "win_rate": 0.08163265306122448,
+     "profit_factor": 1.0764481191996034,
+     "usd_per_session": 0.9483959435125361,
+     "stopped_share": 0.9183673469387755,
+     "stopped_same_day": 0.7918367346938775
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.143917810245197,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 2.1900029230651614,
+     "usd_per_session": 27.962985252996,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.8421052631578947
+    },
+    "train": {
+     "return": -0.20239603350120572,
+     "trades": 246,
+     "win_rate": 0.07723577235772358,
+     "profit_factor": 0.8582033928817355,
+     "usd_per_session": -2.270394660316104,
+     "stopped_share": 0.9227642276422764,
+     "stopped_same_day": 0.7601626016260162
+    },
+    "older": {
+     "return": 0.5116278096841429,
+     "trades": 223,
+     "win_rate": 0.15246636771300448,
+     "profit_factor": 1.3824636550589795,
+     "usd_per_session": 5.813204483065464,
+     "stopped_share": 0.8430493273542601,
+     "stopped_same_day": 0.6502242152466368
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.11250276800877823,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 1.720122270037147,
+     "usd_per_session": 23.7188269885225,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.7058823529411765
+    },
+    "train": {
+     "return": -0.11018796569875733,
+     "trades": 226,
+     "win_rate": 0.12831858407079647,
+     "profit_factor": 0.9393090546859819,
+     "usd_per_session": -0.12092467152795532,
+     "stopped_share": 0.8628318584070797,
+     "stopped_same_day": 0.6769911504424779
+    },
+    "older": {
+     "return": 0.8583997001676249,
+     "trades": 202,
+     "win_rate": 0.22277227722772278,
+     "profit_factor": 1.522027513983843,
+     "usd_per_session": 8.513529939816085,
+     "stopped_share": 0.7673267326732673,
+     "stopped_same_day": 0.49504950495049505
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.4217203769950051,
+     "trades": 15,
+     "win_rate": 0.26666666666666666,
+     "profit_factor": 2.879670140900264,
+     "usd_per_session": 72.91848549521191,
+     "stopped_share": 0.7333333333333333,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": 0.045409252288445945,
+     "trades": 209,
+     "win_rate": 0.215311004784689,
+     "profit_factor": 1.0215283843772927,
+     "usd_per_session": 3.190145921117272,
+     "stopped_share": 0.7655502392344498,
+     "stopped_same_day": 0.5358851674641149
+    },
+    "older": {
+     "return": 1.9882419788370864,
+     "trades": 181,
+     "win_rate": 0.32044198895027626,
+     "profit_factor": 1.6624304385750206,
+     "usd_per_session": 14.610882086850477,
+     "stopped_share": 0.6519337016574586,
+     "stopped_same_day": 0.3425414364640884
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.4562585898800271,
+     "trades": 14,
+     "win_rate": 0.35714285714285715,
+     "profit_factor": 2.574688679805319,
+     "usd_per_session": 78.35272616273907,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.21428571428571427
+    },
+    "train": {
+     "return": 0.07450584231790747,
+     "trades": 184,
+     "win_rate": 0.2826086956521739,
+     "profit_factor": 1.0246026415815208,
+     "usd_per_session": 4.362684810628883,
+     "stopped_share": 0.6684782608695652,
+     "stopped_same_day": 0.3695652173913043
+    },
+    "older": {
+     "return": 2.815362925987431,
+     "trades": 165,
+     "win_rate": 0.4,
+     "profit_factor": 1.6011828103739694,
+     "usd_per_session": 17.96592813989153,
+     "stopped_share": 0.5272727272727272,
+     "stopped_same_day": 0.18787878787878787
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend Champion, No Crash Entry",
+  "rank": 2,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.7133910907208079,
+     "trades": 12,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 5.690981642946466,
+     "usd_per_session": 110.1485389580998,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 15.03606668416716,
+     "trades": 137,
+     "win_rate": 0.6204379562043796,
+     "profit_factor": 2.990938207395436,
+     "usd_per_session": 48.140634267614494,
+     "stopped_share": 0.08759124087591241,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 2.6193892695351293,
+     "trades": 131,
+     "win_rate": 0.5572519083969466,
+     "profit_factor": 1.4213276942394018,
+     "usd_per_session": 18.090389984904416,
+     "stopped_share": 0.09923664122137404,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.5901862918812244,
+     "trades": 12,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 3.2371750958209593,
+     "usd_per_session": 95.0412831012118,
+     "stopped_share": 0.08333333333333333,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 8.288441692726801,
+     "trades": 140,
+     "win_rate": 0.5928571428571429,
+     "profit_factor": 1.903027359475721,
+     "usd_per_session": 39.95044793863987,
+     "stopped_share": 0.16428571428571428,
+     "stopped_same_day": 0.03571428571428571
+    },
+    "older": {
+     "return": 4.906115752857585,
+     "trades": 133,
+     "win_rate": 0.5639097744360902,
+     "profit_factor": 1.8355024282676082,
+     "usd_per_session": 24.000395861798825,
+     "stopped_share": 0.10526315789473684,
+     "stopped_same_day": 0.015037593984962405
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.14908446780003692,
+     "trades": 22,
+     "win_rate": 0.045454545454545456,
+     "profit_factor": 8.722952237760943,
+     "usd_per_session": 27.966189638820705,
+     "stopped_share": 0.9545454545454546,
+     "stopped_same_day": 0.9545454545454546
+    },
+    "train": {
+     "return": 0.0759916514970469,
+     "trades": 304,
+     "win_rate": 0.009868421052631578,
+     "profit_factor": 1.355148792662939,
+     "usd_per_session": 1.365194413125883,
+     "stopped_share": 0.9901315789473685,
+     "stopped_same_day": 0.9638157894736842
+    },
+    "older": {
+     "return": -0.04741101271409687,
+     "trades": 276,
+     "win_rate": 0.021739130434782608,
+     "profit_factor": 0.8333150232383559,
+     "usd_per_session": -0.5253644759586412,
+     "stopped_share": 0.9782608695652174,
+     "stopped_same_day": 0.9637681159420289
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.14404950637145264,
+     "trades": 19,
+     "win_rate": 0.05263157894736842,
+     "profit_factor": 6.951697885768195,
+     "usd_per_session": 27.75091861398279,
+     "stopped_share": 0.9473684210526315,
+     "stopped_same_day": 0.8947368421052632
+    },
+    "train": {
+     "return": 0.16130878327795517,
+     "trades": 297,
+     "win_rate": 0.020202020202020204,
+     "profit_factor": 1.4710486881162688,
+     "usd_per_session": 2.7241536775910102,
+     "stopped_share": 0.9797979797979798,
+     "stopped_same_day": 0.9427609427609428
+    },
+    "older": {
+     "return": -0.13665563918838886,
+     "trades": 271,
+     "win_rate": 0.02214022140221402,
+     "profit_factor": 0.5807334375588159,
+     "usd_per_session": -1.6730386416053018,
+     "stopped_share": 0.977859778597786,
+     "stopped_same_day": 0.940959409594096
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.13082180451269543,
+     "trades": 19,
+     "win_rate": 0.05263157894736842,
+     "profit_factor": 4.544981441734712,
+     "usd_per_session": 25.473617015387607,
+     "stopped_share": 0.9473684210526315,
+     "stopped_same_day": 0.8947368421052632
+    },
+    "train": {
+     "return": 0.030341349153883312,
+     "trades": 287,
+     "win_rate": 0.024390243902439025,
+     "profit_factor": 1.0806545046439395,
+     "usd_per_session": 0.9646398710997522,
+     "stopped_share": 0.975609756097561,
+     "stopped_same_day": 0.9198606271777003
+    },
+    "older": {
+     "return": -0.06703580358690497,
+     "trades": 249,
+     "win_rate": 0.040160642570281124,
+     "profit_factor": 0.8710933786237625,
+     "usd_per_session": -0.6446400536294303,
+     "stopped_share": 0.9598393574297188,
+     "stopped_same_day": 0.891566265060241
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.23404746005416,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 4.631135053296821,
+     "usd_per_session": 43.14363448773629,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.8421052631578947
+    },
+    "train": {
+     "return": 0.1945173796601396,
+     "trades": 260,
+     "win_rate": 0.057692307692307696,
+     "profit_factor": 1.2305192882903562,
+     "usd_per_session": 3.6126539954568626,
+     "stopped_share": 0.9423076923076923,
+     "stopped_same_day": 0.8730769230769231
+    },
+    "older": {
+     "return": 0.040320401227932345,
+     "trades": 243,
+     "win_rate": 0.07818930041152264,
+     "profit_factor": 1.0699343626168263,
+     "usd_per_session": 0.871925693639087,
+     "stopped_share": 0.9218106995884774,
+     "stopped_same_day": 0.8024691358024691
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.143917810245197,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 2.1900029230651614,
+     "usd_per_session": 27.962985252996,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.8421052631578947
+    },
+    "train": {
+     "return": -0.16366954143170298,
+     "trades": 243,
+     "win_rate": 0.08641975308641975,
+     "profit_factor": 0.8829743330329055,
+     "usd_per_session": -1.5525543504448445,
+     "stopped_share": 0.9135802469135802,
+     "stopped_same_day": 0.757201646090535
+    },
+    "older": {
+     "return": 0.413775484690996,
+     "trades": 222,
+     "win_rate": 0.14414414414414414,
+     "profit_factor": 1.314344505305204,
+     "usd_per_session": 4.9528684035811485,
+     "stopped_share": 0.8513513513513513,
+     "stopped_same_day": 0.6666666666666666
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.11250276800877823,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 1.720122270037147,
+     "usd_per_session": 23.7188269885225,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.7058823529411765
+    },
+    "train": {
+     "return": -0.24978743463218667,
+     "trades": 226,
+     "win_rate": 0.12389380530973451,
+     "profit_factor": 0.8398882673147895,
+     "usd_per_session": -2.9386281718344325,
+     "stopped_share": 0.8672566371681416,
+     "stopped_same_day": 0.6946902654867256
+    },
+    "older": {
+     "return": 0.7672493863374352,
+     "trades": 204,
+     "win_rate": 0.21568627450980393,
+     "profit_factor": 1.4512260823690752,
+     "usd_per_session": 7.839555688807168,
+     "stopped_share": 0.7745098039215687,
+     "stopped_same_day": 0.5245098039215687
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.4217203769950051,
+     "trades": 15,
+     "win_rate": 0.26666666666666666,
+     "profit_factor": 2.879670140900264,
+     "usd_per_session": 72.91848549521191,
+     "stopped_share": 0.7333333333333333,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": 0.11334776919187894,
+     "trades": 208,
+     "win_rate": 0.23076923076923078,
+     "profit_factor": 1.0503154879244876,
+     "usd_per_session": 3.9923952054728074,
+     "stopped_share": 0.75,
+     "stopped_same_day": 0.5528846153846154
+    },
+    "older": {
+     "return": 1.5957973125790992,
+     "trades": 184,
+     "win_rate": 0.30434782608695654,
+     "profit_factor": 1.531497439966979,
+     "usd_per_session": 12.838003978905595,
+     "stopped_share": 0.6630434782608695,
+     "stopped_same_day": 0.3695652173913043
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.4562585898800271,
+     "trades": 14,
+     "win_rate": 0.35714285714285715,
+     "profit_factor": 2.574688679805319,
+     "usd_per_session": 78.35272616273907,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.21428571428571427
+    },
+    "train": {
+     "return": -0.09996758139290729,
+     "trades": 186,
+     "win_rate": 0.3010752688172043,
+     "profit_factor": 0.9668567999202528,
+     "usd_per_session": 1.2835299961266402,
+     "stopped_share": 0.6397849462365591,
+     "stopped_same_day": 0.3655913978494624
+    },
+    "older": {
+     "return": 2.777407421993023,
+     "trades": 165,
+     "win_rate": 0.40606060606060607,
+     "profit_factor": 1.6008378396433356,
+     "usd_per_session": 17.756113551039196,
+     "stopped_share": 0.509090909090909,
+     "stopped_same_day": 0.19393939393939394
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend, Volume-Checked Dips",
+  "rank": 3,
+  "own_stop_pct": 0.0423,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.6206165087360913,
+     "trades": 10,
+     "win_rate": 0.6,
+     "profit_factor": 9.67865527803266,
+     "usd_per_session": 99.92105974419245,
+     "stopped_share": 0.1,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 26.69831859403369,
+     "trades": 143,
+     "win_rate": 0.6293706293706294,
+     "profit_factor": 2.889493936605022,
+     "usd_per_session": 57.18412760915497,
+     "stopped_share": 0.1048951048951049,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 4.160776082774657,
+     "trades": 146,
+     "win_rate": 0.5684931506849316,
+     "profit_factor": 1.5260484272186692,
+     "usd_per_session": 22.788593628133206,
+     "stopped_share": 0.08904109589041095,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.4619001184490883,
+     "trades": 10,
+     "win_rate": 0.5,
+     "profit_factor": 3.0689159079456516,
+     "usd_per_session": 79.2069167719029,
+     "stopped_share": 0.2,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 21.46772766550996,
+     "trades": 148,
+     "win_rate": 0.6216216216216216,
+     "profit_factor": 2.233649432096476,
+     "usd_per_session": 54.14041687247482,
+     "stopped_share": 0.16216216216216217,
+     "stopped_same_day": 0.033783783783783786
+    },
+    "older": {
+     "return": 5.744732212195801,
+     "trades": 151,
+     "win_rate": 0.5695364238410596,
+     "profit_factor": 1.7329478581013251,
+     "usd_per_session": 25.96686229224261,
+     "stopped_share": 0.13245033112582782,
+     "stopped_same_day": 0.0
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.1660782759900723,
+     "trades": 24,
+     "win_rate": 0.08333333333333333,
+     "profit_factor": 9.204126635049418,
+     "usd_per_session": 30.880063092444168,
+     "stopped_share": 0.9166666666666666,
+     "stopped_same_day": 0.9166666666666666
+    },
+    "train": {
+     "return": -0.017008098351391387,
+     "trades": 409,
+     "win_rate": 0.007334963325183374,
+     "profit_factor": 0.9970453138682375,
+     "usd_per_session": -0.018045543315744036,
+     "stopped_share": 0.9926650366748166,
+     "stopped_same_day": 0.9657701711491442
+    },
+    "older": {
+     "return": -0.10912660800480778,
+     "trades": 530,
+     "win_rate": 0.01509433962264151,
+     "profit_factor": 0.7954624231212141,
+     "usd_per_session": -1.2068102493194588,
+     "stopped_share": 0.9849056603773585,
+     "stopped_same_day": 0.9584905660377359
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.16051912112453537,
+     "trades": 21,
+     "win_rate": 0.09523809523809523,
+     "profit_factor": 7.275814976832156,
+     "usd_per_session": 30.588602582861416,
+     "stopped_share": 0.9047619047619048,
+     "stopped_same_day": 0.8571428571428571
+    },
+    "train": {
+     "return": 0.08177947008937658,
+     "trades": 397,
+     "win_rate": 0.017632241813602016,
+     "profit_factor": 1.1934407001167213,
+     "usd_per_session": 1.6265678812525675,
+     "stopped_share": 0.982367758186398,
+     "stopped_same_day": 0.9496221662468514
+    },
+    "older": {
+     "return": -0.01685264581448953,
+     "trades": 504,
+     "win_rate": 0.023809523809523808,
+     "profit_factor": 1.005485187786472,
+     "usd_per_session": 0.03668083861205837,
+     "stopped_share": 0.9761904761904762,
+     "stopped_same_day": 0.9404761904761905
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.14636010880053707,
+     "trades": 21,
+     "win_rate": 0.09523809523809523,
+     "profit_factor": 4.754020327016165,
+     "usd_per_session": 28.18431850969171,
+     "stopped_share": 0.9047619047619048,
+     "stopped_same_day": 0.8571428571428571
+    },
+    "train": {
+     "return": 0.29465266115319966,
+     "trades": 367,
+     "win_rate": 0.0326975476839237,
+     "profit_factor": 1.3587016344601714,
+     "usd_per_session": 4.688168013371864,
+     "stopped_share": 0.9673024523160763,
+     "stopped_same_day": 0.9128065395095368
+    },
+    "older": {
+     "return": -0.24764484341612814,
+     "trades": 471,
+     "win_rate": 0.029723991507430998,
+     "profit_factor": 0.6758310279826598,
+     "usd_per_session": -3.123690653264995,
+     "stopped_share": 0.970276008492569,
+     "stopped_same_day": 0.8938428874734607
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.22972169764637362,
+     "trades": 20,
+     "win_rate": 0.1,
+     "profit_factor": 4.3661646563175855,
+     "usd_per_session": 42.45360589435347,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.85
+    },
+    "train": {
+     "return": 0.6646012094237761,
+     "trades": 327,
+     "win_rate": 0.06116207951070336,
+     "profit_factor": 1.3925951978155082,
+     "usd_per_session": 9.074983686661136,
+     "stopped_share": 0.9388379204892966,
+     "stopped_same_day": 0.8562691131498471
+    },
+    "older": {
+     "return": 0.01770761479018934,
+     "trades": 417,
+     "win_rate": 0.06474820143884892,
+     "profit_factor": 1.0256991793519081,
+     "usd_per_session": 0.8900077188016362,
+     "stopped_share": 0.935251798561151,
+     "stopped_same_day": 0.7913669064748201
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.2979257498515502,
+     "trades": 17,
+     "win_rate": 0.17647058823529413,
+     "profit_factor": 3.7004400969291265,
+     "usd_per_session": 53.04535325309485,
+     "stopped_share": 0.8235294117647058,
+     "stopped_same_day": 0.8235294117647058
+    },
+    "train": {
+     "return": 0.21492945208238678,
+     "trades": 304,
+     "win_rate": 0.09210526315789473,
+     "profit_factor": 1.0865418546059673,
+     "usd_per_session": 4.801697652595311,
+     "stopped_share": 0.9078947368421053,
+     "stopped_same_day": 0.743421052631579
+    },
+    "older": {
+     "return": 0.4728332868984648,
+     "trades": 344,
+     "win_rate": 0.125,
+     "profit_factor": 1.2346388796448264,
+     "usd_per_session": 5.720059812454926,
+     "stopped_share": 0.872093023255814,
+     "stopped_same_day": 0.6453488372093024
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.10142662930424673,
+     "trades": 18,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 1.611590898188867,
+     "usd_per_session": 21.758967774123942,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.6666666666666666
+    },
+    "train": {
+     "return": 0.10241213068094956,
+     "trades": 266,
+     "win_rate": 0.13909774436090225,
+     "profit_factor": 1.047270858839318,
+     "usd_per_session": 3.5921610314842307,
+     "stopped_share": 0.8533834586466166,
+     "stopped_same_day": 0.6616541353383458
+    },
+    "older": {
+     "return": 0.6020230894474967,
+     "trades": 300,
+     "win_rate": 0.17333333333333334,
+     "profit_factor": 1.2522441500641335,
+     "usd_per_session": 6.951169711929365,
+     "stopped_share": 0.8166666666666667,
+     "stopped_same_day": 0.51
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.4426003547560804,
+     "trades": 15,
+     "win_rate": 0.26666666666666666,
+     "profit_factor": 2.9701013764967574,
+     "usd_per_session": 75.72341663954798,
+     "stopped_share": 0.7333333333333333,
+     "stopped_same_day": 0.4
+    },
+    "train": {
+     "return": 0.38840925958219796,
+     "trades": 229,
+     "win_rate": 0.2314410480349345,
+     "profit_factor": 1.1185747920759417,
+     "usd_per_session": 7.887659309042883,
+     "stopped_share": 0.759825327510917,
+     "stopped_same_day": 0.5109170305676856
+    },
+    "older": {
+     "return": 1.986814952769433,
+     "trades": 246,
+     "win_rate": 0.2764227642276423,
+     "profit_factor": 1.4526497358339974,
+     "usd_per_session": 14.812521051054253,
+     "stopped_share": 0.6991869918699187,
+     "stopped_same_day": 0.34146341463414637
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.47764581022453956,
+     "trades": 14,
+     "win_rate": 0.35714285714285715,
+     "profit_factor": 2.651234397489911,
+     "usd_per_session": 81.1388613828339,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.2857142857142857
+    },
+    "train": {
+     "return": 0.21647841189891248,
+     "trades": 197,
+     "win_rate": 0.29441624365482233,
+     "profit_factor": 1.0558960225117424,
+     "usd_per_session": 6.500877817691875,
+     "stopped_share": 0.6395939086294417,
+     "stopped_same_day": 0.350253807106599
+    },
+    "older": {
+     "return": 2.9845828952797677,
+     "trades": 202,
+     "win_rate": 0.3910891089108911,
+     "profit_factor": 1.5331740504046538,
+     "usd_per_session": 18.74771275333626,
+     "stopped_share": 0.5346534653465347,
+     "stopped_same_day": 0.16336633663366337
+    }
+   }
+  }
+ },
+ {
+  "name": "Quieter Trend + Z-Dip",
+  "rank": 4,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.5706488915266903,
+     "trades": 9,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 6.879599589807596,
+     "usd_per_session": 92.71599287915433,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 6.131433269763107,
+     "trades": 99,
+     "win_rate": 0.6464646464646465,
+     "profit_factor": 2.0287777605618365,
+     "usd_per_session": 34.332280228067305,
+     "stopped_share": 0.1414141414141414,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 2.9654638369854016,
+     "trades": 128,
+     "win_rate": 0.59375,
+     "profit_factor": 1.5506969241009527,
+     "usd_per_session": 19.182507139625937,
+     "stopped_share": 0.1015625,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.4638856537676157,
+     "trades": 9,
+     "win_rate": 0.5555555555555556,
+     "profit_factor": 3.3557229680186436,
+     "usd_per_session": 78.20820190232361,
+     "stopped_share": 0.1111111111111111,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 4.103161962587878,
+     "trades": 102,
+     "win_rate": 0.6078431372549019,
+     "profit_factor": 1.739388917505329,
+     "usd_per_session": 28.978200573184566,
+     "stopped_share": 0.20588235294117646,
+     "stopped_same_day": 0.0196078431372549
+    },
+    "older": {
+     "return": 2.2819994818405056,
+     "trades": 135,
+     "win_rate": 0.562962962962963,
+     "profit_factor": 1.488932191277437,
+     "usd_per_session": 16.849218743146,
+     "stopped_share": 0.15555555555555556,
+     "stopped_same_day": 0.022222222222222223
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.16909388562461758,
+     "trades": 21,
+     "win_rate": 0.09523809523809523,
+     "profit_factor": 10.467743409478535,
+     "usd_per_session": 31.38826443532635,
+     "stopped_share": 0.9047619047619048,
+     "stopped_same_day": 0.9047619047619048
+    },
+    "train": {
+     "return": -0.22323317288373978,
+     "trades": 338,
+     "win_rate": 0.0029585798816568047,
+     "profit_factor": 0.13590486473881733,
+     "usd_per_session": -3.7544540808542615,
+     "stopped_share": 0.9970414201183432,
+     "stopped_same_day": 0.9733727810650887
+    },
+    "older": {
+     "return": -0.014058930553580318,
+     "trades": 513,
+     "win_rate": 0.01364522417153996,
+     "profit_factor": 1.0182492774665854,
+     "usd_per_session": -0.003205064487074247,
+     "stopped_share": 0.98635477582846,
+     "stopped_same_day": 0.9688109161793372
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.16487356179835255,
+     "trades": 18,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 8.466571667058355,
+     "usd_per_session": 31.325372379977754,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8333333333333334
+    },
+    "train": {
+     "return": -0.27782886335644175,
+     "trades": 330,
+     "win_rate": 0.006060606060606061,
+     "profit_factor": 0.2194691282638571,
+     "usd_per_session": -4.855589330761613,
+     "stopped_share": 0.9939393939393939,
+     "stopped_same_day": 0.9606060606060606
+    },
+    "older": {
+     "return": 0.15454983486668672,
+     "trades": 486,
+     "win_rate": 0.02263374485596708,
+     "profit_factor": 1.2714675854539512,
+     "usd_per_session": 1.9628734653299544,
+     "stopped_share": 0.977366255144033,
+     "stopped_same_day": 0.948559670781893
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.1528938623217293,
+     "trades": 18,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 5.536870035574977,
+     "usd_per_session": 29.3020357305318,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8333333333333334
+    },
+    "train": {
+     "return": 0.015824342730061725,
+     "trades": 298,
+     "win_rate": 0.026845637583892617,
+     "profit_factor": 1.047827675832197,
+     "usd_per_session": 0.7104302369289542,
+     "stopped_share": 0.9731543624161074,
+     "stopped_same_day": 0.9228187919463087
+    },
+    "older": {
+     "return": -0.03897865387383237,
+     "trades": 457,
+     "win_rate": 0.030634573304157548,
+     "profit_factor": 0.9744696336121251,
+     "usd_per_session": -0.1791480037601048,
+     "stopped_share": 0.9693654266958425,
+     "stopped_same_day": 0.9037199124726477
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.24274468828771933,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 5.144088404043109,
+     "usd_per_session": 44.52369167450228,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.8235294117647058
+    },
+    "train": {
+     "return": 0.20497284333948462,
+     "trades": 253,
+     "win_rate": 0.05928853754940711,
+     "profit_factor": 1.2031797549072338,
+     "usd_per_session": 3.7832172451345607,
+     "stopped_share": 0.9407114624505929,
+     "stopped_same_day": 0.849802371541502
+    },
+    "older": {
+     "return": 0.016041805059136882,
+     "trades": 400,
+     "win_rate": 0.06,
+     "profit_factor": 1.025063414916731,
+     "usd_per_session": 0.8052459633339272,
+     "stopped_share": 0.94,
+     "stopped_same_day": 0.7975
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.18375683677957966,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 2.6634609071149216,
+     "usd_per_session": 34.826208938274256,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.7647058823529411
+    },
+    "train": {
+     "return": -0.1917919697689885,
+     "trades": 233,
+     "win_rate": 0.0815450643776824,
+     "profit_factor": 0.8845205732244263,
+     "usd_per_session": -2.0473068791687163,
+     "stopped_share": 0.9184549356223176,
+     "stopped_same_day": 0.7296137339055794
+    },
+    "older": {
+     "return": 0.7929875018126358,
+     "trades": 320,
+     "win_rate": 0.134375,
+     "profit_factor": 1.370597841387031,
+     "usd_per_session": 8.049384555022472,
+     "stopped_share": 0.8625,
+     "stopped_same_day": 0.63125
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.13872779691856918,
+     "trades": 16,
+     "win_rate": 0.125,
+     "profit_factor": 1.9254821337207801,
+     "usd_per_session": 28.351585876609075,
+     "stopped_share": 0.875,
+     "stopped_same_day": 0.5625
+    },
+    "train": {
+     "return": -0.10569136421963743,
+     "trades": 200,
+     "win_rate": 0.13,
+     "profit_factor": 0.9460600391300379,
+     "usd_per_session": -0.18546715349662096,
+     "stopped_share": 0.865,
+     "stopped_same_day": 0.655
+    },
+    "older": {
+     "return": 1.1429449484164325,
+     "trades": 274,
+     "win_rate": 0.17883211678832117,
+     "profit_factor": 1.4003060486800993,
+     "usd_per_session": 10.486061982715821,
+     "stopped_share": 0.8138686131386861,
+     "stopped_same_day": 0.48905109489051096
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.4454352937062285,
+     "trades": 14,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 3.10582692036668,
+     "usd_per_session": 76.1588029555962,
+     "stopped_share": 0.7142857142857143,
+     "stopped_same_day": 0.35714285714285715
+    },
+    "train": {
+     "return": 0.0230370948581482,
+     "trades": 169,
+     "win_rate": 0.1952662721893491,
+     "profit_factor": 1.0119255292463742,
+     "usd_per_session": 2.3394083430569825,
+     "stopped_share": 0.7928994082840237,
+     "stopped_same_day": 0.47337278106508873
+    },
+    "older": {
+     "return": 2.6636711032260263,
+     "trades": 223,
+     "win_rate": 0.28699551569506726,
+     "profit_factor": 1.5426849228187776,
+     "usd_per_session": 17.11401485461122,
+     "stopped_share": 0.6905829596412556,
+     "stopped_same_day": 0.3094170403587444
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.374043249841991,
+     "trades": 13,
+     "win_rate": 0.3076923076923077,
+     "profit_factor": 2.3683811173723583,
+     "usd_per_session": 66.48562142173937,
+     "stopped_share": 0.6153846153846154,
+     "stopped_same_day": 0.23076923076923078
+    },
+    "train": {
+     "return": 0.2633744547083925,
+     "trades": 133,
+     "win_rate": 0.3082706766917293,
+     "profit_factor": 1.0875460813246882,
+     "usd_per_session": 6.0014260412013645,
+     "stopped_share": 0.6165413533834586,
+     "stopped_same_day": 0.24812030075187969
+    },
+    "older": {
+     "return": 2.2725928457207187,
+     "trades": 180,
+     "win_rate": 0.37222222222222223,
+     "profit_factor": 1.4460537889622003,
+     "usd_per_session": 16.159538821633674,
+     "stopped_share": 0.5611111111111111,
+     "stopped_same_day": 0.1388888888888889
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend, Fast Exit",
+  "rank": 5,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.5190040260775894,
+     "trades": 11,
+     "win_rate": 0.7272727272727273,
+     "profit_factor": 6.68873024519522,
+     "usd_per_session": 86.14006704189748,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 3.852101942534527,
+     "trades": 122,
+     "win_rate": 0.5573770491803278,
+     "profit_factor": 1.5142305521259776,
+     "usd_per_session": 28.120174225351306,
+     "stopped_share": 0.09836065573770492,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 3.0597422429000014,
+     "trades": 179,
+     "win_rate": 0.5586592178770949,
+     "profit_factor": 1.4922566514428286,
+     "usd_per_session": 19.097082679622304,
+     "stopped_share": 0.05027932960893855,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.3924069429406094,
+     "trades": 11,
+     "win_rate": 0.6363636363636364,
+     "profit_factor": 2.978873367219557,
+     "usd_per_session": 68.64029639436487,
+     "stopped_share": 0.09090909090909091,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 5.368072774662132,
+     "trades": 125,
+     "win_rate": 0.576,
+     "profit_factor": 1.6336714674904518,
+     "usd_per_session": 32.32675869911992,
+     "stopped_share": 0.136,
+     "stopped_same_day": 0.008
+    },
+    "older": {
+     "return": 3.1914846263239127,
+     "trades": 182,
+     "win_rate": 0.5604395604395604,
+     "profit_factor": 1.4817096782185903,
+     "usd_per_session": 19.40335409606699,
+     "stopped_share": 0.06593406593406594,
+     "stopped_same_day": 0.01098901098901099
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.008527692403409781,
+     "trades": 29,
+     "win_rate": 0.034482758620689655,
+     "profit_factor": 0.6749719628763386,
+     "usd_per_session": -1.5238667046320067,
+     "stopped_share": 0.9655172413793104,
+     "stopped_same_day": 0.9310344827586207
+    },
+    "train": {
+     "return": -0.24445861059514196,
+     "trades": 362,
+     "win_rate": 0.0027624309392265192,
+     "profit_factor": 0.1136362214340976,
+     "usd_per_session": -4.219948964206515,
+     "stopped_share": 0.9972375690607734,
+     "stopped_same_day": 0.9751381215469613
+    },
+    "older": {
+     "return": -0.09561461393288806,
+     "trades": 526,
+     "win_rate": 0.013307984790874524,
+     "profit_factor": 0.8334985864359111,
+     "usd_per_session": -1.048966213658453,
+     "stopped_share": 0.9866920152091255,
+     "stopped_same_day": 0.9657794676806084
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.11356699155203298,
+     "trades": 24,
+     "win_rate": 0.08333333333333333,
+     "profit_factor": 5.002281357280887,
+     "usd_per_session": 22.04206678573504,
+     "stopped_share": 0.9166666666666666,
+     "stopped_same_day": 0.875
+    },
+    "train": {
+     "return": -0.3040640214827852,
+     "trades": 354,
+     "win_rate": 0.005649717514124294,
+     "profit_factor": 0.1981224447833186,
+     "usd_per_session": -5.464642896894745,
+     "stopped_share": 0.9943502824858758,
+     "stopped_same_day": 0.963276836158192
+    },
+    "older": {
+     "return": 0.07477561131509991,
+     "trades": 499,
+     "win_rate": 0.02404809619238477,
+     "profit_factor": 1.1499254250091457,
+     "usd_per_session": 1.0933140849633012,
+     "stopped_share": 0.9759519038076152,
+     "stopped_same_day": 0.9438877755511023
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.10875502764842016,
+     "trades": 26,
+     "win_rate": 0.07692307692307693,
+     "profit_factor": 3.2228840659161118,
+     "usd_per_session": 20.842635799986944,
+     "stopped_share": 0.9230769230769231,
+     "stopped_same_day": 0.9230769230769231
+    },
+    "train": {
+     "return": -0.08001137040959494,
+     "trades": 322,
+     "win_rate": 0.031055900621118012,
+     "profit_factor": 0.89020373506332,
+     "usd_per_session": -0.8202805554213258,
+     "stopped_share": 0.968944099378882,
+     "stopped_same_day": 0.9254658385093167
+    },
+    "older": {
+     "return": 0.02530755455602285,
+     "trades": 462,
+     "win_rate": 0.045454545454545456,
+     "profit_factor": 1.05234626646719,
+     "usd_per_session": 0.5756973699436979,
+     "stopped_share": 0.9545454545454546,
+     "stopped_same_day": 0.8982683982683982
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.43112226660759023,
+     "trades": 20,
+     "win_rate": 0.2,
+     "profit_factor": 7.10988992402897,
+     "usd_per_session": 72.3878679176147,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": 0.23201435454974018,
+     "trades": 285,
+     "win_rate": 0.06666666666666667,
+     "profit_factor": 1.2090383234094206,
+     "usd_per_session": 4.044405241065197,
+     "stopped_share": 0.9263157894736842,
+     "stopped_same_day": 0.8491228070175438
+    },
+    "older": {
+     "return": 0.0475833547464779,
+     "trades": 414,
+     "win_rate": 0.07246376811594203,
+     "profit_factor": 1.048875209570039,
+     "usd_per_session": 1.1559077614327373,
+     "stopped_share": 0.9227053140096618,
+     "stopped_same_day": 0.7946859903381642
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.31466874141872037,
+     "trades": 20,
+     "win_rate": 0.15,
+     "profit_factor": 3.2563570605141905,
+     "usd_per_session": 55.86452091224731,
+     "stopped_share": 0.85,
+     "stopped_same_day": 0.75
+    },
+    "train": {
+     "return": -0.17409987722752873,
+     "trades": 264,
+     "win_rate": 0.10984848484848485,
+     "profit_factor": 0.895460318547929,
+     "usd_per_session": -1.7176923248047717,
+     "stopped_share": 0.8825757575757576,
+     "stopped_same_day": 0.7386363636363636
+    },
+    "older": {
+     "return": 1.0880351124096839,
+     "trades": 341,
+     "win_rate": 0.17595307917888564,
+     "profit_factor": 1.4461917370848274,
+     "usd_per_session": 9.799624672206104,
+     "stopped_share": 0.8211143695014663,
+     "stopped_same_day": 0.6304985337243402
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.08985952010458487,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 1.539281675763854,
+     "usd_per_session": 19.625490022157756,
+     "stopped_share": 0.8421052631578947,
+     "stopped_same_day": 0.631578947368421
+    },
+    "train": {
+     "return": 0.2521952217429142,
+     "trades": 218,
+     "win_rate": 0.17889908256880735,
+     "profit_factor": 1.1167720192382244,
+     "usd_per_session": 5.08789655929209,
+     "stopped_share": 0.8119266055045872,
+     "stopped_same_day": 0.6376146788990825
+    },
+    "older": {
+     "return": 0.8599530850742321,
+     "trades": 296,
+     "win_rate": 0.2195945945945946,
+     "profit_factor": 1.3208577992294126,
+     "usd_per_session": 8.607718741660115,
+     "stopped_share": 0.75,
+     "stopped_same_day": 0.4966216216216216
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.24009790716955592,
+     "trades": 17,
+     "win_rate": 0.29411764705882354,
+     "profit_factor": 2.1119989458900243,
+     "usd_per_session": 45.45006764273427,
+     "stopped_share": 0.6470588235294118,
+     "stopped_same_day": 0.4117647058823529
+    },
+    "train": {
+     "return": 0.4743648199026449,
+     "trades": 187,
+     "win_rate": 0.25668449197860965,
+     "profit_factor": 1.1473480787790122,
+     "usd_per_session": 7.966199177536848,
+     "stopped_share": 0.7112299465240641,
+     "stopped_same_day": 0.45989304812834225
+    },
+    "older": {
+     "return": 2.255934436894667,
+     "trades": 247,
+     "win_rate": 0.3562753036437247,
+     "profit_factor": 1.5228825702821707,
+     "usd_per_session": 15.575005825614605,
+     "stopped_share": 0.5789473684210527,
+     "stopped_same_day": 0.3076923076923077
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.23470355273640386,
+     "trades": 15,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 1.8922515008614815,
+     "usd_per_session": 45.17715387109588,
+     "stopped_share": 0.6,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": 0.46505116003603586,
+     "trades": 158,
+     "win_rate": 0.33544303797468356,
+     "profit_factor": 1.1203530037587843,
+     "usd_per_session": 8.276611047180744,
+     "stopped_share": 0.6012658227848101,
+     "stopped_same_day": 0.2848101265822785
+    },
+    "older": {
+     "return": 3.101331913101194,
+     "trades": 210,
+     "win_rate": 0.44761904761904764,
+     "profit_factor": 1.5676376289675849,
+     "usd_per_session": 18.62845149473527,
+     "stopped_share": 0.4,
+     "stopped_same_day": 0.15714285714285714
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend Champion, 6% Target",
+  "rank": 6,
+  "own_stop_pct": 0.0423,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.5012199758192577,
+     "trades": 11,
+     "win_rate": 0.6363636363636364,
+     "profit_factor": 3.6129398305911855,
+     "usd_per_session": 84.79533158771702,
+     "stopped_share": 0.09090909090909091,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 20.247946869164604,
+     "trades": 134,
+     "win_rate": 0.6492537313432836,
+     "profit_factor": 3.065873081350059,
+     "usd_per_session": 52.609383657097496,
+     "stopped_share": 0.09701492537313433,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 1.6042954424581288,
+     "trades": 126,
+     "win_rate": 0.5476190476190477,
+     "profit_factor": 1.2838669559357367,
+     "usd_per_session": 14.150150262645308,
+     "stopped_share": 0.1111111111111111,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.38259416073236596,
+     "trades": 11,
+     "win_rate": 0.5454545454545454,
+     "profit_factor": 2.2378958523966093,
+     "usd_per_session": 68.02287933679244,
+     "stopped_share": 0.18181818181818182,
+     "stopped_same_day": 0.09090909090909091
+    },
+    "train": {
+     "return": 5.641361770721418,
+     "trades": 139,
+     "win_rate": 0.5971223021582733,
+     "profit_factor": 1.7464609910016897,
+     "usd_per_session": 34.60247155989382,
+     "stopped_share": 0.2014388489208633,
+     "stopped_same_day": 0.03597122302158273
+    },
+    "older": {
+     "return": 2.6938705503715394,
+     "trades": 129,
+     "win_rate": 0.5581395348837209,
+     "profit_factor": 1.498701853567071,
+     "usd_per_session": 18.446298134540623,
+     "stopped_share": 0.14728682170542637,
+     "stopped_same_day": 0.007751937984496124
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.10506151785242102,
+     "trades": 20,
+     "win_rate": 0.05,
+     "profit_factor": 7.2408183091574925,
+     "usd_per_session": 20.512234676543684,
+     "stopped_share": 0.95,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": 0.008478447019099056,
+     "trades": 309,
+     "win_rate": 0.009708737864077669,
+     "profit_factor": 1.0837504926889576,
+     "usd_per_session": 0.3391786983922288,
+     "stopped_share": 0.9902912621359223,
+     "stopped_same_day": 0.9644012944983819
+    },
+    "older": {
+     "return": -0.04904981631948613,
+     "trades": 278,
+     "win_rate": 0.02158273381294964,
+     "profit_factor": 0.8273543828560378,
+     "usd_per_session": -0.5370379072844377,
+     "stopped_share": 0.9784172661870504,
+     "stopped_same_day": 0.960431654676259
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.09695640124014515,
+     "trades": 20,
+     "win_rate": 0.05,
+     "profit_factor": 4.929911348762293,
+     "usd_per_session": 19.06857063582859,
+     "stopped_share": 0.95,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": 0.08633579757509491,
+     "trades": 302,
+     "win_rate": 0.019867549668874173,
+     "profit_factor": 1.2707399967529731,
+     "usd_per_session": 1.667846202356539,
+     "stopped_share": 0.9801324503311258,
+     "stopped_same_day": 0.9470198675496688
+    },
+    "older": {
+     "return": -0.13880850681585377,
+     "trades": 273,
+     "win_rate": 0.02197802197802198,
+     "profit_factor": 0.5766330467099474,
+     "usd_per_session": -1.6939838086317944,
+     "stopped_share": 0.978021978021978,
+     "stopped_same_day": 0.9377289377289377
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.08357289129073742,
+     "trades": 20,
+     "win_rate": 0.05,
+     "profit_factor": 3.2240623189523427,
+     "usd_per_session": 16.662463901302505,
+     "stopped_share": 0.95,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": -0.03928504205611594,
+     "trades": 292,
+     "win_rate": 0.023972602739726026,
+     "profit_factor": 0.9453368458786034,
+     "usd_per_session": -0.14160660435436156,
+     "stopped_share": 0.976027397260274,
+     "stopped_same_day": 0.9246575342465754
+    },
+    "older": {
+     "return": -0.0613259384585908,
+     "trades": 251,
+     "win_rate": 0.043824701195219126,
+     "profit_factor": 0.8846188156874494,
+     "usd_per_session": -0.5609465606419085,
+     "stopped_share": 0.9561752988047809,
+     "stopped_same_day": 0.8844621513944223
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.18057490506687657,
+     "trades": 20,
+     "win_rate": 0.1,
+     "profit_factor": 3.7356674180480858,
+     "usd_per_session": 34.01046853382403,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.85
+    },
+    "train": {
+     "return": 0.23585917910928633,
+     "trades": 266,
+     "win_rate": 0.05639097744360902,
+     "profit_factor": 1.2573255428796035,
+     "usd_per_session": 4.170361987003618,
+     "stopped_share": 0.943609022556391,
+     "stopped_same_day": 0.8796992481203008
+    },
+    "older": {
+     "return": 0.044996130821108205,
+     "trades": 245,
+     "win_rate": 0.08163265306122448,
+     "profit_factor": 1.0764481191996034,
+     "usd_per_session": 0.9483959435125361,
+     "stopped_share": 0.9183673469387755,
+     "stopped_same_day": 0.7918367346938775
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.143917810245197,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 2.1900029230651614,
+     "usd_per_session": 27.962985252996,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.8421052631578947
+    },
+    "train": {
+     "return": -0.06874034271521812,
+     "trades": 249,
+     "win_rate": 0.08433734939759036,
+     "profit_factor": 0.9600830033331951,
+     "usd_per_session": 0.19843616970314565,
+     "stopped_share": 0.9156626506024096,
+     "stopped_same_day": 0.7550200803212851
+    },
+    "older": {
+     "return": 0.5111150982323438,
+     "trades": 223,
+     "win_rate": 0.15246636771300448,
+     "profit_factor": 1.3821879844220135,
+     "usd_per_session": 5.809109975261005,
+     "stopped_share": 0.8430493273542601,
+     "stopped_same_day": 0.6502242152466368
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.11250276800877823,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 1.720122270037147,
+     "usd_per_session": 23.7188269885225,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.7058823529411765
+    },
+    "train": {
+     "return": -0.21778510415469454,
+     "trades": 234,
+     "win_rate": 0.12393162393162394,
+     "profit_factor": 0.8634806461599687,
+     "usd_per_session": -2.1147703648329266,
+     "stopped_share": 0.8717948717948718,
+     "stopped_same_day": 0.6752136752136753
+    },
+    "older": {
+     "return": 0.8022258181959898,
+     "trades": 203,
+     "win_rate": 0.22167487684729065,
+     "profit_factor": 1.4905583274525502,
+     "usd_per_session": 8.140208649711486,
+     "stopped_share": 0.7684729064039408,
+     "stopped_same_day": 0.4975369458128079
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.3425066100502969,
+     "trades": 16,
+     "win_rate": 0.25,
+     "profit_factor": 2.4702728217398424,
+     "usd_per_session": 61.43347268065752,
+     "stopped_share": 0.75,
+     "stopped_same_day": 0.4375
+    },
+    "train": {
+     "return": -0.0674822043611445,
+     "trades": 212,
+     "win_rate": 0.21226415094339623,
+     "profit_factor": 0.9721110426378125,
+     "usd_per_session": 1.3562961058140026,
+     "stopped_share": 0.7688679245283019,
+     "stopped_same_day": 0.5330188679245284
+    },
+    "older": {
+     "return": 1.9602364183345005,
+     "trades": 182,
+     "win_rate": 0.3241758241758242,
+     "profit_factor": 1.648840191206564,
+     "usd_per_session": 14.490888678808528,
+     "stopped_share": 0.6483516483516484,
+     "stopped_same_day": 0.33516483516483514
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.3615927626767277,
+     "trades": 15,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 2.183348851122229,
+     "usd_per_session": 64.94418030532493,
+     "stopped_share": 0.6,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": -0.30033162932948243,
+     "trades": 190,
+     "win_rate": 0.2631578947368421,
+     "profit_factor": 0.8901183887013265,
+     "usd_per_session": -2.3647631519635874,
+     "stopped_share": 0.6894736842105263,
+     "stopped_same_day": 0.35789473684210527
+    },
+    "older": {
+     "return": 2.6979539267486894,
+     "trades": 165,
+     "win_rate": 0.40606060606060607,
+     "profit_factor": 1.6026291445362675,
+     "usd_per_session": 17.586541137203973,
+     "stopped_share": 0.5212121212121212,
+     "stopped_same_day": 0.18787878787878787
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend + Washout",
+  "rank": 7,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.460005881391782,
+     "trades": 9,
+     "win_rate": 0.7777777777777778,
+     "profit_factor": 9.178126418311868,
+     "usd_per_session": 79.93451420809822,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 14.97911247903932,
+     "trades": 103,
+     "win_rate": 0.6601941747572816,
+     "profit_factor": 2.391143032527886,
+     "usd_per_session": 47.65822955945882,
+     "stopped_share": 0.13592233009708737,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 4.05989138813248,
+     "trades": 134,
+     "win_rate": 0.6119402985074627,
+     "profit_factor": 1.6208773923996005,
+     "usd_per_session": 22.353217692390295,
+     "stopped_share": 0.1044776119402985,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.3315405951699897,
+     "trades": 9,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 2.8593955024084496,
+     "usd_per_session": 61.36318274240534,
+     "stopped_share": 0.1111111111111111,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 11.8753182670133,
+     "trades": 109,
+     "win_rate": 0.6513761467889908,
+     "profit_factor": 1.9817283397244954,
+     "usd_per_session": 44.291840471551794,
+     "stopped_share": 0.1834862385321101,
+     "stopped_same_day": 0.009174311926605505
+    },
+    "older": {
+     "return": 4.073169774695055,
+     "trades": 140,
+     "win_rate": 0.5857142857142857,
+     "profit_factor": 1.6072293800309059,
+     "usd_per_session": 22.45730167646556,
+     "stopped_share": 0.15714285714285714,
+     "stopped_same_day": 0.02142857142857143
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.0076737418007670755,
+     "trades": 28,
+     "win_rate": 0.03571428571428571,
+     "profit_factor": 0.7002734899234786,
+     "usd_per_session": -1.3544662570047232,
+     "stopped_share": 0.9642857142857143,
+     "stopped_same_day": 0.9285714285714286
+    },
+    "train": {
+     "return": -0.2665038386918418,
+     "trades": 360,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -4.654759063997506,
+     "stopped_share": 1.0,
+     "stopped_same_day": 0.975
+    },
+    "older": {
+     "return": -0.02503208418760483,
+     "trades": 526,
+     "win_rate": 0.013307984790874524,
+     "profit_factor": 0.9951195657266972,
+     "usd_per_session": -0.12177651101955857,
+     "stopped_share": 0.9866920152091255,
+     "stopped_same_day": 0.9657794676806084
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.11495800965995984,
+     "trades": 23,
+     "win_rate": 0.08695652173913043,
+     "profit_factor": 5.269503574045906,
+     "usd_per_session": 22.287656718107336,
+     "stopped_share": 0.9130434782608695,
+     "stopped_same_day": 0.8695652173913043
+    },
+    "train": {
+     "return": -0.3249514958472012,
+     "trades": 353,
+     "win_rate": 0.0028328611898017,
+     "profit_factor": 0.11814835034470769,
+     "usd_per_session": -5.912948047286629,
+     "stopped_share": 0.9971671388101983,
+     "stopped_same_day": 0.9660056657223796
+    },
+    "older": {
+     "return": 0.13454677509900614,
+     "trades": 500,
+     "win_rate": 0.022,
+     "profit_factor": 1.2359822559991538,
+     "usd_per_session": 1.7692887325556552,
+     "stopped_share": 0.978,
+     "stopped_same_day": 0.944
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.11085751192193594,
+     "trades": 25,
+     "win_rate": 0.08,
+     "profit_factor": 3.3743643173904476,
+     "usd_per_session": 21.21520820693334,
+     "stopped_share": 0.92,
+     "stopped_same_day": 0.92
+    },
+    "train": {
+     "return": -0.0006997589700773466,
+     "trades": 318,
+     "win_rate": 0.025157232704402517,
+     "profit_factor": 1.0210610047561157,
+     "usd_per_session": 0.5237889811335761,
+     "stopped_share": 0.9748427672955975,
+     "stopped_same_day": 0.9245283018867925
+    },
+    "older": {
+     "return": -0.03368023898341688,
+     "trades": 464,
+     "win_rate": 0.032327586206896554,
+     "profit_factor": 0.9815608221683937,
+     "usd_per_session": -0.08967569618082394,
+     "stopped_share": 0.9676724137931034,
+     "stopped_same_day": 0.896551724137931
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.38517276543068557,
+     "trades": 17,
+     "win_rate": 0.17647058823529413,
+     "profit_factor": 7.54010786684227,
+     "usd_per_session": 66.32133896823066,
+     "stopped_share": 0.8235294117647058,
+     "stopped_same_day": 0.7058823529411765
+    },
+    "train": {
+     "return": 0.3006436885046182,
+     "trades": 273,
+     "win_rate": 0.05860805860805861,
+     "profit_factor": 1.264780206173988,
+     "usd_per_session": 5.064808271488041,
+     "stopped_share": 0.9377289377289377,
+     "stopped_same_day": 0.8388278388278388
+    },
+    "older": {
+     "return": 0.15772022259272145,
+     "trades": 410,
+     "win_rate": 0.06341463414634146,
+     "profit_factor": 1.1344324949739346,
+     "usd_per_session": 2.4626435331090435,
+     "stopped_share": 0.9365853658536586,
+     "stopped_same_day": 0.7951219512195122
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.34157605933210555,
+     "trades": 17,
+     "win_rate": 0.17647058823529413,
+     "profit_factor": 4.006321140650887,
+     "usd_per_session": 60.02487034276536,
+     "stopped_share": 0.8235294117647058,
+     "stopped_same_day": 0.6470588235294118
+    },
+    "train": {
+     "return": -0.3234090363241846,
+     "trades": 255,
+     "win_rate": 0.07058823529411765,
+     "profit_factor": 0.787857802881151,
+     "usd_per_session": -4.6828063213255655,
+     "stopped_share": 0.9294117647058824,
+     "stopped_same_day": 0.7411764705882353
+    },
+    "older": {
+     "return": 1.034625800527691,
+     "trades": 326,
+     "win_rate": 0.13803680981595093,
+     "profit_factor": 1.482987170455352,
+     "usd_per_session": 9.639224196062282,
+     "stopped_share": 0.8588957055214724,
+     "stopped_same_day": 0.6288343558282209
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.11308294242972128,
+     "trades": 16,
+     "win_rate": 0.125,
+     "profit_factor": 1.7787903863636894,
+     "usd_per_session": 23.963112866818307,
+     "stopped_share": 0.875,
+     "stopped_same_day": 0.5625
+    },
+    "train": {
+     "return": -0.011842222903416855,
+     "trades": 209,
+     "win_rate": 0.1291866028708134,
+     "profit_factor": 0.998589363278498,
+     "usd_per_session": 1.7012031802288303,
+     "stopped_share": 0.8660287081339713,
+     "stopped_same_day": 0.6267942583732058
+    },
+    "older": {
+     "return": 1.2453724549226632,
+     "trades": 285,
+     "win_rate": 0.17894736842105263,
+     "profit_factor": 1.4383157955730541,
+     "usd_per_session": 11.038208762948392,
+     "stopped_share": 0.8140350877192982,
+     "stopped_same_day": 0.512280701754386
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.4187678598916478,
+     "trades": 14,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 3.1857753971438068,
+     "usd_per_session": 72.5146203755733,
+     "stopped_share": 0.7142857142857143,
+     "stopped_same_day": 0.35714285714285715
+    },
+    "train": {
+     "return": 0.1950182994688785,
+     "trades": 178,
+     "win_rate": 0.20224719101123595,
+     "profit_factor": 1.0698710371373819,
+     "usd_per_session": 4.898065433855075,
+     "stopped_share": 0.7865168539325843,
+     "stopped_same_day": 0.4887640449438202
+    },
+    "older": {
+     "return": 1.941762665783895,
+     "trades": 231,
+     "win_rate": 0.2727272727272727,
+     "profit_factor": 1.4150790656694354,
+     "usd_per_session": 14.486724776180152,
+     "stopped_share": 0.70995670995671,
+     "stopped_same_day": 0.3333333333333333
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.41249143201241534,
+     "trades": 14,
+     "win_rate": 0.35714285714285715,
+     "profit_factor": 2.4455901693775224,
+     "usd_per_session": 72.3367461019537,
+     "stopped_share": 0.6428571428571429,
+     "stopped_same_day": 0.35714285714285715
+    },
+    "train": {
+     "return": 1.5841037871129044,
+     "trades": 143,
+     "win_rate": 0.3356643356643357,
+     "profit_factor": 1.2916855053909353,
+     "usd_per_session": 17.57801235452416,
+     "stopped_share": 0.6083916083916084,
+     "stopped_same_day": 0.25874125874125875
+    },
+    "older": {
+     "return": 1.5736661594273968,
+     "trades": 189,
+     "win_rate": 0.3544973544973545,
+     "profit_factor": 1.3408344280048003,
+     "usd_per_session": 13.361325713631413,
+     "stopped_share": 0.5873015873015873,
+     "stopped_same_day": 0.18518518518518517
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend, 10-Session Holds",
+  "rank": 8,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.4231300961598288,
+     "trades": 11,
+     "win_rate": 0.6363636363636364,
+     "profit_factor": 2.5655883866769678,
+     "usd_per_session": 74.42507708706887,
+     "stopped_share": 0.09090909090909091,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 4.446961546861487,
+     "trades": 112,
+     "win_rate": 0.6160714285714286,
+     "profit_factor": 1.8315437381755917,
+     "usd_per_session": 30.07989636461698,
+     "stopped_share": 0.10714285714285714,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 2.4264012271938626,
+     "trades": 146,
+     "win_rate": 0.589041095890411,
+     "profit_factor": 1.4775403965389524,
+     "usd_per_session": 17.16814626861137,
+     "stopped_share": 0.0958904109589041,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.21080772372655399,
+     "trades": 12,
+     "win_rate": 0.5,
+     "profit_factor": 1.6731780024418428,
+     "usd_per_session": 42.53309704973155,
+     "stopped_share": 0.16666666666666666,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 2.1205868472618987,
+     "trades": 119,
+     "win_rate": 0.5966386554621849,
+     "profit_factor": 1.4477563673044196,
+     "usd_per_session": 21.55409107171745,
+     "stopped_share": 0.17647058823529413,
+     "stopped_same_day": 0.01680672268907563
+    },
+    "older": {
+     "return": 2.3054342113678414,
+     "trades": 151,
+     "win_rate": 0.5629139072847682,
+     "profit_factor": 1.5056759580660966,
+     "usd_per_session": 16.730116453376205,
+     "stopped_share": 0.11920529801324503,
+     "stopped_same_day": 0.006622516556291391
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.008527692403409781,
+     "trades": 29,
+     "win_rate": 0.034482758620689655,
+     "profit_factor": 0.6749719628763386,
+     "usd_per_session": -1.5238667046320067,
+     "stopped_share": 0.9655172413793104,
+     "stopped_same_day": 0.9310344827586207
+    },
+    "train": {
+     "return": -0.21577081271112553,
+     "trades": 362,
+     "win_rate": 0.0027624309392265192,
+     "profit_factor": 0.24575662751755445,
+     "usd_per_session": -3.6412823519893545,
+     "stopped_share": 0.9972375690607734,
+     "stopped_same_day": 0.9751381215469613
+    },
+    "older": {
+     "return": -0.09340305439379504,
+     "trades": 526,
+     "win_rate": 0.013307984790874524,
+     "profit_factor": 0.8346803934061381,
+     "usd_per_session": -1.0247728736366484,
+     "stopped_share": 0.9866920152091255,
+     "stopped_same_day": 0.9695817490494296
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.056504591857325925,
+     "trades": 25,
+     "win_rate": 0.08,
+     "profit_factor": 2.9965897471665537,
+     "usd_per_session": 11.581892881025162,
+     "stopped_share": 0.92,
+     "stopped_same_day": 0.88
+    },
+    "train": {
+     "return": -0.2586007193171632,
+     "trades": 355,
+     "win_rate": 0.005633802816901409,
+     "profit_factor": 0.35616491722129917,
+     "usd_per_session": -4.486107797386901,
+     "stopped_share": 0.9943661971830986,
+     "stopped_same_day": 0.9633802816901409
+    },
+    "older": {
+     "return": 0.048798106661205765,
+     "trades": 503,
+     "win_rate": 0.02385685884691849,
+     "profit_factor": 1.1097294197542218,
+     "usd_per_session": 0.7794847259255593,
+     "stopped_share": 0.9761431411530815,
+     "stopped_same_day": 0.94831013916501
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.10875502764842016,
+     "trades": 26,
+     "win_rate": 0.07692307692307693,
+     "profit_factor": 3.2228840659161118,
+     "usd_per_session": 20.842635799986944,
+     "stopped_share": 0.9230769230769231,
+     "stopped_same_day": 0.9230769230769231
+    },
+    "train": {
+     "return": -0.03244997802227445,
+     "trades": 325,
+     "win_rate": 0.027692307692307693,
+     "profit_factor": 0.9726325011591954,
+     "usd_per_session": -0.03282503050687886,
+     "stopped_share": 0.9723076923076923,
+     "stopped_same_day": 0.9261538461538461
+    },
+    "older": {
+     "return": 0.006123327444520266,
+     "trades": 463,
+     "win_rate": 0.04103671706263499,
+     "profit_factor": 1.0297686437110032,
+     "usd_per_session": 0.37726691520376926,
+     "stopped_share": 0.958963282937365,
+     "stopped_same_day": 0.8876889848812095
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.31046260868728126,
+     "trades": 19,
+     "win_rate": 0.15789473684210525,
+     "profit_factor": 5.737698623229388,
+     "usd_per_session": 55.2139343426532,
+     "stopped_share": 0.8421052631578947,
+     "stopped_same_day": 0.7894736842105263
+    },
+    "train": {
+     "return": 0.5284816201044678,
+     "trades": 284,
+     "win_rate": 0.07042253521126761,
+     "profit_factor": 1.420547431849589,
+     "usd_per_session": 7.431806003623625,
+     "stopped_share": 0.9295774647887324,
+     "stopped_same_day": 0.8415492957746479
+    },
+    "older": {
+     "return": 0.16984672172083104,
+     "trades": 411,
+     "win_rate": 0.07785888077858881,
+     "profit_factor": 1.1420233932580965,
+     "usd_per_session": 2.5001779663335695,
+     "stopped_share": 0.9221411192214112,
+     "stopped_same_day": 0.8004866180048662
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.31466874141872037,
+     "trades": 20,
+     "win_rate": 0.15,
+     "profit_factor": 3.2563570605141905,
+     "usd_per_session": 55.86452091224731,
+     "stopped_share": 0.85,
+     "stopped_same_day": 0.75
+    },
+    "train": {
+     "return": -0.29044050786123465,
+     "trades": 267,
+     "win_rate": 0.07116104868913857,
+     "profit_factor": 0.8148059237277693,
+     "usd_per_session": -4.12666150453444,
+     "stopped_share": 0.9288389513108615,
+     "stopped_same_day": 0.7340823970037453
+    },
+    "older": {
+     "return": 0.6826168591858013,
+     "trades": 340,
+     "win_rate": 0.14411764705882352,
+     "profit_factor": 1.353439349697015,
+     "usd_per_session": 7.2607428503872375,
+     "stopped_share": 0.8529411764705882,
+     "stopped_same_day": 0.6205882352941177
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.12005000038265523,
+     "trades": 19,
+     "win_rate": 0.15789473684210525,
+     "profit_factor": 1.7056855102400574,
+     "usd_per_session": 24.08720851342691,
+     "stopped_share": 0.8421052631578947,
+     "stopped_same_day": 0.631578947368421
+    },
+    "train": {
+     "return": 0.3706705978347751,
+     "trades": 219,
+     "win_rate": 0.1461187214611872,
+     "profit_factor": 1.164193624986675,
+     "usd_per_session": 6.623299837208773,
+     "stopped_share": 0.8538812785388128,
+     "stopped_same_day": 0.6255707762557078
+    },
+    "older": {
+     "return": 0.2685835667727161,
+     "trades": 302,
+     "win_rate": 0.17549668874172186,
+     "profit_factor": 1.1225719397322957,
+     "usd_per_session": 4.046467435223749,
+     "stopped_share": 0.8178807947019867,
+     "stopped_same_day": 0.5
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.30692559540513864,
+     "trades": 16,
+     "win_rate": 0.25,
+     "profit_factor": 2.251391018796277,
+     "usd_per_session": 54.551358069584204,
+     "stopped_share": 0.75,
+     "stopped_same_day": 0.5
+    },
+    "train": {
+     "return": 0.8303678565541763,
+     "trades": 192,
+     "win_rate": 0.22395833333333334,
+     "profit_factor": 1.2222966605371188,
+     "usd_per_session": 11.376410346128552,
+     "stopped_share": 0.765625,
+     "stopped_same_day": 0.4583333333333333
+    },
+    "older": {
+     "return": 0.6729543413908881,
+     "trades": 251,
+     "win_rate": 0.27091633466135456,
+     "profit_factor": 1.193542635286775,
+     "usd_per_session": 7.591963903802268,
+     "stopped_share": 0.7131474103585658,
+     "stopped_same_day": 0.3107569721115538
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.2060687930714069,
+     "trades": 15,
+     "win_rate": 0.26666666666666666,
+     "profit_factor": 1.6259216313248073,
+     "usd_per_session": 39.30067359734864,
+     "stopped_share": 0.6666666666666666,
+     "stopped_same_day": 0.4
+    },
+    "train": {
+     "return": 0.42863793843767994,
+     "trades": 157,
+     "win_rate": 0.2929936305732484,
+     "profit_factor": 1.1077175585707124,
+     "usd_per_session": 8.124187368327343,
+     "stopped_share": 0.643312101910828,
+     "stopped_same_day": 0.22929936305732485
+    },
+    "older": {
+     "return": 1.8804075648908527,
+     "trades": 201,
+     "win_rate": 0.42786069651741293,
+     "profit_factor": 1.3680142435002984,
+     "usd_per_session": 14.581376212481755,
+     "stopped_share": 0.5323383084577115,
+     "stopped_same_day": 0.15422885572139303
+    }
+   }
+  }
+ },
+ {
+  "name": "Calm Trend + Z-Dip Core",
+  "rank": 9,
+  "own_stop_pct": 0.042,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.38817777942278253,
+     "trades": 9,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 5.526738738691888,
+     "usd_per_session": 69.69687844124489,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 6.262515893728562,
+     "trades": 103,
+     "win_rate": 0.6116504854368932,
+     "profit_factor": 1.892454565433896,
+     "usd_per_session": 34.84639741443479,
+     "stopped_share": 0.1553398058252427,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 3.1817185956516454,
+     "trades": 128,
+     "win_rate": 0.59375,
+     "profit_factor": 1.6085478777377722,
+     "usd_per_session": 19.830727054405614,
+     "stopped_share": 0.1015625,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.2643458905799818,
+     "trades": 10,
+     "win_rate": 0.5,
+     "profit_factor": 2.300584270813848,
+     "usd_per_session": 50.85542297486497,
+     "stopped_share": 0.1,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 4.824293974714373,
+     "trades": 108,
+     "win_rate": 0.6018518518518519,
+     "profit_factor": 1.6472518505781328,
+     "usd_per_session": 31.3547156689707,
+     "stopped_share": 0.2037037037037037,
+     "stopped_same_day": 0.018518518518518517
+    },
+    "older": {
+     "return": 2.2819994818405056,
+     "trades": 135,
+     "win_rate": 0.562962962962963,
+     "profit_factor": 1.488932191277437,
+     "usd_per_session": 16.849218743146,
+     "stopped_share": 0.15555555555555556,
+     "stopped_same_day": 0.022222222222222223
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.008527692403409781,
+     "trades": 29,
+     "win_rate": 0.034482758620689655,
+     "profit_factor": 0.6749719628763386,
+     "usd_per_session": -1.5238667046320067,
+     "stopped_share": 0.9655172413793104,
+     "stopped_same_day": 0.9310344827586207
+    },
+    "train": {
+     "return": -0.26713505194837606,
+     "trades": 361,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -4.6680720942255585,
+     "stopped_share": 1.0,
+     "stopped_same_day": 0.9750692520775623
+    },
+    "older": {
+     "return": -0.02082616812800897,
+     "trades": 521,
+     "win_rate": 0.013435700575815739,
+     "profit_factor": 1.003847386014989,
+     "usd_per_session": -0.08635040496515017,
+     "stopped_share": 0.9865642994241842,
+     "stopped_same_day": 0.9692898272552783
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.11356699155203298,
+     "trades": 24,
+     "win_rate": 0.08333333333333333,
+     "profit_factor": 5.002281357280887,
+     "usd_per_session": 22.04206678573504,
+     "stopped_share": 0.9166666666666666,
+     "stopped_same_day": 0.875
+    },
+    "train": {
+     "return": -0.32495149584720207,
+     "trades": 353,
+     "win_rate": 0.0028328611898017,
+     "profit_factor": 0.11749671993821392,
+     "usd_per_session": -5.912594605358279,
+     "stopped_share": 0.9971671388101983,
+     "stopped_same_day": 0.9631728045325779
+    },
+    "older": {
+     "return": 0.1430767250770968,
+     "trades": 494,
+     "win_rate": 0.022267206477732792,
+     "profit_factor": 1.2510069302645268,
+     "usd_per_session": 1.8429228460715361,
+     "stopped_share": 0.9777327935222672,
+     "stopped_same_day": 0.9473684210526315
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.10875502764842016,
+     "trades": 26,
+     "win_rate": 0.07692307692307693,
+     "profit_factor": 3.2228840659161118,
+     "usd_per_session": 20.842635799986944,
+     "stopped_share": 0.9230769230769231,
+     "stopped_same_day": 0.9230769230769231
+    },
+    "train": {
+     "return": -0.0006997589700811213,
+     "trades": 318,
+     "win_rate": 0.025157232704402517,
+     "profit_factor": 1.021059937007765,
+     "usd_per_session": 0.5241842256610724,
+     "stopped_share": 0.9748427672955975,
+     "stopped_same_day": 0.9213836477987422
+    },
+    "older": {
+     "return": -0.022633644201784375,
+     "trades": 458,
+     "win_rate": 0.03275109170305677,
+     "profit_factor": 0.9946780223411261,
+     "usd_per_session": 0.03333748457456797,
+     "stopped_share": 0.9672489082969432,
+     "stopped_same_day": 0.8973799126637555
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.3706572401334467,
+     "trades": 20,
+     "win_rate": 0.15,
+     "profit_factor": 6.1000437088614285,
+     "usd_per_session": 64.08380621443615,
+     "stopped_share": 0.85,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": 0.2541075961159365,
+     "trades": 272,
+     "win_rate": 0.05514705882352941,
+     "profit_factor": 1.2323897312362033,
+     "usd_per_session": 4.485472922374519,
+     "stopped_share": 0.9411764705882353,
+     "stopped_same_day": 0.8382352941176471
+    },
+    "older": {
+     "return": -0.022649205317746723,
+     "trades": 408,
+     "win_rate": 0.058823529411764705,
+     "profit_factor": 0.9941638348622395,
+     "usd_per_session": 0.3391457908417825,
+     "stopped_share": 0.9411764705882353,
+     "stopped_same_day": 0.8014705882352942
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.31466874141872037,
+     "trades": 20,
+     "win_rate": 0.15,
+     "profit_factor": 3.2563570605141905,
+     "usd_per_session": 55.86452091224731,
+     "stopped_share": 0.85,
+     "stopped_same_day": 0.75
+    },
+    "train": {
+     "return": -0.3082196849394869,
+     "trades": 254,
+     "win_rate": 0.07086614173228346,
+     "profit_factor": 0.7944230018768701,
+     "usd_per_session": -4.338818900824,
+     "stopped_share": 0.9291338582677166,
+     "stopped_same_day": 0.7362204724409449
+    },
+    "older": {
+     "return": 0.706076145974792,
+     "trades": 325,
+     "win_rate": 0.13230769230769232,
+     "profit_factor": 1.3411344032114327,
+     "usd_per_session": 7.469961336156023,
+     "stopped_share": 0.8646153846153846,
+     "stopped_same_day": 0.6338461538461538
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.08016709556095902,
+     "trades": 19,
+     "win_rate": 0.10526315789473684,
+     "profit_factor": 1.4580276034429982,
+     "usd_per_session": 17.876716587990263,
+     "stopped_share": 0.8947368421052632,
+     "stopped_same_day": 0.631578947368421
+    },
+    "train": {
+     "return": -0.025977733893220112,
+     "trades": 209,
+     "win_rate": 0.12440191387559808,
+     "profit_factor": 0.9911080716796621,
+     "usd_per_session": 1.4755557463390332,
+     "stopped_share": 0.8708133971291866,
+     "stopped_same_day": 0.631578947368421
+    },
+    "older": {
+     "return": 0.9338656418707005,
+     "trades": 281,
+     "win_rate": 0.17437722419928825,
+     "profit_factor": 1.3372085118134314,
+     "usd_per_session": 9.193427873182596,
+     "stopped_share": 0.8185053380782918,
+     "stopped_same_day": 0.5088967971530249
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.3725949857576134,
+     "trades": 16,
+     "win_rate": 0.25,
+     "profit_factor": 2.5515585131511327,
+     "usd_per_session": 65.87148548131427,
+     "stopped_share": 0.75,
+     "stopped_same_day": 0.4375
+    },
+    "train": {
+     "return": 0.2096149406702028,
+     "trades": 176,
+     "win_rate": 0.19886363636363635,
+     "profit_factor": 1.0766876142412034,
+     "usd_per_session": 5.130492855819518,
+     "stopped_share": 0.7897727272727273,
+     "stopped_same_day": 0.4715909090909091
+    },
+    "older": {
+     "return": 2.5154892829449538,
+     "trades": 224,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 1.5294282164775739,
+     "usd_per_session": 16.627017250092962,
+     "stopped_share": 0.6919642857142857,
+     "stopped_same_day": 0.3169642857142857
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.2792550358670507,
+     "trades": 15,
+     "win_rate": 0.26666666666666666,
+     "profit_factor": 1.8822184690220554,
+     "usd_per_session": 52.525538127696876,
+     "stopped_share": 0.6666666666666666,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": 0.5653017659496571,
+     "trades": 141,
+     "win_rate": 0.3049645390070922,
+     "profit_factor": 1.1525447470597758,
+     "usd_per_session": 9.692468411235875,
+     "stopped_share": 0.624113475177305,
+     "stopped_same_day": 0.24822695035460993
+    },
+    "older": {
+     "return": 2.2725928457207196,
+     "trades": 180,
+     "win_rate": 0.37222222222222223,
+     "profit_factor": 1.4460537889622005,
+     "usd_per_session": 16.18667701605568,
+     "stopped_share": 0.5611111111111111,
+     "stopped_same_day": 0.14444444444444443
+    }
+   }
+  }
+ },
+ {
+  "name": "Quiet MACD Trend",
+  "rank": 10,
+  "own_stop_pct": 0.0,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.34735487513625074,
+     "trades": 6,
+     "win_rate": 0.5,
+     "profit_factor": 6.211490311530285,
+     "usd_per_session": 60.43726059829605,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 1.506095093789237,
+     "trades": 81,
+     "win_rate": 0.5679012345679012,
+     "profit_factor": 1.6774882295521156,
+     "usd_per_session": 14.611380809940902,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 1.6981527422687464,
+     "trades": 116,
+     "win_rate": 0.5344827586206896,
+     "profit_factor": 1.6153026151066054,
+     "usd_per_session": 12.356867977298284,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.018762103553833454,
+     "trades": 22,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -3.726809847801071,
+     "stopped_share": 1.0,
+     "stopped_same_day": 1.0
+    },
+    "train": {
+     "return": -0.16242659519521752,
+     "trades": 299,
+     "win_rate": 0.0033444816053511705,
+     "profit_factor": 0.35031540241195624,
+     "usd_per_session": -2.4356973131841477,
+     "stopped_share": 0.9966555183946488,
+     "stopped_same_day": 0.9698996655518395
+    },
+    "older": {
+     "return": 0.09054723904001816,
+     "trades": 425,
+     "win_rate": 0.018823529411764704,
+     "profit_factor": 1.2940618775465396,
+     "usd_per_session": 1.0530894311189716,
+     "stopped_share": 0.9811764705882353,
+     "stopped_same_day": 0.9552941176470588
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": -0.02709055267875693,
+     "trades": 22,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -5.402978512184795,
+     "stopped_share": 1.0,
+     "stopped_same_day": 1.0
+    },
+    "train": {
+     "return": -0.2179975516725896,
+     "trades": 294,
+     "win_rate": 0.006802721088435374,
+     "profit_factor": 0.37145432045384663,
+     "usd_per_session": -3.3908599572956253,
+     "stopped_share": 0.9931972789115646,
+     "stopped_same_day": 0.9591836734693877
+    },
+    "older": {
+     "return": 0.12327516018414575,
+     "trades": 406,
+     "win_rate": 0.029556650246305417,
+     "profit_factor": 1.2704350716595878,
+     "usd_per_session": 1.421207505741696,
+     "stopped_share": 0.9704433497536946,
+     "stopped_same_day": 0.9310344827586207
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": -0.04082155377605812,
+     "trades": 22,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -8.196592952824975,
+     "stopped_share": 1.0,
+     "stopped_same_day": 1.0
+    },
+    "train": {
+     "return": -0.10608777104587619,
+     "trades": 263,
+     "win_rate": 0.026615969581749048,
+     "profit_factor": 0.8048349431573301,
+     "usd_per_session": -1.3931848659246637,
+     "stopped_share": 0.973384030418251,
+     "stopped_same_day": 0.9201520912547528
+    },
+    "older": {
+     "return": 0.6481572595269411,
+     "trades": 353,
+     "win_rate": 0.059490084985835696,
+     "profit_factor": 1.8776107085114755,
+     "usd_per_session": 5.843042471349772,
+     "stopped_share": 0.9405099150141643,
+     "stopped_same_day": 0.8696883852691218
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.25596601243688455,
+     "trades": 10,
+     "win_rate": 0.3,
+     "profit_factor": 10.589638154319898,
+     "usd_per_session": 46.410780529284565,
+     "stopped_share": 0.7,
+     "stopped_same_day": 0.6
+    },
+    "train": {
+     "return": -0.0008604889170642505,
+     "trades": 231,
+     "win_rate": 0.05627705627705628,
+     "profit_factor": 1.011146868472942,
+     "usd_per_session": 0.445269787538883,
+     "stopped_share": 0.9437229437229437,
+     "stopped_same_day": 0.8441558441558441
+    },
+    "older": {
+     "return": 0.7741882199311196,
+     "trades": 291,
+     "win_rate": 0.09621993127147767,
+     "profit_factor": 1.7266390442166533,
+     "usd_per_session": 6.857797714035957,
+     "stopped_share": 0.9037800687285223,
+     "stopped_same_day": 0.7628865979381443
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.3247671414608835,
+     "trades": 10,
+     "win_rate": 0.3,
+     "profit_factor": 6.792573628758429,
+     "usd_per_session": 57.1837455264745,
+     "stopped_share": 0.7,
+     "stopped_same_day": 0.6
+    },
+    "train": {
+     "return": 0.011095652236306819,
+     "trades": 183,
+     "win_rate": 0.10382513661202186,
+     "profit_factor": 1.0158191094040225,
+     "usd_per_session": 0.92613174664823,
+     "stopped_share": 0.8961748633879781,
+     "stopped_same_day": 0.6775956284153005
+    },
+    "older": {
+     "return": 1.2832516578910633,
+     "trades": 219,
+     "win_rate": 0.182648401826484,
+     "profit_factor": 1.6962898233688177,
+     "usd_per_session": 9.87215680336033,
+     "stopped_share": 0.817351598173516,
+     "stopped_same_day": 0.5525114155251142
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.23618320044926344,
+     "trades": 8,
+     "win_rate": 0.375,
+     "profit_factor": 5.1643745556255265,
+     "usd_per_session": 43.53641728628843,
+     "stopped_share": 0.625,
+     "stopped_same_day": 0.25
+    },
+    "train": {
+     "return": -0.15939483425585987,
+     "trades": 160,
+     "win_rate": 0.1375,
+     "profit_factor": 0.8825497726626016,
+     "usd_per_session": -1.5842192774716264,
+     "stopped_share": 0.85625,
+     "stopped_same_day": 0.55
+    },
+    "older": {
+     "return": 1.1167901972093102,
+     "trades": 192,
+     "win_rate": 0.22916666666666666,
+     "profit_factor": 1.514300062029203,
+     "usd_per_session": 9.129431583524596,
+     "stopped_share": 0.765625,
+     "stopped_same_day": 0.4010416666666667
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.3709482768364716,
+     "trades": 7,
+     "win_rate": 0.42857142857142855,
+     "profit_factor": 5.430509029479044,
+     "usd_per_session": 63.822901766828615,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.14285714285714285
+    },
+    "train": {
+     "return": 0.5772114231655907,
+     "trades": 112,
+     "win_rate": 0.3125,
+     "profit_factor": 1.3307708543461974,
+     "usd_per_session": 7.690168084121075,
+     "stopped_share": 0.6607142857142857,
+     "stopped_same_day": 0.35714285714285715
+    },
+    "older": {
+     "return": 1.0557469091548377,
+     "trades": 154,
+     "win_rate": 0.33116883116883117,
+     "profit_factor": 1.4304530703581788,
+     "usd_per_session": 8.922317513875248,
+     "stopped_share": 0.6428571428571429,
+     "stopped_same_day": 0.2012987012987013
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.35230193850016067,
+     "trades": 7,
+     "win_rate": 0.42857142857142855,
+     "profit_factor": 4.556353348840151,
+     "usd_per_session": 61.13758184288369,
+     "stopped_share": 0.42857142857142855,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 0.09756452190616516,
+     "trades": 101,
+     "win_rate": 0.37623762376237624,
+     "profit_factor": 1.061407324274524,
+     "usd_per_session": 2.6651507987058283,
+     "stopped_share": 0.5643564356435643,
+     "stopped_same_day": 0.1782178217821782
+    },
+    "older": {
+     "return": 1.6486447111089308,
+     "trades": 124,
+     "win_rate": 0.47580645161290325,
+     "profit_factor": 1.6917425210437245,
+     "usd_per_session": 11.88666401850697,
+     "stopped_share": 0.4032258064516129,
+     "stopped_same_day": 0.06451612903225806
+    }
+   }
+  }
+ },
+ {
+  "name": "Quick Dip, Trend-Assisted",
+  "rank": 11,
+  "own_stop_pct": 0.035,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.32586162617431147,
+     "trades": 27,
+     "win_rate": 0.7407407407407407,
+     "profit_factor": 2.179597404268658,
+     "usd_per_session": 59.38321492467769,
+     "stopped_share": 0.037037037037037035,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 4.419779670100755,
+     "trades": 279,
+     "win_rate": 0.7132616487455197,
+     "profit_factor": 1.6830299978074652,
+     "usd_per_session": 28.565105563519506,
+     "stopped_share": 0.025089605734767026,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 0.5342075759117826,
+     "trades": 252,
+     "win_rate": 0.6626984126984127,
+     "profit_factor": 1.21344289142368,
+     "usd_per_session": 6.38153525635047,
+     "stopped_share": 0.03968253968253968,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.33973280027896613,
+     "trades": 27,
+     "win_rate": 0.7407407407407407,
+     "profit_factor": 2.279821993642029,
+     "usd_per_session": 61.19411502230275,
+     "stopped_share": 0.07407407407407407,
+     "stopped_same_day": 0.037037037037037035
+    },
+    "train": {
+     "return": 4.906641409366708,
+     "trades": 280,
+     "win_rate": 0.7142857142857143,
+     "profit_factor": 1.652305806925645,
+     "usd_per_session": 29.864705430647632,
+     "stopped_share": 0.04285714285714286,
+     "stopped_same_day": 0.017857142857142856
+    },
+    "older": {
+     "return": 0.5577077455566508,
+     "trades": 253,
+     "win_rate": 0.6600790513833992,
+     "profit_factor": 1.2246914757038803,
+     "usd_per_session": 6.4499698026381544,
+     "stopped_share": 0.06324110671936758,
+     "stopped_same_day": 0.007905138339920948
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.09685431797933153,
+     "trades": 33,
+     "win_rate": 0.09090909090909091,
+     "profit_factor": 4.925960472880534,
+     "usd_per_session": 18.835111539478362,
+     "stopped_share": 0.9090909090909091,
+     "stopped_same_day": 0.9090909090909091
+    },
+    "train": {
+     "return": -0.10908670901544737,
+     "trades": 356,
+     "win_rate": 0.02247191011235955,
+     "profit_factor": 0.6410164860380683,
+     "usd_per_session": -1.747553560102972,
+     "stopped_share": 0.9775280898876404,
+     "stopped_same_day": 0.9775280898876404
+    },
+    "older": {
+     "return": -0.044503381721900714,
+     "trades": 320,
+     "win_rate": 0.03125,
+     "profit_factor": 0.8757201543773491,
+     "usd_per_session": -0.5061614403944849,
+     "stopped_share": 0.96875,
+     "stopped_same_day": 0.9625
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.08417880902780128,
+     "trades": 33,
+     "win_rate": 0.09090909090909091,
+     "profit_factor": 3.336369851405078,
+     "usd_per_session": 16.549426997137232,
+     "stopped_share": 0.9090909090909091,
+     "stopped_same_day": 0.9090909090909091
+    },
+    "train": {
+     "return": -0.18350508547264532,
+     "trades": 356,
+     "win_rate": 0.028089887640449437,
+     "profit_factor": 0.538607931356532,
+     "usd_per_session": -3.0868078300298247,
+     "stopped_share": 0.9719101123595506,
+     "stopped_same_day": 0.9691011235955056
+    },
+    "older": {
+     "return": -0.02202104838368013,
+     "trades": 320,
+     "win_rate": 0.046875,
+     "profit_factor": 0.9776554620985339,
+     "usd_per_session": -0.19613668153936548,
+     "stopped_share": 0.953125,
+     "stopped_same_day": 0.94375
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.06336698972265808,
+     "trades": 33,
+     "win_rate": 0.09090909090909091,
+     "profit_factor": 2.162979351115425,
+     "usd_per_session": 12.73995275990004,
+     "stopped_share": 0.9090909090909091,
+     "stopped_same_day": 0.9090909090909091
+    },
+    "train": {
+     "return": -0.23673084133915634,
+     "trades": 354,
+     "win_rate": 0.04519774011299435,
+     "profit_factor": 0.5858588350132508,
+     "usd_per_session": -4.092276023190367,
+     "stopped_share": 0.9548022598870056,
+     "stopped_same_day": 0.9491525423728814
+    },
+    "older": {
+     "return": 0.12498558708677643,
+     "trades": 319,
+     "win_rate": 0.10344827586206896,
+     "profit_factor": 1.2422891586552518,
+     "usd_per_session": 1.5354955315117047,
+     "stopped_share": 0.896551724137931,
+     "stopped_same_day": 0.877742946708464
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.06630996858903737,
+     "trades": 33,
+     "win_rate": 0.15151515151515152,
+     "profit_factor": 1.6849628952329252,
+     "usd_per_session": 13.489200686857895,
+     "stopped_share": 0.8484848484848485,
+     "stopped_same_day": 0.8181818181818182
+    },
+    "train": {
+     "return": -0.23604787325724552,
+     "trades": 354,
+     "win_rate": 0.096045197740113,
+     "profit_factor": 0.7466222017142042,
+     "usd_per_session": -3.927933857022842,
+     "stopped_share": 0.903954802259887,
+     "stopped_same_day": 0.8954802259887006
+    },
+    "older": {
+     "return": 0.14467216987809484,
+     "trades": 316,
+     "win_rate": 0.16772151898734178,
+     "profit_factor": 1.1548243180379871,
+     "usd_per_session": 1.816625955078764,
+     "stopped_share": 0.8322784810126582,
+     "stopped_same_day": 0.8006329113924051
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.11150597417506747,
+     "trades": 32,
+     "win_rate": 0.28125,
+     "profit_factor": 1.7034387306700238,
+     "usd_per_session": 22.028071810942304,
+     "stopped_share": 0.71875,
+     "stopped_same_day": 0.65625
+    },
+    "train": {
+     "return": 0.16117881750778684,
+     "trades": 345,
+     "win_rate": 0.22318840579710145,
+     "profit_factor": 1.0961193263399267,
+     "usd_per_session": 2.9219741810637863,
+     "stopped_share": 0.7739130434782608,
+     "stopped_same_day": 0.7333333333333333
+    },
+    "older": {
+     "return": 0.07118177189007246,
+     "trades": 304,
+     "win_rate": 0.26644736842105265,
+     "profit_factor": 1.0546999961338899,
+     "usd_per_session": 1.1271117537625865,
+     "stopped_share": 0.7302631578947368,
+     "stopped_same_day": 0.625
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.24247130651597582,
+     "trades": 32,
+     "win_rate": 0.46875,
+     "profit_factor": 2.2605197015158596,
+     "usd_per_session": 44.52593289110947,
+     "stopped_share": 0.53125,
+     "stopped_same_day": 0.4375
+    },
+    "train": {
+     "return": 0.2700371120996752,
+     "trades": 339,
+     "win_rate": 0.30383480825958703,
+     "profit_factor": 1.1129649199286715,
+     "usd_per_session": 4.5277026920687735,
+     "stopped_share": 0.6873156342182891,
+     "stopped_same_day": 0.6253687315634219
+    },
+    "older": {
+     "return": 0.1339023226328786,
+     "trades": 289,
+     "win_rate": 0.35986159169550175,
+     "profit_factor": 1.080253445072336,
+     "usd_per_session": 1.9089469304121978,
+     "stopped_share": 0.6262975778546713,
+     "stopped_same_day": 0.4809688581314879
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.2250724057983502,
+     "trades": 32,
+     "win_rate": 0.5,
+     "profit_factor": 1.810592322966999,
+     "usd_per_session": 42.466622853869175,
+     "stopped_share": 0.46875,
+     "stopped_same_day": 0.375
+    },
+    "train": {
+     "return": 0.8057471084739816,
+     "trades": 321,
+     "win_rate": 0.4392523364485981,
+     "profit_factor": 1.1863637931567073,
+     "usd_per_session": 10.421700358135228,
+     "stopped_share": 0.5420560747663551,
+     "stopped_same_day": 0.4454828660436137
+    },
+    "older": {
+     "return": 0.18644221460164312,
+     "trades": 276,
+     "win_rate": 0.48188405797101447,
+     "profit_factor": 1.083769048303485,
+     "usd_per_session": 2.6335586877633603,
+     "stopped_share": 0.4855072463768116,
+     "stopped_same_day": 0.3079710144927536
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.4164419561404473,
+     "trades": 29,
+     "win_rate": 0.6551724137931034,
+     "profit_factor": 2.7449824045597198,
+     "usd_per_session": 71.35738315152808,
+     "stopped_share": 0.2413793103448276,
+     "stopped_same_day": 0.10344827586206896
+    },
+    "train": {
+     "return": 3.0560853371516634,
+     "trades": 307,
+     "win_rate": 0.5960912052117264,
+     "profit_factor": 1.479975411908574,
+     "usd_per_session": 23.36978428654221,
+     "stopped_share": 0.3517915309446254,
+     "stopped_same_day": 0.24104234527687296
+    },
+    "older": {
+     "return": 1.0650188111180543,
+     "trades": 265,
+     "win_rate": 0.6150943396226415,
+     "profit_factor": 1.3348333456371877,
+     "usd_per_session": 9.55254135062869,
+     "stopped_share": 0.2830188679245283,
+     "stopped_same_day": 0.15849056603773584
+    }
+   }
+  }
+ },
+ {
+  "name": "Flush, Washout or Squeeze",
+  "rank": 12,
+  "own_stop_pct": 0.03,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.3014673583169636,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 7.4496442181411835,
+     "usd_per_session": 54.425324843946875,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 7.884769418021033,
+     "trades": 110,
+     "win_rate": 0.7454545454545455,
+     "profit_factor": 3.992841348818609,
+     "usd_per_session": 37.7816536565598,
+     "stopped_share": 0.06363636363636363,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 1.523969986416684,
+     "trades": 190,
+     "win_rate": 0.6421052631578947,
+     "profit_factor": 1.490071890625428,
+     "usd_per_session": 13.30196052943134,
+     "stopped_share": 0.08947368421052632,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.3014673583169636,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 7.4496442181411835,
+     "usd_per_session": 54.425324843946875,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 7.418823822238259,
+     "trades": 116,
+     "win_rate": 0.7068965517241379,
+     "profit_factor": 3.834533418579249,
+     "usd_per_session": 36.78879726890463,
+     "stopped_share": 0.1206896551724138,
+     "stopped_same_day": 0.034482758620689655
+    },
+    "older": {
+     "return": 1.5647827599888084,
+     "trades": 193,
+     "win_rate": 0.6269430051813472,
+     "profit_factor": 1.5091964844849144,
+     "usd_per_session": 13.372502664455498,
+     "stopped_share": 0.12953367875647667,
+     "stopped_same_day": 0.031088082901554404
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.07313237809185025,
+     "trades": 10,
+     "win_rate": 0.1,
+     "profit_factor": 10.399092117330976,
+     "usd_per_session": 14.437256855933695,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": -0.02305973070095968,
+     "trades": 132,
+     "win_rate": 0.015151515151515152,
+     "profit_factor": 0.8352895901179176,
+     "usd_per_session": -0.336169582122257,
+     "stopped_share": 0.9848484848484849,
+     "stopped_same_day": 0.9772727272727273
+    },
+    "older": {
+     "return": -0.11103221170265254,
+     "trades": 216,
+     "win_rate": 0.013888888888888888,
+     "profit_factor": 0.36998292589245985,
+     "usd_per_session": -1.431152769663027,
+     "stopped_share": 0.9861111111111112,
+     "stopped_same_day": 0.9768518518518519
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.06939681911388562,
+     "trades": 10,
+     "win_rate": 0.1,
+     "profit_factor": 7.071740211452656,
+     "usd_per_session": 13.751551493231345,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": -0.05660900435548011,
+     "trades": 132,
+     "win_rate": 0.022727272727272728,
+     "profit_factor": 0.6652292202110358,
+     "usd_per_session": -0.8920539855495612,
+     "stopped_share": 0.9772727272727273,
+     "stopped_same_day": 0.9696969696969697
+    },
+    "older": {
+     "return": -0.17155727703618007,
+     "trades": 216,
+     "win_rate": 0.023148148148148147,
+     "profit_factor": 0.28694809615505196,
+     "usd_per_session": -2.293378021244329,
+     "stopped_share": 0.9768518518518519,
+     "stopped_same_day": 0.9629629629629629
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.06319656773682136,
+     "trades": 10,
+     "win_rate": 0.1,
+     "profit_factor": 4.615575110879015,
+     "usd_per_session": 12.608709222060277,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.9
+    },
+    "train": {
+     "return": -0.11245674222121393,
+     "trades": 132,
+     "win_rate": 0.03787878787878788,
+     "profit_factor": 0.5199147558234247,
+     "usd_per_session": -1.8632697019916695,
+     "stopped_share": 0.9621212121212122,
+     "stopped_same_day": 0.9545454545454546
+    },
+    "older": {
+     "return": -0.11924468322440251,
+     "trades": 216,
+     "win_rate": 0.0787037037037037,
+     "profit_factor": 0.6740805741179948,
+     "usd_per_session": -1.4921185110938346,
+     "stopped_share": 0.9212962962962963,
+     "stopped_same_day": 0.9027777777777778
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.04783551317143142,
+     "trades": 10,
+     "win_rate": 0.1,
+     "profit_factor": 2.4757734258025037,
+     "usd_per_session": 10.113766300175962,
+     "stopped_share": 0.9,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": 0.01597640001265277,
+     "trades": 132,
+     "win_rate": 0.12121212121212122,
+     "profit_factor": 1.0516439092393217,
+     "usd_per_session": 0.4195445166084706,
+     "stopped_share": 0.8787878787878788,
+     "stopped_same_day": 0.8560606060606061
+    },
+    "older": {
+     "return": -0.11488444036812262,
+     "trades": 214,
+     "win_rate": 0.17289719626168223,
+     "profit_factor": 0.8136940896443499,
+     "usd_per_session": -1.381029791688276,
+     "stopped_share": 0.8271028037383178,
+     "stopped_same_day": 0.794392523364486
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.03887566338532289,
+     "trades": 10,
+     "win_rate": 0.2,
+     "profit_factor": 1.7084629636597126,
+     "usd_per_session": 8.489913648046302,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.7
+    },
+    "train": {
+     "return": 0.0055766390601081905,
+     "trades": 131,
+     "win_rate": 0.20610687022900764,
+     "profit_factor": 1.0154858468896073,
+     "usd_per_session": 0.347928337030724,
+     "stopped_share": 0.7938931297709924,
+     "stopped_same_day": 0.7480916030534351
+    },
+    "older": {
+     "return": 0.024816736856802413,
+     "trades": 212,
+     "win_rate": 0.2971698113207547,
+     "profit_factor": 1.0337080229703042,
+     "usd_per_session": 0.5881630433397719,
+     "stopped_share": 0.6839622641509434,
+     "stopped_same_day": 0.6415094339622641
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.04007896826012636,
+     "trades": 7,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 1.7492571444939875,
+     "usd_per_session": 8.949613811268483,
+     "stopped_share": 0.7142857142857143,
+     "stopped_same_day": 0.42857142857142855
+    },
+    "train": {
+     "return": 0.14099200692827196,
+     "trades": 130,
+     "win_rate": 0.27692307692307694,
+     "profit_factor": 1.1561626981958595,
+     "usd_per_session": 2.5009770273673912,
+     "stopped_share": 0.676923076923077,
+     "stopped_same_day": 0.6384615384615384
+    },
+    "older": {
+     "return": 0.12960137677444328,
+     "trades": 211,
+     "win_rate": 0.3791469194312796,
+     "profit_factor": 1.1120345424622164,
+     "usd_per_session": 1.8975792782026255,
+     "stopped_share": 0.5639810426540285,
+     "stopped_same_day": 0.4976303317535545
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.05838058685482039,
+     "trades": 6,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 1.8824300472194353,
+     "usd_per_session": 12.589243319857404,
+     "stopped_share": 0.6666666666666666,
+     "stopped_same_day": 0.16666666666666666
+    },
+    "train": {
+     "return": 0.2813627076857965,
+     "trades": 128,
+     "win_rate": 0.390625,
+     "profit_factor": 1.2351519579916939,
+     "usd_per_session": 4.601470212833354,
+     "stopped_share": 0.5390625,
+     "stopped_same_day": 0.4921875
+    },
+    "older": {
+     "return": -0.030624452467433838,
+     "trades": 208,
+     "win_rate": 0.44711538461538464,
+     "profit_factor": 0.983912518446368,
+     "usd_per_session": 0.14560029374825434,
+     "stopped_share": 0.44711538461538464,
+     "stopped_same_day": 0.3557692307692308
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.1459031848502692,
+     "trades": 6,
+     "win_rate": 0.5,
+     "profit_factor": 2.9641463526420555,
+     "usd_per_session": 28.795301812326077,
+     "stopped_share": 0.3333333333333333,
+     "stopped_same_day": 0.16666666666666666
+    },
+    "train": {
+     "return": 0.5138945198089728,
+     "trades": 124,
+     "win_rate": 0.5,
+     "profit_factor": 1.3457707671222365,
+     "usd_per_session": 7.645439761206007,
+     "stopped_share": 0.3870967741935484,
+     "stopped_same_day": 0.27419354838709675
+    },
+    "older": {
+     "return": 0.004934615452033553,
+     "trades": 204,
+     "win_rate": 0.4950980392156863,
+     "profit_factor": 1.0066157994446472,
+     "usd_per_session": 0.9657631837167469,
+     "stopped_share": 0.3284313725490196,
+     "stopped_same_day": 0.2107843137254902
+    }
+   }
+  }
+ },
+ {
+  "name": "Calendar Dips",
+  "rank": 13,
+  "own_stop_pct": 0.03,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.2758302436126161,
+     "trades": 25,
+     "win_rate": 0.68,
+     "profit_factor": 2.2907778261670755,
+     "usd_per_session": 50.477524333514395,
+     "stopped_share": 0.04,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 6.129542189271259,
+     "trades": 303,
+     "win_rate": 0.6270627062706271,
+     "profit_factor": 1.974865592528203,
+     "usd_per_session": 33.74440139704707,
+     "stopped_share": 0.0297029702970297,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 0.23064088319789144,
+     "trades": 380,
+     "win_rate": 0.618421052631579,
+     "profit_factor": 1.0751570066337832,
+     "usd_per_session": 3.9414992388561267,
+     "stopped_share": 0.018421052631578946,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.24902049656696446,
+     "trades": 25,
+     "win_rate": 0.68,
+     "profit_factor": 2.046342333806029,
+     "usd_per_session": 46.2236818767946,
+     "stopped_share": 0.08,
+     "stopped_same_day": 0.04
+    },
+    "train": {
+     "return": 4.4272012638957055,
+     "trades": 307,
+     "win_rate": 0.6123778501628665,
+     "profit_factor": 1.7417638923630365,
+     "usd_per_session": 29.339774234667683,
+     "stopped_share": 0.06840390879478828,
+     "stopped_same_day": 0.04234527687296417
+    },
+    "older": {
+     "return": 0.08514182180756213,
+     "trades": 383,
+     "win_rate": 0.6161879895561357,
+     "profit_factor": 1.029150716486833,
+     "usd_per_session": 2.355775422095582,
+     "stopped_share": 0.057441253263707574,
+     "stopped_same_day": 0.02349869451697128
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.031352215100936,
+     "trades": 37,
+     "win_rate": 0.0,
+     "profit_factor": 0.0,
+     "usd_per_session": -6.267816562211157,
+     "stopped_share": 1.0,
+     "stopped_same_day": 1.0
+    },
+    "train": {
+     "return": -0.002654958076972136,
+     "trades": 423,
+     "win_rate": 0.02364066193853428,
+     "profit_factor": 1.0424546365686296,
+     "usd_per_session": 0.16089295247301563,
+     "stopped_share": 0.9763593380614657,
+     "stopped_same_day": 0.9692671394799054
+    },
+    "older": {
+     "return": -0.06678311341556753,
+     "trades": 541,
+     "win_rate": 0.04436229205175601,
+     "profit_factor": 0.8854571680917984,
+     "usd_per_session": -0.8102976370168261,
+     "stopped_share": 0.955637707948244,
+     "stopped_same_day": 0.955637707948244
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.0029083491838843845,
+     "trades": 37,
+     "win_rate": 0.02702702702702703,
+     "profit_factor": 1.1011306035421797,
+     "usd_per_session": 0.838994159588694,
+     "stopped_share": 0.972972972972973,
+     "stopped_same_day": 0.972972972972973
+    },
+    "train": {
+     "return": -0.08613124237273384,
+     "trades": 422,
+     "win_rate": 0.030805687203791468,
+     "profit_factor": 0.857533399799768,
+     "usd_per_session": -1.2219260428801442,
+     "stopped_share": 0.9691943127962085,
+     "stopped_same_day": 0.9620853080568721
+    },
+    "older": {
+     "return": -0.09484848399824286,
+     "trades": 536,
+     "win_rate": 0.05970149253731343,
+     "profit_factor": 0.8761375569713279,
+     "usd_per_session": -1.164418669143569,
+     "stopped_share": 0.9402985074626866,
+     "stopped_same_day": 0.9402985074626866
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": -0.02014918398950627,
+     "trades": 37,
+     "win_rate": 0.02702702702702703,
+     "profit_factor": 0.7156663483140042,
+     "usd_per_session": -3.7323749250951397,
+     "stopped_share": 0.972972972972973,
+     "stopped_same_day": 0.972972972972973
+    },
+    "train": {
+     "return": -0.1928218873579628,
+     "trades": 418,
+     "win_rate": 0.045454545454545456,
+     "profit_factor": 0.7373089774461775,
+     "usd_per_session": -3.120443140452274,
+     "stopped_share": 0.9545454545454546,
+     "stopped_same_day": 0.9425837320574163
+    },
+    "older": {
+     "return": 0.021883129471707452,
+     "trades": 526,
+     "win_rate": 0.10456273764258556,
+     "profit_factor": 1.0484766694669336,
+     "usd_per_session": 0.40500991997335556,
+     "stopped_share": 0.8935361216730038,
+     "stopped_same_day": 0.8935361216730038
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.13791014324708795,
+     "trades": 34,
+     "win_rate": 0.20588235294117646,
+     "profit_factor": 2.4118570476609085,
+     "usd_per_session": 26.680074458537945,
+     "stopped_share": 0.7941176470588235,
+     "stopped_same_day": 0.7647058823529411
+    },
+    "train": {
+     "return": -0.1430198172834195,
+     "trades": 404,
+     "win_rate": 0.1188118811881188,
+     "profit_factor": 0.8818587101821559,
+     "usd_per_session": -2.0104028032661487,
+     "stopped_share": 0.8787128712871287,
+     "stopped_same_day": 0.8638613861386139
+    },
+    "older": {
+     "return": -0.013918603978976929,
+     "trades": 501,
+     "win_rate": 0.18163672654690619,
+     "profit_factor": 1.0042862929475018,
+     "usd_per_session": 0.04351328344943107,
+     "stopped_share": 0.8083832335329342,
+     "stopped_same_day": 0.8023952095808383
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.23424510619338745,
+     "trades": 32,
+     "win_rate": 0.34375,
+     "profit_factor": 2.477363095903633,
+     "usd_per_session": 43.232450848655546,
+     "stopped_share": 0.65625,
+     "stopped_same_day": 0.625
+    },
+    "train": {
+     "return": 0.5739607481989637,
+     "trades": 382,
+     "win_rate": 0.27225130890052357,
+     "profit_factor": 1.2387996748105714,
+     "usd_per_session": 8.08190599648433,
+     "stopped_share": 0.7225130890052356,
+     "stopped_same_day": 0.6989528795811518
+    },
+    "older": {
+     "return": 0.06677256751323402,
+     "trades": 468,
+     "win_rate": 0.3162393162393162,
+     "profit_factor": 1.0375533403452382,
+     "usd_per_session": 1.1940631863874647,
+     "stopped_share": 0.655982905982906,
+     "stopped_same_day": 0.6367521367521367
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.16071137140963176,
+     "trades": 29,
+     "win_rate": 0.4827586206896552,
+     "profit_factor": 2.023491332647372,
+     "usd_per_session": 30.482178493431565,
+     "stopped_share": 0.4827586206896552,
+     "stopped_same_day": 0.4482758620689655
+    },
+    "train": {
+     "return": 1.5389807555615298,
+     "trades": 367,
+     "win_rate": 0.36239782016348776,
+     "profit_factor": 1.4065277757849015,
+     "usd_per_session": 16.19163471041586,
+     "stopped_share": 0.6049046321525886,
+     "stopped_same_day": 0.5749318801089919
+    },
+    "older": {
+     "return": 0.11264089361977447,
+     "trades": 448,
+     "win_rate": 0.4107142857142857,
+     "profit_factor": 1.0481997773207496,
+     "usd_per_session": 1.8486471273467353,
+     "stopped_share": 0.5267857142857143,
+     "stopped_same_day": 0.5022321428571429
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.18122409197423894,
+     "trades": 29,
+     "win_rate": 0.5862068965517241,
+     "profit_factor": 1.8896443567473988,
+     "usd_per_session": 34.65699508410544,
+     "stopped_share": 0.3793103448275862,
+     "stopped_same_day": 0.27586206896551724
+    },
+    "train": {
+     "return": 1.6064883308551314,
+     "trades": 348,
+     "win_rate": 0.46551724137931033,
+     "profit_factor": 1.350724668837904,
+     "usd_per_session": 16.862701494158838,
+     "stopped_share": 0.4396551724137931,
+     "stopped_same_day": 0.4166666666666667
+    },
+    "older": {
+     "return": -0.07626834157201168,
+     "trades": 427,
+     "win_rate": 0.49414519906323184,
+     "profit_factor": 0.9823755101798626,
+     "usd_per_session": -0.2545611963494988,
+     "stopped_share": 0.3700234192037471,
+     "stopped_same_day": 0.3255269320843091
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.2527676051623535,
+     "trades": 27,
+     "win_rate": 0.6296296296296297,
+     "profit_factor": 2.1072737958048253,
+     "usd_per_session": 46.557338630638206,
+     "stopped_share": 0.25925925925925924,
+     "stopped_same_day": 0.18518518518518517
+    },
+    "train": {
+     "return": 1.9753418104780045,
+     "trades": 328,
+     "win_rate": 0.5335365853658537,
+     "profit_factor": 1.4234465566422152,
+     "usd_per_session": 19.272423508617376,
+     "stopped_share": 0.2926829268292683,
+     "stopped_same_day": 0.25
+    },
+    "older": {
+     "return": 0.12352755955974404,
+     "trades": 407,
+     "win_rate": 0.5675675675675675,
+     "profit_factor": 1.0377258561713905,
+     "usd_per_session": 2.3684569164309344,
+     "stopped_share": 0.22358722358722358,
+     "stopped_same_day": 0.1769041769041769
+    }
+   }
+  }
+ },
+ {
+  "name": "Flush Book",
+  "rank": 14,
+  "own_stop_pct": 0.049,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.27264378092068564,
+     "trades": 6,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 8.984895781775768,
+     "usd_per_session": 49.091257886399234,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 24.440112906258747,
+     "trades": 95,
+     "win_rate": 0.8105263157894737,
+     "profit_factor": 9.796060683198506,
+     "usd_per_session": 55.00259633735606,
+     "stopped_share": 0.021052631578947368,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 0.8613067300335637,
+     "trades": 156,
+     "win_rate": 0.6474358974358975,
+     "profit_factor": 1.245068359723448,
+     "usd_per_session": 9.37828185021619,
+     "stopped_share": 0.038461538461538464,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.27264378092068564,
+     "trades": 6,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 8.984895781775768,
+     "usd_per_session": 49.091257886399234,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 28.388826335896216,
+     "trades": 98,
+     "win_rate": 0.8061224489795918,
+     "profit_factor": 8.423621425401993,
+     "usd_per_session": 57.397713525065335,
+     "stopped_share": 0.04081632653061224,
+     "stopped_same_day": 0.01020408163265306
+    },
+    "older": {
+     "return": 1.2517282207452012,
+     "trades": 157,
+     "win_rate": 0.6496815286624203,
+     "profit_factor": 1.357276348515791,
+     "usd_per_session": 11.720325755487401,
+     "stopped_share": 0.06369426751592357,
+     "stopped_same_day": 0.0
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.07405666214291773,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 11.617213644452265,
+     "usd_per_session": 14.606657303560894,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.07421163108378381,
+     "trades": 125,
+     "win_rate": 0.008,
+     "profit_factor": 0.2847325625416499,
+     "usd_per_session": -1.2099777358411425,
+     "stopped_share": 0.992,
+     "stopped_same_day": 0.984
+    },
+    "older": {
+     "return": -0.03305277976289622,
+     "trades": 195,
+     "win_rate": 0.020512820512820513,
+     "profit_factor": 0.8314764647498082,
+     "usd_per_session": -0.359944600029481,
+     "stopped_share": 0.9794871794871794,
+     "stopped_same_day": 0.9692307692307692
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.07073266181686622,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 7.901559213691422,
+     "usd_per_session": 13.997141425603312,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.10392359383268746,
+     "trades": 125,
+     "win_rate": 0.016,
+     "profit_factor": 0.2837312623495027,
+     "usd_per_session": -1.7287416869825314,
+     "stopped_share": 0.984,
+     "stopped_same_day": 0.976
+    },
+    "older": {
+     "return": -0.09117320210943902,
+     "trades": 195,
+     "win_rate": 0.03076923076923077,
+     "profit_factor": 0.6066374276306806,
+     "usd_per_session": -1.116586700034245,
+     "stopped_share": 0.9692307692307692,
+     "stopped_same_day": 0.9538461538461539
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.06521266147040672,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 5.158766170232473,
+     "usd_per_session": 12.981281629006826,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.08271269496645861,
+     "trades": 125,
+     "win_rate": 0.04,
+     "profit_factor": 0.6253550762244148,
+     "usd_per_session": -1.3099406586946218,
+     "stopped_share": 0.96,
+     "stopped_same_day": 0.952
+    },
+    "older": {
+     "return": 0.03957485025594121,
+     "trades": 195,
+     "win_rate": 0.09743589743589744,
+     "profit_factor": 1.1460522245422877,
+     "usd_per_session": 0.5860226714782546,
+     "stopped_share": 0.9025641025641026,
+     "stopped_same_day": 0.8871794871794871
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.05152145892736826,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 2.7692756820812208,
+     "usd_per_session": 10.44163213751651,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": 0.0001690445321265166,
+     "trades": 124,
+     "win_rate": 0.10483870967741936,
+     "profit_factor": 1.0133460903803593,
+     "usd_per_session": 0.17810043977867698,
+     "stopped_share": 0.8951612903225806,
+     "stopped_same_day": 0.8709677419354839
+    },
+    "older": {
+     "return": 0.009000472599920428,
+     "trades": 193,
+     "win_rate": 0.18134715025906736,
+     "profit_factor": 1.0308378856691094,
+     "usd_per_session": 0.2733205061013306,
+     "stopped_share": 0.8186528497409327,
+     "stopped_same_day": 0.7668393782383419
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.10434349718789826,
+     "trades": 9,
+     "win_rate": 0.2222222222222222,
+     "profit_factor": 3.13298874473877,
+     "usd_per_session": 20.442286161491726,
+     "stopped_share": 0.7777777777777778,
+     "stopped_same_day": 0.7777777777777778
+    },
+    "train": {
+     "return": 0.2630429869159634,
+     "trades": 123,
+     "win_rate": 0.2032520325203252,
+     "profit_factor": 1.3973403371313355,
+     "usd_per_session": 4.192072857931599,
+     "stopped_share": 0.7967479674796748,
+     "stopped_same_day": 0.7560975609756098
+    },
+    "older": {
+     "return": 0.24869930350788727,
+     "trades": 191,
+     "win_rate": 0.3036649214659686,
+     "profit_factor": 1.2729153853132635,
+     "usd_per_session": 3.0707116231922633,
+     "stopped_share": 0.675392670157068,
+     "stopped_same_day": 0.612565445026178
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.10910127151100402,
+     "trades": 7,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 3.4598042771968287,
+     "usd_per_session": 21.399479480981437,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.5714285714285714
+    },
+    "train": {
+     "return": 0.5481568437324864,
+     "trades": 123,
+     "win_rate": 0.2682926829268293,
+     "profit_factor": 1.5546327093170516,
+     "usd_per_session": 7.679883792155561,
+     "stopped_share": 0.6910569105691057,
+     "stopped_same_day": 0.6666666666666666
+    },
+    "older": {
+     "return": 0.4451266782608616,
+     "trades": 187,
+     "win_rate": 0.39037433155080214,
+     "profit_factor": 1.3839519940971616,
+     "usd_per_session": 5.009691795340956,
+     "stopped_share": 0.5668449197860963,
+     "stopped_same_day": 0.47058823529411764
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.16554759785264173,
+     "trades": 6,
+     "win_rate": 0.5,
+     "profit_factor": 5.503070869798775,
+     "usd_per_session": 31.280489250776704,
+     "stopped_share": 0.3333333333333333,
+     "stopped_same_day": 0.16666666666666666
+    },
+    "train": {
+     "return": 1.075292949484929,
+     "trades": 119,
+     "win_rate": 0.4117647058823529,
+     "profit_factor": 1.8926825950237929,
+     "usd_per_session": 12.558894896393262,
+     "stopped_share": 0.5378151260504201,
+     "stopped_same_day": 0.4957983193277311
+    },
+    "older": {
+     "return": 0.18330825148728613,
+     "trades": 181,
+     "win_rate": 0.4585635359116022,
+     "profit_factor": 1.134519002206167,
+     "usd_per_session": 2.615040643647288,
+     "stopped_share": 0.44751381215469616,
+     "stopped_same_day": 0.3259668508287293
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.27297873182940413,
+     "trades": 6,
+     "win_rate": 0.6666666666666666,
+     "profit_factor": 9.065444529397645,
+     "usd_per_session": 49.138942206213414,
+     "stopped_share": 0.16666666666666666,
+     "stopped_same_day": 0.16666666666666666
+    },
+    "train": {
+     "return": 1.7878018435695804,
+     "trades": 113,
+     "win_rate": 0.49557522123893805,
+     "profit_factor": 2.0240718018921062,
+     "usd_per_session": 17.81527407688883,
+     "stopped_share": 0.415929203539823,
+     "stopped_same_day": 0.2920353982300885
+    },
+    "older": {
+     "return": 0.2865428551145712,
+     "trades": 174,
+     "win_rate": 0.5114942528735632,
+     "profit_factor": 1.1492004250100334,
+     "usd_per_session": 3.9485898679911213,
+     "stopped_share": 0.3275862068965517,
+     "stopped_same_day": 0.16091954022988506
+    }
+   }
+  }
+ },
+ {
+  "name": "Managed Long",
+  "rank": 15,
+  "own_stop_pct": 0.0425,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.2655500400923638,
+     "trades": 16,
+     "win_rate": 0.625,
+     "profit_factor": 1.6003557209575379,
+     "usd_per_session": 52.72740533863675,
+     "stopped_share": 0.1875,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 18.20247705602227,
+     "trades": 187,
+     "win_rate": 0.6363636363636364,
+     "profit_factor": 2.0378625079499164,
+     "usd_per_session": 47.97825770221529,
+     "stopped_share": 0.10160427807486631,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 10.241862284611193,
+     "trades": 215,
+     "win_rate": 0.627906976744186,
+     "profit_factor": 1.7829505903808849,
+     "usd_per_session": 30.729489119681702,
+     "stopped_share": 0.09767441860465116,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.41504316466491376,
+     "trades": 15,
+     "win_rate": 0.7333333333333333,
+     "profit_factor": 2.74606961971395,
+     "usd_per_session": 74.12800731095003,
+     "stopped_share": 0.13333333333333333,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 3.751383455931663,
+     "trades": 194,
+     "win_rate": 0.6030927835051546,
+     "profit_factor": 1.2850275604308539,
+     "usd_per_session": 28.011571815645407,
+     "stopped_share": 0.17525773195876287,
+     "stopped_same_day": 0.020618556701030927
+    },
+    "older": {
+     "return": 8.49803206806502,
+     "trades": 223,
+     "win_rate": 0.6053811659192825,
+     "profit_factor": 1.7418478090209688,
+     "usd_per_session": 29.018429068427377,
+     "stopped_share": 0.14349775784753363,
+     "stopped_same_day": 0.013452914798206279
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.019562406639666907,
+     "trades": 42,
+     "win_rate": 0.023809523809523808,
+     "profit_factor": 0.458371451292538,
+     "usd_per_session": -3.4077406563022774,
+     "stopped_share": 0.9761904761904762,
+     "stopped_same_day": 0.9285714285714286
+    },
+    "train": {
+     "return": -0.20989129691726383,
+     "trades": 573,
+     "win_rate": 0.006980802792321117,
+     "profit_factor": 0.6031161001644814,
+     "usd_per_session": -3.077490484792671,
+     "stopped_share": 0.9912739965095986,
+     "stopped_same_day": 0.9790575916230366
+    },
+    "older": {
+     "return": -0.19091342243742693,
+     "trades": 704,
+     "win_rate": 0.011363636363636364,
+     "profit_factor": 0.6771613860335726,
+     "usd_per_session": -2.220434341303344,
+     "stopped_share": 0.9886363636363636,
+     "stopped_same_day": 0.9673295454545454
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.12180139048864769,
+     "trades": 38,
+     "win_rate": 0.07894736842105263,
+     "profit_factor": 3.667397874768676,
+     "usd_per_session": 23.41874746300689,
+     "stopped_share": 0.9210526315789473,
+     "stopped_same_day": 0.9210526315789473
+    },
+    "train": {
+     "return": -0.09712275251650537,
+     "trades": 556,
+     "win_rate": 0.019784172661870502,
+     "profit_factor": 0.890167078136298,
+     "usd_per_session": -0.9898791158117727,
+     "stopped_share": 0.9802158273381295,
+     "stopped_same_day": 0.9568345323741008
+    },
+    "older": {
+     "return": -0.11861762565212408,
+     "trades": 672,
+     "win_rate": 0.020833333333333332,
+     "profit_factor": 0.8653579669480854,
+     "usd_per_session": -1.1361421730784027,
+     "stopped_share": 0.9791666666666666,
+     "stopped_same_day": 0.9523809523809523
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.09671877201378432,
+     "trades": 38,
+     "win_rate": 0.07894736842105263,
+     "profit_factor": 2.4006852766851283,
+     "usd_per_session": 18.97436085289751,
+     "stopped_share": 0.9210526315789473,
+     "stopped_same_day": 0.9210526315789473
+    },
+    "train": {
+     "return": -0.025299762535642034,
+     "trades": 516,
+     "win_rate": 0.03488372093023256,
+     "profit_factor": 0.997530653373246,
+     "usd_per_session": 0.43391408840428125,
+     "stopped_share": 0.9651162790697675,
+     "stopped_same_day": 0.9244186046511628
+    },
+    "older": {
+     "return": -0.22059250553355636,
+     "trades": 632,
+     "win_rate": 0.02689873417721519,
+     "profit_factor": 0.7990284869412022,
+     "usd_per_session": -2.4211727569748462,
+     "stopped_share": 0.9731012658227848,
+     "stopped_same_day": 0.9018987341772152
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.09806726877403937,
+     "trades": 37,
+     "win_rate": 0.08108108108108109,
+     "profit_factor": 1.8020536027818597,
+     "usd_per_session": 19.552197526906358,
+     "stopped_share": 0.918918918918919,
+     "stopped_same_day": 0.8648648648648649
+    },
+    "train": {
+     "return": 0.4175633628626716,
+     "trades": 466,
+     "win_rate": 0.060085836909871244,
+     "profit_factor": 1.194955169328751,
+     "usd_per_session": 6.262185104501658,
+     "stopped_share": 0.9377682403433476,
+     "stopped_same_day": 0.8626609442060086
+    },
+    "older": {
+     "return": 0.3213191365570065,
+     "trades": 574,
+     "win_rate": 0.06794425087108014,
+     "profit_factor": 1.1365572889681126,
+     "usd_per_session": 3.8993502482522437,
+     "stopped_share": 0.9320557491289199,
+     "stopped_same_day": 0.8275261324041812
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.2385112426497693,
+     "trades": 31,
+     "win_rate": 0.16129032258064516,
+     "profit_factor": 2.175608330213036,
+     "usd_per_session": 44.81247525594219,
+     "stopped_share": 0.8387096774193549,
+     "stopped_same_day": 0.6774193548387096
+    },
+    "train": {
+     "return": 0.1486216544026322,
+     "trades": 419,
+     "win_rate": 0.0954653937947494,
+     "profit_factor": 1.0553725249627957,
+     "usd_per_session": 3.7734134129902914,
+     "stopped_share": 0.9045346062052506,
+     "stopped_same_day": 0.7708830548926014
+    },
+    "older": {
+     "return": 0.9899552402467706,
+     "trades": 474,
+     "win_rate": 0.14345991561181434,
+     "profit_factor": 1.261878557493006,
+     "usd_per_session": 8.980851752113633,
+     "stopped_share": 0.8565400843881856,
+     "stopped_same_day": 0.6708860759493671
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.17324715065682184,
+     "trades": 28,
+     "win_rate": 0.17857142857142858,
+     "profit_factor": 1.6838835654041864,
+     "usd_per_session": 35.47799935165673,
+     "stopped_share": 0.8214285714285714,
+     "stopped_same_day": 0.6071428571428571
+    },
+    "train": {
+     "return": 1.0213944905660588,
+     "trades": 374,
+     "win_rate": 0.16042780748663102,
+     "profit_factor": 1.1836149242813825,
+     "usd_per_session": 12.583757557726633,
+     "stopped_share": 0.8368983957219251,
+     "stopped_same_day": 0.6657754010695187
+    },
+    "older": {
+     "return": 0.7324198474100341,
+     "trades": 428,
+     "win_rate": 0.18691588785046728,
+     "profit_factor": 1.1569408772223293,
+     "usd_per_session": 7.7411700979539235,
+     "stopped_share": 0.8014018691588785,
+     "stopped_same_day": 0.5700934579439252
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.09491690831806543,
+     "trades": 23,
+     "win_rate": 0.2608695652173913,
+     "profit_factor": 1.329478482842252,
+     "usd_per_session": 23.59156891208662,
+     "stopped_share": 0.7391304347826086,
+     "stopped_same_day": 0.391304347826087
+    },
+    "train": {
+     "return": 0.6742422990154351,
+     "trades": 320,
+     "win_rate": 0.25,
+     "profit_factor": 1.1106903672848418,
+     "usd_per_session": 10.671251186743921,
+     "stopped_share": 0.740625,
+     "stopped_same_day": 0.51875
+    },
+    "older": {
+     "return": 2.2449489794606925,
+     "trades": 349,
+     "win_rate": 0.30659025787965616,
+     "profit_factor": 1.316829634942434,
+     "usd_per_session": 15.287815069882152,
+     "stopped_share": 0.66189111747851,
+     "stopped_same_day": 0.40974212034383956
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.1555746231406867,
+     "trades": 21,
+     "win_rate": 0.38095238095238093,
+     "profit_factor": 1.447394404476797,
+     "usd_per_session": 34.94505205633949,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.14285714285714285
+    },
+    "train": {
+     "return": 0.3275576043851549,
+     "trades": 279,
+     "win_rate": 0.3010752688172043,
+     "profit_factor": 1.0416327744615625,
+     "usd_per_session": 8.445166062573703,
+     "stopped_share": 0.6379928315412187,
+     "stopped_same_day": 0.3727598566308244
+    },
+    "older": {
+     "return": 2.4628361695228285,
+     "trades": 300,
+     "win_rate": 0.4033333333333333,
+     "profit_factor": 1.2666411715658206,
+     "usd_per_session": 16.38024359258775,
+     "stopped_share": 0.51,
+     "stopped_same_day": 0.25333333333333335
+    }
+   }
+  }
+ },
+ {
+  "name": "Bull Market, Crash-Day Exit",
+  "rank": 16,
+  "own_stop_pct": 0.0,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.24176931042267502,
+     "trades": 16,
+     "win_rate": 0.4375,
+     "profit_factor": 1.5055724243033937,
+     "usd_per_session": 48.82039366167793,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 2.3058365222992805,
+     "trades": 151,
+     "win_rate": 0.48344370860927155,
+     "profit_factor": 1.301557596303232,
+     "usd_per_session": 22.60120940199731,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 3.692341604843353,
+     "trades": 201,
+     "win_rate": 0.5074626865671642,
+     "profit_factor": 1.3993624628355903,
+     "usd_per_session": 22.019539320366494,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": -0.024613846696125652,
+     "trades": 48,
+     "win_rate": 0.020833333333333332,
+     "profit_factor": 0.3988180386214178,
+     "usd_per_session": -4.4671984739406,
+     "stopped_share": 0.9791666666666666,
+     "stopped_same_day": 0.9583333333333334
+    },
+    "train": {
+     "return": -0.11723638744183174,
+     "trades": 547,
+     "win_rate": 0.007312614259597806,
+     "profit_factor": 0.7790226287951196,
+     "usd_per_session": -1.7592354793774505,
+     "stopped_share": 0.9926873857404022,
+     "stopped_same_day": 0.9780621572212066
+    },
+    "older": {
+     "return": -0.12263703396389758,
+     "trades": 813,
+     "win_rate": 0.01107011070110701,
+     "profit_factor": 0.8586965983465138,
+     "usd_per_session": -1.3317403867526965,
+     "stopped_share": 0.988929889298893,
+     "stopped_same_day": 0.968019680196802
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": -0.042215072949893906,
+     "trades": 48,
+     "win_rate": 0.020833333333333332,
+     "profit_factor": 0.26846593522147744,
+     "usd_per_session": -8.044168087507744,
+     "stopped_share": 0.9791666666666666,
+     "stopped_same_day": 0.9583333333333334
+    },
+    "train": {
+     "return": 0.2615522104152501,
+     "trades": 516,
+     "win_rate": 0.01937984496124031,
+     "profit_factor": 1.3507158587736583,
+     "usd_per_session": 3.99133231123,
+     "stopped_share": 0.9806201550387597,
+     "stopped_same_day": 0.9593023255813954
+    },
+    "older": {
+     "return": -0.2668734720260577,
+     "trades": 786,
+     "win_rate": 0.013994910941475827,
+     "profit_factor": 0.7216263004908903,
+     "usd_per_session": -3.3970650770143225,
+     "stopped_share": 0.9860050890585241,
+     "stopped_same_day": 0.950381679389313
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": -0.06910015225049548,
+     "trades": 47,
+     "win_rate": 0.02127659574468085,
+     "profit_factor": 0.1761796849278403,
+     "usd_per_session": -13.329684703629711,
+     "stopped_share": 0.9787234042553191,
+     "stopped_same_day": 0.9361702127659575
+    },
+    "train": {
+     "return": 0.2698191985445786,
+     "trades": 486,
+     "win_rate": 0.03292181069958848,
+     "profit_factor": 1.2660553119178544,
+     "usd_per_session": 4.206638564741804,
+     "stopped_share": 0.9670781893004116,
+     "stopped_same_day": 0.9423868312757202
+    },
+    "older": {
+     "return": 0.07760187249185946,
+     "trades": 699,
+     "win_rate": 0.032904148783977114,
+     "profit_factor": 1.0829309130476983,
+     "usd_per_session": 1.4665510372928867,
+     "stopped_share": 0.9670958512160229,
+     "stopped_same_day": 0.8955650929899857
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.10647839878623966,
+     "trades": 36,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 1.8596644841741925,
+     "usd_per_session": 21.87650147420873,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8333333333333334
+    },
+    "train": {
+     "return": 0.5663021386319607,
+     "trades": 424,
+     "win_rate": 0.06132075471698113,
+     "profit_factor": 1.2830497267153587,
+     "usd_per_session": 8.128211052142884,
+     "stopped_share": 0.9386792452830188,
+     "stopped_same_day": 0.8679245283018868
+    },
+    "older": {
+     "return": 1.2358322765826601,
+     "trades": 577,
+     "win_rate": 0.07452339688041594,
+     "profit_factor": 1.4483223120999922,
+     "usd_per_session": 10.777802576737063,
+     "stopped_share": 0.925476603119584,
+     "stopped_same_day": 0.7920277296360485
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.17571099986102268,
+     "trades": 33,
+     "win_rate": 0.12121212121212122,
+     "profit_factor": 1.7749352876097242,
+     "usd_per_session": 35.068207851362324,
+     "stopped_share": 0.8787878787878788,
+     "stopped_same_day": 0.7575757575757576
+    },
+    "train": {
+     "return": 0.3685300937699578,
+     "trades": 360,
+     "win_rate": 0.10277777777777777,
+     "profit_factor": 1.1145784742582887,
+     "usd_per_session": 6.703666665483089,
+     "stopped_share": 0.8972222222222223,
+     "stopped_same_day": 0.7388888888888889
+    },
+    "older": {
+     "return": 1.1248896517285925,
+     "trades": 474,
+     "win_rate": 0.12236286919831224,
+     "profit_factor": 1.2928034307103127,
+     "usd_per_session": 10.548869319321053,
+     "stopped_share": 0.8755274261603375,
+     "stopped_same_day": 0.6455696202531646
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.12451821939100971,
+     "trades": 25,
+     "win_rate": 0.2,
+     "profit_factor": 1.5630194978670298,
+     "usd_per_session": 26.999800655644794,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.6
+    },
+    "train": {
+     "return": 0.772658374417416,
+     "trades": 301,
+     "win_rate": 0.16943521594684385,
+     "profit_factor": 1.16033740066176,
+     "usd_per_session": 11.115874536814792,
+     "stopped_share": 0.8272425249169435,
+     "stopped_same_day": 0.6445182724252492
+    },
+    "older": {
+     "return": 2.3075455318735276,
+     "trades": 392,
+     "win_rate": 0.18877551020408162,
+     "profit_factor": 1.4273140009685756,
+     "usd_per_session": 16.373706553828168,
+     "stopped_share": 0.8010204081632653,
+     "stopped_same_day": 0.5076530612244898
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.31585155930435693,
+     "trades": 20,
+     "win_rate": 0.3,
+     "profit_factor": 2.0958165168390455,
+     "usd_per_session": 59.378614211295606,
+     "stopped_share": 0.7,
+     "stopped_same_day": 0.4
+    },
+    "train": {
+     "return": 1.2404306907220914,
+     "trades": 238,
+     "win_rate": 0.24369747899159663,
+     "profit_factor": 1.1862455168245536,
+     "usd_per_session": 15.227826354665703,
+     "stopped_share": 0.7478991596638656,
+     "stopped_same_day": 0.42857142857142855
+    },
+    "older": {
+     "return": 2.615027580543403,
+     "trades": 311,
+     "win_rate": 0.2797427652733119,
+     "profit_factor": 1.429790841485974,
+     "usd_per_session": 17.861382200067773,
+     "stopped_share": 0.6816720257234726,
+     "stopped_same_day": 0.3247588424437299
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.3543663360781857,
+     "trades": 18,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 2.029440477436733,
+     "usd_per_session": 65.510857895859,
+     "stopped_share": 0.5555555555555556,
+     "stopped_same_day": 0.3333333333333333
+    },
+    "train": {
+     "return": 1.006668342057758,
+     "trades": 198,
+     "win_rate": 0.3282828282828283,
+     "profit_factor": 1.1489973905058972,
+     "usd_per_session": 14.139740702650874,
+     "stopped_share": 0.6111111111111112,
+     "stopped_same_day": 0.2727272727272727
+    },
+    "older": {
+     "return": 2.737160955809912,
+     "trades": 256,
+     "win_rate": 0.38671875,
+     "profit_factor": 1.3862705188018185,
+     "usd_per_session": 18.607520146429955,
+     "stopped_share": 0.53125,
+     "stopped_same_day": 0.19921875
+    }
+   }
+  }
+ },
+ {
+  "name": "Quick Dip, Two Legs",
+  "rank": 17,
+  "own_stop_pct": 0.026,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.24037497515612594,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 94.13489204669074,
+     "usd_per_session": 43.749823572959535,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 0.6667810038996547,
+     "trades": 76,
+     "win_rate": 0.7631578947368421,
+     "profit_factor": 1.5775451173903767,
+     "usd_per_session": 8.90010297523857,
+     "stopped_share": 0.10526315789473684,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 0.6389583702536883,
+     "trades": 54,
+     "win_rate": 0.7592592592592593,
+     "profit_factor": 2.064928674765041,
+     "usd_per_session": 6.391901168496328,
+     "stopped_share": 0.05555555555555555,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.24037497515612594,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 94.13489204669074,
+     "usd_per_session": 43.749823572959535,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 0.8569672024703083,
+     "trades": 76,
+     "win_rate": 0.7236842105263158,
+     "profit_factor": 1.6990292706176606,
+     "usd_per_session": 10.40285699682517,
+     "stopped_share": 0.19736842105263158,
+     "stopped_same_day": 0.10526315789473684
+    },
+    "older": {
+     "return": 0.7015147709785596,
+     "trades": 54,
+     "win_rate": 0.7592592592592593,
+     "profit_factor": 2.3248860424548576,
+     "usd_per_session": 6.759560520861743,
+     "stopped_share": 0.09259259259259259,
+     "stopped_same_day": 0.018518518518518517
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.07776176602337914,
+     "trades": 5,
+     "win_rate": 0.2,
+     "profit_factor": 24.783329063284256,
+     "usd_per_session": 15.28425909407029,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": 0.0009607663481243645,
+     "trades": 77,
+     "win_rate": 0.025974025974025976,
+     "profit_factor": 1.065528818401957,
+     "usd_per_session": 0.03120305144718885,
+     "stopped_share": 0.974025974025974,
+     "stopped_same_day": 0.974025974025974
+    },
+    "older": {
+     "return": -0.020229284713415563,
+     "trades": 57,
+     "win_rate": 0.017543859649122806,
+     "profit_factor": 0.6076983268853293,
+     "usd_per_session": -0.24178627751222348,
+     "stopped_share": 0.9824561403508771,
+     "stopped_same_day": 0.9824561403508771
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.07609274023606005,
+     "trades": 5,
+     "win_rate": 0.2,
+     "profit_factor": 16.82380499104176,
+     "usd_per_session": 14.979501155091336,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": -0.02770742734546594,
+     "trades": 77,
+     "win_rate": 0.025974025974025976,
+     "profit_factor": 0.7257996094763378,
+     "usd_per_session": -0.41787172713781723,
+     "stopped_share": 0.974025974025974,
+     "stopped_same_day": 0.974025974025974
+    },
+    "older": {
+     "return": -0.009863438918173206,
+     "trades": 57,
+     "win_rate": 0.03508771929824561,
+     "profit_factor": 0.8868323966264816,
+     "usd_per_session": -0.10910492681739387,
+     "stopped_share": 0.9649122807017544,
+     "stopped_same_day": 0.9649122807017544
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.0733153392827548,
+     "trades": 5,
+     "win_rate": 0.2,
+     "profit_factor": 10.94830053354108,
+     "usd_per_session": 14.471571256793268,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.8
+    },
+    "train": {
+     "return": -0.07369796573749798,
+     "trades": 77,
+     "win_rate": 0.025974025974025976,
+     "profit_factor": 0.47513857356474065,
+     "usd_per_session": -1.1663296914462855,
+     "stopped_share": 0.974025974025974,
+     "stopped_same_day": 0.974025974025974
+    },
+    "older": {
+     "return": -0.01879553966692038,
+     "trades": 57,
+     "win_rate": 0.07017543859649122,
+     "profit_factor": 0.832209622251382,
+     "usd_per_session": -0.21603020658381544,
+     "stopped_share": 0.9298245614035088,
+     "stopped_same_day": 0.9298245614035088
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.11343820894295709,
+     "trades": 5,
+     "win_rate": 0.4,
+     "profit_factor": 11.543341938538074,
+     "usd_per_session": 21.867970970269432,
+     "stopped_share": 0.6,
+     "stopped_same_day": 0.6
+    },
+    "train": {
+     "return": -0.07333383822780282,
+     "trades": 77,
+     "win_rate": 0.07792207792207792,
+     "profit_factor": 0.7012772256080382,
+     "usd_per_session": -1.1287307083854206,
+     "stopped_share": 0.922077922077922,
+     "stopped_same_day": 0.922077922077922
+    },
+    "older": {
+     "return": -0.019909158024399076,
+     "trades": 57,
+     "win_rate": 0.12280701754385964,
+     "profit_factor": 0.9004967881336733,
+     "usd_per_session": -0.2148197061313622,
+     "stopped_share": 0.8771929824561403,
+     "stopped_same_day": 0.8596491228070176
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.1464764155909617,
+     "trades": 5,
+     "win_rate": 0.6,
+     "profit_factor": 11.571067420140963,
+     "usd_per_session": 27.741821575206533,
+     "stopped_share": 0.4,
+     "stopped_same_day": 0.4
+    },
+    "train": {
+     "return": -0.02477325885780446,
+     "trades": 77,
+     "win_rate": 0.15584415584415584,
+     "profit_factor": 0.9486201278295812,
+     "usd_per_session": -0.22940732820489967,
+     "stopped_share": 0.8441558441558441,
+     "stopped_same_day": 0.8311688311688312
+    },
+    "older": {
+     "return": -0.06767925328563984,
+     "trades": 57,
+     "win_rate": 0.21052631578947367,
+     "profit_factor": 0.7828463441851491,
+     "usd_per_session": -0.802097626223849,
+     "stopped_share": 0.7894736842105263,
+     "stopped_same_day": 0.7543859649122807
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.13904280314483297,
+     "trades": 5,
+     "win_rate": 0.6,
+     "profit_factor": 7.782131194986092,
+     "usd_per_session": 26.471996829460927,
+     "stopped_share": 0.4,
+     "stopped_same_day": 0.4
+    },
+    "train": {
+     "return": -0.09172549851338585,
+     "trades": 77,
+     "win_rate": 0.22077922077922077,
+     "profit_factor": 0.8430681580327608,
+     "usd_per_session": -1.2839478833018974,
+     "stopped_share": 0.7792207792207793,
+     "stopped_same_day": 0.7532467532467533
+    },
+    "older": {
+     "return": -0.09229486450212687,
+     "trades": 57,
+     "win_rate": 0.2807017543859649,
+     "profit_factor": 0.7775403127623113,
+     "usd_per_session": -1.0957152281759819,
+     "stopped_share": 0.7192982456140351,
+     "stopped_same_day": 0.631578947368421
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.2229112137841922,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 13.246639271342973,
+     "usd_per_session": 40.934884463539696,
+     "stopped_share": 0.2,
+     "stopped_same_day": 0.2
+    },
+    "train": {
+     "return": 0.2799307769366779,
+     "trades": 77,
+     "win_rate": 0.4155844155844156,
+     "profit_factor": 1.3059548999650403,
+     "usd_per_session": 4.245097886340669,
+     "stopped_share": 0.5844155844155844,
+     "stopped_same_day": 0.5194805194805194
+    },
+    "older": {
+     "return": -0.08631350223923884,
+     "trades": 57,
+     "win_rate": 0.40350877192982454,
+     "profit_factor": 0.8508450562876991,
+     "usd_per_session": -0.9631285007713459,
+     "stopped_share": 0.5964912280701754,
+     "stopped_same_day": 0.5263157894736842
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.21088086685432228,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 8.281468240296059,
+     "usd_per_session": 39.030147344921566,
+     "stopped_share": 0.2,
+     "stopped_same_day": 0.2
+    },
+    "train": {
+     "return": 0.7777859192532106,
+     "trades": 77,
+     "win_rate": 0.6103896103896104,
+     "profit_factor": 1.7030657120931005,
+     "usd_per_session": 9.49759642676646,
+     "stopped_share": 0.38961038961038963,
+     "stopped_same_day": 0.2727272727272727
+    },
+    "older": {
+     "return": 0.12761555258204726,
+     "trades": 56,
+     "win_rate": 0.5892857142857143,
+     "profit_factor": 1.1948162677715946,
+     "usd_per_session": 1.673917830293425,
+     "stopped_share": 0.4107142857142857,
+     "stopped_same_day": 0.32142857142857145
+    }
+   }
+  }
+ },
+ {
+  "name": "Washout or Squeeze, Early Exit",
+  "rank": 18,
+  "own_stop_pct": 0.03,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.23035596375949674,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 27.54101821240469,
+     "usd_per_session": 42.491407221198656,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 9.059343151645923,
+     "trades": 139,
+     "win_rate": 0.7122302158273381,
+     "profit_factor": 3.737362957215514,
+     "usd_per_session": 35.26437586506697,
+     "stopped_share": 0.07194244604316546,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 2.6904044378310843,
+     "trades": 182,
+     "win_rate": 0.6703296703296703,
+     "profit_factor": 1.7293878690231712,
+     "usd_per_session": 16.222591424026614,
+     "stopped_share": 0.08791208791208792,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.23035596375949674,
+     "trades": 5,
+     "win_rate": 0.8,
+     "profit_factor": 27.54101821240469,
+     "usd_per_session": 42.491407221198656,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 10.212420803947541,
+     "trades": 143,
+     "win_rate": 0.6923076923076923,
+     "profit_factor": 3.49509496296757,
+     "usd_per_session": 36.564258728562514,
+     "stopped_share": 0.11888111888111888,
+     "stopped_same_day": 0.02097902097902098
+    },
+    "older": {
+     "return": 2.4735687319807558,
+     "trades": 187,
+     "win_rate": 0.6524064171122995,
+     "profit_factor": 1.6467682710264597,
+     "usd_per_session": 15.350478569249894,
+     "stopped_share": 0.12834224598930483,
+     "stopped_same_day": 0.026737967914438502
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.07405666214291773,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 11.617213644452265,
+     "usd_per_session": 14.606657303560894,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": 0.014074707369560846,
+     "trades": 164,
+     "win_rate": 0.012195121951219513,
+     "profit_factor": 1.1517961445694729,
+     "usd_per_session": 0.3241252086159619,
+     "stopped_share": 0.9878048780487805,
+     "stopped_same_day": 0.9817073170731707
+    },
+    "older": {
+     "return": -0.07306667858090954,
+     "trades": 215,
+     "win_rate": 0.018604651162790697,
+     "profit_factor": 0.6010913652369807,
+     "usd_per_session": -0.8273040288932609,
+     "stopped_share": 0.9813953488372092,
+     "stopped_same_day": 0.9767441860465116
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.07073266181686622,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 7.901559213691422,
+     "usd_per_session": 13.997141425603312,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.03281601741011664,
+     "trades": 164,
+     "win_rate": 0.018292682926829267,
+     "profit_factor": 0.8653223791661415,
+     "usd_per_session": -0.33235434203165254,
+     "stopped_share": 0.9817073170731707,
+     "stopped_same_day": 0.975609756097561
+    },
+    "older": {
+     "return": -0.13550697627544028,
+     "trades": 215,
+     "win_rate": 0.027906976744186046,
+     "profit_factor": 0.4420329032051263,
+     "usd_per_session": -1.5921848949635764,
+     "stopped_share": 0.9720930232558139,
+     "stopped_same_day": 0.9627906976744186
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.06521266147040672,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 5.158766170232473,
+     "usd_per_session": 12.981281629006826,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.09595519056901303,
+     "trades": 164,
+     "win_rate": 0.036585365853658534,
+     "profit_factor": 0.6836523248944891,
+     "usd_per_session": -1.2669556979327636,
+     "stopped_share": 0.9634146341463414,
+     "stopped_same_day": 0.9573170731707317
+    },
+    "older": {
+     "return": -0.07972958240417294,
+     "trades": 215,
+     "win_rate": 0.08372093023255814,
+     "profit_factor": 0.7869907453135154,
+     "usd_per_session": -0.859478506872635,
+     "stopped_share": 0.9162790697674419,
+     "stopped_same_day": 0.9023255813953488
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.05152145892736826,
+     "trades": 9,
+     "win_rate": 0.1111111111111111,
+     "profit_factor": 2.7692756820812208,
+     "usd_per_session": 10.44163213751651,
+     "stopped_share": 0.8888888888888888,
+     "stopped_same_day": 0.8888888888888888
+    },
+    "train": {
+     "return": -0.08018177552086214,
+     "trades": 164,
+     "win_rate": 0.10975609756097561,
+     "profit_factor": 0.8462891686529994,
+     "usd_per_session": -0.9412068398708067,
+     "stopped_share": 0.8902439024390244,
+     "stopped_same_day": 0.8719512195121951
+    },
+    "older": {
+     "return": -0.06491823490658111,
+     "trades": 212,
+     "win_rate": 0.17452830188679244,
+     "profit_factor": 0.9012084122431996,
+     "usd_per_session": -0.6220798078336877,
+     "stopped_share": 0.8254716981132075,
+     "stopped_same_day": 0.7830188679245284
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.04591540632423197,
+     "trades": 9,
+     "win_rate": 0.2222222222222222,
+     "profit_factor": 1.942873665085312,
+     "usd_per_session": 9.42706059590598,
+     "stopped_share": 0.7777777777777778,
+     "stopped_same_day": 0.7777777777777778
+    },
+    "train": {
+     "return": -0.021076065525740262,
+     "trades": 162,
+     "win_rate": 0.2037037037037037,
+     "profit_factor": 0.98119709177329,
+     "usd_per_session": 0.04836659271947651,
+     "stopped_share": 0.7901234567901234,
+     "stopped_same_day": 0.7530864197530864
+    },
+    "older": {
+     "return": 0.14879143319882537,
+     "trades": 211,
+     "win_rate": 0.2938388625592417,
+     "profit_factor": 1.1581122415732494,
+     "usd_per_session": 1.8063427163282242,
+     "stopped_share": 0.6872037914691943,
+     "stopped_same_day": 0.6350710900473934
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.06776353528950074,
+     "trades": 8,
+     "win_rate": 0.375,
+     "profit_factor": 2.2877572795387238,
+     "usd_per_session": 13.657180011819177,
+     "stopped_share": 0.625,
+     "stopped_same_day": 0.5
+    },
+    "train": {
+     "return": 0.24778796294005123,
+     "trades": 162,
+     "win_rate": 0.2777777777777778,
+     "profit_factor": 1.2103469428875573,
+     "usd_per_session": 3.608527307448695,
+     "stopped_share": 0.6728395061728395,
+     "stopped_same_day": 0.6358024691358025
+    },
+    "older": {
+     "return": 0.17273333625530962,
+     "trades": 210,
+     "win_rate": 0.37142857142857144,
+     "profit_factor": 1.152591919407952,
+     "usd_per_session": 2.1199239686925546,
+     "stopped_share": 0.5761904761904761,
+     "stopped_same_day": 0.5
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.05104122219783047,
+     "trades": 7,
+     "win_rate": 0.42857142857142855,
+     "profit_factor": 1.7486872284953863,
+     "usd_per_session": 10.517167785391662,
+     "stopped_share": 0.5714285714285714,
+     "stopped_same_day": 0.14285714285714285
+    },
+    "train": {
+     "return": 0.2673822830555388,
+     "trades": 160,
+     "win_rate": 0.38125,
+     "profit_factor": 1.1873321767666134,
+     "usd_per_session": 4.059132947101918,
+     "stopped_share": 0.55,
+     "stopped_same_day": 0.5
+    },
+    "older": {
+     "return": -0.11300749746681948,
+     "trades": 204,
+     "win_rate": 0.4411764705882353,
+     "profit_factor": 0.9284009148309523,
+     "usd_per_session": -0.8753509757852164,
+     "stopped_share": 0.46568627450980393,
+     "stopped_same_day": 0.3627450980392157
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.23801724405078994,
+     "trades": 7,
+     "win_rate": 0.7142857142857143,
+     "profit_factor": 4.904992901147261,
+     "usd_per_session": 43.65571945303664,
+     "stopped_share": 0.2857142857142857,
+     "stopped_same_day": 0.14285714285714285
+    },
+    "train": {
+     "return": 0.2879799438250681,
+     "trades": 156,
+     "win_rate": 0.46794871794871795,
+     "profit_factor": 1.1704948005967601,
+     "usd_per_session": 4.59452406619688,
+     "stopped_share": 0.41025641025641024,
+     "stopped_same_day": 0.3141025641025641
+    },
+    "older": {
+     "return": 0.15801457726940948,
+     "trades": 197,
+     "win_rate": 0.5228426395939086,
+     "profit_factor": 1.0886652081624928,
+     "usd_per_session": 2.3704663836041417,
+     "stopped_share": 0.3248730964467005,
+     "stopped_same_day": 0.19289340101522842
+    }
+   }
+  }
+ },
+ {
+  "name": "Deep Pullback Book",
+  "rank": 19,
+  "own_stop_pct": 0.032,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.15444493712018392,
+     "trades": 13,
+     "win_rate": 0.46153846153846156,
+     "profit_factor": 2.134452036278126,
+     "usd_per_session": 31.25409230685919,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 13.729932528576239,
+     "trades": 200,
+     "win_rate": 0.58,
+     "profit_factor": 2.835839366775826,
+     "usd_per_session": 47.61509026589863,
+     "stopped_share": 0.03,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 0.4737298569206194,
+     "trades": 206,
+     "win_rate": 0.5388349514563107,
+     "profit_factor": 1.1255264196958163,
+     "usd_per_session": 6.950352327613287,
+     "stopped_share": 0.05825242718446602,
+     "stopped_same_day": 0.0
+    }
+   },
+   "own stop, resting": {
+    "held_out": {
+     "return": 0.13939726285349985,
+     "trades": 13,
+     "win_rate": 0.46153846153846156,
+     "profit_factor": 1.9415298716946927,
+     "usd_per_session": 28.72083820473929,
+     "stopped_share": 0.07692307692307693,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 8.838587435913427,
+     "trades": 202,
+     "win_rate": 0.5643564356435643,
+     "profit_factor": 2.1160097713229207,
+     "usd_per_session": 41.08160459678357,
+     "stopped_share": 0.0891089108910891,
+     "stopped_same_day": 0.04455445544554455
+    },
+    "older": {
+     "return": 0.6038846767061672,
+     "trades": 208,
+     "win_rate": 0.5384615384615384,
+     "profit_factor": 1.1459127116438255,
+     "usd_per_session": 7.868216064640517,
+     "stopped_share": 0.10576923076923077,
+     "stopped_same_day": 0.028846153846153848
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.11112759370686165,
+     "trades": 17,
+     "win_rate": 0.058823529411764705,
+     "profit_factor": 9.310884045412559,
+     "usd_per_session": 21.401882117791633,
+     "stopped_share": 0.9411764705882353,
+     "stopped_same_day": 0.9411764705882353
+    },
+    "train": {
+     "return": 0.14533046892216106,
+     "trades": 248,
+     "win_rate": 0.028225806451612902,
+     "profit_factor": 1.7436681480728875,
+     "usd_per_session": 2.352445394259195,
+     "stopped_share": 0.9717741935483871,
+     "stopped_same_day": 0.9637096774193549
+    },
+    "older": {
+     "return": -0.10181421295002979,
+     "trades": 265,
+     "win_rate": 0.022641509433962263,
+     "profit_factor": 0.5375845918121865,
+     "usd_per_session": -1.293670689823986,
+     "stopped_share": 0.9773584905660377,
+     "stopped_same_day": 0.9660377358490566
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.10426078034847563,
+     "trades": 17,
+     "win_rate": 0.058823529411764705,
+     "profit_factor": 6.316060674844963,
+     "usd_per_session": 20.182850361876103,
+     "stopped_share": 0.9411764705882353,
+     "stopped_same_day": 0.9411764705882353
+    },
+    "train": {
+     "return": 0.16537300852441073,
+     "trades": 247,
+     "win_rate": 0.03643724696356275,
+     "profit_factor": 1.5756341257507196,
+     "usd_per_session": 2.8348595226868367,
+     "stopped_share": 0.9635627530364372,
+     "stopped_same_day": 0.9433198380566802
+    },
+    "older": {
+     "return": -0.12901232858680856,
+     "trades": 265,
+     "win_rate": 0.03018867924528302,
+     "profit_factor": 0.5957332892105555,
+     "usd_per_session": -1.6392211081610921,
+     "stopped_share": 0.969811320754717,
+     "stopped_same_day": 0.9509433962264151
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.09290442998889348,
+     "trades": 17,
+     "win_rate": 0.058823529411764705,
+     "profit_factor": 4.105350101891959,
+     "usd_per_session": 18.151130768683153,
+     "stopped_share": 0.9411764705882353,
+     "stopped_same_day": 0.9411764705882353
+    },
+    "train": {
+     "return": 0.15960615011960466,
+     "trades": 246,
+     "win_rate": 0.04878048780487805,
+     "profit_factor": 1.376766532673812,
+     "usd_per_session": 2.826179509845079,
+     "stopped_share": 0.9512195121951219,
+     "stopped_same_day": 0.926829268292683
+    },
+    "older": {
+     "return": -0.13749747358323217,
+     "trades": 264,
+     "win_rate": 0.045454545454545456,
+     "profit_factor": 0.7148150542429034,
+     "usd_per_session": -1.6995556465191723,
+     "stopped_share": 0.9545454545454546,
+     "stopped_same_day": 0.9242424242424242
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.10513377601426677,
+     "trades": 17,
+     "win_rate": 0.11764705882352941,
+     "profit_factor": 3.020935046602572,
+     "usd_per_session": 20.920240750664302,
+     "stopped_share": 0.8823529411764706,
+     "stopped_same_day": 0.7647058823529411
+    },
+    "train": {
+     "return": 0.14536822651389114,
+     "trades": 246,
+     "win_rate": 0.08130081300813008,
+     "profit_factor": 1.1856556064992048,
+     "usd_per_session": 2.7756079278428873,
+     "stopped_share": 0.9146341463414634,
+     "stopped_same_day": 0.8902439024390244
+    },
+    "older": {
+     "return": 0.046155747966956984,
+     "trades": 260,
+     "win_rate": 0.09615384615384616,
+     "profit_factor": 1.0746683524041614,
+     "usd_per_session": 0.8406319051782026,
+     "stopped_share": 0.9038461538461539,
+     "stopped_same_day": 0.8384615384615385
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": -0.05388102566457875,
+     "trades": 15,
+     "win_rate": 0.06666666666666667,
+     "profit_factor": 0.373929081123189,
+     "usd_per_session": -9.531896720729474,
+     "stopped_share": 0.8666666666666667,
+     "stopped_same_day": 0.6
+    },
+    "train": {
+     "return": 0.25285741237539483,
+     "trades": 240,
+     "win_rate": 0.1375,
+     "profit_factor": 1.189977133991179,
+     "usd_per_session": 4.631479382561195,
+     "stopped_share": 0.8583333333333333,
+     "stopped_same_day": 0.7958333333333333
+    },
+    "older": {
+     "return": 0.3124346764892616,
+     "trades": 250,
+     "win_rate": 0.18,
+     "profit_factor": 1.2225199615346367,
+     "usd_per_session": 3.955460259934161,
+     "stopped_share": 0.804,
+     "stopped_same_day": 0.684
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": -0.037714725098916935,
+     "trades": 15,
+     "win_rate": 0.13333333333333333,
+     "profit_factor": 0.6914927497752059,
+     "usd_per_session": -5.982238167726313,
+     "stopped_share": 0.8,
+     "stopped_same_day": 0.5333333333333333
+    },
+    "train": {
+     "return": 1.1322199067706826,
+     "trades": 238,
+     "win_rate": 0.226890756302521,
+     "profit_factor": 1.4707406802681369,
+     "usd_per_session": 13.732490470092957,
+     "stopped_share": 0.7647058823529411,
+     "stopped_same_day": 0.6932773109243697
+    },
+    "older": {
+     "return": 1.0130683965546412,
+     "trades": 244,
+     "win_rate": 0.28688524590163933,
+     "profit_factor": 1.4358607171752917,
+     "usd_per_session": 9.509619691811736,
+     "stopped_share": 0.6844262295081968,
+     "stopped_same_day": 0.5327868852459017
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.15021683547163578,
+     "trades": 15,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 1.9138786579587257,
+     "usd_per_session": 30.389988509842727,
+     "stopped_share": 0.6,
+     "stopped_same_day": 0.26666666666666666
+    },
+    "train": {
+     "return": 1.1630506691791962,
+     "trades": 229,
+     "win_rate": 0.314410480349345,
+     "profit_factor": 1.3392030719463708,
+     "usd_per_session": 14.623442253455698,
+     "stopped_share": 0.6593886462882096,
+     "stopped_same_day": 0.5240174672489083
+    },
+    "older": {
+     "return": 0.6556259974489191,
+     "trades": 233,
+     "win_rate": 0.3776824034334764,
+     "profit_factor": 1.2600795071964634,
+     "usd_per_session": 7.306557395677732,
+     "stopped_share": 0.5536480686695279,
+     "stopped_same_day": 0.38197424892703863
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.08934452067960441,
+     "trades": 15,
+     "win_rate": 0.3333333333333333,
+     "profit_factor": 1.4122240798128258,
+     "usd_per_session": 20.029203149088687,
+     "stopped_share": 0.4666666666666667,
+     "stopped_same_day": 0.26666666666666666
+    },
+    "train": {
+     "return": 1.0754200303622072,
+     "trades": 221,
+     "win_rate": 0.39819004524886875,
+     "profit_factor": 1.25336251136932,
+     "usd_per_session": 14.698721472378502,
+     "stopped_share": 0.5294117647058824,
+     "stopped_same_day": 0.35294117647058826
+    },
+    "older": {
+     "return": 1.8991675440497038,
+     "trades": 227,
+     "win_rate": 0.4933920704845815,
+     "profit_factor": 1.4029351895583704,
+     "usd_per_session": 14.713789270100355,
+     "stopped_share": 0.3700440528634361,
+     "stopped_same_day": 0.2290748898678414
+    }
+   }
+  }
+ },
+ {
+  "name": "Pullback Book, Clean",
+  "rank": 20,
+  "own_stop_pct": 0.0,
+  "variants": {
+   "own stop, on the close": {
+    "held_out": {
+     "return": 0.11519489963515195,
+     "trades": 12,
+     "win_rate": 0.4166666666666667,
+     "profit_factor": 1.8423763888020523,
+     "usd_per_session": 24.220669973904194,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "train": {
+     "return": 9.111278678573083,
+     "trades": 198,
+     "win_rate": 0.5909090909090909,
+     "profit_factor": 2.748521032833727,
+     "usd_per_session": 41.035565707021476,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    },
+    "older": {
+     "return": 1.0977881617663825,
+     "trades": 194,
+     "win_rate": 0.5463917525773195,
+     "profit_factor": 1.2655334747828249,
+     "usd_per_session": 11.13606057037853,
+     "stopped_share": 0.0,
+     "stopped_same_day": 0.0
+    }
+   },
+   "9 pts, resting": {
+    "held_out": {
+     "return": 0.08653405157129512,
+     "trades": 15,
+     "win_rate": 0.06666666666666667,
+     "profit_factor": 8.469350247503543,
+     "usd_per_session": 16.901787696543888,
+     "stopped_share": 0.9333333333333333,
+     "stopped_same_day": 0.9333333333333333
+    },
+    "train": {
+     "return": 0.126872904907664,
+     "trades": 232,
+     "win_rate": 0.02586206896551724,
+     "profit_factor": 1.7094729344844493,
+     "usd_per_session": 2.0678567526362963,
+     "stopped_share": 0.9741379310344828,
+     "stopped_same_day": 0.9655172413793104
+    },
+    "older": {
+     "return": -0.0582274303865552,
+     "trades": 246,
+     "win_rate": 0.024390243902439025,
+     "profit_factor": 0.7407087070480646,
+     "usd_per_session": -0.7060734903633554,
+     "stopped_share": 0.975609756097561,
+     "stopped_same_day": 0.9634146341463414
+    }
+   },
+   "15 pts, resting": {
+    "held_out": {
+     "return": 0.08065630563769743,
+     "trades": 15,
+     "win_rate": 0.06666666666666667,
+     "profit_factor": 5.745062875651953,
+     "usd_per_session": 15.835134910117702,
+     "stopped_share": 0.9333333333333333,
+     "stopped_same_day": 0.9333333333333333
+    },
+    "train": {
+     "return": 0.15568203963529226,
+     "trades": 232,
+     "win_rate": 0.03879310344827586,
+     "profit_factor": 1.5838834653489542,
+     "usd_per_session": 2.5780102554025945,
+     "stopped_share": 0.9612068965517241,
+     "stopped_same_day": 0.9439655172413793
+    },
+    "older": {
+     "return": -0.07999761151145646,
+     "trades": 246,
+     "win_rate": 0.032520325203252036,
+     "profit_factor": 0.7480132902426772,
+     "usd_per_session": -0.9605212195583157,
+     "stopped_share": 0.967479674796748,
+     "stopped_same_day": 0.9471544715447154
+    }
+   },
+   "25 pts, resting": {
+    "held_out": {
+     "return": 0.07092563174876476,
+     "trades": 15,
+     "win_rate": 0.06666666666666667,
+     "profit_factor": 3.7340628876209,
+     "usd_per_session": 14.057380266073874,
+     "stopped_share": 0.9333333333333333,
+     "stopped_same_day": 0.9333333333333333
+    },
+    "train": {
+     "return": 0.16336379244721178,
+     "trades": 230,
+     "win_rate": 0.05217391304347826,
+     "profit_factor": 1.413761945708972,
+     "usd_per_session": 2.7534111789490625,
+     "stopped_share": 0.9478260869565217,
+     "stopped_same_day": 0.9260869565217391
+    },
+    "older": {
+     "return": -0.03792478379341979,
+     "trades": 245,
+     "win_rate": 0.053061224489795916,
+     "profit_factor": 0.9344805058863908,
+     "usd_per_session": -0.3435318195055248,
+     "stopped_share": 0.9469387755102041,
+     "stopped_same_day": 0.9183673469387755
+    }
+   },
+   "50 pts, resting": {
+    "held_out": {
+     "return": 0.0864169286900176,
+     "trades": 15,
+     "win_rate": 0.13333333333333333,
+     "profit_factor": 2.932558305001262,
+     "usd_per_session": 17.463444111559642,
+     "stopped_share": 0.8666666666666667,
+     "stopped_same_day": 0.6666666666666666
+    },
+    "train": {
+     "return": 0.18334546511536054,
+     "trades": 229,
+     "win_rate": 0.08733624454148471,
+     "profit_factor": 1.2470106597251804,
+     "usd_per_session": 3.1693677034559204,
+     "stopped_share": 0.9082969432314411,
+     "stopped_same_day": 0.8820960698689956
+    },
+    "older": {
+     "return": -0.09042225257091108,
+     "trades": 240,
+     "win_rate": 0.08333333333333333,
+     "profit_factor": 0.8790536892911215,
+     "usd_per_session": -0.9320410868612042,
+     "stopped_share": 0.9166666666666666,
+     "stopped_same_day": 0.8458333333333333
+    }
+   },
+   "100 pts, resting": {
+    "held_out": {
+     "return": 0.08725449355201453,
+     "trades": 14,
+     "win_rate": 0.21428571428571427,
+     "profit_factor": 2.2863030861114972,
+     "usd_per_session": 18.28472502630207,
+     "stopped_share": 0.7142857142857143,
+     "stopped_same_day": 0.5
+    },
+    "train": {
+     "return": 0.44437039056277183,
+     "trades": 224,
+     "win_rate": 0.15178571428571427,
+     "profit_factor": 1.3464668565250069,
+     "usd_per_session": 6.762590169102596,
+     "stopped_share": 0.84375,
+     "stopped_same_day": 0.7767857142857143
+    },
+    "older": {
+     "return": 0.23023016846757027,
+     "trades": 232,
+     "win_rate": 0.17672413793103448,
+     "profit_factor": 1.1790635931180187,
+     "usd_per_session": 3.10952810124009,
+     "stopped_share": 0.8060344827586207,
+     "stopped_same_day": 0.6810344827586207
+    }
+   },
+   "150 pts, resting": {
+    "held_out": {
+     "return": 0.11667532663601476,
+     "trades": 14,
+     "win_rate": 0.2857142857142857,
+     "profit_factor": 2.237657108019365,
+     "usd_per_session": 23.721969229454082,
+     "stopped_share": 0.6428571428571429,
+     "stopped_same_day": 0.42857142857142855
+    },
+    "train": {
+     "return": 1.6595637406940251,
+     "trades": 221,
+     "win_rate": 0.2398190045248869,
+     "profit_factor": 1.6417971275051608,
+     "usd_per_session": 17.005337774371128,
+     "stopped_share": 0.751131221719457,
+     "stopped_same_day": 0.6606334841628959
+    },
+    "older": {
+     "return": 0.7362300577482166,
+     "trades": 227,
+     "win_rate": 0.2775330396475771,
+     "profit_factor": 1.3601398539742935,
+     "usd_per_session": 7.606486503530796,
+     "stopped_share": 0.6916299559471366,
+     "stopped_same_day": 0.5330396475770925
+    }
+   },
+   "250 pts, resting": {
+    "held_out": {
+     "return": 0.25257887384772815,
+     "trades": 14,
+     "win_rate": 0.42857142857142855,
+     "profit_factor": 2.962536681427115,
+     "usd_per_session": 47.17120803317591,
+     "stopped_share": 0.5,
+     "stopped_same_day": 0.21428571428571427
+    },
+    "train": {
+     "return": 1.9650158784348735,
+     "trades": 216,
+     "win_rate": 0.35648148148148145,
+     "profit_factor": 1.5297469654013387,
+     "usd_per_session": 19.19702392325727,
+     "stopped_share": 0.6157407407407407,
+     "stopped_same_day": 0.49074074074074076
+    },
+    "older": {
+     "return": 0.42213115819179503,
+     "trades": 216,
+     "win_rate": 0.37037037037037035,
+     "profit_factor": 1.193866858816571,
+     "usd_per_session": 5.327309819986701,
+     "stopped_share": 0.5555555555555556,
+     "stopped_same_day": 0.38425925925925924
+    }
+   },
+   "400 pts, resting": {
+    "held_out": {
+     "return": 0.1854120140887019,
+     "trades": 14,
+     "win_rate": 0.42857142857142855,
+     "profit_factor": 2.017718978402606,
+     "usd_per_session": 36.662784701434575,
+     "stopped_share": 0.42857142857142855,
+     "stopped_same_day": 0.21428571428571427
+    },
+    "train": {
+     "return": 2.054099764596158,
+     "trades": 212,
+     "win_rate": 0.4528301886792453,
+     "profit_factor": 1.3945469061747127,
+     "usd_per_session": 20.183830475097523,
+     "stopped_share": 0.4811320754716981,
+     "stopped_same_day": 0.3490566037735849
+    },
+    "older": {
+     "return": 1.0543624043386361,
+     "trades": 210,
+     "win_rate": 0.49047619047619045,
+     "profit_factor": 1.3054715068007452,
+     "usd_per_session": 10.277920542181894,
+     "stopped_share": 0.3619047619047619,
+     "stopped_same_day": 0.20952380952380953
+    }
+   }
+  }
+ }
+]
