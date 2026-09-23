@@ -28,6 +28,9 @@ sys.path.insert(0, str(ROOT))
 from evotrader.data import Bars, Universe                                  # noqa: E402
 
 ARCHIVE = ROOT / "data" / "intraday"
+#: the opening dip scalper's names (strategies/scalp): liquid, fast, a cent at most ~4 bp
+SCALP_NAMES = ("SOXL", "SOXS", "MUU", "NVDL", "SMCI", "MSTR", "COIN", "MRVL", "MU", "ARM", "PLTR", "AMD",
+               "META", "TSLA", "AVGO", "NVDA", "TQQQ")
 NY = ZoneInfo("America/New_York")
 Row = Tuple[float, float, float, float, float]
 
@@ -134,4 +137,4 @@ def sessions(symbols: Sequence[str] = ("SOXL", "SOXS")) -> List[str]:
 
 
 if __name__ == "__main__":
-    print(update())
+    print(update(SCALP_NAMES))

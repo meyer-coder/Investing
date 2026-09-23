@@ -81,3 +81,12 @@ def test_a_retired_bot_leaves_the_roster_with_its_record_and_reason():
     assert [a["id"] for a in ledger["accounts"]] == ["u"]
     gone = ledger["retired"][0]
     assert gone["id"] == "t" and gone["retired"] == "2026-01-20" and gone["why_retired"]
+
+
+def test_each_symbol_pays_its_own_slippage():
+    from evotrader.broker import PaperBroker
+    b = PaperBroker(10_000.0, commission_bps=0.0, slippage_bps=2.0, slippage_by_symbol={"CHEAP": 30.0})
+    assert b.buy("CHEAP", 1_000.0, 10.0, "d", 0, "t")
+    assert b.buy("DEAR", 1_000.0, 10.0, "d", 0, "t")
+    assert abs(b.positions["CHEAP"].entry_price - 10.0 * 1.003) < 1e-9
+    assert abs(b.positions["DEAR"].entry_price - 10.0 * 1.0002) < 1e-9

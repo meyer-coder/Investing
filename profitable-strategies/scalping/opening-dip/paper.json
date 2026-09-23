@@ -1,0 +1,47 @@
+{
+ "bot": {
+  "id": "d5da0d5a8473",
+  "name": "Opening Dip 0.75atr/15m/none/hold 4m/2 slots",
+  "thesis": "sharp one-minute drops in the opening minutes snap back",
+  "entry_rules": [
+   {
+    "when": "ret1 < -0.75 * atr_pct and minutes_since_open >= 5 and minutes_since_open <= 15",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "minute_of_day >= 955",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 0.5,
+   "max_positions": 2,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.0,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 3,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790202921.8470526
+ },
+ "go_live": "2026-09-24",
+ "account": 25000.0,
+ "leverage": 1.25,
+ "sessions": {},
+ "summary": {
+  "sessions": 0,
+  "total": 0,
+  "per_day": 0.0,
+  "days_up": 0.0,
+  "worst_day": 0.0
+ }
+}

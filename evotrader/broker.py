@@ -48,7 +48,7 @@ class PaperBroker:
     def __init__(self, starting_cash: float = 100_000.0, *,
                  commission_bps: float = 1.0, slippage_bps: float = 5.0,
                  min_trade_value: float = 100.0, journal: Optional[Journal] = None,
-                 leverage: float = 1.0):
+                 leverage: float = 1.0, slippage_by_symbol: Optional[Mapping[str, float]] = None):
         self.starting_cash = float(starting_cash)
         self.cash = float(starting_cash)
         # Notional allowed per unit of equity.  Above 1 the cash balance goes
@@ -58,6 +58,9 @@ class PaperBroker:
         self._last_equity = float(starting_cash)
         self.commission_bps = float(commission_bps)
         self.slippage_bps = float(slippage_bps)
+        # a symbol's own cost where it differs, as a cent is 0.1 bp of a $1,000
+        # stock and 3 bp of a $33 fund
+        self.slippage_by_symbol = {k: float(v) for k, v in (slippage_by_symbol or {}).items()}
         self.min_trade_value = float(min_trade_value)
         self.positions: Dict[str, Position] = {}
         self.journal = journal if journal is not None else Journal()
@@ -94,18 +97,21 @@ class PaperBroker:
         return min(self.equity(prices) / self.peak_equity - 1.0, 0.0)
 
     # ----------------------------------------------------------------- orders
-    def _buy_price(self, px: float) -> float:
-        return px * (1.0 + self.slippage_bps / 10_000.0)
+    def _slip(self, symbol: str) -> float:
+        return self.slippage_by_symbol.get(symbol, self.slippage_bps) / 10_000.0
 
-    def _sell_price(self, px: float) -> float:
-        return px * (1.0 - self.slippage_bps / 10_000.0)
+    def _buy_price(self, px: float, symbol: str = "") -> float:
+        return px * (1.0 + self._slip(symbol))
+
+    def _sell_price(self, px: float, symbol: str = "") -> float:
+        return px * (1.0 - self._slip(symbol))
 
     def buy(self, symbol: str, notional: float, price: float, date: str, bar: int,
             reason: str, context: Optional[Dict[str, float]] = None) -> bool:
         """Open a long position worth roughly ``notional``.  Returns True on fill."""
         if symbol in self.positions or price <= 0 or notional <= 0:
             return False
-        fill = self._buy_price(price)
+        fill = self._buy_price(price, symbol)
         comm_rate = self.commission_bps / 10_000.0
         # Clip the requested notional to what the buying power can actually
         # cover once commission is added, rather than rejecting the order.
@@ -132,7 +138,7 @@ class PaperBroker:
         pos = self.positions.pop(symbol, None)
         if pos is None or price <= 0:
             return None
-        fill = self._sell_price(price)
+        fill = self._sell_price(price, symbol)
         proceeds = pos.shares * fill
         commission = proceeds * self.commission_bps / 10_000.0
         self.cash += proceeds - commission

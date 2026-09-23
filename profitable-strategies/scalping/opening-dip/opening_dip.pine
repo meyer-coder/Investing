@@ -1,0 +1,43 @@
+//@version=6
+// Opening Dip Scalper, evotrader (strategies/scalp).
+//
+// Buys a sharp one-minute drop in the first minutes of the session and sells
+// four minutes later, betting on the snap back. Use a 1-minute chart of any of
+// the 17 names it was tested on: SOXL, SOXS, MUU, NVDL, SMCI, MSTR, COIN, MRVL,
+// MU, ARM, PLTR, AMD, META, TSLA, AVGO, NVDA, TQQQ. The bot runs all 17 at
+// once and holds at most two positions, each 62.5% of a $25,000 account
+// (1.25x buying power): with several charts, take the first two signals and
+// skip the rest while two are open.
+//
+// Rules, as the engine runs them: from the 09:35 bar to the 09:45 bar New York,
+// when a bar's return is below -0.75 x the 14-bar ATR as a share of price, buy
+// at the next bar's open; sell at the open four minutes after the entry. Never
+// held past 15:55; in practice everything is out by 09:50.
+//
+// Alerts: add an alert on this script with the condition "alert() function
+// calls only" to be told at each signal's close what to do at the next open.
+strategy("Opening Dip Scalper [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=62.5,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+drop      = input.float(0.75, "Drop, in 14-bar average ranges")
+lastSig   = input.int(15, "Last signal, minutes after 09:30")
+holdMin   = input.int(4, "Hold, minutes")
+
+sinceOpen = hour(time, "America/New_York") * 60 + minute(time, "America/New_York") - 570
+atrPct    = ta.atr(14) / close
+ret1      = close / close[1] - 1
+signal    = timeframe.period == "1" and sinceOpen >= 5 and sinceOpen <= lastSig and ret1 < -drop * atrPct
+
+if strategy.position_size == 0 and signal
+    strategy.entry("L", strategy.long, comment="dip", alert_message="Opening Dip: buy " + syminfo.ticker + " at the next open")
+    alert("Opening Dip: buy " + syminfo.ticker + " at the next open, sell four minutes later", alert.freq_once_per_bar_close)
+if strategy.position_size > 0
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    if held >= holdMin - 1 or sinceOpen >= 385
+        strategy.close("L", comment="out", alert_message="Opening Dip: sell " + syminfo.ticker + " at the next open")
+        alert("Opening Dip: sell " + syminfo.ticker + " at the next open", alert.freq_once_per_bar_close)
+
+plotshape(signal and strategy.position_size == 0, title="Dip buy", style=shape.triangleup,
+     location=location.belowbar, color=color.new(color.teal, 0), size=size.small)

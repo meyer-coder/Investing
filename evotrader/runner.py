@@ -263,7 +263,8 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
                  start_bar: Optional[int] = None, leverage: float = 1.0,
                  intrabar_stops: bool = False, day_trade: bool = False,
                  carry: bool = False, day_stop: float = 0.0, day_stop_exit: bool = True,
-                 exec_bars: Optional[Dict[str, Bars]] = None) -> BacktestResult:
+                 exec_bars: Optional[Dict[str, Bars]] = None,
+                 slippage_by_symbol: Optional[Dict[str, float]] = None) -> BacktestResult:
     """Simulate one genome and return its journal plus summary statistics.
 
     ``leverage`` is the account's, not the genome's: a rule's weight is a share
@@ -296,6 +297,9 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
     ``exec_bars`` fills, stops and marks on other prices than the ones the
     features were built from, date for date: a futures strategy that reads the
     full Globex bar but trades only the stock market's session.
+
+    ``slippage_by_symbol`` charges a symbol its own slippage instead of
+    ``slippage_bps``: a scalper across many names pays each one's spread.
     """
     genome = compiled.genome
     risk = compiled.risk
@@ -305,7 +309,8 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
     journal = Journal()
     leverage = max(1.0, float(leverage))
     broker = PaperBroker(starting_cash, commission_bps=commission_bps,
-                         slippage_bps=slippage_bps, journal=journal, leverage=leverage)
+                         slippage_bps=slippage_bps, journal=journal, leverage=leverage,
+                         slippage_by_symbol=slippage_by_symbol)
     # A genome trades from the bar its own features are defined, not from the
     # slowest feature in the vocabulary — see FeatureSet.warmup_for.
     first = (features.warmup_for(compiled.feature_names()) if start_bar is None
