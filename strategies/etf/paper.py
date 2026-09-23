@@ -21,7 +21,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import date as Date
+from datetime import date as Date, datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -56,6 +56,31 @@ def open_account(bot: dict, item: dict) -> dict:
             "size": bot["size"], "genome": item["genome"], "start": GO_LIVE, "start_cash": START_CASH,
             "cash": START_CASH, "position": None, "fills": [], "closed": [], "marks": [],
             "orders": {}, "levels": {}, "last_date": None}
+
+
+def retire(ledger: dict, ids: List[str], why: str, day: str) -> None:
+    """Take bots off the roster; the ledger keeps what they did and why they left."""
+    keep = []
+    for a in ledger["accounts"]:
+        if a["id"] not in ids:
+            keep.append(a)
+            continue
+        ledger.setdefault("retired", []).append({**a, "retired": day, "why_retired": why})
+    ledger["accounts"] = keep
+
+
+def add_split(ledger: dict, start: str) -> None:
+    """The three-bot split account (split_bot.py): each bot a third of $25,000."""
+    doc = json.loads((PUBLISHED / "split-bot" / "split_bot.json").read_text())
+    n = len(doc["members"])
+    for i, m in enumerate(doc["members"], 1):
+        if any(a["id"] == f"split{i}" for a in ledger["accounts"]):
+            continue
+        acct = open_account({"id": f"split{i}", "label": f"Split bot {i}/{n}", "size": 1.0},
+                            {"rank": None, "name": m["name"], "symbols": m["symbols"], "genome": m["genome"]})
+        acct.update({"group": "Three-bot split account", "start": start,
+                     "start_cash": round(START_CASH / n, 2), "cash": round(START_CASH / n, 2)})
+        ledger["accounts"].append(acct)
 
 
 def load_ledger() -> dict:
@@ -161,6 +186,8 @@ def advance(acct: dict, u: Universe, with_levels: bool = True) -> List[dict]:
                               f"({t.entry_reason})"}]
     if p is not None and not o_sells:
         o_buys = []
+    if nxt < acct["start"]:
+        o_sells, o_buys = [], []          # not trading yet
     acct["orders"] = {"after_close": last, "for_open": nxt, "sells": o_sells, "buys": o_buys}
     if with_levels:
         acct["levels"] = {"after_close": last, "funds": levels(acct, u)}
@@ -192,13 +219,14 @@ def day_name(d: str) -> str:
 def bot_title(a: dict) -> str:
     name = a["name"]
     if ": " in name:            # a grid strategy's settings: keep the shape, the rank says the rest
-        name = f"{name.split(': ')[0]} (#{a['rank']})"
+        name = name.split(": ")[0] + (f" (#{a['rank']})" if a.get("rank") else "")
     return f"{a['label']} {name}" if a["label"].startswith("#") else f"{a['label']}: {name}"
 
 
 def accounts_md(ledger: dict) -> str:
-    rows = ["| Bot | Size | Equity | Since Sep 23 | Last session | Position |",
+    rows = ["| Bot | Size | Equity | Since its start | Last session | Position |",
             "| --- | --- | --- | --- | --- | --- |"]
+    groups: Dict[str, List[float]] = {}
     for a in ledger["accounts"]:
         m = a["marks"][-1] if a["marks"] else None
         eq = m["equity"] if m else a["start_cash"]
@@ -209,9 +237,18 @@ def accounts_md(ledger: dict) -> str:
                    f"{(px / p['entry_price'] - 1) * 100:+.1f}%")
         else:
             pos = "cash"
-        rows.append(f"| {bot_title(a)} | {a['size']:.0%} | {money(eq)} | {money(eq - a['start_cash'], True)} "
-                    f"({(eq / a['start_cash'] - 1) * 100:+.1f}%) | "
-                    f"{money(m['day_pnl'], True) if m else 'not started'} | {pos} |")
+        size = f"{a['size']:.0%}" if not a.get("group") else f"a third ({money(a['start_cash'])})"
+        started = money(m["day_pnl"], True) if m else f"starts {day_name(a['start'])}"
+        rows.append(f"| {bot_title(a)} | {size} | {money(eq)} | {money(eq - a['start_cash'], True)} "
+                    f"({(eq / a['start_cash'] - 1) * 100:+.1f}%) | {started} | {pos} |")
+        if a.get("group"):
+            g = groups.setdefault(a["group"], [0.0, 0.0, 0.0])
+            g[0] += eq
+            g[1] += a["start_cash"]
+            g[2] += m["day_pnl"] if m else 0.0
+    for name, (eq, start, day) in groups.items():
+        rows.append(f"| **{name}, total** | $25,000 | **{money(eq)}** | **{money(eq - start, True)}** "
+                    f"({(eq / start - 1) * 100:+.1f}%) | {money(day, True)} | |")
     return "\n".join(rows)
 
 
@@ -229,6 +266,10 @@ def orders_md(ledger: dict) -> str:
         p = a["position"]
         now = ("; ".join(acts) if acts else
                (f"hold {p['fund']}" if p else "nothing, stays in cash"))
+        if o["for_open"] < a["start"]:
+            lines.append(f"- **{bot_title(a)}.** Starts at the {day_name(a['start'])} open; its first orders "
+                         f"are set after the {day_name(o['for_open'])} close.")
+            continue
         lines.append(f"- **{bot_title(a)}.** At the {day_name(o['for_open'])} open: {now}.")
         for fund, ranges in lv.items():
             if len(ranges) < 2:
@@ -281,8 +322,17 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--print", dest="show", choices=["accounts", "orders", "trades"])
     ap.add_argument("--no-levels", action="store_true")
+    ap.add_argument("--retire", default="", help="bot ids to take off the roster, comma separated")
+    ap.add_argument("--why", default="")
+    ap.add_argument("--add-split", action="store_true", help="open the three-bot split account")
+    ap.add_argument("--start", default="", help="first session for bots added now")
     args = ap.parse_args(argv)
     ledger = load_ledger()
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if args.retire:
+        retire(ledger, args.retire.split(","), args.why, today)
+    if args.add_split:
+        add_split(ledger, args.start or today)
     if args.show:
         print({"accounts": accounts_md, "orders": orders_md, "trades": trades_md}[args.show](ledger))
         return 0

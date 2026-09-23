@@ -2,6 +2,310 @@
  "go_live": "2026-09-23",
  "accounts": [
   {
+   "id": "top2",
+   "label": "#2",
+   "rank": 2,
+   "name": "MUU Trend Breakout (bred D609)",
+   "symbols": [
+    "MU.2X"
+   ],
+   "funds": [
+    "MUU"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "138ace4efe6c",
+    "name": "MUU Trend Breakout (bred D609)",
+    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
+    "entry_rules": [
+     {
+      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held > 10",
+      "note": "archetype"
+     },
+     {
+      "when": "zscore20 <= -1.05",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 7,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.086,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.142,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 3
+    },
+    "generation": 25,
+    "parents": [
+     "ed0e4f5b34b8"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790150341.4596326
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": [
+     {
+      "fund": "MUU",
+      "synced": true,
+      "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)"
+     }
+    ]
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": -0.14203125000000003,
+       "price_from": 29.19,
+       "price_to": 33.39
+      },
+      {
+       "action": "hold MUU",
+       "from": -0.141953125,
+       "to": 0.25,
+       "price_from": 33.4,
+       "price_to": 48.65
+      }
+     ]
+    }
+   },
+   "last_date": null
+  },
+  {
+   "id": "split1",
+   "label": "Split bot 1/3",
+   "rank": null,
+   "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+   "symbols": [
+    "MU.2X"
+   ],
+   "funds": [
+    "MUU"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "bce763b94030",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "thesis": "Quick Dip 0.02/0.02/0.1/200/4",
+    "entry_rules": [
+     {
+      "when": "ret1 < -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 4",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.02,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790145370.0400827
+   },
+   "start": "2026-09-24",
+   "start_cash": 8333.33,
+   "cash": 8333.33,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {},
+   "last_date": null,
+   "group": "Three-bot split account"
+  },
+  {
+   "id": "split2",
+   "label": "Split bot 2/3",
+   "rank": null,
+   "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day, 20% trailing stop",
+   "symbols": [
+    "NVDA.2X",
+    "AMD.2X"
+   ],
+   "funds": [
+    "NVDL",
+    "AMDL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "c4449406e592",
+    "name": "Short-Trend Rider 10/0.2",
+    "thesis": "Short-Trend Rider 10/0.2",
+    "entry_rules": [
+     {
+      "when": "close > sma10 and sma20_slope > 0 and ret5 > 0",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "close < sma10",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.2,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790139429.1748483
+   },
+   "start": "2026-09-24",
+   "start_cash": 8333.33,
+   "cash": 8333.33,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {},
+   "last_date": null,
+   "group": "Three-bot split account"
+  },
+  {
+   "id": "split3",
+   "label": "Split bot 3/3",
+   "rank": null,
+   "name": "NVDL / AMDL Pullback in Uptrend: 12% five-day pullback above the 200-day",
+   "symbols": [
+    "NVDA.2X",
+    "AMD.2X"
+   ],
+   "funds": [
+    "NVDL",
+    "AMDL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "39cfb317b7f1",
+    "name": "Pullback in Uptrend 0.12/200",
+    "thesis": "Pullback in Uptrend 0.12/200",
+    "entry_rules": [
+     {
+      "when": "ret5 < -0.12 and close > sma200",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "ret1 > 0.04",
+      "note": ""
+     },
+     {
+      "when": "bars_held >= 4",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.15,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790139483.7378557
+   },
+   "start": "2026-09-24",
+   "start_cash": 8333.33,
+   "cash": 8333.33,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {},
+   "last_date": null,
+   "group": "Three-bot split account"
+  }
+ ],
+ "updated_after_close": "2026-09-22",
+ "retired": [
+  {
    "id": "top1",
    "label": "#1",
    "rank": 1,
@@ -135,111 +439,9 @@
      ]
     }
    },
-   "last_date": null
-  },
-  {
-   "id": "top2",
-   "label": "#2",
-   "rank": 2,
-   "name": "MUU Trend Breakout (bred D609)",
-   "symbols": [
-    "MU.2X"
-   ],
-   "funds": [
-    "MUU"
-   ],
-   "size": 1.0,
-   "genome": {
-    "id": "138ace4efe6c",
-    "name": "MUU Trend Breakout (bred D609)",
-    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
-    "entry_rules": [
-     {
-      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
-      "weight": 1.0,
-      "note": "archetype"
-     },
-     {
-      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
-      "weight": 1.0,
-      "note": "archetype"
-     },
-     {
-      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
-      "weight": 1.0,
-      "note": "mutation: new entry"
-     }
-    ],
-    "exit_rules": [
-     {
-      "when": "bars_held > 10",
-      "note": "archetype"
-     },
-     {
-      "when": "zscore20 <= -1.05",
-      "note": "mutation: new exit"
-     }
-    ],
-    "risk": {
-     "max_position_pct": 1.0,
-     "max_positions": 7,
-     "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.086,
-     "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0.142,
-     "max_hold_bars": 0,
-     "min_hold_bars": 0,
-     "cooldown_bars": 3
-    },
-    "generation": 25,
-    "parents": [
-     "ed0e4f5b34b8"
-    ],
-    "origin": "mutation",
-    "rationale": "random mutation",
-    "created_at": 1790150341.4596326
-   },
-   "start": "2026-09-23",
-   "start_cash": 25000.0,
-   "cash": 25000.0,
-   "position": null,
-   "fills": [],
-   "closed": [],
-   "marks": [],
-   "orders": {
-    "after_close": "2026-09-22",
-    "for_open": "2026-09-23",
-    "sells": [],
-    "buys": [
-     {
-      "fund": "MUU",
-      "synced": true,
-      "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)"
-     }
-    ]
-   },
-   "levels": {
-    "after_close": "2026-09-22",
-    "funds": {
-     "MUU": [
-      {
-       "action": "sell MUU",
-       "from": -0.25,
-       "to": -0.14203125000000003,
-       "price_from": 29.19,
-       "price_to": 33.39
-      },
-      {
-       "action": "hold MUU",
-       "from": -0.141953125,
-       "to": 0.25,
-       "price_from": 33.4,
-       "price_to": 48.65
-      }
-     ]
-    }
-   },
-   "last_date": null
+   "last_date": null,
+   "retired": "2026-09-23",
+   "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
   },
   {
    "id": "top3",
@@ -361,7 +563,9 @@
      ]
     }
    },
-   "last_date": null
+   "last_date": null,
+   "retired": "2026-09-23",
+   "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
   },
   {
    "id": "pick150",
@@ -487,7 +691,9 @@
      ]
     }
    },
-   "last_date": null
+   "last_date": null,
+   "retired": "2026-09-23",
+   "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
   },
   {
    "id": "lowrisk100",
@@ -594,8 +800,9 @@
      ]
     }
    },
-   "last_date": null
+   "last_date": null,
+   "retired": "2026-09-23",
+   "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
   }
- ],
- "updated_after_close": "2026-09-22"
+ ]
 }

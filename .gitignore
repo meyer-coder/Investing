@@ -35,3 +35,5 @@ data/cache/tv/
 strategies/etf/store.lock
 strategies/etf/store.*.tmp
 strategies/etf/store.json
+strategies/etf/recent.json
+strategies/etf/combos.json

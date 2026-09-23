@@ -1,0 +1,6190 @@
+[
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "77dd9d789ef26722",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 202.7,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 33.2,
+    "worst_month": -189.1,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.619,
+    "worst_month_stretch": -239.3,
+    "max_drawdown": -0.3027,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 45.9,
+    "worst_month": -204.2,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.614,
+    "worst_month_stretch": -243.9,
+    "max_drawdown": -0.3423,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 324.4,
+    "worst_month": 215.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -49.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 262.5,
+     "2026-05": 667.7,
+     "2026-06": 336.3,
+     "2026-07": 243.8,
+     "2026-08": 215.6,
+     "2026-09": 229.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "1c2ec5357a4283f7",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.1,
+    "real_held_out_usd": 210.59
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 29.2,
+    "worst_month": -423.1,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.608,
+    "worst_month_stretch": -504.9,
+    "max_drawdown": -0.4036,
+    "worst_day": -3565.0
+   },
+   "train": {
+    "usd_per_session": 46.2,
+    "worst_month": -195.4,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.616,
+    "worst_month_stretch": -334.6,
+    "max_drawdown": -0.3606,
+    "worst_day": -3070.0
+   },
+   "held_out": {
+    "usd_per_session": 308.1,
+    "worst_month": 221.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -20.8,
+    "max_drawdown": -0.1535,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 228.9,
+     "2026-05": 590.6,
+     "2026-06": 262.1,
+     "2026-07": 279.7,
+     "2026-08": 277.9,
+     "2026-09": 221.7
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "1c2ec5357a4283f7",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.1,
+    "real_held_out_usd": 210.59
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 30.3,
+    "worst_month": -423.1,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.612,
+    "worst_month_stretch": -504.9,
+    "max_drawdown": -0.4036,
+    "worst_day": -3565.0
+   },
+   "train": {
+    "usd_per_session": 46.5,
+    "worst_month": -195.4,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.616,
+    "worst_month_stretch": -334.6,
+    "max_drawdown": -0.3606,
+    "worst_day": -3070.0
+   },
+   "held_out": {
+    "usd_per_session": 325.9,
+    "worst_month": 221.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -20.8,
+    "max_drawdown": -0.1535,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 316.1,
+     "2026-05": 580.6,
+     "2026-06": 262.1,
+     "2026-07": 279.7,
+     "2026-08": 277.9,
+     "2026-09": 221.7
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "a83c6e335947ffca",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.3,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 32.3,
+    "worst_month": -205.4,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.591,
+    "worst_month_stretch": -239.7,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 43.8,
+    "worst_month": -165.9,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.599,
+    "worst_month_stretch": -306.5,
+    "max_drawdown": -0.3116,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 325.9,
+    "worst_month": 215.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 293.5,
+     "2026-05": 639.6,
+     "2026-06": 315.0,
+     "2026-07": 262.5,
+     "2026-08": 215.6,
+     "2026-09": 224.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "42819bfafa7dfe2b",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 196.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 32.6,
+    "worst_month": -199.8,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.597,
+    "worst_month_stretch": -234.4,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 42.9,
+    "worst_month": -194.8,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.598,
+    "worst_month_stretch": -255.9,
+    "max_drawdown": -0.3116,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 322.3,
+    "worst_month": 215.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 293.5,
+     "2026-05": 639.6,
+     "2026-06": 306.6,
+     "2026-07": 249.8,
+     "2026-08": 215.6,
+     "2026-09": 224.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "42819bfafa7dfe2b",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 196.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 31.5,
+    "worst_month": -199.8,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.593,
+    "worst_month_stretch": -234.4,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 42.7,
+    "worst_month": -194.8,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.598,
+    "worst_month_stretch": -255.9,
+    "max_drawdown": -0.3116,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 304.5,
+    "worst_month": 206.3,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 206.3,
+     "2026-05": 649.7,
+     "2026-06": 306.6,
+     "2026-07": 249.8,
+     "2026-08": 215.6,
+     "2026-09": 224.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "a83c6e335947ffca",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.3,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 31.1,
+    "worst_month": -205.4,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.587,
+    "worst_month_stretch": -239.7,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 43.6,
+    "worst_month": -165.9,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.598,
+    "worst_month_stretch": -306.5,
+    "max_drawdown": -0.3116,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 308.2,
+    "worst_month": 206.3,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 206.3,
+     "2026-05": 649.7,
+     "2026-06": 315.0,
+     "2026-07": 262.5,
+     "2026-08": 215.6,
+     "2026-09": 224.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "d889ff89abceb131",
+    "name": "Tighter Faster-Tighter-Pullback",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-041931-0132 gen 26",
+    "held_out_usd": 294.1,
+    "real_held_out_usd": 266.21
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 41.8,
+    "worst_month": -186.9,
+    "months_up": 0.595,
+    "months": 84,
+    "month_stretches_up": 0.573,
+    "worst_month_stretch": -269.3,
+    "max_drawdown": -0.4032,
+    "worst_day": -3703.0
+   },
+   "train": {
+    "usd_per_session": 73.5,
+    "worst_month": -238.1,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.659,
+    "worst_month_stretch": -421.2,
+    "max_drawdown": -0.4119,
+    "worst_day": -3903.0
+   },
+   "held_out": {
+    "usd_per_session": 360.5,
+    "worst_month": 202.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -44.2,
+    "max_drawdown": -0.2739,
+    "worst_day": -5561.0,
+    "by_month": {
+     "2026-04": 202.5,
+     "2026-05": 1006.2,
+     "2026-06": 333.4,
+     "2026-07": 243.8,
+     "2026-08": 208.8,
+     "2026-09": 205.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "638276bc75741e42",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 294.2,
+    "real_held_out_usd": 334.76
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 55.7,
+    "worst_month": -186.6,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.655,
+    "worst_month_stretch": -280.4,
+    "max_drawdown": -0.3356,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 62.3,
+    "worst_month": -172.4,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.638,
+    "worst_month_stretch": -520.8,
+    "max_drawdown": -0.5027,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 360.5,
+    "worst_month": 208.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -105.3,
+    "max_drawdown": -0.2816,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 213.8,
+     "2026-08": 208.8,
+     "2026-09": 240.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 57.3,
+    "worst_month": -146.5,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.664,
+    "worst_month_stretch": -344.7,
+    "max_drawdown": -0.3928,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 63.0,
+    "worst_month": -211.7,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.634,
+    "worst_month_stretch": -551.5,
+    "max_drawdown": -0.4788,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 390.7,
+    "worst_month": 206.2,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -50.9,
+    "max_drawdown": -0.2546,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 351.6,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 206.2,
+     "2026-08": 297.0,
+     "2026-09": 309.1
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "638276bc75741e42",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 294.2,
+    "real_held_out_usd": 334.76
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.0,
+    "worst_month": -186.6,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.656,
+    "worst_month_stretch": -359.0,
+    "max_drawdown": -0.3697,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 64.6,
+    "worst_month": -172.4,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.64,
+    "worst_month_stretch": -499.7,
+    "max_drawdown": -0.4884,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 384.7,
+    "worst_month": 218.3,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -90.3,
+    "max_drawdown": -0.2819,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 351.6,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 228.1,
+     "2026-08": 298.8,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "e6bcf76720bca2b3",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 24",
+    "held_out_usd": 310.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 52.5,
+    "worst_month": -211.6,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.623,
+    "worst_month_stretch": -324.9,
+    "max_drawdown": -0.3771,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 64.5,
+    "worst_month": -169.2,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.642,
+    "worst_month_stretch": -499.7,
+    "max_drawdown": -0.47,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 390.1,
+    "worst_month": 207.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -49.2,
+    "max_drawdown": -0.2546,
+    "worst_day": -5865.0,
+    "by_month": {
+     "2026-04": 351.6,
+     "2026-05": 969.6,
+     "2026-06": 286.2,
+     "2026-07": 207.8,
+     "2026-08": 298.8,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "b6833d6b2123f843",
+    "name": "Stubborn Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 279.1,
+    "real_held_out_usd": 320.96
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 60.4,
+    "worst_month": -146.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.673,
+    "worst_month_stretch": -344.7,
+    "max_drawdown": -0.3297,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 65.4,
+    "worst_month": -206.4,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.639,
+    "worst_month_stretch": -482.6,
+    "max_drawdown": -0.511,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 379.7,
+    "worst_month": 207.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -49.2,
+    "max_drawdown": -0.2546,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 345.1,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 207.8,
+     "2026-08": 298.8,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "5b7401a7b97ca819",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 305.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.2,
+    "worst_month": -186.6,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.663,
+    "worst_month_stretch": -344.7,
+    "max_drawdown": -0.3416,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 65.5,
+    "worst_month": -172.4,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.644,
+    "worst_month_stretch": -499.7,
+    "max_drawdown": -0.4637,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 388.4,
+    "worst_month": 207.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -49.2,
+    "max_drawdown": -0.2546,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 351.6,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 207.8,
+     "2026-08": 342.2,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "74ed0398071100bf",
+    "name": "Five-Day Pullback, Reward 0.1/0.05/10",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 187.8,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 40.3,
+    "worst_month": -207.7,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.688,
+    "worst_month_stretch": -346.6,
+    "max_drawdown": -0.3146,
+    "worst_day": -3563.0
+   },
+   "train": {
+    "usd_per_session": 55.9,
+    "worst_month": -302.9,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.685,
+    "worst_month_stretch": -525.6,
+    "max_drawdown": -0.4057,
+    "worst_day": -3946.0
+   },
+   "held_out": {
+    "usd_per_session": 284.6,
+    "worst_month": 200.1,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -26.9,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 297.4,
+     "2026-05": 561.8,
+     "2026-06": 207.6,
+     "2026-07": 214.4,
+     "2026-08": 200.1,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "852d44e2149efebb",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 341.0,
+    "real_held_out_usd": 381.37
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 57.5,
+    "worst_month": -166.5,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.633,
+    "worst_month_stretch": -344.7,
+    "max_drawdown": -0.3818,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 64.0,
+    "worst_month": -172.4,
+    "months_up": 0.632,
+    "months": 87,
+    "month_stretches_up": 0.628,
+    "worst_month_stretch": -499.7,
+    "max_drawdown": -0.5092,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 400.3,
+    "worst_month": 207.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -49.2,
+    "max_drawdown": -0.2546,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 437.8,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 207.8,
+     "2026-08": 298.8,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "74ed0398071100bf",
+    "name": "Five-Day Pullback, Reward 0.1/0.05/10",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 187.8,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 45.1,
+    "worst_month": -220.4,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.694,
+    "worst_month_stretch": -360.5,
+    "max_drawdown": -0.3234,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 57.0,
+    "worst_month": -358.7,
+    "months_up": 0.621,
+    "months": 87,
+    "month_stretches_up": 0.682,
+    "worst_month_stretch": -525.6,
+    "max_drawdown": -0.4057,
+    "worst_day": -3946.0
+   },
+   "held_out": {
+    "usd_per_session": 316.0,
+    "worst_month": 200.1,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -12.7,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 314.4,
+     "2026-05": 705.8,
+     "2026-06": 236.3,
+     "2026-07": 214.4,
+     "2026-08": 200.1,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 52.7,
+    "worst_month": -220.3,
+    "months_up": 0.548,
+    "months": 84,
+    "month_stretches_up": 0.583,
+    "worst_month_stretch": -311.2,
+    "max_drawdown": -0.4095,
+    "worst_day": -4362.0
+   },
+   "train": {
+    "usd_per_session": 66.5,
+    "worst_month": -313.2,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.597,
+    "worst_month_stretch": -527.2,
+    "max_drawdown": -0.4984,
+    "worst_day": -5841.0
+   },
+   "held_out": {
+    "usd_per_session": 393.7,
+    "worst_month": 202.9,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -66.3,
+    "max_drawdown": -0.3624,
+    "worst_day": -6078.0,
+    "by_month": {
+     "2026-04": 264.9,
+     "2026-05": 1007.0,
+     "2026-06": 344.1,
+     "2026-07": 202.9,
+     "2026-08": 313.2,
+     "2026-09": 269.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 60.8,
+    "worst_month": -146.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.685,
+    "worst_month_stretch": -344.7,
+    "max_drawdown": -0.3426,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 55.5,
+    "worst_month": -211.7,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.608,
+    "worst_month_stretch": -587.2,
+    "max_drawdown": -0.46,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 382.1,
+    "worst_month": 206.2,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -50.9,
+    "max_drawdown": -0.2546,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 351.6,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 206.2,
+     "2026-08": 280.2,
+     "2026-09": 257.4
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 56.1,
+    "worst_month": -204.4,
+    "months_up": 0.56,
+    "months": 84,
+    "month_stretches_up": 0.586,
+    "worst_month_stretch": -440.0,
+    "max_drawdown": -0.4595,
+    "worst_day": -4362.0
+   },
+   "train": {
+    "usd_per_session": 69.9,
+    "worst_month": -260.0,
+    "months_up": 0.563,
+    "months": 87,
+    "month_stretches_up": 0.602,
+    "worst_month_stretch": -596.3,
+    "max_drawdown": -0.4767,
+    "worst_day": -5841.0
+   },
+   "held_out": {
+    "usd_per_session": 430.0,
+    "worst_month": 224.4,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -43.8,
+    "max_drawdown": -0.3633,
+    "worst_day": -6078.0,
+    "by_month": {
+     "2026-04": 327.0,
+     "2026-05": 1007.0,
+     "2026-06": 344.1,
+     "2026-07": 224.4,
+     "2026-08": 448.2,
+     "2026-09": 236.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5b7401a7b97ca819",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 305.2,
+    "real_held_out_usd": 324.31
+   },
+   {
+    "key": "260b4f312ee1012d",
+    "name": "Volume Momentum in a Bull Regime 0.0/1.2/0.02",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 292.1,
+    "real_held_out_usd": 222.6
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 49.6,
+    "worst_month": -222.2,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.635,
+    "worst_month_stretch": -217.5,
+    "max_drawdown": -0.2886,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 48.4,
+    "worst_month": -237.1,
+    "months_up": 0.552,
+    "months": 87,
+    "month_stretches_up": 0.55,
+    "worst_month_stretch": -424.8,
+    "max_drawdown": -0.4312,
+    "worst_day": -4100.0
+   },
+   "held_out": {
+    "usd_per_session": 358.6,
+    "worst_month": 200.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -55.7,
+    "max_drawdown": -0.2274,
+    "worst_day": -4491.0,
+    "by_month": {
+     "2026-04": 299.8,
+     "2026-05": 984.9,
+     "2026-06": 206.2,
+     "2026-07": 245.9,
+     "2026-08": 200.0,
+     "2026-09": 225.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "260b4f312ee1012d",
+    "name": "Volume Momentum in a Bull Regime 0.0/1.2/0.02",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 292.1,
+    "real_held_out_usd": 222.6
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 43.2,
+    "worst_month": -326.3,
+    "months_up": 0.524,
+    "months": 84,
+    "month_stretches_up": 0.551,
+    "worst_month_stretch": -309.7,
+    "max_drawdown": -0.3409,
+    "worst_day": -4085.0
+   },
+   "train": {
+    "usd_per_session": 44.2,
+    "worst_month": -312.1,
+    "months_up": 0.483,
+    "months": 87,
+    "month_stretches_up": 0.475,
+    "worst_month_stretch": -356.6,
+    "max_drawdown": -0.4487,
+    "worst_day": -6150.0
+   },
+   "held_out": {
+    "usd_per_session": 385.3,
+    "worst_month": 234.9,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -83.6,
+    "max_drawdown": -0.2279,
+    "worst_day": -4983.0,
+    "by_month": {
+     "2026-04": 249.2,
+     "2026-05": 1030.1,
+     "2026-06": 304.4,
+     "2026-07": 281.5,
+     "2026-08": 234.9,
+     "2026-09": 246.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "4e281a44b6b5ad67",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "SOXS"
+    ],
+    "source": "handbred",
+    "held_out_usd": 217.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 30.1,
+    "worst_month": -263.8,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.595,
+    "worst_month_stretch": -250.6,
+    "max_drawdown": -0.3027,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 43.6,
+    "worst_month": -189.7,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.63,
+    "worst_month_stretch": -357.9,
+    "max_drawdown": -0.4097,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 329.3,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 262.5,
+     "2026-05": 639.6,
+     "2026-06": 319.3,
+     "2026-07": 287.0,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 35.2,
+    "worst_month": -189.1,
+    "months_up": 0.667,
+    "months": 84,
+    "month_stretches_up": 0.634,
+    "worst_month_stretch": -239.3,
+    "max_drawdown": -0.3032,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 43.4,
+    "worst_month": -204.2,
+    "months_up": 0.621,
+    "months": 87,
+    "month_stretches_up": 0.603,
+    "worst_month_stretch": -265.1,
+    "max_drawdown": -0.3423,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 327.7,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 262.5,
+     "2026-05": 639.6,
+     "2026-06": 336.3,
+     "2026-07": 261.2,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   },
+   {
+    "key": "dc852d312c8f7aa4",
+    "name": "Sharper Leaner-Wider-Adaptive-Greedier-Contraction-Greedier-Contraction",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044213-fb84 gen 27",
+    "held_out_usd": 141.6,
+    "real_held_out_usd": 135.71
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 44.6,
+    "worst_month": -177.5,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.617,
+    "worst_month_stretch": -223.5,
+    "max_drawdown": -0.383,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 55.8,
+    "worst_month": -161.0,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.569,
+    "worst_month_stretch": -518.0,
+    "max_drawdown": -0.3961,
+    "worst_day": -3807.0
+   },
+   "held_out": {
+    "usd_per_session": 310.7,
+    "worst_month": 193.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 57.4,
+    "max_drawdown": -0.1456,
+    "worst_day": -2679.0,
+    "by_month": {
+     "2026-04": 272.8,
+     "2026-05": 675.5,
+     "2026-06": 250.7,
+     "2026-07": 244.3,
+     "2026-08": 193.8,
+     "2026-09": 235.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   },
+   {
+    "key": "20175aeab15a9038",
+    "name": "Sharper Leaner-Wider-Adaptive-Greedier-Contraction-Greedier-Contraction",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044213-fb84 gen 26",
+    "held_out_usd": 194.2,
+    "real_held_out_usd": 192.42
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 41.2,
+    "worst_month": -177.5,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.628,
+    "worst_month_stretch": -223.5,
+    "max_drawdown": -0.3547,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 54.1,
+    "worst_month": -161.0,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.566,
+    "worst_month_stretch": -554.3,
+    "max_drawdown": -0.4121,
+    "worst_day": -3782.0
+   },
+   "held_out": {
+    "usd_per_session": 328.3,
+    "worst_month": 193.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 57.4,
+    "max_drawdown": -0.1456,
+    "worst_day": -2679.0,
+    "by_month": {
+     "2026-04": 351.7,
+     "2026-05": 675.5,
+     "2026-06": 250.7,
+     "2026-07": 244.3,
+     "2026-08": 193.8,
+     "2026-09": 235.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "e231590dba98aa65",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 141.9,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 31.2,
+    "worst_month": -206.5,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.595,
+    "worst_month_stretch": -232.7,
+    "max_drawdown": -0.2378,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 41.4,
+    "worst_month": -156.6,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.601,
+    "worst_month_stretch": -336.3,
+    "max_drawdown": -0.3234,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 304.1,
+    "worst_month": 189.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -20.5,
+    "max_drawdown": -0.1535,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 316.1,
+     "2026-05": 583.2,
+     "2026-06": 226.0,
+     "2026-07": 189.6,
+     "2026-08": 270.1,
+     "2026-09": 229.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "e231590dba98aa65",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 141.9,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 30.1,
+    "worst_month": -206.5,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.59,
+    "worst_month_stretch": -232.7,
+    "max_drawdown": -0.2378,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 41.2,
+    "worst_month": -156.6,
+    "months_up": 0.609,
+    "months": 87,
+    "month_stretches_up": 0.601,
+    "worst_month_stretch": -336.3,
+    "max_drawdown": -0.3373,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 286.4,
+    "worst_month": 189.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -20.5,
+    "max_drawdown": -0.1535,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 228.9,
+     "2026-05": 593.3,
+     "2026-06": 226.0,
+     "2026-07": 189.6,
+     "2026-08": 270.1,
+     "2026-09": 229.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 32.4,
+    "worst_month": -199.8,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.608,
+    "worst_month_stretch": -234.4,
+    "max_drawdown": -0.2192,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 40.3,
+    "worst_month": -194.8,
+    "months_up": 0.586,
+    "months": 87,
+    "month_stretches_up": 0.592,
+    "worst_month_stretch": -303.8,
+    "max_drawdown": -0.3854,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 312.9,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 206.3,
+     "2026-05": 649.7,
+     "2026-06": 306.6,
+     "2026-07": 267.2,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 33.5,
+    "worst_month": -199.8,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.612,
+    "worst_month_stretch": -234.4,
+    "max_drawdown": -0.2192,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 40.6,
+    "worst_month": -194.8,
+    "months_up": 0.586,
+    "months": 87,
+    "month_stretches_up": 0.593,
+    "worst_month_stretch": -303.8,
+    "max_drawdown": -0.3854,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 330.7,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 293.5,
+     "2026-05": 639.6,
+     "2026-06": 306.6,
+     "2026-07": 267.2,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "9b2cbd8ed611b694",
+    "name": "One-Day Bounce 0.09",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 183.1,
+    "real_held_out_usd": 181.37
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 32.5,
+    "worst_month": -267.4,
+    "months_up": 0.571,
+    "months": 84,
+    "month_stretches_up": 0.57,
+    "worst_month_stretch": -304.7,
+    "max_drawdown": -0.2652,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 36.9,
+    "worst_month": -196.3,
+    "months_up": 0.586,
+    "months": 87,
+    "month_stretches_up": 0.571,
+    "worst_month_stretch": -241.1,
+    "max_drawdown": -0.4028,
+    "worst_day": -3174.0
+   },
+   "held_out": {
+    "usd_per_session": 317.8,
+    "worst_month": 188.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -30.7,
+    "max_drawdown": -0.1701,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 316.1,
+     "2026-05": 706.6,
+     "2026-06": 297.2,
+     "2026-07": 188.7,
+     "2026-08": 191.3,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "9b2cbd8ed611b694",
+    "name": "One-Day Bounce 0.09",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 183.1,
+    "real_held_out_usd": 181.37
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 31.4,
+    "worst_month": -267.4,
+    "months_up": 0.571,
+    "months": 84,
+    "month_stretches_up": 0.57,
+    "worst_month_stretch": -304.7,
+    "max_drawdown": -0.2652,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 36.6,
+    "worst_month": -196.3,
+    "months_up": 0.586,
+    "months": 87,
+    "month_stretches_up": 0.572,
+    "worst_month_stretch": -241.1,
+    "max_drawdown": -0.4028,
+    "worst_day": -3174.0
+   },
+   "held_out": {
+    "usd_per_session": 300.1,
+    "worst_month": 188.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -30.7,
+    "max_drawdown": -0.1701,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 228.9,
+     "2026-05": 716.6,
+     "2026-06": 297.2,
+     "2026-07": 188.7,
+     "2026-08": 191.3,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "5633e393ab2abfd6",
+    "name": "Short-Trend Rider 10/0.12",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 238.5,
+    "real_held_out_usd": 247.07
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 30.8,
+    "worst_month": -205.4,
+    "months_up": 0.595,
+    "months": 84,
+    "month_stretches_up": 0.586,
+    "worst_month_stretch": -239.7,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 41.0,
+    "worst_month": -153.5,
+    "months_up": 0.575,
+    "months": 87,
+    "month_stretches_up": 0.593,
+    "worst_month_stretch": -370.9,
+    "max_drawdown": -0.3792,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 315.7,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 206.3,
+     "2026-05": 649.7,
+     "2026-06": 319.3,
+     "2026-07": 271.4,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "a1f9abefa6be4f8b",
+    "name": "Short-Trend Rider 10/0.2",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 291.9,
+    "real_held_out_usd": 300.48
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 31.9,
+    "worst_month": -205.4,
+    "months_up": 0.595,
+    "months": 84,
+    "month_stretches_up": 0.59,
+    "worst_month_stretch": -239.7,
+    "max_drawdown": -0.2191,
+    "worst_day": -2723.0
+   },
+   "train": {
+    "usd_per_session": 41.2,
+    "worst_month": -153.5,
+    "months_up": 0.575,
+    "months": 87,
+    "month_stretches_up": 0.593,
+    "worst_month_stretch": -370.9,
+    "max_drawdown": -0.3792,
+    "worst_day": -2831.0
+   },
+   "held_out": {
+    "usd_per_session": 333.5,
+    "worst_month": 189.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -47.5,
+    "max_drawdown": -0.1663,
+    "worst_day": -3322.0,
+    "by_month": {
+     "2026-04": 293.5,
+     "2026-05": 639.6,
+     "2026-06": 319.3,
+     "2026-07": 271.4,
+     "2026-08": 270.4,
+     "2026-09": 189.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "dfed96eb119f5c86",
+    "name": "Quick Dip 0.02/0.04/0.04/200/4",
+    "symbols": [
+     "AMD.2X",
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 297.4,
+    "real_held_out_usd": 290.99
+   },
+   {
+    "key": "2761cbd3165a976d",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 28",
+    "held_out_usd": 235.8,
+    "real_held_out_usd": 266.05
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 54.8,
+    "worst_month": -231.4,
+    "months_up": 0.595,
+    "months": 84,
+    "month_stretches_up": 0.648,
+    "worst_month_stretch": -324.0,
+    "max_drawdown": -0.3765,
+    "worst_day": -4367.0
+   },
+   "train": {
+    "usd_per_session": 63.6,
+    "worst_month": -263.4,
+    "months_up": 0.701,
+    "months": 87,
+    "month_stretches_up": 0.657,
+    "worst_month_stretch": -461.0,
+    "max_drawdown": -0.4423,
+    "worst_day": -3938.0
+   },
+   "held_out": {
+    "usd_per_session": 304.8,
+    "worst_month": 187.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -147.7,
+    "max_drawdown": -0.3027,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 197.9,
+     "2026-05": 806.0,
+     "2026-06": 205.9,
+     "2026-07": 187.0,
+     "2026-08": 199.4,
+     "2026-09": 294.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "2845a2b8971f0f0f",
+    "name": "Quick Dip 0.02/0.02/0.06/200/4",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 414.8,
+    "real_held_out_usd": 396.76
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "42819bfafa7dfe2b",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 196.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 39.1,
+    "worst_month": -156.8,
+    "months_up": 0.524,
+    "months": 84,
+    "month_stretches_up": 0.604,
+    "worst_month_stretch": -316.8,
+    "max_drawdown": -0.3158,
+    "worst_day": -3462.0
+   },
+   "train": {
+    "usd_per_session": 60.9,
+    "worst_month": -267.7,
+    "months_up": 0.69,
+    "months": 87,
+    "month_stretches_up": 0.649,
+    "worst_month_stretch": -464.8,
+    "max_drawdown": -0.3993,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 330.9,
+    "worst_month": 192.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -160.8,
+    "max_drawdown": -0.3704,
+    "worst_day": -4210.0,
+    "by_month": {
+     "2026-04": 264.0,
+     "2026-05": 632.4,
+     "2026-06": 386.7,
+     "2026-07": 200.6,
+     "2026-08": 306.3,
+     "2026-09": 192.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "d889ff89abceb131",
+    "name": "Tighter Faster-Tighter-Pullback",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-041931-0132 gen 26",
+    "held_out_usd": 294.1,
+    "real_held_out_usd": 266.21
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 36.3,
+    "worst_month": -178.3,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.607,
+    "worst_month_stretch": -233.2,
+    "max_drawdown": -0.3616,
+    "worst_day": -3322.0
+   },
+   "train": {
+    "usd_per_session": 67.8,
+    "worst_month": -233.3,
+    "months_up": 0.69,
+    "months": 87,
+    "month_stretches_up": 0.674,
+    "worst_month_stretch": -417.2,
+    "max_drawdown": -0.3524,
+    "worst_day": -3282.0
+   },
+   "held_out": {
+    "usd_per_session": 299.0,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.934,
+    "worst_month_stretch": -54.3,
+    "max_drawdown": -0.2276,
+    "worst_day": -4397.0,
+    "by_month": {
+     "2026-04": 201.3,
+     "2026-05": 743.2,
+     "2026-06": 208.8,
+     "2026-07": 243.6,
+     "2026-08": 191.7,
+     "2026-09": 243.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "dfed96eb119f5c86",
+    "name": "Quick Dip 0.02/0.04/0.04/200/4",
+    "symbols": [
+     "AMD.2X",
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 297.4,
+    "real_held_out_usd": 290.99
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 49.8,
+    "worst_month": -231.4,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.641,
+    "worst_month_stretch": -310.2,
+    "max_drawdown": -0.3463,
+    "worst_day": -4367.0
+   },
+   "train": {
+    "usd_per_session": 63.3,
+    "worst_month": -263.4,
+    "months_up": 0.69,
+    "months": 87,
+    "month_stretches_up": 0.651,
+    "worst_month_stretch": -461.0,
+    "max_drawdown": -0.4464,
+    "worst_day": -3938.0
+   },
+   "held_out": {
+    "usd_per_session": 321.1,
+    "worst_month": 187.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -147.7,
+    "max_drawdown": -0.3027,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 197.9,
+     "2026-05": 854.4,
+     "2026-06": 257.3,
+     "2026-07": 187.0,
+     "2026-08": 199.4,
+     "2026-09": 294.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "1c2ec5357a4283f7",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.1,
+    "real_held_out_usd": 210.59
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 34.1,
+    "worst_month": -464.1,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.643,
+    "worst_month_stretch": -512.2,
+    "max_drawdown": -0.4887,
+    "worst_day": -3565.0
+   },
+   "train": {
+    "usd_per_session": 61.3,
+    "worst_month": -177.5,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.683,
+    "worst_month_stretch": -430.3,
+    "max_drawdown": -0.3528,
+    "worst_day": -3334.0
+   },
+   "held_out": {
+    "usd_per_session": 291.0,
+    "worst_month": 199.2,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 25.3,
+    "max_drawdown": -0.2132,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 240.4,
+     "2026-05": 502.7,
+     "2026-06": 216.9,
+     "2026-07": 349.1,
+     "2026-08": 199.2,
+     "2026-09": 247.1
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "2845a2b8971f0f0f",
+    "name": "Quick Dip 0.02/0.02/0.06/200/4",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 414.8,
+    "real_held_out_usd": 396.76
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "77dd9d789ef26722",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 202.7,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 39.7,
+    "worst_month": -169.5,
+    "months_up": 0.536,
+    "months": 84,
+    "month_stretches_up": 0.624,
+    "worst_month_stretch": -408.4,
+    "max_drawdown": -0.3976,
+    "worst_day": -4608.0
+   },
+   "train": {
+    "usd_per_session": 63.9,
+    "worst_month": -370.5,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.655,
+    "worst_month_stretch": -455.5,
+    "max_drawdown": -0.4231,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 333.0,
+    "worst_month": 194.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -137.4,
+    "max_drawdown": -0.3704,
+    "worst_day": -4210.0,
+    "by_month": {
+     "2026-04": 233.0,
+     "2026-05": 660.5,
+     "2026-06": 416.4,
+     "2026-07": 194.6,
+     "2026-08": 306.3,
+     "2026-09": 197.5
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "2845a2b8971f0f0f",
+    "name": "Quick Dip 0.02/0.02/0.06/200/4",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 414.8,
+    "real_held_out_usd": 396.76
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "a83c6e335947ffca",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.3,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 38.7,
+    "worst_month": -158.4,
+    "months_up": 0.524,
+    "months": 84,
+    "month_stretches_up": 0.602,
+    "worst_month_stretch": -316.8,
+    "max_drawdown": -0.3158,
+    "worst_day": -3462.0
+   },
+   "train": {
+    "usd_per_session": 61.8,
+    "worst_month": -267.7,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.651,
+    "worst_month_stretch": -515.3,
+    "max_drawdown": -0.4236,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 334.5,
+    "worst_month": 192.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -147.5,
+    "max_drawdown": -0.3704,
+    "worst_day": -4210.0,
+    "by_month": {
+     "2026-04": 264.0,
+     "2026-05": 632.4,
+     "2026-06": 395.1,
+     "2026-07": 213.3,
+     "2026-08": 306.3,
+     "2026-09": 192.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "e6bcf76720bca2b3",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 24",
+    "held_out_usd": 310.2,
+    "real_held_out_usd": 324.31
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 46.5,
+    "worst_month": -168.2,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.662,
+    "worst_month_stretch": -317.8,
+    "max_drawdown": -0.3096,
+    "worst_day": -4184.0
+   },
+   "train": {
+    "usd_per_session": 59.3,
+    "worst_month": -285.4,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.668,
+    "worst_month_stretch": -442.7,
+    "max_drawdown": -0.4075,
+    "worst_day": -2807.0
+   },
+   "held_out": {
+    "usd_per_session": 301.4,
+    "worst_month": 187.3,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.943,
+    "worst_month_stretch": -136.6,
+    "max_drawdown": -0.2276,
+    "worst_day": -4355.0,
+    "by_month": {
+     "2026-04": 278.1,
+     "2026-05": 706.5,
+     "2026-06": 191.3,
+     "2026-07": 187.3,
+     "2026-08": 191.7,
+     "2026-09": 278.2
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "dfed96eb119f5c86",
+    "name": "Quick Dip 0.02/0.04/0.04/200/4",
+    "symbols": [
+     "AMD.2X",
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 297.4,
+    "real_held_out_usd": 290.99
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 54.5,
+    "worst_month": -231.4,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.651,
+    "worst_month_stretch": -324.0,
+    "max_drawdown": -0.3488,
+    "worst_day": -4367.0
+   },
+   "train": {
+    "usd_per_session": 64.3,
+    "worst_month": -344.1,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.651,
+    "worst_month_stretch": -461.0,
+    "max_drawdown": -0.4504,
+    "worst_day": -3938.0
+   },
+   "held_out": {
+    "usd_per_session": 352.5,
+    "worst_month": 187.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -147.7,
+    "max_drawdown": -0.3027,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 214.9,
+     "2026-05": 998.4,
+     "2026-06": 285.9,
+     "2026-07": 187.0,
+     "2026-08": 199.4,
+     "2026-09": 294.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "2761cbd3165a976d",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 28",
+    "held_out_usd": 235.8,
+    "real_held_out_usd": 266.05
+   },
+   {
+    "key": "4e281a44b6b5ad67",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "SOXS"
+    ],
+    "source": "handbred",
+    "held_out_usd": 217.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 38.8,
+    "worst_month": -187.2,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.681,
+    "worst_month_stretch": -327.2,
+    "max_drawdown": -0.3553,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 58.7,
+    "worst_month": -310.9,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.693,
+    "worst_month_stretch": -429.8,
+    "max_drawdown": -0.3475,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 278.2,
+    "worst_month": 186.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 186.8,
+     "2026-05": 513.4,
+     "2026-06": 222.7,
+     "2026-07": 356.4,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "4e281a44b6b5ad67",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "SOXS"
+    ],
+    "source": "handbred",
+    "held_out_usd": 217.5,
+    "real_held_out_usd": null
+   },
+   {
+    "key": "74ed0398071100bf",
+    "name": "Five-Day Pullback, Reward 0.1/0.05/10",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 187.8,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 35.1,
+    "worst_month": -228.5,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.689,
+    "worst_month_stretch": -395.3,
+    "max_drawdown": -0.3651,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 48.4,
+    "worst_month": -430.7,
+    "months_up": 0.678,
+    "months": 87,
+    "month_stretches_up": 0.68,
+    "worst_month_stretch": -593.2,
+    "max_drawdown": -0.4327,
+    "worst_day": -3946.0
+   },
+   "held_out": {
+    "usd_per_session": 262.2,
+    "worst_month": 186.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.972,
+    "worst_month_stretch": -113.4,
+    "max_drawdown": -0.2884,
+    "worst_day": -4091.0,
+    "by_month": {
+     "2026-04": 201.5,
+     "2026-05": 492.9,
+     "2026-06": 186.5,
+     "2026-07": 205.6,
+     "2026-08": 288.6,
+     "2026-09": 217.5
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "1c2ec5357a4283f7",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.1,
+    "real_held_out_usd": 210.59
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 38.8,
+    "worst_month": -464.1,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.657,
+    "worst_month_stretch": -512.2,
+    "max_drawdown": -0.4518,
+    "worst_day": -3565.0
+   },
+   "train": {
+    "usd_per_session": 62.3,
+    "worst_month": -258.3,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.685,
+    "worst_month_stretch": -430.3,
+    "max_drawdown": -0.3528,
+    "worst_day": -3334.0
+   },
+   "held_out": {
+    "usd_per_session": 322.4,
+    "worst_month": 199.2,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 25.3,
+    "max_drawdown": -0.2132,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 257.4,
+     "2026-05": 646.7,
+     "2026-06": 245.5,
+     "2026-07": 349.1,
+     "2026-08": 199.2,
+     "2026-09": 247.1
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "b6833d6b2123f843",
+    "name": "Stubborn Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 279.1,
+    "real_held_out_usd": 320.96
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.1,
+    "worst_month": -146.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.673,
+    "worst_month_stretch": -280.4,
+    "max_drawdown": -0.3146,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 63.1,
+    "worst_month": -206.4,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.641,
+    "worst_month_stretch": -503.7,
+    "max_drawdown": -0.5246,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 355.5,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 303.7,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 208.8,
+     "2026-09": 240.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "e6bcf76720bca2b3",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 24",
+    "held_out_usd": 310.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 50.2,
+    "worst_month": -211.6,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.624,
+    "worst_month_stretch": -295.5,
+    "max_drawdown": -0.3531,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 62.2,
+    "worst_month": -168.3,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.643,
+    "worst_month_stretch": -520.8,
+    "max_drawdown": -0.4847,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 365.9,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5865.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 286.2,
+     "2026-07": 193.5,
+     "2026-08": 208.8,
+     "2026-09": 240.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "a83c6e335947ffca",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.3,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 41.9,
+    "worst_month": -132.2,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.607,
+    "worst_month_stretch": -270.2,
+    "max_drawdown": -0.2804,
+    "worst_day": -3163.0
+   },
+   "train": {
+    "usd_per_session": 56.1,
+    "worst_month": -216.8,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.647,
+    "worst_month_stretch": -391.5,
+    "max_drawdown": -0.3573,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 355.8,
+    "worst_month": 192.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 23.2,
+    "max_drawdown": -0.3108,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 195.4,
+     "2026-05": 755.9,
+     "2026-06": 360.6,
+     "2026-07": 318.0,
+     "2026-08": 332.5,
+     "2026-09": 192.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "42819bfafa7dfe2b",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 196.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 42.2,
+    "worst_month": -123.9,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.611,
+    "worst_month_stretch": -270.2,
+    "max_drawdown": -0.2747,
+    "worst_day": -3163.0
+   },
+   "train": {
+    "usd_per_session": 55.2,
+    "worst_month": -251.9,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.642,
+    "worst_month_stretch": -368.6,
+    "max_drawdown": -0.3633,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 352.2,
+    "worst_month": 192.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 9.9,
+    "max_drawdown": -0.3108,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 195.4,
+     "2026-05": 755.9,
+     "2026-06": 352.2,
+     "2026-07": 305.3,
+     "2026-08": 332.5,
+     "2026-09": 192.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 55.0,
+    "worst_month": -146.5,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.662,
+    "worst_month_stretch": -280.4,
+    "max_drawdown": -0.3617,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 60.7,
+    "worst_month": -185.7,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.634,
+    "worst_month_stretch": -572.6,
+    "max_drawdown": -0.4933,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 366.4,
+    "worst_month": 191.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -65.9,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 191.8,
+     "2026-08": 207.0,
+     "2026-09": 331.4
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "2761cbd3165a976d",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 28",
+    "held_out_usd": 235.8,
+    "real_held_out_usd": 266.05
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 40.6,
+    "worst_month": -137.6,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.661,
+    "worst_month_stretch": -208.5,
+    "max_drawdown": -0.2605,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 56.3,
+    "worst_month": -223.3,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.676,
+    "worst_month_stretch": -442.9,
+    "max_drawdown": -0.3547,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 282.4,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 217.9,
+     "2026-05": 513.4,
+     "2026-06": 222.7,
+     "2026-07": 340.9,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 35.6,
+    "worst_month": -137.6,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.643,
+    "worst_month_stretch": -219.5,
+    "max_drawdown": -0.2776,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 56.0,
+    "worst_month": -191.4,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.664,
+    "worst_month_stretch": -442.9,
+    "max_drawdown": -0.3547,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 298.6,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 217.9,
+     "2026-05": 561.8,
+     "2026-06": 274.1,
+     "2026-07": 340.9,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "d889ff89abceb131",
+    "name": "Tighter Faster-Tighter-Pullback",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-041931-0132 gen 26",
+    "held_out_usd": 294.1,
+    "real_held_out_usd": 266.21
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 34.7,
+    "worst_month": -178.3,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.6,
+    "worst_month_stretch": -233.2,
+    "max_drawdown": -0.372,
+    "worst_day": -2668.0
+   },
+   "train": {
+    "usd_per_session": 68.5,
+    "worst_month": -233.3,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.677,
+    "worst_month_stretch": -460.1,
+    "max_drawdown": -0.3602,
+    "worst_day": -3282.0
+   },
+   "held_out": {
+    "usd_per_session": 301.9,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.934,
+    "worst_month_stretch": -41.6,
+    "max_drawdown": -0.2276,
+    "worst_day": -4397.0,
+    "by_month": {
+     "2026-04": 201.3,
+     "2026-05": 743.2,
+     "2026-06": 221.5,
+     "2026-07": 247.8,
+     "2026-08": 191.7,
+     "2026-09": 243.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "2761cbd3165a976d",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 28",
+    "held_out_usd": 235.8,
+    "real_held_out_usd": 266.05
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 42.3,
+    "worst_month": -129.3,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.669,
+    "worst_month_stretch": -214.5,
+    "max_drawdown": -0.2483,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 55.7,
+    "worst_month": -223.3,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.676,
+    "worst_month_stretch": -335.1,
+    "max_drawdown": -0.3296,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 279.6,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 217.9,
+     "2026-05": 513.4,
+     "2026-06": 210.0,
+     "2026-07": 336.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 37.3,
+    "worst_month": -129.3,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.653,
+    "worst_month_stretch": -219.5,
+    "max_drawdown": -0.2621,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 55.4,
+    "worst_month": -191.6,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.666,
+    "worst_month_stretch": -335.1,
+    "max_drawdown": -0.2954,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 295.8,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 217.9,
+     "2026-05": 561.8,
+     "2026-06": 261.4,
+     "2026-07": 336.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1c2ec5357a4283f7",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "NVDA.2X",
+     "AMD.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.1,
+    "real_held_out_usd": 210.59
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 40.0,
+    "worst_month": -464.1,
+    "months_up": 0.548,
+    "months": 84,
+    "month_stretches_up": 0.62,
+    "worst_month_stretch": -512.2,
+    "max_drawdown": -0.4906,
+    "worst_day": -3565.0
+   },
+   "train": {
+    "usd_per_session": 58.8,
+    "worst_month": -237.8,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.662,
+    "worst_month_stretch": -447.1,
+    "max_drawdown": -0.4112,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 355.7,
+    "worst_month": 189.4,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 21.8,
+    "max_drawdown": -0.298,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 218.0,
+     "2026-05": 696.8,
+     "2026-06": 307.7,
+     "2026-07": 335.1,
+     "2026-08": 394.9,
+     "2026-09": 189.4
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "2761cbd3165a976d",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 28",
+    "held_out_usd": 235.8,
+    "real_held_out_usd": 266.05
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 43.9,
+    "worst_month": -166.5,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.708,
+    "worst_month_stretch": -334.0,
+    "max_drawdown": -0.316,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 58.5,
+    "worst_month": -326.2,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.687,
+    "worst_month_stretch": -398.7,
+    "max_drawdown": -0.3319,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 276.6,
+    "worst_month": 186.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 186.8,
+     "2026-05": 513.4,
+     "2026-06": 239.8,
+     "2026-07": 330.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   },
+   {
+    "key": "74ed0398071100bf",
+    "name": "Five-Day Pullback, Reward 0.1/0.05/10",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 187.8,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 36.9,
+    "worst_month": -146.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.672,
+    "worst_month_stretch": -275.9,
+    "max_drawdown": -0.2557,
+    "worst_day": -3095.0
+   },
+   "train": {
+    "usd_per_session": 46.0,
+    "worst_month": -343.1,
+    "months_up": 0.667,
+    "months": 87,
+    "month_stretches_up": 0.655,
+    "worst_month_stretch": -606.2,
+    "max_drawdown": -0.4462,
+    "worst_day": -3946.0
+   },
+   "held_out": {
+    "usd_per_session": 266.4,
+    "worst_month": 186.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -113.4,
+    "max_drawdown": -0.2884,
+    "worst_day": -4091.0,
+    "by_month": {
+     "2026-04": 232.5,
+     "2026-05": 492.9,
+     "2026-06": 186.5,
+     "2026-07": 190.0,
+     "2026-08": 288.6,
+     "2026-09": 217.5
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "47956c8de050c5d3",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 478.6,
+    "real_held_out_usd": 486.9
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "e231590dba98aa65",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 141.9,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 40.8,
+    "worst_month": -121.9,
+    "months_up": 0.583,
+    "months": 84,
+    "month_stretches_up": 0.606,
+    "worst_month_stretch": -289.4,
+    "max_drawdown": -0.292,
+    "worst_day": -2908.0
+   },
+   "train": {
+    "usd_per_session": 53.7,
+    "worst_month": -206.0,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.657,
+    "worst_month_stretch": -421.4,
+    "max_drawdown": -0.3647,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 334.0,
+    "worst_month": 197.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 0.7,
+    "max_drawdown": -0.286,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 218.0,
+     "2026-05": 699.5,
+     "2026-06": 271.6,
+     "2026-07": 245.1,
+     "2026-08": 387.0,
+     "2026-09": 197.5
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "5b7401a7b97ca819",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 305.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 55.9,
+    "worst_month": -186.6,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.663,
+    "worst_month_stretch": -280.4,
+    "max_drawdown": -0.3142,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 63.2,
+    "worst_month": -172.4,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.646,
+    "worst_month_stretch": -520.8,
+    "max_drawdown": -0.4787,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 364.2,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 252.2,
+     "2026-09": 240.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "82dbe6d9bc8a96ba",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 230.0,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 40.4,
+    "worst_month": -137.6,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.66,
+    "worst_month_stretch": -208.5,
+    "max_drawdown": -0.2741,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 57.0,
+    "worst_month": -237.2,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.665,
+    "worst_month_stretch": -442.9,
+    "max_drawdown": -0.3547,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 330.0,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 234.8,
+     "2026-05": 705.8,
+     "2026-06": 302.7,
+     "2026-07": 340.9,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "c656dadfb675626f",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 221.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 42.0,
+    "worst_month": -129.3,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.668,
+    "worst_month_stretch": -214.5,
+    "max_drawdown": -0.2621,
+    "worst_day": -3367.0
+   },
+   "train": {
+    "usd_per_session": 56.4,
+    "worst_month": -272.4,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.667,
+    "worst_month_stretch": -341.9,
+    "max_drawdown": -0.29,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 327.2,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 234.8,
+     "2026-05": 705.8,
+     "2026-06": 290.0,
+     "2026-07": 336.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "4e281a44b6b5ad67",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "SOXS"
+    ],
+    "source": "handbred",
+    "held_out_usd": 217.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 38.6,
+    "worst_month": -212.2,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.677,
+    "worst_month_stretch": -327.2,
+    "max_drawdown": -0.3751,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 59.5,
+    "worst_month": -310.9,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.681,
+    "worst_month_stretch": -429.8,
+    "max_drawdown": -0.3475,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 325.9,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 203.8,
+     "2026-05": 705.8,
+     "2026-06": 302.7,
+     "2026-07": 356.4,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "4e281a44b6b5ad67",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "SOXS"
+    ],
+    "source": "handbred",
+    "held_out_usd": 217.5,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 33.8,
+    "worst_month": -175.1,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.668,
+    "worst_month_stretch": -313.3,
+    "max_drawdown": -0.4171,
+    "worst_day": -3563.0
+   },
+   "train": {
+    "usd_per_session": 58.4,
+    "worst_month": -279.0,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.685,
+    "worst_month_stretch": -429.8,
+    "max_drawdown": -0.3475,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 294.5,
+    "worst_month": 186.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 186.8,
+     "2026-05": 561.8,
+     "2026-06": 274.1,
+     "2026-07": 356.4,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "638276bc75741e42",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 294.2,
+    "real_held_out_usd": 334.76
+   },
+   {
+    "key": "673cdb4e4f69a0e8",
+    "name": "Quick Dip 0.02/0.03/0.04/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 281.7,
+    "real_held_out_usd": 306.88
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.8,
+    "worst_month": -131.4,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.671,
+    "worst_month_stretch": -395.3,
+    "max_drawdown": -0.3417,
+    "worst_day": -3528.0
+   },
+   "train": {
+    "usd_per_session": 64.3,
+    "worst_month": -227.4,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.642,
+    "worst_month_stretch": -507.3,
+    "max_drawdown": -0.4996,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 319.1,
+    "worst_month": 186.4,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -127.2,
+    "max_drawdown": -0.2528,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 262.1,
+     "2026-05": 769.5,
+     "2026-06": 303.0,
+     "2026-07": 186.4,
+     "2026-08": 188.5,
+     "2026-09": 218.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "2f9d5165256dc9ee",
+    "name": "Quick Dip 0.03/0.02/0.1/200/4",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 314.7,
+    "real_held_out_usd": 316.61
+   },
+   {
+    "key": "a83c6e335947ffca",
+    "name": "Pullback in Uptrend 0.12/200",
+    "symbols": [
+     "SOXL",
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 207.3,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 37.3,
+    "worst_month": -131.1,
+    "months_up": 0.56,
+    "months": 84,
+    "month_stretches_up": 0.591,
+    "worst_month_stretch": -270.2,
+    "max_drawdown": -0.3054,
+    "worst_day": -3163.0
+   },
+   "train": {
+    "usd_per_session": 54.2,
+    "worst_month": -216.8,
+    "months_up": 0.655,
+    "months": 87,
+    "month_stretches_up": 0.642,
+    "worst_month_stretch": -411.9,
+    "max_drawdown": -0.3623,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 301.2,
+    "worst_month": 185.6,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -111.5,
+    "max_drawdown": -0.2851,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 185.6,
+     "2026-05": 630.6,
+     "2026-06": 329.0,
+     "2026-07": 189.3,
+     "2026-08": 303.5,
+     "2026-09": 192.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 47.1,
+    "worst_month": -191.1,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.671,
+    "worst_month_stretch": -425.8,
+    "max_drawdown": -0.3863,
+    "worst_day": -4316.0
+   },
+   "train": {
+    "usd_per_session": 62.1,
+    "worst_month": -439.0,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.63,
+    "worst_month_stretch": -528.1,
+    "max_drawdown": -0.4273,
+    "worst_day": -3579.0
+   },
+   "held_out": {
+    "usd_per_session": 297.0,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.953,
+    "worst_month_stretch": -149.4,
+    "max_drawdown": -0.3272,
+    "worst_day": -4392.0,
+    "by_month": {
+     "2026-04": 216.7,
+     "2026-05": 612.5,
+     "2026-06": 201.9,
+     "2026-07": 193.5,
+     "2026-08": 287.5,
+     "2026-09": 326.2
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "852d44e2149efebb",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 341.0,
+    "real_held_out_usd": 381.37
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 55.3,
+    "worst_month": -166.5,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.633,
+    "worst_month_stretch": -293.0,
+    "max_drawdown": -0.356,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 61.7,
+    "worst_month": -172.4,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.629,
+    "worst_month_stretch": -520.8,
+    "max_drawdown": -0.5228,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 376.1,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 396.4,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 208.8,
+     "2026-09": 240.6
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 43.7,
+    "worst_month": -199.3,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.7,
+    "worst_month_stretch": -334.0,
+    "max_drawdown": -0.316,
+    "worst_day": -4023.0
+   },
+   "train": {
+    "usd_per_session": 59.2,
+    "worst_month": -343.2,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.678,
+    "worst_month_stretch": -409.3,
+    "max_drawdown": -0.3547,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 324.2,
+    "worst_month": 191.7,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 203.8,
+     "2026-05": 705.8,
+     "2026-06": 319.8,
+     "2026-07": 330.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "fbb53024544a4f67",
+    "name": "Tighter Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 20",
+    "held_out_usd": 378.7,
+    "real_held_out_usd": 378.83
+   },
+   {
+    "key": "e231590dba98aa65",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "USD"
+    ],
+    "source": "handbred",
+    "held_out_usd": 141.9,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 39.7,
+    "worst_month": -147.2,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.653,
+    "worst_month_stretch": -227.0,
+    "max_drawdown": -0.2817,
+    "worst_day": -2994.0
+   },
+   "train": {
+    "usd_per_session": 57.3,
+    "worst_month": -235.2,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.682,
+    "worst_month_stretch": -408.3,
+    "max_drawdown": -0.3332,
+    "worst_day": -2959.0
+   },
+   "held_out": {
+    "usd_per_session": 300.7,
+    "worst_month": 191.4,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 1.0,
+    "worst_month_stretch": 15.4,
+    "max_drawdown": -0.2001,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 257.4,
+     "2026-05": 649.4,
+     "2026-06": 209.5,
+     "2026-07": 259.1,
+     "2026-08": 191.4,
+     "2026-09": 255.2
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "cb513b79318395ac",
+    "name": "Patient Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 17",
+    "held_out_usd": 381.4,
+    "real_held_out_usd": 286.35
+   },
+   {
+    "key": "1a4961a2f303c5ca",
+    "name": "Cautious Faster-Momentum-Reverter",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-042523-2b85 gen 22",
+    "held_out_usd": 284.5,
+    "real_held_out_usd": 301.33
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 38.9,
+    "worst_month": -162.3,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.697,
+    "worst_month_stretch": -320.1,
+    "max_drawdown": -0.3219,
+    "worst_day": -3563.0
+   },
+   "train": {
+    "usd_per_session": 58.2,
+    "worst_month": -294.2,
+    "months_up": 0.644,
+    "months": 87,
+    "month_stretches_up": 0.682,
+    "worst_month_stretch": -341.6,
+    "max_drawdown": -0.323,
+    "worst_day": -3287.0
+   },
+   "held_out": {
+    "usd_per_session": 292.8,
+    "worst_month": 186.8,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.991,
+    "worst_month_stretch": -4.8,
+    "max_drawdown": -0.2276,
+    "worst_day": -4052.0,
+    "by_month": {
+     "2026-04": 186.8,
+     "2026-05": 561.8,
+     "2026-06": 291.1,
+     "2026-07": 330.7,
+     "2026-08": 191.7,
+     "2026-09": 215.3
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "9d0b9108a6992abb",
+    "name": "Tighter Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 312.0,
+    "real_held_out_usd": 350.23
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.5,
+    "worst_month": -146.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.683,
+    "worst_month_stretch": -258.8,
+    "max_drawdown": -0.2986,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 53.2,
+    "worst_month": -185.7,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.603,
+    "worst_month_stretch": -608.3,
+    "max_drawdown": -0.475,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 357.9,
+    "worst_month": 190.1,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.981,
+    "worst_month_stretch": -65.9,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 191.8,
+     "2026-08": 190.1,
+     "2026-09": 279.7
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "b6833d6b2123f843",
+    "name": "Stubborn Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 279.1,
+    "real_held_out_usd": 320.96
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 61.6,
+    "worst_month": -146.5,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.693,
+    "worst_month_stretch": -258.8,
+    "max_drawdown": -0.2469,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 55.6,
+    "worst_month": -216.8,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.608,
+    "worst_month_stretch": -551.7,
+    "max_drawdown": -0.5074,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 347.0,
+    "worst_month": 189.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 303.7,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 192.0,
+     "2026-09": 189.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "638276bc75741e42",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 294.2,
+    "real_held_out_usd": 334.76
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 59.1,
+    "worst_month": -186.6,
+    "months_up": 0.655,
+    "months": 84,
+    "month_stretches_up": 0.675,
+    "worst_month_stretch": -273.2,
+    "max_drawdown": -0.2697,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 54.7,
+    "worst_month": -172.4,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.605,
+    "worst_month_stretch": -556.5,
+    "max_drawdown": -0.4847,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 352.0,
+    "worst_month": 189.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -105.3,
+    "max_drawdown": -0.2816,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 213.8,
+     "2026-08": 192.0,
+     "2026-09": 189.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "5b7401a7b97ca819",
+    "name": "Cautious Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 28",
+    "held_out_usd": 305.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 59.4,
+    "worst_month": -186.6,
+    "months_up": 0.643,
+    "months": 84,
+    "month_stretches_up": 0.684,
+    "worst_month_stretch": -258.8,
+    "max_drawdown": -0.2461,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 55.6,
+    "worst_month": -172.4,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.614,
+    "worst_month_stretch": -556.5,
+    "max_drawdown": -0.4598,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 355.6,
+    "worst_month": 189.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 235.4,
+     "2026-09": 189.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "e6bcf76720bca2b3",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 24",
+    "held_out_usd": 310.2,
+    "real_held_out_usd": 324.31
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 53.6,
+    "worst_month": -211.6,
+    "months_up": 0.607,
+    "months": 84,
+    "month_stretches_up": 0.644,
+    "worst_month_stretch": -241.7,
+    "max_drawdown": -0.2714,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 54.7,
+    "worst_month": -168.3,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.608,
+    "worst_month_stretch": -556.5,
+    "max_drawdown": -0.4662,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 357.3,
+    "worst_month": 189.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5865.0,
+    "by_month": {
+     "2026-04": 310.3,
+     "2026-05": 969.6,
+     "2026-06": 286.2,
+     "2026-07": 193.5,
+     "2026-08": 192.0,
+     "2026-09": 189.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "852d44e2149efebb",
+    "name": "Patient Tighter-Two-Close",
+    "symbols": [
+     "AMD.2X"
+    ],
+    "source": "run-20260923-044520-8443 gen 26",
+    "held_out_usd": 341.0,
+    "real_held_out_usd": 381.37
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.333,
+  "windows": {
+   "older": {
+    "usd_per_session": 58.7,
+    "worst_month": -166.5,
+    "months_up": 0.631,
+    "months": 84,
+    "month_stretches_up": 0.655,
+    "worst_month_stretch": -258.8,
+    "max_drawdown": -0.3108,
+    "worst_day": -4177.0
+   },
+   "train": {
+    "usd_per_session": 54.2,
+    "worst_month": -172.4,
+    "months_up": 0.598,
+    "months": 87,
+    "month_stretches_up": 0.595,
+    "worst_month_stretch": -556.5,
+    "max_drawdown": -0.5056,
+    "worst_day": -3894.0
+   },
+   "held_out": {
+    "usd_per_session": 367.6,
+    "worst_month": 189.0,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -64.2,
+    "max_drawdown": -0.2543,
+    "worst_day": -5222.0,
+    "by_month": {
+     "2026-04": 396.4,
+     "2026-05": 969.6,
+     "2026-06": 232.7,
+     "2026-07": 193.5,
+     "2026-08": 192.0,
+     "2026-09": 189.0
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   },
+   {
+    "key": "bdb44c8d08e851a3",
+    "name": "Pullback in Uptrend 0.08/200",
+    "symbols": [
+     "SOXL",
+     "TQQQ",
+     "TECL"
+    ],
+    "source": "handbred",
+    "held_out_usd": 212.6,
+    "real_held_out_usd": null
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 52.3,
+    "worst_month": -173.0,
+    "months_up": 0.619,
+    "months": 84,
+    "month_stretches_up": 0.688,
+    "worst_month_stretch": -450.9,
+    "max_drawdown": -0.3566,
+    "worst_day": -4316.0
+   },
+   "train": {
+    "usd_per_session": 50.8,
+    "worst_month": -454.6,
+    "months_up": 0.586,
+    "months": 87,
+    "month_stretches_up": 0.582,
+    "worst_month_stretch": -544.5,
+    "max_drawdown": -0.419,
+    "worst_day": -3579.0
+   },
+   "held_out": {
+    "usd_per_session": 284.2,
+    "worst_month": 193.5,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.915,
+    "worst_month_stretch": -149.4,
+    "max_drawdown": -0.3272,
+    "worst_day": -4392.0,
+    "by_month": {
+     "2026-04": 216.7,
+     "2026-05": 612.5,
+     "2026-06": 201.9,
+     "2026-07": 193.5,
+     "2026-08": 262.3,
+     "2026-09": 248.8
+    }
+   }
+  }
+ },
+ {
+  "members": [
+   {
+    "key": "0bdfd0280b9d8311",
+    "name": "Quick Dip 0.02/0.02/0.1/200/2",
+    "symbols": [
+     "MU.2X"
+    ],
+    "source": "handbred",
+    "held_out_usd": 405.9,
+    "real_held_out_usd": 442.18
+   },
+   {
+    "key": "f257e23085742db8",
+    "name": "Calmer Calmer-Stubborn-Contraction-Calmer-Stubborn-Contraction",
+    "symbols": [
+     "MU.2X",
+     "SOXL"
+    ],
+    "source": "run-20260923-070811-885c gen 27",
+    "held_out_usd": 355.8,
+    "real_held_out_usd": 261.81
+   }
+  ],
+  "fraction": 1.0,
+  "each": 0.5,
+  "windows": {
+   "older": {
+    "usd_per_session": 57.9,
+    "worst_month": -220.3,
+    "months_up": 0.536,
+    "months": 84,
+    "month_stretches_up": 0.58,
+    "worst_month_stretch": -322.8,
+    "max_drawdown": -0.3305,
+    "worst_day": -4369.0
+   },
+   "train": {
+    "usd_per_session": 55.1,
+    "worst_month": -313.2,
+    "months_up": 0.552,
+    "months": 87,
+    "month_stretches_up": 0.533,
+    "worst_month_stretch": -527.2,
+    "max_drawdown": -0.4809,
+    "worst_day": -5841.0
+   },
+   "held_out": {
+    "usd_per_session": 380.9,
+    "worst_month": 192.3,
+    "months_up": 1.0,
+    "months": 6,
+    "month_stretches_up": 0.962,
+    "worst_month_stretch": -66.3,
+    "max_drawdown": -0.3624,
+    "worst_day": -6078.0,
+    "by_month": {
+     "2026-04": 264.9,
+     "2026-05": 1007.0,
+     "2026-06": 344.1,
+     "2026-07": 202.9,
+     "2026-08": 288.0,
+     "2026-09": 192.3
+    }
+   }
+  }
+ }
+]

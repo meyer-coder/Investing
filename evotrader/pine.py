@@ -223,7 +223,7 @@ def _comment(text: str, width: int = 78) -> List[str]:
 def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
                    account: float = 25_000.0, contracts: int = 1,
                    commission_per_contract: float = 1.0,
-                   extra_notes: Sequence[str] = (), fund: str = "") -> str:
+                   extra_notes: Sequence[str] = (), fund: str = "", qty_pct: float = 100.0) -> str:
     """A complete Pine Script v6 strategy for one genome, on a daily futures chart.
 
     ``fund`` switches to a fund (ETF) chart: the whole account in each trade,
@@ -280,7 +280,8 @@ def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
         out += _comment(note)
     out.append(f'strategy("{title[:60]} [evotrader]", overlay=true, pyramiding=0,')
     if fund:
-        out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.percent_of_equity, default_qty_value=100,")
+        out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.percent_of_equity, "
+                   f"default_qty_value={qty_pct:g},")
         out.append("     commission_type=strategy.commission.percent, commission_value=0,")
     else:
         out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.fixed, default_qty_value={contracts},")

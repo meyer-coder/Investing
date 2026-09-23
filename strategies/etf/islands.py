@@ -34,6 +34,10 @@ UNIVERSES = {
     "memory": ["MU.2X", "SOXL"],
     "tsm_usd": ["TSM.2X", "USD"], "amd_tsm": ["AMD.2X", "TSM.2X"], "mu_tsm": ["MU.2X", "TSM.2X"],
     "amd_mu": ["AMD.2X", "MU.2X"], "avgo_tsm_nvda": ["AVGO.2X", "TSM.2X", "NVDA.2X"],
+    # without TSMC, whose price rides Taiwan's politics
+    "semis_ex_tsm": ["SOXL", "NVDA.2X", "AMD.2X", "AVGO.2X", "MU.2X"],
+    "amd_mu_soxl": ["AMD.2X", "MU.2X", "SOXL"], "amd_soxl": ["AMD.2X", "SOXL"],
+    "nvda_amd_mu": ["NVDA.2X", "AMD.2X", "MU.2X"], "mu_avgo": ["MU.2X", "AVGO.2X"],
 }
 
 FITNESS = {

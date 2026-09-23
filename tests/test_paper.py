@@ -73,3 +73,11 @@ def test_the_ledger_is_never_recomputed():
     paper.advance(acct, u, with_levels=False)
     assert acct["fills"][:len(before)] == before
     assert [m["date"] for m in acct["marks"]] == u.calendar[5:]
+
+
+def test_a_retired_bot_leaves_the_roster_with_its_record_and_reason():
+    ledger = {"accounts": [_account("2026-01-05"), {**_account("2026-01-05"), "id": "u"}]}
+    paper.retire(ledger, ["t"], "trades a fund the owner dropped", "2026-01-20")
+    assert [a["id"] for a in ledger["accounts"]] == ["u"]
+    gone = ledger["retired"][0]
+    assert gone["id"] == "t" and gone["retired"] == "2026-01-20" and gone["why_retired"]

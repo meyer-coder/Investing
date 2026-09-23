@@ -8,7 +8,8 @@ a check on the rebuilt series it was bred on, with the engine used for every
 backtest.  The engine decides on a close and fills at the next open, so the
 run gets one placeholder bar after the last close: the orders it fills there
 are the orders for the next open.  Yahoo's daily chart leaves a finished
-session's close blank for a while; that close is taken from the quote.
+session's close blank for a while; that close is taken from the quote
+(see latest_bars).
 
 Levels: the last session is followed by a hypothetical one in which a single
 fund closes anywhere from -25% to +25% (the other funds unchanged, ordinary
@@ -35,7 +36,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "strategies" / "etf"))
 from gauntlet import ACCOUNT, REAL, SLIP, START                           # noqa: E402
 from synth import SYNTH, synth                                             # noqa: E402
-from evotrader.data import Bars, Universe, load_symbol                     # noqa: E402
+from evotrader.data import Bars, Universe, fetch_yahoo                     # noqa: E402
 from evotrader.features import build_features                              # noqa: E402
 from evotrader.genome import Genome, compile_genome                        # noqa: E402
 from evotrader.runner import run_backtest                                  # noqa: E402
@@ -43,19 +44,53 @@ from evotrader.runner import run_backtest                                  # noq
 PUBLISHED = ROOT / "profitable-strategies" / "leveraged-etfs"
 OUT = PUBLISHED / "live"
 END_REASON = "end of backtest"
-_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{}?range=5d&interval=1d"
+
+
+def _chart(symbol: str, query: str) -> dict:
+    req = urllib.request.Request(f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?{query}",
+                                 headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())["chart"]["result"][0]
 
 
 def _quote_sessions(symbol: str) -> Tuple[List[dict], dict]:
-    req = urllib.request.Request(_CHART.format(symbol), headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        res = json.loads(resp.read())["chart"]["result"][0]
-    q, meta = res["indicators"]["quote"][0], res["meta"]
+    """The last five daily rows, each scaled by Yahoo's dividend adjustment as
+    the history is, and the quote: its session's date, price and the close of
+    the session before."""
+    res = _chart(symbol, "range=5d&interval=1d&events=div%2Csplit")
+    q = res["indicators"]["quote"][0]
+    adj = (res["indicators"].get("adjclose") or [{}])[0].get("adjclose") or []
     rows = []
     for i, ts in enumerate(res.get("timestamp") or []):
-        rows.append({"date": datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d"),
-                     **{k: q[k][i] for k in ("open", "high", "low", "close", "volume")}})
-    return rows, meta
+        row = {k: q[k][i] for k in ("open", "high", "low", "close", "volume")}
+        a = adj[i] if i < len(adj) else None
+        row["ratio"] = a / row["close"] if a and row["close"] else 1.0
+        rows.append({"date": datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d"), **row})
+    meta = _chart(symbol, "range=1d&interval=5m")["meta"]
+    quote = {"date": datetime.fromtimestamp(meta["regularMarketTime"], tz=timezone.utc).strftime("%Y-%m-%d"),
+             "price": float(meta["regularMarketPrice"]), "previous_close": meta.get("previousClose"),
+             "adjusted_previous_close": meta.get("chartPreviousClose")}
+    return rows, quote
+
+
+def _intraday(symbol: str) -> Dict[str, List[float]]:
+    """Daily open, high, low, last and volume from the last five days' 5-minute
+    bars in regular hours, by New York date."""
+    res = _chart(symbol, "range=5d&interval=5m")
+    q = res["indicators"]["quote"][0]
+    ny, out = ZoneInfo("America/New_York"), {}
+    for i, ts in enumerate(res.get("timestamp") or []):
+        t = datetime.fromtimestamp(ts, tz=timezone.utc).astimezone(ny)
+        o, h, l, c, v = (q[k][i] for k in ("open", "high", "low", "close", "volume"))
+        if (t.hour, t.minute) < (9, 30) or t.hour >= 16 or None in (o, h, l, c):
+            continue
+        d = t.strftime("%Y-%m-%d")
+        if d not in out:
+            out[d] = [o, h, l, c, v or 0.0]
+        else:
+            b = out[d]
+            b[1], b[2], b[3], b[4] = max(b[1], h), min(b[2], l), c, b[4] + (v or 0.0)
+    return out
 
 
 def session_close(day: str) -> datetime:
@@ -66,26 +101,49 @@ def session_close(day: str) -> datetime:
 
 def latest_bars(symbol: str) -> Tuple[Bars, bool]:
     """Full daily history through the last session; True when that session is
-    still trading, so its close is provisional."""
-    b = load_symbol(symbol, "2005-01-01", "2100-01-01", refresh=True)
-    rows, meta = _quote_sessions(symbol)
-    dates, cols = list(b.dates), [list(x) for x in (b.open, b.high, b.low, b.close, b.volume)]
+    still trading, so its close is provisional.
+
+    The history is Yahoo's, fetched fresh and not cached, up to the last five
+    sessions, which are rebuilt: Yahoo shows a session still trading as if it
+    were done, and leaves the last finished session's row blank for a day or
+    so.  The quote's price is the close of its own session and its previous
+    close the close of the session before; a blank row's open, high, low and
+    volume come from that day's 5-minute bars.  A row nothing can fill ends
+    the history there rather than leave a hole in it."""
+    b = fetch_yahoo(symbol, "2005-01-01", "2100-01-01")
+    rows, quote = _quote_sessions(symbol)
+    keep = [i for i, d in enumerate(b.dates) if not rows or d < rows[0]["date"]]
+    dates = [b.dates[i] for i in keep]
+    cols = [list(np.asarray(x)[keep]) for x in (b.open, b.high, b.low, b.close, b.volume)]
+    intraday: Optional[Dict[str, List[float]]] = None
     provisional = False
-    for r in rows:
-        if r["date"] <= dates[-1] or r["open"] is None:
-            continue
-        close = r["close"]
-        stamp = datetime.fromtimestamp(meta.get("regularMarketTime", 0), tz=timezone.utc)
-        if close is None and stamp.strftime("%Y-%m-%d") == r["date"]:
-            close = float(meta["regularMarketPrice"])
-            provisional = stamp < session_close(r["date"])
-        if close is None:
-            continue
-        hi = max(float(r["high"] or close), close)
-        lo = min(float(r["low"] or close), close)
-        for col, x in zip(cols, (float(r["open"]), hi, lo, close, float(r["volume"] or 0.0))):
+    for k, r in enumerate(rows):
+        day = r["date"]
+        o, h, l, c, v = (r[x] for x in ("open", "high", "low", "close", "volume"))
+        ratio = r["ratio"]
+        if day == quote["date"]:
+            c, ratio = quote["price"], 1.0
+        elif k + 1 < len(rows) and rows[k + 1]["date"] == quote["date"] and quote["previous_close"]:
+            raw, adj = quote["previous_close"], quote["adjusted_previous_close"] or quote["previous_close"]
+            c, ratio = raw, adj / raw
+        if None in (o, h, l, v) or c is None:
+            if intraday is None:
+                intraday = _intraday(symbol)
+            bar = intraday.get(day)
+            if bar is None:
+                if day == quote["date"] and datetime.now(timezone.utc) < session_close(day):
+                    break                 # not open yet
+                break
+            o = bar[0] if o is None else o
+            h = bar[1] if h is None else h
+            l = bar[2] if l is None else l
+            c = bar[3] if c is None else c
+            v = bar[4] if v is None else v
+        o, h, l, c = (float(x) * ratio for x in (o, h, l, c))
+        provisional = datetime.now(timezone.utc) < session_close(day)
+        for col, x in zip(cols, (o, max(h, o, c), min(l, o, c), c, float(v or 0.0))):
             col.append(x)
-        dates.append(r["date"])
+        dates.append(day)
     return Bars(symbol, dates, *[np.asarray(c, dtype=float) for c in cols]), provisional
 
 
