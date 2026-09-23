@@ -32,3 +32,5 @@ data/cache/tv/
 !profitable-strategies/reports/
 !profitable-strategies/nq-2x/reports/
 !profitable-strategies/funded/reports/
+strategies/etf/store.lock
+strategies/etf/store.*.tmp

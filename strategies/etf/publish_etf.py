@@ -5,7 +5,9 @@
 1. Candidates: every stored strategy marked "shown" (profitable and at least
    $80 a session over the held-out months; see gauntlet.py).
 2. Ranked by the lower of its held-out dollars on the rebuilt series and on
-   the real fund.  Left out: anything past a 70% drawdown in any window; a
+   the real fund.  Left out: anything that lost money over 2012-2018 (the one
+   window neither the breeding nor the $80 filter looked at), anything past a
+   70% drawdown in any window; a
    strategy whose daily returns correlate above 0.9 with one already picked
    (a near-copy); more than six on the same funds.  So the list is fifty
    different traders, not fifty variants of one.
@@ -90,7 +92,8 @@ def survivable(v: dict) -> bool:
 
 
 def pick(shown: List[dict], top: int) -> List[dict]:
-    shown = sorted([v for v in shown if survivable(v)], key=lambda v: -v["verdict"]["rank_usd"])
+    shown = sorted([v for v in shown if survivable(v) and v["verdict"]["older_profitable"]],
+                   key=lambda v: -v["verdict"]["rank_usd"])
     picked, series, per = [], [], {}
     for item in shown:
         key = ",".join(item["symbols"])

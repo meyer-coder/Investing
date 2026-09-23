@@ -86,13 +86,45 @@ def families2():
                 ["bars_held >= 2"], stop_loss_pct=0.08)
 
 
+def families3():
+    """Third pass: the semis rotation's idea, on any fund or basket: momentum on
+    volume while the lead fund holds its 200-day, out on a slip under the 20-day."""
+    for above, vol, out in itertools.product((0.0, 0.01, 0.03), (1.0, 1.2, 1.5), (0.02, 0.04)):
+        yield g(f"Volume Momentum in a Bull Regime {above}/{vol}/{out}",
+                f"mkt_above_sma200 == 1 and dist_sma20 > {above} and volume_ratio > {vol}",
+                [f"dist_sma20 < -{out}", "mkt_above_sma200 == 0"], stop_loss_pct=0.12, cooldown_bars=5)
+
+
+def g2(name, entries, exits, **risk):
+    return Genome.from_dict({"name": name, "thesis": name,
+                             "entry_rules": [{"when": e, "weight": 1.0} for e in entries],
+                             "exit_rules": [{"when": x} for x in exits],
+                             "risk": {"max_position_pct": 1.0, "max_positions": 1, "max_gross_exposure": 1.0,
+                                      **risk}})
+
+
+def families5():
+    """Fifth pass: two doors in one strategy, a momentum entry and a dip entry,
+    out on a slip under the 20-day average, as the best semis rotation does."""
+    moms = {"volume momentum": "mkt_above_sma200 == 1 and dist_sma20 > 0.01 and volume_ratio > 1.2",
+            "20-day burst": "ret20 > 0.2 and close > sma10",
+            "fast trend": "close > ema12 and ema12 > ema26 and close > sma50"}
+    dips = {"deep dip": "pct_of_52w_high < 0.75 and ret1 < -0.02",
+            "uptrend flush": "ret1 < -0.05 and close > sma50",
+            "oversold": "rsi7 < 20 and close > sma200"}
+    for (mn, m), (dn, d), out in itertools.product(moms.items(), dips.items(), (0.02, 0.04)):
+        yield g2(f"{mn.title()} or {dn.title()} {out}", [m, d], [f"dist_sma20 < -{out}"],
+                 stop_loss_pct=0.12, cooldown_bars=3)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--funds", default=",".join(FUNDS))
     ap.add_argument("--pass", dest="which", type=int, default=1)
     ap.add_argument("--baskets", default="", help="funds traded together: A,B;C,D,E")
     args = ap.parse_args(argv)
-    fam = {1: families, 2: families2, 3: lambda: itertools.chain(families(), families2())}[args.which]
+    fam = {1: families, 2: families2, 3: lambda: itertools.chain(families(), families2()),
+           4: families3, 5: families5}[args.which]
     kept = shown = 0
     groups = ([b.split(",") for b in args.baskets.split(";")] if args.baskets
               else [[f] for f in args.funds.split(",")])
