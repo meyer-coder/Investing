@@ -1,0 +1,75 @@
+//@version=6
+// SOXL / TQQQ / TECL Uptrend Dip (bred 01D4) — evotrader genome 2f4135836c7b.
+// Leveraged tech strategy 35 of the grind (strategies/etf).
+//
+// A hard down day inside an uptrend, sold into the bounce. Combined with: Two
+// down days in an uptrend, sold on the first green close. Combined with: Buy
+// shallow pullbacks to the 20-day inside an uptrend.
+//
+// Rules, exactly as the engine runs them:
+// BUY when dist_sma20 < -0.054 and cross_above(close, sma200)
+// BUY when dist_sma20 < -0.02 and sma20 > sma50 and sma50 > sma200 or ret1 <
+// -0.01 or vol_ratio_20_60 < 0.66
+// BUY when macd_hist > 1.7
+// SELL when ret1 > 0.02
+// SELL when close < sma50
+// SELL when mkt_vol20 < 0.38 and cross_below(close, bb_lower)
+// Risk (checked on the close, filled at the next open): stop 16.00%, no
+// target, no trailing stop, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily SOXL chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 3-fund strategy (SOXL, TQQQ, TECL): run the script on each fund's
+// chart and hold one position at a time, the first signal wins.
+strategy("SOXL / TQQQ / TECL Uptrend Dip (bred 01D4) [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(16, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+[f_macd, f_macd_signal, f_macd_hist] = ta.macd(close, 12, 26, 9)
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_bb_lower = f_sma20 - 2 * f_sd20
+f_dist_sma20 = close / f_sma20 - 1
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_mkt_vol20 = f_vol20
+f_sma200 = ta.sma(close, 200)
+f_sma50 = ta.sma(close, 50)
+f_vol60 = ta.stdev(f_ret1, 60, false) * math.sqrt(252)
+f_vol_ratio_20_60 = f_vol60 > 0 ? f_vol20 / f_vol60 : 1.0
+
+warm = bar_index >= 200
+inPos = strategy.position_size > 0
+buySignal = (((f_dist_sma20 < (-0.054)) and (close > f_sma200 and close[1] <= f_sma200[1]))) or ((((((f_dist_sma20 < (-0.02)) and (f_sma20 > f_sma50)) and (f_sma50 > f_sma200)) or (f_ret1 < (-0.01))) or (f_vol_ratio_20_60 < 0.66))) or ((f_macd_hist > 1.7))
+sellSignal = ((f_ret1 > 0.02)) or ((close < f_sma50)) or (((f_mkt_vol20 < 0.38) and (close < f_bb_lower and close[1] >= f_bb_lower[1])))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "SOXL / TQQQ / TECL Uptrend Dip (bred 01D: buy at next open", "SOXL / TQQQ / TECL Uptrend Dip (bred 01D: buy {{ticker}} at the next open")
+alertcondition(exitNow, "SOXL / TQQQ / TECL Uptrend Dip (bred 01D: sell at next open", "SOXL / TQQQ / TECL Uptrend Dip (bred 01D: sell {{ticker}} at the next open")

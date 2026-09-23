@@ -1,0 +1,406 @@
+{
+ "signature": "7752a967f4f51c4d",
+ "source": "run-20260923-052333-ff6d gen 20",
+ "genome": {
+  "id": "792592991066",
+  "name": "SOXL / NVDL / AMDL / AVGX / TSMX / MUU Trend Breakout (bred 7752)",
+  "thesis": "Quiet markets precede expansion; buy the squeeze.",
+  "entry_rules": [
+   {
+    "when": "vol_ratio_20_60 < 0.75 and close > sma50",
+    "weight": 1.0,
+    "note": "archetype"
+   },
+   {
+    "when": "ret20 > -0.01 and ret5 < -0.082 and cross_above(close, sma50)",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "cross_above(sma20, sma50)",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "ret5 < -0.099 and vol_ratio_20_60 > 1.49",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "vol_ratio_20_60 > 1.21",
+    "note": "archetype"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.073,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 20,
+  "parents": [
+   "6a1c57fa50aa"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790142924.9996827
+ },
+ "symbols": [
+  "SOXL",
+  "NVDA.2X",
+  "AMD.2X",
+  "AVGO.2X",
+  "TSM.2X",
+  "MU.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 70.06,
+   "return": 27.5488,
+   "sharpe": 0.98,
+   "max_drawdown": -0.5292,
+   "usd_worst_day": -6577.0,
+   "usd_best_day": 26030.0,
+   "days_in_market": 1211,
+   "trades": 117,
+   "win_rate": 0.513,
+   "profit_factor": 1.37,
+   "avg_win": 0.1564,
+   "avg_loss": -0.0793,
+   "avg_hold": 9.7
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 109.68,
+   "return": 598.5349,
+   "sharpe": 1.66,
+   "max_drawdown": -0.6881,
+   "usd_worst_day": -8707.0,
+   "usd_best_day": 12036.0,
+   "days_in_market": 1089,
+   "trades": 133,
+   "win_rate": 0.496,
+   "profit_factor": 2.9,
+   "avg_win": 0.2046,
+   "avg_loss": -0.0678,
+   "avg_hold": 7.6
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 297.96,
+   "return": 2.5969,
+   "sharpe": 3.09,
+   "max_drawdown": -0.2661,
+   "usd_worst_day": -3377.0,
+   "usd_best_day": 7738.0,
+   "days_in_market": 46,
+   "trades": 7,
+   "win_rate": 0.571,
+   "profit_factor": 5.8,
+   "avg_win": 0.4882,
+   "avg_loss": -0.0586,
+   "avg_hold": 5.9
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 229.09,
+   "return": 6.261,
+   "sharpe": 2.82,
+   "max_drawdown": -0.2661,
+   "usd_worst_day": -3377.0,
+   "usd_best_day": 7738.0,
+   "days_in_market": 105,
+   "trades": 15,
+   "win_rate": 0.667,
+   "profit_factor": 5.94,
+   "avg_win": 0.3907,
+   "avg_loss": -0.0718,
+   "avg_hold": 6.9
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 103.02,
+   "return": 370.1621,
+   "sharpe": 1.56,
+   "max_drawdown": -0.7028,
+   "usd_worst_day": -8707.0,
+   "usd_best_day": 12051.0,
+   "days_in_market": 1085,
+   "trades": 134,
+   "win_rate": 0.493,
+   "profit_factor": 2.63,
+   "avg_win": 0.2012,
+   "avg_loss": -0.0709,
+   "avg_hold": 7.5
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 293.44,
+   "return": 2.5172,
+   "sharpe": 3.05,
+   "max_drawdown": -0.2755,
+   "usd_worst_day": -3446.0,
+   "usd_best_day": 7738.0,
+   "days_in_market": 46,
+   "trades": 7,
+   "win_rate": 0.571,
+   "profit_factor": 5.48,
+   "avg_win": 0.4835,
+   "avg_loss": -0.0616,
+   "avg_hold": 5.9
+  }
+ },
+ "real": {
+  "symbols": [
+   "SOXL",
+   "NVDL",
+   "AMDL",
+   "AVGX",
+   "TSMX",
+   "MUU"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 317.8,
+   "return": 3.0372,
+   "sharpe": 3.42,
+   "max_drawdown": -0.2192,
+   "usd_worst_day": -3225.0,
+   "usd_best_day": 7719.0,
+   "days_in_market": 42,
+   "trades": 7,
+   "win_rate": 0.571,
+   "profit_factor": 4.94,
+   "avg_win": 0.5822,
+   "avg_loss": -0.0722,
+   "avg_hold": 5.3
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 240.16,
+   "return": 7.2637,
+   "sharpe": 3.04,
+   "max_drawdown": -0.2192,
+   "usd_worst_day": -3225.0,
+   "usd_best_day": 7719.0,
+   "days_in_market": 100,
+   "trades": 15,
+   "win_rate": 0.667,
+   "profit_factor": 5.25,
+   "avg_win": 0.4264,
+   "avg_loss": -0.0755,
+   "avg_hold": 6.6
+  },
+  "since": "2024-12-19",
+  "life": {
+   "start": "2024-12-19",
+   "end": "2026-09-21",
+   "sessions": 437,
+   "usd_per_session": 218.73,
+   "return": 26.0264,
+   "sharpe": 2.83,
+   "max_drawdown": -0.4632,
+   "usd_worst_day": -8601.0,
+   "usd_best_day": 7719.0,
+   "days_in_market": 205,
+   "trades": 29,
+   "win_rate": 0.621,
+   "profit_factor": 5.02,
+   "avg_win": 0.3212,
+   "avg_loss": -0.0927,
+   "avg_hold": 6.4
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 297.96,
+  "real_held_out_usd": 317.8,
+  "shown": true,
+  "rank_usd": 297.96
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": -0.2283,
+   "usd_per_session": -16.51,
+   "trades": 11,
+   "win_rate": 0.364
+  },
+  {
+   "year": "2013",
+   "return": 1.4976,
+   "usd_per_session": 110.39,
+   "trades": 14,
+   "win_rate": 0.643
+  },
+  {
+   "year": "2014",
+   "return": 0.3033,
+   "usd_per_session": 35.03,
+   "trades": 18,
+   "win_rate": 0.389
+  },
+  {
+   "year": "2015",
+   "return": 0.687,
+   "usd_per_session": 75.47,
+   "trades": 24,
+   "win_rate": 0.5
+  },
+  {
+   "year": "2016",
+   "return": 4.8399,
+   "usd_per_session": 240.17,
+   "trades": 20,
+   "win_rate": 0.6
+  },
+  {
+   "year": "2017",
+   "return": 0.9566,
+   "usd_per_session": 80.93,
+   "trades": 14,
+   "win_rate": 0.643
+  },
+  {
+   "year": "2018",
+   "return": -0.4104,
+   "usd_per_session": -36.46,
+   "trades": 16,
+   "win_rate": 0.438
+  },
+  {
+   "year": "2019",
+   "return": 1.4072,
+   "usd_per_session": 102.14,
+   "trades": 16,
+   "win_rate": 0.438
+  },
+  {
+   "year": "2020",
+   "return": 7.8535,
+   "usd_per_session": 260.94,
+   "trades": 31,
+   "win_rate": 0.613
+  },
+  {
+   "year": "2021",
+   "return": 1.7643,
+   "usd_per_session": 115.43,
+   "trades": 14,
+   "win_rate": 0.571
+  },
+  {
+   "year": "2022",
+   "return": -0.2872,
+   "usd_per_session": -26.71,
+   "trades": 8,
+   "win_rate": 0.25
+  },
+  {
+   "year": "2023",
+   "return": 2.0689,
+   "usd_per_session": 136.64,
+   "trades": 21,
+   "win_rate": 0.429
+  },
+  {
+   "year": "2024",
+   "return": -0.4179,
+   "usd_per_session": -37.63,
+   "trades": 20,
+   "win_rate": 0.3
+  },
+  {
+   "year": "2025",
+   "return": 4.7887,
+   "usd_per_session": 203.38,
+   "trades": 20,
+   "win_rate": 0.65
+  },
+  {
+   "year": "2026",
+   "return": 3.9663,
+   "usd_per_session": 260.23,
+   "trades": 10,
+   "win_rate": 0.6
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "SOXL": 58.1,
+   "NVDA.2X": 75.6,
+   "AMD.2X": 64.9,
+   "AVGO.2X": 72.1,
+   "TSM.2X": 37.3,
+   "MU.2X": 60.6
+  },
+  "train": {
+   "SOXL": 88.0,
+   "NVDA.2X": 128.2,
+   "AMD.2X": 88.1,
+   "AVGO.2X": 85.0,
+   "TSM.2X": 71.7,
+   "MU.2X": 90.3
+  },
+  "held_out": {
+   "SOXL": 334.8,
+   "NVDA.2X": 118.1,
+   "AMD.2X": 493.8,
+   "AVGO.2X": 79.1,
+   "TSM.2X": 133.2,
+   "MU.2X": 437.6
+  },
+  "last_12m": {
+   "SOXL": 239.0,
+   "NVDA.2X": 57.1,
+   "AMD.2X": 315.7,
+   "AVGO.2X": 25.3,
+   "TSM.2X": 113.9,
+   "MU.2X": 428.7
+  }
+ },
+ "rank": 22,
+ "name": "SOXL / NVDL / AMDL / AVGX / TSMX / MUU Trend Breakout (bred 7752)",
+ "funds": [
+  "SOXL",
+  "NVDL",
+  "AMDL",
+  "AVGX",
+  "TSMX",
+  "MUU"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.714,
+  "worst_usd_per_session": -300.1,
+  "median_usd_per_session": 98.8
+ }
+}

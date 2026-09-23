@@ -1,0 +1,60 @@
+//@version=6
+// NVDL / AMDL Short-Trend Rider: above a rising 10-day — evotrader genome 9f2e6de0fc56.
+// Leveraged tech strategy 24 of the grind (strategies/etf).
+//
+// Short-Trend Rider 10/0.0
+//
+// Rules, exactly as the engine runs them:
+// BUY when close > sma10 and sma20_slope > 0 and ret5 > 0
+// SELL when close < sma10
+// Risk (checked on the close, filled at the next open): stop 10.00%, no
+// target, no trailing stop, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily NVDL chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 2-fund strategy (NVDL, AMDL): run the script on each fund's chart
+// and hold one position at a time, the first signal wins.
+strategy("NVDL / AMDL Short-Trend Rider: above a rising 10-day [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(10, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_ret5 = close / close[5] - 1
+f_sma10 = ta.sma(close, 10)
+f_sma20 = ta.sma(close, 20)
+f_sma20_slope = f_sma20 / f_sma20[5] - 1
+
+warm = bar_index >= 25
+inPos = strategy.position_size > 0
+buySignal = ((((close > f_sma10) and (f_sma20_slope > 0.0)) and (f_ret5 > 0.0)))
+sellSignal = ((close < f_sma10))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "NVDL / AMDL Short-Trend Rider: above a r: buy at next open", "NVDL / AMDL Short-Trend Rider: above a r: buy {{ticker}} at the next open")
+alertcondition(exitNow, "NVDL / AMDL Short-Trend Rider: above a r: sell at next open", "NVDL / AMDL Short-Trend Rider: above a r: sell {{ticker}} at the next open")

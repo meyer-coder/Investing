@@ -1,0 +1,361 @@
+{
+ "signature": "0ff4cb6ac29b088d",
+ "source": "handbred",
+ "genome": {
+  "id": "6765a13d7e5d",
+  "name": "AMDL / TSMX Quick Dip: 3% dip above the 200-day, 4% target, 10% stop, 4 days max",
+  "thesis": "Quick Dip 0.03/0.04/0.1/200/4",
+  "entry_rules": [
+   {
+    "when": "ret1 < -0.03 and close > sma200",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held >= 4",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.1,
+   "take_profit_pct": 0.04,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790147569.6142042
+ },
+ "symbols": [
+  "AMD.2X",
+  "TSM.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 21.99,
+   "return": 0.4676,
+   "sharpe": 0.39,
+   "max_drawdown": -0.6844,
+   "usd_worst_day": -12119.0,
+   "usd_best_day": 10849.0,
+   "days_in_market": 762,
+   "trades": 176,
+   "win_rate": 0.619,
+   "profit_factor": 1.03,
+   "avg_win": 0.0748,
+   "avg_loss": -0.0978,
+   "avg_hold": 3.4
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 44.22,
+   "return": 6.6922,
+   "sharpe": 0.78,
+   "max_drawdown": -0.5654,
+   "usd_worst_day": -5479.0,
+   "usd_best_day": 5338.0,
+   "days_in_market": 937,
+   "trades": 229,
+   "win_rate": 0.598,
+   "profit_factor": 1.27,
+   "avg_win": 0.0778,
+   "avg_loss": -0.0816,
+   "avg_hold": 3.2
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 328.02,
+   "return": 2.8721,
+   "sharpe": 2.99,
+   "max_drawdown": -0.4177,
+   "usd_worst_day": -4989.0,
+   "usd_best_day": 9175.0,
+   "days_in_market": 97,
+   "trades": 31,
+   "win_rate": 0.742,
+   "profit_factor": 2.27,
+   "avg_win": 0.1054,
+   "avg_loss": -0.1001,
+   "avg_hold": 2.3
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 171.64,
+   "return": 2.5338,
+   "sharpe": 1.78,
+   "max_drawdown": -0.4177,
+   "usd_worst_day": -4989.0,
+   "usd_best_day": 9175.0,
+   "days_in_market": 181,
+   "trades": 56,
+   "win_rate": 0.661,
+   "profit_factor": 1.82,
+   "avg_win": 0.091,
+   "avg_loss": -0.0903,
+   "avg_hold": 2.4
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 36.18,
+   "return": 3.2308,
+   "sharpe": 0.64,
+   "max_drawdown": -0.6593,
+   "usd_worst_day": -5479.0,
+   "usd_best_day": 5338.0,
+   "days_in_market": 942,
+   "trades": 229,
+   "win_rate": 0.594,
+   "profit_factor": 1.19,
+   "avg_win": 0.0764,
+   "avg_loss": -0.0841,
+   "avg_hold": 3.2
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 308.55,
+   "return": 2.5116,
+   "sharpe": 2.81,
+   "max_drawdown": -0.4393,
+   "usd_worst_day": -5053.0,
+   "usd_best_day": 9189.0,
+   "days_in_market": 97,
+   "trades": 31,
+   "win_rate": 0.742,
+   "profit_factor": 2.14,
+   "avg_win": 0.1018,
+   "avg_loss": -0.103,
+   "avg_hold": 2.3
+  }
+ },
+ "real": {
+  "symbols": [
+   "AMDL",
+   "TSMX"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 307.42,
+   "return": 2.5034,
+   "sharpe": 2.82,
+   "max_drawdown": -0.4274,
+   "usd_worst_day": -4900.0,
+   "usd_best_day": 9127.0,
+   "days_in_market": 95,
+   "trades": 30,
+   "win_rate": 0.733,
+   "profit_factor": 2.2,
+   "avg_win": 0.1054,
+   "avg_loss": -0.1005,
+   "avg_hold": 2.4
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 167.92,
+   "return": 2.3963,
+   "sharpe": 1.74,
+   "max_drawdown": -0.4274,
+   "usd_worst_day": -4900.0,
+   "usd_best_day": 9127.0,
+   "days_in_market": 179,
+   "trades": 55,
+   "win_rate": 0.655,
+   "profit_factor": 1.78,
+   "avg_win": 0.093,
+   "avg_loss": -0.0915,
+   "avg_hold": 2.4
+  },
+  "since": "2025-07-23",
+  "life": {
+   "start": "2025-07-23",
+   "end": "2026-09-21",
+   "sessions": 292,
+   "usd_per_session": 158.93,
+   "return": 2.9278,
+   "sharpe": 1.73,
+   "max_drawdown": -0.4274,
+   "usd_worst_day": -4900.0,
+   "usd_best_day": 9127.0,
+   "days_in_market": 204,
+   "trades": 62,
+   "win_rate": 0.661,
+   "profit_factor": 1.76,
+   "avg_win": 0.0926,
+   "avg_loss": -0.0952,
+   "avg_hold": 2.5
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 328.02,
+  "real_held_out_usd": 307.42,
+  "shown": true,
+  "rank_usd": 307.42
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": -0.2905,
+   "usd_per_session": -29.16,
+   "trades": 23,
+   "win_rate": 0.478
+  },
+  {
+   "year": "2013",
+   "return": 1.0614,
+   "usd_per_session": 80.02,
+   "trades": 23,
+   "win_rate": 0.696
+  },
+  {
+   "year": "2014",
+   "return": -0.3659,
+   "usd_per_session": -31.0,
+   "trades": 23,
+   "win_rate": 0.522
+  },
+  {
+   "year": "2015",
+   "return": 0.1467,
+   "usd_per_session": 15.5,
+   "trades": 11,
+   "win_rate": 0.636
+  },
+  {
+   "year": "2016",
+   "return": 2.3831,
+   "usd_per_session": 152.71,
+   "trades": 39,
+   "win_rate": 0.795
+  },
+  {
+   "year": "2017",
+   "return": -0.4724,
+   "usd_per_session": -34.77,
+   "trades": 26,
+   "win_rate": 0.577
+  },
+  {
+   "year": "2018",
+   "return": -0.2268,
+   "usd_per_session": -0.3,
+   "trades": 31,
+   "win_rate": 0.548
+  },
+  {
+   "year": "2019",
+   "return": 0.5272,
+   "usd_per_session": 53.12,
+   "trades": 32,
+   "win_rate": 0.562
+  },
+  {
+   "year": "2020",
+   "return": 0.7044,
+   "usd_per_session": 80.75,
+   "trades": 46,
+   "win_rate": 0.63
+  },
+  {
+   "year": "2021",
+   "return": -0.203,
+   "usd_per_session": -10.17,
+   "trades": 35,
+   "win_rate": 0.486
+  },
+  {
+   "year": "2022",
+   "return": -0.3205,
+   "usd_per_session": -30.61,
+   "trades": 7,
+   "win_rate": 0.429
+  },
+  {
+   "year": "2023",
+   "return": 0.3542,
+   "usd_per_session": 41.47,
+   "trades": 29,
+   "win_rate": 0.621
+  },
+  {
+   "year": "2024",
+   "return": 1.2198,
+   "usd_per_session": 102.89,
+   "trades": 39,
+   "win_rate": 0.641
+  },
+  {
+   "year": "2025",
+   "return": 0.8861,
+   "usd_per_session": 80.24,
+   "trades": 32,
+   "win_rate": 0.688
+  },
+  {
+   "year": "2026",
+   "return": 2.7265,
+   "usd_per_session": 231.27,
+   "trades": 40,
+   "win_rate": 0.7
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "AMD.2X": 64.9,
+   "TSM.2X": 37.3
+  },
+  "train": {
+   "AMD.2X": 88.1,
+   "TSM.2X": 71.7
+  },
+  "held_out": {
+   "AMD.2X": 493.8,
+   "TSM.2X": 133.2
+  },
+  "last_12m": {
+   "AMD.2X": 315.7,
+   "TSM.2X": 113.9
+  }
+ },
+ "rank": 19,
+ "name": "AMDL / TSMX Quick Dip: 3% dip above the 200-day, 4% target, 10% stop, 4 days max",
+ "funds": [
+  "AMDL",
+  "TSMX"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.636,
+  "worst_usd_per_session": -204.6,
+  "median_usd_per_session": 30.8
+ }
+}

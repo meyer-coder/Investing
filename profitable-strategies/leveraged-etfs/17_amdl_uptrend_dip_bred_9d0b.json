@@ -1,0 +1,379 @@
+{
+ "signature": "9d0b9108a6992abb",
+ "source": "run-20260923-044520-8443 gen 28",
+ "genome": {
+  "id": "2369ea72d6cc",
+  "name": "AMDL Uptrend Dip (bred 9D0B)",
+  "thesis": "A big down day closing near its low on volume. Combined with: Two down days in an uptrend, sold on the first green close. Combined with: Two down days in an uptrend, sold on the first green close. Combined with: A big down day closing near its low on volume. Combined with: Two down days in an uptrend, sold on the first green close. Combined with: A big down day closing near its low on volume.",
+  "entry_rules": [
+   {
+    "when": "(ret1 < -0.06 and (close - low) / (high - low + 0.0001) < 0.28 and volume_ratio > 1.71 or cross_below(sma20, sma50)) and ret1 < 0.04 or cross_below(macd, macd_signal)",
+    "weight": 1.0,
+    "note": "archetype"
+   },
+   {
+    "when": "dist_sma200 > -0.2 and rsi14 > 64 and vol_ratio_20_60 < 1.37 and rsi14 < 82 and pct_off_52w_low > 0.4",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "ret1 < 0.03 and prev(ret1) < 0.004 and close > sma50 and rsi7 < 58",
+    "weight": 1.0,
+    "note": "archetype"
+   },
+   {
+    "when": "ret5 < 0.052 and vol_ratio_20_60 > 1.31 and dist_sma200 < -0.24 or atr_pct < 0.0514",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "ret1 > 0.02",
+    "note": "archetype"
+   },
+   {
+    "when": "position_return > 0.04",
+    "note": "archetype"
+   },
+   {
+    "when": "bars_held >= 2",
+    "note": "archetype"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 7,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.1226,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 28,
+  "parents": [
+   "f6abf589a6fc"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790138957.8396943
+ },
+ "symbols": [
+  "AMD.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 59.7,
+   "return": 20.2713,
+   "sharpe": 1.04,
+   "max_drawdown": -0.5938,
+   "usd_worst_day": -4586.0,
+   "usd_best_day": 7307.0,
+   "days_in_market": 793,
+   "trades": 271,
+   "win_rate": 0.631,
+   "profit_factor": 1.68,
+   "avg_win": 0.0667,
+   "avg_loss": -0.0723,
+   "avg_hold": 1.9
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 49.26,
+   "return": 10.7203,
+   "sharpe": 0.88,
+   "max_drawdown": -0.646,
+   "usd_worst_day": -5505.0,
+   "usd_best_day": 10944.0,
+   "days_in_market": 783,
+   "trades": 264,
+   "win_rate": 0.621,
+   "profit_factor": 1.78,
+   "avg_win": 0.0653,
+   "avg_loss": -0.0724,
+   "avg_hold": 2.0
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 311.99,
+   "return": 2.993,
+   "sharpe": 3.58,
+   "max_drawdown": -0.229,
+   "usd_worst_day": -3509.0,
+   "usd_best_day": 7606.0,
+   "days_in_market": 57,
+   "trades": 24,
+   "win_rate": 0.75,
+   "profit_factor": 3.59,
+   "avg_win": 0.1081,
+   "avg_loss": -0.0689,
+   "avg_hold": 1.4
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 251.27,
+   "return": 8.3909,
+   "sharpe": 3.31,
+   "max_drawdown": -0.229,
+   "usd_worst_day": -3509.0,
+   "usd_best_day": 7606.0,
+   "days_in_market": 99,
+   "trades": 39,
+   "win_rate": 0.744,
+   "profit_factor": 3.85,
+   "avg_win": 0.1039,
+   "avg_loss": -0.0556,
+   "avg_hold": 1.5
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 37.58,
+   "return": 4.0355,
+   "sharpe": 0.67,
+   "max_drawdown": -0.6566,
+   "usd_worst_day": -5537.0,
+   "usd_best_day": 10887.0,
+   "days_in_market": 783,
+   "trades": 264,
+   "win_rate": 0.61,
+   "profit_factor": 1.44,
+   "avg_win": 0.0631,
+   "avg_loss": -0.0733,
+   "avg_hold": 2.0
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 323.74,
+   "return": 3.1892,
+   "sharpe": 3.65,
+   "max_drawdown": -0.2175,
+   "usd_worst_day": -5438.0,
+   "usd_best_day": 7554.0,
+   "days_in_market": 57,
+   "trades": 23,
+   "win_rate": 0.783,
+   "profit_factor": 3.62,
+   "avg_win": 0.1108,
+   "avg_loss": -0.0816,
+   "avg_hold": 1.5
+  }
+ },
+ "real": {
+  "symbols": [
+   "AMDL"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 350.23,
+   "return": 3.7709,
+   "sharpe": 3.92,
+   "max_drawdown": -0.2159,
+   "usd_worst_day": -5397.0,
+   "usd_best_day": 7557.0,
+   "days_in_market": 59,
+   "trades": 24,
+   "win_rate": 0.792,
+   "profit_factor": 4.08,
+   "avg_win": 0.1121,
+   "avg_loss": -0.0812,
+   "avg_hold": 1.5
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 244.89,
+   "return": 7.734,
+   "sharpe": 3.2,
+   "max_drawdown": -0.2159,
+   "usd_worst_day": -5397.0,
+   "usd_best_day": 7557.0,
+   "days_in_market": 100,
+   "trades": 38,
+   "win_rate": 0.737,
+   "profit_factor": 4.01,
+   "avg_win": 0.109,
+   "avg_loss": -0.0653,
+   "avg_hold": 1.6
+  },
+  "since": "2025-03-19",
+  "life": {
+   "start": "2025-03-19",
+   "end": "2026-09-21",
+   "sessions": 378,
+   "usd_per_session": 244.37,
+   "return": 24.8031,
+   "sharpe": 3.12,
+   "max_drawdown": -0.2159,
+   "usd_worst_day": -5397.0,
+   "usd_best_day": 10998.0,
+   "days_in_market": 171,
+   "trades": 65,
+   "win_rate": 0.785,
+   "profit_factor": 3.99,
+   "avg_win": 0.0898,
+   "avg_loss": -0.0711,
+   "avg_hold": 1.6
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 311.99,
+  "real_held_out_usd": 350.23,
+  "shown": true,
+  "rank_usd": 311.99
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": 0.3353,
+   "usd_per_session": 39.77,
+   "trades": 30,
+   "win_rate": 0.5
+  },
+  {
+   "year": "2013",
+   "return": 0.2342,
+   "usd_per_session": 34.72,
+   "trades": 32,
+   "win_rate": 0.625
+  },
+  {
+   "year": "2014",
+   "return": 0.0329,
+   "usd_per_session": 13.27,
+   "trades": 41,
+   "win_rate": 0.585
+  },
+  {
+   "year": "2015",
+   "return": -0.1992,
+   "usd_per_session": -8.97,
+   "trades": 32,
+   "win_rate": 0.625
+  },
+  {
+   "year": "2016",
+   "return": 1.7521,
+   "usd_per_session": 135.77,
+   "trades": 58,
+   "win_rate": 0.672
+  },
+  {
+   "year": "2017",
+   "return": 0.2722,
+   "usd_per_session": 36.64,
+   "trades": 35,
+   "win_rate": 0.629
+  },
+  {
+   "year": "2018",
+   "return": 3.4574,
+   "usd_per_session": 166.81,
+   "trades": 43,
+   "win_rate": 0.721
+  },
+  {
+   "year": "2019",
+   "return": 0.3674,
+   "usd_per_session": 42.07,
+   "trades": 43,
+   "win_rate": 0.628
+  },
+  {
+   "year": "2020",
+   "return": 0.0054,
+   "usd_per_session": 27.19,
+   "trades": 43,
+   "win_rate": 0.581
+  },
+  {
+   "year": "2021",
+   "return": -0.013,
+   "usd_per_session": 10.96,
+   "trades": 41,
+   "win_rate": 0.537
+  },
+  {
+   "year": "2022",
+   "return": -0.1447,
+   "usd_per_session": -6.4,
+   "trades": 15,
+   "win_rate": 0.467
+  },
+  {
+   "year": "2023",
+   "return": 1.1667,
+   "usd_per_session": 91.78,
+   "trades": 42,
+   "win_rate": 0.69
+  },
+  {
+   "year": "2024",
+   "return": -0.2769,
+   "usd_per_session": -20.8,
+   "trades": 35,
+   "win_rate": 0.543
+  },
+  {
+   "year": "2025",
+   "return": 2.9377,
+   "usd_per_session": 159.03,
+   "trades": 38,
+   "win_rate": 0.763
+  },
+  {
+   "year": "2026",
+   "return": 5.5362,
+   "usd_per_session": 292.06,
+   "trades": 31,
+   "win_rate": 0.774
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "AMD.2X": 64.9
+  },
+  "train": {
+   "AMD.2X": 88.1
+  },
+  "held_out": {
+   "AMD.2X": 493.8
+  },
+  "last_12m": {
+   "AMD.2X": 315.7
+  }
+ },
+ "rank": 17,
+ "name": "AMDL Uptrend Dip (bred 9D0B)",
+ "funds": [
+  "AMDL"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.649,
+  "worst_usd_per_session": -312.5,
+  "median_usd_per_session": 45.1
+ }
+}

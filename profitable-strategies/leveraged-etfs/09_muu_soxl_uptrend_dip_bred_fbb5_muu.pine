@@ -1,0 +1,79 @@
+//@version=6
+// MUU / SOXL Uptrend Dip (bred FBB5) — evotrader genome 78fb887f75a8.
+// Leveraged tech strategy 9 of the grind (strategies/etf).
+//
+// A strong month, a shallow pause. Combined with: Price stretched below the
+// band snaps back to the mean.
+//
+// Rules, exactly as the engine runs them:
+// BUY when ret20 > 0.24 and ret1 < -0.02 and dist_sma20 > 0
+// BUY when bb_pct < 0.05 and dist_sma200 > -0.1
+// BUY when vol20 < 0.547 and macd_hist < -0.26 and mkt_ret20 < 0.035
+// SELL when bb_pct > 0.75
+// SELL when ret5 < -0.09
+// SELL when portfolio_drawdown > -0.13 and pct_of_52w_high < 0.56
+// Risk (checked on the close, filled at the next open): stop 10.00%, no
+// target, no trailing stop, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily MUU chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 2-fund strategy (MUU, SOXL): run the script on each fund's chart
+// and hold one position at a time, the first signal wins.
+strategy("MUU / SOXL Uptrend Dip (bred FBB5) [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(10, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+var float eqPeak = strategy.initial_capital
+eqPeak := math.max(eqPeak, strategy.equity)
+
+// ---- features (evotrader's definitions)
+[f_macd, f_macd_signal, f_macd_hist] = ta.macd(close, 12, 26, 9)
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_bb_upper = f_sma20 + 2 * f_sd20
+f_bb_lower = f_sma20 - 2 * f_sd20
+f_bb_pct = f_bb_upper - f_bb_lower > 0 ? (close - f_bb_lower) / (f_bb_upper - f_bb_lower) : 0.5
+f_dist_sma20 = close / f_sma20 - 1
+f_sma200 = ta.sma(close, 200)
+f_dist_sma200 = close / f_sma200 - 1
+f_mkt_ret20 = close / close[20] - 1
+f_pct_of_52w_high = close / ta.highest(close, 252)
+f_portfolio_drawdown = math.min(strategy.equity / eqPeak - 1, 0.0)
+f_ret1 = close / close[1] - 1
+f_ret20 = close / close[20] - 1
+f_ret5 = close / close[5] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+
+warm = bar_index >= 252
+inPos = strategy.position_size > 0
+buySignal = ((((f_ret20 > 0.24) and (f_ret1 < (-0.02))) and (f_dist_sma20 > 0.0))) or (((f_bb_pct < 0.05) and (f_dist_sma200 > (-0.1)))) or ((((f_vol20 < 0.547) and (f_macd_hist < (-0.26))) and (f_mkt_ret20 < 0.035)))
+sellSignal = ((f_bb_pct > 0.75)) or ((f_ret5 < (-0.09))) or (((f_portfolio_drawdown > (-0.13)) and (f_pct_of_52w_high < 0.56)))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "MUU / SOXL Uptrend Dip (bred FBB5): buy at next open", "MUU / SOXL Uptrend Dip (bred FBB5): buy {{ticker}} at the next open")
+alertcondition(exitNow, "MUU / SOXL Uptrend Dip (bred FBB5): sell at next open", "MUU / SOXL Uptrend Dip (bred FBB5): sell {{ticker}} at the next open")

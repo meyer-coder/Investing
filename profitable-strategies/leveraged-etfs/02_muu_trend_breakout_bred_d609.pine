@@ -1,0 +1,82 @@
+//@version=6
+// MUU Trend Breakout (bred D609) — evotrader genome 138ace4efe6c.
+// Leveraged tech strategy 2 of the grind (strategies/etf).
+//
+// Buy fear inside an intact uptrend, sell into the bounce. Combined with:
+// MACD histogram turns up above the 200-day. Combined with: Fade one-day
+// overreactions against the prevailing trend. Combined with: Fade one-day
+// overreactions against the prevailing trend. Combined with: MACD histogram
+// turns up above the 200-day.
+//
+// Rules, exactly as the engine runs them:
+// BUY when (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20
+// > 0.515
+// BUY when macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200
+// BUY when cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or
+// cross_above(close, sma200)
+// SELL when bars_held > 10
+// SELL when zscore20 <= -1.05
+// Risk (checked on the close, filled at the next open): stop 8.60%, no
+// target, trailing 14.20%, no max hold, cooldown 3 bars.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily MUU chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+strategy("MUU Trend Breakout (bred D609) [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(8.6, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(14.2, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(3, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var float posPeak = na
+if strategy.position_size > 0
+    posPeak := na(posPeak) or strategy.opentrades.entry_bar_index(0) == bar_index ? math.max(strategy.position_avg_price, close) : math.max(posPeak, close)
+else
+    posPeak := na
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+[f_macd, f_macd_signal, f_macd_hist] = ta.macd(close, 12, 26, 9)
+f_atr14 = ta.atr(14)
+f_atr_pct = f_atr14 / close
+f_bars_held = strategy.position_size > 0 ? bar_index - strategy.opentrades.entry_bar_index(0) : 0
+f_mkt_ret20 = close / close[20] - 1
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_mkt_vol20 = f_vol20
+f_position_drawdown = strategy.position_size > 0 ? math.min(close / posPeak - 1, 0.0) : 0.0
+f_rsi14 = ta.rsi(close, 14)
+f_sma200 = ta.sma(close, 200)
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_zscore20 = f_sd20 > 0 ? (close - f_sma20) / f_sd20 : 0.0
+
+warm = bar_index >= 200
+inPos = strategy.position_size > 0
+buySignal = (((((f_rsi14 >= 39.0) and (close > f_sma200)) or (f_atr_pct < 0.045)) and (f_mkt_vol20 > 0.515))) or ((((f_macd_hist > (-0.05)) and (f_macd_hist[1] <= (-0.02))) and (close > f_sma200))) or ((((f_macd > f_macd_signal and f_macd[1] <= f_macd_signal[1]) and (f_mkt_ret20 < (-0.11))) or (close > f_sma200 and close[1] <= f_sma200[1])))
+sellSignal = ((f_bars_held > 10.0)) or ((f_zscore20 <= (-1.05)))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and f_position_drawdown <= -trailPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "MUU Trend Breakout (bred D609): buy at next open", "MUU Trend Breakout (bred D609): buy {{ticker}} at the next open")
+alertcondition(exitNow, "MUU Trend Breakout (bred D609): sell at next open", "MUU Trend Breakout (bred D609): sell {{ticker}} at the next open")

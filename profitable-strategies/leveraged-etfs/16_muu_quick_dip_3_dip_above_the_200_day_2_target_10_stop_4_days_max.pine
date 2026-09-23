@@ -1,0 +1,57 @@
+//@version=6
+// MUU Quick Dip: 3% dip above the 200-day, 2% target, 10% stop, 4 days max — evotrader genome 961aa9997ec7.
+// Leveraged tech strategy 16 of the grind (strategies/etf).
+//
+// Quick Dip 0.03/0.02/0.1/200/4
+//
+// Rules, exactly as the engine runs them:
+// BUY when ret1 < -0.03 and close > sma200
+// SELL when bars_held >= 4
+// Risk (checked on the close, filled at the next open): stop 10.00%, target
+// 2.00%, no trailing stop, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily MUU chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+strategy("MUU Quick Dip: 3% dip above the 200-day, 2% target, 10% stop [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(10, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(2, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_bars_held = strategy.position_size > 0 ? bar_index - strategy.opentrades.entry_bar_index(0) : 0
+f_ret1 = close / close[1] - 1
+f_sma200 = ta.sma(close, 200)
+
+warm = bar_index >= 200
+inPos = strategy.position_size > 0
+buySignal = (((f_ret1 < (-0.03)) and (close > f_sma200)))
+sellSignal = ((f_bars_held >= 4.0))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "MUU Quick Dip: 3% dip above the 200-day,: buy at next open", "MUU Quick Dip: 3% dip above the 200-day,: buy {{ticker}} at the next open")
+alertcondition(exitNow, "MUU Quick Dip: 3% dip above the 200-day,: sell at next open", "MUU Quick Dip: 3% dip above the 200-day,: sell {{ticker}} at the next open")

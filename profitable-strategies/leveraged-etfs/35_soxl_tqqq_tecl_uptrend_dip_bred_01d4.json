@@ -1,0 +1,327 @@
+{
+ "signature": "01d4b909c2f8c1e7",
+ "source": "run-20260923-045510-7737 gen 12",
+ "genome": {
+  "id": "2f4135836c7b",
+  "name": "SOXL / TQQQ / TECL Uptrend Dip (bred 01D4)",
+  "thesis": "A hard down day inside an uptrend, sold into the bounce. Combined with: Two down days in an uptrend, sold on the first green close. Combined with: Buy shallow pullbacks to the 20-day inside an uptrend.",
+  "entry_rules": [
+   {
+    "when": "dist_sma20 < -0.054 and cross_above(close, sma200)",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "dist_sma20 < -0.02 and sma20 > sma50 and sma50 > sma200 or ret1 < -0.01 or vol_ratio_20_60 < 0.66",
+    "weight": 1.0,
+    "note": "archetype"
+   },
+   {
+    "when": "macd_hist > 1.7",
+    "weight": 1.0,
+    "note": "archetype"
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "ret1 > 0.02",
+    "note": "archetype"
+   },
+   {
+    "when": "close < sma50",
+    "note": "archetype"
+   },
+   {
+    "when": "mkt_vol20 < 0.38 and cross_below(close, bb_lower)",
+    "note": "mutation: new exit"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 5,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.16,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 12,
+  "parents": [
+   "ca96f7d608ff"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790139712.4030666
+ },
+ "symbols": [
+  "SOXL",
+  "TQQQ",
+  "TECL"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 25.17,
+   "return": 1.5965,
+   "sharpe": 0.53,
+   "max_drawdown": -0.667,
+   "usd_worst_day": -3929.0,
+   "usd_best_day": 4737.0,
+   "days_in_market": 1411,
+   "trades": 610,
+   "win_rate": 0.564,
+   "profit_factor": 1.05,
+   "avg_win": 0.0398,
+   "avg_loss": -0.0452,
+   "avg_hold": 2.1
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 92.02,
+   "return": 101.1702,
+   "sharpe": 1.22,
+   "max_drawdown": -0.6537,
+   "usd_worst_day": -7387.0,
+   "usd_best_day": 12617.0,
+   "days_in_market": 1463,
+   "trades": 743,
+   "win_rate": 0.596,
+   "profit_factor": 1.45,
+   "avg_win": 0.0526,
+   "avg_loss": -0.0569,
+   "avg_hold": 1.6
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 253.68,
+   "return": 1.6437,
+   "sharpe": 2.3,
+   "max_drawdown": -0.4467,
+   "usd_worst_day": -5145.0,
+   "usd_best_day": 5998.0,
+   "days_in_market": 115,
+   "trades": 84,
+   "win_rate": 0.571,
+   "profit_factor": 1.35,
+   "avg_win": 0.0687,
+   "avg_loss": -0.0584,
+   "avg_hold": 1.3
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 212.18,
+   "return": 4.2191,
+   "sharpe": 2.19,
+   "max_drawdown": -0.4467,
+   "usd_worst_day": -5145.0,
+   "usd_best_day": 5998.0,
+   "days_in_market": 220,
+   "trades": 135,
+   "win_rate": 0.585,
+   "profit_factor": 1.4,
+   "avg_win": 0.0642,
+   "avg_loss": -0.0546,
+   "avg_hold": 1.4
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 61.67,
+   "return": 10.4502,
+   "sharpe": 0.82,
+   "max_drawdown": -0.7872,
+   "usd_worst_day": -7418.0,
+   "usd_best_day": 12557.0,
+   "days_in_market": 1463,
+   "trades": 733,
+   "win_rate": 0.57,
+   "profit_factor": 1.16,
+   "avg_win": 0.0521,
+   "avg_loss": -0.0563,
+   "avg_hold": 1.6
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 205.83,
+   "return": 1.0818,
+   "sharpe": 1.87,
+   "max_drawdown": -0.4758,
+   "usd_worst_day": -5141.0,
+   "usd_best_day": 5998.0,
+   "days_in_market": 115,
+   "trades": 84,
+   "win_rate": 0.548,
+   "profit_factor": 1.25,
+   "avg_win": 0.0681,
+   "avg_loss": -0.0582,
+   "avg_hold": 1.3
+  }
+ },
+ "real": null,
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 253.68,
+  "real_held_out_usd": null,
+  "shown": true,
+  "rank_usd": 253.68
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": -0.037,
+   "usd_per_session": 7.64,
+   "trades": 100,
+   "win_rate": 0.53
+  },
+  {
+   "year": "2013",
+   "return": 0.7961,
+   "usd_per_session": 64.39,
+   "trades": 69,
+   "win_rate": 0.667
+  },
+  {
+   "year": "2014",
+   "return": 0.2307,
+   "usd_per_session": 28.27,
+   "trades": 83,
+   "win_rate": 0.602
+  },
+  {
+   "year": "2015",
+   "return": 0.1706,
+   "usd_per_session": 29.87,
+   "trades": 107,
+   "win_rate": 0.561
+  },
+  {
+   "year": "2016",
+   "return": 0.0097,
+   "usd_per_session": 12.37,
+   "trades": 81,
+   "win_rate": 0.543
+  },
+  {
+   "year": "2017",
+   "return": 1.0744,
+   "usd_per_session": 79.26,
+   "trades": 60,
+   "win_rate": 0.65
+  },
+  {
+   "year": "2018",
+   "return": -0.5026,
+   "usd_per_session": -45.88,
+   "trades": 110,
+   "win_rate": 0.473
+  },
+  {
+   "year": "2019",
+   "return": 1.4719,
+   "usd_per_session": 103.89,
+   "trades": 91,
+   "win_rate": 0.659
+  },
+  {
+   "year": "2020",
+   "return": 3.3021,
+   "usd_per_session": 197.56,
+   "trades": 110,
+   "win_rate": 0.682
+  },
+  {
+   "year": "2021",
+   "return": 0.2406,
+   "usd_per_session": 39.85,
+   "trades": 101,
+   "win_rate": 0.554
+  },
+  {
+   "year": "2022",
+   "return": -0.351,
+   "usd_per_session": -6.9,
+   "trades": 121,
+   "win_rate": 0.504
+  },
+  {
+   "year": "2023",
+   "return": 0.987,
+   "usd_per_session": 85.22,
+   "trades": 85,
+   "win_rate": 0.588
+  },
+  {
+   "year": "2024",
+   "return": -0.0891,
+   "usd_per_session": 13.51,
+   "trades": 101,
+   "win_rate": 0.584
+  },
+  {
+   "year": "2025",
+   "return": 2.568,
+   "usd_per_session": 161.14,
+   "trades": 111,
+   "win_rate": 0.595
+  },
+  {
+   "year": "2026",
+   "return": 3.8845,
+   "usd_per_session": 274.54,
+   "trades": 107,
+   "win_rate": 0.598
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "SOXL": 58.1,
+   "TQQQ": 47.8,
+   "TECL": 42.7
+  },
+  "train": {
+   "SOXL": 88.0,
+   "TQQQ": 56.8,
+   "TECL": 64.9
+  },
+  "held_out": {
+   "SOXL": 334.8,
+   "TQQQ": 143.1,
+   "TECL": 222.9
+  },
+  "last_12m": {
+   "SOXL": 239.0,
+   "TQQQ": 60.6,
+   "TECL": 102.1
+  }
+ },
+ "rank": 35,
+ "name": "SOXL / TQQQ / TECL Uptrend Dip (bred 01D4)",
+ "funds": [
+  "SOXL",
+  "TQQQ",
+  "TECL"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.736,
+  "worst_usd_per_session": -230.5,
+  "median_usd_per_session": 87.5
+ }
+}

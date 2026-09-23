@@ -1,0 +1,354 @@
+{
+ "signature": "2f9d5165256dc9ee",
+ "source": "handbred",
+ "genome": {
+  "id": "961aa9997ec7",
+  "name": "MUU Quick Dip: 3% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "thesis": "Quick Dip 0.03/0.02/0.1/200/4",
+  "entry_rules": [
+   {
+    "when": "ret1 < -0.03 and close > sma200",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held >= 4",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.1,
+   "take_profit_pct": 0.02,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790145398.9396071
+ },
+ "symbols": [
+  "MU.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 26.6,
+   "return": 2.9936,
+   "sharpe": 0.72,
+   "max_drawdown": -0.3994,
+   "usd_worst_day": -4376.0,
+   "usd_best_day": 5659.0,
+   "days_in_market": 452,
+   "trades": 130,
+   "win_rate": 0.677,
+   "profit_factor": 1.21,
+   "avg_win": 0.0608,
+   "avg_loss": -0.0838,
+   "avg_hold": 2.5
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 37.1,
+   "return": 6.8572,
+   "sharpe": 0.88,
+   "max_drawdown": -0.5169,
+   "usd_worst_day": -5347.0,
+   "usd_best_day": 8866.0,
+   "days_in_market": 450,
+   "trades": 135,
+   "win_rate": 0.674,
+   "profit_factor": 1.7,
+   "avg_win": 0.0755,
+   "avg_loss": -0.0917,
+   "avg_hold": 2.3
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 314.74,
+   "return": 2.4866,
+   "sharpe": 2.7,
+   "max_drawdown": -0.3267,
+   "usd_worst_day": -4527.0,
+   "usd_best_day": 7863.0,
+   "days_in_market": 72,
+   "trades": 26,
+   "win_rate": 0.654,
+   "profit_factor": 1.95,
+   "avg_win": 0.1565,
+   "avg_loss": -0.1281,
+   "avg_hold": 1.8
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 286.19,
+   "return": 9.4071,
+   "sharpe": 2.78,
+   "max_drawdown": -0.3267,
+   "usd_worst_day": -4527.0,
+   "usd_best_day": 7863.0,
+   "days_in_market": 140,
+   "trades": 50,
+   "win_rate": 0.72,
+   "profit_factor": 2.05,
+   "avg_win": 0.1304,
+   "avg_loss": -0.1287,
+   "avg_hold": 1.8
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 31.09,
+   "return": 4.0928,
+   "sharpe": 0.74,
+   "max_drawdown": -0.5569,
+   "usd_worst_day": -5347.0,
+   "usd_best_day": 8812.0,
+   "days_in_market": 450,
+   "trades": 135,
+   "win_rate": 0.674,
+   "profit_factor": 1.54,
+   "avg_win": 0.0721,
+   "avg_loss": -0.0946,
+   "avg_hold": 2.3
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 298.08,
+   "return": 2.2134,
+   "sharpe": 2.57,
+   "max_drawdown": -0.332,
+   "usd_worst_day": -4560.0,
+   "usd_best_day": 7863.0,
+   "days_in_market": 72,
+   "trades": 26,
+   "win_rate": 0.654,
+   "profit_factor": 1.86,
+   "avg_win": 0.1528,
+   "avg_loss": -0.1309,
+   "avg_hold": 1.8
+  }
+ },
+ "real": {
+  "symbols": [
+   "MUU"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 316.61,
+   "return": 2.571,
+   "sharpe": 2.79,
+   "max_drawdown": -0.3243,
+   "usd_worst_day": -4487.0,
+   "usd_best_day": 7768.0,
+   "days_in_market": 70,
+   "trades": 27,
+   "win_rate": 0.667,
+   "profit_factor": 1.98,
+   "avg_win": 0.1485,
+   "avg_loss": -0.1273,
+   "avg_hold": 1.6
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 257.33,
+   "return": 6.5983,
+   "sharpe": 2.45,
+   "max_drawdown": -0.3816,
+   "usd_worst_day": -6213.0,
+   "usd_best_day": 7768.0,
+   "days_in_market": 138,
+   "trades": 51,
+   "win_rate": 0.706,
+   "profit_factor": 1.97,
+   "avg_win": 0.1284,
+   "avg_loss": -0.1347,
+   "avg_hold": 1.7
+  },
+  "since": "2025-07-30",
+  "life": {
+   "start": "2025-07-30",
+   "end": "2026-09-21",
+   "sessions": 287,
+   "usd_per_session": 234.69,
+   "return": 7.4484,
+   "sharpe": 2.38,
+   "max_drawdown": -0.3816,
+   "usd_worst_day": -6213.0,
+   "usd_best_day": 7768.0,
+   "days_in_market": 150,
+   "trades": 55,
+   "win_rate": 0.709,
+   "profit_factor": 1.99,
+   "avg_win": 0.1215,
+   "avg_loss": -0.1267,
+   "avg_hold": 1.7
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 314.74,
+  "real_held_out_usd": 316.61,
+  "shown": true,
+  "rank_usd": 314.74
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": 0.1534,
+   "usd_per_session": 17.62,
+   "trades": 8,
+   "win_rate": 0.75
+  },
+  {
+   "year": "2013",
+   "return": 1.247,
+   "usd_per_session": 88.7,
+   "trades": 29,
+   "win_rate": 0.793
+  },
+  {
+   "year": "2014",
+   "return": 0.4835,
+   "usd_per_session": 51.86,
+   "trades": 31,
+   "win_rate": 0.677
+  },
+  {
+   "year": "2015",
+   "return": -0.0914,
+   "usd_per_session": -9.08,
+   "trades": 1,
+   "win_rate": 0.0
+  },
+  {
+   "year": "2016",
+   "return": 0.1232,
+   "usd_per_session": 14.34,
+   "trades": 13,
+   "win_rate": 0.769
+  },
+  {
+   "year": "2017",
+   "return": 0.1644,
+   "usd_per_session": 25.47,
+   "trades": 26,
+   "win_rate": 0.692
+  },
+  {
+   "year": "2018",
+   "return": -0.1259,
+   "usd_per_session": -2.95,
+   "trades": 22,
+   "win_rate": 0.455
+  },
+  {
+   "year": "2019",
+   "return": -0.0063,
+   "usd_per_session": 3.98,
+   "trades": 14,
+   "win_rate": 0.571
+  },
+  {
+   "year": "2020",
+   "return": 0.2909,
+   "usd_per_session": 32.63,
+   "trades": 13,
+   "win_rate": 0.846
+  },
+  {
+   "year": "2021",
+   "return": 0.8294,
+   "usd_per_session": 68.49,
+   "trades": 30,
+   "win_rate": 0.667
+  },
+  {
+   "year": "2022",
+   "return": -0.3527,
+   "usd_per_session": -39.32,
+   "trades": 6,
+   "win_rate": 0.5
+  },
+  {
+   "year": "2023",
+   "return": 0.0442,
+   "usd_per_session": 9.19,
+   "trades": 18,
+   "win_rate": 0.5
+  },
+  {
+   "year": "2024",
+   "return": 0.8171,
+   "usd_per_session": 71.49,
+   "trades": 22,
+   "win_rate": 0.727
+  },
+  {
+   "year": "2025",
+   "return": 0.3816,
+   "usd_per_session": 42.7,
+   "trades": 20,
+   "win_rate": 0.7
+  },
+  {
+   "year": "2026",
+   "return": 5.88,
+   "usd_per_session": 329.6,
+   "trades": 38,
+   "win_rate": 0.711
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "MU.2X": 60.6
+  },
+  "train": {
+   "MU.2X": 90.3
+  },
+  "held_out": {
+   "MU.2X": 437.6
+  },
+  "last_12m": {
+   "MU.2X": 428.7
+  }
+ },
+ "rank": 16,
+ "name": "MUU Quick Dip: 3% dip above the 200-day, 2% target, 10% stop, 4 days max",
+ "funds": [
+  "MUU"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.436,
+  "worst_usd_per_session": -193.7,
+  "median_usd_per_session": 0.0
+ }
+}

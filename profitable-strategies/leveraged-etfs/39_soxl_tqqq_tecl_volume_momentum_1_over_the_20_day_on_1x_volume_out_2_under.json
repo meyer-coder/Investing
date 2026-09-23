@@ -1,0 +1,311 @@
+{
+ "signature": "ca6d2e39e8ef92f7",
+ "source": "handbred",
+ "genome": {
+  "id": "63aa1179fa7d",
+  "name": "SOXL / TQQQ / TECL Volume Momentum: 1% over the 20-day on 1x volume, out 2% under",
+  "thesis": "Volume Momentum in a Bull Regime 0.01/1.0/0.02",
+  "entry_rules": [
+   {
+    "when": "mkt_above_sma200 == 1 and dist_sma20 > 0.01 and volume_ratio > 1.0",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "dist_sma20 < -0.02",
+    "note": ""
+   },
+   {
+    "when": "mkt_above_sma200 == 0",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.12,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 5
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790141386.6623821
+ },
+ "symbols": [
+  "SOXL",
+  "TQQQ",
+  "TECL"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 12.59,
+   "return": 0.6505,
+   "sharpe": 0.38,
+   "max_drawdown": -0.6828,
+   "usd_worst_day": -3425.0,
+   "usd_best_day": 2919.0,
+   "days_in_market": 1123,
+   "trades": 64,
+   "win_rate": 0.422,
+   "profit_factor": 1.21,
+   "avg_win": 0.1127,
+   "avg_loss": -0.0591,
+   "avg_hold": 16.6
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 25.44,
+   "return": 1.709,
+   "sharpe": 0.53,
+   "max_drawdown": -0.6303,
+   "usd_worst_day": -5812.0,
+   "usd_best_day": 3204.0,
+   "days_in_market": 961,
+   "trades": 56,
+   "win_rate": 0.446,
+   "profit_factor": 1.18,
+   "avg_win": 0.1578,
+   "avg_loss": -0.0753,
+   "avg_hold": 16.4
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 236.52,
+   "return": 1.649,
+   "sharpe": 2.6,
+   "max_drawdown": -0.3614,
+   "usd_worst_day": -7628.0,
+   "usd_best_day": 4622.0,
+   "days_in_market": 62,
+   "trades": 3,
+   "win_rate": 0.333,
+   "profit_factor": 4.77,
+   "avg_win": 2.087,
+   "avg_loss": -0.0734,
+   "avg_hold": 19.7
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 116.27,
+   "return": 1.269,
+   "sharpe": 1.42,
+   "max_drawdown": -0.4346,
+   "usd_worst_day": -7628.0,
+   "usd_best_day": 4622.0,
+   "days_in_market": 140,
+   "trades": 9,
+   "win_rate": 0.444,
+   "profit_factor": 2.88,
+   "avg_win": 0.6144,
+   "avg_loss": -0.0966,
+   "avg_hold": 15.4
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 22.97,
+   "return": 1.265,
+   "sharpe": 0.48,
+   "max_drawdown": -0.6521,
+   "usd_worst_day": -5812.0,
+   "usd_best_day": 3204.0,
+   "days_in_market": 961,
+   "trades": 56,
+   "win_rate": 0.446,
+   "profit_factor": 1.15,
+   "avg_win": 0.1541,
+   "avg_loss": -0.0783,
+   "avg_hold": 16.4
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 234.55,
+   "return": 1.6237,
+   "sharpe": 2.58,
+   "max_drawdown": -0.3655,
+   "usd_worst_day": -7628.0,
+   "usd_best_day": 4622.0,
+   "days_in_market": 62,
+   "trades": 3,
+   "win_rate": 0.333,
+   "profit_factor": 4.58,
+   "avg_win": 2.0771,
+   "avg_loss": -0.0764,
+   "avg_hold": 19.7
+  }
+ },
+ "real": null,
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 236.52,
+  "real_held_out_usd": null,
+  "shown": true,
+  "rank_usd": 236.52
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": 0.0793,
+   "usd_per_session": 12.6,
+   "trades": 7,
+   "win_rate": 0.714
+  },
+  {
+   "year": "2013",
+   "return": 0.4311,
+   "usd_per_session": 41.18,
+   "trades": 10,
+   "win_rate": 0.4
+  },
+  {
+   "year": "2014",
+   "return": 0.3824,
+   "usd_per_session": 38.52,
+   "trades": 9,
+   "win_rate": 0.556
+  },
+  {
+   "year": "2015",
+   "return": -0.4813,
+   "usd_per_session": -58.28,
+   "trades": 12,
+   "win_rate": 0.167
+  },
+  {
+   "year": "2016",
+   "return": -0.1899,
+   "usd_per_session": -16.36,
+   "trades": 11,
+   "win_rate": 0.182
+  },
+  {
+   "year": "2017",
+   "return": 0.6938,
+   "usd_per_session": 57.62,
+   "trades": 8,
+   "win_rate": 0.625
+  },
+  {
+   "year": "2018",
+   "return": 0.0861,
+   "usd_per_session": 13.02,
+   "trades": 7,
+   "win_rate": 0.571
+  },
+  {
+   "year": "2019",
+   "return": 0.9913,
+   "usd_per_session": 76.84,
+   "trades": 4,
+   "win_rate": 1.0
+  },
+  {
+   "year": "2020",
+   "return": 1.0149,
+   "usd_per_session": 86.99,
+   "trades": 5,
+   "win_rate": 0.8
+  },
+  {
+   "year": "2021",
+   "return": -0.1275,
+   "usd_per_session": 1.34,
+   "trades": 13,
+   "win_rate": 0.462
+  },
+  {
+   "year": "2022",
+   "return": -0.1193,
+   "usd_per_session": -12.08,
+   "trades": 1,
+   "win_rate": 0.0
+  },
+  {
+   "year": "2023",
+   "return": 0.409,
+   "usd_per_session": 42.99,
+   "trades": 7,
+   "win_rate": 0.143
+  },
+  {
+   "year": "2024",
+   "return": 0.1057,
+   "usd_per_session": 24.02,
+   "trades": 11,
+   "win_rate": 0.545
+  },
+  {
+   "year": "2025",
+   "return": -0.3657,
+   "usd_per_session": -32.33,
+   "trades": 13,
+   "win_rate": 0.231
+  },
+  {
+   "year": "2026",
+   "return": 1.3554,
+   "usd_per_session": 158.65,
+   "trades": 5,
+   "win_rate": 0.4
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "SOXL": 58.1,
+   "TQQQ": 47.8,
+   "TECL": 42.7
+  },
+  "train": {
+   "SOXL": 88.0,
+   "TQQQ": 56.8,
+   "TECL": 64.9
+  },
+  "held_out": {
+   "SOXL": 334.8,
+   "TQQQ": 143.1,
+   "TECL": 222.9
+  },
+  "last_12m": {
+   "SOXL": 239.0,
+   "TQQQ": 60.6,
+   "TECL": 102.1
+  }
+ },
+ "rank": 39,
+ "name": "SOXL / TQQQ / TECL Volume Momentum: 1% over the 20-day on 1x volume, out 2% under",
+ "funds": [
+  "SOXL",
+  "TQQQ",
+  "TECL"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.605,
+  "worst_usd_per_session": -229.7,
+  "median_usd_per_session": 30.5
+ }
+}

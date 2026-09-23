@@ -1,0 +1,368 @@
+{
+ "signature": "d29d1e334c4399d0",
+ "source": "handbred",
+ "genome": {
+  "id": "3dff021fa3c6",
+  "name": "AMDL / NVDL / MUU Momentum Burst: 20-day gain over 25%, out under the 10-day",
+  "thesis": "Momentum Burst 0.25/10",
+  "entry_rules": [
+   {
+    "when": "ret20 > 0.25 and close > sma10",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "close < sma10",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.1,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.15,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790141003.0631614
+ },
+ "symbols": [
+  "AMD.2X",
+  "NVDA.2X",
+  "MU.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 44.58,
+   "return": 5.4717,
+   "sharpe": 0.75,
+   "max_drawdown": -0.5786,
+   "usd_worst_day": -6577.0,
+   "usd_best_day": 7292.0,
+   "days_in_market": 892,
+   "trades": 107,
+   "win_rate": 0.327,
+   "profit_factor": 1.56,
+   "avg_win": 0.2494,
+   "avg_loss": -0.0674,
+   "avg_hold": 7.6
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 44.46,
+   "return": 5.1404,
+   "sharpe": 0.71,
+   "max_drawdown": -0.6176,
+   "usd_worst_day": -5112.0,
+   "usd_best_day": 6267.0,
+   "days_in_market": 904,
+   "trades": 114,
+   "win_rate": 0.439,
+   "profit_factor": 1.44,
+   "avg_win": 0.1606,
+   "avg_loss": -0.0739,
+   "avg_hold": 7.1
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 272.6,
+   "return": 1.6579,
+   "sharpe": 2.16,
+   "max_drawdown": -0.5077,
+   "usd_worst_day": -6177.0,
+   "usd_best_day": 9299.0,
+   "days_in_market": 73,
+   "trades": 13,
+   "win_rate": 0.385,
+   "profit_factor": 1.6,
+   "avg_win": 0.6103,
+   "avg_loss": -0.1113,
+   "avg_hold": 5.0
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 204.58,
+   "return": 3.0713,
+   "sharpe": 1.78,
+   "max_drawdown": -0.5219,
+   "usd_worst_day": -6177.0,
+   "usd_best_day": 9299.0,
+   "days_in_market": 160,
+   "trades": 22,
+   "win_rate": 0.455,
+   "profit_factor": 1.78,
+   "avg_win": 0.4903,
+   "avg_loss": -0.1079,
+   "avg_hold": 7.0
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 39.42,
+   "return": 3.2609,
+   "sharpe": 0.63,
+   "max_drawdown": -0.6671,
+   "usd_worst_day": -5112.0,
+   "usd_best_day": 6267.0,
+   "days_in_market": 904,
+   "trades": 114,
+   "win_rate": 0.43,
+   "profit_factor": 1.35,
+   "avg_win": 0.1602,
+   "avg_loss": -0.0758,
+   "avg_hold": 7.1
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 264.68,
+   "return": 1.5535,
+   "sharpe": 2.09,
+   "max_drawdown": -0.52,
+   "usd_worst_day": -6184.0,
+   "usd_best_day": 9299.0,
+   "days_in_market": 73,
+   "trades": 13,
+   "win_rate": 0.308,
+   "profit_factor": 1.55,
+   "avg_win": 0.7566,
+   "avg_loss": -0.1015,
+   "avg_hold": 5.0
+  }
+ },
+ "real": {
+  "symbols": [
+   "AMDL",
+   "NVDL",
+   "MUU"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 276.14,
+   "return": 1.7638,
+   "sharpe": 2.24,
+   "max_drawdown": -0.4752,
+   "usd_worst_day": -6137.0,
+   "usd_best_day": 9242.0,
+   "days_in_market": 67,
+   "trades": 12,
+   "win_rate": 0.417,
+   "profit_factor": 1.7,
+   "avg_win": 0.6044,
+   "avg_loss": -0.1187,
+   "avg_hold": 5.0
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 206.41,
+   "return": 3.2362,
+   "sharpe": 1.83,
+   "max_drawdown": -0.5246,
+   "usd_worst_day": -6137.0,
+   "usd_best_day": 9242.0,
+   "days_in_market": 154,
+   "trades": 21,
+   "win_rate": 0.476,
+   "profit_factor": 1.87,
+   "avg_win": 0.4872,
+   "avg_loss": -0.1121,
+   "avg_hold": 7.0
+  },
+  "since": "2024-11-07",
+  "life": {
+   "start": "2024-11-07",
+   "end": "2026-09-21",
+   "sessions": 466,
+   "usd_per_session": 142.9,
+   "return": 5.7905,
+   "sharpe": 1.58,
+   "max_drawdown": -0.5246,
+   "usd_worst_day": -6137.0,
+   "usd_best_day": 9242.0,
+   "days_in_market": 238,
+   "trades": 33,
+   "win_rate": 0.515,
+   "profit_factor": 1.8,
+   "avg_win": 0.3234,
+   "avg_loss": -0.1108,
+   "avg_hold": 6.5
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 272.6,
+  "real_held_out_usd": 276.14,
+  "shown": true,
+  "rank_usd": 272.6
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": -0.2796,
+   "usd_per_session": -24.28,
+   "trades": 10,
+   "win_rate": 0.3
+  },
+  {
+   "year": "2013",
+   "return": 1.423,
+   "usd_per_session": 115.6,
+   "trades": 12,
+   "win_rate": 0.583
+  },
+  {
+   "year": "2014",
+   "return": 0.1093,
+   "usd_per_session": 17.02,
+   "trades": 13,
+   "win_rate": 0.385
+  },
+  {
+   "year": "2015",
+   "return": 0.09,
+   "usd_per_session": 18.03,
+   "trades": 16,
+   "win_rate": 0.125
+  },
+  {
+   "year": "2016",
+   "return": -0.1321,
+   "usd_per_session": 13.66,
+   "trades": 27,
+   "win_rate": 0.333
+  },
+  {
+   "year": "2017",
+   "return": -0.1617,
+   "usd_per_session": 0.66,
+   "trades": 20,
+   "win_rate": 0.25
+  },
+  {
+   "year": "2018",
+   "return": 3.2144,
+   "usd_per_session": 170.9,
+   "trades": 9,
+   "win_rate": 0.444
+  },
+  {
+   "year": "2019",
+   "return": 0.2325,
+   "usd_per_session": 32.34,
+   "trades": 13,
+   "win_rate": 0.538
+  },
+  {
+   "year": "2020",
+   "return": 1.0392,
+   "usd_per_session": 97.55,
+   "trades": 20,
+   "win_rate": 0.45
+  },
+  {
+   "year": "2021",
+   "return": 0.6459,
+   "usd_per_session": 64.49,
+   "trades": 14,
+   "win_rate": 0.357
+  },
+  {
+   "year": "2022",
+   "return": -0.3023,
+   "usd_per_session": -21.67,
+   "trades": 16,
+   "win_rate": 0.312
+  },
+  {
+   "year": "2023",
+   "return": 0.0119,
+   "usd_per_session": 17.08,
+   "trades": 15,
+   "win_rate": 0.467
+  },
+  {
+   "year": "2024",
+   "return": -0.1816,
+   "usd_per_session": 0.01,
+   "trades": 16,
+   "win_rate": 0.312
+  },
+  {
+   "year": "2025",
+   "return": 1.4025,
+   "usd_per_session": 110.57,
+   "trades": 17,
+   "win_rate": 0.647
+  },
+  {
+   "year": "2026",
+   "return": 1.8426,
+   "usd_per_session": 219.14,
+   "trades": 16,
+   "win_rate": 0.375
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "AMD.2X": 64.9,
+   "NVDA.2X": 75.6,
+   "MU.2X": 60.6
+  },
+  "train": {
+   "AMD.2X": 88.1,
+   "NVDA.2X": 128.2,
+   "MU.2X": 90.3
+  },
+  "held_out": {
+   "AMD.2X": 493.8,
+   "NVDA.2X": 118.1,
+   "MU.2X": 437.6
+  },
+  "last_12m": {
+   "AMD.2X": 315.7,
+   "NVDA.2X": 57.1,
+   "MU.2X": 428.7
+  }
+ },
+ "rank": 29,
+ "name": "AMDL / NVDL / MUU Momentum Burst: 20-day gain over 25%, out under the 10-day",
+ "funds": [
+  "AMDL",
+  "NVDL",
+  "MUU"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.621,
+  "worst_usd_per_session": -209.3,
+  "median_usd_per_session": 35.5
+ }
+}

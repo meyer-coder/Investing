@@ -1,0 +1,389 @@
+{
+ "signature": "3a389c4df086f0e4",
+ "source": "handbred",
+ "genome": {
+  "id": "14d16c132e1c",
+  "name": "SOXL / NVDL / AMDL / AVGX / TSMX / MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "thesis": "Quick Dip 0.02/0.02/0.1/200/4",
+  "entry_rules": [
+   {
+    "when": "ret1 < -0.02 and close > sma200",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held >= 4",
+    "note": ""
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.1,
+   "take_profit_pct": 0.02,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 0,
+  "parents": [],
+  "origin": "seed",
+  "rationale": "",
+  "created_at": 1790148639.456651
+ },
+ "symbols": [
+  "SOXL",
+  "NVDA.2X",
+  "AMD.2X",
+  "AVGO.2X",
+  "TSM.2X",
+  "MU.2X"
+ ],
+ "windows": {
+  "older": {
+   "start": "2012-01-03",
+   "end": "2018-12-31",
+   "sessions": 1759,
+   "usd_per_session": 60.01,
+   "return": 14.052,
+   "sharpe": 0.91,
+   "max_drawdown": -0.6542,
+   "usd_worst_day": -6941.0,
+   "usd_best_day": 10607.0,
+   "days_in_market": 1317,
+   "trades": 382,
+   "win_rate": 0.66,
+   "profit_factor": 1.17,
+   "avg_win": 0.0591,
+   "avg_loss": -0.0821,
+   "avg_hold": 2.8
+  },
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 67.67,
+   "return": 25.4419,
+   "sharpe": 1.01,
+   "max_drawdown": -0.5372,
+   "usd_worst_day": -5918.0,
+   "usd_best_day": 5783.0,
+   "days_in_market": 1320,
+   "trades": 392,
+   "win_rate": 0.661,
+   "profit_factor": 1.28,
+   "avg_win": 0.0607,
+   "avg_loss": -0.0818,
+   "avg_hold": 2.7
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 265.77,
+   "return": 1.7354,
+   "sharpe": 2.33,
+   "max_drawdown": -0.5052,
+   "usd_worst_day": -4976.0,
+   "usd_best_day": 6200.0,
+   "days_in_market": 112,
+   "trades": 41,
+   "win_rate": 0.683,
+   "profit_factor": 1.77,
+   "avg_win": 0.0967,
+   "avg_loss": -0.1136,
+   "avg_hold": 2.2
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 171.93,
+   "return": 2.145,
+   "sharpe": 1.61,
+   "max_drawdown": -0.5052,
+   "usd_worst_day": -4976.0,
+   "usd_best_day": 6200.0,
+   "days_in_market": 220,
+   "trades": 79,
+   "win_rate": 0.658,
+   "profit_factor": 1.56,
+   "avg_win": 0.0855,
+   "avg_loss": -0.1061,
+   "avg_hold": 2.3
+  }
+ },
+ "stress": {
+  "train": {
+   "start": "2019-01-02",
+   "end": "2026-03-20",
+   "sessions": 1814,
+   "usd_per_session": 49.63,
+   "return": 5.8627,
+   "sharpe": 0.73,
+   "max_drawdown": -0.6248,
+   "usd_worst_day": -5948.0,
+   "usd_best_day": 7971.0,
+   "days_in_market": 1325,
+   "trades": 387,
+   "win_rate": 0.649,
+   "profit_factor": 1.15,
+   "avg_win": 0.0595,
+   "avg_loss": -0.084,
+   "avg_hold": 2.8
+  },
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 201.91,
+   "return": 0.9857,
+   "sharpe": 1.77,
+   "max_drawdown": -0.5099,
+   "usd_worst_day": -4976.0,
+   "usd_best_day": 6110.0,
+   "days_in_market": 112,
+   "trades": 39,
+   "win_rate": 0.615,
+   "profit_factor": 1.47,
+   "avg_win": 0.1014,
+   "avg_loss": -0.1025,
+   "avg_hold": 2.3
+  }
+ },
+ "real": {
+  "symbols": [
+   "SOXL",
+   "NVDL",
+   "AMDL",
+   "AVGX",
+   "TSMX",
+   "MUU"
+  ],
+  "held_out": {
+   "start": "2026-03-23",
+   "end": "2026-09-21",
+   "sessions": 126,
+   "usd_per_session": 247.41,
+   "return": 1.4761,
+   "sharpe": 2.14,
+   "max_drawdown": -0.5029,
+   "usd_worst_day": -5010.0,
+   "usd_best_day": 6219.0,
+   "days_in_market": 114,
+   "trades": 44,
+   "win_rate": 0.659,
+   "profit_factor": 1.48,
+   "avg_win": 0.0966,
+   "avg_loss": -0.1105,
+   "avg_hold": 2.1
+  },
+  "last_12m": {
+   "start": "2025-09-22",
+   "end": "2026-09-21",
+   "sessions": 251,
+   "usd_per_session": 160.07,
+   "return": 1.8083,
+   "sharpe": 1.5,
+   "max_drawdown": -0.5029,
+   "usd_worst_day": -5010.0,
+   "usd_best_day": 6219.0,
+   "days_in_market": 221,
+   "trades": 82,
+   "win_rate": 0.634,
+   "profit_factor": 1.38,
+   "avg_win": 0.0873,
+   "avg_loss": -0.1018,
+   "avg_hold": 2.2
+  },
+  "since": "2025-07-30",
+  "life": {
+   "start": "2025-07-30",
+   "end": "2026-09-21",
+   "sessions": 287,
+   "usd_per_session": 160.97,
+   "return": 2.4389,
+   "sharpe": 1.57,
+   "max_drawdown": -0.5029,
+   "usd_worst_day": -5010.0,
+   "usd_best_day": 6219.0,
+   "days_in_market": 251,
+   "trades": 91,
+   "win_rate": 0.659,
+   "profit_factor": 1.43,
+   "avg_win": 0.0841,
+   "avg_loss": -0.1042,
+   "avg_hold": 2.2
+  }
+ },
+ "verdict": {
+  "profitable": true,
+  "older_profitable": true,
+  "held_out_usd": 265.77,
+  "real_held_out_usd": 247.41,
+  "shown": true,
+  "rank_usd": 247.41
+ },
+ "by_year": [
+  {
+   "year": "2012",
+   "return": -0.2431,
+   "usd_per_session": -20.0,
+   "trades": 39,
+   "win_rate": 0.564
+  },
+  {
+   "year": "2013",
+   "return": 1.9144,
+   "usd_per_session": 126.82,
+   "trades": 55,
+   "win_rate": 0.709
+  },
+  {
+   "year": "2014",
+   "return": 0.1644,
+   "usd_per_session": 27.73,
+   "trades": 54,
+   "win_rate": 0.667
+  },
+  {
+   "year": "2015",
+   "return": -0.0594,
+   "usd_per_session": 9.28,
+   "trades": 50,
+   "win_rate": 0.56
+  },
+  {
+   "year": "2016",
+   "return": 2.7535,
+   "usd_per_session": 163.96,
+   "trades": 66,
+   "win_rate": 0.773
+  },
+  {
+   "year": "2017",
+   "return": 0.6789,
+   "usd_per_session": 79.32,
+   "trades": 56,
+   "win_rate": 0.714
+  },
+  {
+   "year": "2018",
+   "return": -0.0114,
+   "usd_per_session": 31.96,
+   "trades": 62,
+   "win_rate": 0.581
+  },
+  {
+   "year": "2019",
+   "return": 0.8318,
+   "usd_per_session": 80.13,
+   "trades": 51,
+   "win_rate": 0.627
+  },
+  {
+   "year": "2020",
+   "return": 1.4536,
+   "usd_per_session": 120.09,
+   "trades": 63,
+   "win_rate": 0.698
+  },
+  {
+   "year": "2021",
+   "return": 0.1529,
+   "usd_per_session": 34.43,
+   "trades": 64,
+   "win_rate": 0.656
+  },
+  {
+   "year": "2022",
+   "return": -0.0292,
+   "usd_per_session": 8.1,
+   "trades": 22,
+   "win_rate": 0.682
+  },
+  {
+   "year": "2023",
+   "return": 1.0498,
+   "usd_per_session": 89.0,
+   "trades": 60,
+   "win_rate": 0.683
+  },
+  {
+   "year": "2024",
+   "return": 0.3745,
+   "usd_per_session": 58.5,
+   "trades": 67,
+   "win_rate": 0.627
+  },
+  {
+   "year": "2025",
+   "return": 0.0021,
+   "usd_per_session": 24.61,
+   "trades": 48,
+   "win_rate": 0.604
+  },
+  {
+   "year": "2026",
+   "return": 4.0927,
+   "usd_per_session": 287.88,
+   "trades": 58,
+   "win_rate": 0.724
+  }
+ ],
+ "buy_and_hold": {
+  "older": {
+   "SOXL": 58.1,
+   "NVDA.2X": 75.6,
+   "AMD.2X": 64.9,
+   "AVGO.2X": 72.1,
+   "TSM.2X": 37.3,
+   "MU.2X": 60.6
+  },
+  "train": {
+   "SOXL": 88.0,
+   "NVDA.2X": 128.2,
+   "AMD.2X": 88.1,
+   "AVGO.2X": 85.0,
+   "TSM.2X": 71.7,
+   "MU.2X": 90.3
+  },
+  "held_out": {
+   "SOXL": 334.8,
+   "NVDA.2X": 118.1,
+   "AMD.2X": 493.8,
+   "AVGO.2X": 79.1,
+   "TSM.2X": 133.2,
+   "MU.2X": 437.6
+  },
+  "last_12m": {
+   "SOXL": 239.0,
+   "NVDA.2X": 57.1,
+   "AMD.2X": 315.7,
+   "AVGO.2X": 25.3,
+   "TSM.2X": 113.9,
+   "MU.2X": 428.7
+  }
+ },
+ "rank": 37,
+ "name": "SOXL / NVDL / AMDL / AVGX / TSMX / MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+ "funds": [
+  "SOXL",
+  "NVDL",
+  "AMDL",
+  "AVGX",
+  "TSMX",
+  "MUU"
+ ],
+ "tag": "",
+ "three_month_stretches": {
+  "stretches": 1878,
+  "share_profitable": 0.773,
+  "worst_usd_per_session": -190.9,
+  "median_usd_per_session": 65.2
+ }
+}

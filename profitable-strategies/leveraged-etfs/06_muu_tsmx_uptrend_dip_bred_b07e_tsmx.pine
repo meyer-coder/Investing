@@ -1,0 +1,72 @@
+//@version=6
+// MUU / TSMX Uptrend Dip (bred B07E) — evotrader genome cbedac4fac2d.
+// Leveraged tech strategy 6 of the grind (strategies/etf).
+//
+// Fade one-day overreactions against the prevailing trend.
+//
+// Rules, exactly as the engine runs them:
+// BUY when rsi14 < 32
+// BUY when ret1 < -0.025 and close > sma200 or cross_above(macd, macd_signal)
+// BUY when pct_off_52w_low < 0.84 and cross_above(close, bb_upper) and ret1 >
+// 0.038
+// SELL when cross_below(close, bb_lower)
+// SELL when bars_held > 6
+// SELL when ret5 > 0.04
+// Risk (checked on the close, filled at the next open): stop 6.00%, no
+// target, no trailing stop, no max hold, cooldown 1 bars.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a daily TSMX chart. The backtests put the whole $25,000 account in each
+// trade, one position at a time.
+// Part of a 2-fund strategy (MUU, TSMX): run the script on each fund's chart
+// and hold one position at a time, the first signal wins.
+strategy("MUU / TSMX Uptrend Dip (bred B07E) [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0,
+     slippage=1, process_orders_on_close=false)
+
+stopPct   = input.float(6, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(0, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(1, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+[f_macd, f_macd_signal, f_macd_hist] = ta.macd(close, 12, 26, 9)
+f_bars_held = strategy.position_size > 0 ? bar_index - strategy.opentrades.entry_bar_index(0) : 0
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_bb_lower = f_sma20 - 2 * f_sd20
+f_bb_upper = f_sma20 + 2 * f_sd20
+f_pct_off_52w_low = close / ta.lowest(close, 252) - 1
+f_ret1 = close / close[1] - 1
+f_ret5 = close / close[5] - 1
+f_rsi14 = ta.rsi(close, 14)
+f_sma200 = ta.sma(close, 200)
+
+warm = bar_index >= 252
+inPos = strategy.position_size > 0
+buySignal = ((f_rsi14 < 32.0)) or ((((f_ret1 < (-0.025)) and (close > f_sma200)) or (f_macd > f_macd_signal and f_macd[1] <= f_macd_signal[1]))) or ((((f_pct_off_52w_low < 0.84) and (close > f_bb_upper and close[1] <= f_bb_upper[1])) and (f_ret1 > 0.038)))
+sellSignal = ((close < f_bb_lower and close[1] >= f_bb_lower[1])) or ((f_bars_held > 6.0)) or ((f_ret5 > 0.04))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "MUU / TSMX Uptrend Dip (bred B07E): buy at next open", "MUU / TSMX Uptrend Dip (bred B07E): buy {{ticker}} at the next open")
+alertcondition(exitNow, "MUU / TSMX Uptrend Dip (bred B07E): sell at next open", "MUU / TSMX Uptrend Dip (bred B07E): sell {{ticker}} at the next open")
