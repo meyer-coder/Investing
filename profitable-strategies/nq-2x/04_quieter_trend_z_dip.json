@@ -1,0 +1,54 @@
+{
+ "genomes": [
+  {
+   "id": "5c483b32d9c6",
+   "name": "Quieter Trend + Z-Dip",
+   "thesis": "A cleaner, quieter version of the leader. Long above the 50-day mean while 20-day volatility is under 22%, after a 1.35-sigma dip above the 200-day, or on a close back over the 50-day. Out when volatility passes 50% or on a close under the 50-day that is not oversold; 4.2% stop, 7% target, 5% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.22",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.05,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three, injected into the trend-plus-dip island at generation 15, and scored exactly as written.",
+   "created_at": 1790121052.9153962,
+   "rank": 4,
+   "family": "calm trend"
+  }
+ ]
+}

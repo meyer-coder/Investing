@@ -1,0 +1,56 @@
+{
+ "genomes": [
+  {
+   "id": "5dc00bb8fdee",
+   "name": "Calm Trend, Volume-Checked Dips",
+   "thesis": "Any close above the 50-day mean with 20-day volatility under 22% counts as trend. The dip and thrust entries (a 1.2-sigma dip above the 200-day, a 5.3% week) are taken only on ordinary volume, under 1.28 times average, so it does not buy into a panic. It also buys a close back over the 50-day and a 9% 60-day slide. Out when volatility passes 50% or the index breaks the 50-day without being oversold; 4.2% stop, 7.3% target, 4.9% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "close > sma50 and vol20 < 0.22",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "(zscore20 < -1.18 and close > sma200 or ret5 > 0.053) and volume_ratio < 1.28",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.073,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 24,
+   "parents": [
+    "236cf137de71"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 24.",
+   "created_at": 1790120841.591291,
+   "rank": 3,
+   "family": "calm trend"
+  }
+ ]
+}

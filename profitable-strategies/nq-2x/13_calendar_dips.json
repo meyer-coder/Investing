@@ -1,0 +1,69 @@
+{
+ "genomes": [
+  {
+   "id": "0e0e0b03ecc5",
+   "name": "Calendar Dips",
+   "thesis": "Trades of one or two sessions timed by the calendar. It buys a 1.5% five-day dip after the 10th of the month above the 200-day with the close within 2% of its 20-day mean; a red Friday while less than 50% above the 52-week low; a 1.3% dip between the 13th and the 23rd above the 200-day, or any 14% 20-day run; a MACD bullish cross with RSI(7) under 49, or a close in the top fifth of the Bollinger band. It sells after one session, and sooner in the first five days of a month, on a quiet low-volume day that is not oversold, or on a MACD slide 7.6% under the 200-day; 3% stop, 2.5% target, one-session wait.",
+   "entry_rules": [
+    {
+     "when": "day_of_month >= 11 and ret5 < -0.015 and close > sma200 and dist_sma20 > -0.02",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "day_of_week == 4 and ret1 < -0.002 and pct_off_52w_low < 0.5",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "day_of_month >= 13 and day_of_month < 24 and ret5 < -0.013 and close > sma200 and dist_sma20 > -0.05 or ret20 > 0.14",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(macd, macd_signal) and rsi7 < 49 or bb_pct > 0.8",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 1",
+     "note": ""
+    },
+    {
+     "when": "macd_hist < -0.4 and dist_sma200 < -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "day_of_month <= 5",
+     "note": ""
+    },
+    {
+     "when": "vol_ratio_20_60 < 1.45 and zscore20 > -0.95 and volume_ratio < 1.03",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.025,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 25,
+   "parents": [
+    "1af4ef24e200"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the calendar island: generation 25.",
+   "created_at": 1790120915.7997916,
+   "rank": 13,
+   "family": "calendar"
+  }
+ ]
+}

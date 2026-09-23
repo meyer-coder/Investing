@@ -1,0 +1,87 @@
+//@version=6
+// Flush Book — evotrader genome 692bd69924ca.
+// From evotrader, profitable-strategies/nq-2x/14_flush_book.json. NQ E-mini,
+// long only, twice the account in notional; bred over generations, judged on
+// the last six months held out (2026-03-23 to 2026-09-22).
+//
+// Buys a 1.56-times-volume flush near the lower Bollinger band or a close 12%
+// under the 50-day mean, an RSI(7) washout under 24, a volatility squeeze
+// within 43% of the 52-week low, or a 19% 60-day crash. Sells when RSI(7)
+// recovers past 62, after five sessions, when RSI(14) sinks under 24 (the
+// flush has become a slide), or on a close through the 50-day mean from above
+// the bottom of the band; 4.9% stop, 3.5% target.
+//
+// Rules, exactly as the engine runs them:
+// BUY when volume_ratio > 1.56 and bb_pct < 0.19 or dist_sma50 < -0.12
+// BUY when rsi7 < 24
+// BUY when vol_ratio_20_60 < 0.68 and pct_off_52w_low < 0.43
+// BUY when ret60 < -0.19
+// SELL when rsi7 > 62
+// SELL when bars_held > 4
+// SELL when rsi14 < 24
+// SELL when bb_pct > 0.06 and cross_below(close, sma50)
+// Risk (checked on the close, filled at the next open): stop 4.90%, target
+// 3.50%, no trailing stop, no max hold.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a MNQ1! (micro) chart with back-adjustment on. The backtests run at twice a
+// $25,000 account in notional, about 0.8 MNQ at NQ 31,000; one MNQ is about
+// 2.5x, so the default of one contract is a little more than the tested size.
+strategy("Flush Book [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.cash_per_contract, commission_value=1.0,
+     slippage=1, process_orders_on_close=false)
+
+contracts = input.int(1, "Contracts", minval=1)
+stopPct   = input.float(4.9, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(3.5, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(0, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(0, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(0, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_bars_held = strategy.position_size > 0 ? bar_index - strategy.opentrades.entry_bar_index(0) : 0
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_bb_upper = f_sma20 + 2 * f_sd20
+f_bb_lower = f_sma20 - 2 * f_sd20
+f_bb_pct = f_bb_upper - f_bb_lower > 0 ? (close - f_bb_lower) / (f_bb_upper - f_bb_lower) : 0.5
+f_sma50 = ta.sma(close, 50)
+f_dist_sma50 = close / f_sma50 - 1
+f_pct_off_52w_low = close / ta.lowest(close, 252) - 1
+f_ret60 = close / close[60] - 1
+f_rsi14 = ta.rsi(close, 14)
+f_rsi7 = ta.rsi(close, 7)
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_vol60 = ta.stdev(f_ret1, 60, false) * math.sqrt(252)
+f_vol_ratio_20_60 = f_vol60 > 0 ? f_vol20 / f_vol60 : 1.0
+f_volavg20 = ta.sma(volume, 20)
+f_volume_ratio = f_volavg20 > 0 ? volume / f_volavg20 : 1.0
+
+warm = bar_index >= 252
+inPos = strategy.position_size > 0
+buySignal = ((((f_volume_ratio > 1.56) and (f_bb_pct < 0.19)) or (f_dist_sma50 < (-0.12)))) or ((f_rsi7 < 24.0)) or (((f_vol_ratio_20_60 < 0.68) and (f_pct_off_52w_low < 0.43))) or ((f_ret60 < (-0.19)))
+sellSignal = ((f_rsi7 > 62.0)) or ((f_bars_held > 4.0)) or ((f_rsi14 < 24.0)) or (((f_bb_pct > 0.06) and (close < f_sma50 and close[1] >= f_sma50[1])))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, qty=contracts, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "Flush Book: buy at next open", "Flush Book: buy {{ticker}} at the next open")
+alertcondition(exitNow, "Flush Book: sell at next open", "Flush Book: sell {{ticker}} at the next open")

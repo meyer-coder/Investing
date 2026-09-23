@@ -7,6 +7,11 @@ thresholds, keeping each change only if every trade in the training window,
 the held-out six months and the older 2010-2018 history is identical, entry
 and exit dates alike.  The result behaves exactly as the evolved genome did.
 
+Every version is compared from the same bar, past the longest warm-up (the
+52-week features need 252 bars).  Otherwise a clause that can never fire, but
+reads a slow feature, would look essential only because it delays the first
+trade; live, with years of history on the chart, it does nothing.
+
     python strategies/nq2x/simplify.py IN.json OUT.json
 """
 from __future__ import annotations
@@ -84,6 +89,10 @@ def _roundings(node: Node) -> Iterator[Node]:
                 yield Call(node.func, tuple(node.args[:i]) + (sub,) + tuple(node.args[i + 1:]))
 
 
+#: Past every feature's warm-up, so versions are compared on the same bars.
+COMMON_START = 260
+
+
 class Judge:
     def __init__(self) -> None:
         self.w = Windows()
@@ -93,10 +102,9 @@ class Judge:
         kw = dict(starting_cash=25_000.0, commission_bps=COMMISSION, slippage_bps=SLIPPAGE,
                   record_thoughts=False, leverage=LEVERAGE)
         sig = []
-        for u, f, start in ((self.w.train, self.w.f_train, None),
-                            (self.w.recent, self.w.f_recent,
-                             max(self.w.cut, self.w.f_recent.warmup_for(c.feature_names()))),
-                            (self.w.older, self.w.f_older, None)):
+        for u, f, start in ((self.w.train, self.w.f_train, COMMON_START),
+                            (self.w.recent, self.w.f_recent, max(self.w.cut, COMMON_START)),
+                            (self.w.older, self.w.f_older, COMMON_START)):
             r = run_backtest(c, u, f, start_bar=start, **kw)
             sig.append(tuple((t.entry_date, t.exit_date) for t in r.journal.trades))
         return tuple(sig)

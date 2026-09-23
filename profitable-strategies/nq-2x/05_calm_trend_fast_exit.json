@@ -1,0 +1,54 @@
+{
+ "genomes": [
+  {
+   "id": "44e436613036",
+   "name": "Calm Trend, Fast Exit",
+   "thesis": "The core entries (above the 50-day with volatility under 25%, a 1.35-sigma dip above the 200-day, a close back over the 50-day) with a faster exit: it sells the first close under the 20-day mean that is not oversold instead of waiting for the 50-day, or when volatility passes 50%; 4.2% stop, 7% target, 5% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma20 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.05,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three to test a faster trend exit; scored exactly as written.",
+   "created_at": 1790121054.3921666,
+   "rank": 5,
+   "family": "calm trend"
+  }
+ ]
+}

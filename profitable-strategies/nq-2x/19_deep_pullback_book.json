@@ -1,0 +1,60 @@
+{
+ "genomes": [
+  {
+   "id": "40dcc87365ed",
+   "name": "Deep Pullback Book",
+   "thesis": "Buys an 8.6% 20-day pullback, a 1.33-sigma dip under the 20-day mean above the 200-day, or a close under yesterday's low above the 50-day. Sells after two sessions, on a MACD bearish cross, or if the index is 22% off its 52-week high; 3.2% stop, 7.3% target.",
+   "entry_rules": [
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "zscore20 < -1.33 and close > sma200",
+     "weight": 1.0,
+     "note": "archetype"
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "pct_of_52w_high < 0.78",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.032,
+    "take_profit_pct": 0.073,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 6,
+   "parents": [
+    "7145000fd918"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the first swing run: generation 6.",
+   "created_at": 1790120147.4310226,
+   "rank": 19,
+   "family": "pullback"
+  }
+ ]
+}

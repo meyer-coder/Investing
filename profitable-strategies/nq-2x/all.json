@@ -1,0 +1,1040 @@
+{
+ "genomes": [
+  {
+   "id": "7173d608ab59",
+   "name": "Calm Trend Champion",
+   "thesis": "Holds NQ at 2x through calm, intact uptrends and adds sharp-dip entries. It buys when the close crosses back over the 50-day mean, when the index sits at least 4.7% above that mean with 20-day volatility under 22%, when a 60-day slide reaches 9%, and after a 1.2-sigma dip below the 20-day mean while above the 200-day, a 5.7% five-day thrust, or a day when the 14-day average range tops 4.3% of price. It sells when 20-day volatility blows out past 45%, when the index closes under its 50-day mean without being oversold, or when it falls 23% under the 200-day mean. Every trade has a 4.2% stop, a 7% target, a 4.9% trailing stop off its best close and a 13-session cap, and it waits two sessions after an exit.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.18 and close > sma200 or atr_pct > 0.043 or ret5 > 0.057",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 25,
+   "parents": [
+    "cf7faf2dc93b"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 25, a mutation of generation 24's leader.",
+   "created_at": 1790120843.4086556,
+   "rank": 1,
+   "family": "calm trend"
+  },
+  {
+   "id": "ed6af4f039af",
+   "name": "Calm Trend Champion, No Crash Entry",
+   "thesis": "The champion's sibling without the volatility-spike entry. Its dip entry needs a 1.23-sigma dip, its thrust entry a 5.4% week, and its trend exit tolerates a little more weakness: it sells a close under the 50-day mean only while the z-score is above -1.19. Same 4.2% stop, 7% target, 4.9% trailing stop, 13-session cap and two-session wait.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.23 and close > sma200 or ret5 > 0.054",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.19",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 24,
+   "parents": [
+    "3acfd15b2257"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 24.",
+   "created_at": 1790120841.5841506,
+   "rank": 2,
+   "family": "calm trend"
+  },
+  {
+   "id": "5dc00bb8fdee",
+   "name": "Calm Trend, Volume-Checked Dips",
+   "thesis": "Any close above the 50-day mean with 20-day volatility under 22% counts as trend. The dip and thrust entries (a 1.2-sigma dip above the 200-day, a 5.3% week) are taken only on ordinary volume, under 1.28 times average, so it does not buy into a panic. It also buys a close back over the 50-day and a 9% 60-day slide. Out when volatility passes 50% or the index breaks the 50-day without being oversold; 4.2% stop, 7.3% target, 4.9% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "close > sma50 and vol20 < 0.22",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "(zscore20 < -1.18 and close > sma200 or ret5 > 0.053) and volume_ratio < 1.28",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.073,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 24,
+   "parents": [
+    "236cf137de71"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 24.",
+   "created_at": 1790120841.591291,
+   "rank": 3,
+   "family": "calm trend"
+  },
+  {
+   "id": "5c483b32d9c6",
+   "name": "Quieter Trend + Z-Dip",
+   "thesis": "A cleaner, quieter version of the leader. Long above the 50-day mean while 20-day volatility is under 22%, after a 1.35-sigma dip above the 200-day, or on a close back over the 50-day. Out when volatility passes 50% or on a close under the 50-day that is not oversold; 4.2% stop, 7% target, 5% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.22",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.05,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three, injected into the trend-plus-dip island at generation 15, and scored exactly as written.",
+   "created_at": 1790121052.9153962,
+   "rank": 4,
+   "family": "calm trend"
+  },
+  {
+   "id": "44e436613036",
+   "name": "Calm Trend, Fast Exit",
+   "thesis": "The core entries (above the 50-day with volatility under 25%, a 1.35-sigma dip above the 200-day, a close back over the 50-day) with a faster exit: it sells the first close under the 20-day mean that is not oversold instead of waiting for the 50-day, or when volatility passes 50%; 4.2% stop, 7% target, 5% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma20 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.05,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three to test a faster trend exit; scored exactly as written.",
+   "created_at": 1790121054.3921666,
+   "rank": 5,
+   "family": "calm trend"
+  },
+  {
+   "id": "6ebc07770bbb",
+   "name": "Calm Trend Champion, 6% Target",
+   "thesis": "The champion's twin that takes profits sooner: a 6.2% target instead of 7%, no volatility-spike entry, and a 5.3% thrust entry. Everything else as the champion.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.18 and close > sma200 or ret5 > 0.053",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.062,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 25,
+   "parents": [
+    "87bb13892682"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 25.",
+   "created_at": 1790120843.4143074,
+   "rank": 6,
+   "family": "calm trend"
+  },
+  {
+   "id": "d3ebd5dc78a7",
+   "name": "Calm Trend + Washout",
+   "thesis": "The calm trend plus a washout. Buys above the 50-day mean with volatility under 25%, after a 1.35-sigma dip above the 200-day, or on RSI(7) under 24 anywhere. Its only sell rule is a close under the 50-day that is not oversold; the 4.2% stop, 7% target, 5.1% trailing stop and 13-session cap do the rest, with a two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three, crossing in the washout entry from the volume-flush island; scored exactly as written.",
+   "created_at": 1790121054.018592,
+   "rank": 7,
+   "family": "calm trend"
+  },
+  {
+   "id": "a1b703635ae2",
+   "name": "Calm Trend, 10-Session Holds",
+   "thesis": "The core with trades capped at ten sessions instead of thirteen: long above the 50-day mean while volatility is under 25%, after a 1.35-sigma dip above the 200-day, or on a close back over the 50-day; out on a volatility blow-out or a non-oversold break of the 50-day; 4.2% stop, 7% target, 5.1% trailing stop, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three for shorter holds, closer to the quick-trade brief; scored exactly as written.",
+   "created_at": 1790121052.1798775,
+   "rank": 8,
+   "family": "calm trend"
+  },
+  {
+   "id": "2a34d4aef716",
+   "name": "Calm Trend + Z-Dip Core",
+   "thesis": "Three entries: above the 50-day mean while 20-day volatility is under 25%, a 1.35-sigma dip below the 20-day mean above the 200-day, a close back over the 50-day. Two exits: volatility over 50%, or a close under the 50-day that is not oversold. 4.2% stop, 7% target, 5.1% trailing stop, 13 sessions, two-session wait.",
+   "entry_rules": [
+    {
+     "when": "close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.35 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.5",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.051,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three: the trend-plus-dip leader reduced to its core; scored exactly as written.",
+   "created_at": 1790121051.4299047,
+   "rank": 9,
+   "family": "calm trend"
+  },
+  {
+   "id": "dd4cd9664653",
+   "name": "Quiet MACD Trend",
+   "thesis": "Long while the MACD histogram is positive, the index is above its 50-day mean and 20-day volatility is under 25%. Out when the histogram turns negative after at least three sessions, or after ten sessions.",
+   "entry_rules": [
+    {
+     "when": "macd_hist > 0 and close > sma50 and vol20 < 0.25",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "macd_hist < 0 and bars_held >= 3",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude as a seed for the second calm-trend island; scored exactly as written.",
+   "created_at": 1790121058.2300155,
+   "rank": 10,
+   "family": "trend"
+  },
+  {
+   "id": "229156892a25",
+   "name": "Quick Dip, Trend-Assisted",
+   "thesis": "One- and two-session trades. It buys a 2% drop above the 200-day mean, a close back over the 50-day, a 5.2% 20-day run while volatility is under 50%, the day after a 1% drop inside a 1.5% five-day dip above the 50-day (or any day more than 15.6% above the 200-day) when the close is not stretched above its 20-day mean, and a close through the upper Bollinger band. It sells after two sessions, on the first 0.5% up day, or on a close 1.8% under the 20-day mean; 3.5% stop.",
+   "entry_rules": [
+    {
+     "when": "ret1 <= -0.02 and close > sma200 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "mkt_ret20 > 0.052 and mkt_vol20 < 0.5",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(prev(ret1) < -0.01 and ret5 < -0.015 and close > sma50 or dist_sma200 > 0.156) and zscore20 < 0.58",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, bb_upper)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "ret1 > 0.005",
+     "note": ""
+    },
+    {
+     "when": "dist_sma20 < -0.018",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 24,
+   "parents": [
+    "f1785ca0da37"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the quick-flush island: generation 24.",
+   "created_at": 1790120939.7054942,
+   "rank": 11,
+   "family": "quick dip"
+  },
+  {
+   "id": "0416f683fd4e",
+   "name": "Flush, Washout or Squeeze",
+   "thesis": "Buys forced selling and quiet: 1.56 times normal volume near the lower Bollinger band, a volatility squeeze (20-day volatility under 68% of 60-day), an RSI(7) washout under 24, or a 1.2% drop on 1.5 times volume. Sells when RSI(7) recovers past 59, within 1.3% of the 52-week high, or after seven sessions; 3% stop, 3.7% target.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.2 or vol_ratio_20_60 < 0.68",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0,
+     "note": "archetype"
+    },
+    {
+     "when": "volume_ratio > 1.5 and ret1 < -0.012",
+     "weight": 1.0,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held > 6",
+     "note": "archetype"
+    },
+    {
+     "when": "pct_of_52w_high > 0.987",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "rsi7 > 59",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.037,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 9,
+   "parents": [
+    "099ab2173713",
+    "a34cc331b791"
+   ],
+   "origin": "crossover",
+   "rationale": "Bred in the first quick-trade run: generation 9, a crossover of two leaders.",
+   "created_at": 1790120122.9483023,
+   "rank": 12,
+   "family": "flush and washout"
+  },
+  {
+   "id": "0e0e0b03ecc5",
+   "name": "Calendar Dips",
+   "thesis": "Trades of one or two sessions timed by the calendar. It buys a 1.5% five-day dip after the 10th of the month above the 200-day with the close within 2% of its 20-day mean; a red Friday while less than 50% above the 52-week low; a 1.3% dip between the 13th and the 23rd above the 200-day, or any 14% 20-day run; a MACD bullish cross with RSI(7) under 49, or a close in the top fifth of the Bollinger band. It sells after one session, and sooner in the first five days of a month, on a quiet low-volume day that is not oversold, or on a MACD slide 7.6% under the 200-day; 3% stop, 2.5% target, one-session wait.",
+   "entry_rules": [
+    {
+     "when": "day_of_month >= 11 and ret5 < -0.015 and close > sma200 and dist_sma20 > -0.02",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "day_of_week == 4 and ret1 < -0.002 and pct_off_52w_low < 0.5",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "day_of_month >= 13 and day_of_month < 24 and ret5 < -0.013 and close > sma200 and dist_sma20 > -0.05 or ret20 > 0.14",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(macd, macd_signal) and rsi7 < 49 or bb_pct > 0.8",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 1",
+     "note": ""
+    },
+    {
+     "when": "macd_hist < -0.4 and dist_sma200 < -0.076",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "day_of_month <= 5",
+     "note": ""
+    },
+    {
+     "when": "vol_ratio_20_60 < 1.45 and zscore20 > -0.95 and volume_ratio < 1.03",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.025,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 25,
+   "parents": [
+    "1af4ef24e200"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the calendar island: generation 25.",
+   "created_at": 1790120915.7997916,
+   "rank": 13,
+   "family": "calendar"
+  },
+  {
+   "id": "692bd69924ca",
+   "name": "Flush Book",
+   "thesis": "Buys a 1.56-times-volume flush near the lower Bollinger band or a close 12% under the 50-day mean, an RSI(7) washout under 24, a volatility squeeze within 43% of the 52-week low, or a 19% 60-day crash. Sells when RSI(7) recovers past 62, after five sessions, when RSI(14) sinks under 24 (the flush has become a slide), or on a close through the 50-day mean from above the bottom of the band; 4.9% stop, 3.5% target.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19 or dist_sma50 < -0.12",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.68 and pct_off_52w_low < 0.43",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret60 < -0.19",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62",
+     "note": ""
+    },
+    {
+     "when": "bars_held > 4",
+     "note": ""
+    },
+    {
+     "when": "rsi14 < 24",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "bb_pct > 0.06 and cross_below(close, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.049,
+    "take_profit_pct": 0.035,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 25,
+   "parents": [
+    "9f1c1cadd80c"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the volume-flush island: generation 25.",
+   "created_at": 1790120867.0401223,
+   "rank": 14,
+   "family": "flush and washout"
+  },
+  {
+   "id": "e5caa21c379c",
+   "name": "Managed Long",
+   "thesis": "Long almost all the time: the only entry is a day without a volume blow-out, under 2.2 times average, which is nearly every day. The edge is in the exits: out on a close under the 50-day mean that is not oversold (z-score above -0.95), when the 14-day average range passes 4.4% of price, at a 6.4% gain, at a 4.25% loss or after 13 sessions, then back in two sessions later.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio <= 2.2",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma50 and zscore20 > -0.95",
+     "note": ""
+    },
+    {
+     "when": "atr_pct > 0.044",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0425,
+    "take_profit_pct": 0.0639,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 9,
+   "parents": [
+    "89e01ed30e40"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the second calm-trend island: generation 9, descended from Claude's 'Calm Trend, Managed' seed.",
+   "created_at": 1790120963.971861,
+   "rank": 15,
+   "family": "trend"
+  },
+  {
+   "id": "1ae16b0bd872",
+   "name": "Bull Market, Crash-Day Exit",
+   "thesis": "Long above the 200-day mean while 20-day volatility is under 30% and the day did not fall 1.5%. It steps out after any 1.5% down day and is back as soon as the conditions hold again; ten sessions at most per trade, no stop.",
+   "entry_rules": [
+    {
+     "when": "close > sma200 and ret1 > -0.015 and vol20 < 0.3",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "ret1 < -0.015",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 10,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude as a seed for the second calm-trend island, after the first one bred itself into buy-and-hold; scored exactly as written.",
+   "created_at": 1790121057.847295,
+   "rank": 16,
+   "family": "trend"
+  },
+  {
+   "id": "0e6fb3600dbe",
+   "name": "Quick Dip, Two Legs",
+   "thesis": "Buys the day after a 1% drop when the five-day loss is at least 1.9% and the index is above its 50-day mean, or any 2% drop above the 200-day. Out on the first 0.5% up day or after two sessions; 2.6% stop.",
+   "entry_rules": [
+    {
+     "when": "prev(ret1) < -0.01 and ret5 < -0.019 and close > sma50",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret1 < -0.02 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "ret1 > 0.005",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.026,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three from the quick-flush leader's dip legs; scored exactly as written.",
+   "created_at": 1790121051.0698547,
+   "rank": 17,
+   "family": "quick dip"
+  },
+  {
+   "id": "c6b566e600a9",
+   "name": "Washout or Squeeze, Early Exit",
+   "thesis": "Buys an RSI(7) washout under 24 or any day with 20-day volatility above 57.5% (a crash), a volatility squeeze, or a volume flush at the lower band, and sells early: when RSI(7) is back over 55, or after seven sessions; 3% stop, 3.7% target.",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 24 or vol20 > 0.575",
+     "weight": 1.0,
+     "note": "archetype"
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.68",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held > 6",
+     "note": "archetype"
+    },
+    {
+     "when": "rsi7 > 55",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.037,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 9,
+   "parents": [
+    "0cc003fc7f5c",
+    "8312b9b29fc1"
+   ],
+   "origin": "crossover",
+   "rationale": "Bred in the first quick-trade run: generation 9, a crossover.",
+   "created_at": 1790120122.9587471,
+   "rank": 18,
+   "family": "flush and washout"
+  },
+  {
+   "id": "40dcc87365ed",
+   "name": "Deep Pullback Book",
+   "thesis": "Buys an 8.6% 20-day pullback, a 1.33-sigma dip under the 20-day mean above the 200-day, or a close under yesterday's low above the 50-day. Sells after two sessions, on a MACD bearish cross, or if the index is 22% off its 52-week high; 3.2% stop, 7.3% target.",
+   "entry_rules": [
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "zscore20 < -1.33 and close > sma200",
+     "weight": 1.0,
+     "note": "archetype"
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0,
+     "note": "archetype"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": "archetype"
+    },
+    {
+     "when": "cross_below(macd, macd_signal)",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "pct_of_52w_high < 0.78",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.032,
+    "take_profit_pct": 0.073,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 6,
+   "parents": [
+    "7145000fd918"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the first swing run: generation 6.",
+   "created_at": 1790120147.4310226,
+   "rank": 19,
+   "family": "pullback"
+  },
+  {
+   "id": "690b9465ad76",
+   "name": "Pullback Book, Clean",
+   "thesis": "Buys a 1.67-sigma dip above the 200-day, an 8.6% 20-day pullback, or a close under yesterday's low above the 50-day. Out after two sessions, on a MACD bearish cross, or 15% off the high; 4.2% target and no stop.",
+   "entry_rules": [
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "cross_below(macd, macd_signal)",
+     "note": ""
+    },
+    {
+     "when": "pct_of_52w_high < 0.85",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.042,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three as the pullback leader without its junk clauses; scored exactly as written.",
+   "created_at": 1790121050.3242981,
+   "rank": 20,
+   "family": "pullback"
+  }
+ ]
+}

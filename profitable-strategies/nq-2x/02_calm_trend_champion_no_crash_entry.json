@@ -1,0 +1,60 @@
+{
+ "genomes": [
+  {
+   "id": "ed6af4f039af",
+   "name": "Calm Trend Champion, No Crash Entry",
+   "thesis": "The champion's sibling without the volatility-spike entry. Its dip entry needs a 1.23-sigma dip, its thrust entry a 5.4% week, and its trend exit tolerates a little more weakness: it sells a close under the 50-day mean only while the z-score is above -1.19. Same 4.2% stop, 7% target, 4.9% trailing stop, 13-session cap and two-session wait.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.23 and close > sma200 or ret5 > 0.054",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1.19",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.042,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 24,
+   "parents": [
+    "3acfd15b2257"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 24.",
+   "created_at": 1790120841.5841506,
+   "rank": 2,
+   "family": "calm trend"
+  }
+ ]
+}

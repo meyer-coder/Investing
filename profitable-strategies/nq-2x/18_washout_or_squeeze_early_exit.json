@@ -1,0 +1,57 @@
+{
+ "genomes": [
+  {
+   "id": "c6b566e600a9",
+   "name": "Washout or Squeeze, Early Exit",
+   "thesis": "Buys an RSI(7) washout under 24 or any day with 20-day volatility above 57.5% (a crash), a volatility squeeze, or a volume flush at the lower band, and sells early: when RSI(7) is back over 55, or after seven sessions; 3% stop, 3.7% target.",
+   "entry_rules": [
+    {
+     "when": "rsi7 < 24 or vol20 > 0.575",
+     "weight": 1.0,
+     "note": "archetype"
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.68",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held > 6",
+     "note": "archetype"
+    },
+    {
+     "when": "rsi7 > 55",
+     "note": "archetype"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.03,
+    "take_profit_pct": 0.037,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 9,
+   "parents": [
+    "0cc003fc7f5c",
+    "8312b9b29fc1"
+   ],
+   "origin": "crossover",
+   "rationale": "Bred in the first quick-trade run: generation 9, a crossover.",
+   "created_at": 1790120122.9587471,
+   "rank": 18,
+   "family": "flush and washout"
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "genomes": [
+  {
+   "id": "7173d608ab59",
+   "name": "Calm Trend Champion",
+   "thesis": "Holds NQ at 2x through calm, intact uptrends and adds sharp-dip entries. It buys when the close crosses back over the 50-day mean, when the index sits at least 4.7% above that mean with 20-day volatility under 22%, when a 60-day slide reaches 9%, and after a 1.2-sigma dip below the 20-day mean while above the 200-day, a 5.7% five-day thrust, or a day when the 14-day average range tops 4.3% of price. It sells when 20-day volatility blows out past 45%, when the index closes under its 50-day mean without being oversold, or when it falls 23% under the 200-day mean. Every trade has a 4.2% stop, a 7% target, a 4.9% trailing stop off its best close and a 13-session cap, and it waits two sessions after an exit.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.18 and close > sma200 or atr_pct > 0.043 or ret5 > 0.057",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.07,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 25,
+   "parents": [
+    "cf7faf2dc93b"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 25, a mutation of generation 24's leader.",
+   "created_at": 1790120843.4086556,
+   "rank": 1,
+   "family": "calm trend"
+  }
+ ]
+}

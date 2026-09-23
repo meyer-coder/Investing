@@ -1,0 +1,69 @@
+{
+ "genomes": [
+  {
+   "id": "692bd69924ca",
+   "name": "Flush Book",
+   "thesis": "Buys a 1.56-times-volume flush near the lower Bollinger band or a close 12% under the 50-day mean, an RSI(7) washout under 24, a volatility squeeze within 43% of the 52-week low, or a 19% 60-day crash. Sells when RSI(7) recovers past 62, after five sessions, when RSI(14) sinks under 24 (the flush has become a slide), or on a close through the 50-day mean from above the bottom of the band; 4.9% stop, 3.5% target.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio > 1.56 and bb_pct < 0.19 or dist_sma50 < -0.12",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "rsi7 < 24",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "vol_ratio_20_60 < 0.68 and pct_off_52w_low < 0.43",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret60 < -0.19",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "rsi7 > 62",
+     "note": ""
+    },
+    {
+     "when": "bars_held > 4",
+     "note": ""
+    },
+    {
+     "when": "rsi14 < 24",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "bb_pct > 0.06 and cross_below(close, sma50)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.049,
+    "take_profit_pct": 0.035,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 25,
+   "parents": [
+    "9f1c1cadd80c"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the volume-flush island: generation 25.",
+   "created_at": 1790120867.0401223,
+   "rank": 14,
+   "family": "flush and washout"
+  }
+ ]
+}

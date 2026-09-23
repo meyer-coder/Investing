@@ -1,0 +1,58 @@
+{
+ "genomes": [
+  {
+   "id": "690b9465ad76",
+   "name": "Pullback Book, Clean",
+   "thesis": "Buys a 1.67-sigma dip above the 200-day, an 8.6% 20-day pullback, or a close under yesterday's low above the 50-day. Out after two sessions, on a MACD bearish cross, or 15% off the high; 4.2% target and no stop.",
+   "entry_rules": [
+    {
+     "when": "zscore20 <= -1.67 and close > sma200",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret20 < -0.086",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "close < prev(low) and close > sma50",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "cross_below(macd, macd_signal)",
+     "note": ""
+    },
+    {
+     "when": "pct_of_52w_high < 0.85",
+     "note": ""
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0,
+    "take_profit_pct": 0.042,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 0,
+   "parents": [],
+   "origin": "seed",
+   "rationale": "Written by Claude in round three as the pullback leader without its junk clauses; scored exactly as written.",
+   "created_at": 1790121050.3242981,
+   "rank": 20,
+   "family": "pullback"
+  }
+ ]
+}

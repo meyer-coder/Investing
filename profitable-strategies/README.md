@@ -1,5 +1,15 @@
 # Profitable strategies
 
+**New: [NQ E-mini at 2x](nq-2x/README.md).** Twenty strategies for the
+Nasdaq-100 E-mini, long only at twice the account in notional, bred over 219
+generations. Every one made money over the last six months (held out from
+the breeding), over its 2019-2026 training window, over 2010-2018 and at three
+times the costs. Five average more than $85 a session on $25,000 over the
+held-out six months; the best, Calm Trend Champion, averages $111.
+
+The list below is the earlier set, for the leveraged ETFs.
+
+
 Fourteen quick-trade strategies for the leveraged funds you trade, ranked
 most to least profitable by their return over the last six months on
 TQQQ, MUU, RIOX and SOXL, the long funds only, at each file's own sizing.

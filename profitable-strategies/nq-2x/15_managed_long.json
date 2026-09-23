@@ -1,0 +1,46 @@
+{
+ "genomes": [
+  {
+   "id": "e5caa21c379c",
+   "name": "Managed Long",
+   "thesis": "Long almost all the time: the only entry is a day without a volume blow-out, under 2.2 times average, which is nearly every day. The edge is in the exits: out on a close under the 50-day mean that is not oversold (z-score above -0.95), when the 14-day average range passes 4.4% of price, at a 6.4% gain, at a 4.25% loss or after 13 sessions, then back in two sessions later.",
+   "entry_rules": [
+    {
+     "when": "volume_ratio <= 2.2",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "close < sma50 and zscore20 > -0.95",
+     "note": ""
+    },
+    {
+     "when": "atr_pct > 0.044",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0425,
+    "take_profit_pct": 0.0639,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 9,
+   "parents": [
+    "89e01ed30e40"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the second calm-trend island: generation 9, descended from Claude's 'Calm Trend, Managed' seed.",
+   "created_at": 1790120963.971861,
+   "rank": 15,
+   "family": "trend"
+  }
+ ]
+}

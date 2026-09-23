@@ -1,0 +1,65 @@
+{
+ "genomes": [
+  {
+   "id": "229156892a25",
+   "name": "Quick Dip, Trend-Assisted",
+   "thesis": "One- and two-session trades. It buys a 2% drop above the 200-day mean, a close back over the 50-day, a 5.2% 20-day run while volatility is under 50%, the day after a 1% drop inside a 1.5% five-day dip above the 50-day (or any day more than 15.6% above the 200-day) when the close is not stretched above its 20-day mean, and a close through the upper Bollinger band. It sells after two sessions, on the first 0.5% up day, or on a close 1.8% under the 20-day mean; 3.5% stop.",
+   "entry_rules": [
+    {
+     "when": "ret1 <= -0.02 and close > sma200 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "mkt_ret20 > 0.052 and mkt_vol20 < 0.5",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(prev(ret1) < -0.01 and ret5 < -0.015 and close > sma50 or dist_sma200 > 0.156) and zscore20 < 0.58",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "cross_above(close, bb_upper)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "ret1 > 0.005",
+     "note": ""
+    },
+    {
+     "when": "dist_sma20 < -0.018",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.035,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 0,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 24,
+   "parents": [
+    "f1785ca0da37"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the quick-flush island: generation 24.",
+   "created_at": 1790120939.7054942,
+   "rank": 11,
+   "family": "quick dip"
+  }
+ ]
+}

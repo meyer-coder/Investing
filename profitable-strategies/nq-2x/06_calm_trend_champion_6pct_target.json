@@ -1,0 +1,60 @@
+{
+ "genomes": [
+  {
+   "id": "6ebc07770bbb",
+   "name": "Calm Trend Champion, 6% Target",
+   "thesis": "The champion's twin that takes profits sooner: a 6.2% target instead of 7%, no volatility-spike entry, and a 5.3% thrust entry. Everything else as the champion.",
+   "entry_rules": [
+    {
+     "when": "ret60 <= -0.09 or cross_above(close, sma50)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "vol20 < 0.22 and dist_sma50 > 0.047",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "zscore20 < -1.18 and close > sma200 or ret5 > 0.053",
+     "weight": 1.0,
+     "note": ""
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "vol20 > 0.45",
+     "note": ""
+    },
+    {
+     "when": "close < sma50 and zscore20 > -1",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 < -0.23",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0423,
+    "take_profit_pct": 0.062,
+    "trailing_stop_pct": 0.049,
+    "max_hold_bars": 13,
+    "min_hold_bars": 0,
+    "cooldown_bars": 2
+   },
+   "generation": 25,
+   "parents": [
+    "87bb13892682"
+   ],
+   "origin": "mutation",
+   "rationale": "Bred in the trend-plus-dip island: generation 25.",
+   "created_at": 1790120843.4143074,
+   "rank": 6,
+   "family": "calm trend"
+  }
+ ]
+}

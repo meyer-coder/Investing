@@ -1,0 +1,91 @@
+//@version=6
+// Calm Trend Champion — evotrader genome 7173d608ab59.
+// From evotrader, profitable-strategies/nq-2x/01_calm_trend_champion.json. NQ
+// E-mini, long only, twice the account in notional; bred over generations,
+// judged on the last six months held out (2026-03-23 to 2026-09-22).
+//
+// Holds NQ at 2x through calm, intact uptrends and adds sharp-dip entries. It
+// buys when the close crosses back over the 50-day mean, when the index sits
+// at least 4.7% above that mean with 20-day volatility under 22%, when a
+// 60-day slide reaches 9%, and after a 1.2-sigma dip below the 20-day mean
+// while above the 200-day, a 5.7% five-day thrust, or a day when the 14-day
+// average range tops 4.3% of price. It sells when 20-day volatility blows out
+// past 45%, when the index closes under its 50-day mean without being
+// oversold, or when it falls 23% under the 200-day mean. Every trade has a
+// 4.2% stop, a 7% target, a 4.9% trailing stop off its best close and a
+// 13-session cap, and it waits two sessions after an exit.
+//
+// Rules, exactly as the engine runs them:
+// BUY when ret60 <= -0.09 or cross_above(close, sma50)
+// BUY when vol20 < 0.22 and dist_sma50 > 0.047
+// BUY when zscore20 < -1.18 and close > sma200 or atr_pct > 0.043 or ret5 >
+// 0.057
+// SELL when vol20 > 0.45
+// SELL when close < sma50 and zscore20 > -1
+// SELL when dist_sma200 < -0.23
+// Risk (checked on the close, filled at the next open): stop 4.23%, target
+// 7.00%, trailing 4.90%, max hold 13 bars, cooldown 2 bars.
+//
+// Daily bars; the signal is read on the close and fills at the next open. Use
+// a MNQ1! (micro) chart with back-adjustment on. The backtests run at twice a
+// $25,000 account in notional, about 0.8 MNQ at NQ 31,000; one MNQ is about
+// 2.5x, so the default of one contract is a little more than the tested size.
+strategy("Calm Trend Champion [evotrader]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.cash_per_contract, commission_value=1.0,
+     slippage=1, process_orders_on_close=false)
+
+contracts = input.int(1, "Contracts", minval=1)
+stopPct   = input.float(4.23, "Stop, % below entry (0 = off)") / 100
+targetPct = input.float(7, "Target, % above entry (0 = off)") / 100
+trailPct  = input.float(4.9, "Trailing stop, % off the peak close (0 = off)") / 100
+maxHold   = input.int(13, "Max bars held (0 = off)")
+minHold   = input.int(0, "Min bars before the sell rules apply")
+cooldown  = input.int(2, "Bars to wait after an exit")
+
+// ---- state the rules can read
+var float posPeak = na
+if strategy.position_size > 0
+    posPeak := na(posPeak) or strategy.opentrades.entry_bar_index(0) == bar_index ? math.max(strategy.position_avg_price, close) : math.max(posPeak, close)
+else
+    posPeak := na
+var int lastExitBar = -100000
+if strategy.closedtrades > 0
+    lastExitBar := strategy.closedtrades.exit_bar_index(strategy.closedtrades - 1)
+
+// ---- features (evotrader's definitions)
+f_atr14 = ta.atr(14)
+f_atr_pct = f_atr14 / close
+f_sma200 = ta.sma(close, 200)
+f_dist_sma200 = close / f_sma200 - 1
+f_sma50 = ta.sma(close, 50)
+f_dist_sma50 = close / f_sma50 - 1
+f_position_drawdown = strategy.position_size > 0 ? math.min(close / posPeak - 1, 0.0) : 0.0
+f_ret5 = close / close[5] - 1
+f_ret60 = close / close[60] - 1
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_zscore20 = f_sd20 > 0 ? (close - f_sma20) / f_sd20 : 0.0
+
+warm = bar_index >= 200
+inPos = strategy.position_size > 0
+buySignal = (((f_ret60 <= (-0.09)) or (close > f_sma50 and close[1] <= f_sma50[1]))) or (((f_vol20 < 0.22) and (f_dist_sma50 > 0.047))) or (((((f_zscore20 < (-1.18)) and (close > f_sma200)) or (f_atr_pct > 0.043)) or (f_ret5 > 0.057)))
+sellSignal = ((f_vol20 > 0.45)) or (((close < f_sma50) and (f_zscore20 > (-1.0)))) or ((f_dist_sma200 < (-0.23)))
+exitNow = false
+if inPos
+    held = bar_index - strategy.opentrades.entry_bar_index(0)
+    posRet = close / strategy.position_avg_price - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and f_position_drawdown <= -trailPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        strategy.close("L", comment="out")
+        exitNow := true
+canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)
+if canEnter and buySignal
+    strategy.entry("L", strategy.long, qty=contracts, comment="in")
+
+plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Sell at next open", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(canEnter and buySignal, "Calm Trend Champion: buy at next open", "Calm Trend Champion: buy {{ticker}} at the next open")
+alertcondition(exitNow, "Calm Trend Champion: sell at next open", "Calm Trend Champion: sell {{ticker}} at the next open")
