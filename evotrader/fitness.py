@@ -38,6 +38,8 @@ class Metrics:
     excess_return: float = 0.0     # total return minus buy-and-hold
     years: float = 0.0
     worst_day: float = 0.0         # worst single-bar equity change, e.g. -0.065
+    mean_day: float = 0.0          # average bar return: x account = average $ a session
+    p25_quarter: float = 0.0       # 25th percentile of rolling 63-bar average returns: a bad quarter
 
     def to_dict(self) -> Dict[str, Any]:
         return {k: (round(v, 6) if isinstance(v, float) else v)
@@ -82,6 +84,9 @@ def compute_metrics(equity: Sequence[float], trades: Sequence, *,
     r = _equity_returns(e)
     if r.size:
         m.worst_day = float(np.min(r))
+        m.mean_day = float(np.mean(r))
+    if r.size >= 126:
+        m.p25_quarter = float(np.percentile(np.convolve(r, np.ones(63) / 63, mode="valid"), 25))
     if r.size > 1:
         sd = float(np.std(r, ddof=1))
         mean = float(np.mean(r))
@@ -140,6 +145,12 @@ class FitnessConfig:
     # the last recent_bars bars, so what works now outranks what worked years ago.
     recent_bars: int = 0                # 0 = off; 126 is about six months
     recent_weight: float = 0.0          # 0..1
+    # Absolute profit: rewards the average daily return, annualised (x 252), which
+    # is the average $ a session per $ of account.  Off by default.
+    return_weight: float = 0.0
+    # Consistency: rewards the 25th-percentile quarter's average daily return,
+    # annualised, so a strategy is paid for its weak stretches, not its best.
+    consistency_weight: float = 0.0
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -150,6 +161,8 @@ def fitness_score(m: Metrics, cfg: Optional[FitnessConfig] = None) -> float:
     cfg = cfg or FitnessConfig()
     excess_annual = m.excess_return / max(m.years, 1e-9)
     score = cfg.sharpe_weight * _finite(m.sharpe) + cfg.excess_weight * _finite(excess_annual)
+    score += cfg.return_weight * _finite(m.mean_day) * TRADING_DAYS
+    score += cfg.consistency_weight * _finite(m.p25_quarter) * TRADING_DAYS
 
     over_dd = max(0.0, abs(m.max_drawdown) - cfg.drawdown_limit)
     score -= cfg.drawdown_penalty * over_dd

@@ -336,11 +336,91 @@ NQ_2X = TradingStyle(
     fixed_size=1.0,
 )
 
+# ------------------------------------------------------------ leveraged ETFs, full size
+#
+# Tech, semiconductor and AI 2x/3x funds on a cash account: one position at a
+# time with the whole account, held one day to a few weeks.  The target is
+# dollars a session, so size is fixed and breeding decides what and when.
+
+_ETF_FULL_MANDATE = """\
+=== STYLE MANDATE: leveraged tech / semis / AI funds, one position, full size ===
+The population trades 2x and 3x funds on semiconductors, graphics-card and AI
+names and big tech (SOXL, TQQQ, TECL, 2x NVDA, AMD, AVGO, TSM, MU and the
+like), long only, one position at a time with the whole cash account.
+  - the target is a high average profit per session over the last year, with
+    a drawdown the trader can live with and a high share of winning trades
+  - these funds move 2-3x their stock: a 3x semis fund's normal day is +/-4%,
+    a -8% day is a flush, a 10% bounce in three days is common
+  - two families work: short, sharp dips bought inside an uptrend and sold
+    into the bounce within one to five sessions, and riding a calm, intact
+    uptrend with an exit on the first sign of stress
+  - inverse funds (SOXS, SQQQ, TECS) are in some universes: they are the
+    only way to be short, and only pay in falling markets
+"""
+
+_ETF_FULL_ARCHETYPES: List[Archetype] = [
+    ("Uptrend Flush", "A hard down day inside an uptrend, sold into the bounce.",
+     ["ret1 < -0.05 and close > sma50"], ["ret1 > 0.03", "bars_held >= 3"],
+     {"stop_loss_pct": 0.10, "take_profit_pct": 0.08, "max_hold_bars": 4}),
+    ("Oversold Above the 200", "RSI(7) washed out while the long trend holds.",
+     ["rsi7 < 20 and close > sma200"], ["rsi7 > 60", "bars_held >= 5"],
+     {"stop_loss_pct": 0.12, "max_hold_bars": 6}),
+    ("Z-Dip", "Two sigma under the 20-day mean in a long uptrend.",
+     ["zscore20 < -1.8 and close > sma200"], ["zscore20 > 0"],
+     {"stop_loss_pct": 0.12, "max_hold_bars": 8}),
+    ("Calm Trend", "Long while above both means and volatility is calm.",
+     ["close > sma50 and sma50 > sma200 and vol20 < 0.6"], ["close < sma50", "vol20 > 0.9"],
+     {"trailing_stop_pct": 0.15, "max_hold_bars": 20}),
+    ("Volume Breakout", "A close over the upper band on heavy volume.",
+     ["close > bb_upper and volume_ratio > 1.4 and close > sma50"], ["bars_held >= 3", "ret1 < -0.04"],
+     {"stop_loss_pct": 0.08, "take_profit_pct": 0.12, "max_hold_bars": 5}),
+    ("Momentum Pullback", "A strong month, a shallow pause.",
+     ["ret20 > 0.15 and ret1 < -0.02 and dist_sma20 > 0"], ["ret5 < -0.08", "bars_held >= 5"],
+     {"stop_loss_pct": 0.10, "max_hold_bars": 6}),
+    ("Two Red Days", "Two down days in an uptrend, sold on the first green close.",
+     ["ret1 < 0 and prev(ret1) < 0 and close > sma50"], ["ret1 > 0.02", "bars_held >= 3"],
+     {"stop_loss_pct": 0.08, "max_hold_bars": 4}),
+    ("Capitulation Close", "A big down day closing near its low on volume.",
+     ["ret1 < -0.06 and (close - low) / (high - low + 0.0001) < 0.25 and volume_ratio > 1.3"],
+     ["position_return > 0.05", "bars_held >= 2"], {"stop_loss_pct": 0.12, "max_hold_bars": 3}),
+    ("Month Turn", "The turn of the month above the 50-day.",
+     ["(day_of_month >= 27 or day_of_month <= 2) and close > sma50"], ["bars_held >= 4"],
+     {"stop_loss_pct": 0.08, "max_hold_bars": 5}),
+    ("MACD Turn", "MACD histogram turns up above the 200-day.",
+     ["macd_hist > 0 and prev(macd_hist) <= 0 and close > sma200"], ["macd_hist < 0"],
+     {"stop_loss_pct": 0.10, "max_hold_bars": 15}),
+    ("Strong Close", "A big up day closing at the high: follow it one or two days.",
+     ["ret1 > 0.04 and (close - low) / (high - low + 0.0001) > 0.8 and close > sma50"],
+     ["bars_held >= 2"], {"stop_loss_pct": 0.07, "max_hold_bars": 2}),
+    ("New High, Calm", "Near the 52-week high with volatility in check.",
+     ["pct_of_52w_high > 0.97 and vol20 < 0.7"], ["pct_of_52w_high < 0.88"],
+     {"trailing_stop_pct": 0.12, "max_hold_bars": 20}),
+    ("Inside Day", "A quiet inside day above the 20-day.",
+     ["high < prev(high) and low > prev(low) and close > sma20"], ["bars_held >= 2"],
+     {"stop_loss_pct": 0.07, "max_hold_bars": 3}),
+    ("Stretched Below the 20", "Far under the 20-day mean in a long uptrend.",
+     ["dist_sma20 < -0.12 and close > sma200"], ["dist_sma20 > 0"],
+     {"stop_loss_pct": 0.15, "max_hold_bars": 10}),
+    ("Quiet Dip, Quick Target", "A small dip on a quiet day, a quick target.",
+     ["ret1 < -0.02 and atr_pct < 0.05 and close > sma50"], ["bars_held >= 2"],
+     {"stop_loss_pct": 0.05, "take_profit_pct": 0.04, "max_hold_bars": 2}),
+]
+
+ETF_FULL = TradingStyle(
+    name="etf_full",
+    summary="leveraged tech/semis/AI funds, long only, one position with the whole account",
+    mandate=_ETF_FULL_MANDATE,
+    archetypes=_ETF_FULL_ARCHETYPES,
+    fixed_size=1.0,
+)
+
+
 
 STYLES: Dict[str, TradingStyle] = {
     LEVERAGED_SWING.name: LEVERAGED_SWING,
     QUICK_LEVERAGED.name: QUICK_LEVERAGED,
     NQ_2X.name: NQ_2X,
+    ETF_FULL.name: ETF_FULL,
 }
 
 

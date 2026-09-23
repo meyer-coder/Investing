@@ -223,8 +223,11 @@ def _comment(text: str, width: int = 78) -> List[str]:
 def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
                    account: float = 25_000.0, contracts: int = 1,
                    commission_per_contract: float = 1.0,
-                   extra_notes: Sequence[str] = ()) -> str:
-    """A complete Pine Script v6 strategy for one genome, on a daily futures chart."""
+                   extra_notes: Sequence[str] = (), fund: str = "") -> str:
+    """A complete Pine Script v6 strategy for one genome, on a daily futures chart.
+
+    ``fund`` switches to a fund (ETF) chart: the whole account in each trade,
+    no commission, and ``fund`` named as the chart to use."""
     em = _Emitter()
     entries = [em.boolean(parse(r.when), 0, 1) for r in genome.entry_rules]
     exits = [em.boolean(parse(r.when), 0, 1) for r in genome.exit_rules]
@@ -262,18 +265,28 @@ def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
     out += _comment("Risk (checked on the close, filled at the next open): "
                     + ", ".join(b for b in risk_bits if b) + ".")
     out.append("//")
-    out += _comment("Daily bars; the signal is read on the close and fills at the next open. "
-                    "Use a MNQ1! (micro) chart with back-adjustment on. The backtests run at twice a "
-                    f"${account:,.0f} account in notional, about 0.8 MNQ at NQ 31,000; one MNQ is about "
-                    "2.5x, so the default of one contract is a little more than the tested size.")
+    if fund:
+        out += _comment(f"Daily bars; the signal is read on the close and fills at the next open. "
+                        f"Use a daily {fund} chart. The backtests put the whole ${account:,.0f} "
+                        f"account in each trade, one position at a time.")
+    else:
+        out += _comment("Daily bars; the signal is read on the close and fills at the next open. "
+                        "Use a MNQ1! (micro) chart with back-adjustment on. The backtests run at twice a "
+                        f"${account:,.0f} account in notional, about 0.8 MNQ at NQ 31,000; one MNQ is about "
+                        "2.5x, so the default of one contract is a little more than the tested size.")
     for note in extra_notes:
         out += _comment(note)
     out.append(f'strategy("{title[:60]} [evotrader]", overlay=true, pyramiding=0,')
-    out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.fixed, default_qty_value={contracts},")
-    out.append(f"     commission_type=strategy.commission.cash_per_contract, commission_value={commission_per_contract},")
+    if fund:
+        out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.percent_of_equity, default_qty_value=100,")
+        out.append("     commission_type=strategy.commission.percent, commission_value=0,")
+    else:
+        out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.fixed, default_qty_value={contracts},")
+        out.append(f"     commission_type=strategy.commission.cash_per_contract, commission_value={commission_per_contract},")
     out.append("     slippage=1, process_orders_on_close=false)")
     out.append("")
-    out.append(f'contracts = input.int({contracts}, "Contracts", minval=1)')
+    if not fund:
+        out.append(f'contracts = input.int({contracts}, "Contracts", minval=1)')
     out.append(f'stopPct   = input.float({rk.stop_loss_pct * 100:.4g}, "Stop, % below entry (0 = off)") / 100')
     out.append(f'targetPct = input.float({rk.take_profit_pct * 100:.4g}, "Target, % above entry (0 = off)") / 100')
     out.append(f'trailPct  = input.float({rk.trailing_stop_pct * 100:.4g}, "Trailing stop, % off the peak close (0 = off)") / 100')
@@ -315,7 +328,8 @@ def genome_to_pine(genome: Genome, *, title: str = "", source_note: str = "",
     out.append("        exitNow := true")
     out.append("canEnter = warm and not inPos and (cooldown <= 0 or bar_index - lastExitBar >= cooldown)")
     out.append("if canEnter and buySignal")
-    out.append('    strategy.entry("L", strategy.long, qty=contracts, comment="in")')
+    out.append('    strategy.entry("L", strategy.long, comment="in")' if fund else
+               '    strategy.entry("L", strategy.long, qty=contracts, comment="in")')
     out.append("")
     out.append('plotshape(canEnter and buySignal, title="Buy at next open", style=shape.triangleup, '
                'location=location.belowbar, color=color.new(color.teal, 0), size=size.small)')
