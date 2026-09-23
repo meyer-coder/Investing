@@ -1,0 +1,193 @@
+{
+ "rank": 3,
+ "key": "C",
+ "name": "Dow Dip Above the 50",
+ "plain_words": "One MYM bought after a down day of 0.7% or more while the Dow is above its 50-day mean, sold on a 0.78% bounce, a 0.61% loss on a close, or after two sessions.",
+ "settings": {
+  "symbol": "YM1!",
+  "micro": "MYM",
+  "contracts": 1,
+  "day_stop": 0.01,
+  "day_stop_usd": 261.0,
+  "session": "globex",
+  "note": "flat by 15:10 Chicago time; bought back at the 17:00 open while the strategy holds; the day stop caps that day only"
+ },
+ "bred": {
+  "run": "run-20260923-031459-446c",
+  "trained_on": "2010-01 to 2026-03-20",
+  "never_seen": "2000-2009",
+  "fitness": "FundedNext Legacy 25K pass rate minus breach rate"
+ },
+ "results_one_contract": {
+  "account": "25K",
+  "windows": {
+   "oldest": {
+    "sessions": 1955,
+    "days_in_market": 186,
+    "usd_total": 163.0,
+    "usd_per_session": 0.08,
+    "win_days": 0.495,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 716.0,
+    "max_drawdown": -4798.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.153,
+    "breach": 0.394,
+    "open": 0.453,
+    "days_to_pass": 73.5,
+    "funded_breach_6m": 0.212,
+    "funded_breach_12m": 0.404
+   },
+   "older": {
+    "sessions": 2270,
+    "days_in_market": 231,
+    "usd_total": 6052.0,
+    "usd_per_session": 2.67,
+    "win_days": 0.55,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 670.0,
+    "max_drawdown": -1394.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.348,
+    "breach": 0.101,
+    "open": 0.551,
+    "days_to_pass": 148.0,
+    "funded_breach_6m": 0.048,
+    "funded_breach_12m": 0.101
+   },
+   "train": {
+    "sessions": 1816,
+    "days_in_market": 201,
+    "usd_total": 9831.0,
+    "usd_per_session": 5.41,
+    "win_days": 0.582,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 943.0,
+    "max_drawdown": -1347.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.549,
+    "breach": 0.124,
+    "open": 0.327,
+    "days_to_pass": 119.5,
+    "funded_breach_6m": 0.055,
+    "funded_breach_12m": 0.124
+   },
+   "held_out": {
+    "sessions": 128,
+    "days_in_market": 19,
+    "usd_total": 2139.0,
+    "usd_per_session": 16.71,
+    "win_days": 0.684,
+    "worst_day": -150.0,
+    "worst_intraday": -239.0,
+    "best_day": 517.0,
+    "max_drawdown": -150.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.346,
+    "breach": 0.0,
+    "open": 0.654,
+    "days_to_pass": 33.0,
+    "funded_breach_6m": 0.0,
+    "funded_breach_12m": 0.0
+   },
+   "last_12m": {
+    "sessions": 253,
+    "days_in_market": 41,
+    "usd_total": 3937.0,
+    "usd_per_session": 15.56,
+    "win_days": 0.707,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 725.0,
+    "max_drawdown": -262.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.667,
+    "breach": 0.0,
+    "open": 0.333,
+    "days_to_pass": 78.5,
+    "funded_breach_6m": 0.0,
+    "funded_breach_12m": 0.0
+   },
+   "stress": {
+    "sessions": 1816,
+    "days_in_market": 201,
+    "usd_total": 8784.0,
+    "usd_per_session": 4.84,
+    "win_days": 0.577,
+    "worst_day": -268.0,
+    "worst_intraday": -268.0,
+    "best_day": 938.0,
+    "max_drawdown": -1398.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.511,
+    "breach": 0.154,
+    "open": 0.335,
+    "days_to_pass": 121.5,
+    "funded_breach_6m": 0.063,
+    "funded_breach_12m": 0.154
+   }
+  }
+ },
+ "genome": {
+  "id": "70484c47edb9",
+  "name": "Dow Dip Above the 50",
+  "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+  "entry_rules": [
+   {
+    "when": "ret1 < -0.007 and close > sma50 and bb_pct > 0.32",
+    "weight": 1.0,
+    "note": ""
+   },
+   {
+    "when": "(ret1 < -0.011 and close > sma50 or rsi14 > 77) and ret5 < 0.025",
+    "weight": 1.0,
+    "note": ""
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held >= 2",
+    "note": ""
+   },
+   {
+    "when": "mkt_ret20 < -0.03 or cross_below(macd, macd_signal)",
+    "note": "mutation: new exit"
+   },
+   {
+    "when": "dist_sma20 < -0.02",
+    "note": "mutation: new exit"
+   },
+   {
+    "when": "cross_below(close, bb_lower)",
+    "note": "mutation: new exit"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.0061,
+   "take_profit_pct": 0.0078,
+   "trailing_stop_pct": 0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 36,
+  "parents": [
+   "08c1b2b7938a"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790133858.5440636
+ }
+}

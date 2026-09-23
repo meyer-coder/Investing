@@ -1,0 +1,98 @@
+//@version=6
+// Dow Inside Day, One Session, same-day version: evotrader genome 7c05b41b3ae9.
+// Same-day version for FundedNext Futures, which allows no overnight holds.
+// Tested on ratio back-adjusted daily bars with 0.2 bp commission and 1 bp
+// slippage a side, then priced per contract ($0.75 a side plus a tick, two on
+// stops). Past results; not advice.
+//
+// An inside day in an uptrend; a break lower ends it quickly.
+//
+// Rules, exactly as the engine runs them:
+// BUY when (high < prev(high) and low > prev(low) and close > sma50 or
+// dist_sma50 > 0.05 or mkt_vol20 > 0.29) and ret1 < 0.022 and ret5 < 0.08 and
+// zscore20 > -0.25 and dist_sma200 > -0.064
+// BUY when pct_off_52w_low > 0.72
+// BUY when cross_above(close, sma200)
+// SELL when bars_held < 31
+// The strategy's own position (checked on the close, from its first entry):
+// no stop, no target, no trailing stop, no max hold.
+//
+// No overnight holds, for a prop account such as FundedNext (flat by 15:10
+// Chicago time). Daily MYM1! chart, back-adjusted, settlement as close. Each
+// session the position is bought at the 17:00 Chicago open with a resting
+// stop 1.00% under the fill, and sold at the close; in live trading be flat
+// before 15:10 Chicago time. The next session it is bought back if the
+// strategy still holds it, even after a stopped day.
+strategy("Dow Inside Day, One Session [evotrader, same-day]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.cash_per_contract, commission_value=0.75,
+     slippage=1, process_orders_on_close=false)
+
+contracts  = input.int(1, "Contracts", minval=1)
+dayStopPct = input.float(1, "Daily stop, % under each day's entry (0 = off)") / 100
+stopPct    = input.float(0, "Strategy stop, % below its first entry, on the close (0 = off)") / 100
+targetPct  = input.float(0, "Strategy target, % above its first entry, on the close (0 = off)") / 100
+trailPct   = input.float(0, "Trailing stop, % off the best close (0 = off)") / 100
+maxHold    = input.int(0, "Max sessions held (0 = off)")
+minHold    = input.int(0, "Min sessions before the sell rules apply")
+cooldown   = input.int(0, "Sessions to wait after the strategy exits")
+
+// ---- the session ends: nothing is held past the close
+if strategy.position_size > 0
+    strategy.close_all(comment="flat at the close", immediately=true)
+
+// ---- the strategy's own position, carried from day to day
+var bool  book        = false
+var int   bookBar     = na
+var float bookEntry   = na
+var float bookPeak    = na
+var int   lastExitBar = -100000
+if book and bar_index >= bookBar
+    if na(bookEntry)
+        bookEntry := open
+    bookPeak := math.max(na(bookPeak) ? bookEntry : bookPeak, close)
+
+// ---- features (evotrader's definitions)
+f_bars_held = book ? bar_index - bookBar : 0
+f_sma200 = ta.sma(close, 200)
+f_dist_sma200 = close / f_sma200 - 1
+f_sma50 = ta.sma(close, 50)
+f_dist_sma50 = close / f_sma50 - 1
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_mkt_vol20 = f_vol20
+f_pct_off_52w_low = close / ta.lowest(close, 252) - 1
+f_ret5 = close / close[5] - 1
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_zscore20 = f_sd20 > 0 ? (close - f_sma20) / f_sd20 : 0.0
+
+warm = bar_index >= 252
+buySignal = ((((((((((high < high[1]) and (low > low[1])) and (close > f_sma50)) or (f_dist_sma50 > 0.05)) or (f_mkt_vol20 > 0.29)) and (f_ret1 < 0.022)) and (f_ret5 < 0.08)) and (f_zscore20 > (-0.25))) and (f_dist_sma200 > (-0.064)))) or ((f_pct_off_52w_low > 0.72)) or ((close > f_sma200 and close[1] <= f_sma200[1]))
+sellSignal = ((f_bars_held < 31.0))
+exitNow = false
+if book and bar_index >= bookBar
+    held = bar_index - bookBar
+    posRet = close / bookEntry - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and close / bookPeak - 1 <= -trailPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        book := false
+        bookEntry := na
+        bookPeak := na
+        lastExitBar := bar_index + 1
+        exitNow := true
+enterNow = warm and not book and not exitNow and (cooldown <= 0 or bar_index - lastExitBar >= cooldown) and buySignal
+if enterNow
+    book := true
+    bookBar := bar_index + 1
+
+// ---- tomorrow's session: buy at the open, a resting stop under the fill
+if book
+    strategy.entry("L", strategy.long, qty=contracts, comment=enterNow ? "in" : "back in")
+    if dayStopPct > 0
+        strategy.exit("day stop", "L", loss=math.max(1, math.round(dayStopPct * close / syminfo.mintick)), comment="day stop")
+
+plotshape(enterNow, title="Position starts at the next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Position ends: stay flat", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(book, "Dow Inside Day, One Session: buy at the next open", "Dow Inside Day, One Session: buy {{ticker}} at the 17:00 Chicago open with the daily stop; flat by 15:10")
+alertcondition(exitNow, "Dow Inside Day, One Session: position ends", "Dow Inside Day, One Session: the strategy is out; do not buy {{ticker}} at the next open")

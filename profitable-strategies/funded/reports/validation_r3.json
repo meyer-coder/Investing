@@ -1,0 +1,3720 @@
+{
+ "windows": {
+  "oldest": [
+   "2000-01-01",
+   "2009-12-31"
+  ],
+  "older": [
+   "2010-01-01",
+   "2018-12-31"
+  ],
+  "train": [
+   "2019-01-01",
+   "2026-03-20"
+  ],
+  "held_out": [
+   "2026-03-23",
+   "2026-09-22"
+  ],
+  "last_12m": [
+   "2025-09-22",
+   "2026-09-22"
+  ]
+ },
+ "rows": [
+  {
+   "run": "run-20260923-031459-b731",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 1,
+   "train_score": 0.351617560530604,
+   "test_score": null,
+   "genome": {
+    "id": "ad51c714deab",
+    "name": "Stubborn Bolder-Sharper-Cautious-Tight-Sharper-Greedier-Cautious-Tight-Sharper-G",
+    "thesis": "RSI(7) under 25 in a long uptrend; out on the RSI rebound. Combined with: A 1.5-sigma dip above the 200-day, out at the mean.",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > 0.023 and mkt_ret20 > -0.057 and atr_pct < 0.0076",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(rsi7 < 33 and close > sma200) and dist_sma200 > -0.053",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((zscore20 < -1.5 and close > sma200) or dist_sma50 > 0.078) and volume_ratio < 2.16) or ret60 > 0.246",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "pct_of_52w_high < 0.73",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "zscore20 > -0.031",
+      "note": ""
+     },
+     {
+      "when": "cross_below(sma20, sma50)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret60 > 0.075",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 2,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0144,
+     "take_profit_pct": 0.1086,
+     "trailing_stop_pct": 0.147,
+     "max_hold_bars": 3,
+     "min_hold_bars": 2,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "02bc7fe0b938"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133882.8187156
+   },
+   "notional": 39159.0,
+   "account": "50K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 243,
+     "usd_total": 4687.0,
+     "usd_per_session": 1.84,
+     "win_days": 0.514,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1558.0,
+     "max_drawdown": -2894.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.008,
+     "breach": 0.165,
+     "open": 0.827,
+     "days_to_pass": 240.5,
+     "funded_breach_6m": 0.067,
+     "funded_breach_12m": 0.165
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 498,
+     "usd_total": 22331.0,
+     "usd_per_session": 9.84,
+     "win_days": 0.56,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1084.0,
+     "max_drawdown": -1926.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.513,
+     "breach": 0.07,
+     "open": 0.416,
+     "days_to_pass": 146.0,
+     "funded_breach_6m": 0.009,
+     "funded_breach_12m": 0.07
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 11587.0,
+     "usd_per_session": 6.38,
+     "win_days": 0.534,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1049.0,
+     "max_drawdown": -3293.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.484,
+     "breach": 0.247,
+     "open": 0.269,
+     "days_to_pass": 140.0,
+     "funded_breach_6m": 0.124,
+     "funded_breach_12m": 0.247
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": -906.0,
+     "usd_per_session": -7.08,
+     "win_days": 0.444,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 734.0,
+     "max_drawdown": -1093.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 46,
+     "usd_total": 1102.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.565,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 961.0,
+     "max_drawdown": -2271.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.255,
+     "breach": 0.196,
+     "open": 0.549,
+     "days_to_pass": 66.0,
+     "funded_breach_6m": 0.196,
+     "funded_breach_12m": 0.196
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 9554.0,
+     "usd_per_session": 5.26,
+     "win_days": 0.53,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 1041.0,
+     "max_drawdown": -3724.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.423,
+     "breach": 0.258,
+     "open": 0.319,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.14,
+     "funded_breach_12m": 0.258
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-b731",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 2,
+   "train_score": 0.351617560530604,
+   "test_score": null,
+   "genome": {
+    "id": "8357f3de2316",
+    "name": "Faster Bolder-Sharper-Cautious-Tight-Sharper-Greedier-Cautious-Tight-Sharper-G",
+    "thesis": "RSI(7) under 25 in a long uptrend; out on the RSI rebound. Combined with: A 1.5-sigma dip above the 200-day, out at the mean.",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > 0.024 and mkt_ret20 > -0.076 and atr_pct < 0.0076",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(rsi7 < 33 and close > sma200) and dist_sma200 > -0.044",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((zscore20 < -1.5 and close > sma200) or dist_sma50 > 0.078) and volume_ratio < 2.16) or ret60 > 0.246",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "pct_of_52w_high < 0.73",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "zscore20 > -0.031",
+      "note": ""
+     },
+     {
+      "when": "cross_below(sma20, sma50)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret60 > 0.075",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0144,
+     "take_profit_pct": 0.1256,
+     "trailing_stop_pct": 0.147,
+     "max_hold_bars": 3,
+     "min_hold_bars": 2,
+     "cooldown_bars": 0
+    },
+    "generation": 36,
+    "parents": [
+     "2d8ca8224087"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133867.4022117
+   },
+   "notional": 39159.0,
+   "account": "50K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 243,
+     "usd_total": 4687.0,
+     "usd_per_session": 1.84,
+     "win_days": 0.514,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1558.0,
+     "max_drawdown": -2894.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.008,
+     "breach": 0.165,
+     "open": 0.827,
+     "days_to_pass": 240.5,
+     "funded_breach_6m": 0.067,
+     "funded_breach_12m": 0.165
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 498,
+     "usd_total": 22331.0,
+     "usd_per_session": 9.84,
+     "win_days": 0.56,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1084.0,
+     "max_drawdown": -1926.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.513,
+     "breach": 0.07,
+     "open": 0.416,
+     "days_to_pass": 146.0,
+     "funded_breach_6m": 0.009,
+     "funded_breach_12m": 0.07
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 11587.0,
+     "usd_per_session": 6.38,
+     "win_days": 0.534,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1049.0,
+     "max_drawdown": -3293.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.484,
+     "breach": 0.247,
+     "open": 0.269,
+     "days_to_pass": 140.0,
+     "funded_breach_6m": 0.124,
+     "funded_breach_12m": 0.247
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": -906.0,
+     "usd_per_session": -7.08,
+     "win_days": 0.444,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 734.0,
+     "max_drawdown": -1093.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 46,
+     "usd_total": 1102.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.565,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 961.0,
+     "max_drawdown": -2271.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.255,
+     "breach": 0.196,
+     "open": 0.549,
+     "days_to_pass": 66.0,
+     "funded_breach_6m": 0.196,
+     "funded_breach_12m": 0.196
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 9554.0,
+     "usd_per_session": 5.26,
+     "win_days": 0.53,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 1041.0,
+     "max_drawdown": -3724.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.423,
+     "breach": 0.258,
+     "open": 0.319,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.14,
+     "funded_breach_12m": 0.258
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-b731",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 3,
+   "train_score": 0.351617560530604,
+   "test_score": null,
+   "genome": {
+    "id": "1cc6b06458b7",
+    "name": "Cautious Bolder-Sharper-Cautious-Tight-Sharper-Greedier-Cautious-Tight-Sharper-G",
+    "thesis": "RSI(7) under 25 in a long uptrend; out on the RSI rebound. Combined with: A 1.5-sigma dip above the 200-day, out at the mean.",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > 0.023 and mkt_ret20 > -0.057 and atr_pct < 0.0076",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "((rsi7 < 33 and close > sma200) and dist_sma200 > -0.044) and zscore20 < 2.26",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((zscore20 < -1.5 and close > sma200) or dist_sma50 > 0.078) and volume_ratio < 2.16) or ret60 > 0.246",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "pct_of_52w_high < 0.73",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "zscore20 > -0.031",
+      "note": ""
+     },
+     {
+      "when": "cross_below(sma20, sma50)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret60 > 0.075",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0144,
+     "take_profit_pct": 0.1256,
+     "trailing_stop_pct": 0.147,
+     "max_hold_bars": 3,
+     "min_hold_bars": 2,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "9e7dd59dbf48"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133882.815675
+   },
+   "notional": 39159.0,
+   "account": "50K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 243,
+     "usd_total": 4687.0,
+     "usd_per_session": 1.84,
+     "win_days": 0.514,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1558.0,
+     "max_drawdown": -2894.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.008,
+     "breach": 0.165,
+     "open": 0.827,
+     "days_to_pass": 240.5,
+     "funded_breach_6m": 0.067,
+     "funded_breach_12m": 0.165
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 498,
+     "usd_total": 22331.0,
+     "usd_per_session": 9.84,
+     "win_days": 0.56,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1084.0,
+     "max_drawdown": -1926.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.513,
+     "breach": 0.07,
+     "open": 0.416,
+     "days_to_pass": 146.0,
+     "funded_breach_6m": 0.009,
+     "funded_breach_12m": 0.07
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 11587.0,
+     "usd_per_session": 6.38,
+     "win_days": 0.534,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1049.0,
+     "max_drawdown": -3293.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.484,
+     "breach": 0.247,
+     "open": 0.269,
+     "days_to_pass": 140.0,
+     "funded_breach_6m": 0.124,
+     "funded_breach_12m": 0.247
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": -906.0,
+     "usd_per_session": -7.08,
+     "win_days": 0.444,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 734.0,
+     "max_drawdown": -1093.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 46,
+     "usd_total": 1102.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.565,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 961.0,
+     "max_drawdown": -2271.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.255,
+     "breach": 0.196,
+     "open": 0.549,
+     "days_to_pass": 66.0,
+     "funded_breach_6m": 0.196,
+     "funded_breach_12m": 0.196
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 9554.0,
+     "usd_per_session": 5.26,
+     "win_days": 0.53,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 1041.0,
+     "max_drawdown": -3724.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.423,
+     "breach": 0.258,
+     "open": 0.319,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.14,
+     "funded_breach_12m": 0.258
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-b731",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 4,
+   "train_score": 0.351617560530604,
+   "test_score": null,
+   "genome": {
+    "id": "7f3705d18da8",
+    "name": "Wider Bolder-Sharper-Cautious-Tight-Sharper-Greedier-Cautious-Tight-Sharper-G",
+    "thesis": "RSI(7) under 25 in a long uptrend; out on the RSI rebound. Combined with: A 1.5-sigma dip above the 200-day, out at the mean.",
+    "entry_rules": [
+     {
+      "when": "(dist_sma200 > 0.023 and mkt_ret20 > -0.057 and atr_pct < 0.0076) and dist_sma20 < 0.082",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(rsi7 < 33 and close > sma200) and dist_sma200 > -0.044",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((zscore20 < -1.5 and close > sma200) or dist_sma50 > 0.078) and volume_ratio < 2.16) or ret60 > 0.246",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "pct_of_52w_high < 0.73",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "zscore20 > -0.031",
+      "note": ""
+     },
+     {
+      "when": "cross_below(sma20, sma50)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret60 > 0.075",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0144,
+     "take_profit_pct": 0.1256,
+     "trailing_stop_pct": 0.147,
+     "max_hold_bars": 3,
+     "min_hold_bars": 2,
+     "cooldown_bars": 0
+    },
+    "generation": 37,
+    "parents": [
+     "e099cabe99d3"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133876.0291026
+   },
+   "notional": 39159.0,
+   "account": "50K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 243,
+     "usd_total": 4687.0,
+     "usd_per_session": 1.84,
+     "win_days": 0.514,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1558.0,
+     "max_drawdown": -2894.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.008,
+     "breach": 0.165,
+     "open": 0.827,
+     "days_to_pass": 240.5,
+     "funded_breach_6m": 0.067,
+     "funded_breach_12m": 0.165
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 498,
+     "usd_total": 22331.0,
+     "usd_per_session": 9.84,
+     "win_days": 0.56,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1084.0,
+     "max_drawdown": -1926.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.513,
+     "breach": 0.07,
+     "open": 0.416,
+     "days_to_pass": 146.0,
+     "funded_breach_6m": 0.009,
+     "funded_breach_12m": 0.07
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 11587.0,
+     "usd_per_session": 6.38,
+     "win_days": 0.534,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1049.0,
+     "max_drawdown": -3293.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.484,
+     "breach": 0.247,
+     "open": 0.269,
+     "days_to_pass": 140.0,
+     "funded_breach_6m": 0.124,
+     "funded_breach_12m": 0.247
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": -906.0,
+     "usd_per_session": -7.08,
+     "win_days": 0.444,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 734.0,
+     "max_drawdown": -1093.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 46,
+     "usd_total": 1102.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.565,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 961.0,
+     "max_drawdown": -2271.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.255,
+     "breach": 0.196,
+     "open": 0.549,
+     "days_to_pass": 66.0,
+     "funded_breach_6m": 0.196,
+     "funded_breach_12m": 0.196
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 9554.0,
+     "usd_per_session": 5.26,
+     "win_days": 0.53,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 1041.0,
+     "max_drawdown": -3724.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.423,
+     "breach": 0.258,
+     "open": 0.319,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.14,
+     "funded_breach_12m": 0.258
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-b731",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 5,
+   "train_score": 0.351617560530604,
+   "test_score": null,
+   "genome": {
+    "id": "fdf46e13c777",
+    "name": "Stubborn Bolder-Sharper-Cautious-Tight-Sharper-Greedier-Cautious-Tight-Sharper-G",
+    "thesis": "RSI(7) under 25 in a long uptrend; out on the RSI rebound. Combined with: A 1.5-sigma dip above the 200-day, out at the mean.",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > 0.023 and mkt_ret20 > -0.057 and atr_pct < 0.0076",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(rsi7 < 33 and close > sma200) and dist_sma200 > -0.045",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((zscore20 < -1.5 and close > sma200) or dist_sma50 > 0.078) and volume_ratio < 2.16) or ret60 > 0.246",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "pct_of_52w_high < 0.73",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "zscore20 > -0.031",
+      "note": ""
+     },
+     {
+      "when": "cross_below(sma20, sma50)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret60 > 0.075",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0144,
+     "take_profit_pct": 0.1256,
+     "trailing_stop_pct": 0.147,
+     "max_hold_bars": 3,
+     "min_hold_bars": 2,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "457a962f4ee0"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133882.8167903
+   },
+   "notional": 39159.0,
+   "account": "50K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 243,
+     "usd_total": 4687.0,
+     "usd_per_session": 1.84,
+     "win_days": 0.514,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1558.0,
+     "max_drawdown": -2894.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.008,
+     "breach": 0.165,
+     "open": 0.827,
+     "days_to_pass": 240.5,
+     "funded_breach_6m": 0.067,
+     "funded_breach_12m": 0.165
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 498,
+     "usd_total": 22331.0,
+     "usd_per_session": 9.84,
+     "win_days": 0.56,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1084.0,
+     "max_drawdown": -1926.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.513,
+     "breach": 0.07,
+     "open": 0.416,
+     "days_to_pass": 146.0,
+     "funded_breach_6m": 0.009,
+     "funded_breach_12m": 0.07
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 11587.0,
+     "usd_per_session": 6.38,
+     "win_days": 0.534,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1049.0,
+     "max_drawdown": -3293.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.484,
+     "breach": 0.247,
+     "open": 0.269,
+     "days_to_pass": 140.0,
+     "funded_breach_6m": 0.124,
+     "funded_breach_12m": 0.247
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": -906.0,
+     "usd_per_session": -7.08,
+     "win_days": 0.444,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 734.0,
+     "max_drawdown": -1093.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 46,
+     "usd_total": 1102.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.565,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 961.0,
+     "max_drawdown": -2271.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.255,
+     "breach": 0.196,
+     "open": 0.549,
+     "days_to_pass": 66.0,
+     "funded_breach_6m": 0.196,
+     "funded_breach_12m": 0.196
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 232,
+     "usd_total": 9554.0,
+     "usd_per_session": 5.26,
+     "win_days": 0.53,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 1041.0,
+     "max_drawdown": -3724.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.423,
+     "breach": 0.258,
+     "open": 0.319,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.14,
+     "funded_breach_12m": 0.258
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-9078",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 1,
+   "train_score": 0.16848474038691433,
+   "test_score": null,
+   "genome": {
+    "id": "c57d9bd3777d",
+    "name": "Patient Tighter-Tight",
+    "thesis": "The turn of the month above the 50-day, with a tight stop.",
+    "entry_rules": [
+     {
+      "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.08",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "ret5 < 0.014 and rsi14 > 77",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.11) or ret60 > 0.129",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "atr_pct < 0.0072",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 5",
+      "note": ""
+     },
+     {
+      "when": "mkt_vol20 > 0.148",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_ret20 < 0.016",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 3,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.006,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 9,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 38,
+    "parents": [
+     "782cc30b737c"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133808.0935326
+   },
+   "notional": 39159.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 96,
+     "usd_total": 4099.0,
+     "usd_per_session": 1.61,
+     "win_days": 0.562,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1105.0,
+     "max_drawdown": -2049.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.222,
+     "breach": 0.033,
+     "open": 0.745,
+     "days_to_pass": 128.0,
+     "funded_breach_6m": 0.039,
+     "funded_breach_12m": 0.053
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 254,
+     "usd_total": 9869.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.571,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 614.0,
+     "max_drawdown": -1451.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.048,
+     "open": 0.544,
+     "days_to_pass": 115.0,
+     "funded_breach_6m": 0.046,
+     "funded_breach_12m": 0.051
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 6155.0,
+     "usd_per_session": 3.39,
+     "win_days": 0.556,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 904.0,
+     "max_drawdown": -2069.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.505,
+     "breach": 0.181,
+     "open": 0.313,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.187
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 5,
+     "usd_total": -1182.0,
+     "usd_per_session": -9.23,
+     "win_days": 0.0,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 0.0,
+     "max_drawdown": -1182.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.5,
+     "open": 0.5,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.5,
+     "funded_breach_12m": 0.5
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 7,
+     "usd_total": -1171.0,
+     "usd_per_session": -4.63,
+     "win_days": 0.143,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 23.0,
+     "max_drawdown": -1194.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.745,
+     "open": 0.255,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.294,
+     "funded_breach_12m": 0.745
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 5107.0,
+     "usd_per_session": 2.81,
+     "win_days": 0.556,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 896.0,
+     "max_drawdown": -2228.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.415,
+     "breach": 0.206,
+     "open": 0.379,
+     "days_to_pass": 155.0,
+     "funded_breach_6m": 0.096,
+     "funded_breach_12m": 0.212
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-9078",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 2,
+   "train_score": 0.16848474038691433,
+   "test_score": null,
+   "genome": {
+    "id": "c26ac692f705",
+    "name": "Adaptive Tighter-Tight",
+    "thesis": "The turn of the month above the 50-day, with a tight stop.",
+    "entry_rules": [
+     {
+      "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.08",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "ret5 < 0.011 and rsi14 > 77",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.11) or ret60 > 0.129",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "atr_pct < 0.0072",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 5",
+      "note": ""
+     },
+     {
+      "when": "mkt_vol20 > 0.148",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_ret20 < 0.016",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 2,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.006,
+     "take_profit_pct": 0.035,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 7,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 37,
+    "parents": [
+     "ae7137303a28"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133797.4550364
+   },
+   "notional": 39159.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 96,
+     "usd_total": 4099.0,
+     "usd_per_session": 1.61,
+     "win_days": 0.562,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1105.0,
+     "max_drawdown": -2049.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.222,
+     "breach": 0.033,
+     "open": 0.745,
+     "days_to_pass": 128.0,
+     "funded_breach_6m": 0.039,
+     "funded_breach_12m": 0.057
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 248,
+     "usd_total": 9585.0,
+     "usd_per_session": 4.22,
+     "win_days": 0.573,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 614.0,
+     "max_drawdown": -1451.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.048,
+     "open": 0.544,
+     "days_to_pass": 115.0,
+     "funded_breach_6m": 0.046,
+     "funded_breach_12m": 0.051
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 6155.0,
+     "usd_per_session": 3.39,
+     "win_days": 0.556,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 904.0,
+     "max_drawdown": -2069.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.505,
+     "breach": 0.181,
+     "open": 0.313,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.187
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 5,
+     "usd_total": -1182.0,
+     "usd_per_session": -9.23,
+     "win_days": 0.0,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 0.0,
+     "max_drawdown": -1182.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.5,
+     "open": 0.5,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.5,
+     "funded_breach_12m": 0.5
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 7,
+     "usd_total": -1171.0,
+     "usd_per_session": -4.63,
+     "win_days": 0.143,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 23.0,
+     "max_drawdown": -1194.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.745,
+     "open": 0.255,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.294,
+     "funded_breach_12m": 0.745
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 5107.0,
+     "usd_per_session": 2.81,
+     "win_days": 0.556,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 896.0,
+     "max_drawdown": -2228.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.415,
+     "breach": 0.206,
+     "open": 0.379,
+     "days_to_pass": 155.0,
+     "funded_breach_6m": 0.096,
+     "funded_breach_12m": 0.212
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-9078",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 3,
+   "train_score": 0.16848474038691433,
+   "test_score": null,
+   "genome": {
+    "id": "49403b931040",
+    "name": "Stubborn Tighter-Tight",
+    "thesis": "The turn of the month above the 50-day, with a tight stop.",
+    "entry_rules": [
+     {
+      "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.07",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "ret5 < 0.014 and rsi14 > 77",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.15) or ret60 > 0.129",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "atr_pct < 0.0072",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 5",
+      "note": ""
+     },
+     {
+      "when": "mkt_vol20 > 0.148",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_ret20 < 0.016",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 3,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.006,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 7,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 37,
+    "parents": [
+     "a802106d4971"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133797.4727912
+   },
+   "notional": 39159.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 97,
+     "usd_total": 4351.0,
+     "usd_per_session": 1.71,
+     "win_days": 0.567,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1105.0,
+     "max_drawdown": -2049.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.222,
+     "breach": 0.033,
+     "open": 0.745,
+     "days_to_pass": 128.0,
+     "funded_breach_6m": 0.039,
+     "funded_breach_12m": 0.053
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 254,
+     "usd_total": 9869.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.571,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 614.0,
+     "max_drawdown": -1451.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.048,
+     "open": 0.544,
+     "days_to_pass": 115.0,
+     "funded_breach_6m": 0.046,
+     "funded_breach_12m": 0.051
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 6155.0,
+     "usd_per_session": 3.39,
+     "win_days": 0.556,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 904.0,
+     "max_drawdown": -2069.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.505,
+     "breach": 0.181,
+     "open": 0.313,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.187
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 5,
+     "usd_total": -1182.0,
+     "usd_per_session": -9.23,
+     "win_days": 0.0,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 0.0,
+     "max_drawdown": -1182.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.5,
+     "open": 0.5,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.5,
+     "funded_breach_12m": 0.5
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 7,
+     "usd_total": -1171.0,
+     "usd_per_session": -4.63,
+     "win_days": 0.143,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 23.0,
+     "max_drawdown": -1194.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.745,
+     "open": 0.255,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.294,
+     "funded_breach_12m": 0.745
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 5107.0,
+     "usd_per_session": 2.81,
+     "win_days": 0.556,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 896.0,
+     "max_drawdown": -2228.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.415,
+     "breach": 0.206,
+     "open": 0.379,
+     "days_to_pass": 155.0,
+     "funded_breach_6m": 0.096,
+     "funded_breach_12m": 0.212
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-9078",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 4,
+   "train_score": 0.16848474038691433,
+   "test_score": null,
+   "genome": {
+    "id": "810dbbde6469",
+    "name": "Wider Tighter-Tight",
+    "thesis": "The turn of the month above the 50-day, with a tight stop.",
+    "entry_rules": [
+     {
+      "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.08",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "ret5 < 0.011 and rsi14 > 77",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.11) or ret60 > 0.129",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "atr_pct < 0.0072",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 5",
+      "note": ""
+     },
+     {
+      "when": "mkt_vol20 > 0.148",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_ret20 < 0.016",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 2,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.006,
+     "take_profit_pct": 0.166,
+     "trailing_stop_pct": 0.191,
+     "max_hold_bars": 7,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 37,
+    "parents": [
+     "ae7137303a28"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133797.4696913
+   },
+   "notional": 39159.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 96,
+     "usd_total": 4099.0,
+     "usd_per_session": 1.61,
+     "win_days": 0.562,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1105.0,
+     "max_drawdown": -2049.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.222,
+     "breach": 0.033,
+     "open": 0.745,
+     "days_to_pass": 128.0,
+     "funded_breach_6m": 0.039,
+     "funded_breach_12m": 0.057
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 248,
+     "usd_total": 9585.0,
+     "usd_per_session": 4.22,
+     "win_days": 0.573,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 614.0,
+     "max_drawdown": -1451.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.048,
+     "open": 0.544,
+     "days_to_pass": 115.0,
+     "funded_breach_6m": 0.046,
+     "funded_breach_12m": 0.051
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 6155.0,
+     "usd_per_session": 3.39,
+     "win_days": 0.556,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 904.0,
+     "max_drawdown": -2069.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.505,
+     "breach": 0.181,
+     "open": 0.313,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.187
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 5,
+     "usd_total": -1182.0,
+     "usd_per_session": -9.23,
+     "win_days": 0.0,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 0.0,
+     "max_drawdown": -1182.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.5,
+     "open": 0.5,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.5,
+     "funded_breach_12m": 0.5
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 7,
+     "usd_total": -1171.0,
+     "usd_per_session": -4.63,
+     "win_days": 0.143,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 23.0,
+     "max_drawdown": -1194.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.745,
+     "open": 0.255,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.294,
+     "funded_breach_12m": 0.745
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 5107.0,
+     "usd_per_session": 2.81,
+     "win_days": 0.556,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 896.0,
+     "max_drawdown": -2228.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.415,
+     "breach": 0.206,
+     "open": 0.379,
+     "days_to_pass": 155.0,
+     "funded_breach_6m": 0.096,
+     "funded_breach_12m": 0.212
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-9078",
+   "island": "MES globex",
+   "day_stop": 0.01,
+   "rank": 5,
+   "train_score": 0.16848474038691433,
+   "test_score": null,
+   "genome": {
+    "id": "98a518bd89af",
+    "name": "Greedier Tighter-Tight",
+    "thesis": "The turn of the month above the 50-day, with a tight stop.",
+    "entry_rules": [
+     {
+      "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.08",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "ret5 < 0.014 and rsi14 > 77",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.11) or ret60 > 0.129",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "atr_pct < 0.0072",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 5",
+      "note": ""
+     },
+     {
+      "when": "mkt_vol20 > 0.148",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_ret20 < 0.016",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.006,
+     "take_profit_pct": 0.112,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 7,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 38,
+    "parents": [
+     "50e9bdb81ea5"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133808.1076376
+   },
+   "notional": 39159.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 2544,
+     "days_in_market": 96,
+     "usd_total": 4099.0,
+     "usd_per_session": 1.61,
+     "win_days": 0.562,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 1105.0,
+     "max_drawdown": -2049.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.222,
+     "breach": 0.033,
+     "open": 0.745,
+     "days_to_pass": 128.0,
+     "funded_breach_6m": 0.039,
+     "funded_breach_12m": 0.053
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 254,
+     "usd_total": 9869.0,
+     "usd_per_session": 4.35,
+     "win_days": 0.571,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 614.0,
+     "max_drawdown": -1451.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.048,
+     "open": 0.544,
+     "days_to_pass": 115.0,
+     "funded_breach_6m": 0.046,
+     "funded_breach_12m": 0.051
+    },
+    "train": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 6155.0,
+     "usd_per_session": 3.39,
+     "win_days": 0.556,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 904.0,
+     "max_drawdown": -2069.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.505,
+     "breach": 0.181,
+     "open": 0.313,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.187
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 5,
+     "usd_total": -1182.0,
+     "usd_per_session": -9.23,
+     "win_days": 0.0,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 0.0,
+     "max_drawdown": -1182.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.5,
+     "open": 0.5,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.5,
+     "funded_breach_12m": 0.5
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 7,
+     "usd_total": -1171.0,
+     "usd_per_session": -4.63,
+     "win_days": 0.143,
+     "worst_day": -393.0,
+     "worst_intraday": -393.0,
+     "best_day": 23.0,
+     "max_drawdown": -1194.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.745,
+     "open": 0.255,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.294,
+     "funded_breach_12m": 0.745
+    },
+    "stress": {
+     "sessions": 1817,
+     "days_in_market": 126,
+     "usd_total": 5107.0,
+     "usd_per_session": 2.81,
+     "win_days": 0.556,
+     "worst_day": -403.0,
+     "worst_intraday": -403.0,
+     "best_day": 896.0,
+     "max_drawdown": -2228.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.415,
+     "breach": 0.206,
+     "open": 0.379,
+     "days_to_pass": 155.0,
+     "funded_breach_6m": 0.096,
+     "funded_breach_12m": 0.212
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-446c",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 1,
+   "train_score": 0.2604323784633834,
+   "test_score": -4.237959163543598,
+   "genome": {
+    "id": "70484c47edb9",
+    "name": "Calmer Adaptive-Cautious-Leaner-Wider-Stubborn-Target-Leaner-Wider-Stubborn-Targ",
+    "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+    "entry_rules": [
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.32",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((ret1 < -0.011 and close > sma50) or rsi14 > 94) or rsi14 > 77) and ret5 < 0.025",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.35",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "mkt_ret20 < -0.031 or cross_below(macd, macd_signal)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma20 < -0.024",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0061,
+     "take_profit_pct": 0.0078,
+     "trailing_stop_pct": 0.1042,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 36,
+    "parents": [
+     "08c1b2b7938a"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133858.5440636
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 163.0,
+     "usd_per_session": 0.08,
+     "win_days": 0.495,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 716.0,
+     "max_drawdown": -4798.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.153,
+     "breach": 0.394,
+     "open": 0.453,
+     "days_to_pass": 73.5,
+     "funded_breach_6m": 0.212,
+     "funded_breach_12m": 0.404
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 231,
+     "usd_total": 6052.0,
+     "usd_per_session": 2.67,
+     "win_days": 0.55,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 670.0,
+     "max_drawdown": -1394.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.348,
+     "breach": 0.101,
+     "open": 0.551,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.048,
+     "funded_breach_12m": 0.101
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 9831.0,
+     "usd_per_session": 5.41,
+     "win_days": 0.582,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1347.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.549,
+     "breach": 0.124,
+     "open": 0.327,
+     "days_to_pass": 119.5,
+     "funded_breach_6m": 0.055,
+     "funded_breach_12m": 0.124
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 19,
+     "usd_total": 2139.0,
+     "usd_per_session": 16.71,
+     "win_days": 0.684,
+     "worst_day": -150.0,
+     "worst_intraday": -239.0,
+     "best_day": 517.0,
+     "max_drawdown": -150.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.346,
+     "breach": 0.0,
+     "open": 0.654,
+     "days_to_pass": 33.0,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 41,
+     "usd_total": 3937.0,
+     "usd_per_session": 15.56,
+     "win_days": 0.707,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 725.0,
+     "max_drawdown": -262.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.667,
+     "breach": 0.0,
+     "open": 0.333,
+     "days_to_pass": 78.5,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 8784.0,
+     "usd_per_session": 4.84,
+     "win_days": 0.577,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1398.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.511,
+     "breach": 0.154,
+     "open": 0.335,
+     "days_to_pass": 121.5,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.154
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-446c",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 2,
+   "train_score": 0.2604323784633834,
+   "test_score": null,
+   "genome": {
+    "id": "327083ab68bf",
+    "name": "Adaptive Adaptive-Cautious-Leaner-Wider-Stubborn-Target-Leaner-Wider-Stubborn-Ta",
+    "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+    "entry_rules": [
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.32",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((ret1 < -0.011 and close > sma50) or rsi14 > 94) or rsi14 > 77) and ret5 < 0.025",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.35",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "mkt_ret20 < -0.031 or cross_below(macd, macd_signal)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma20 < -0.024",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0061,
+     "take_profit_pct": 0.0078,
+     "trailing_stop_pct": 0.1042,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "aac5bf6932da"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133874.5509202
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 163.0,
+     "usd_per_session": 0.08,
+     "win_days": 0.495,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 716.0,
+     "max_drawdown": -4798.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.153,
+     "breach": 0.394,
+     "open": 0.453,
+     "days_to_pass": 73.5,
+     "funded_breach_6m": 0.212,
+     "funded_breach_12m": 0.404
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 231,
+     "usd_total": 6052.0,
+     "usd_per_session": 2.67,
+     "win_days": 0.55,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 670.0,
+     "max_drawdown": -1394.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.348,
+     "breach": 0.101,
+     "open": 0.551,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.048,
+     "funded_breach_12m": 0.101
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 9831.0,
+     "usd_per_session": 5.41,
+     "win_days": 0.582,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1347.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.549,
+     "breach": 0.124,
+     "open": 0.327,
+     "days_to_pass": 119.5,
+     "funded_breach_6m": 0.055,
+     "funded_breach_12m": 0.124
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 19,
+     "usd_total": 2139.0,
+     "usd_per_session": 16.71,
+     "win_days": 0.684,
+     "worst_day": -150.0,
+     "worst_intraday": -239.0,
+     "best_day": 517.0,
+     "max_drawdown": -150.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.346,
+     "breach": 0.0,
+     "open": 0.654,
+     "days_to_pass": 33.0,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 41,
+     "usd_total": 3937.0,
+     "usd_per_session": 15.56,
+     "win_days": 0.707,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 725.0,
+     "max_drawdown": -262.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.667,
+     "breach": 0.0,
+     "open": 0.333,
+     "days_to_pass": 78.5,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 8784.0,
+     "usd_per_session": 4.84,
+     "win_days": 0.577,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1398.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.511,
+     "breach": 0.154,
+     "open": 0.335,
+     "days_to_pass": 121.5,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.154
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-446c",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 3,
+   "train_score": 0.2604323784633834,
+   "test_score": null,
+   "genome": {
+    "id": "c874c7762801",
+    "name": "Calmer Adaptive-Cautious-Leaner-Wider-Stubborn-Target-Leaner-Wider-Stubborn-Ta",
+    "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+    "entry_rules": [
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.32",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((ret1 < -0.011 and close > sma50) or rsi14 > 94) or rsi14 > 77) and ret5 < 0.025",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "((ret1 < -0.007 and close > sma50) and bb_pct > 0.35) and ret5 < 0.049",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "mkt_ret20 < -0.031 or cross_below(macd, macd_signal)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma20 < -0.024",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0061,
+     "take_profit_pct": 0.0078,
+     "trailing_stop_pct": 0.1042,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "4a93cce12710"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133874.5510995
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 163.0,
+     "usd_per_session": 0.08,
+     "win_days": 0.495,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 716.0,
+     "max_drawdown": -4798.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.153,
+     "breach": 0.394,
+     "open": 0.453,
+     "days_to_pass": 73.5,
+     "funded_breach_6m": 0.212,
+     "funded_breach_12m": 0.404
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 231,
+     "usd_total": 6052.0,
+     "usd_per_session": 2.67,
+     "win_days": 0.55,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 670.0,
+     "max_drawdown": -1394.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.348,
+     "breach": 0.101,
+     "open": 0.551,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.048,
+     "funded_breach_12m": 0.101
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 9831.0,
+     "usd_per_session": 5.41,
+     "win_days": 0.582,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1347.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.549,
+     "breach": 0.124,
+     "open": 0.327,
+     "days_to_pass": 119.5,
+     "funded_breach_6m": 0.055,
+     "funded_breach_12m": 0.124
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 19,
+     "usd_total": 2139.0,
+     "usd_per_session": 16.71,
+     "win_days": 0.684,
+     "worst_day": -150.0,
+     "worst_intraday": -239.0,
+     "best_day": 517.0,
+     "max_drawdown": -150.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.346,
+     "breach": 0.0,
+     "open": 0.654,
+     "days_to_pass": 33.0,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 41,
+     "usd_total": 3937.0,
+     "usd_per_session": 15.56,
+     "win_days": 0.707,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 725.0,
+     "max_drawdown": -262.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.667,
+     "breach": 0.0,
+     "open": 0.333,
+     "days_to_pass": 78.5,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 8784.0,
+     "usd_per_session": 4.84,
+     "win_days": 0.577,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1398.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.511,
+     "breach": 0.154,
+     "open": 0.335,
+     "days_to_pass": 121.5,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.154
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-446c",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 4,
+   "train_score": 0.2604323784633834,
+   "test_score": null,
+   "genome": {
+    "id": "4ed535aad8ff",
+    "name": "Patient Adaptive-Cautious-Leaner-Wider-Stubborn-Target-Leaner-Wider-Stubborn-Tar",
+    "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+    "entry_rules": [
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.32",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(((ret1 < -0.011 and close > sma50) or rsi14 > 94) or rsi14 > 77) and ret5 < 0.025",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "mkt_ret20 < -0.031 or cross_below(macd, macd_signal)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma20 < -0.024",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0061,
+     "take_profit_pct": 0.0078,
+     "trailing_stop_pct": 0.1042,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 37,
+    "parents": [
+     "70484c47edb9"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133866.6945033
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 163.0,
+     "usd_per_session": 0.08,
+     "win_days": 0.495,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 716.0,
+     "max_drawdown": -4798.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.153,
+     "breach": 0.394,
+     "open": 0.453,
+     "days_to_pass": 73.5,
+     "funded_breach_6m": 0.212,
+     "funded_breach_12m": 0.404
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 231,
+     "usd_total": 6052.0,
+     "usd_per_session": 2.67,
+     "win_days": 0.55,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 670.0,
+     "max_drawdown": -1394.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.348,
+     "breach": 0.101,
+     "open": 0.551,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.048,
+     "funded_breach_12m": 0.101
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 9831.0,
+     "usd_per_session": 5.41,
+     "win_days": 0.582,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1347.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.549,
+     "breach": 0.124,
+     "open": 0.327,
+     "days_to_pass": 119.5,
+     "funded_breach_6m": 0.055,
+     "funded_breach_12m": 0.124
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 19,
+     "usd_total": 2139.0,
+     "usd_per_session": 16.71,
+     "win_days": 0.684,
+     "worst_day": -150.0,
+     "worst_intraday": -239.0,
+     "best_day": 517.0,
+     "max_drawdown": -150.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.346,
+     "breach": 0.0,
+     "open": 0.654,
+     "days_to_pass": 33.0,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 41,
+     "usd_total": 3937.0,
+     "usd_per_session": 15.56,
+     "win_days": 0.707,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 725.0,
+     "max_drawdown": -262.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.667,
+     "breach": 0.0,
+     "open": 0.333,
+     "days_to_pass": 78.5,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 8784.0,
+     "usd_per_session": 4.84,
+     "win_days": 0.577,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1398.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.511,
+     "breach": 0.154,
+     "open": 0.335,
+     "days_to_pass": 121.5,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.154
+    }
+   }
+  },
+  {
+   "run": "run-20260923-031459-446c",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 5,
+   "train_score": 0.2604323784633834,
+   "test_score": null,
+   "genome": {
+    "id": "92ed3ad2b242",
+    "name": "Calmer Adaptive-Cautious-Leaner-Wider-Stubborn-Target-Leaner-Wider-Stubborn-Ta",
+    "thesis": "A down day above the 50-day mean, sold on a small bounce; a tight stop keeps a loss far from the drawdown floor.",
+    "entry_rules": [
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.32",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "((((ret1 < -0.011 and close > sma50) or rsi14 > 94) or rsi14 > 77) and ret5 < 0.025) and dist_sma50 < 0.149",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "(ret1 < -0.007 and close > sma50) and bb_pct > 0.35",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "mkt_ret20 < -0.031 or cross_below(macd, macd_signal)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma20 < -0.024",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0061,
+     "take_profit_pct": 0.0078,
+     "trailing_stop_pct": 0.1042,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "4a93cce12710"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790133874.5415854
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 163.0,
+     "usd_per_session": 0.08,
+     "win_days": 0.495,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 716.0,
+     "max_drawdown": -4798.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.153,
+     "breach": 0.394,
+     "open": 0.453,
+     "days_to_pass": 73.5,
+     "funded_breach_6m": 0.212,
+     "funded_breach_12m": 0.404
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 231,
+     "usd_total": 6052.0,
+     "usd_per_session": 2.67,
+     "win_days": 0.55,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 670.0,
+     "max_drawdown": -1394.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.348,
+     "breach": 0.101,
+     "open": 0.551,
+     "days_to_pass": 148.0,
+     "funded_breach_6m": 0.048,
+     "funded_breach_12m": 0.101
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 9831.0,
+     "usd_per_session": 5.41,
+     "win_days": 0.582,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1347.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.549,
+     "breach": 0.124,
+     "open": 0.327,
+     "days_to_pass": 119.5,
+     "funded_breach_6m": 0.055,
+     "funded_breach_12m": 0.124
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 19,
+     "usd_total": 2139.0,
+     "usd_per_session": 16.71,
+     "win_days": 0.684,
+     "worst_day": -150.0,
+     "worst_intraday": -239.0,
+     "best_day": 517.0,
+     "max_drawdown": -150.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.346,
+     "breach": 0.0,
+     "open": 0.654,
+     "days_to_pass": 33.0,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 41,
+     "usd_total": 3937.0,
+     "usd_per_session": 15.56,
+     "win_days": 0.707,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 725.0,
+     "max_drawdown": -262.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.667,
+     "breach": 0.0,
+     "open": 0.333,
+     "days_to_pass": 78.5,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 201,
+     "usd_total": 8784.0,
+     "usd_per_session": 4.84,
+     "win_days": 0.577,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1398.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.511,
+     "breach": 0.154,
+     "open": 0.335,
+     "days_to_pass": 121.5,
+     "funded_breach_6m": 0.063,
+     "funded_breach_12m": 0.154
+    }
+   }
+  },
+  {
+   "run": "run-20260923-030636-d1df",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 1,
+   "train_score": 0.3491938698935322,
+   "test_score": -6.041880173653738,
+   "genome": {
+    "id": "7c05b41b3ae9",
+    "name": "Bolder Leaner-Tight",
+    "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+    "entry_rules": [
+     {
+      "when": "(((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 1.2) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.29) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.25) and dist_sma200 > -0.064",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "pct_off_52w_low > 0.72",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 > 1.77 or mkt_ret20 < -0.035",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "bars_held < 31",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0087,
+     "take_profit_pct": 0.0129,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 1,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "3b75aca92a0e"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790132960.7714958
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 186,
+     "usd_total": 869.0,
+     "usd_per_session": 0.44,
+     "win_days": 0.527,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 609.0,
+     "max_drawdown": -2897.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.189,
+     "breach": 0.276,
+     "open": 0.535,
+     "days_to_pass": 149.5,
+     "funded_breach_6m": 0.072,
+     "funded_breach_12m": 0.286
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 264,
+     "usd_total": 1999.0,
+     "usd_per_session": 0.88,
+     "win_days": 0.538,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 799.0,
+     "max_drawdown": -2231.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.22,
+     "breach": 0.099,
+     "open": 0.681,
+     "days_to_pass": 150.0,
+     "funded_breach_6m": 0.099,
+     "funded_breach_12m": 0.099
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 219,
+     "usd_total": 11198.0,
+     "usd_per_session": 6.17,
+     "win_days": 0.626,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 943.0,
+     "max_drawdown": -1022.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.473,
+     "breach": 0.011,
+     "open": 0.516,
+     "days_to_pass": 116.0,
+     "funded_breach_6m": 0.008,
+     "funded_breach_12m": 0.011
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 17,
+     "usd_total": 312.0,
+     "usd_per_session": 2.43,
+     "win_days": 0.471,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 20,
+     "usd_total": 49.0,
+     "usd_per_session": 0.19,
+     "win_days": 0.45,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 219,
+     "usd_total": 10071.0,
+     "usd_per_session": 5.55,
+     "win_days": 0.616,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 938.0,
+     "max_drawdown": -1061.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.456,
+     "breach": 0.011,
+     "open": 0.533,
+     "days_to_pass": 117.5,
+     "funded_breach_6m": 0.011,
+     "funded_breach_12m": 0.011
+    }
+   }
+  },
+  {
+   "run": "run-20260923-030636-d1df",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 2,
+   "train_score": 0.3472097429094052,
+   "test_score": -6.8698712652407785,
+   "genome": {
+    "id": "0e809d6c1b43",
+    "name": "Patient-Leaner-Tight",
+    "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+    "entry_rules": [
+     {
+      "when": "pct_off_52w_low > 0.72",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 0.9) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.27) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.3",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "vol_ratio_20_60 > 1.77 or mkt_ret20 < -0.035",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0087,
+     "take_profit_pct": 0.0129,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 1,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "c70daba9c3c1",
+     "3b75aca92a0e"
+    ],
+    "origin": "crossover",
+    "rationale": "crossover of 'Patient Leaner-Tight' and 'Sharper Leaner-Tight'",
+    "created_at": 1790132960.7863512
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 217,
+     "usd_total": -457.0,
+     "usd_per_session": -0.23,
+     "win_days": 0.498,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 932.0,
+     "max_drawdown": -5144.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.205,
+     "breach": 0.481,
+     "open": 0.315,
+     "days_to_pass": 141.5,
+     "funded_breach_6m": 0.194,
+     "funded_breach_12m": 0.491
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 270,
+     "usd_total": 1010.0,
+     "usd_per_session": 0.44,
+     "win_days": 0.53,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 799.0,
+     "max_drawdown": -2231.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.112,
+     "breach": 0.192,
+     "open": 0.696,
+     "days_to_pass": 143.0,
+     "funded_breach_6m": 0.15,
+     "funded_breach_12m": 0.192
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 233,
+     "usd_total": 13549.0,
+     "usd_per_session": 7.46,
+     "win_days": 0.614,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 1925.0,
+     "max_drawdown": -1022.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.434,
+     "breach": 0.011,
+     "open": 0.555,
+     "days_to_pass": 113.5,
+     "funded_breach_6m": 0.008,
+     "funded_breach_12m": 0.011
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 18,
+     "usd_total": 99.0,
+     "usd_per_session": 0.77,
+     "win_days": 0.444,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -874.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 21,
+     "usd_total": -164.0,
+     "usd_per_session": -0.65,
+     "win_days": 0.429,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -874.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 233,
+     "usd_total": 12346.0,
+     "usd_per_session": 6.8,
+     "win_days": 0.605,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 1920.0,
+     "max_drawdown": -1061.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.412,
+     "breach": 0.011,
+     "open": 0.577,
+     "days_to_pass": 112.5,
+     "funded_breach_6m": 0.011,
+     "funded_breach_12m": 0.011
+    }
+   }
+  },
+  {
+   "run": "run-20260923-030636-d1df",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 3,
+   "train_score": 0.34529400088443984,
+   "test_score": null,
+   "genome": {
+    "id": "8b4a821dc13e",
+    "name": "Tighter Leaner-Tight",
+    "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+    "entry_rules": [
+     {
+      "when": "((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 1.2) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.29) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.25",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "pct_off_52w_low > 0.72",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 > 1.58 or mkt_ret20 < -0.047",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0087,
+     "take_profit_pct": 0.0129,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 1,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "3b75aca92a0e"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790132960.785043
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 215,
+     "usd_total": -1574.0,
+     "usd_per_session": -0.81,
+     "win_days": 0.488,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 932.0,
+     "max_drawdown": -5144.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.199,
+     "breach": 0.481,
+     "open": 0.32,
+     "days_to_pass": 150.5,
+     "funded_breach_6m": 0.194,
+     "funded_breach_12m": 0.491
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 265,
+     "usd_total": 1868.0,
+     "usd_per_session": 0.82,
+     "win_days": 0.536,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 799.0,
+     "max_drawdown": -2231.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.2,
+     "breach": 0.099,
+     "open": 0.7,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.099,
+     "funded_breach_12m": 0.099
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 13079.0,
+     "usd_per_session": 7.2,
+     "win_days": 0.612,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 1925.0,
+     "max_drawdown": -1022.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.42,
+     "breach": 0.011,
+     "open": 0.569,
+     "days_to_pass": 113.0,
+     "funded_breach_6m": 0.008,
+     "funded_breach_12m": 0.011
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 17,
+     "usd_total": 312.0,
+     "usd_per_session": 2.43,
+     "win_days": 0.471,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 20,
+     "usd_total": 49.0,
+     "usd_per_session": 0.19,
+     "win_days": 0.45,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 11881.0,
+     "usd_per_session": 6.54,
+     "win_days": 0.603,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 1920.0,
+     "max_drawdown": -1061.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.011,
+     "open": 0.582,
+     "days_to_pass": 112.5,
+     "funded_breach_6m": 0.011,
+     "funded_breach_12m": 0.011
+    }
+   }
+  },
+  {
+   "run": "run-20260923-030636-d1df",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 4,
+   "train_score": 0.34529400088443984,
+   "test_score": null,
+   "genome": {
+    "id": "5235d75c8688",
+    "name": "Bolder Leaner-Tight",
+    "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+    "entry_rules": [
+     {
+      "when": "((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 1.2) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.29) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.25",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "pct_off_52w_low > 0.72",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "ret60 > 0.342",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 > 1.77 or mkt_ret20 < -0.035",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0087,
+     "take_profit_pct": 0.0129,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 1,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "3b75aca92a0e"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790132960.7913282
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 215,
+     "usd_total": -1574.0,
+     "usd_per_session": -0.81,
+     "win_days": 0.488,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 932.0,
+     "max_drawdown": -5144.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.199,
+     "breach": 0.481,
+     "open": 0.32,
+     "days_to_pass": 150.5,
+     "funded_breach_6m": 0.194,
+     "funded_breach_12m": 0.491
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 265,
+     "usd_total": 1868.0,
+     "usd_per_session": 0.82,
+     "win_days": 0.536,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 799.0,
+     "max_drawdown": -2231.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.2,
+     "breach": 0.099,
+     "open": 0.7,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.099,
+     "funded_breach_12m": 0.099
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 13079.0,
+     "usd_per_session": 7.2,
+     "win_days": 0.612,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 1925.0,
+     "max_drawdown": -1022.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.42,
+     "breach": 0.011,
+     "open": 0.569,
+     "days_to_pass": 113.0,
+     "funded_breach_6m": 0.008,
+     "funded_breach_12m": 0.011
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 17,
+     "usd_total": 312.0,
+     "usd_per_session": 2.43,
+     "win_days": 0.471,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 20,
+     "usd_total": 49.0,
+     "usd_per_session": 0.19,
+     "win_days": 0.45,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 11881.0,
+     "usd_per_session": 6.54,
+     "win_days": 0.603,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 1920.0,
+     "max_drawdown": -1061.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.011,
+     "open": 0.582,
+     "days_to_pass": 112.5,
+     "funded_breach_6m": 0.011,
+     "funded_breach_12m": 0.011
+    }
+   }
+  },
+  {
+   "run": "run-20260923-030636-d1df",
+   "island": "MYM globex",
+   "day_stop": 0.01,
+   "rank": 5,
+   "train_score": 0.34529400088443984,
+   "test_score": null,
+   "genome": {
+    "id": "78555916b72a",
+    "name": "Calmer Leaner-Tight",
+    "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+    "entry_rules": [
+     {
+      "when": "((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 1.2) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.29) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.25",
+      "weight": 1.0,
+      "note": ""
+     },
+     {
+      "when": "pct_off_52w_low > 0.72",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 2",
+      "note": ""
+     },
+     {
+      "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 > 1.77 or mkt_ret20 < -0.035",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "mkt_vol20 < 0.096",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.0087,
+     "take_profit_pct": 0.0162,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 1,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 38,
+    "parents": [
+     "3b75aca92a0e"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790132960.7785943
+   },
+   "notional": 26140.0,
+   "account": "25K",
+   "windows": {
+    "oldest": {
+     "sessions": 1955,
+     "days_in_market": 215,
+     "usd_total": -1574.0,
+     "usd_per_session": -0.81,
+     "win_days": 0.488,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 932.0,
+     "max_drawdown": -5144.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.199,
+     "breach": 0.481,
+     "open": 0.32,
+     "days_to_pass": 150.5,
+     "funded_breach_6m": 0.194,
+     "funded_breach_12m": 0.491
+    },
+    "older": {
+     "sessions": 2270,
+     "days_in_market": 265,
+     "usd_total": 1868.0,
+     "usd_per_session": 0.82,
+     "win_days": 0.536,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 799.0,
+     "max_drawdown": -2231.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.2,
+     "breach": 0.099,
+     "open": 0.7,
+     "days_to_pass": 139.0,
+     "funded_breach_6m": 0.099,
+     "funded_breach_12m": 0.099
+    },
+    "train": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 13079.0,
+     "usd_per_session": 7.2,
+     "win_days": 0.612,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 1925.0,
+     "max_drawdown": -1022.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.42,
+     "breach": 0.011,
+     "open": 0.569,
+     "days_to_pass": 113.0,
+     "funded_breach_6m": 0.008,
+     "funded_breach_12m": 0.011
+    },
+    "held_out": {
+     "sessions": 128,
+     "days_in_market": 17,
+     "usd_total": 312.0,
+     "usd_per_session": 2.43,
+     "win_days": 0.471,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "last_12m": {
+     "sessions": 253,
+     "days_in_market": 20,
+     "usd_total": 49.0,
+     "usd_per_session": 0.19,
+     "win_days": 0.45,
+     "worst_day": -262.0,
+     "worst_intraday": -262.0,
+     "best_day": 435.0,
+     "max_drawdown": -666.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.0,
+     "breach": 0.0,
+     "open": 1.0,
+     "days_to_pass": NaN,
+     "funded_breach_6m": 0.0,
+     "funded_breach_12m": 0.0
+    },
+    "stress": {
+     "sessions": 1816,
+     "days_in_market": 232,
+     "usd_total": 11881.0,
+     "usd_per_session": 6.54,
+     "win_days": 0.603,
+     "worst_day": -268.0,
+     "worst_intraday": -268.0,
+     "best_day": 1920.0,
+     "max_drawdown": -1061.0,
+     "days_over_500_loss": 0,
+     "days_over_1000_loss": 0,
+     "pass": 0.407,
+     "breach": 0.011,
+     "open": 0.582,
+     "days_to_pass": 112.5,
+     "funded_breach_6m": 0.011,
+     "funded_breach_12m": 0.011
+    }
+   }
+  }
+ ]
+}

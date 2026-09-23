@@ -1,0 +1,203 @@
+{
+ "rank": 2,
+ "key": "B",
+ "name": "S&P Calm Momentum",
+ "plain_words": "One MES carried while the S&P is in a strong, calm uptrend (a 20-day gain of at least 1.6% and 20-day volatility under 15%): bought at month end above the 50-day, on very quiet days, or on overbought strength. Out after five sessions, on a close over the upper band, or 0.6% under its entry on a close.",
+ "settings": {
+  "symbol": "ES1!",
+  "micro": "MES",
+  "contracts": 1,
+  "day_stop": 0.01,
+  "day_stop_usd": 392.0,
+  "session": "globex",
+  "note": "flat by 15:10 Chicago time; bought back at the 17:00 open while the strategy holds; the day stop caps that day only"
+ },
+ "bred": {
+  "run": "run-20260923-031459-9078",
+  "trained_on": "2010-01 to 2026-03-20",
+  "never_seen": "2000-2009",
+  "fitness": "FundedNext Legacy 25K pass rate minus breach rate"
+ },
+ "results_one_contract": {
+  "account": "25K",
+  "windows": {
+   "oldest": {
+    "sessions": 2544,
+    "days_in_market": 96,
+    "usd_total": 4099.0,
+    "usd_per_session": 1.61,
+    "win_days": 0.562,
+    "worst_day": -393.0,
+    "worst_intraday": -393.0,
+    "best_day": 1105.0,
+    "max_drawdown": -2049.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.222,
+    "breach": 0.033,
+    "open": 0.745,
+    "days_to_pass": 128.0,
+    "funded_breach_6m": 0.039,
+    "funded_breach_12m": 0.053
+   },
+   "older": {
+    "sessions": 2270,
+    "days_in_market": 254,
+    "usd_total": 9869.0,
+    "usd_per_session": 4.35,
+    "win_days": 0.571,
+    "worst_day": -393.0,
+    "worst_intraday": -393.0,
+    "best_day": 614.0,
+    "max_drawdown": -1451.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.407,
+    "breach": 0.048,
+    "open": 0.544,
+    "days_to_pass": 115.0,
+    "funded_breach_6m": 0.046,
+    "funded_breach_12m": 0.051
+   },
+   "train": {
+    "sessions": 1817,
+    "days_in_market": 126,
+    "usd_total": 6155.0,
+    "usd_per_session": 3.39,
+    "win_days": 0.556,
+    "worst_day": -393.0,
+    "worst_intraday": -393.0,
+    "best_day": 904.0,
+    "max_drawdown": -2069.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.505,
+    "breach": 0.181,
+    "open": 0.313,
+    "days_to_pass": 139.0,
+    "funded_breach_6m": 0.063,
+    "funded_breach_12m": 0.187
+   },
+   "held_out": {
+    "sessions": 128,
+    "days_in_market": 5,
+    "usd_total": -1182.0,
+    "usd_per_session": -9.23,
+    "win_days": 0.0,
+    "worst_day": -393.0,
+    "worst_intraday": -393.0,
+    "best_day": 0.0,
+    "max_drawdown": -1182.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.0,
+    "breach": 0.5,
+    "open": 0.5,
+    "days_to_pass": NaN,
+    "funded_breach_6m": 0.5,
+    "funded_breach_12m": 0.5
+   },
+   "last_12m": {
+    "sessions": 253,
+    "days_in_market": 7,
+    "usd_total": -1171.0,
+    "usd_per_session": -4.63,
+    "win_days": 0.143,
+    "worst_day": -393.0,
+    "worst_intraday": -393.0,
+    "best_day": 23.0,
+    "max_drawdown": -1194.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.0,
+    "breach": 0.745,
+    "open": 0.255,
+    "days_to_pass": NaN,
+    "funded_breach_6m": 0.294,
+    "funded_breach_12m": 0.745
+   },
+   "stress": {
+    "sessions": 1817,
+    "days_in_market": 126,
+    "usd_total": 5107.0,
+    "usd_per_session": 2.81,
+    "win_days": 0.556,
+    "worst_day": -403.0,
+    "worst_intraday": -403.0,
+    "best_day": 896.0,
+    "max_drawdown": -2228.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.415,
+    "breach": 0.206,
+    "open": 0.379,
+    "days_to_pass": 155.0,
+    "funded_breach_6m": 0.096,
+    "funded_breach_12m": 0.212
+   }
+  }
+ },
+ "genome": {
+  "id": "c57d9bd3777d",
+  "name": "S&P Calm Momentum",
+  "thesis": "The turn of the month above the 50-day, with a tight stop.",
+  "entry_rules": [
+   {
+    "when": "day_of_month >= 31 and close > sma50 and pct_off_52w_low > 0.08",
+    "weight": 1.0,
+    "note": ""
+   },
+   {
+    "when": "ret5 < 0.014 and rsi14 > 77",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "cross_below(close, sma50) and cross_above(sma20, sma50) or ret60 > 0.129",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "atr_pct < 0.0072",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held >= 5",
+    "note": ""
+   },
+   {
+    "when": "mkt_vol20 > 0.148",
+    "note": "mutation: new exit"
+   },
+   {
+    "when": "mkt_ret20 < 0.016",
+    "note": "mutation: new exit"
+   },
+   {
+    "when": "cross_above(close, bb_upper)",
+    "note": "mutation: new exit"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 3,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.006,
+   "take_profit_pct": 0.0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 1
+  },
+  "generation": 38,
+  "parents": [
+   "782cc30b737c"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790133808.0935326
+ }
+}

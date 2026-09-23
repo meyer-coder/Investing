@@ -1,5 +1,9 @@
 # NQ E-mini at 2x: 20 profitable strategies, bred over generations
 
+> **FundedNext:** these strategies hold positions for days, and FundedNext Futures
+> allows no overnight holds (flat by 3:10 PM Chicago time). For that account use the
+> same-day versions in [`../funded/`](../funded/README.md).
+
 Twenty strategies for the Nasdaq-100 E-mini, long only, at twice the account
 in notional: about 0.8 of a micro contract (MNQ) on $25,000 at NQ 31,000. Every
 one of them:

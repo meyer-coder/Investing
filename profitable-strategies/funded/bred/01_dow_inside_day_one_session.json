@@ -1,0 +1,186 @@
+{
+ "rank": 1,
+ "key": "A",
+ "name": "Dow Inside Day, One Session",
+ "plain_words": "One MYM for a single session after a quiet inside day in an uptrend, a strong year off the lows or a close back over the 200-day. Sold at the first close.",
+ "settings": {
+  "symbol": "YM1!",
+  "micro": "MYM",
+  "contracts": 1,
+  "day_stop": 0.01,
+  "day_stop_usd": 261.0,
+  "session": "globex",
+  "note": "flat by 15:10 Chicago time; bought back at the 17:00 open while the strategy holds; the day stop caps that day only"
+ },
+ "bred": {
+  "run": "run-20260923-030636-d1df",
+  "trained_on": "2019-01 to 2026-03-20",
+  "never_seen": "2000-2009 and 2010-2018",
+  "fitness": "FundedNext Legacy 25K pass rate minus breach rate"
+ },
+ "results_one_contract": {
+  "account": "25K",
+  "windows": {
+   "oldest": {
+    "sessions": 1955,
+    "days_in_market": 186,
+    "usd_total": 869.0,
+    "usd_per_session": 0.44,
+    "win_days": 0.527,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 609.0,
+    "max_drawdown": -2897.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.189,
+    "breach": 0.276,
+    "open": 0.535,
+    "days_to_pass": 149.5,
+    "funded_breach_6m": 0.072,
+    "funded_breach_12m": 0.286
+   },
+   "older": {
+    "sessions": 2270,
+    "days_in_market": 264,
+    "usd_total": 1999.0,
+    "usd_per_session": 0.88,
+    "win_days": 0.538,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 799.0,
+    "max_drawdown": -2231.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.22,
+    "breach": 0.099,
+    "open": 0.681,
+    "days_to_pass": 150.0,
+    "funded_breach_6m": 0.099,
+    "funded_breach_12m": 0.099
+   },
+   "train": {
+    "sessions": 1816,
+    "days_in_market": 219,
+    "usd_total": 11198.0,
+    "usd_per_session": 6.17,
+    "win_days": 0.626,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 943.0,
+    "max_drawdown": -1022.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.473,
+    "breach": 0.011,
+    "open": 0.516,
+    "days_to_pass": 116.0,
+    "funded_breach_6m": 0.008,
+    "funded_breach_12m": 0.011
+   },
+   "held_out": {
+    "sessions": 128,
+    "days_in_market": 17,
+    "usd_total": 312.0,
+    "usd_per_session": 2.43,
+    "win_days": 0.471,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 435.0,
+    "max_drawdown": -666.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.0,
+    "breach": 0.0,
+    "open": 1.0,
+    "days_to_pass": NaN,
+    "funded_breach_6m": 0.0,
+    "funded_breach_12m": 0.0
+   },
+   "last_12m": {
+    "sessions": 253,
+    "days_in_market": 20,
+    "usd_total": 49.0,
+    "usd_per_session": 0.19,
+    "win_days": 0.45,
+    "worst_day": -262.0,
+    "worst_intraday": -262.0,
+    "best_day": 435.0,
+    "max_drawdown": -666.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.0,
+    "breach": 0.0,
+    "open": 1.0,
+    "days_to_pass": NaN,
+    "funded_breach_6m": 0.0,
+    "funded_breach_12m": 0.0
+   },
+   "stress": {
+    "sessions": 1816,
+    "days_in_market": 219,
+    "usd_total": 10071.0,
+    "usd_per_session": 5.55,
+    "win_days": 0.616,
+    "worst_day": -268.0,
+    "worst_intraday": -268.0,
+    "best_day": 938.0,
+    "max_drawdown": -1061.0,
+    "days_over_500_loss": 0,
+    "days_over_1000_loss": 0,
+    "pass": 0.456,
+    "breach": 0.011,
+    "open": 0.533,
+    "days_to_pass": 117.5,
+    "funded_breach_6m": 0.011,
+    "funded_breach_12m": 0.011
+   }
+  }
+ },
+ "genome": {
+  "id": "7c05b41b3ae9",
+  "name": "Dow Inside Day, One Session",
+  "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+  "entry_rules": [
+   {
+    "when": "(high < prev(high) and low > prev(low) and close > sma50 or dist_sma50 > 0.05 or mkt_vol20 > 0.29) and ret1 < 0.022 and ret5 < 0.08 and zscore20 > -0.25 and dist_sma200 > -0.064",
+    "weight": 1.0,
+    "note": ""
+   },
+   {
+    "when": "pct_off_52w_low > 0.72",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   },
+   {
+    "when": "cross_above(close, sma200)",
+    "weight": 1.0,
+    "note": "mutation: new entry"
+   }
+  ],
+  "exit_rules": [
+   {
+    "when": "bars_held < 31",
+    "note": "mutation: new exit"
+   }
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 1,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0,
+   "take_profit_pct": 0,
+   "trailing_stop_pct": 0.0,
+   "max_hold_bars": 0,
+   "min_hold_bars": 0,
+   "cooldown_bars": 0
+  },
+  "generation": 38,
+  "parents": [
+   "3b75aca92a0e"
+  ],
+  "origin": "mutation",
+  "rationale": "random mutation",
+  "created_at": 1790132960.7714958
+ }
+}

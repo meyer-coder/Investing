@@ -1,6 +1,13 @@
 # Profitable strategies
 
-**New: [NQ E-mini at 2x](nq-2x/README.md).** Twenty strategies for the
+**New: [FundedNext day trades](funded/README.md).** FundedNext Futures allows no
+overnight holds, so the NQ strategies below cannot run there as written. This
+folder has the top 10 reworked to be flat every afternoon with a daily stop, and
+three strategies bred for the account's rules. Run together on a Legacy 50K,
+the three bred strategies breached 0 to 12% of challenges in every period back
+to 2000.
+
+**[NQ E-mini at 2x](nq-2x/README.md).** Twenty strategies for the
 Nasdaq-100 E-mini, long only at twice the account in notional, bred over 219
 generations. Every one made money over the last six months (held out from
 the breeding), over its 2019-2026 training window, over 2010-2018 and at three

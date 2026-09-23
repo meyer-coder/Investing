@@ -1,0 +1,675 @@
+{
+ "windows": {
+  "oldest": [
+   "2000-01-01",
+   "2009-12-31"
+  ],
+  "older": [
+   "2010-01-01",
+   "2018-12-31"
+  ],
+  "train": [
+   "2019-01-01",
+   "2026-03-20"
+  ],
+  "held_out": [
+   "2026-03-23",
+   "2026-09-22"
+  ],
+  "last_12m": [
+   "2025-09-22",
+   "2026-09-22"
+  ]
+ },
+ "rows": [
+  {
+   "book": [
+    "A_mym_inside_day"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 0.34,
+     "days_traded": 186,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.143,
+      "breach": 0.212,
+      "days_to_pass": 145.0,
+      "funded_breach_6m": 0.051
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.008,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "older": {
+     "usd_per_session": 0.88,
+     "days_traded": 264,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.22,
+      "breach": 0.099,
+      "days_to_pass": 150.0,
+      "funded_breach_6m": 0.099
+     },
+     "50K": {
+      "pass": 0.037,
+      "breach": 0.029,
+      "days_to_pass": 202.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "train": {
+     "usd_per_session": 6.16,
+     "days_traded": 219,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.475,
+      "breach": 0.011,
+      "days_to_pass": 116.0,
+      "funded_breach_6m": 0.008
+     },
+     "50K": {
+      "pass": 0.069,
+      "breach": 0.0,
+      "days_to_pass": 190.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "held_out": {
+     "usd_per_session": 2.43,
+     "days_traded": 17,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": 0.19,
+     "days_traded": 20,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "B_mes_calm_trend"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 1.61,
+     "days_traded": 96,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.222,
+      "breach": 0.033,
+      "days_to_pass": 129.0,
+      "funded_breach_6m": 0.039
+     },
+     "50K": {
+      "pass": 0.069,
+      "breach": 0.018,
+      "days_to_pass": 194.0,
+      "funded_breach_6m": 0.018
+     }
+    },
+    "older": {
+     "usd_per_session": 4.35,
+     "days_traded": 254,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.407,
+      "breach": 0.048,
+      "days_to_pass": 115.0,
+      "funded_breach_6m": 0.046
+     },
+     "50K": {
+      "pass": 0.068,
+      "breach": 0.0,
+      "days_to_pass": 217.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "train": {
+     "usd_per_session": 3.39,
+     "days_traded": 126,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.505,
+      "breach": 0.181,
+      "days_to_pass": 139.0,
+      "funded_breach_6m": 0.063
+     },
+     "50K": {
+      "pass": 0.129,
+      "breach": 0.008,
+      "days_to_pass": 151.0,
+      "funded_breach_6m": 0.008
+     }
+    },
+    "held_out": {
+     "usd_per_session": -9.23,
+     "days_traded": 5,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.5,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.5
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": -4.63,
+     "days_traded": 7,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.745,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.294
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "C_mym_dip"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 0.06,
+     "days_traded": 186,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.12,
+      "breach": 0.346,
+      "days_to_pass": 73.0,
+      "funded_breach_6m": 0.165
+     },
+     "50K": {
+      "pass": 0.043,
+      "breach": 0.031,
+      "days_to_pass": 172.5,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "older": {
+     "usd_per_session": 2.67,
+     "days_traded": 231,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.348,
+      "breach": 0.101,
+      "days_to_pass": 148.0,
+      "funded_breach_6m": 0.048
+     },
+     "50K": {
+      "pass": 0.009,
+      "breach": 0.0,
+      "days_to_pass": 243.5,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "train": {
+     "usd_per_session": 5.41,
+     "days_traded": 201,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.549,
+      "breach": 0.124,
+      "days_to_pass": 120.0,
+      "funded_breach_6m": 0.055
+     },
+     "50K": {
+      "pass": 0.209,
+      "breach": 0.0,
+      "days_to_pass": 201.5,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "held_out": {
+     "usd_per_session": 16.71,
+     "days_traded": 19,
+     "worst_day": -150.0,
+     "25K": {
+      "pass": 0.346,
+      "breach": 0.0,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": 15.56,
+     "days_traded": 41,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.667,
+      "breach": 0.0,
+      "days_to_pass": 78.5,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.0,
+      "days_to_pass": 145.0,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "A_mym_inside_day",
+    "B_mes_calm_trend"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 1.95,
+     "days_traded": 261,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.2,
+      "breach": 0.322,
+      "days_to_pass": 153.0,
+      "funded_breach_6m": 0.147
+     },
+     "50K": {
+      "pass": 0.181,
+      "breach": 0.037,
+      "days_to_pass": 168.5,
+      "funded_breach_6m": 0.02
+     }
+    },
+    "older": {
+     "usd_per_session": 5.23,
+     "days_traded": 475,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.504,
+      "breach": 0.218,
+      "days_to_pass": 107.0,
+      "funded_breach_6m": 0.187
+     },
+     "50K": {
+      "pass": 0.238,
+      "breach": 0.044,
+      "days_to_pass": 193.5,
+      "funded_breach_6m": 0.033
+     }
+    },
+    "train": {
+     "usd_per_session": 9.55,
+     "days_traded": 327,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.423,
+      "breach": 0.327,
+      "days_to_pass": 113.0,
+      "funded_breach_6m": 0.239
+     },
+     "50K": {
+      "pass": 0.385,
+      "breach": 0.0,
+      "days_to_pass": 155.5,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "held_out": {
+     "usd_per_session": -6.8,
+     "days_traded": 21,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.5,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.5
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": -4.44,
+     "days_traded": 26,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.745,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.49
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "A_mym_inside_day",
+    "C_mym_dip"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 0.41,
+     "days_traded": 347,
+     "worst_day": -524.0,
+     "25K": {
+      "pass": 0.185,
+      "breach": 0.601,
+      "days_to_pass": 86.0,
+      "funded_breach_6m": 0.342
+     },
+     "50K": {
+      "pass": 0.083,
+      "breach": 0.116,
+      "days_to_pass": 143.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "older": {
+     "usd_per_session": 3.55,
+     "days_traded": 461,
+     "worst_day": -524.0,
+     "25K": {
+      "pass": 0.531,
+      "breach": 0.399,
+      "days_to_pass": 119.0,
+      "funded_breach_6m": 0.267
+     },
+     "50K": {
+      "pass": 0.227,
+      "breach": 0.048,
+      "days_to_pass": 177.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "train": {
+     "usd_per_session": 11.57,
+     "days_traded": 387,
+     "worst_day": -524.0,
+     "25K": {
+      "pass": 0.604,
+      "breach": 0.203,
+      "days_to_pass": 91.0,
+      "funded_breach_6m": 0.137
+     },
+     "50K": {
+      "pass": 0.525,
+      "breach": 0.011,
+      "days_to_pass": 135.0,
+      "funded_breach_6m": 0.011
+     }
+    },
+    "held_out": {
+     "usd_per_session": 19.15,
+     "days_traded": 33,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.308,
+      "breach": 0.0,
+      "days_to_pass": 38.0,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": 15.75,
+     "days_traded": 57,
+     "worst_day": -262.0,
+     "25K": {
+      "pass": 0.647,
+      "breach": 0.0,
+      "days_to_pass": 74.0,
+      "funded_breach_6m": 0.0
+     },
+     "50K": {
+      "pass": 0.353,
+      "breach": 0.0,
+      "days_to_pass": 128.0,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "B_mes_calm_trend",
+    "C_mym_dip"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 1.67,
+     "days_traded": 266,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.12,
+      "breach": 0.44,
+      "days_to_pass": 69.0,
+      "funded_breach_6m": 0.171
+     },
+     "50K": {
+      "pass": 0.143,
+      "breach": 0.055,
+      "days_to_pass": 124.0,
+      "funded_breach_6m": 0.012
+     }
+    },
+    "older": {
+     "usd_per_session": 7.01,
+     "days_traded": 433,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.551,
+      "breach": 0.293,
+      "days_to_pass": 102.5,
+      "funded_breach_6m": 0.176
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.0,
+      "days_to_pass": 142.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "train": {
+     "usd_per_session": 8.8,
+     "days_traded": 308,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.489,
+      "breach": 0.343,
+      "days_to_pass": 101.5,
+      "funded_breach_6m": 0.206
+     },
+     "50K": {
+      "pass": 0.44,
+      "breach": 0.0,
+      "days_to_pass": 169.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "held_out": {
+     "usd_per_session": 7.48,
+     "days_traded": 23,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.346,
+      "breach": 0.154,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.154
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": 10.93,
+     "days_traded": 47,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.667,
+      "breach": 0.078,
+      "days_to_pass": 78.5,
+      "funded_breach_6m": 0.078
+     },
+     "50K": {
+      "pass": 0.216,
+      "breach": 0.0,
+      "days_to_pass": 158.0,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  },
+  {
+   "book": [
+    "A_mym_inside_day",
+    "B_mes_calm_trend",
+    "C_mym_dip"
+   ],
+   "windows": {
+    "oldest": {
+     "usd_per_session": 2.02,
+     "days_traded": 409,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.194,
+      "breach": 0.611,
+      "days_to_pass": 108.0,
+      "funded_breach_6m": 0.352
+     },
+     "50K": {
+      "pass": 0.224,
+      "breach": 0.1,
+      "days_to_pass": 111.5,
+      "funded_breach_6m": 0.006
+     }
+    },
+    "older": {
+     "usd_per_session": 7.89,
+     "days_traded": 630,
+     "worst_day": -917.0,
+     "25K": {
+      "pass": 0.533,
+      "breach": 0.388,
+      "days_to_pass": 86.5,
+      "funded_breach_6m": 0.322
+     },
+     "50K": {
+      "pass": 0.407,
+      "breach": 0.121,
+      "days_to_pass": 124.0,
+      "funded_breach_6m": 0.037
+     }
+    },
+    "train": {
+     "usd_per_session": 14.96,
+     "days_traded": 480,
+     "worst_day": -655.0,
+     "25K": {
+      "pass": 0.566,
+      "breach": 0.349,
+      "days_to_pass": 89.5,
+      "funded_breach_6m": 0.234
+     },
+     "50K": {
+      "pass": 0.53,
+      "breach": 0.0,
+      "days_to_pass": 132.0,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "held_out": {
+     "usd_per_session": 9.92,
+     "days_traded": 37,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.192,
+      "days_to_pass": 38.0,
+      "funded_breach_6m": 0.192
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0
+     }
+    },
+    "last_12m": {
+     "usd_per_session": 11.12,
+     "days_traded": 63,
+     "worst_day": -393.0,
+     "25K": {
+      "pass": 0.627,
+      "breach": 0.098,
+      "days_to_pass": 75.0,
+      "funded_breach_6m": 0.098
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.0,
+      "days_to_pass": 128.0,
+      "funded_breach_6m": 0.0
+     }
+    }
+   }
+  }
+ ]
+}

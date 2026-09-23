@@ -1,0 +1,67 @@
+{
+ "genomes": [
+  {
+   "id": "c57d9bd3777d",
+   "name": "Patient Tighter-Tight",
+   "thesis": "The turn of the month above the 50-day, with a tight stop.",
+   "entry_rules": [
+    {
+     "when": "(day_of_month >= 31 and close > sma50) and pct_off_52w_low > 0.08",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "ret5 < 0.014 and rsi14 > 77",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "(cross_below(close, sma50) and cross_above(sma20, sma50) and macd_hist < -0.11) or ret60 > 0.129",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "atr_pct < 0.0072",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 5",
+     "note": ""
+    },
+    {
+     "when": "mkt_vol20 > 0.148",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "mkt_ret20 < 0.016",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "cross_above(close, bb_upper)",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 3,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.006,
+    "take_profit_pct": 0.0,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 9,
+    "min_hold_bars": 0,
+    "cooldown_bars": 1
+   },
+   "generation": 38,
+   "parents": [
+    "782cc30b737c"
+   ],
+   "origin": "mutation",
+   "rationale": "random mutation",
+   "created_at": 1790133808.0935326
+  }
+ ]
+}
