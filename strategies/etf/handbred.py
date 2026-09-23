@@ -117,6 +117,15 @@ def families5():
                  stop_loss_pct=0.12, cooldown_bars=3)
 
 
+def families6():
+    """Sixth pass, for a high win rate: small dips inside a trend, a quick
+    target, a tight stop and a short hold."""
+    for drop, tp, sl, ma, hold in itertools.product((0.02, 0.03, 0.04, 0.06), (0.02, 0.03, 0.04),
+                                                     (0.04, 0.06, 0.1), (20, 50, 200), (2, 4)):
+        yield g(f"Quick Dip {drop}/{tp}/{sl}/{ma}/{hold}", f"ret1 < -{drop} and close > sma{ma}",
+                [f"bars_held >= {hold}"], take_profit_pct=tp, stop_loss_pct=sl)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--funds", default=",".join(FUNDS))
@@ -124,7 +133,7 @@ def main(argv=None) -> int:
     ap.add_argument("--baskets", default="", help="funds traded together: A,B;C,D,E")
     args = ap.parse_args(argv)
     fam = {1: families, 2: families2, 3: lambda: itertools.chain(families(), families2()),
-           4: families3, 5: families5}[args.which]
+           4: families3, 5: families5, 6: families6}[args.which]
     kept = shown = 0
     groups = ([b.split(",") for b in args.baskets.split(";")] if args.baskets
               else [[f] for f in args.funds.split(",")])

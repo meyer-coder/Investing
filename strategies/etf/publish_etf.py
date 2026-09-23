@@ -41,6 +41,59 @@ FUND_LABEL = {"SOXL": "SOXL", "SOXS": "SOXS", "TQQQ": "TQQQ", "SQQQ": "SQQQ", "T
               "USD": "USD", "ROM": "ROM", "QLD": "QLD", "FTEC.2X": "FTEC 2x", "FTEC.3X": "FTEC 3x"}
 
 
+def pct(x: str) -> str:
+    v = float(x) * 100
+    return f"{v:.0f}%" if abs(v - round(v)) < 1e-9 else f"{v:.1f}%"
+
+
+def pretty(name: str) -> str:
+    """A grid strategy's name with its parameters in words."""
+    m = re.match(r"(.+?) ([-\d.]+(?:/[-\d.]+)*)$", name)
+    if not m:
+        return name
+    fam, ps = m.group(1), m.group(2).split("/")
+    try:
+        if fam == "Quick Dip":
+            return f"Quick Dip: {pct(ps[0])} dip above the {ps[3]}-day, {pct(ps[1])} target, {pct(ps[2])} stop, {ps[4]} days max"
+        if fam == "Dip, Quick Target":
+            return f"Dip, Quick Target: {pct(ps[0])} dip above the 50-day, {pct(ps[1])} target, {pct(ps[2])} stop"
+        if fam == "Momentum Burst":
+            return f"Momentum Burst: 20-day gain over {pct(ps[0])}, out under the {ps[1]}-day"
+        if fam == "Short-Trend Rider":
+            return f"Short-Trend Rider: above a rising {ps[0]}-day" + (f", {pct(ps[1])} trailing stop" if float(ps[1]) else "")
+        if fam == "52-Week High":
+            return f"52-Week High: within {pct(1 - float(ps[0]))} of the high, {pct(ps[1])} trailing stop"
+        if fam == "Dip in a Strong Trend":
+            return f"Dip in a Strong Trend: {pct(ps[0])} drop after a {pct(ps[1])} month, {ps[2]} days max"
+        if fam == "Calm Uptrend":
+            return f"Calm Uptrend: volatility under {pct(ps[0])}"
+        if fam == "Washed-Out RSI":
+            return f"Washed-Out RSI: RSI(7) under {ps[0]}, out over {ps[1]}"
+        if fam == "Month Turn":
+            return f"Month Turn: from day {ps[0]}, {ps[1]} days"
+        if fam == "Fast Trend":
+            return f"Fast Trend: {ps[0]}-day over {ps[1]}-day"
+        if fam == "Band Breakout":
+            return f"Band Breakout: out under the {ps[0]}-day"
+        if fam == "Squeeze Breakout":
+            return f"Squeeze Breakout: a {pct(ps[1])} day after quiet weeks"
+        if fam == "One-Day Bounce":
+            return f"One-Day Bounce: after a {pct(ps[0])} drop"
+        if fam == "Pullback in Uptrend":
+            return f"Pullback in Uptrend: {pct(ps[0])} five-day pullback above the {ps[1]}-day"
+        if fam == "Band Floor":
+            return "Band Floor: at the lower band above the 200-day"
+        if fam == "Strong Close Follow":
+            return f"Strong Close Follow: after a {pct(ps[0])} close at the high"
+        if fam == "Volume Momentum in a Bull Regime":
+            return f"Volume Momentum: {pct(ps[0])} over the 20-day on {float(ps[1]):g}x volume, out {pct(ps[2])} under"
+        if " or " in fam.lower():
+            return f"{fam}, out {pct(ps[0])} under the 20-day"
+    except (IndexError, ValueError):
+        return name
+    return name
+
+
 def fund_name(sym: str) -> str:
     if sym in FUND_LABEL:
         return FUND_LABEL[sym]
@@ -143,30 +196,41 @@ def consistency(item: dict, f: float = 1.0, span: int = 63) -> dict:
 
 
 def reliable_150(shown: List[dict]):
-    """$150-200: among strategies at $150+ over both the held-out months and
-    the last 12 months, profitable on 2012-2018 and never past a 70% drawdown,
-    the one whose weaker window is strongest."""
+    """$150-200 reliably: among strategies at $150+ over both the held-out
+    months and the last 12 months, profitable on 2012-2018 and never past a
+    70% drawdown, the one whose typical three-month stretch since 2019 made the
+    most (then the larger share of profitable stretches)."""
     ok = [v for v in shown if survivable(v) and v["verdict"]["older_profitable"]
           and v["windows"]["held_out"]["usd_per_session"] >= 150
           and (v["windows"].get("last_12m") or {}).get("usd_per_session", 0) >= 150]
-    return max(ok, key=lambda v: (min(v["windows"]["held_out"]["usd_per_session"],
-                                      v["windows"]["last_12m"]["usd_per_session"])
-                                  + 2 * v["windows"]["train"]["usd_per_session"]), default=None)
+    best, key = None, None
+    for v in ok:
+        c = consistency(v)
+        k = (c.get("median_usd_per_session", -1e9), c.get("share_profitable", 0))
+        if key is None or k > key:
+            best, key = v, k
+    return best
 
 
 def low_risk_100(shown: List[dict]):
-    """$100 a session at the lowest risk: every shown strategy, sized so its
-    held-out dollars are $100 (never above full size), win rate 60%+ in
-    training and held-out; the smallest drawdown at that size wins."""
+    """$100 a session at the lowest risk: strategies with a 65%+ win rate over
+    the held-out months and 60%+ over training, profitable on 2012-2018, sized
+    so the held-out months made $100 a session; among those whose three-month
+    stretches since 2019 made money at least 65% of the time, the smallest
+    worst drawdown at that size."""
     best, best_dd = None, None
     for v in shown:
         w = v["windows"]
-        if not survivable(v) or w["held_out"]["win_rate"] < 0.6 or w["train"]["win_rate"] < 0.6:
+        if (not survivable(v) or not v["verdict"]["older_profitable"] or w["held_out"]["win_rate"] < 0.65
+                or w["train"]["win_rate"] < 0.6 or w["held_out"]["usd_per_session"] < 100):
             continue
         f = min(1.0, 100.0 / w["held_out"]["usd_per_session"])
-        dd = f * (abs(w["held_out"]["max_drawdown"]) + abs(w["train"]["max_drawdown"]))
-        if best_dd is None or dd < best_dd:
-            best, best_dd = v, dd
+        dd = f * max(abs(w[k]["max_drawdown"]) for k in ("older", "train", "held_out"))
+        if best_dd is not None and dd >= best_dd:
+            continue
+        if consistency(v, f).get("share_profitable", 0) < 0.65:
+            continue
+        best, best_dd = v, dd
     return best
 
 
@@ -252,7 +316,10 @@ def report_md(item: dict) -> str:
 def write(item: dict, rank: int, folder: Path, tag: str = "") -> dict:
     g = item["genome"]
     funds = [fund_name(s) for s in item["symbols"]]
-    name = f"{' / '.join(funds)} {family(g)}"
+    if item["source"].startswith("handbred"):
+        name = f"{' / '.join(funds)} {pretty(g['name'])}"
+    else:
+        name = f"{' / '.join(funds)} {family(g)} (bred {item['signature'][:4].upper()})"
     item = {**item, "rank": rank, "name": name, "funds": funds, "tag": tag,
             "three_month_stretches": consistency(item)}
     item["genome"] = {**g, "name": name}
@@ -278,6 +345,13 @@ def write(item: dict, rank: int, folder: Path, tag: str = "") -> dict:
     return item
 
 
+def _slim_job(args):
+    from simplify_etf import slim
+    genome, symbols = args
+    thin = slim(genome, symbols)
+    return thin, gauntlet(Genome.from_dict(thin), symbols)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=50)
@@ -289,19 +363,22 @@ def main(argv=None) -> int:
     picks = pick(shown, args.top)
     specials = {"reliable_150": reliable_150(shown), "low_risk_100": low_risk_100(shown)}
     if not args.no_slim:
-        from simplify_etf import slim
-        done = {}
+        # Hand-bred rules are already minimal; evolved ones are simplified four at a time.
+        todo, seen = [], set()
         for item in picks + [v for v in specials.values() if v]:
-            key = item["signature"]
-            if key in done:
-                continue
-            thin = slim(item["genome"], item["symbols"])
-            res = gauntlet(Genome.from_dict(thin), item["symbols"])
+            if item["signature"] not in seen and not item["source"].startswith("handbred"):
+                seen.add(item["signature"])
+                todo.append(item)
+        from concurrent.futures import ProcessPoolExecutor
+        with ProcessPoolExecutor(4) as ex:
+            slims = list(ex.map(_slim_job, [(it["genome"], it["symbols"]) for it in todo]))
+        for item, (thin, res) in zip(todo, slims):
             if res["verdict"]["shown"]:
-                item.update(res)
-                item["genome"] = thin
-            done[key] = True
-            print(f"  slim {item['symbols']} {item['verdict']['rank_usd']:.1f}", flush=True)
+                for other in picks + [v for v in specials.values() if v]:
+                    if other["signature"] == item["signature"]:
+                        other.update(res)
+                        other["genome"] = thin
+            print(f"  slim {item['symbols']} {res['verdict']['rank_usd']:.1f}", flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "stored").mkdir(exist_ok=True)
     for old in OUT.glob("[0-9][0-9]_*"):
@@ -319,8 +396,17 @@ def main(argv=None) -> int:
         special_out[key] = {"rank": rank, "sized": scaled(item, f), "three_month_stretches": consistency(item, f)}
     (OUT / "all.json").write_text(json.dumps({"windows": WINDOWS, "show_usd": SHOW_USD,
                                               "specials": special_out, "strategies": written}, indent=1))
+    keep = ("usd_per_session", "return", "trades", "win_rate", "profit_factor", "max_drawdown")
+    compact = [{"symbols": v["symbols"], "shown": v["verdict"]["shown"],
+                "older_profitable": v["verdict"]["older_profitable"],
+                "real_held_out_usd": v["verdict"].get("real_held_out_usd"),
+                "windows": {w: {k: x.get(k) for k in keep} for w, x in v["windows"].items() if x},
+                "genome": {k: v["genome"][k] for k in ("name", "entry_rules", "exit_rules", "risk")}}
+               for v in sorted(store.values(), key=lambda v: -v["verdict"]["rank_usd"])]
     (OUT / "stored" / "all_profitable.json").write_text(json.dumps(
-        {"note": "every strategy that passed the gauntlet, shown or not", "strategies": store}, indent=1))
+        {"note": "every strategy that passed the gauntlet (profitable over the held-out six months and "
+                 "2019 to March 2026, still profitable at 3x slippage), best first; 'shown' marks those at "
+                 "$80+ a session", "strategies": compact}, separators=(",", ":")))
     print(f"wrote {len(written)} strategies; specials {special_out}", flush=True)
     return 0
 

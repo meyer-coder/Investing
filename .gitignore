@@ -34,3 +34,4 @@ data/cache/tv/
 !profitable-strategies/funded/reports/
 strategies/etf/store.lock
 strategies/etf/store.*.tmp
+strategies/etf/store.json

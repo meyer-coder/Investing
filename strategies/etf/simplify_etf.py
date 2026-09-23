@@ -15,12 +15,36 @@ from typing import Sequence, Tuple
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "strategies" / "nq2x"))
 sys.path.insert(0, str(ROOT / "strategies" / "etf"))
-from simplify import simplify                                              # noqa: E402
 from gauntlet import ACCOUNT, SLIP, market                                 # noqa: E402
 from evotrader.genome import Genome, compile_genome                        # noqa: E402
 from evotrader.runner import run_backtest                                  # noqa: E402
+
+
+def _nq_simplify():
+    """strategies/nq2x/simplify.py imports its own gauntlet.py by name, so it
+    is loaded with that name pointing at the NQ module, then put back."""
+    import importlib.util
+    nq = ROOT / "strategies" / "nq2x"
+
+    def load(name, path):
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    saved = sys.modules.get("gauntlet")
+    sys.modules["gauntlet"] = load("nq2x_gauntlet", nq / "gauntlet.py")
+    try:
+        return load("nq2x_simplify", nq / "simplify.py").simplify
+    finally:
+        if saved is not None:
+            sys.modules["gauntlet"] = saved
+        else:
+            del sys.modules["gauntlet"]
+
+
+simplify = _nq_simplify()
 
 COMMON_START = "2012-03-01"      # past the 52-week warm-up from the 2011 start
 
