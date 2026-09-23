@@ -67,3 +67,20 @@ def test_intraday_features_are_refused_for_a_daily_translation():
                           "exit_rules": [{"when": "bars_held >= 1"}], "risk": {}})
     with pytest.raises(PineError):
         genome_to_pine(g)
+
+
+def test_the_same_day_version_is_flat_at_every_close_and_carries_its_own_position():
+    from evotrader.pine import genome_to_pine_day
+    g = Genome.from_dict({
+        "name": "Calm Trend", "entry_rules": [{"when": "close > sma50 and vol20 < 0.25", "weight": 1.0}],
+        "exit_rules": [{"when": "vol20 > 0.45 or bars_held >= 5"}],
+        "risk": {"max_position_pct": 1.0, "stop_loss_pct": 0.042, "trailing_stop_pct": 0.05,
+                 "cooldown_bars": 2}})
+    src = genome_to_pine_day(g, day_stop=0.008, chart="MES1!")
+    assert 'strategy.close_all(comment="flat at the close", immediately=true)' in src
+    assert src.index("strategy.close_all") < src.index("strategy.entry")
+    assert "f_bars_held = book ? bar_index - bookBar : 0" in src      # the carried position, not the account's
+    assert "lastExitBar := bar_index + 1" in src                     # cooldown counted as the engine does
+    assert 'dayStopPct = input.float(0.8,' in src
+    assert 'strategy.exit("day stop", "L", loss=' in src
+    assert "strategy.position_size > 0 ?" not in src

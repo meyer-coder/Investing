@@ -25,6 +25,22 @@ class EvolutionConfig:
     test_start: str = ""               # held-out window from this date instead (overrides test_frac)
     leverage: float = 1.0              # account notional per unit of equity (2.0 = 2x futures)
     intrabar_stops: bool = False       # stop losses as resting orders filled inside the bar
+    # Same-day trading, for prop firms that forbid holding overnight: bought at
+    # the open, sold the same day at a resting stop or target, else the close.
+    day_trade: bool = False
+    carry: bool = False                # keep the strategy's position across days, flat every night
+    day_stop: float = 0.0              # with carry: resting stop under each day's entry (0.01 = 1%)
+    day_stop_exit: bool = True         # the day stop ends the carried position (else caps the day only)
+    session: str = "globex"            # globex (18:00 open to settlement) or cash (09:30 to 16:00)
+    # Prop-firm fitness: score each agent by how often a fresh funded-account
+    # challenge started on it passes rather than breaches (evotrader/prop.py).
+    fitness_mode: str = "metrics"      # "metrics" (Sharpe, excess, penalties) or "prop"
+    prop_micro: str = "MNQ"            # MNQ | MES | MYM | M2K; the universe must hold its index
+    prop_account: str = "25K"          # FundedNext Legacy size: 25K | 50K | 100K
+    prop_open_penalty: float = 0.0     # charge per account neither passed nor breached in a year
+    prop_contracts: int = 1
+    prop_every: int = 5                # a new account every N training bars
+    prop_recent_weight: float = 0.6    # share of the score from accounts started in the last year
 
     # --- the loop
     population: int = 100
@@ -100,5 +116,30 @@ class EvolutionConfig:
             raise ValueError("at least one symbol is required")
         if not 1.0 <= float(self.leverage) <= 10.0:
             raise ValueError("leverage must be between 1 and 10")
+        if not 0.0 <= float(self.day_stop) < 0.5:
+            raise ValueError("day_stop must be a fraction between 0 and 0.5")
+        if (self.carry or self.day_stop) and not self.day_trade:
+            raise ValueError("carry and day_stop are for same-day trading: set day_trade")
+        if self.session not in ("globex", "cash"):
+            raise ValueError("session must be globex or cash")
+        if self.session == "cash":
+            from .data import CASH_PROXIES
+            if not self.day_trade:
+                raise ValueError("session cash is for same-day trading: set day_trade")
+            missing = [x for x in self.symbols if x.upper() not in CASH_PROXIES]
+            if missing:
+                raise ValueError(f"no cash-session proxy for {', '.join(missing)} "
+                                 f"(have {', '.join(CASH_PROXIES)})")
+        if self.fitness_mode not in ("metrics", "prop"):
+            raise ValueError("fitness_mode must be metrics or prop")
+        if self.fitness_mode == "prop":
+            from .prop import MICROS
+            if self.prop_account not in ("25K", "50K", "100K"):
+                raise ValueError("prop_account must be 25K, 50K or 100K")
+            if self.prop_micro not in MICROS:
+                raise ValueError(f"prop_micro must be one of {', '.join(MICROS)}")
+            if MICROS[self.prop_micro].data_symbol not in [x.upper() for x in self.symbols]:
+                raise ValueError(f"a {self.prop_micro} prop run needs "
+                                 f"{MICROS[self.prop_micro].data_symbol} in symbols")
         if self.style:
             get_style(self.style)      # raises ValueError for an unknown name

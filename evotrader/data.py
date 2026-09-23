@@ -303,6 +303,38 @@ def _take_dates(bars: Bars, dates: Sequence[str]) -> Bars:
                 bars.low[take], bars.close[take], bars.volume[take])
 
 
+#: The index fund tracking each continuous future's index, whose daily bar is
+#: the stock market's own session (09:30 to 16:00 New York).
+CASH_PROXIES: Dict[str, str] = {"NQ1!": "QQQ", "ES1!": "SPY", "YM1!": "DIA", "RTY1!": "IWM"}
+
+
+def cash_session_bars(future: Bars, proxy: Bars) -> Bars:
+    """A continuous future over the stock market's session, 09:30 to 16:00 New York.
+
+    The future's daily bar runs from the 18:00 Globex open to the 16:00
+    settlement; a day trader who buys the cash open and is flat by the close
+    trades only the last part of it.  The index fund on the same index has
+    exactly that session, so its open, high and low relative to its own close
+    are applied to the future's close.  The future's close (the settlement) and
+    volume are kept.  A date the fund did not trade (a futures session on a
+    stock-market holiday) becomes a flat bar at the close: nothing to trade.
+    """
+    at = {d: i for i, d in enumerate(proxy.dates)}
+    n = len(future)
+    c = np.asarray(future.close, dtype=float).copy()
+    o, h, lo = c.copy(), c.copy(), c.copy()
+    for i, d in enumerate(future.dates):
+        j = at.get(d)
+        if j is None or float(proxy.close[j]) <= 0:
+            continue
+        k = c[i] / float(proxy.close[j])
+        o[i] = float(proxy.open[j]) * k
+        h[i] = max(float(proxy.high[j]) * k, o[i], c[i])
+        lo[i] = min(float(proxy.low[j]) * k, o[i], c[i])
+    return Bars(future.symbol, list(future.dates), o, h, lo, c,
+                np.asarray(future.volume, dtype=float).copy())
+
+
 def synthetic_bars(symbol: str, n: int = 1500, *, seed: int | None = None,
                    drift: float = 0.0003, vol: float = 0.012,
                    start_price: float = 100.0) -> Bars:

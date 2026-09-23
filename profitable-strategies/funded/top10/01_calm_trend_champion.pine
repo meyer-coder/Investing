@@ -1,0 +1,111 @@
+//@version=6
+// Calm Trend Champion, same-day version: evotrader genome 7173d608ab59.
+// Same-day version for FundedNext Futures, which allows no overnight holds.
+// Tested on ratio back-adjusted daily bars with 0.2 bp commission and 1 bp
+// slippage a side, then priced per contract ($0.75 a side plus a tick, two on
+// stops). Past results; not advice.
+//
+// Holds NQ at 2x through calm, intact uptrends and adds sharp-dip entries. It
+// buys when the close crosses back over the 50-day mean, when the index sits
+// at least 4.7% above that mean with 20-day volatility under 22%, when a
+// 60-day slide reaches 9%, and after a 1.2-sigma dip below the 20-day mean
+// while above the 200-day, a 5.7% five-day thrust, or a day when the 14-day
+// average range tops 4.3% of price. It sells when 20-day volatility blows out
+// past 45%, when the index closes under its 50-day mean without being
+// oversold, or when it falls 23% under the 200-day mean. Every trade has a
+// 4.2% stop, a 7% target, a 4.9% trailing stop off its best close and a
+// 13-session cap, and it waits two sessions after an exit.
+//
+// Rules, exactly as the engine runs them:
+// BUY when ret60 <= -0.09 or cross_above(close, sma50)
+// BUY when vol20 < 0.22 and dist_sma50 > 0.047
+// BUY when zscore20 < -1.18 and close > sma200 or atr_pct > 0.043 or ret5 >
+// 0.057
+// SELL when vol20 > 0.45
+// SELL when close < sma50 and zscore20 > -1
+// SELL when dist_sma200 < -0.23
+// The strategy's own position (checked on the close, from its first entry):
+// stop 4.23%, target 7.00%, trailing 4.90%, max hold 13 sessions, cooldown 2
+// sessions.
+//
+// No overnight holds, for a prop account such as FundedNext (flat by 15:10
+// Chicago time). Daily MNQ1! chart, back-adjusted, settlement as close. Each
+// session the position is bought at the 17:00 Chicago open with a resting
+// stop 0.80% under the fill, and sold at the close; in live trading be flat
+// before 15:10 Chicago time. The next session it is bought back if the
+// strategy still holds it, even after a stopped day.
+// For MES instead: take the same signals from this NQ chart and buy one MES
+// with a 1% daily stop under its fill.
+strategy("Calm Trend Champion [evotrader, same-day]", overlay=true, pyramiding=0,
+     initial_capital=25000, default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.cash_per_contract, commission_value=0.75,
+     slippage=1, process_orders_on_close=false)
+
+contracts  = input.int(1, "Contracts", minval=1)
+dayStopPct = input.float(0.8, "Daily stop, % under each day's entry (0 = off)") / 100
+stopPct    = input.float(4.23, "Strategy stop, % below its first entry, on the close (0 = off)") / 100
+targetPct  = input.float(7, "Strategy target, % above its first entry, on the close (0 = off)") / 100
+trailPct   = input.float(4.9, "Trailing stop, % off the best close (0 = off)") / 100
+maxHold    = input.int(13, "Max sessions held (0 = off)")
+minHold    = input.int(0, "Min sessions before the sell rules apply")
+cooldown   = input.int(2, "Sessions to wait after the strategy exits")
+
+// ---- the session ends: nothing is held past the close
+if strategy.position_size > 0
+    strategy.close_all(comment="flat at the close", immediately=true)
+
+// ---- the strategy's own position, carried from day to day
+var bool  book        = false
+var int   bookBar     = na
+var float bookEntry   = na
+var float bookPeak    = na
+var int   lastExitBar = -100000
+if book and bar_index >= bookBar
+    if na(bookEntry)
+        bookEntry := open
+    bookPeak := math.max(na(bookPeak) ? bookEntry : bookPeak, close)
+
+// ---- features (evotrader's definitions)
+f_atr14 = ta.atr(14)
+f_atr_pct = f_atr14 / close
+f_sma200 = ta.sma(close, 200)
+f_dist_sma200 = close / f_sma200 - 1
+f_sma50 = ta.sma(close, 50)
+f_dist_sma50 = close / f_sma50 - 1
+f_ret5 = close / close[5] - 1
+f_ret60 = close / close[60] - 1
+f_ret1 = close / close[1] - 1
+f_vol20 = ta.stdev(f_ret1, 20, false) * math.sqrt(252)
+f_sma20 = ta.sma(close, 20)
+f_sd20 = ta.stdev(close, 20, false)
+f_zscore20 = f_sd20 > 0 ? (close - f_sma20) / f_sd20 : 0.0
+
+warm = bar_index >= 200
+buySignal = (((f_ret60 <= (-0.09)) or (close > f_sma50 and close[1] <= f_sma50[1]))) or (((f_vol20 < 0.22) and (f_dist_sma50 > 0.047))) or (((((f_zscore20 < (-1.18)) and (close > f_sma200)) or (f_atr_pct > 0.043)) or (f_ret5 > 0.057)))
+sellSignal = ((f_vol20 > 0.45)) or (((close < f_sma50) and (f_zscore20 > (-1.0)))) or ((f_dist_sma200 < (-0.23)))
+exitNow = false
+if book and bar_index >= bookBar
+    held = bar_index - bookBar
+    posRet = close / bookEntry - 1
+    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct) or (trailPct > 0 and close / bookPeak - 1 <= -trailPct) or (maxHold > 0 and held >= maxHold)
+    if riskExit or (held >= minHold and sellSignal)
+        book := false
+        bookEntry := na
+        bookPeak := na
+        lastExitBar := bar_index + 1
+        exitNow := true
+enterNow = warm and not book and not exitNow and (cooldown <= 0 or bar_index - lastExitBar >= cooldown) and buySignal
+if enterNow
+    book := true
+    bookBar := bar_index + 1
+
+// ---- tomorrow's session: buy at the open, a resting stop under the fill
+if book
+    strategy.entry("L", strategy.long, qty=contracts, comment=enterNow ? "in" : "back in")
+    if dayStopPct > 0
+        strategy.exit("day stop", "L", loss=math.max(1, math.round(dayStopPct * close / syminfo.mintick)), comment="day stop")
+
+plotshape(enterNow, title="Position starts at the next open", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.small)
+plotshape(exitNow, title="Position ends: stay flat", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.small)
+alertcondition(book, "Calm Trend Champion: buy at the next open", "Calm Trend Champion: buy {{ticker}} at the 17:00 Chicago open with the daily stop; flat by 15:10")
+alertcondition(exitNow, "Calm Trend Champion: position ends", "Calm Trend Champion: the strategy is out; do not buy {{ticker}} at the next open")

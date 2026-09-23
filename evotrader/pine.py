@@ -11,6 +11,12 @@ risk exits checked on the close, no re-entry on the bar of an exit, cooldown
 counted from the exit fill.
 
 Daily bars only: the intraday session features have no daily definition.
+
+:func:`genome_to_pine_day` writes the same-day version for a prop account
+that allows no overnight holds (the engine's ``day_trade`` + ``carry``): the
+strategy keeps its own position from day to day, the account buys it at each
+session's open and sells it at that session's close, and a resting stop under
+each day's entry caps the day.
 """
 from __future__ import annotations
 
@@ -171,16 +177,18 @@ class _Emitter:
         raise PineError(f"cannot translate {node!r}")
 
 
-def _definitions(names: Set[str]) -> List[str]:
+def _definitions(names: Set[str],
+                 defs: Optional[Dict[str, Tuple[str, Tuple[str, ...]]]] = None) -> List[str]:
     """Pine lines defining every feature used, dependencies first."""
+    defs = defs or _DEFS
     order: List[str] = []
 
     def visit(n: str) -> None:
         if n in _BUILTIN or n in order or n in _MACD:
             return
-        if n not in _DEFS:
+        if n not in defs:
             raise PineError(f"feature {n!r} has no daily Pine definition")
-        for dep in _DEFS[n][1]:
+        for dep in defs[n][1]:
             visit(dep)
         order.append(n)
 
@@ -190,7 +198,7 @@ def _definitions(names: Set[str]) -> List[str]:
     if names & set(_MACD):
         lines.append("[f_macd, f_macd_signal, f_macd_hist] = ta.macd(close, 12, 26, 9)")
     for n in order:
-        expr = re.sub(r"\{(\w+)\}", lambda m: f"f_{m.group(1)}", _DEFS[n][0])
+        expr = re.sub(r"\{(\w+)\}", lambda m: f"f_{m.group(1)}", defs[n][0])
         lines.append(f"f_{n} = {expr}")
     return lines
 
@@ -341,3 +349,145 @@ def compile_check(source: str, timeout: float = 30.0) -> List[str]:
     if not payload.get("success") and not msgs:
         msgs = ["compile failed without a message"]
     return msgs
+
+
+#: Position features in the same-day version: read from the strategy's own
+#: carried position, since the account itself is flat at every close.
+_DAY_DEFS: Dict[str, Tuple[str, Tuple[str, ...]]] = dict(_DEFS)
+_DAY_DEFS.update({
+    "in_position": ("book ? 1.0 : 0.0", ()),
+    "bars_held": ("book ? bar_index - bookBar : 0", ()),
+    "position_return": ("book ? close / bookEntry - 1 : 0.0", ()),
+    "position_drawdown": ("book ? math.min(close / bookPeak - 1, 0.0) : 0.0", ()),
+    "position_weight": ("book ? contracts * close * syminfo.pointvalue / strategy.equity : 0.0", ()),
+    "position_count": ("book ? 1 : 0", ()),
+    "bars_since_exit": ("book ? 9999 : bar_index - lastExitBar", ()),
+})
+
+
+def genome_to_pine_day(genome: Genome, *, day_stop: float, title: str = "", source_note: str = "",
+                       account: float = 25_000.0, contracts: int = 1,
+                       commission_per_contract: float = 0.75, chart: str = "MNQ1!",
+                       extra_notes: Sequence[str] = ()) -> str:
+    """The same-day (no overnight) version of a genome, on a daily futures chart.
+
+    Each daily bar is one Globex session, 17:00 to 16:00 Chicago time, closing on
+    the settlement.  At every close the account is flat (``strategy.close_all``
+    with ``immediately``: it fills at that close); the strategy's own position
+    lives in ``book`` and, while it lasts, is bought again at the next open with
+    a resting stop ``day_stop`` under the fill.  A day stop caps that day only:
+    the position is bought back the next session if the strategy still holds it.
+    """
+    em = _Emitter()
+    entries = [em.boolean(parse(r.when), 0, 1) for r in genome.entry_rules]
+    exits = [em.boolean(parse(r.when), 0, 1) for r in genome.exit_rules]
+    names = set(em.names)
+    for n in names:
+        if n not in _BUILTIN and n not in _DAY_DEFS and n not in _MACD:
+            raise PineError(f"feature {n!r} has no daily Pine definition")
+    rk = genome.risk
+    needs_eq_peak = "portfolio_drawdown" in names
+    title = title or genome.name
+    warm = warmup_bars(names)
+    out: List[str] = ["//@version=6"]
+    out.append(f"// {title}, same-day version: evotrader genome {genome.id}.")
+    if source_note:
+        out += _comment(source_note)
+    out.append("//")
+    if genome.thesis:
+        out += _comment(genome.thesis)
+        out.append("//")
+    out.append("// Rules, exactly as the engine runs them:")
+    for r in genome.entry_rules:
+        out += _comment(f"BUY  when {r.when}")
+    for r in genome.exit_rules:
+        out += _comment(f"SELL when {r.when}")
+    risk_bits = [f"stop {rk.stop_loss_pct:.2%}" if rk.stop_loss_pct else "no stop",
+                 f"target {rk.take_profit_pct:.2%}" if rk.take_profit_pct else "no target",
+                 f"trailing {rk.trailing_stop_pct:.2%}" if rk.trailing_stop_pct else "no trailing stop",
+                 f"max hold {rk.max_hold_bars} sessions" if rk.max_hold_bars else "no max hold",
+                 f"min hold {rk.min_hold_bars} sessions" if rk.min_hold_bars else "",
+                 f"cooldown {rk.cooldown_bars} sessions" if rk.cooldown_bars else ""]
+    out += _comment("The strategy's own position (checked on the close, from its first entry): "
+                    + ", ".join(b for b in risk_bits if b) + ".")
+    out.append("//")
+    out += _comment(f"No overnight holds, for a prop account such as FundedNext (flat by 15:10 "
+                    f"Chicago time). Daily {chart} chart, back-adjusted, settlement as close. Each "
+                    f"session the position is bought at the 17:00 Chicago open with a resting stop "
+                    f"{day_stop:.2%} under the fill, and sold at the close; in live trading be flat "
+                    f"before 15:10 Chicago time. The next session it is bought back if the strategy "
+                    f"still holds it, even after a stopped day.")
+    for note in extra_notes:
+        out += _comment(note)
+    out.append(f'strategy("{title[:52]} [evotrader, same-day]", overlay=true, pyramiding=0,')
+    out.append(f"     initial_capital={int(account)}, default_qty_type=strategy.fixed, default_qty_value={contracts},")
+    out.append(f"     commission_type=strategy.commission.cash_per_contract, commission_value={commission_per_contract},")
+    out.append("     slippage=1, process_orders_on_close=false)")
+    out.append("")
+    out.append(f'contracts  = input.int({contracts}, "Contracts", minval=1)')
+    out.append(f'dayStopPct = input.float({day_stop * 100:.4g}, "Daily stop, % under each day\'s entry (0 = off)") / 100')
+    out.append(f'stopPct    = input.float({rk.stop_loss_pct * 100:.4g}, "Strategy stop, % below its first entry, on the close (0 = off)") / 100')
+    out.append(f'targetPct  = input.float({rk.take_profit_pct * 100:.4g}, "Strategy target, % above its first entry, on the close (0 = off)") / 100')
+    out.append(f'trailPct   = input.float({rk.trailing_stop_pct * 100:.4g}, "Trailing stop, % off the best close (0 = off)") / 100')
+    out.append(f'maxHold    = input.int({rk.max_hold_bars}, "Max sessions held (0 = off)")')
+    out.append(f'minHold    = input.int({rk.min_hold_bars}, "Min sessions before the sell rules apply")')
+    out.append(f'cooldown   = input.int({rk.cooldown_bars}, "Sessions to wait after the strategy exits")')
+    out.append("")
+    out.append("// ---- the session ends: nothing is held past the close")
+    out.append("if strategy.position_size > 0")
+    out.append('    strategy.close_all(comment="flat at the close", immediately=true)')
+    out.append("")
+    out.append("// ---- the strategy's own position, carried from day to day")
+    out.append("var bool  book        = false")
+    out.append("var int   bookBar     = na")
+    out.append("var float bookEntry   = na")
+    out.append("var float bookPeak    = na")
+    out.append("var int   lastExitBar = -100000")
+    out.append("if book and bar_index >= bookBar")
+    out.append("    if na(bookEntry)")
+    out.append("        bookEntry := open")
+    out.append("    bookPeak := math.max(na(bookPeak) ? bookEntry : bookPeak, close)")
+    if needs_eq_peak:
+        out.append("var float eqPeak = strategy.initial_capital")
+        out.append("eqPeak := math.max(eqPeak, strategy.equity)")
+    out.append("")
+    out.append("// ---- features (evotrader's definitions)")
+    out += _definitions(names, _DAY_DEFS)
+    out.append("")
+    out.append(f"warm = bar_index >= {warm}")
+    out.append("buySignal = " + (" or ".join(f"({e})" for e in entries) if entries else "false"))
+    out.append("sellSignal = " + (" or ".join(f"({x})" for x in exits) if exits else "false"))
+    out.append("exitNow = false")
+    out.append("if book and bar_index >= bookBar")
+    out.append("    held = bar_index - bookBar")
+    out.append("    posRet = close / bookEntry - 1")
+    out.append("    riskExit = (stopPct > 0 and posRet <= -stopPct) or (targetPct > 0 and posRet >= targetPct)"
+               " or (trailPct > 0 and close / bookPeak - 1 <= -trailPct) or (maxHold > 0 and held >= maxHold)")
+    out.append("    if riskExit or (held >= minHold and sellSignal)")
+    out.append("        book := false")
+    out.append("        bookEntry := na")
+    out.append("        bookPeak := na")
+    out.append("        lastExitBar := bar_index + 1")
+    out.append("        exitNow := true")
+    out.append("enterNow = warm and not book and not exitNow and "
+               "(cooldown <= 0 or bar_index - lastExitBar >= cooldown) and buySignal")
+    out.append("if enterNow")
+    out.append("    book := true")
+    out.append("    bookBar := bar_index + 1")
+    out.append("")
+    out.append("// ---- tomorrow's session: buy at the open, a resting stop under the fill")
+    out.append("if book")
+    out.append('    strategy.entry("L", strategy.long, qty=contracts, comment=enterNow ? "in" : "back in")')
+    out.append("    if dayStopPct > 0")
+    out.append('        strategy.exit("day stop", "L", loss=math.max(1, math.round(dayStopPct * close / syminfo.mintick)), '
+               'comment="day stop")')
+    out.append("")
+    out.append('plotshape(enterNow, title="Position starts at the next open", style=shape.triangleup, '
+               'location=location.belowbar, color=color.new(color.teal, 0), size=size.small)')
+    out.append('plotshape(exitNow, title="Position ends: stay flat", style=shape.triangledown, '
+               'location=location.abovebar, color=color.new(color.red, 0), size=size.small)')
+    out.append(f'alertcondition(book, "{title[:40]}: buy at the next open", '
+               f'"{title[:40]}: buy {{{{ticker}}}} at the 17:00 Chicago open with the daily stop; flat by 15:10")')
+    out.append(f'alertcondition(exitNow, "{title[:40]}: position ends", '
+               f'"{title[:40]}: the strategy is out; do not buy {{{{ticker}}}} at the next open")')
+    return "\n".join(out) + "\n"

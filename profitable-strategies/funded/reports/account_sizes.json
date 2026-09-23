@@ -1,0 +1,8091 @@
+{
+ "windows": {
+  "older": [
+   "2010-01-01",
+   "2018-12-31"
+  ],
+  "train": [
+   "2019-01-01",
+   "2026-03-20"
+  ],
+  "held_out": [
+   "2026-03-23",
+   "2026-09-22"
+  ],
+  "last_12m": [
+   "2025-09-22",
+   "2026-09-22"
+  ]
+ },
+ "fees": {
+  "25K": 79.99,
+  "50K": 199.99,
+  "100K": 239.99
+ },
+ "rows": [
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.273,
+      "breach": 0.727,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -53.98,
+      "fee_per_pass": 293.0
+     },
+     "50K": {
+      "pass": 0.407,
+      "breach": 0.593,
+      "open": 0.0,
+      "days_to_pass": 49.0,
+      "funded_breach_6m": 0.672,
+      "funded_usd_per_session": -29.95,
+      "fee_per_pass": 491.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.588,
+      "open": 0.026,
+      "days_to_pass": 131.0,
+      "funded_breach_6m": 0.493,
+      "funded_usd_per_session": -12.62,
+      "fee_per_pass": 623.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.231,
+      "breach": 0.758,
+      "open": 0.011,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -65.29,
+      "fee_per_pass": 347.0
+     },
+     "50K": {
+      "pass": 0.338,
+      "breach": 0.621,
+      "open": 0.041,
+      "days_to_pass": 37.0,
+      "funded_breach_6m": 0.659,
+      "funded_usd_per_session": -28.64,
+      "fee_per_pass": 592.0
+     },
+     "100K": {
+      "pass": 0.404,
+      "breach": 0.527,
+      "open": 0.069,
+      "days_to_pass": 98.0,
+      "funded_breach_6m": 0.492,
+      "funded_usd_per_session": -4.51,
+      "fee_per_pass": 594.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -43.28,
+      "fee_per_pass": 260.0
+     },
+     "50K": {
+      "pass": 0.385,
+      "breach": 0.308,
+      "open": 0.308,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.308,
+      "funded_usd_per_session": 14.68,
+      "fee_per_pass": 520.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.0,
+      "open": 0.615,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 21.8,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -50.11,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.529,
+      "breach": 0.314,
+      "open": 0.157,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.314,
+      "funded_usd_per_session": 25.51,
+      "fee_per_pass": 378.0
+     },
+     "100K": {
+      "pass": 0.686,
+      "breach": 0.0,
+      "open": 0.314,
+      "days_to_pass": 58.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 49.23,
+      "fee_per_pass": 350.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.808,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.899,
+      "funded_usd_per_session": -146.01,
+      "fee_per_pass": 417.0
+     },
+     "50K": {
+      "pass": 0.262,
+      "breach": 0.738,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -107.96,
+      "fee_per_pass": 763.0
+     },
+     "100K": {
+      "pass": 0.322,
+      "breach": 0.678,
+      "open": 0.0,
+      "days_to_pass": 46.5,
+      "funded_breach_6m": 0.753,
+      "funded_usd_per_session": -89.34,
+      "fee_per_pass": 746.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.168,
+      "breach": 0.827,
+      "open": 0.005,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.879,
+      "funded_usd_per_session": -163.06,
+      "fee_per_pass": 477.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.758,
+      "open": 0.011,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -130.57,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.231,
+      "breach": 0.758,
+      "open": 0.011,
+      "days_to_pass": 29.5,
+      "funded_breach_6m": 0.775,
+      "funded_usd_per_session": -102.38,
+      "fee_per_pass": 1040.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.769,
+      "open": 0.077,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -116.09,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -86.56,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.462,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -22.63,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.824,
+      "open": 0.039,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -105.35,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -100.22,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.333,
+      "breach": 0.569,
+      "open": 0.098,
+      "days_to_pass": 28.0,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -30.71,
+      "fee_per_pass": 720.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.141,
+      "breach": 0.859,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.914,
+      "funded_usd_per_session": -324.19,
+      "fee_per_pass": 567.0
+     },
+     "50K": {
+      "pass": 0.196,
+      "breach": 0.804,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.89,
+      "funded_usd_per_session": -247.74,
+      "fee_per_pass": 1020.0
+     },
+     "100K": {
+      "pass": 0.253,
+      "breach": 0.747,
+      "open": 0.0,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -161.93,
+      "fee_per_pass": 947.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.126,
+      "breach": 0.868,
+      "open": 0.005,
+      "days_to_pass": 18.5,
+      "funded_breach_6m": 0.909,
+      "funded_usd_per_session": -379.83,
+      "fee_per_pass": 633.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.802,
+      "open": 0.005,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.854,
+      "funded_usd_per_session": -267.0,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.22,
+      "breach": 0.769,
+      "open": 0.011,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -195.86,
+      "fee_per_pass": 1092.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -274.42,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -136.01,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -129.84,
+      "fee_per_pass": 780.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -257.05,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.216,
+      "breach": 0.745,
+      "open": 0.039,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.765,
+      "funded_usd_per_session": -155.52,
+      "fee_per_pass": 927.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -150.33,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.43,
+      "breach": 0.57,
+      "open": 0.0,
+      "days_to_pass": 39.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -27.65,
+      "fee_per_pass": 186.0
+     },
+     "50K": {
+      "pass": 0.401,
+      "breach": 0.568,
+      "open": 0.031,
+      "days_to_pass": 129.0,
+      "funded_breach_6m": 0.502,
+      "funded_usd_per_session": -7.2,
+      "fee_per_pass": 499.0
+     },
+     "100K": {
+      "pass": 0.123,
+      "breach": 0.363,
+      "open": 0.513,
+      "days_to_pass": 219.5,
+      "funded_breach_6m": 0.194,
+      "funded_usd_per_session": -0.16,
+      "fee_per_pass": 1946.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.332,
+      "breach": 0.665,
+      "open": 0.003,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -35.23,
+      "fee_per_pass": 241.0
+     },
+     "50K": {
+      "pass": 0.462,
+      "breach": 0.522,
+      "open": 0.016,
+      "days_to_pass": 98.0,
+      "funded_breach_6m": 0.495,
+      "funded_usd_per_session": -10.42,
+      "fee_per_pass": 433.0
+     },
+     "100K": {
+      "pass": 0.297,
+      "breach": 0.368,
+      "open": 0.335,
+      "days_to_pass": 198.5,
+      "funded_breach_6m": 0.201,
+      "funded_usd_per_session": 4.81,
+      "fee_per_pass": 809.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -16.13,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.077,
+      "breach": 0.0,
+      "open": 0.923,
+      "days_to_pass": 88.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 3120.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.451,
+      "breach": 0.51,
+      "open": 0.039,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.51,
+      "funded_usd_per_session": -16.57,
+      "fee_per_pass": 177.0
+     },
+     "50K": {
+      "pass": 0.49,
+      "breach": 0.078,
+      "open": 0.431,
+      "days_to_pass": 61.0,
+      "funded_breach_6m": 0.078,
+      "funded_usd_per_session": 7.9,
+      "fee_per_pass": 408.0
+     },
+     "100K": {
+      "pass": 0.392,
+      "breach": 0.0,
+      "open": 0.608,
+      "days_to_pass": 122.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 13.14,
+      "fee_per_pass": 612.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.262,
+      "breach": 0.738,
+      "open": 0.0,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.848,
+      "funded_usd_per_session": -93.32,
+      "fee_per_pass": 305.0
+     },
+     "50K": {
+      "pass": 0.41,
+      "breach": 0.59,
+      "open": 0.0,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -55.29,
+      "fee_per_pass": 488.0
+     },
+     "100K": {
+      "pass": 0.366,
+      "breach": 0.617,
+      "open": 0.018,
+      "days_to_pass": 129.5,
+      "funded_breach_6m": 0.575,
+      "funded_usd_per_session": -25.81,
+      "fee_per_pass": 656.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.223,
+      "breach": 0.777,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.879,
+      "funded_usd_per_session": -111.16,
+      "fee_per_pass": 359.0
+     },
+     "50K": {
+      "pass": 0.319,
+      "breach": 0.679,
+      "open": 0.003,
+      "days_to_pass": 38.0,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -70.46,
+      "fee_per_pass": 628.0
+     },
+     "100K": {
+      "pass": 0.368,
+      "breach": 0.618,
+      "open": 0.014,
+      "days_to_pass": 89.5,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -42.81,
+      "fee_per_pass": 652.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -61.14,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -32.27,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 7.86,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -66.37,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.451,
+      "breach": 0.51,
+      "open": 0.039,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.51,
+      "funded_usd_per_session": -33.14,
+      "fee_per_pass": 443.0
+     },
+     "100K": {
+      "pass": 0.412,
+      "breach": 0.157,
+      "open": 0.431,
+      "days_to_pass": 53.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": -0.11,
+      "fee_per_pass": 583.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.189,
+      "breach": 0.811,
+      "open": 0.0,
+      "days_to_pass": 18.5,
+      "funded_breach_6m": 0.907,
+      "funded_usd_per_session": -210.43,
+      "fee_per_pass": 422.0
+     },
+     "50K": {
+      "pass": 0.311,
+      "breach": 0.689,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.802,
+      "funded_usd_per_session": -119.26,
+      "fee_per_pass": 644.0
+     },
+     "100K": {
+      "pass": 0.315,
+      "breach": 0.685,
+      "open": 0.0,
+      "days_to_pass": 70.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -82.94,
+      "fee_per_pass": 762.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.824,
+      "open": 0.0,
+      "days_to_pass": 18.5,
+      "funded_breach_6m": 0.893,
+      "funded_usd_per_session": -268.44,
+      "fee_per_pass": 455.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.728,
+      "open": 0.003,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.821,
+      "funded_usd_per_session": -147.81,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.299,
+      "breach": 0.698,
+      "open": 0.003,
+      "days_to_pass": 50.0,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -105.69,
+      "fee_per_pass": 801.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 11.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -159.9,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -80.44,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -48.4,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -154.78,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -90.86,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.451,
+      "breach": 0.51,
+      "open": 0.039,
+      "days_to_pass": 46.0,
+      "funded_breach_6m": 0.51,
+      "funded_usd_per_session": -49.72,
+      "fee_per_pass": 532.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.284,
+      "breach": 0.716,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -52.8,
+      "fee_per_pass": 282.0
+     },
+     "50K": {
+      "pass": 0.438,
+      "breach": 0.562,
+      "open": 0.0,
+      "days_to_pass": 53.0,
+      "funded_breach_6m": 0.643,
+      "funded_usd_per_session": -26.98,
+      "fee_per_pass": 456.0
+     },
+     "100K": {
+      "pass": 0.452,
+      "breach": 0.489,
+      "open": 0.059,
+      "days_to_pass": 142.0,
+      "funded_breach_6m": 0.388,
+      "funded_usd_per_session": -5.61,
+      "fee_per_pass": 531.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.228,
+      "breach": 0.769,
+      "open": 0.003,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.838,
+      "funded_usd_per_session": -64.69,
+      "fee_per_pass": 351.0
+     },
+     "50K": {
+      "pass": 0.324,
+      "breach": 0.67,
+      "open": 0.005,
+      "days_to_pass": 36.0,
+      "funded_breach_6m": 0.739,
+      "funded_usd_per_session": -33.83,
+      "fee_per_pass": 617.0
+     },
+     "100K": {
+      "pass": 0.357,
+      "breach": 0.61,
+      "open": 0.033,
+      "days_to_pass": 83.0,
+      "funded_breach_6m": 0.58,
+      "funded_usd_per_session": -11.66,
+      "fee_per_pass": 672.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.346,
+      "breach": 0.462,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -35.74,
+      "fee_per_pass": 231.0
+     },
+     "50K": {
+      "pass": 0.423,
+      "breach": 0.231,
+      "open": 0.346,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": 17.84,
+      "fee_per_pass": 473.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.0,
+      "open": 0.615,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 26.18,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -51.94,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.392,
+      "breach": 0.431,
+      "open": 0.176,
+      "days_to_pass": 35.5,
+      "funded_breach_6m": 0.431,
+      "funded_usd_per_session": 8.06,
+      "fee_per_pass": 510.0
+     },
+     "100K": {
+      "pass": 0.412,
+      "breach": 0.275,
+      "open": 0.314,
+      "days_to_pass": 40.0,
+      "funded_breach_6m": 0.275,
+      "funded_usd_per_session": 17.87,
+      "fee_per_pass": 583.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.2,
+      "breach": 0.8,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -141.71,
+      "fee_per_pass": 399.0
+     },
+     "50K": {
+      "pass": 0.271,
+      "breach": 0.729,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -105.61,
+      "fee_per_pass": 738.0
+     },
+     "100K": {
+      "pass": 0.352,
+      "breach": 0.648,
+      "open": 0.0,
+      "days_to_pass": 48.0,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -83.8,
+      "fee_per_pass": 681.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.168,
+      "breach": 0.83,
+      "open": 0.003,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.893,
+      "funded_usd_per_session": -159.48,
+      "fee_per_pass": 477.0
+     },
+     "50K": {
+      "pass": 0.225,
+      "breach": 0.772,
+      "open": 0.003,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.838,
+      "funded_usd_per_session": -129.39,
+      "fee_per_pass": 888.0
+     },
+     "100K": {
+      "pass": 0.231,
+      "breach": 0.766,
+      "open": 0.003,
+      "days_to_pass": 29.0,
+      "funded_breach_6m": 0.797,
+      "funded_usd_per_session": -101.24,
+      "fee_per_pass": 1040.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.654,
+      "open": 0.154,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -123.95,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.462,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -71.48,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.423,
+      "open": 0.192,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.423,
+      "funded_usd_per_session": -51.73,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.784,
+      "open": 0.078,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.804,
+      "funded_usd_per_session": -114.41,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -103.88,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.314,
+      "breach": 0.588,
+      "open": 0.098,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.588,
+      "funded_usd_per_session": -55.34,
+      "fee_per_pass": 765.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.143,
+      "breach": 0.857,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.912,
+      "funded_usd_per_session": -311.69,
+      "fee_per_pass": 559.0
+     },
+     "50K": {
+      "pass": 0.209,
+      "breach": 0.791,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.885,
+      "funded_usd_per_session": -234.92,
+      "fee_per_pass": 956.0
+     },
+     "100K": {
+      "pass": 0.258,
+      "breach": 0.742,
+      "open": 0.0,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -158.41,
+      "fee_per_pass": 931.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.124,
+      "breach": 0.874,
+      "open": 0.003,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.923,
+      "funded_usd_per_session": -377.22,
+      "fee_per_pass": 647.0
+     },
+     "50K": {
+      "pass": 0.187,
+      "breach": 0.81,
+      "open": 0.003,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.874,
+      "funded_usd_per_session": -257.93,
+      "fee_per_pass": 1071.0
+     },
+     "100K": {
+      "pass": 0.217,
+      "breach": 0.78,
+      "open": 0.003,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.838,
+      "funded_usd_per_session": -194.08,
+      "fee_per_pass": 1106.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.769,
+      "open": 0.077,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -277.98,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.538,
+      "open": 0.154,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -127.52,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.462,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -107.21,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.098,
+      "breach": 0.863,
+      "open": 0.039,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -299.16,
+      "fee_per_pass": 816.0
+     },
+     "50K": {
+      "pass": 0.216,
+      "breach": 0.706,
+      "open": 0.078,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -165.41,
+      "fee_per_pass": 927.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -155.83,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.493,
+      "breach": 0.507,
+      "open": 0.0,
+      "days_to_pass": 43.5,
+      "funded_breach_6m": 0.652,
+      "funded_usd_per_session": -23.3,
+      "fee_per_pass": 162.0
+     },
+     "50K": {
+      "pass": 0.469,
+      "breach": 0.5,
+      "open": 0.031,
+      "days_to_pass": 140.0,
+      "funded_breach_6m": 0.436,
+      "funded_usd_per_session": -4.44,
+      "fee_per_pass": 426.0
+     },
+     "100K": {
+      "pass": 0.123,
+      "breach": 0.366,
+      "open": 0.511,
+      "days_to_pass": 203.5,
+      "funded_breach_6m": 0.178,
+      "funded_usd_per_session": 2.56,
+      "fee_per_pass": 1946.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.288,
+      "breach": 0.703,
+      "open": 0.008,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -32.68,
+      "fee_per_pass": 277.0
+     },
+     "50K": {
+      "pass": 0.376,
+      "breach": 0.569,
+      "open": 0.055,
+      "days_to_pass": 82.0,
+      "funded_breach_6m": 0.522,
+      "funded_usd_per_session": -10.93,
+      "fee_per_pass": 531.0
+     },
+     "100K": {
+      "pass": 0.159,
+      "breach": 0.39,
+      "open": 0.451,
+      "days_to_pass": 198.0,
+      "funded_breach_6m": 0.255,
+      "funded_usd_per_session": 3.2,
+      "fee_per_pass": 1506.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.231,
+      "open": 0.5,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": -4.37,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 5.21,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 5.21,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.294,
+      "breach": 0.451,
+      "open": 0.255,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -19.92,
+      "fee_per_pass": 272.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.235,
+      "open": 0.431,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": 1.02,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.02,
+      "breach": 0.078,
+      "open": 0.902,
+      "days_to_pass": 80.0,
+      "funded_breach_6m": 0.078,
+      "funded_usd_per_session": 8.57,
+      "fee_per_pass": 12239.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.302,
+      "breach": 0.698,
+      "open": 0.0,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.8,
+      "funded_usd_per_session": -82.26,
+      "fee_per_pass": 265.0
+     },
+     "50K": {
+      "pass": 0.474,
+      "breach": 0.526,
+      "open": 0.0,
+      "days_to_pass": 52.0,
+      "funded_breach_6m": 0.652,
+      "funded_usd_per_session": -46.6,
+      "fee_per_pass": 422.0
+     },
+     "100K": {
+      "pass": 0.414,
+      "breach": 0.579,
+      "open": 0.007,
+      "days_to_pass": 139.5,
+      "funded_breach_6m": 0.537,
+      "funded_usd_per_session": -21.8,
+      "fee_per_pass": 580.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.225,
+      "breach": 0.772,
+      "open": 0.003,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.879,
+      "funded_usd_per_session": -101.63,
+      "fee_per_pass": 355.0
+     },
+     "50K": {
+      "pass": 0.28,
+      "breach": 0.712,
+      "open": 0.008,
+      "days_to_pass": 35.0,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -65.37,
+      "fee_per_pass": 714.0
+     },
+     "100K": {
+      "pass": 0.31,
+      "breach": 0.662,
+      "open": 0.027,
+      "days_to_pass": 80.0,
+      "funded_breach_6m": 0.635,
+      "funded_usd_per_session": -35.73,
+      "fee_per_pass": 773.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.692,
+      "open": 0.115,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -66.2,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.231,
+      "open": 0.5,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": -8.73,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 10.42,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.804,
+      "open": 0.059,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.804,
+      "funded_usd_per_session": -75.96,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.294,
+      "breach": 0.451,
+      "open": 0.255,
+      "days_to_pass": 28.0,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -39.83,
+      "fee_per_pass": 680.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.294,
+      "open": 0.431,
+      "days_to_pass": 37.5,
+      "funded_breach_6m": 0.294,
+      "funded_usd_per_session": -8.6,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, No Crash Entry",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.216,
+      "breach": 0.784,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.883,
+      "funded_usd_per_session": -189.16,
+      "fee_per_pass": 371.0
+     },
+     "50K": {
+      "pass": 0.348,
+      "breach": 0.652,
+      "open": 0.0,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.753,
+      "funded_usd_per_session": -103.0,
+      "fee_per_pass": 575.0
+     },
+     "100K": {
+      "pass": 0.379,
+      "breach": 0.621,
+      "open": 0.0,
+      "days_to_pass": 76.0,
+      "funded_breach_6m": 0.652,
+      "funded_usd_per_session": -69.9,
+      "fee_per_pass": 633.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.179,
+      "breach": 0.819,
+      "open": 0.003,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.898,
+      "funded_usd_per_session": -257.95,
+      "fee_per_pass": 448.0
+     },
+     "50K": {
+      "pass": 0.25,
+      "breach": 0.745,
+      "open": 0.005,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.841,
+      "funded_usd_per_session": -138.5,
+      "fee_per_pass": 800.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.736,
+      "open": 0.008,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -98.05,
+      "fee_per_pass": 939.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.731,
+      "open": 0.115,
+      "days_to_pass": 11.5,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -174.8,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -99.08,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.231,
+      "breach": 0.231,
+      "open": 0.538,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": -13.1,
+      "fee_per_pass": 1040.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.804,
+      "open": 0.059,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -169.05,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.686,
+      "open": 0.059,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -115.61,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.451,
+      "open": 0.275,
+      "days_to_pass": 32.5,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -59.75,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.286,
+      "breach": 0.714,
+      "open": 0.0,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.789,
+      "funded_usd_per_session": -58.82,
+      "fee_per_pass": 279.0
+     },
+     "50K": {
+      "pass": 0.407,
+      "breach": 0.593,
+      "open": 0.0,
+      "days_to_pass": 42.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -27.72,
+      "fee_per_pass": 491.0
+     },
+     "100K": {
+      "pass": 0.533,
+      "breach": 0.449,
+      "open": 0.018,
+      "days_to_pass": 126.5,
+      "funded_breach_6m": 0.396,
+      "funded_usd_per_session": -1.45,
+      "fee_per_pass": 450.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.209,
+      "breach": 0.78,
+      "open": 0.011,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -70.23,
+      "fee_per_pass": 383.0
+     },
+     "50K": {
+      "pass": 0.341,
+      "breach": 0.618,
+      "open": 0.041,
+      "days_to_pass": 30.5,
+      "funded_breach_6m": 0.665,
+      "funded_usd_per_session": -31.36,
+      "fee_per_pass": 587.0
+     },
+     "100K": {
+      "pass": 0.335,
+      "breach": 0.593,
+      "open": 0.071,
+      "days_to_pass": 67.5,
+      "funded_breach_6m": 0.552,
+      "funded_usd_per_session": -10.61,
+      "fee_per_pass": 716.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -32.95,
+      "fee_per_pass": 231.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.308,
+      "open": 0.346,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.308,
+      "funded_usd_per_session": 14.18,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.0,
+      "open": 0.654,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 21.3,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.235,
+      "breach": 0.686,
+      "open": 0.078,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -53.62,
+      "fee_per_pass": 340.0
+     },
+     "50K": {
+      "pass": 0.294,
+      "breach": 0.529,
+      "open": 0.176,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.529,
+      "funded_usd_per_session": -13.39,
+      "fee_per_pass": 680.0
+     },
+     "100K": {
+      "pass": 0.392,
+      "breach": 0.275,
+      "open": 0.333,
+      "days_to_pass": 37.5,
+      "funded_breach_6m": 0.275,
+      "funded_usd_per_session": 13.76,
+      "fee_per_pass": 612.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.167,
+      "breach": 0.833,
+      "open": 0.0,
+      "days_to_pass": 8.5,
+      "funded_breach_6m": 0.899,
+      "funded_usd_per_session": -174.15,
+      "fee_per_pass": 478.0
+     },
+     "50K": {
+      "pass": 0.28,
+      "breach": 0.72,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.789,
+      "funded_usd_per_session": -117.64,
+      "fee_per_pass": 715.0
+     },
+     "100K": {
+      "pass": 0.284,
+      "breach": 0.716,
+      "open": 0.0,
+      "days_to_pass": 34.0,
+      "funded_breach_6m": 0.756,
+      "funded_usd_per_session": -93.2,
+      "fee_per_pass": 845.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.135,
+      "breach": 0.86,
+      "open": 0.005,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -169.01,
+      "fee_per_pass": 594.0
+     },
+     "50K": {
+      "pass": 0.206,
+      "breach": 0.783,
+      "open": 0.011,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -140.47,
+      "fee_per_pass": 971.0
+     },
+     "100K": {
+      "pass": 0.25,
+      "breach": 0.739,
+      "open": 0.011,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.78,
+      "funded_usd_per_session": -106.6,
+      "fee_per_pass": 960.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.077,
+      "breach": 0.846,
+      "open": 0.077,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -123.29,
+      "fee_per_pass": 1040.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -65.91,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -26.4,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.059,
+      "breach": 0.902,
+      "open": 0.039,
+      "days_to_pass": 8.0,
+      "funded_breach_6m": 0.902,
+      "funded_usd_per_session": -118.86,
+      "fee_per_pass": 1360.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.686,
+      "open": 0.078,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -107.24,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.647,
+      "open": 0.078,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -59.07,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.141,
+      "breach": 0.859,
+      "open": 0.0,
+      "days_to_pass": 8.5,
+      "funded_breach_6m": 0.914,
+      "funded_usd_per_session": -379.11,
+      "fee_per_pass": 567.0
+     },
+     "50K": {
+      "pass": 0.178,
+      "breach": 0.822,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.881,
+      "funded_usd_per_session": -284.07,
+      "fee_per_pass": 1121.0
+     },
+     "100K": {
+      "pass": 0.258,
+      "breach": 0.742,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.789,
+      "funded_usd_per_session": -176.45,
+      "fee_per_pass": 931.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.107,
+      "breach": 0.887,
+      "open": 0.005,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.92,
+      "funded_usd_per_session": -405.22,
+      "fee_per_pass": 747.0
+     },
+     "50K": {
+      "pass": 0.162,
+      "breach": 0.832,
+      "open": 0.005,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.871,
+      "funded_usd_per_session": -272.86,
+      "fee_per_pass": 1234.0
+     },
+     "100K": {
+      "pass": 0.198,
+      "breach": 0.791,
+      "open": 0.011,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -210.7,
+      "fee_per_pass": 1213.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.077,
+      "breach": 0.885,
+      "open": 0.038,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.885,
+      "funded_usd_per_session": -271.18,
+      "fee_per_pass": 1040.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.731,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -150.95,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -98.86,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.039,
+      "breach": 0.941,
+      "open": 0.02,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.941,
+      "funded_usd_per_session": -296.39,
+      "fee_per_pass": 2040.0
+     },
+     "50K": {
+      "pass": 0.137,
+      "breach": 0.824,
+      "open": 0.039,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -188.29,
+      "fee_per_pass": 1457.0
+     },
+     "100K": {
+      "pass": 0.235,
+      "breach": 0.686,
+      "open": 0.078,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -160.85,
+      "fee_per_pass": 1020.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.416,
+      "breach": 0.584,
+      "open": 0.0,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.694,
+      "funded_usd_per_session": -26.09,
+      "fee_per_pass": 192.0
+     },
+     "50K": {
+      "pass": 0.597,
+      "breach": 0.379,
+      "open": 0.024,
+      "days_to_pass": 112.0,
+      "funded_breach_6m": 0.361,
+      "funded_usd_per_session": -1.61,
+      "fee_per_pass": 335.0
+     },
+     "100K": {
+      "pass": 0.253,
+      "breach": 0.379,
+      "open": 0.368,
+      "days_to_pass": 197.0,
+      "funded_breach_6m": 0.249,
+      "funded_usd_per_session": 1.9,
+      "fee_per_pass": 947.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.242,
+      "breach": 0.731,
+      "open": 0.027,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -38.88,
+      "fee_per_pass": 331.0
+     },
+     "50K": {
+      "pass": 0.412,
+      "breach": 0.552,
+      "open": 0.036,
+      "days_to_pass": 87.0,
+      "funded_breach_6m": 0.475,
+      "funded_usd_per_session": -8.81,
+      "fee_per_pass": 485.0
+     },
+     "100K": {
+      "pass": 0.22,
+      "breach": 0.415,
+      "open": 0.365,
+      "days_to_pass": 184.0,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": 1.98,
+      "fee_per_pass": 1092.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -16.13,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.077,
+      "breach": 0.0,
+      "open": 0.923,
+      "days_to_pass": 88.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 3120.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -31.75,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.235,
+      "open": 0.431,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": -6.56,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.137,
+      "breach": 0.137,
+      "open": 0.725,
+      "days_to_pass": 96.0,
+      "funded_breach_6m": 0.137,
+      "funded_usd_per_session": -0.53,
+      "fee_per_pass": 1748.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.247,
+      "breach": 0.753,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.848,
+      "funded_usd_per_session": -103.17,
+      "fee_per_pass": 324.0
+     },
+     "50K": {
+      "pass": 0.396,
+      "breach": 0.604,
+      "open": 0.0,
+      "days_to_pass": 35.5,
+      "funded_breach_6m": 0.694,
+      "funded_usd_per_session": -52.17,
+      "fee_per_pass": 504.0
+     },
+     "100K": {
+      "pass": 0.421,
+      "breach": 0.575,
+      "open": 0.004,
+      "days_to_pass": 96.0,
+      "funded_breach_6m": 0.568,
+      "funded_usd_per_session": -28.3,
+      "fee_per_pass": 570.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.187,
+      "breach": 0.805,
+      "open": 0.008,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.871,
+      "funded_usd_per_session": -111.55,
+      "fee_per_pass": 428.0
+     },
+     "50K": {
+      "pass": 0.22,
+      "breach": 0.753,
+      "open": 0.027,
+      "days_to_pass": 26.5,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -77.76,
+      "fee_per_pass": 910.0
+     },
+     "100K": {
+      "pass": 0.28,
+      "breach": 0.692,
+      "open": 0.027,
+      "days_to_pass": 71.5,
+      "funded_breach_6m": 0.67,
+      "funded_usd_per_session": -44.87,
+      "fee_per_pass": 856.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -61.14,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -32.27,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 7.86,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -79.03,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -63.49,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.373,
+      "open": 0.431,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.373,
+      "funded_usd_per_session": -44.47,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Volume-Checked Dips",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.181,
+      "breach": 0.819,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.899,
+      "funded_usd_per_session": -243.7,
+      "fee_per_pass": 443.0
+     },
+     "50K": {
+      "pass": 0.311,
+      "breach": 0.689,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -129.29,
+      "fee_per_pass": 644.0
+     },
+     "100K": {
+      "pass": 0.359,
+      "breach": 0.641,
+      "open": 0.0,
+      "days_to_pass": 51.0,
+      "funded_breach_6m": 0.694,
+      "funded_usd_per_session": -78.26,
+      "fee_per_pass": 668.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.148,
+      "breach": 0.843,
+      "open": 0.008,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.898,
+      "funded_usd_per_session": -271.72,
+      "fee_per_pass": 539.0
+     },
+     "50K": {
+      "pass": 0.217,
+      "breach": 0.761,
+      "open": 0.022,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -160.32,
+      "fee_per_pass": 921.0
+     },
+     "100K": {
+      "pass": 0.206,
+      "breach": 0.766,
+      "open": 0.027,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.772,
+      "funded_usd_per_session": -116.64,
+      "fee_per_pass": 1165.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 11.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -159.9,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -80.44,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -48.4,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -162.61,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -108.94,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -95.24,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.284,
+      "breach": 0.716,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.795,
+      "funded_usd_per_session": -56.86,
+      "fee_per_pass": 282.0
+     },
+     "50K": {
+      "pass": 0.449,
+      "breach": 0.551,
+      "open": 0.0,
+      "days_to_pass": 46.0,
+      "funded_breach_6m": 0.617,
+      "funded_usd_per_session": -22.1,
+      "fee_per_pass": 445.0
+     },
+     "100K": {
+      "pass": 0.482,
+      "breach": 0.509,
+      "open": 0.009,
+      "days_to_pass": 113.0,
+      "funded_breach_6m": 0.427,
+      "funded_usd_per_session": -2.24,
+      "fee_per_pass": 498.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.203,
+      "breach": 0.797,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.835,
+      "funded_usd_per_session": -65.52,
+      "fee_per_pass": 393.0
+     },
+     "50K": {
+      "pass": 0.335,
+      "breach": 0.665,
+      "open": 0.0,
+      "days_to_pass": 31.0,
+      "funded_breach_6m": 0.698,
+      "funded_usd_per_session": -34.71,
+      "fee_per_pass": 597.0
+     },
+     "100K": {
+      "pass": 0.338,
+      "breach": 0.651,
+      "open": 0.011,
+      "days_to_pass": 76.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -15.75,
+      "fee_per_pass": 710.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -43.28,
+      "fee_per_pass": 231.0
+     },
+     "50K": {
+      "pass": 0.423,
+      "breach": 0.385,
+      "open": 0.192,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.385,
+      "funded_usd_per_session": 3.58,
+      "fee_per_pass": 473.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.346,
+      "open": 0.269,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.346,
+      "funded_usd_per_session": 1.46,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.294,
+      "breach": 0.627,
+      "open": 0.078,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -51.91,
+      "fee_per_pass": 272.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.569,
+      "open": 0.098,
+      "days_to_pass": 29.0,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -19.84,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.412,
+      "breach": 0.451,
+      "open": 0.137,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": 1.17,
+      "fee_per_pass": 583.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.159,
+      "breach": 0.841,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.905,
+      "funded_usd_per_session": -164.0,
+      "fee_per_pass": 504.0
+     },
+     "50K": {
+      "pass": 0.278,
+      "breach": 0.722,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.795,
+      "funded_usd_per_session": -113.72,
+      "fee_per_pass": 721.0
+     },
+     "100K": {
+      "pass": 0.326,
+      "breach": 0.674,
+      "open": 0.0,
+      "days_to_pass": 41.0,
+      "funded_breach_6m": 0.714,
+      "funded_usd_per_session": -83.51,
+      "fee_per_pass": 736.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.863,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.893,
+      "funded_usd_per_session": -159.3,
+      "fee_per_pass": 582.0
+     },
+     "50K": {
+      "pass": 0.198,
+      "breach": 0.802,
+      "open": 0.0,
+      "days_to_pass": 16.5,
+      "funded_breach_6m": 0.835,
+      "funded_usd_per_session": -131.04,
+      "fee_per_pass": 1011.0
+     },
+     "100K": {
+      "pass": 0.25,
+      "breach": 0.75,
+      "open": 0.0,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.78,
+      "funded_usd_per_session": -103.62,
+      "fee_per_pass": 960.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.692,
+      "open": 0.038,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -86.84,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -86.57,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.462,
+      "open": 0.154,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -20.7,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.804,
+      "open": 0.02,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.804,
+      "funded_usd_per_session": -92.95,
+      "fee_per_pass": 453.0
+     },
+     "50K": {
+      "pass": 0.294,
+      "breach": 0.627,
+      "open": 0.078,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -103.81,
+      "fee_per_pass": 680.0
+     },
+     "100K": {
+      "pass": 0.314,
+      "breach": 0.608,
+      "open": 0.078,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.608,
+      "funded_usd_per_session": -53.58,
+      "fee_per_pass": 765.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.863,
+      "open": 0.0,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.916,
+      "funded_usd_per_session": -351.16,
+      "fee_per_pass": 586.0
+     },
+     "50K": {
+      "pass": 0.172,
+      "breach": 0.828,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.89,
+      "funded_usd_per_session": -267.89,
+      "fee_per_pass": 1164.0
+     },
+     "100K": {
+      "pass": 0.256,
+      "breach": 0.744,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.795,
+      "funded_usd_per_session": -170.58,
+      "fee_per_pass": 939.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.104,
+      "breach": 0.896,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.937,
+      "funded_usd_per_session": -373.57,
+      "fee_per_pass": 766.0
+     },
+     "50K": {
+      "pass": 0.157,
+      "breach": 0.843,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.876,
+      "funded_usd_per_session": -255.51,
+      "fee_per_pass": 1277.0
+     },
+     "100K": {
+      "pass": 0.187,
+      "breach": 0.813,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.835,
+      "funded_usd_per_session": -196.56,
+      "fee_per_pass": 1285.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.231,
+      "breach": 0.731,
+      "open": 0.038,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -215.92,
+      "fee_per_pass": 347.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.654,
+      "open": 0.038,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -149.02,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.5,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -129.85,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -259.95,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.196,
+      "breach": 0.784,
+      "open": 0.02,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.784,
+      "funded_usd_per_session": -184.09,
+      "fee_per_pass": 1020.0
+     },
+     "100K": {
+      "pass": 0.294,
+      "breach": 0.627,
+      "open": 0.078,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -155.72,
+      "fee_per_pass": 816.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.46,
+      "breach": 0.54,
+      "open": 0.0,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -21.16,
+      "fee_per_pass": 174.0
+     },
+     "50K": {
+      "pass": 0.632,
+      "breach": 0.3,
+      "open": 0.068,
+      "days_to_pass": 111.0,
+      "funded_breach_6m": 0.284,
+      "funded_usd_per_session": 3.88,
+      "fee_per_pass": 316.0
+     },
+     "100K": {
+      "pass": 0.26,
+      "breach": 0.249,
+      "open": 0.491,
+      "days_to_pass": 207.0,
+      "funded_breach_6m": 0.134,
+      "funded_usd_per_session": 8.27,
+      "fee_per_pass": 923.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.299,
+      "breach": 0.701,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.717,
+      "funded_usd_per_session": -30.5,
+      "fee_per_pass": 267.0
+     },
+     "50K": {
+      "pass": 0.464,
+      "breach": 0.503,
+      "open": 0.033,
+      "days_to_pass": 90.0,
+      "funded_breach_6m": 0.418,
+      "funded_usd_per_session": -8.32,
+      "fee_per_pass": 431.0
+     },
+     "100K": {
+      "pass": 0.143,
+      "breach": 0.316,
+      "open": 0.541,
+      "days_to_pass": 193.5,
+      "funded_breach_6m": 0.195,
+      "funded_usd_per_session": 1.83,
+      "fee_per_pass": 1680.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -19.4,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.64,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.64,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -31.55,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.235,
+      "open": 0.431,
+      "days_to_pass": 58.0,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": -4.75,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.02,
+      "breach": 0.157,
+      "open": 0.824,
+      "days_to_pass": 131.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": -0.09,
+      "fee_per_pass": 12239.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.273,
+      "breach": 0.727,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.817,
+      "funded_usd_per_session": -89.55,
+      "fee_per_pass": 293.0
+     },
+     "50K": {
+      "pass": 0.449,
+      "breach": 0.551,
+      "open": 0.0,
+      "days_to_pass": 40.5,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -42.33,
+      "fee_per_pass": 445.0
+     },
+     "100K": {
+      "pass": 0.454,
+      "breach": 0.533,
+      "open": 0.013,
+      "days_to_pass": 94.5,
+      "funded_breach_6m": 0.531,
+      "funded_usd_per_session": -21.6,
+      "fee_per_pass": 529.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.181,
+      "breach": 0.819,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.879,
+      "funded_usd_per_session": -95.47,
+      "fee_per_pass": 441.0
+     },
+     "50K": {
+      "pass": 0.291,
+      "breach": 0.709,
+      "open": 0.0,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.717,
+      "funded_usd_per_session": -61.0,
+      "fee_per_pass": 687.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.637,
+      "open": 0.016,
+      "days_to_pass": 70.5,
+      "funded_breach_6m": 0.571,
+      "funded_usd_per_session": -34.38,
+      "fee_per_pass": 693.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -65.97,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -38.81,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.5,
+      "open": 0.346,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -15.96,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.157,
+      "breach": 0.824,
+      "open": 0.02,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -77.25,
+      "fee_per_pass": 510.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -63.11,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.627,
+      "open": 0.176,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.627,
+      "funded_usd_per_session": -52.99,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quieter Trend + Z-Dip",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.22,
+      "breach": 0.78,
+      "open": 0.0,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.874,
+      "funded_usd_per_session": -223.42,
+      "fee_per_pass": 363.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.667,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.742,
+      "funded_usd_per_session": -106.9,
+      "fee_per_pass": 601.0
+     },
+     "100K": {
+      "pass": 0.405,
+      "breach": 0.595,
+      "open": 0.0,
+      "days_to_pass": 54.5,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -63.49,
+      "fee_per_pass": 592.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.146,
+      "breach": 0.854,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.901,
+      "funded_usd_per_session": -229.65,
+      "fee_per_pass": 549.0
+     },
+     "50K": {
+      "pass": 0.217,
+      "breach": 0.783,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.841,
+      "funded_usd_per_session": -133.61,
+      "fee_per_pass": 921.0
+     },
+     "100K": {
+      "pass": 0.277,
+      "breach": 0.723,
+      "open": 0.0,
+      "days_to_pass": 35.0,
+      "funded_breach_6m": 0.717,
+      "funded_usd_per_session": -91.5,
+      "fee_per_pass": 865.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -196.56,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -88.55,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -58.21,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.157,
+      "breach": 0.824,
+      "open": 0.02,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -184.38,
+      "fee_per_pass": 510.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -115.08,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 31.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -94.66,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.289,
+      "breach": 0.711,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -48.99,
+      "fee_per_pass": 277.0
+     },
+     "50K": {
+      "pass": 0.443,
+      "breach": 0.544,
+      "open": 0.013,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.566,
+      "funded_usd_per_session": -13.41,
+      "fee_per_pass": 452.0
+     },
+     "100K": {
+      "pass": 0.513,
+      "breach": 0.412,
+      "open": 0.075,
+      "days_to_pass": 113.0,
+      "funded_breach_6m": 0.311,
+      "funded_usd_per_session": 6.9,
+      "fee_per_pass": 468.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.294,
+      "breach": 0.706,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.777,
+      "funded_usd_per_session": -59.0,
+      "fee_per_pass": 272.0
+     },
+     "50K": {
+      "pass": 0.352,
+      "breach": 0.648,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.695,
+      "funded_usd_per_session": -33.23,
+      "fee_per_pass": 569.0
+     },
+     "100K": {
+      "pass": 0.393,
+      "breach": 0.585,
+      "open": 0.022,
+      "days_to_pass": 90.0,
+      "funded_breach_6m": 0.536,
+      "funded_usd_per_session": -13.3,
+      "fee_per_pass": 611.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -52.22,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.346,
+      "open": 0.346,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.346,
+      "funded_usd_per_session": 11.81,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.0,
+      "open": 0.731,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 24.79,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.314,
+      "breach": 0.608,
+      "open": 0.078,
+      "days_to_pass": 16.5,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -57.65,
+      "fee_per_pass": 255.0
+     },
+     "50K": {
+      "pass": 0.373,
+      "breach": 0.451,
+      "open": 0.176,
+      "days_to_pass": 34.0,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": 1.24,
+      "fee_per_pass": 537.0
+     },
+     "100K": {
+      "pass": 0.451,
+      "breach": 0.176,
+      "open": 0.373,
+      "days_to_pass": 54.0,
+      "funded_breach_6m": 0.176,
+      "funded_usd_per_session": 20.3,
+      "fee_per_pass": 532.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.181,
+      "breach": 0.819,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.872,
+      "funded_usd_per_session": -130.82,
+      "fee_per_pass": 443.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.725,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -97.97,
+      "fee_per_pass": 726.0
+     },
+     "100K": {
+      "pass": 0.368,
+      "breach": 0.619,
+      "open": 0.013,
+      "days_to_pass": 42.0,
+      "funded_breach_6m": 0.639,
+      "funded_usd_per_session": -52.54,
+      "fee_per_pass": 652.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.223,
+      "breach": 0.777,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.835,
+      "funded_usd_per_session": -142.17,
+      "fee_per_pass": 359.0
+     },
+     "50K": {
+      "pass": 0.291,
+      "breach": 0.709,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.777,
+      "funded_usd_per_session": -118.0,
+      "fee_per_pass": 687.0
+     },
+     "100K": {
+      "pass": 0.302,
+      "breach": 0.698,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.739,
+      "funded_usd_per_session": -91.05,
+      "fee_per_pass": 794.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -121.11,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -104.44,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.538,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -12.9,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -115.33,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.314,
+      "breach": 0.608,
+      "open": 0.078,
+      "days_to_pass": 16.5,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -115.3,
+      "fee_per_pass": 637.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.627,
+      "open": 0.098,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.627,
+      "funded_usd_per_session": -28.64,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.148,
+      "breach": 0.852,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -325.66,
+      "fee_per_pass": 542.0
+     },
+     "50K": {
+      "pass": 0.198,
+      "breach": 0.802,
+      "open": 0.0,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.857,
+      "funded_usd_per_session": -207.87,
+      "fee_per_pass": 1009.0
+     },
+     "100K": {
+      "pass": 0.262,
+      "breach": 0.738,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -146.96,
+      "fee_per_pass": 916.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.148,
+      "breach": 0.852,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -340.91,
+      "fee_per_pass": 539.0
+     },
+     "50K": {
+      "pass": 0.239,
+      "breach": 0.761,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.821,
+      "funded_usd_per_session": -229.74,
+      "fee_per_pass": 837.0
+     },
+     "100K": {
+      "pass": 0.283,
+      "breach": 0.717,
+      "open": 0.0,
+      "days_to_pass": 24.0,
+      "funded_breach_6m": 0.777,
+      "funded_usd_per_session": -177.01,
+      "fee_per_pass": 848.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -281.61,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -218.67,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -156.65,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -301.63,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.176,
+      "breach": 0.804,
+      "open": 0.02,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -227.44,
+      "fee_per_pass": 1133.0
+     },
+     "100K": {
+      "pass": 0.314,
+      "breach": 0.608,
+      "open": 0.078,
+      "days_to_pass": 16.5,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -172.94,
+      "fee_per_pass": 765.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.487,
+      "breach": 0.513,
+      "open": 0.0,
+      "days_to_pass": 34.0,
+      "funded_breach_6m": 0.586,
+      "funded_usd_per_session": -15.9,
+      "fee_per_pass": 164.0
+     },
+     "50K": {
+      "pass": 0.612,
+      "breach": 0.231,
+      "open": 0.156,
+      "days_to_pass": 121.5,
+      "funded_breach_6m": 0.187,
+      "funded_usd_per_session": 7.34,
+      "fee_per_pass": 327.0
+     },
+     "100K": {
+      "pass": 0.233,
+      "breach": 0.22,
+      "open": 0.546,
+      "days_to_pass": 211.5,
+      "funded_breach_6m": 0.132,
+      "funded_usd_per_session": 9.29,
+      "fee_per_pass": 1028.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.379,
+      "breach": 0.621,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -26.38,
+      "fee_per_pass": 211.0
+     },
+     "50K": {
+      "pass": 0.475,
+      "breach": 0.484,
+      "open": 0.041,
+      "days_to_pass": 130.0,
+      "funded_breach_6m": 0.464,
+      "funded_usd_per_session": -7.32,
+      "fee_per_pass": 421.0
+     },
+     "100K": {
+      "pass": 0.099,
+      "breach": 0.448,
+      "open": 0.453,
+      "days_to_pass": 202.0,
+      "funded_breach_6m": 0.28,
+      "funded_usd_per_session": -1.2,
+      "fee_per_pass": 2427.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -2.81,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.6,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.6,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.275,
+      "breach": 0.647,
+      "open": 0.078,
+      "days_to_pass": 22.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -20.18,
+      "fee_per_pass": 291.0
+     },
+     "50K": {
+      "pass": 0.392,
+      "breach": 0.176,
+      "open": 0.431,
+      "days_to_pass": 65.5,
+      "funded_breach_6m": 0.176,
+      "funded_usd_per_session": -6.21,
+      "fee_per_pass": 510.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.157,
+      "open": 0.843,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": -4.36,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.302,
+      "breach": 0.698,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.78,
+      "funded_usd_per_session": -73.53,
+      "fee_per_pass": 265.0
+     },
+     "50K": {
+      "pass": 0.467,
+      "breach": 0.533,
+      "open": 0.0,
+      "days_to_pass": 38.0,
+      "funded_breach_6m": 0.586,
+      "funded_usd_per_session": -31.79,
+      "fee_per_pass": 428.0
+     },
+     "100K": {
+      "pass": 0.474,
+      "breach": 0.46,
+      "open": 0.066,
+      "days_to_pass": 104.0,
+      "funded_breach_6m": 0.43,
+      "funded_usd_per_session": -6.83,
+      "fee_per_pass": 507.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.217,
+      "breach": 0.783,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.852,
+      "funded_usd_per_session": -88.76,
+      "fee_per_pass": 369.0
+     },
+     "50K": {
+      "pass": 0.368,
+      "breach": 0.632,
+      "open": 0.0,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -52.76,
+      "fee_per_pass": 543.0
+     },
+     "100K": {
+      "pass": 0.393,
+      "breach": 0.602,
+      "open": 0.005,
+      "days_to_pass": 120.0,
+      "funded_breach_6m": 0.596,
+      "funded_usd_per_session": -30.96,
+      "fee_per_pass": 611.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -46.41,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -5.62,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.538,
+      "open": 0.308,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -9.68,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -68.68,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.647,
+      "open": 0.078,
+      "days_to_pass": 26.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -40.36,
+      "fee_per_pass": 729.0
+     },
+     "100K": {
+      "pass": 0.294,
+      "breach": 0.549,
+      "open": 0.157,
+      "days_to_pass": 53.0,
+      "funded_breach_6m": 0.549,
+      "funded_usd_per_session": -31.33,
+      "fee_per_pass": 816.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, Fast Exit",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.251,
+      "breach": 0.749,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.835,
+      "funded_usd_per_session": -195.7,
+      "fee_per_pass": 319.0
+     },
+     "50K": {
+      "pass": 0.385,
+      "breach": 0.615,
+      "open": 0.0,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.681,
+      "funded_usd_per_session": -81.44,
+      "fee_per_pass": 519.0
+     },
+     "100K": {
+      "pass": 0.434,
+      "breach": 0.566,
+      "open": 0.0,
+      "days_to_pass": 60.0,
+      "funded_breach_6m": 0.586,
+      "funded_usd_per_session": -47.69,
+      "fee_per_pass": 553.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.19,
+      "breach": 0.81,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.874,
+      "funded_usd_per_session": -207.14,
+      "fee_per_pass": 422.0
+     },
+     "50K": {
+      "pass": 0.245,
+      "breach": 0.755,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -114.78,
+      "fee_per_pass": 818.0
+     },
+     "100K": {
+      "pass": 0.343,
+      "breach": 0.654,
+      "open": 0.003,
+      "days_to_pass": 47.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -79.14,
+      "fee_per_pass": 699.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -172.19,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -24.36,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -8.44,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.157,
+      "breach": 0.824,
+      "open": 0.02,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -192.73,
+      "fee_per_pass": 510.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -87.17,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.647,
+      "open": 0.078,
+      "days_to_pass": 38.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -60.54,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.256,
+      "breach": 0.744,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -53.56,
+      "fee_per_pass": 313.0
+     },
+     "50K": {
+      "pass": 0.383,
+      "breach": 0.617,
+      "open": 0.0,
+      "days_to_pass": 49.5,
+      "funded_breach_6m": 0.707,
+      "funded_usd_per_session": -31.07,
+      "fee_per_pass": 522.0
+     },
+     "100K": {
+      "pass": 0.355,
+      "breach": 0.628,
+      "open": 0.018,
+      "days_to_pass": 138.0,
+      "funded_breach_6m": 0.542,
+      "funded_usd_per_session": -13.26,
+      "fee_per_pass": 677.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.234,
+      "breach": 0.758,
+      "open": 0.008,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -66.53,
+      "fee_per_pass": 343.0
+     },
+     "50K": {
+      "pass": 0.341,
+      "breach": 0.629,
+      "open": 0.03,
+      "days_to_pass": 37.0,
+      "funded_breach_6m": 0.684,
+      "funded_usd_per_session": -32.7,
+      "fee_per_pass": 587.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.558,
+      "open": 0.058,
+      "days_to_pass": 97.5,
+      "funded_breach_6m": 0.53,
+      "funded_usd_per_session": -12.05,
+      "fee_per_pass": 624.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -44.09,
+      "fee_per_pass": 260.0
+     },
+     "50K": {
+      "pass": 0.385,
+      "breach": 0.308,
+      "open": 0.308,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.308,
+      "funded_usd_per_session": 12.6,
+      "fee_per_pass": 520.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.0,
+      "open": 0.615,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 19.72,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -50.71,
+      "fee_per_pass": 340.0
+     },
+     "50K": {
+      "pass": 0.529,
+      "breach": 0.314,
+      "open": 0.157,
+      "days_to_pass": 46.0,
+      "funded_breach_6m": 0.314,
+      "funded_usd_per_session": 18.52,
+      "fee_per_pass": 378.0
+     },
+     "100K": {
+      "pass": 0.529,
+      "breach": 0.157,
+      "open": 0.314,
+      "days_to_pass": 47.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": 22.52,
+      "fee_per_pass": 453.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.187,
+      "breach": 0.813,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.912,
+      "funded_usd_per_session": -144.78,
+      "fee_per_pass": 427.0
+     },
+     "50K": {
+      "pass": 0.244,
+      "breach": 0.756,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -107.11,
+      "fee_per_pass": 818.0
+     },
+     "100K": {
+      "pass": 0.302,
+      "breach": 0.698,
+      "open": 0.0,
+      "days_to_pass": 46.0,
+      "funded_breach_6m": 0.782,
+      "funded_usd_per_session": -89.96,
+      "fee_per_pass": 795.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.17,
+      "breach": 0.824,
+      "open": 0.005,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.885,
+      "funded_usd_per_session": -168.4,
+      "fee_per_pass": 470.0
+     },
+     "50K": {
+      "pass": 0.234,
+      "breach": 0.758,
+      "open": 0.008,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -133.05,
+      "fee_per_pass": 856.0
+     },
+     "100K": {
+      "pass": 0.225,
+      "breach": 0.766,
+      "open": 0.008,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.788,
+      "funded_usd_per_session": -110.03,
+      "fee_per_pass": 1065.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.115,
+      "breach": 0.808,
+      "open": 0.077,
+      "days_to_pass": 8.0,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -133.21,
+      "fee_per_pass": 693.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -88.18,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.346,
+      "breach": 0.462,
+      "open": 0.192,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.462,
+      "funded_usd_per_session": -24.65,
+      "fee_per_pass": 693.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.098,
+      "breach": 0.863,
+      "open": 0.039,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -113.4,
+      "fee_per_pass": 816.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -101.42,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.314,
+      "breach": 0.588,
+      "open": 0.098,
+      "days_to_pass": 29.0,
+      "funded_breach_6m": 0.588,
+      "funded_usd_per_session": -30.05,
+      "fee_per_pass": 765.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.863,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.927,
+      "funded_usd_per_session": -318.8,
+      "fee_per_pass": 586.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.808,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.903,
+      "funded_usd_per_session": -243.9,
+      "fee_per_pass": 1044.0
+     },
+     "100K": {
+      "pass": 0.236,
+      "breach": 0.764,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -160.67,
+      "fee_per_pass": 1018.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.129,
+      "breach": 0.865,
+      "open": 0.005,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.915,
+      "funded_usd_per_session": -392.81,
+      "fee_per_pass": 619.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.802,
+      "open": 0.005,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -272.77,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.223,
+      "breach": 0.769,
+      "open": 0.008,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.832,
+      "funded_usd_per_session": -199.58,
+      "fee_per_pass": 1078.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.115,
+      "breach": 0.846,
+      "open": 0.038,
+      "days_to_pass": 8.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -269.5,
+      "fee_per_pass": 693.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.692,
+      "open": 0.077,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -167.35,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -132.27,
+      "fee_per_pass": 780.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.078,
+      "breach": 0.902,
+      "open": 0.02,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.922,
+      "funded_usd_per_session": -277.81,
+      "fee_per_pass": 1020.0
+     },
+     "50K": {
+      "pass": 0.176,
+      "breach": 0.784,
+      "open": 0.039,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.804,
+      "funded_usd_per_session": -171.16,
+      "fee_per_pass": 1133.0
+     },
+     "100K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -152.13,
+      "fee_per_pass": 1020.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.427,
+      "breach": 0.573,
+      "open": 0.0,
+      "days_to_pass": 39.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -27.68,
+      "fee_per_pass": 187.0
+     },
+     "50K": {
+      "pass": 0.401,
+      "breach": 0.568,
+      "open": 0.031,
+      "days_to_pass": 129.0,
+      "funded_breach_6m": 0.502,
+      "funded_usd_per_session": -7.24,
+      "fee_per_pass": 499.0
+     },
+     "100K": {
+      "pass": 0.115,
+      "breach": 0.363,
+      "open": 0.522,
+      "days_to_pass": 220.0,
+      "funded_breach_6m": 0.194,
+      "funded_usd_per_session": -0.22,
+      "fee_per_pass": 2095.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.327,
+      "breach": 0.668,
+      "open": 0.005,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.739,
+      "funded_usd_per_session": -35.6,
+      "fee_per_pass": 245.0
+     },
+     "50K": {
+      "pass": 0.437,
+      "breach": 0.538,
+      "open": 0.025,
+      "days_to_pass": 94.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -11.51,
+      "fee_per_pass": 458.0
+     },
+     "100K": {
+      "pass": 0.266,
+      "breach": 0.404,
+      "open": 0.33,
+      "days_to_pass": 206.0,
+      "funded_breach_6m": 0.236,
+      "funded_usd_per_session": 3.13,
+      "fee_per_pass": 901.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -16.13,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.077,
+      "breach": 0.0,
+      "open": 0.923,
+      "days_to_pass": 88.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.93,
+      "fee_per_pass": 3120.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.392,
+      "breach": 0.569,
+      "open": 0.039,
+      "days_to_pass": 37.5,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -19.47,
+      "fee_per_pass": 204.0
+     },
+     "50K": {
+      "pass": 0.412,
+      "breach": 0.157,
+      "open": 0.431,
+      "days_to_pass": 53.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": 3.39,
+      "fee_per_pass": 486.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.0,
+      "open": 0.725,
+      "days_to_pass": 112.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 12.48,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.26,
+      "breach": 0.74,
+      "open": 0.0,
+      "days_to_pass": 23.5,
+      "funded_breach_6m": 0.848,
+      "funded_usd_per_session": -93.51,
+      "fee_per_pass": 308.0
+     },
+     "50K": {
+      "pass": 0.41,
+      "breach": 0.59,
+      "open": 0.0,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -55.35,
+      "fee_per_pass": 488.0
+     },
+     "100K": {
+      "pass": 0.366,
+      "breach": 0.617,
+      "open": 0.018,
+      "days_to_pass": 129.5,
+      "funded_breach_6m": 0.575,
+      "funded_usd_per_session": -25.87,
+      "fee_per_pass": 656.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.22,
+      "breach": 0.78,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -113.08,
+      "fee_per_pass": 364.0
+     },
+     "50K": {
+      "pass": 0.31,
+      "breach": 0.684,
+      "open": 0.005,
+      "days_to_pass": 37.0,
+      "funded_breach_6m": 0.739,
+      "funded_usd_per_session": -71.2,
+      "fee_per_pass": 644.0
+     },
+     "100K": {
+      "pass": 0.354,
+      "breach": 0.626,
+      "open": 0.019,
+      "days_to_pass": 88.0,
+      "funded_breach_6m": 0.629,
+      "funded_usd_per_session": -43.5,
+      "fee_per_pass": 677.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -61.14,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -32.27,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 7.86,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -70.41,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.392,
+      "breach": 0.569,
+      "open": 0.039,
+      "days_to_pass": 37.5,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -38.94,
+      "fee_per_pass": 510.0
+     },
+     "100K": {
+      "pass": 0.392,
+      "breach": 0.176,
+      "open": 0.431,
+      "days_to_pass": 49.5,
+      "funded_breach_6m": 0.176,
+      "funded_usd_per_session": -2.67,
+      "fee_per_pass": 612.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend Champion, 6% Target",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.189,
+      "breach": 0.811,
+      "open": 0.0,
+      "days_to_pass": 18.5,
+      "funded_breach_6m": 0.907,
+      "funded_usd_per_session": -210.39,
+      "fee_per_pass": 422.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.692,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.802,
+      "funded_usd_per_session": -119.32,
+      "fee_per_pass": 649.0
+     },
+     "100K": {
+      "pass": 0.315,
+      "breach": 0.685,
+      "open": 0.0,
+      "days_to_pass": 70.0,
+      "funded_breach_6m": 0.738,
+      "funded_usd_per_session": -83.03,
+      "fee_per_pass": 762.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.173,
+      "breach": 0.827,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -272.35,
+      "fee_per_pass": 462.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.725,
+      "open": 0.005,
+      "days_to_pass": 23.5,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -151.08,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.286,
+      "breach": 0.709,
+      "open": 0.005,
+      "days_to_pass": 49.5,
+      "funded_breach_6m": 0.739,
+      "funded_usd_per_session": -106.8,
+      "fee_per_pass": 840.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 11.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -159.9,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -80.44,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -48.4,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -158.88,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -100.55,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.392,
+      "breach": 0.569,
+      "open": 0.039,
+      "days_to_pass": 42.0,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -58.41,
+      "fee_per_pass": 612.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.304,
+      "breach": 0.696,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.775,
+      "funded_usd_per_session": -59.32,
+      "fee_per_pass": 263.0
+     },
+     "50K": {
+      "pass": 0.441,
+      "breach": 0.559,
+      "open": 0.0,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.617,
+      "funded_usd_per_session": -24.1,
+      "fee_per_pass": 454.0
+     },
+     "100K": {
+      "pass": 0.427,
+      "breach": 0.559,
+      "open": 0.013,
+      "days_to_pass": 106.5,
+      "funded_breach_6m": 0.456,
+      "funded_usd_per_session": -5.14,
+      "fee_per_pass": 562.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.184,
+      "breach": 0.816,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.83,
+      "funded_usd_per_session": -67.3,
+      "fee_per_pass": 435.0
+     },
+     "50K": {
+      "pass": 0.31,
+      "breach": 0.681,
+      "open": 0.008,
+      "days_to_pass": 34.0,
+      "funded_breach_6m": 0.687,
+      "funded_usd_per_session": -35.0,
+      "fee_per_pass": 644.0
+     },
+     "100K": {
+      "pass": 0.423,
+      "breach": 0.569,
+      "open": 0.008,
+      "days_to_pass": 78.5,
+      "funded_breach_6m": 0.525,
+      "funded_usd_per_session": -12.54,
+      "fee_per_pass": 567.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -71.07,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.385,
+      "open": 0.308,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.385,
+      "funded_usd_per_session": -5.31,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.346,
+      "open": 0.385,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.346,
+      "funded_usd_per_session": 2.45,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.765,
+      "open": 0.059,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.765,
+      "funded_usd_per_session": -77.28,
+      "fee_per_pass": 453.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.569,
+      "open": 0.157,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -36.7,
+      "fee_per_pass": 729.0
+     },
+     "100K": {
+      "pass": 0.353,
+      "breach": 0.451,
+      "open": 0.196,
+      "days_to_pass": 34.0,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -9.18,
+      "fee_per_pass": 680.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.161,
+      "breach": 0.839,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.912,
+      "funded_usd_per_session": -173.85,
+      "fee_per_pass": 497.0
+     },
+     "50K": {
+      "pass": 0.297,
+      "breach": 0.703,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.775,
+      "funded_usd_per_session": -118.63,
+      "fee_per_pass": 673.0
+     },
+     "100K": {
+      "pass": 0.3,
+      "breach": 0.7,
+      "open": 0.0,
+      "days_to_pass": 39.5,
+      "funded_breach_6m": 0.736,
+      "funded_usd_per_session": -90.98,
+      "fee_per_pass": 801.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.863,
+      "open": 0.0,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.898,
+      "funded_usd_per_session": -160.94,
+      "fee_per_pass": 582.0
+     },
+     "50K": {
+      "pass": 0.179,
+      "breach": 0.821,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.83,
+      "funded_usd_per_session": -134.59,
+      "fee_per_pass": 1120.0
+     },
+     "100K": {
+      "pass": 0.22,
+      "breach": 0.772,
+      "open": 0.008,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.777,
+      "funded_usd_per_session": -105.41,
+      "fee_per_pass": 1092.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.077,
+      "breach": 0.885,
+      "open": 0.038,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.885,
+      "funded_usd_per_session": -175.83,
+      "fee_per_pass": 1040.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -142.14,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -52.41,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.059,
+      "breach": 0.922,
+      "open": 0.02,
+      "days_to_pass": 8.0,
+      "funded_breach_6m": 0.922,
+      "funded_usd_per_session": -152.94,
+      "fee_per_pass": 1360.0
+     },
+     "50K": {
+      "pass": 0.176,
+      "breach": 0.765,
+      "open": 0.059,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.765,
+      "funded_usd_per_session": -154.56,
+      "fee_per_pass": 1133.0
+     },
+     "100K": {
+      "pass": 0.235,
+      "breach": 0.686,
+      "open": 0.078,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -91.8,
+      "fee_per_pass": 1020.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.139,
+      "breach": 0.861,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.923,
+      "funded_usd_per_session": -364.82,
+      "fee_per_pass": 576.0
+     },
+     "50K": {
+      "pass": 0.172,
+      "breach": 0.828,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.896,
+      "funded_usd_per_session": -285.65,
+      "fee_per_pass": 1164.0
+     },
+     "100K": {
+      "pass": 0.271,
+      "breach": 0.729,
+      "open": 0.0,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.775,
+      "funded_usd_per_session": -177.95,
+      "fee_per_pass": 886.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.104,
+      "breach": 0.896,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.931,
+      "funded_usd_per_session": -359.04,
+      "fee_per_pass": 766.0
+     },
+     "50K": {
+      "pass": 0.146,
+      "breach": 0.854,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -257.2,
+      "fee_per_pass": 1374.0
+     },
+     "100K": {
+      "pass": 0.17,
+      "breach": 0.827,
+      "open": 0.003,
+      "days_to_pass": 21.5,
+      "funded_breach_6m": 0.83,
+      "funded_usd_per_session": -201.89,
+      "fee_per_pass": 1409.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.077,
+      "breach": 0.885,
+      "open": 0.038,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.885,
+      "funded_usd_per_session": -385.54,
+      "fee_per_pass": 1040.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -214.3,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -213.21,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.039,
+      "breach": 0.941,
+      "open": 0.02,
+      "days_to_pass": 6.0,
+      "funded_breach_6m": 0.941,
+      "funded_usd_per_session": -374.02,
+      "fee_per_pass": 2040.0
+     },
+     "50K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -222.51,
+      "fee_per_pass": 1457.0
+     },
+     "100K": {
+      "pass": 0.176,
+      "breach": 0.765,
+      "open": 0.059,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.765,
+      "funded_usd_per_session": -231.84,
+      "fee_per_pass": 1360.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.449,
+      "breach": 0.551,
+      "open": 0.0,
+      "days_to_pass": 32.0,
+      "funded_breach_6m": 0.665,
+      "funded_usd_per_session": -24.53,
+      "fee_per_pass": 178.0
+     },
+     "50K": {
+      "pass": 0.588,
+      "breach": 0.399,
+      "open": 0.013,
+      "days_to_pass": 116.0,
+      "funded_breach_6m": 0.359,
+      "funded_usd_per_session": -0.28,
+      "fee_per_pass": 340.0
+     },
+     "100K": {
+      "pass": 0.227,
+      "breach": 0.372,
+      "open": 0.401,
+      "days_to_pass": 197.0,
+      "funded_breach_6m": 0.174,
+      "funded_usd_per_session": 5.15,
+      "fee_per_pass": 1058.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.272,
+      "breach": 0.728,
+      "open": 0.0,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -35.44,
+      "fee_per_pass": 294.0
+     },
+     "50K": {
+      "pass": 0.453,
+      "breach": 0.547,
+      "open": 0.0,
+      "days_to_pass": 102.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -9.77,
+      "fee_per_pass": 441.0
+     },
+     "100K": {
+      "pass": 0.165,
+      "breach": 0.429,
+      "open": 0.407,
+      "days_to_pass": 198.5,
+      "funded_breach_6m": 0.214,
+      "funded_usd_per_session": 0.25,
+      "fee_per_pass": 1456.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -20.28,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.21,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.077,
+      "breach": 0.0,
+      "open": 0.923,
+      "days_to_pass": 98.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.21,
+      "fee_per_pass": 3120.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -35.07,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.235,
+      "open": 0.431,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": -11.58,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.098,
+      "breach": 0.157,
+      "open": 0.745,
+      "days_to_pass": 101.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": -5.03,
+      "fee_per_pass": 2448.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.267,
+      "breach": 0.733,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.83,
+      "funded_usd_per_session": -94.46,
+      "fee_per_pass": 300.0
+     },
+     "50K": {
+      "pass": 0.43,
+      "breach": 0.57,
+      "open": 0.0,
+      "days_to_pass": 38.0,
+      "funded_breach_6m": 0.665,
+      "funded_usd_per_session": -49.06,
+      "fee_per_pass": 466.0
+     },
+     "100K": {
+      "pass": 0.403,
+      "breach": 0.597,
+      "open": 0.0,
+      "days_to_pass": 107.0,
+      "funded_breach_6m": 0.573,
+      "funded_usd_per_session": -27.26,
+      "fee_per_pass": 595.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.203,
+      "breach": 0.797,
+      "open": 0.0,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -99.72,
+      "fee_per_pass": 393.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.745,
+      "open": 0.0,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -70.88,
+      "fee_per_pass": 783.0
+     },
+     "100K": {
+      "pass": 0.368,
+      "breach": 0.632,
+      "open": 0.0,
+      "days_to_pass": 99.5,
+      "funded_breach_6m": 0.599,
+      "funded_usd_per_session": -38.47,
+      "fee_per_pass": 652.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -72.85,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -40.57,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.538,
+      "open": 0.308,
+      "days_to_pass": 19.5,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -18.57,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -92.35,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -70.14,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.647,
+      "open": 0.157,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -62.3,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Washout",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.203,
+      "breach": 0.797,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.872,
+      "funded_usd_per_session": -229.73,
+      "fee_per_pass": 395.0
+     },
+     "50K": {
+      "pass": 0.33,
+      "breach": 0.67,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.749,
+      "funded_usd_per_session": -114.89,
+      "fee_per_pass": 605.0
+     },
+     "100K": {
+      "pass": 0.383,
+      "breach": 0.617,
+      "open": 0.0,
+      "days_to_pass": 52.0,
+      "funded_breach_6m": 0.665,
+      "funded_usd_per_session": -73.59,
+      "fee_per_pass": 626.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.151,
+      "breach": 0.849,
+      "open": 0.0,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.901,
+      "funded_usd_per_session": -230.12,
+      "fee_per_pass": 529.0
+     },
+     "50K": {
+      "pass": 0.242,
+      "breach": 0.758,
+      "open": 0.0,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.816,
+      "funded_usd_per_session": -142.8,
+      "fee_per_pass": 827.0
+     },
+     "100K": {
+      "pass": 0.242,
+      "breach": 0.758,
+      "open": 0.0,
+      "days_to_pass": 40.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -106.32,
+      "fee_per_pass": 993.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 11.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -214.77,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -107.27,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -60.85,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -206.45,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -141.9,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -105.21,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.731,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.826,
+      "funded_usd_per_session": -59.86,
+      "fee_per_pass": 298.0
+     },
+     "50K": {
+      "pass": 0.394,
+      "breach": 0.601,
+      "open": 0.004,
+      "days_to_pass": 45.0,
+      "funded_breach_6m": 0.643,
+      "funded_usd_per_session": -28.6,
+      "fee_per_pass": 507.0
+     },
+     "100K": {
+      "pass": 0.43,
+      "breach": 0.542,
+      "open": 0.029,
+      "days_to_pass": 116.0,
+      "funded_breach_6m": 0.474,
+      "funded_usd_per_session": -10.69,
+      "fee_per_pass": 559.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.247,
+      "breach": 0.753,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -63.07,
+      "fee_per_pass": 324.0
+     },
+     "50K": {
+      "pass": 0.33,
+      "breach": 0.67,
+      "open": 0.0,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.673,
+      "funded_usd_per_session": -36.2,
+      "fee_per_pass": 607.0
+     },
+     "100K": {
+      "pass": 0.365,
+      "breach": 0.632,
+      "open": 0.003,
+      "days_to_pass": 80.0,
+      "funded_breach_6m": 0.571,
+      "funded_usd_per_session": -13.81,
+      "fee_per_pass": 657.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.308,
+      "breach": 0.577,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -51.09,
+      "fee_per_pass": 260.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.5,
+      "open": 0.192,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -2.82,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.385,
+      "breach": 0.346,
+      "open": 0.269,
+      "days_to_pass": 37.5,
+      "funded_breach_6m": 0.346,
+      "funded_usd_per_session": 2.98,
+      "fee_per_pass": 624.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.294,
+      "breach": 0.647,
+      "open": 0.059,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -61.44,
+      "fee_per_pass": 272.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.627,
+      "open": 0.098,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.627,
+      "funded_usd_per_session": -27.29,
+      "fee_per_pass": 729.0
+     },
+     "100K": {
+      "pass": 0.314,
+      "breach": 0.549,
+      "open": 0.137,
+      "days_to_pass": 42.5,
+      "funded_breach_6m": 0.549,
+      "funded_usd_per_session": -22.53,
+      "fee_per_pass": 765.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.181,
+      "breach": 0.819,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.905,
+      "funded_usd_per_session": -148.18,
+      "fee_per_pass": 443.0
+     },
+     "50K": {
+      "pass": 0.242,
+      "breach": 0.758,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.826,
+      "funded_usd_per_session": -119.71,
+      "fee_per_pass": 825.0
+     },
+     "100K": {
+      "pass": 0.308,
+      "breach": 0.687,
+      "open": 0.004,
+      "days_to_pass": 38.5,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -91.18,
+      "fee_per_pass": 778.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.179,
+      "breach": 0.821,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.854,
+      "funded_usd_per_session": -142.88,
+      "fee_per_pass": 448.0
+     },
+     "50K": {
+      "pass": 0.239,
+      "breach": 0.761,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -126.15,
+      "fee_per_pass": 837.0
+     },
+     "100K": {
+      "pass": 0.283,
+      "breach": 0.717,
+      "open": 0.0,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.712,
+      "funded_usd_per_session": -95.45,
+      "fee_per_pass": 848.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.731,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -99.6,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.577,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -102.18,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.308,
+      "breach": 0.577,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -38.32,
+      "fee_per_pass": 780.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.824,
+      "open": 0.039,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -121.5,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.294,
+      "breach": 0.647,
+      "open": 0.059,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -122.89,
+      "fee_per_pass": 680.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.667,
+      "open": 0.059,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -68.97,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.15,
+      "breach": 0.85,
+      "open": 0.0,
+      "days_to_pass": 8.0,
+      "funded_breach_6m": 0.921,
+      "funded_usd_per_session": -339.29,
+      "fee_per_pass": 534.0
+     },
+     "50K": {
+      "pass": 0.2,
+      "breach": 0.8,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.888,
+      "funded_usd_per_session": -241.23,
+      "fee_per_pass": 998.0
+     },
+     "100K": {
+      "pass": 0.222,
+      "breach": 0.778,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.826,
+      "funded_usd_per_session": -179.57,
+      "fee_per_pass": 1079.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.146,
+      "breach": 0.854,
+      "open": 0.0,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.898,
+      "funded_usd_per_session": -351.38,
+      "fee_per_pass": 549.0
+     },
+     "50K": {
+      "pass": 0.203,
+      "breach": 0.797,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.841,
+      "funded_usd_per_session": -234.82,
+      "fee_per_pass": 984.0
+     },
+     "100K": {
+      "pass": 0.231,
+      "breach": 0.769,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.786,
+      "funded_usd_per_session": -189.22,
+      "fee_per_pass": 1040.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.769,
+      "open": 0.077,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -212.66,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.692,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -170.11,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.308,
+      "breach": 0.577,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -153.27,
+      "fee_per_pass": 780.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.843,
+      "open": 0.039,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -272.0,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.176,
+      "breach": 0.784,
+      "open": 0.039,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -226.12,
+      "fee_per_pass": 1133.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.667,
+      "open": 0.059,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -184.33,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.458,
+      "breach": 0.542,
+      "open": 0.0,
+      "days_to_pass": 35.0,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -20.97,
+      "fee_per_pass": 175.0
+     },
+     "50K": {
+      "pass": 0.584,
+      "breach": 0.359,
+      "open": 0.057,
+      "days_to_pass": 114.0,
+      "funded_breach_6m": 0.326,
+      "funded_usd_per_session": -0.8,
+      "fee_per_pass": 343.0
+     },
+     "100K": {
+      "pass": 0.238,
+      "breach": 0.308,
+      "open": 0.454,
+      "days_to_pass": 213.0,
+      "funded_breach_6m": 0.165,
+      "funded_usd_per_session": 6.81,
+      "fee_per_pass": 1009.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.302,
+      "breach": 0.698,
+      "open": 0.0,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.742,
+      "funded_usd_per_session": -29.62,
+      "fee_per_pass": 265.0
+     },
+     "50K": {
+      "pass": 0.387,
+      "breach": 0.604,
+      "open": 0.008,
+      "days_to_pass": 91.0,
+      "funded_breach_6m": 0.505,
+      "funded_usd_per_session": -11.32,
+      "fee_per_pass": 516.0
+     },
+     "100K": {
+      "pass": 0.25,
+      "breach": 0.445,
+      "open": 0.305,
+      "days_to_pass": 180.0,
+      "funded_breach_6m": 0.234,
+      "funded_usd_per_session": -0.97,
+      "fee_per_pass": 960.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.308,
+      "breach": 0.538,
+      "open": 0.154,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -20.32,
+      "fee_per_pass": 260.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.65,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.65,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.275,
+      "breach": 0.647,
+      "open": 0.078,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -37.93,
+      "fee_per_pass": 291.0
+     },
+     "50K": {
+      "pass": 0.196,
+      "breach": 0.373,
+      "open": 0.431,
+      "days_to_pass": 41.5,
+      "funded_breach_6m": 0.373,
+      "funded_usd_per_session": -26.82,
+      "fee_per_pass": 1020.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.294,
+      "open": 0.706,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.294,
+      "funded_usd_per_session": -12.0,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.291,
+      "breach": 0.709,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -85.65,
+      "fee_per_pass": 275.0
+     },
+     "50K": {
+      "pass": 0.443,
+      "breach": 0.557,
+      "open": 0.0,
+      "days_to_pass": 40.0,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -41.94,
+      "fee_per_pass": 452.0
+     },
+     "100K": {
+      "pass": 0.518,
+      "breach": 0.482,
+      "open": 0.0,
+      "days_to_pass": 111.0,
+      "funded_breach_6m": 0.465,
+      "funded_usd_per_session": -14.77,
+      "fee_per_pass": 464.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.209,
+      "breach": 0.791,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.854,
+      "funded_usd_per_session": -94.59,
+      "fee_per_pass": 383.0
+     },
+     "50K": {
+      "pass": 0.288,
+      "breach": 0.712,
+      "open": 0.0,
+      "days_to_pass": 29.0,
+      "funded_breach_6m": 0.742,
+      "funded_usd_per_session": -59.25,
+      "fee_per_pass": 693.0
+     },
+     "100K": {
+      "pass": 0.288,
+      "breach": 0.706,
+      "open": 0.005,
+      "days_to_pass": 75.0,
+      "funded_breach_6m": 0.646,
+      "funded_usd_per_session": -42.87,
+      "fee_per_pass": 832.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -74.45,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -40.64,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.538,
+      "open": 0.308,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -18.68,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.784,
+      "open": 0.039,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.804,
+      "funded_usd_per_session": -93.6,
+      "fee_per_pass": 453.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.667,
+      "open": 0.078,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -75.86,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.647,
+      "open": 0.157,
+      "days_to_pass": 41.5,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -67.73,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend, 10-Session Holds",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.233,
+      "breach": 0.767,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.881,
+      "funded_usd_per_session": -215.14,
+      "fee_per_pass": 343.0
+     },
+     "50K": {
+      "pass": 0.322,
+      "breach": 0.678,
+      "open": 0.0,
+      "days_to_pass": 23.5,
+      "funded_breach_6m": 0.762,
+      "funded_usd_per_session": -110.54,
+      "fee_per_pass": 622.0
+     },
+     "100K": {
+      "pass": 0.419,
+      "breach": 0.581,
+      "open": 0.0,
+      "days_to_pass": 54.5,
+      "funded_breach_6m": 0.641,
+      "funded_usd_per_session": -62.92,
+      "fee_per_pass": 573.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.181,
+      "breach": 0.819,
+      "open": 0.0,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.879,
+      "funded_usd_per_session": -216.24,
+      "fee_per_pass": 441.0
+     },
+     "50K": {
+      "pass": 0.25,
+      "breach": 0.75,
+      "open": 0.0,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.819,
+      "funded_usd_per_session": -135.82,
+      "fee_per_pass": 800.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.731,
+      "open": 0.0,
+      "days_to_pass": 37.0,
+      "funded_breach_6m": 0.742,
+      "funded_usd_per_session": -88.87,
+      "fee_per_pass": 891.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.231,
+      "breach": 0.692,
+      "open": 0.077,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.731,
+      "funded_usd_per_session": -212.22,
+      "fee_per_pass": 347.0
+     },
+     "50K": {
+      "pass": 0.308,
+      "breach": 0.615,
+      "open": 0.077,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -101.96,
+      "fee_per_pass": 650.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -60.97,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.784,
+      "open": 0.039,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.824,
+      "funded_usd_per_session": -219.84,
+      "fee_per_pass": 453.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.686,
+      "open": 0.039,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -141.12,
+      "fee_per_pass": 729.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.667,
+      "open": 0.078,
+      "days_to_pass": 28.0,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -113.79,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.284,
+      "breach": 0.716,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.793,
+      "funded_usd_per_session": -56.19,
+      "fee_per_pass": 282.0
+     },
+     "50K": {
+      "pass": 0.449,
+      "breach": 0.551,
+      "open": 0.0,
+      "days_to_pass": 46.0,
+      "funded_breach_6m": 0.612,
+      "funded_usd_per_session": -20.86,
+      "fee_per_pass": 445.0
+     },
+     "100K": {
+      "pass": 0.485,
+      "breach": 0.504,
+      "open": 0.011,
+      "days_to_pass": 113.5,
+      "funded_breach_6m": 0.423,
+      "funded_usd_per_session": -1.0,
+      "fee_per_pass": 495.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.198,
+      "breach": 0.802,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.827,
+      "funded_usd_per_session": -66.41,
+      "fee_per_pass": 404.0
+     },
+     "50K": {
+      "pass": 0.319,
+      "breach": 0.681,
+      "open": 0.0,
+      "days_to_pass": 29.0,
+      "funded_breach_6m": 0.698,
+      "funded_usd_per_session": -38.07,
+      "fee_per_pass": 628.0
+     },
+     "100K": {
+      "pass": 0.368,
+      "breach": 0.618,
+      "open": 0.014,
+      "days_to_pass": 70.5,
+      "funded_breach_6m": 0.555,
+      "funded_usd_per_session": -16.96,
+      "fee_per_pass": 652.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -85.05,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.385,
+      "open": 0.346,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.385,
+      "funded_usd_per_session": -8.39,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.346,
+      "open": 0.385,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.346,
+      "funded_usd_per_session": -2.22,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.235,
+      "breach": 0.706,
+      "open": 0.059,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -78.0,
+      "fee_per_pass": 340.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.569,
+      "open": 0.176,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.569,
+      "funded_usd_per_session": -39.41,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.353,
+      "breach": 0.451,
+      "open": 0.196,
+      "days_to_pass": 42.5,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -14.74,
+      "fee_per_pass": 680.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.159,
+      "breach": 0.841,
+      "open": 0.0,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.903,
+      "funded_usd_per_session": -163.52,
+      "fee_per_pass": 504.0
+     },
+     "50K": {
+      "pass": 0.278,
+      "breach": 0.722,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.793,
+      "funded_usd_per_session": -112.39,
+      "fee_per_pass": 721.0
+     },
+     "100K": {
+      "pass": 0.326,
+      "breach": 0.674,
+      "open": 0.0,
+      "days_to_pass": 41.0,
+      "funded_breach_6m": 0.709,
+      "funded_usd_per_session": -81.58,
+      "fee_per_pass": 736.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.157,
+      "breach": 0.843,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.868,
+      "funded_usd_per_session": -159.29,
+      "fee_per_pass": 511.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.808,
+      "open": 0.0,
+      "days_to_pass": 17.5,
+      "funded_breach_6m": 0.827,
+      "funded_usd_per_session": -132.82,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.25,
+      "breach": 0.75,
+      "open": 0.0,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -106.03,
+      "fee_per_pass": 960.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -149.2,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -170.11,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.577,
+      "open": 0.154,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -58.15,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.863,
+      "open": 0.02,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -132.4,
+      "fee_per_pass": 680.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.706,
+      "open": 0.059,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -156.0,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.667,
+      "open": 0.078,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -93.32,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.863,
+      "open": 0.0,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.914,
+      "funded_usd_per_session": -350.8,
+      "fee_per_pass": 586.0
+     },
+     "50K": {
+      "pass": 0.172,
+      "breach": 0.828,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.888,
+      "funded_usd_per_session": -266.82,
+      "fee_per_pass": 1164.0
+     },
+     "100K": {
+      "pass": 0.256,
+      "breach": 0.744,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.793,
+      "funded_usd_per_session": -168.58,
+      "fee_per_pass": 939.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.118,
+      "breach": 0.882,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.92,
+      "funded_usd_per_session": -371.62,
+      "fee_per_pass": 677.0
+     },
+     "50K": {
+      "pass": 0.159,
+      "breach": 0.841,
+      "open": 0.0,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.857,
+      "funded_usd_per_session": -255.17,
+      "fee_per_pass": 1255.0
+     },
+     "100K": {
+      "pass": 0.187,
+      "breach": 0.813,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.827,
+      "funded_usd_per_session": -199.23,
+      "fee_per_pass": 1285.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -334.24,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -271.3,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.615,
+      "open": 0.115,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -255.16,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.098,
+      "breach": 0.882,
+      "open": 0.02,
+      "days_to_pass": 13.0,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -340.09,
+      "fee_per_pass": 816.0
+     },
+     "50K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -248.48,
+      "fee_per_pass": 1457.0
+     },
+     "100K": {
+      "pass": 0.235,
+      "breach": 0.706,
+      "open": 0.059,
+      "days_to_pass": 17.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -233.99,
+      "fee_per_pass": 1020.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.46,
+      "breach": 0.54,
+      "open": 0.0,
+      "days_to_pass": 33.0,
+      "funded_breach_6m": 0.634,
+      "funded_usd_per_session": -20.37,
+      "fee_per_pass": 174.0
+     },
+     "50K": {
+      "pass": 0.639,
+      "breach": 0.293,
+      "open": 0.068,
+      "days_to_pass": 111.5,
+      "funded_breach_6m": 0.275,
+      "funded_usd_per_session": 4.44,
+      "fee_per_pass": 313.0
+     },
+     "100K": {
+      "pass": 0.273,
+      "breach": 0.233,
+      "open": 0.493,
+      "days_to_pass": 206.5,
+      "funded_breach_6m": 0.119,
+      "funded_usd_per_session": 9.02,
+      "fee_per_pass": 879.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.275,
+      "breach": 0.725,
+      "open": 0.0,
+      "days_to_pass": 21.5,
+      "funded_breach_6m": 0.783,
+      "funded_usd_per_session": -35.39,
+      "fee_per_pass": 291.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.654,
+      "open": 0.0,
+      "days_to_pass": 90.5,
+      "funded_breach_6m": 0.563,
+      "funded_usd_per_session": -13.34,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.115,
+      "breach": 0.61,
+      "open": 0.275,
+      "days_to_pass": 198.5,
+      "funded_breach_6m": 0.363,
+      "funded_usd_per_session": -6.93,
+      "fee_per_pass": 2080.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -19.4,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.64,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 1.64,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -34.76,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.235,
+      "open": 0.431,
+      "days_to_pass": 58.0,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": -11.94,
+      "fee_per_pass": 600.0
+     },
+     "100K": {
+      "pass": 0.02,
+      "breach": 0.157,
+      "open": 0.824,
+      "days_to_pass": 131.0,
+      "funded_breach_6m": 0.157,
+      "funded_usd_per_session": -5.25,
+      "fee_per_pass": 12239.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.273,
+      "breach": 0.727,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.811,
+      "funded_usd_per_session": -88.55,
+      "fee_per_pass": 293.0
+     },
+     "50K": {
+      "pass": 0.449,
+      "breach": 0.551,
+      "open": 0.0,
+      "days_to_pass": 40.5,
+      "funded_breach_6m": 0.634,
+      "funded_usd_per_session": -40.75,
+      "fee_per_pass": 445.0
+     },
+     "100K": {
+      "pass": 0.458,
+      "breach": 0.529,
+      "open": 0.013,
+      "days_to_pass": 95.5,
+      "funded_breach_6m": 0.524,
+      "funded_usd_per_session": -20.09,
+      "fee_per_pass": 524.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.198,
+      "breach": 0.802,
+      "open": 0.0,
+      "days_to_pass": 13.5,
+      "funded_breach_6m": 0.882,
+      "funded_usd_per_session": -100.37,
+      "fee_per_pass": 404.0
+     },
+     "50K": {
+      "pass": 0.253,
+      "breach": 0.747,
+      "open": 0.0,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.783,
+      "funded_usd_per_session": -70.79,
+      "fee_per_pass": 791.0
+     },
+     "100K": {
+      "pass": 0.261,
+      "breach": 0.739,
+      "open": 0.0,
+      "days_to_pass": 73.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -43.67,
+      "fee_per_pass": 920.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.769,
+      "open": 0.038,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -65.97,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 19.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -38.81,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.5,
+      "open": 0.346,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.5,
+      "funded_usd_per_session": -15.96,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.843,
+      "funded_usd_per_session": -86.78,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 25.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -69.53,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.627,
+      "open": 0.176,
+      "days_to_pass": 44.0,
+      "funded_breach_6m": 0.627,
+      "funded_usd_per_session": -61.45,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Calm Trend + Z-Dip Core",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.22,
+      "breach": 0.78,
+      "open": 0.0,
+      "days_to_pass": 12.0,
+      "funded_breach_6m": 0.868,
+      "funded_usd_per_session": -222.22,
+      "fee_per_pass": 363.0
+     },
+     "50K": {
+      "pass": 0.333,
+      "breach": 0.667,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.736,
+      "funded_usd_per_session": -104.87,
+      "fee_per_pass": 601.0
+     },
+     "100K": {
+      "pass": 0.405,
+      "breach": 0.595,
+      "open": 0.0,
+      "days_to_pass": 54.5,
+      "funded_breach_6m": 0.634,
+      "funded_usd_per_session": -61.12,
+      "fee_per_pass": 592.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.165,
+      "breach": 0.835,
+      "open": 0.0,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.898,
+      "funded_usd_per_session": -239.8,
+      "fee_per_pass": 485.0
+     },
+     "50K": {
+      "pass": 0.228,
+      "breach": 0.772,
+      "open": 0.0,
+      "days_to_pass": 16.0,
+      "funded_breach_6m": 0.846,
+      "funded_usd_per_session": -144.07,
+      "fee_per_pass": 877.0
+     },
+     "100K": {
+      "pass": 0.242,
+      "breach": 0.758,
+      "open": 0.0,
+      "days_to_pass": 35.0,
+      "funded_breach_6m": 0.783,
+      "funded_usd_per_session": -106.18,
+      "fee_per_pass": 993.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.808,
+      "open": 0.038,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.808,
+      "funded_usd_per_session": -196.56,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -88.55,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.654,
+      "open": 0.077,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -58.21,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.137,
+      "breach": 0.843,
+      "open": 0.02,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.863,
+      "funded_usd_per_session": -195.92,
+      "fee_per_pass": 583.0
+     },
+     "50K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -132.24,
+      "fee_per_pass": 785.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.706,
+      "open": 0.039,
+      "days_to_pass": 31.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -104.29,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 1,
+   "day_stop": 0.008,
+   "day_stop_usd": 496.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.267,
+      "breach": 0.733,
+      "open": 0.0,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.806,
+      "funded_usd_per_session": -42.23,
+      "fee_per_pass": 300.0
+     },
+     "50K": {
+      "pass": 0.37,
+      "breach": 0.63,
+      "open": 0.0,
+      "days_to_pass": 77.5,
+      "funded_breach_6m": 0.61,
+      "funded_usd_per_session": -17.75,
+      "fee_per_pass": 540.0
+     },
+     "100K": {
+      "pass": 0.145,
+      "breach": 0.491,
+      "open": 0.363,
+      "days_to_pass": 170.0,
+      "funded_breach_6m": 0.33,
+      "funded_usd_per_session": -5.49,
+      "fee_per_pass": 1651.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.275,
+      "breach": 0.725,
+      "open": 0.0,
+      "days_to_pass": 29.5,
+      "funded_breach_6m": 0.764,
+      "funded_usd_per_session": -42.01,
+      "fee_per_pass": 291.0
+     },
+     "50K": {
+      "pass": 0.385,
+      "breach": 0.615,
+      "open": 0.0,
+      "days_to_pass": 57.5,
+      "funded_breach_6m": 0.588,
+      "funded_usd_per_session": -15.29,
+      "fee_per_pass": 520.0
+     },
+     "100K": {
+      "pass": 0.42,
+      "breach": 0.365,
+      "open": 0.214,
+      "days_to_pass": 182.0,
+      "funded_breach_6m": 0.231,
+      "funded_usd_per_session": 1.51,
+      "fee_per_pass": 571.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.231,
+      "breach": 0.577,
+      "open": 0.192,
+      "days_to_pass": 8.5,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": 1.38,
+      "fee_per_pass": 347.0
+     },
+     "50K": {
+      "pass": 0.269,
+      "breach": 0.077,
+      "open": 0.654,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.077,
+      "funded_usd_per_session": 11.84,
+      "fee_per_pass": 743.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 21.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 13.33,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -28.16,
+      "fee_per_pass": 340.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.392,
+      "open": 0.333,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.392,
+      "funded_usd_per_session": -12.46,
+      "fee_per_pass": 729.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.294,
+      "open": 0.431,
+      "days_to_pass": 46.5,
+      "funded_breach_6m": 0.294,
+      "funded_usd_per_session": -6.76,
+      "fee_per_pass": 874.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 2,
+   "day_stop": 0.008,
+   "day_stop_usd": 993.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.207,
+      "breach": 0.793,
+      "open": 0.0,
+      "days_to_pass": 14.5,
+      "funded_breach_6m": 0.881,
+      "funded_usd_per_session": -98.13,
+      "fee_per_pass": 386.0
+     },
+     "50K": {
+      "pass": 0.253,
+      "breach": 0.747,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.806,
+      "funded_usd_per_session": -84.47,
+      "fee_per_pass": 790.0
+     },
+     "100K": {
+      "pass": 0.295,
+      "breach": 0.705,
+      "open": 0.0,
+      "days_to_pass": 67.5,
+      "funded_breach_6m": 0.694,
+      "funded_usd_per_session": -55.29,
+      "fee_per_pass": 813.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.223,
+      "breach": 0.777,
+      "open": 0.0,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.81,
+      "funded_usd_per_session": -99.51,
+      "fee_per_pass": 359.0
+     },
+     "50K": {
+      "pass": 0.275,
+      "breach": 0.725,
+      "open": 0.0,
+      "days_to_pass": 30.0,
+      "funded_breach_6m": 0.764,
+      "funded_usd_per_session": -84.01,
+      "fee_per_pass": 728.0
+     },
+     "100K": {
+      "pass": 0.341,
+      "breach": 0.659,
+      "open": 0.0,
+      "days_to_pass": 49.0,
+      "funded_breach_6m": 0.635,
+      "funded_usd_per_session": -48.88,
+      "fee_per_pass": 704.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.692,
+      "open": 0.154,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -56.95,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.577,
+      "open": 0.192,
+      "days_to_pass": 8.5,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": 2.76,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.269,
+      "breach": 0.538,
+      "open": 0.192,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.538,
+      "funded_usd_per_session": -1.61,
+      "fee_per_pass": 891.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.196,
+      "breach": 0.725,
+      "open": 0.078,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -67.61,
+      "fee_per_pass": 408.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -56.32,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.255,
+      "breach": 0.647,
+      "open": 0.098,
+      "days_to_pass": 18.0,
+      "funded_breach_6m": 0.647,
+      "funded_usd_per_session": -39.19,
+      "fee_per_pass": 941.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MNQ",
+   "contracts": 3,
+   "day_stop": 0.008,
+   "day_stop_usd": 1489.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.176,
+      "breach": 0.824,
+      "open": 0.0,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.91,
+      "funded_usd_per_session": -236.09,
+      "fee_per_pass": 454.0
+     },
+     "50K": {
+      "pass": 0.22,
+      "breach": 0.78,
+      "open": 0.0,
+      "days_to_pass": 15.5,
+      "funded_breach_6m": 0.868,
+      "funded_usd_per_session": -154.27,
+      "fee_per_pass": 908.0
+     },
+     "100K": {
+      "pass": 0.22,
+      "breach": 0.78,
+      "open": 0.0,
+      "days_to_pass": 26.0,
+      "funded_breach_6m": 0.806,
+      "funded_usd_per_session": -126.7,
+      "fee_per_pass": 1090.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.173,
+      "breach": 0.827,
+      "open": 0.0,
+      "days_to_pass": 27.0,
+      "funded_breach_6m": 0.86,
+      "funded_usd_per_session": -225.31,
+      "fee_per_pass": 462.0
+     },
+     "50K": {
+      "pass": 0.242,
+      "breach": 0.758,
+      "open": 0.0,
+      "days_to_pass": 28.5,
+      "funded_breach_6m": 0.788,
+      "funded_usd_per_session": -170.12,
+      "fee_per_pass": 827.0
+     },
+     "100K": {
+      "pass": 0.264,
+      "breach": 0.736,
+      "open": 0.0,
+      "days_to_pass": 34.5,
+      "funded_breach_6m": 0.764,
+      "funded_usd_per_session": -126.02,
+      "fee_per_pass": 910.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.154,
+      "breach": 0.692,
+      "open": 0.154,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -145.5,
+      "fee_per_pass": 520.0
+     },
+     "50K": {
+      "pass": 0.192,
+      "breach": 0.654,
+      "open": 0.154,
+      "days_to_pass": 9.0,
+      "funded_breach_6m": 0.654,
+      "funded_usd_per_session": -87.06,
+      "fee_per_pass": 1040.0
+     },
+     "100K": {
+      "pass": 0.231,
+      "breach": 0.577,
+      "open": 0.192,
+      "days_to_pass": 8.5,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": 4.14,
+      "fee_per_pass": 1040.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.196,
+      "breach": 0.725,
+      "open": 0.078,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -159.64,
+      "fee_per_pass": 408.0
+     },
+     "50K": {
+      "pass": 0.216,
+      "breach": 0.706,
+      "open": 0.078,
+      "days_to_pass": 23.0,
+      "funded_breach_6m": 0.706,
+      "funded_usd_per_session": -130.65,
+      "fee_per_pass": 927.0
+     },
+     "100K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -84.48,
+      "fee_per_pass": 1020.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 392.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.465,
+      "breach": 0.535,
+      "open": 0.0,
+      "days_to_pass": 63.0,
+      "funded_breach_6m": 0.599,
+      "funded_usd_per_session": -14.31,
+      "fee_per_pass": 172.0
+     },
+     "50K": {
+      "pass": 0.315,
+      "breach": 0.412,
+      "open": 0.273,
+      "days_to_pass": 177.0,
+      "funded_breach_6m": 0.207,
+      "funded_usd_per_session": 1.33,
+      "fee_per_pass": 635.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.145,
+      "open": 0.855,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.026,
+      "funded_usd_per_session": 4.41,
+      "fee_per_pass": null
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.396,
+      "breach": 0.585,
+      "open": 0.019,
+      "days_to_pass": 51.5,
+      "funded_breach_6m": 0.552,
+      "funded_usd_per_session": -12.27,
+      "fee_per_pass": 202.0
+     },
+     "50K": {
+      "pass": 0.319,
+      "breach": 0.431,
+      "open": 0.25,
+      "days_to_pass": 147.5,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -0.35,
+      "fee_per_pass": 628.0
+     },
+     "100K": {
+      "pass": 0.011,
+      "breach": 0.118,
+      "open": 0.871,
+      "days_to_pass": 229.5,
+      "funded_breach_6m": 0.055,
+      "funded_usd_per_session": 4.47,
+      "fee_per_pass": 21839.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.038,
+      "open": 0.692,
+      "days_to_pass": 11.0,
+      "funded_breach_6m": 0.038,
+      "funded_usd_per_session": 2.86,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.07,
+      "fee_per_pass": 1300.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 3.07,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.255,
+      "breach": 0.392,
+      "open": 0.353,
+      "days_to_pass": 20.0,
+      "funded_breach_6m": 0.392,
+      "funded_usd_per_session": -20.69,
+      "fee_per_pass": 314.0
+     },
+     "50K": {
+      "pass": 0.196,
+      "breach": 0.314,
+      "open": 0.49,
+      "days_to_pass": 40.5,
+      "funded_breach_6m": 0.314,
+      "funded_usd_per_session": -9.87,
+      "fee_per_pass": 1020.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.235,
+      "open": 0.765,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.235,
+      "funded_usd_per_session": -7.07,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 783.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.267,
+      "breach": 0.733,
+      "open": 0.0,
+      "days_to_pass": 21.0,
+      "funded_breach_6m": 0.826,
+      "funded_usd_per_session": -59.96,
+      "fee_per_pass": 300.0
+     },
+     "50K": {
+      "pass": 0.443,
+      "breach": 0.557,
+      "open": 0.0,
+      "days_to_pass": 76.0,
+      "funded_breach_6m": 0.599,
+      "funded_usd_per_session": -28.61,
+      "fee_per_pass": 452.0
+     },
+     "100K": {
+      "pass": 0.282,
+      "breach": 0.504,
+      "open": 0.214,
+      "days_to_pass": 168.5,
+      "funded_breach_6m": 0.361,
+      "funded_usd_per_session": -7.21,
+      "fee_per_pass": 851.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.305,
+      "breach": 0.69,
+      "open": 0.005,
+      "days_to_pass": 36.0,
+      "funded_breach_6m": 0.687,
+      "funded_usd_per_session": -49.31,
+      "fee_per_pass": 262.0
+     },
+     "50K": {
+      "pass": 0.36,
+      "breach": 0.618,
+      "open": 0.022,
+      "days_to_pass": 61.0,
+      "funded_breach_6m": 0.552,
+      "funded_usd_per_session": -24.54,
+      "fee_per_pass": 556.0
+     },
+     "100K": {
+      "pass": 0.245,
+      "breach": 0.596,
+      "open": 0.159,
+      "days_to_pass": 136.0,
+      "funded_breach_6m": 0.396,
+      "funded_usd_per_session": -8.71,
+      "fee_per_pass": 982.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.269,
+      "breach": 0.538,
+      "open": 0.192,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -10.41,
+      "fee_per_pass": 297.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.038,
+      "open": 0.731,
+      "days_to_pass": 14.0,
+      "funded_breach_6m": 0.038,
+      "funded_usd_per_session": 5.72,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.0,
+      "open": 0.846,
+      "days_to_pass": 25.5,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 6.13,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.294,
+      "breach": 0.608,
+      "open": 0.098,
+      "days_to_pass": 15.0,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -45.85,
+      "fee_per_pass": 272.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.392,
+      "open": 0.373,
+      "days_to_pass": 22.5,
+      "funded_breach_6m": 0.392,
+      "funded_usd_per_session": -41.39,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.353,
+      "open": 0.451,
+      "days_to_pass": 40.5,
+      "funded_breach_6m": 0.353,
+      "funded_usd_per_session": -32.17,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Quiet MACD Trend",
+   "signal": "NQ1!",
+   "micro": "MES",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 1175.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.216,
+      "breach": 0.784,
+      "open": 0.0,
+      "days_to_pass": 20.5,
+      "funded_breach_6m": 0.87,
+      "funded_usd_per_session": -141.76,
+      "fee_per_pass": 371.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.654,
+      "open": 0.0,
+      "days_to_pass": 36.0,
+      "funded_breach_6m": 0.729,
+      "funded_usd_per_session": -73.63,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.363,
+      "breach": 0.634,
+      "open": 0.002,
+      "days_to_pass": 99.0,
+      "funded_breach_6m": 0.599,
+      "funded_usd_per_session": -42.92,
+      "fee_per_pass": 660.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.223,
+      "breach": 0.777,
+      "open": 0.0,
+      "days_to_pass": 22.0,
+      "funded_breach_6m": 0.816,
+      "funded_usd_per_session": -125.05,
+      "fee_per_pass": 359.0
+     },
+     "50K": {
+      "pass": 0.332,
+      "breach": 0.662,
+      "open": 0.005,
+      "days_to_pass": 39.0,
+      "funded_breach_6m": 0.632,
+      "funded_usd_per_session": -69.88,
+      "fee_per_pass": 602.0
+     },
+     "100K": {
+      "pass": 0.275,
+      "breach": 0.67,
+      "open": 0.055,
+      "days_to_pass": 82.0,
+      "funded_breach_6m": 0.552,
+      "funded_usd_per_session": -36.81,
+      "fee_per_pass": 874.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.192,
+      "breach": 0.654,
+      "open": 0.154,
+      "days_to_pass": 10.0,
+      "funded_breach_6m": 0.692,
+      "funded_usd_per_session": -119.74,
+      "fee_per_pass": 416.0
+     },
+     "50K": {
+      "pass": 0.231,
+      "breach": 0.577,
+      "open": 0.192,
+      "days_to_pass": 10.5,
+      "funded_breach_6m": 0.577,
+      "funded_usd_per_session": -21.52,
+      "fee_per_pass": 867.0
+     },
+     "100K": {
+      "pass": 0.154,
+      "breach": 0.038,
+      "open": 0.808,
+      "days_to_pass": 12.5,
+      "funded_breach_6m": 0.038,
+      "funded_usd_per_session": 8.59,
+      "fee_per_pass": 1560.0
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.235,
+      "breach": 0.686,
+      "open": 0.078,
+      "days_to_pass": 22.5,
+      "funded_breach_6m": 0.725,
+      "funded_usd_per_session": -114.82,
+      "fee_per_pass": 340.0
+     },
+     "50K": {
+      "pass": 0.235,
+      "breach": 0.667,
+      "open": 0.098,
+      "days_to_pass": 22.5,
+      "funded_breach_6m": 0.667,
+      "funded_usd_per_session": -82.93,
+      "fee_per_pass": 850.0
+     },
+     "100K": {
+      "pass": 0.196,
+      "breach": 0.392,
+      "open": 0.412,
+      "days_to_pass": 27.5,
+      "funded_breach_6m": 0.392,
+      "funded_usd_per_session": -62.08,
+      "fee_per_pass": 1224.0
+     }
+    }
+   }
+  },
+  {
+   "name": "Bolder Leaner-Tight",
+   "signal": "YM1!",
+   "micro": "MYM",
+   "contracts": 1,
+   "day_stop": 0.01,
+   "day_stop_usd": 261.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.22,
+      "breach": 0.099,
+      "open": 0.681,
+      "days_to_pass": 150.0,
+      "funded_breach_6m": 0.099,
+      "funded_usd_per_session": 1.41,
+      "fee_per_pass": 363.0
+     },
+     "50K": {
+      "pass": 0.037,
+      "breach": 0.029,
+      "open": 0.934,
+      "days_to_pass": 202.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 2.2,
+      "fee_per_pass": 5341.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 2.22,
+      "fee_per_pass": null
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.473,
+      "breach": 0.011,
+      "open": 0.516,
+      "days_to_pass": 116.0,
+      "funded_breach_6m": 0.008,
+      "funded_usd_per_session": 5.03,
+      "fee_per_pass": 169.0
+     },
+     "50K": {
+      "pass": 0.069,
+      "breach": 0.0,
+      "open": 0.931,
+      "days_to_pass": 190.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 5.13,
+      "fee_per_pass": 2912.0
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 5.13,
+      "fee_per_pass": null
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.52,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.52,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.52,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.04,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.04,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.04,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Bolder Leaner-Tight",
+   "signal": "YM1!",
+   "micro": "MYM",
+   "contracts": 2,
+   "day_stop": 0.01,
+   "day_stop_usd": 523.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.275,
+      "breach": 0.559,
+      "open": 0.165,
+      "days_to_pass": 119.0,
+      "funded_breach_6m": 0.432,
+      "funded_usd_per_session": -5.96,
+      "fee_per_pass": 291.0
+     },
+     "50K": {
+      "pass": 0.187,
+      "breach": 0.099,
+      "open": 0.714,
+      "days_to_pass": 135.0,
+      "funded_breach_6m": 0.099,
+      "funded_usd_per_session": 2.82,
+      "fee_per_pass": 1068.0
+     },
+     "100K": {
+      "pass": 0.037,
+      "breach": 0.068,
+      "open": 0.894,
+      "days_to_pass": 202.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 4.06,
+      "fee_per_pass": 6409.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.401,
+      "breach": 0.495,
+      "open": 0.104,
+      "days_to_pass": 97.0,
+      "funded_breach_6m": 0.341,
+      "funded_usd_per_session": -2.67,
+      "fee_per_pass": 199.0
+     },
+     "50K": {
+      "pass": 0.453,
+      "breach": 0.011,
+      "open": 0.536,
+      "days_to_pass": 134.0,
+      "funded_breach_6m": 0.008,
+      "funded_usd_per_session": 10.06,
+      "fee_per_pass": 441.0
+     },
+     "100K": {
+      "pass": 0.069,
+      "breach": 0.0,
+      "open": 0.931,
+      "days_to_pass": 190.0,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": 10.26,
+      "fee_per_pass": 3494.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.269,
+      "open": 0.731,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -18.18,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -1.04,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -1.04,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.51,
+      "open": 0.49,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.255,
+      "funded_usd_per_session": -8.98,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.08,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.08,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Bolder Leaner-Tight",
+   "signal": "YM1!",
+   "micro": "MYM",
+   "contracts": 3,
+   "day_stop": 0.01,
+   "day_stop_usd": 784.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.253,
+      "breach": 0.65,
+      "open": 0.097,
+      "days_to_pass": 107.0,
+      "funded_breach_6m": 0.542,
+      "funded_usd_per_session": -14.05,
+      "fee_per_pass": 316.0
+     },
+     "50K": {
+      "pass": 0.222,
+      "breach": 0.491,
+      "open": 0.286,
+      "days_to_pass": 144.0,
+      "funded_breach_6m": 0.317,
+      "funded_usd_per_session": -4.21,
+      "fee_per_pass": 899.0
+     },
+     "100K": {
+      "pass": 0.121,
+      "breach": 0.099,
+      "open": 0.78,
+      "days_to_pass": 150.0,
+      "funded_breach_6m": 0.099,
+      "funded_usd_per_session": 4.23,
+      "fee_per_pass": 1981.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.302,
+      "breach": 0.668,
+      "open": 0.03,
+      "days_to_pass": 86.0,
+      "funded_breach_6m": 0.635,
+      "funded_usd_per_session": -15.38,
+      "fee_per_pass": 265.0
+     },
+     "50K": {
+      "pass": 0.431,
+      "breach": 0.264,
+      "open": 0.305,
+      "days_to_pass": 97.0,
+      "funded_breach_6m": 0.137,
+      "funded_usd_per_session": 9.73,
+      "fee_per_pass": 464.0
+     },
+     "100K": {
+      "pass": 0.327,
+      "breach": 0.011,
+      "open": 0.662,
+      "days_to_pass": 151.0,
+      "funded_breach_6m": 0.008,
+      "funded_usd_per_session": 15.1,
+      "fee_per_pass": 734.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.269,
+      "open": 0.731,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -27.09,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.269,
+      "open": 0.731,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -16.19,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -1.56,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.51,
+      "open": 0.49,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.451,
+      "funded_usd_per_session": -17.67,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.51,
+      "open": 0.49,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.255,
+      "funded_usd_per_session": -7.82,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.0,
+      "open": 1.0,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.0,
+      "funded_usd_per_session": -0.11,
+      "fee_per_pass": null
+     }
+    }
+   }
+  },
+  {
+   "name": "Bolder Leaner-Tight",
+   "signal": "YM1!",
+   "micro": "MYM",
+   "contracts": 4,
+   "day_stop": 0.01,
+   "day_stop_usd": 1046.0,
+   "windows": {
+    "older": {
+     "25K": {
+      "pass": 0.15,
+      "breach": 0.791,
+      "open": 0.059,
+      "days_to_pass": 84.5,
+      "funded_breach_6m": 0.769,
+      "funded_usd_per_session": -62.59,
+      "fee_per_pass": 534.0
+     },
+     "50K": {
+      "pass": 0.273,
+      "breach": 0.559,
+      "open": 0.167,
+      "days_to_pass": 119.5,
+      "funded_breach_6m": 0.432,
+      "funded_usd_per_session": -11.92,
+      "fee_per_pass": 732.0
+     },
+     "100K": {
+      "pass": 0.176,
+      "breach": 0.385,
+      "open": 0.438,
+      "days_to_pass": 129.5,
+      "funded_breach_6m": 0.238,
+      "funded_usd_per_session": -1.92,
+      "fee_per_pass": 1362.0
+     }
+    },
+    "train": {
+     "25K": {
+      "pass": 0.264,
+      "breach": 0.706,
+      "open": 0.03,
+      "days_to_pass": 72.5,
+      "funded_breach_6m": 0.701,
+      "funded_usd_per_session": -48.2,
+      "fee_per_pass": 303.0
+     },
+     "50K": {
+      "pass": 0.346,
+      "breach": 0.495,
+      "open": 0.159,
+      "days_to_pass": 93.0,
+      "funded_breach_6m": 0.341,
+      "funded_usd_per_session": -5.33,
+      "fee_per_pass": 578.0
+     },
+     "100K": {
+      "pass": 0.382,
+      "breach": 0.206,
+      "open": 0.412,
+      "days_to_pass": 112.0,
+      "funded_breach_6m": 0.077,
+      "funded_usd_per_session": 13.79,
+      "fee_per_pass": 628.0
+     }
+    },
+    "held_out": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.615,
+      "open": 0.385,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.615,
+      "funded_usd_per_session": -48.44,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.269,
+      "open": 0.731,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -36.36,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.269,
+      "open": 0.731,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.269,
+      "funded_usd_per_session": -7.98,
+      "fee_per_pass": null
+     }
+    },
+    "last_12m": {
+     "25K": {
+      "pass": 0.0,
+      "breach": 0.686,
+      "open": 0.314,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.686,
+      "funded_usd_per_session": -37.78,
+      "fee_per_pass": null
+     },
+     "50K": {
+      "pass": 0.0,
+      "breach": 0.51,
+      "open": 0.49,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.255,
+      "funded_usd_per_session": -17.95,
+      "fee_per_pass": null
+     },
+     "100K": {
+      "pass": 0.0,
+      "breach": 0.51,
+      "open": 0.49,
+      "days_to_pass": NaN,
+      "funded_breach_6m": 0.137,
+      "funded_usd_per_session": -3.76,
+      "fee_per_pass": null
+     }
+    }
+   }
+  }
+ ]
+}

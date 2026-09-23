@@ -57,6 +57,15 @@ class Context:
     fitness: FitnessConfig
     leverage: float = 1.0
     intrabar_stops: bool = False
+    day_trade: bool = False
+    carry: bool = False
+    day_stop: float = 0.0
+    day_stop_exit: bool = True
+    # prices trades fill at when they are not the features' own (cash session)
+    train_exec: Optional[Universe] = None
+    test_exec: Optional[Universe] = None
+    # prop fitness: None for the metrics fitness
+    prop: Optional[Dict[str, Any]] = None
     # When set, the held-out window is the full series traded from this bar:
     # indicators are warm on day one instead of losing fifty bars to warm-up.
     test_start_bar: Optional[int] = None
@@ -102,11 +111,14 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
         if window == "test" and ctx.test_start_bar is not None:
             start_bar = max(ctx.test_start_bar,
                             features.warmup_for(compiled.feature_names()))
+        exec_universe = ctx.train_exec if window == "train" else ctx.test_exec
         result = run_backtest(
             compiled, universe, features, starting_cash=ctx.starting_cash,
             commission_bps=ctx.commission_bps, slippage_bps=ctx.slippage_bps,
             leverage=ctx.leverage, start_bar=start_bar,
-            intrabar_stops=ctx.intrabar_stops)
+            intrabar_stops=ctx.intrabar_stops, day_trade=ctx.day_trade,
+            carry=ctx.carry, day_stop=ctx.day_stop, day_stop_exit=ctx.day_stop_exit,
+            exec_bars=exec_universe.bars if exec_universe is not None else None)
     except GenomeError as exc:
         return Outcome(genome.id, genome.name, genome.generation, float("-inf"),
                        Metrics(), None, f"invalid genome: {exc}")
@@ -123,6 +135,11 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
                               benchmark=benchmark, turnover=result.turnover,
                               exposure=result.exposure)
     journal = result.journal
+    if ctx.prop is not None and window == "train":
+        score = prop_score(result, exec_universe or universe, ctx.prop)
+        journal.equity = []
+        journal.equity_dates = []
+        return Outcome(genome.id, genome.name, genome.generation, score, metrics, journal)
     score = fitness_score(metrics, ctx.fitness)
     if ctx.fitness.recent_bars > 0 and ctx.fitness.recent_weight > 0:
         score = blended_score(score, recency_score(
@@ -132,6 +149,46 @@ def score_genome(genome: Genome, ctx: Context, *, window: str = "train") -> Outc
     journal.equity = []          # the curve is large and only metrics need it
     journal.equity_dates = []
     return Outcome(genome.id, genome.name, genome.generation, score, metrics, journal)
+
+
+def prop_score(result, universe: Universe, prop: Dict[str, Any]) -> float:
+    """Pass rate minus breach rate of fresh Legacy challenges (25K unless the
+    settings name another size), less a charge for funded accounts lost within
+    six months, blended toward the last year.
+
+    Trades come from the backtest run with the config's costs; the replay
+    takes the slippage back out of the fills and charges per-contract costs.
+    """
+    from .prop import (LEGACY_25K, LEGACY_25K_FUNDED, LEGACY_50K, LEGACY_50K_FUNDED, LEGACY_100K,
+                       LEGACY_100K_FUNDED, MICROS, challenge_stats, funded_stats, trade_paths)
+    rules, funded_rules = {"25K": (LEGACY_25K, LEGACY_25K_FUNDED), "50K": (LEGACY_50K, LEGACY_50K_FUNDED),
+                           "100K": (LEGACY_100K, LEGACY_100K_FUNDED)}[prop.get("account", "25K")]
+    micro = MICROS[prop["micro"]]
+    bars = universe.bars[micro.data_symbol]
+    paths = trade_paths(result.journal.trades, bars, micro=micro,
+                        contracts=int(prop.get("contracts", 1)), price_now=float(prop["price_now"]),
+                        slippage_bps=float(prop.get("slippage_bps", 0.0)))
+    n = len(bars)
+    first = max(result.start_bar, 1)
+    last = n - 21                                   # a month of data to resolve in, at least
+    every = max(1, int(prop.get("every", 5)))
+    starts = list(range(first, max(first + 1, last), every))
+    recent = [s for s in starts if s >= n - 252]
+
+    def block(ss):
+        if not ss:
+            return 0.0
+        ch = challenge_stats(paths, ss, rules, horizon=252)
+        fu = funded_stats(paths, ss, funded_rules)
+        speed = 0.0 if ch.passed == 0 or ch.median_days_to_pass != ch.median_days_to_pass else \
+            min(ch.median_days_to_pass / 252.0, 1.0)
+        still_open = ch.still_open / ch.starts if ch.starts else 0.0
+        return (ch.pass_rate - ch.breach_rate - 0.5 * fu.breach_126 - 0.1 * speed
+                - float(prop.get("open_penalty", 0.0)) * still_open)
+
+    w = float(prop.get("recent_weight", 0.6))
+    full = block(starts)
+    return full if not recent or w <= 0 else (1 - w) * full + w * block(recent)
 
 
 def replay_genome(genome: Genome, cfg: EvolutionConfig, *,
@@ -152,8 +209,23 @@ def replay_genome(genome: Genome, cfg: EvolutionConfig, *,
                   test=None, test_features=None, test_benchmark=None,
                   starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                   slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
-                  leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops)
+                  leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops,
+                  day_trade=cfg.day_trade, carry=cfg.carry, day_stop=cfg.day_stop,
+                  day_stop_exit=cfg.day_stop_exit, train_exec=exec_universe(cfg, universe))
     return score_genome(genome, ctx)
+
+
+def exec_universe(cfg: EvolutionConfig, universe: Universe) -> Optional[Universe]:
+    """The cash-session prices a ``session: cash`` run trades at, date for date;
+    None when trades fill at the features' own bars."""
+    if not (cfg.day_trade and cfg.session == "cash"):
+        return None
+    from .data import CASH_PROXIES, cash_session_bars, load_symbol
+    out = {}
+    for sym, bars in universe.bars.items():
+        proxy = load_symbol(CASH_PROXIES[sym.upper()], cfg.start, cfg.end, offline=cfg.offline)
+        out[sym] = cash_session_bars(bars, proxy)
+    return Universe(out, list(universe.calendar))
 
 
 @dataclass
@@ -234,6 +306,13 @@ class Evolution:
             train, test = holdout_split(universe, cfg.test_frac)
             test_features = build_features(test) if len(test) > 60 else None
         train_features = build_features(train)
+        full_exec = exec_universe(cfg, universe)
+        if full_exec is not None:
+            train_exec = full_exec.slice(0, len(train))
+            test_exec = full_exec if test_start_bar is not None else \
+                full_exec.slice(len(train), len(universe))
+        else:
+            train_exec = test_exec = None
         self.ctx = Context(
             train=train, train_features=train_features,
             train_benchmark=buy_and_hold(train, train_features,
@@ -245,7 +324,9 @@ class Evolution:
             starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
             slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
             leverage=cfg.leverage, test_start_bar=test_start_bar,
-            intrabar_stops=cfg.intrabar_stops,
+            intrabar_stops=cfg.intrabar_stops, prop=self._prop_settings(universe),
+            day_trade=cfg.day_trade, carry=cfg.carry, day_stop=cfg.day_stop,
+            day_stop_exit=cfg.day_stop_exit, train_exec=train_exec, test_exec=test_exec,
         )
         a, b = train.date_range()
         self.window_label = f"train {a}..{b} ({len(train)} bars, {len(train.symbols)} symbols)"
@@ -258,11 +339,32 @@ class Evolution:
             self.window_label += f"; held-out {ta}..{tb} ({n_test} bars)"
         if cfg.leverage != 1.0:
             self.window_label += f"; account leverage {cfg.leverage:g}x"
+        if cfg.day_trade:
+            self.window_label += ("; same-day trades, 09:30 to 16:00 New York" if cfg.session == "cash"
+                                  else "; same-day trades, Globex open to settlement")
+            if cfg.carry:
+                self.window_label += (f", positions carried day to day"
+                                      f"{f' with a {cfg.day_stop:.2%} daily stop' if cfg.day_stop else ''}")
         self._log(self.window_label)
         bh = self.ctx.train_benchmark
         if bh:
             self._log(f"buy-and-hold over the training window: "
                       f"{(bh[-1] / bh[0] - 1) * 100:+.1f}%")
+
+    def _prop_settings(self, universe: Universe) -> Optional[Dict[str, Any]]:
+        cfg = self.cfg
+        if cfg.fitness_mode != "prop":
+            return None
+        from .prop import MICROS
+        micro = MICROS[cfg.prop_micro]
+        # today's contract size: the last close in the whole series, not the training window's
+        price_now = float(universe.bars[micro.data_symbol].close[-1])
+        self._log(f"prop fitness: FundedNext Legacy {cfg.prop_account} on {cfg.prop_contracts} {micro.name} "
+                  f"(${price_now * micro.point_value * cfg.prop_contracts:,.0f} notional)")
+        return {"micro": cfg.prop_micro, "contracts": cfg.prop_contracts, "every": cfg.prop_every,
+                "account": cfg.prop_account, "open_penalty": cfg.prop_open_penalty,
+                "recent_weight": cfg.prop_recent_weight, "price_now": price_now,
+                "slippage_bps": cfg.slippage_bps}
 
     # ----------------------------------------------------------- lifecycle
     def start(self) -> None:

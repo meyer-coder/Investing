@@ -1,0 +1,62 @@
+{
+ "genomes": [
+  {
+   "id": "7c05b41b3ae9",
+   "name": "Bolder Leaner-Tight",
+   "thesis": "An inside day in an uptrend; a break lower ends it quickly.",
+   "entry_rules": [
+    {
+     "when": "(((((((((high < prev(high) and low > prev(low) and close > sma50) and pct_off_52w_low < 1.2) or dist_sma50 > 0.05) or mkt_vol20 > 0.29) or mkt_vol20 > 0.29) and dist_sma20 > -0.05) and ret1 < 0.022) and ret5 < 0.077) and zscore20 > -0.25) and dist_sma200 > -0.064",
+     "weight": 1.0,
+     "note": ""
+    },
+    {
+     "when": "pct_off_52w_low > 0.72",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    },
+    {
+     "when": "cross_above(close, sma200)",
+     "weight": 1.0,
+     "note": "mutation: new entry"
+    }
+   ],
+   "exit_rules": [
+    {
+     "when": "bars_held >= 2",
+     "note": ""
+    },
+    {
+     "when": "dist_sma200 >= -0.298 and mkt_ret20 > -0.051",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "vol_ratio_20_60 > 1.77 or mkt_ret20 < -0.035",
+     "note": "mutation: new exit"
+    },
+    {
+     "when": "bars_held < 31",
+     "note": "mutation: new exit"
+    }
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0087,
+    "take_profit_pct": 0.0129,
+    "trailing_stop_pct": 0.0,
+    "max_hold_bars": 1,
+    "min_hold_bars": 0,
+    "cooldown_bars": 0
+   },
+   "generation": 38,
+   "parents": [
+    "3b75aca92a0e"
+   ],
+   "origin": "mutation",
+   "rationale": "random mutation",
+   "created_at": 1790132960.7714958
+  }
+ ]
+}

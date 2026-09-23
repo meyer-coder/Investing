@@ -13,7 +13,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from .config import EvolutionConfig
 from .data import Universe, date_cut, holdout_split, load_universe
-from .evolution import Context, score_genome
+from .evolution import Context, exec_universe, score_genome
 from .features import build_features
 from .fitness import Metrics, compute_metrics
 from .genome import Genome, GenomeError, compile_genome
@@ -164,7 +164,9 @@ def _context(universe: Universe, cfg: EvolutionConfig) -> Context:
                    test=None, test_features=None, test_benchmark=None,
                    starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                    slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
-                   leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops)
+                   leverage=cfg.leverage, intrabar_stops=cfg.intrabar_stops,
+                   day_trade=cfg.day_trade, carry=cfg.carry, day_stop=cfg.day_stop,
+                   day_stop_exit=cfg.day_stop_exit, train_exec=exec_universe(cfg, universe))
 
 
 def _held_out_context(universe: Universe, cut: int, cfg: EvolutionConfig) -> Context:
@@ -177,7 +179,9 @@ def _held_out_context(universe: Universe, cut: int, cfg: EvolutionConfig) -> Con
                    starting_cash=cfg.starting_cash, commission_bps=cfg.commission_bps,
                    slippage_bps=cfg.slippage_bps, fitness=cfg.fitness,
                    leverage=cfg.leverage, test_start_bar=cut,
-                   intrabar_stops=cfg.intrabar_stops)
+                   intrabar_stops=cfg.intrabar_stops, day_trade=cfg.day_trade,
+                   carry=cfg.carry, day_stop=cfg.day_stop, day_stop_exit=cfg.day_stop_exit,
+                   train_exec=exec_universe(cfg, universe), test_exec=exec_universe(cfg, universe))
 
 
 def _period(journal, start: str, cfg: EvolutionConfig) -> Optional[PeriodRow]:
@@ -202,7 +206,10 @@ def _by_year(genome: Genome, ctx: Context, report: StrategyReport,
     result = run_backtest(compile_genome(genome), ctx.train, ctx.train_features,
                           starting_cash=ctx.starting_cash, commission_bps=ctx.commission_bps,
                           slippage_bps=ctx.slippage_bps, record_thoughts=False,
-                          leverage=ctx.leverage, intrabar_stops=ctx.intrabar_stops)
+                          leverage=ctx.leverage, intrabar_stops=ctx.intrabar_stops,
+                          day_trade=ctx.day_trade, carry=ctx.carry, day_stop=ctx.day_stop,
+                          day_stop_exit=ctx.day_stop_exit,
+                          exec_bars=ctx.train_exec.bars if ctx.train_exec is not None else None)
     journal = result.journal
     report.best = journal.best_trades(3)
     report.worst = journal.worst_trades(3)
