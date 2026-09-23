@@ -47,10 +47,72 @@ def funds(data: dict, store: dict) -> str:
     return "\n".join(rows)
 
 
+def special_lines(data: dict) -> str:
+    out = []
+    by_rank = {v["rank"]: v for v in data["strategies"]}
+    extra = {}
+    for f in (ALL.parent).glob("9[0-9]_*.json"):
+        v = json.loads(f.read_text())
+        extra[v["rank"]] = v
+    for key, title, target in (("reliable_150", "Most reliable high earner ($150 to $200 a session)", 175),
+                               ("low_risk_100", "$100 a session at the lowest risk", 100)):
+        sp = data["specials"].get(key)
+        if not sp:
+            continue
+        v = by_rank.get(sp["rank"]) or extra.get(sp["rank"])
+        w, sz, c = v["windows"], sp["sized"], sp["three_month_stretches"]
+        full_c = v.get("three_month_stretches") or {}
+        out += [f"### {title}: {v['name']}", "",
+                f"At full size: {money(w['held_out']['usd_per_session'])} a session over the last six months, "
+                f"{money(w['last_12m']['usd_per_session'])} over the last 12 months, "
+                f"{money(w['train']['usd_per_session'])} over 2019 to March 2026 and "
+                f"{money(w['older']['usd_per_session'])} over 2012 to 2018; typical three months "
+                f"{money(full_c.get('median_usd_per_session'))}, win rate {w['held_out']['win_rate']:.0%} recently.",
+                "",
+                f"Sized to {money(target)} a session (the last six months), with {sz['fraction']:.0%} of the account: "
+                f"{money(sz['last_12m']['usd_per_session'])} over the last 12 months, "
+                f"{money(sz['train']['usd_per_session'])} over 2019 to March 2026, worst drawdowns "
+                f"{sz['held_out']['max_drawdown']:.0%} recently, {sz['train']['max_drawdown']:.0%} over 2019 to 2026 "
+                f"and {sz['older']['max_drawdown']:.0%} over 2012 to 2018. Its three-month stretches since 2019 made "
+                f"money {c['share_profitable']:.0%} of the time; the typical one {money(c['median_usd_per_session'])} "
+                f"a session.", ""]
+    return "\n".join(out)
+
+
+def readme(data: dict) -> str:
+    n = len(data["strategies"])
+    return "\n".join([
+        "# Leveraged tech strategies: top 50", "",
+        "As of 2026-09-23. Backtests on daily bars, not advice.", "",
+        f"The {n} most profitable different strategies found in a seven-hour grind over 2x and 3x funds on "
+        "semiconductors, graphics-card and AI names and big tech. Every one made at least $80 a session over "
+        "the last six months (never used for breeding), made money over 2019 to March 2026 and over 2012 to "
+        "2018, still made money at 3x slippage, and never fell more than 70%.", "",
+        "- **$ a session** is a fixed $25,000 in each trade (cash, no margin, one position at a time), fills at "
+        "the next open, 8 bp slippage a side.",
+        "- **Real** is the same rules on the real fund (NVDL, AMDL, MUU, TSMX ...) over its own life; single-stock "
+        "funds were bred on series rebuilt from their stocks back to 2011.",
+        "- **Typical 3 months** is the median of every rolling three-month stretch since 2019: how much of the "
+        "recent result is the recent market.",
+        "- **Win rate** is the last six months / 2019 to March 2026. **Worst drawdown** is the worst of the three "
+        "windows.",
+        "- The last six months were extreme for these funds (SOXL +178% with a 69% drop in between, 2x Micron "
+        "+284%), so recent dollars are far above what the same rules made in earlier years.", "",
+        top50(data), "", "## The two picks you asked for", "", special_lines(data),
+        "## Files", "",
+        "- `NN_name.md`: rules, every window, the real-fund check, buy-and-hold and year-by-year results.",
+        "- `NN_name.json`: the same as data, with the strategy's rules.",
+        "- `NN_name[_fund].pine`: TradingView Pine v6, one per fund, compiled against TradingView.",
+        "- `stored/all_profitable.json`: every profitable strategy found, including those under $80 a session.",
+        "- `strategies/etf/`: the code that built all of it.", ""])
+
+
 def main(argv) -> int:
     data = json.loads(ALL.read_text())
     if argv[0] == "top50":
         print(top50(data))
+    elif argv[0] == "readme":
+        print(readme(data))
     elif argv[0] == "funds":
         store = json.loads((ROOT / "strategies" / "etf" / "store.json").read_text())["strategies"]
         print(funds(data, store))

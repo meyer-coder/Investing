@@ -126,6 +126,19 @@ def families6():
                 [f"bars_held >= {hold}"], take_profit_pct=tp, stop_loss_pct=sl)
 
 
+def families7():
+    """Seventh pass, for risk to reward: a target two to three times the stop."""
+    entries = {"Dip Above the 50": "ret1 < -0.03 and close > sma50",
+               "Oversold Above the 200": "rsi7 < 30 and close > sma200",
+               "Band Breakout on Volume": "close > bb_upper and volume_ratio > 1.2",
+               "Five-Day Pullback": "ret5 < -0.08 and close > sma200"}
+    for (en, e), (tp, sl), hold in itertools.product(entries.items(),
+                                                     ((0.06, 0.03), (0.08, 0.04), (0.10, 0.05),
+                                                      (0.12, 0.06), (0.15, 0.05)), (5, 10)):
+        yield g(f"{en}, Reward {tp}/{sl}/{hold}", e, [f"bars_held >= {hold}"], take_profit_pct=tp,
+                stop_loss_pct=sl)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--funds", default=",".join(FUNDS))
@@ -133,7 +146,7 @@ def main(argv=None) -> int:
     ap.add_argument("--baskets", default="", help="funds traded together: A,B;C,D,E")
     args = ap.parse_args(argv)
     fam = {1: families, 2: families2, 3: lambda: itertools.chain(families(), families2()),
-           4: families3, 5: families5, 6: families6}[args.which]
+           4: families3, 5: families5, 6: families6, 7: families7}[args.which]
     kept = shown = 0
     groups = ([b.split(",") for b in args.baskets.split(";")] if args.baskets
               else [[f] for f in args.funds.split(",")])

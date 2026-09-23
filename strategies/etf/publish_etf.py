@@ -87,6 +87,8 @@ def pretty(name: str) -> str:
             return f"Strong Close Follow: after a {pct(ps[0])} close at the high"
         if fam == "Volume Momentum in a Bull Regime":
             return f"Volume Momentum: {pct(ps[0])} over the 20-day on {float(ps[1]):g}x volume, out {pct(ps[2])} under"
+        if ", Reward" in fam:
+            return f"{fam.split(', Reward')[0]}: {pct(ps[0])} target, {pct(ps[1])} stop, {ps[2]} days max"
         if " or " in fam.lower():
             return f"{fam}, out {pct(ps[0])} under the 20-day"
     except (IndexError, ValueError):
@@ -257,6 +259,10 @@ GLOSSARY = {
 }
 
 
+def money(x) -> str:
+    return "n/a" if x is None else (f"-${abs(x):,.0f}" if x < 0 else f"${x:,.0f}")
+
+
 def report_md(item: dict) -> str:
     g, w = item["genome"], item["windows"]
     words = sorted({k for k in GLOSSARY if any(re.search(rf"\b{k}\b", r["when"])
@@ -282,33 +288,33 @@ def report_md(item: dict) -> str:
     for k in ("held_out", "last_12m", "train", "older"):
         x = w.get(k) or {}
         if x:
-            lines.append(f"| {names[k]} | ${x['usd_per_session']:,.0f} | {x['return']:+.0%} | {x['trades']} | "
+            lines.append(f"| {names[k]} | {money(x['usd_per_session'])} | {x['return']:+.0%} | {x['trades']} | "
                          f"{x['win_rate']:.0%} | {x['avg_win']:+.1%} | {x['avg_loss']:+.1%} | {x['profit_factor']} | "
-                         f"{x['max_drawdown']:.0%} | ${x['usd_worst_day']:,.0f} |")
+                         f"{x['max_drawdown']:.0%} | {money(x['usd_worst_day'])} |")
     c = item.get("three_month_stretches") or {}
     if c:
         lines += ["", f"Every rolling three-month stretch since 2019 ({c['stretches']}): {c['share_profitable']:.0%} "
-                  f"made money; the typical one made ${c['median_usd_per_session']:,.0f} a session and the worst "
-                  f"${c['worst_usd_per_session']:,.0f}."]
+                  f"made money; the typical one made {money(c['median_usd_per_session'])} a session and the worst "
+                  f"{money(c['worst_usd_per_session'])}."]
     st = item.get("stress") or {}
     if st.get("held_out") and st.get("train"):
-        lines += ["", f"At 3x slippage: ${st['held_out']['usd_per_session']:,.0f} a session over the last six "
-                  f"months, ${st['train']['usd_per_session']:,.0f} over 2019 to March 2026."]
+        lines += ["", f"At 3x slippage: {money(st['held_out']['usd_per_session'])} a session over the last six "
+                  f"months, {money(st['train']['usd_per_session'])} over 2019 to March 2026."]
     real = item.get("real") or {}
     if real.get("held_out"):
         lines += ["", f"On the real fund{'s' if len(real['symbols']) > 1 else ''} ({', '.join(real['symbols'])}, "
-                  f"traded since {real.get('since')}): ${real['held_out']['usd_per_session']:,.0f} a session over "
-                  f"the last six months" + (f", ${real['life']['usd_per_session']:,.0f} over its whole life"
+                  f"traded since {real.get('since')}): {money(real['held_out']['usd_per_session'])} a session over "
+                  f"the last six months" + (f", {money(real['life']['usd_per_session'])} over its whole life"
                                             if real.get("life") else "") + "."]
     bh = (item.get("buy_and_hold") or {}).get("held_out") or {}
     if bh:
         lines += ["", "Buying and holding over the last six months: " + ", ".join(
-            f"{fund_name(k)} ${v:,.0f} a session" for k, v in bh.items()) + "."]
+            f"{fund_name(k)} {money(v)} a session" for k, v in bh.items()) + "."]
     by = item.get("by_year") or []
     if by:
         lines += ["", "## By year", "", "| Year | Return | $ a session | Trades | Win rate |",
                   "| --- | --- | --- | --- | --- |"]
-        lines += [f"| {y['year']} | {y['return']:+.0%} | ${y['usd_per_session']:,.0f} | {y['trades']} | "
+        lines += [f"| {y['year']} | {y['return']:+.0%} | {money(y['usd_per_session'])} | {y['trades']} | "
                   f"{y['win_rate']:.0%} |" for y in by]
     return "\n".join(lines) + "\n"
 
