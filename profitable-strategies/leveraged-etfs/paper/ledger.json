@@ -1,0 +1,601 @@
+{
+ "go_live": "2026-09-23",
+ "accounts": [
+  {
+   "id": "top1",
+   "label": "#1",
+   "rank": 1,
+   "name": "MUU / TSMX Uptrend Dip (bred 3BAF)",
+   "symbols": [
+    "MU.2X",
+    "TSM.2X"
+   ],
+   "funds": [
+    "MUU",
+    "TSMX"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "7a9e00712efc",
+    "name": "MUU / TSMX Uptrend Dip (bred 3BAF)",
+    "thesis": "Fade one-day overreactions against the prevailing trend.",
+    "entry_rules": [
+     {
+      "when": "pct_off_52w_low < 0.84 and cross_above(close, bb_upper) and ret1 > 0.038",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "ret1 < -0.026 and close > sma200 or rsi14 < 27",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "cross_below(sma20, sma50) and zscore20 < 1.1 and dist_sma50 > -0.103",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "mkt_vol20 < 0.314",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "cross_below(close, bb_lower)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "ret5 > 0.05",
+      "note": "archetype"
+     },
+     {
+      "when": "bars_held > 6",
+      "note": "archetype"
+     },
+     {
+      "when": "vol20 < 0.335",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 13,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.054,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 1
+    },
+    "generation": 24,
+    "parents": [
+     "1e7886482e61"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790146406.4198275
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "MUU": [
+      {
+       "action": "buy MUU",
+       "from": -0.25,
+       "to": -0.026015625,
+       "price_from": 29.19,
+       "price_to": 37.91
+      },
+      {
+       "action": "stay in cash",
+       "from": -0.025937500000000002,
+       "to": 0.25,
+       "price_from": 37.91,
+       "price_to": 48.65
+      }
+     ],
+     "TSMX": [
+      {
+       "action": "stay in cash",
+       "from": -0.25,
+       "to": -0.20644531249999998,
+       "price_from": 66.59,
+       "price_to": 70.45
+      },
+      {
+       "action": "buy TSMX",
+       "from": -0.20640624999999999,
+       "to": -0.026015625,
+       "price_from": 70.46,
+       "price_to": 86.47
+      },
+      {
+       "action": "stay in cash",
+       "from": -0.0259765625,
+       "to": 0.25,
+       "price_from": 86.47,
+       "price_to": 110.97
+      }
+     ]
+    }
+   },
+   "last_date": null
+  },
+  {
+   "id": "top2",
+   "label": "#2",
+   "rank": 2,
+   "name": "MUU Trend Breakout (bred D609)",
+   "symbols": [
+    "MU.2X"
+   ],
+   "funds": [
+    "MUU"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "138ace4efe6c",
+    "name": "MUU Trend Breakout (bred D609)",
+    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
+    "entry_rules": [
+     {
+      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held > 10",
+      "note": "archetype"
+     },
+     {
+      "when": "zscore20 <= -1.05",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 7,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.086,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.142,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 3
+    },
+    "generation": 25,
+    "parents": [
+     "ed0e4f5b34b8"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790150341.4596326
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": [
+     {
+      "fund": "MUU",
+      "synced": true,
+      "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)"
+     }
+    ]
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": -0.14203125000000003,
+       "price_from": 29.19,
+       "price_to": 33.39
+      },
+      {
+       "action": "hold MUU",
+       "from": -0.141953125,
+       "to": 0.25,
+       "price_from": 33.4,
+       "price_to": 48.65
+      }
+     ]
+    }
+   },
+   "last_date": null
+  },
+  {
+   "id": "top3",
+   "label": "#3",
+   "rank": 3,
+   "name": "MUU / TSMX Uptrend Dip (bred A903)",
+   "symbols": [
+    "MU.2X",
+    "TSM.2X"
+   ],
+   "funds": [
+    "MUU",
+    "TSMX"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "be18e0b0b4d6",
+    "name": "MUU / TSMX Uptrend Dip (bred A903)",
+    "thesis": "Fade one-day overreactions against the prevailing trend.",
+    "entry_rules": [
+     {
+      "when": "(bb_pct > 0.86 or macd_hist > 0.5) and atr_pct > 0.0534",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "ret1 < -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "cross_above(macd, macd_signal)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "zscore20 < -0.78 or cross_above(close, bb_upper)",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 < 0.6 and ret20 > 0.14",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 4,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.06,
+     "take_profit_pct": 0.0874,
+     "trailing_stop_pct": 0.106,
+     "max_hold_bars": 0,
+     "min_hold_bars": 2,
+     "cooldown_bars": 1
+    },
+    "generation": 24,
+    "parents": [
+     "4f51a1921c44"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790147005.7996953
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": [
+     {
+      "fund": "MUU",
+      "why": "entry rule: (bb_pct > 0.86 or macd_hist > 0.5) and atr_pct > 0.0534",
+      "synced": false
+     }
+    ]
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": -0.059296875,
+       "price_from": 29.19,
+       "price_to": 36.61
+      },
+      {
+       "action": "hold MUU",
+       "from": -0.05921875,
+       "to": 0.088203125,
+       "price_from": 36.62,
+       "price_to": 42.35
+      },
+      {
+       "action": "sell MUU",
+       "from": 0.08828125,
+       "to": 0.25,
+       "price_from": 42.36,
+       "price_to": 48.65
+      }
+     ],
+     "TSMX": [
+      {
+       "action": "hold MUU",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 66.59,
+       "price_to": 110.97
+      }
+     ]
+    }
+   },
+   "last_date": null
+  },
+  {
+   "id": "pick150",
+   "label": "$150-200 pick",
+   "rank": 90,
+   "name": "AMDL / TSMX Momentum (bred 77AE)",
+   "symbols": [
+    "AMD.2X",
+    "TSM.2X"
+   ],
+   "funds": [
+    "AMDL",
+    "TSMX"
+   ],
+   "size": 0.552,
+   "genome": {
+    "id": "d8776ce0041b",
+    "name": "AMDL / TSMX Momentum (bred 77AE)",
+    "thesis": "randomly generated; no prior belief",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > -0.255 and volume_ratio <= 1.24 and atr_pct > 0.0235 or volume_ratio > 2.39 or cross_above(macd, macd_signal)",
+      "weight": 1.0,
+      "note": "random"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "atr_pct < 0.0438",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "vol_ratio_20_60 > 1.46",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 8,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.05,
+     "take_profit_pct": 0.3,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 5,
+     "cooldown_bars": 2
+    },
+    "generation": 28,
+    "parents": [
+     "32f8b6cb837e"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790145691.0595934
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": [
+     {
+      "fund": "TSMX",
+      "synced": true,
+      "why": "synced at go-live: the strategy has held TSMX since 2026-08-25 (entry rule: dist_sma200 > -0.255 and volume_ratio <= 1.24 and atr_pct > 0.0235 or volume_ratio > 2.39 or cross_above(macd, macd_signal))"
+     }
+    ]
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "AMDL": [
+      {
+       "action": "sell TSMX",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 61.97,
+       "price_to": 103.29
+      }
+     ],
+     "TSMX": [
+      {
+       "action": "sell TSMX",
+       "from": -0.25,
+       "to": -0.1907421875,
+       "price_from": 66.59,
+       "price_to": 71.85
+      },
+      {
+       "action": "hold TSMX",
+       "from": -0.19070312499999997,
+       "to": -0.0166015625,
+       "price_from": 71.85,
+       "price_to": 87.31
+      },
+      {
+       "action": "sell TSMX",
+       "from": -0.0165625,
+       "to": 0.069140625,
+       "price_from": 87.31,
+       "price_to": 94.92
+      },
+      {
+       "action": "hold TSMX",
+       "from": 0.0691796875,
+       "to": 0.1073828125,
+       "price_from": 94.92,
+       "price_to": 98.31
+      },
+      {
+       "action": "sell TSMX",
+       "from": 0.107421875,
+       "to": 0.25,
+       "price_from": 98.32,
+       "price_to": 110.97
+      }
+     ]
+    }
+   },
+   "last_date": null
+  },
+  {
+   "id": "lowrisk100",
+   "label": "$100 low-risk pick",
+   "rank": 7,
+   "name": "MUU / TSMX Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+   "symbols": [
+    "MU.2X",
+    "TSM.2X"
+   ],
+   "funds": [
+    "MUU",
+    "TSMX"
+   ],
+   "size": 0.231,
+   "genome": {
+    "id": "0110b48ab86f",
+    "name": "MUU / TSMX Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+    "thesis": "Quick Dip 0.02/0.02/0.1/200/4",
+    "entry_rules": [
+     {
+      "when": "ret1 < -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 4",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.02,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790147934.7603385
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {
+    "after_close": "2026-09-22",
+    "for_open": "2026-09-23",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-22",
+    "funds": {
+     "MUU": [
+      {
+       "action": "buy MUU",
+       "from": -0.25,
+       "to": -0.020078125000000002,
+       "price_from": 29.19,
+       "price_to": 38.14
+      },
+      {
+       "action": "stay in cash",
+       "from": -0.02,
+       "to": 0.25,
+       "price_from": 38.14,
+       "price_to": 48.65
+      }
+     ],
+     "TSMX": [
+      {
+       "action": "stay in cash",
+       "from": -0.25,
+       "to": -0.20644531249999998,
+       "price_from": 66.59,
+       "price_to": 70.45
+      },
+      {
+       "action": "buy TSMX",
+       "from": -0.20640624999999999,
+       "to": -0.02,
+       "price_from": 70.46,
+       "price_to": 87.0
+      },
+      {
+       "action": "stay in cash",
+       "from": -0.019960937499999998,
+       "to": 0.25,
+       "price_from": 87.01,
+       "price_to": 110.97
+      }
+     ]
+    }
+   },
+   "last_date": null
+  }
+ ],
+ "updated_after_close": "2026-09-22"
+}
