@@ -45,6 +45,7 @@ class Trade:
     entry: float
     exit: float
     why: str
+    worst: float = 0.0          # the worst price while it was open (the low for a long, the high for a short)
 
     @property
     def ret_bp(self) -> float:
@@ -53,6 +54,12 @@ class Trade:
     @property
     def minutes(self) -> int:
         return self.exit_i - self.entry_i
+
+    @property
+    def worst_bp(self) -> float:
+        """The deepest it was under water, in basis points (zero or negative)."""
+        w = self.worst or self.entry
+        return min(0.0, self.side * (w / self.entry - 1.0) * 1e4)
 
 
 @dataclass
@@ -117,7 +124,11 @@ def run(days: Dict[str, "object"], rules: Rules, features: Callable) -> Result:
                     gapped = side * (o[m] - target) > 0
                     exit_px, exit_i, why = (o[m] if gapped else target), m + 1, "target"
                     break
-            res.trades.append(Trade(d, side, k, exit_i, entry, exit_px, why))
+            span = slice(k, max(exit_i, k + 1))
+            worst = float(l[span].min()) if side > 0 else float(h[span].max())
+            if why == "stop":
+                worst = stop if side * (stop - worst) < 0 else worst
+            res.trades.append(Trade(d, side, k, exit_i, entry, exit_px, why, worst))
             i = max(exit_i, k)                       # flat again: look for the next signal from here
     return res
 
