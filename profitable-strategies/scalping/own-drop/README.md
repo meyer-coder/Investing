@@ -58,6 +58,8 @@ It makes about 7.5 trades a day. 57% of trades win, and a trade averages
 | Costs tripled | $26 a day at 1x (52% of days up) |
 | Every fill a full minute late | $62 a day at 1x and $124 at 2x, but the last week lost money ($20 a day at 1x) |
 | Which names get the slots (1x) | Hardest own drop first: $73 a day. Alphabetical: $76. A random order, 12 times: $51 on average ($22 to $68) |
+| 36 settings around it (1x: drop 0.5-1.0 of the range, z below -2 or -2.5, window to 09:45 or 09:50, 2-4 slots) | All 36 made money, $30 to $82 a day (median $54), and all on both groups of names. This one ranks 4th |
+| Picked on the first two weeks, tested on the third (1x) | The best setting over weeks 1-2 broke even in week 3. The median setting made $83 a day that week |
 
 **About that last row.** The first version of this page took names that
 signalled together alphabetically and reported $153 a day at 2x. Taken in a
@@ -95,6 +97,10 @@ three weeks and on both groups of names, and that is the version here.
 - **One month is short.** It covers 21 sessions in one regime, a strong,
   volatile semiconductor rally. The settings were picked on this month, so the
   paper trail from 2026-09-24 is the real test.
+- **Expect less than the table.** Every nearby setting made money, but this
+  one ranks 4th of 36. The median setting made $54 a day at 1x, about $110 a
+  day at 2x. The setting that looked best over the first two weeks broke even
+  in the third.
 - **About one day in three loses.** At 2x the typical day is $112 and the
   average is $146, because a few big days lift the average. Judge it over
   weeks, not days.

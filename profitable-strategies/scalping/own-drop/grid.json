@@ -1,0 +1,412 @@
+{
+ "rank_entries_by": "resid_z",
+ "settings": {
+  "0.5atr z<-2.0 09:35-09:45 2 slots": {
+   "usd_per_day": 82.0,
+   "days_up": 0.571,
+   "weeks": [
+    55.0,
+    77.0,
+    114.0
+   ],
+   "pnl_original_names": 683.0,
+   "pnl_fresh_names": 1083.0
+  },
+  "0.5atr z<-2.0 09:35-09:45 3 slots": {
+   "usd_per_day": 78.6,
+   "days_up": 0.667,
+   "weeks": [
+    40.0,
+    59.0,
+    137.0
+   ],
+   "pnl_original_names": 475.0,
+   "pnl_fresh_names": 1218.0
+  },
+  "0.5atr z<-2.0 09:35-09:45 4 slots": {
+   "usd_per_day": 47.0,
+   "days_up": 0.571,
+   "weeks": [
+    28.0,
+    9.0,
+    104.0
+   ],
+   "pnl_original_names": 198.0,
+   "pnl_fresh_names": 800.0
+  },
+  "0.5atr z<-2.0 09:35-09:50 2 slots": {
+   "usd_per_day": 57.4,
+   "days_up": 0.524,
+   "weeks": [
+    77.0,
+    44.0,
+    52.0
+   ],
+   "pnl_original_names": 643.0,
+   "pnl_fresh_names": 578.0
+  },
+  "0.5atr z<-2.0 09:35-09:50 3 slots": {
+   "usd_per_day": 61.0,
+   "days_up": 0.571,
+   "weeks": [
+    41.0,
+    46.0,
+    96.0
+   ],
+   "pnl_original_names": 447.0,
+   "pnl_fresh_names": 857.0
+  },
+  "0.5atr z<-2.0 09:35-09:50 4 slots": {
+   "usd_per_day": 33.5,
+   "days_up": 0.524,
+   "weeks": [
+    40.0,
+    -6.0,
+    66.0
+   ],
+   "pnl_original_names": 182.0,
+   "pnl_fresh_names": 525.0
+  },
+  "0.5atr z<-2.5 09:35-09:45 2 slots": {
+   "usd_per_day": 55.0,
+   "days_up": 0.667,
+   "weeks": [
+    21.0,
+    51.0,
+    92.0
+   ],
+   "pnl_original_names": 353.0,
+   "pnl_fresh_names": 814.0
+  },
+  "0.5atr z<-2.5 09:35-09:45 3 slots": {
+   "usd_per_day": 68.3,
+   "days_up": 0.667,
+   "weeks": [
+    26.0,
+    68.0,
+    112.0
+   ],
+   "pnl_original_names": 138.0,
+   "pnl_fresh_names": 1327.0
+  },
+  "0.5atr z<-2.5 09:35-09:45 4 slots": {
+   "usd_per_day": 49.8,
+   "days_up": 0.667,
+   "weeks": [
+    -5.0,
+    63.0,
+    92.0
+   ],
+   "pnl_original_names": 218.0,
+   "pnl_fresh_names": 843.0
+  },
+  "0.5atr z<-2.5 09:35-09:50 2 slots": {
+   "usd_per_day": 30.0,
+   "days_up": 0.571,
+   "weeks": [
+    22.0,
+    19.0,
+    50.0
+   ],
+   "pnl_original_names": 225.0,
+   "pnl_fresh_names": 400.0
+  },
+  "0.5atr z<-2.5 09:35-09:50 3 slots": {
+   "usd_per_day": 61.6,
+   "days_up": 0.619,
+   "weeks": [
+    33.0,
+    65.0,
+    87.0
+   ],
+   "pnl_original_names": 231.0,
+   "pnl_fresh_names": 1087.0
+  },
+  "0.5atr z<-2.5 09:35-09:50 4 slots": {
+   "usd_per_day": 46.4,
+   "days_up": 0.619,
+   "weeks": [
+    5.0,
+    62.0,
+    73.0
+   ],
+   "pnl_original_names": 245.0,
+   "pnl_fresh_names": 743.0
+  },
+  "0.75atr z<-2.0 09:35-09:45 2 slots": {
+   "usd_per_day": 66.0,
+   "days_up": 0.571,
+   "weeks": [
+    19.0,
+    117.0,
+    62.0
+   ],
+   "pnl_original_names": 741.0,
+   "pnl_fresh_names": 671.0
+  },
+  "0.75atr z<-2.0 09:35-09:45 3 slots": {
+   "usd_per_day": 72.9,
+   "days_up": 0.667,
+   "weeks": [
+    48.0,
+    75.0,
+    96.0
+   ],
+   "pnl_original_names": 510.0,
+   "pnl_fresh_names": 1059.0
+  },
+  "0.75atr z<-2.0 09:35-09:45 4 slots": {
+   "usd_per_day": 41.4,
+   "days_up": 0.524,
+   "weeks": [
+    26.0,
+    22.0,
+    77.0
+   ],
+   "pnl_original_names": 176.0,
+   "pnl_fresh_names": 702.0
+  },
+  "0.75atr z<-2.0 09:35-09:50 2 slots": {
+   "usd_per_day": 50.4,
+   "days_up": 0.524,
+   "weeks": [
+    41.0,
+    111.0,
+    -0.0
+   ],
+   "pnl_original_names": 705.0,
+   "pnl_fresh_names": 363.0
+  },
+  "0.75atr z<-2.0 09:35-09:50 3 slots": {
+   "usd_per_day": 57.4,
+   "days_up": 0.619,
+   "weeks": [
+    49.0,
+    69.0,
+    54.0
+   ],
+   "pnl_original_names": 482.0,
+   "pnl_fresh_names": 743.0
+  },
+  "0.75atr z<-2.0 09:35-09:50 4 slots": {
+   "usd_per_day": 34.8,
+   "days_up": 0.524,
+   "weeks": [
+    38.0,
+    28.0,
+    38.0
+   ],
+   "pnl_original_names": 162.0,
+   "pnl_fresh_names": 573.0
+  },
+  "0.75atr z<-2.5 09:35-09:45 2 slots": {
+   "usd_per_day": 60.0,
+   "days_up": 0.667,
+   "weeks": [
+    12.0,
+    76.0,
+    92.0
+   ],
+   "pnl_original_names": 419.0,
+   "pnl_fresh_names": 860.0
+  },
+  "0.75atr z<-2.5 09:35-09:45 3 slots": {
+   "usd_per_day": 73.8,
+   "days_up": 0.667,
+   "weeks": [
+    24.0,
+    86.0,
+    112.0
+   ],
+   "pnl_original_names": 201.0,
+   "pnl_fresh_names": 1386.0
+  },
+  "0.75atr z<-2.5 09:35-09:45 4 slots": {
+   "usd_per_day": 56.6,
+   "days_up": 0.667,
+   "weeks": [
+    2.0,
+    76.0,
+    92.0
+   ],
+   "pnl_original_names": 260.0,
+   "pnl_fresh_names": 952.0
+  },
+  "0.75atr z<-2.5 09:35-09:50 2 slots": {
+   "usd_per_day": 39.3,
+   "days_up": 0.619,
+   "weeks": [
+    12.0,
+    56.0,
+    50.0
+   ],
+   "pnl_original_names": 380.0,
+   "pnl_fresh_names": 447.0
+  },
+  "0.75atr z<-2.5 09:35-09:50 3 slots": {
+   "usd_per_day": 70.2,
+   "days_up": 0.667,
+   "weeks": [
+    32.0,
+    92.0,
+    87.0
+   ],
+   "pnl_original_names": 293.0,
+   "pnl_fresh_names": 1215.0
+  },
+  "0.75atr z<-2.5 09:35-09:50 4 slots": {
+   "usd_per_day": 53.2,
+   "days_up": 0.667,
+   "weeks": [
+    12.0,
+    75.0,
+    73.0
+   ],
+   "pnl_original_names": 286.0,
+   "pnl_fresh_names": 852.0
+  },
+  "1.0atr z<-2.0 09:35-09:45 2 slots": {
+   "usd_per_day": 63.2,
+   "days_up": 0.667,
+   "weeks": [
+    41.0,
+    84.0,
+    65.0
+   ],
+   "pnl_original_names": 441.0,
+   "pnl_fresh_names": 907.0
+  },
+  "1.0atr z<-2.0 09:35-09:45 3 slots": {
+   "usd_per_day": 70.1,
+   "days_up": 0.667,
+   "weeks": [
+    72.0,
+    41.0,
+    97.0
+   ],
+   "pnl_original_names": 379.0,
+   "pnl_fresh_names": 1126.0
+  },
+  "1.0atr z<-2.0 09:35-09:45 4 slots": {
+   "usd_per_day": 52.2,
+   "days_up": 0.667,
+   "weeks": [
+    39.0,
+    38.0,
+    79.0
+   ],
+   "pnl_original_names": 227.0,
+   "pnl_fresh_names": 886.0
+  },
+  "1.0atr z<-2.0 09:35-09:50 2 slots": {
+   "usd_per_day": 38.7,
+   "days_up": 0.524,
+   "weeks": [
+    43.0,
+    71.0,
+    3.0
+   ],
+   "pnl_original_names": 291.0,
+   "pnl_fresh_names": 524.0
+  },
+  "1.0atr z<-2.0 09:35-09:50 3 slots": {
+   "usd_per_day": 51.4,
+   "days_up": 0.571,
+   "weeks": [
+    69.0,
+    29.0,
+    56.0
+   ],
+   "pnl_original_names": 218.0,
+   "pnl_fresh_names": 875.0
+  },
+  "1.0atr z<-2.0 09:35-09:50 4 slots": {
+   "usd_per_day": 40.3,
+   "days_up": 0.571,
+   "weeks": [
+    41.0,
+    35.0,
+    45.0
+   ],
+   "pnl_original_names": 62.0,
+   "pnl_fresh_names": 793.0
+  },
+  "1.0atr z<-2.5 09:35-09:45 2 slots": {
+   "usd_per_day": 53.9,
+   "days_up": 0.619,
+   "weeks": [
+    26.0,
+    34.0,
+    101.0
+   ],
+   "pnl_original_names": 121.0,
+   "pnl_fresh_names": 1022.0
+  },
+  "1.0atr z<-2.5 09:35-09:45 3 slots": {
+   "usd_per_day": 69.1,
+   "days_up": 0.667,
+   "weeks": [
+    27.0,
+    55.0,
+    125.0
+   ],
+   "pnl_original_names": 197.0,
+   "pnl_fresh_names": 1287.0
+  },
+  "1.0atr z<-2.5 09:35-09:45 4 slots": {
+   "usd_per_day": 53.9,
+   "days_up": 0.619,
+   "weeks": [
+    5.0,
+    63.0,
+    94.0
+   ],
+   "pnl_original_names": 220.0,
+   "pnl_fresh_names": 932.0
+  },
+  "1.0atr z<-2.5 09:35-09:50 2 slots": {
+   "usd_per_day": 35.6,
+   "days_up": 0.524,
+   "weeks": [
+    27.0,
+    15.0,
+    65.0
+   ],
+   "pnl_original_names": 84.0,
+   "pnl_fresh_names": 662.0
+  },
+  "1.0atr z<-2.5 09:35-09:50 3 slots": {
+   "usd_per_day": 65.6,
+   "days_up": 0.619,
+   "weeks": [
+    35.0,
+    62.0,
+    100.0
+   ],
+   "pnl_original_names": 290.0,
+   "pnl_fresh_names": 1116.0
+  },
+  "1.0atr z<-2.5 09:35-09:50 4 slots": {
+   "usd_per_day": 50.6,
+   "days_up": 0.619,
+   "weeks": [
+    14.0,
+    63.0,
+    75.0
+   ],
+   "pnl_original_names": 246.0,
+   "pnl_fresh_names": 833.0
+  }
+ },
+ "walk_forward": {
+  "picked_on_weeks_1_2": "0.75atr z<-2.0 09:35-09:50 2 slots",
+  "its_week_3": -0.0
+ },
+ "week_3": {
+  "settings_up": 35,
+  "of": 36,
+  "median": 83.0,
+  "min": -0.0,
+  "max": 137.0
+ }
+}
