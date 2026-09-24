@@ -46,8 +46,9 @@ def prepare():
 
 
 def run(P, minutes=5, top=10, rr_min=1.0, stop_atr=0.10, risk=0.01, lev=4.0, gap_min=0.0, first_bar=True,
-        exit_at=389, target_r=None):
-    """Per-day dollars on $25,000 and trade counts."""
+        exit_at=389, target_r=None, spread_bp=None):
+    """Per-day dollars on $25,000 and trade counts.  With `spread_bp` (per name, measured), each trade pays
+    that spread plus 2 bp of its notional for the round trip instead of a cent and $0.007 a share."""
     O, H, L, C, dates, rng, fac = P["O"], P["H"], P["L"], P["C"], P["dates"], P["day_rng"], P["fac"]
     nd, nn, T = O.shape
     or_hi = H[:, :, :minutes].max(axis=2)
@@ -101,7 +102,10 @@ def run(P, minutes=5, top=10, rr_min=1.0, stop_atr=0.10, risk=0.01, lev=4.0, gap
             shares = min(shares_risk, per_cap / px_in)
             paid = px_in * fac[i, k]                                             # the real share price
             real_shares = shares / fac[i, k]                                     # adjusted shares -> real shares
-            cost = real_shares * PER_SHARE
+            if spread_bp is not None and not np.isnan(spread_bp[k]):
+                cost = shares * px_in * (spread_bp[k] + 2.0) * 1e-4
+            else:
+                cost = real_shares * PER_SHARE
             day += side * shares * (px_out - px_in) - cost
             ntr[i] += 1
         pnl[i] = day
