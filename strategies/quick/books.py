@@ -7,10 +7,14 @@ did best then (Bitcoin's 2023-24 trend), which then failed.  Here the books are
 fixed in advance and run over every year each leg has:
 
 * the Nasdaq-100 noise-area breakout from 2013 (USATECH one-minute bars:
-  indexes.py to Aug 2020, index.py after), with and without a resting stop 0.25%
+  indexes.py to Aug 2020, index.py after), with and without a resting stop
   from the entry, through TQQQ at 1x to 4x buying power (3x to 12x the index);
 * the same plus a Bitcoin-driven MSTR sleeve (crypto.py's rule times 1.8) from
   2017.
+
+The stop's width is chosen here too: the best Sharpe on 2013-2019 among
+STOPS, with 2020-2026 only reporting what that width then did (it picks 0.30%,
+what paper.py and the Pine script use).
 
 For each: dollars a day on $25,000 by year, the worst day, the worst losing
 stretch, how long the account stayed under water, and the half-Kelly size (the
@@ -31,6 +35,8 @@ import indexes                                                               # n
 import trend                                                                 # noqa: E402
 
 ACCOUNT = 25_000.0
+STOPS = (0.0015, 0.002, 0.0025, 0.003, 0.004, 0.005, 0.0075)
+SPLIT = "2020-01-01"                                                         # stop chosen on the years before this
 
 
 def ndx_series(hard_stop=0.0):
@@ -75,14 +81,40 @@ def report(ds, usd, low, label):
     return row
 
 
+def sharpe(r):
+    return float(r.mean() / r.std() * np.sqrt(252))
+
+
+def choose_stop(series):
+    """The stop width with the best Sharpe before SPLIT; the years after only show what each width then did."""
+    rows = {}
+    print(f"-- stop width chosen on the years before {SPLIT[:4]}, then the years after (bp a day on the index)")
+    for hs, s in series.items():
+        ds = np.array(sorted(s))
+        r = np.array([s[d][0] for d in ds])
+        lo = np.array([s[d][1] for d in ds])
+        a, b = ds < SPLIT, ds >= SPLIT
+        rows[hs] = {"dev_bp": round(float(r[a].mean() * 1e4), 2), "dev_sharpe": round(sharpe(r[a]), 2),
+                    "test_bp": round(float(r[b].mean() * 1e4), 2), "test_sharpe": round(sharpe(r[b]), 2),
+                    "test_worst_day_bp": round(float(lo[b].min() * 1e4), 0)}
+        x = rows[hs]
+        print(f"  stop {hs:.2%}: before {x['dev_bp']:+5.2f} bp (Sharpe {x['dev_sharpe']:+.2f}) | after {x['test_bp']:+5.2f} bp "
+              f"(Sharpe {x['test_sharpe']:+.2f}) | worst day after {x['test_worst_day_bp']:+.0f} bp", flush=True)
+    best = max(STOPS, key=lambda hs: rows[hs]["dev_sharpe"])
+    print(f"  chosen: stop {best:.2%}")
+    return best, rows
+
+
 def main() -> int:
-    res = {}
-    for hs in (0.0, 0.0025):
-        ndx = ndx_series(hs)
+    series = {hs: ndx_series(hs) for hs in (0.0,) + STOPS}
+    stop, scan = choose_stop(series)
+    res = {"stop": stop, "stop_scan": {f"{hs:.2%}": row for hs, row in scan.items()}}
+    for hs in (0.0, stop):
+        ndx = series[hs]
         ds = sorted(ndx)
         r = np.array([ndx[d][0] for d in ds])
         lo = np.array([ndx[d][1] for d in ds])
-        tag = "stop 0.25%" if hs else "no stop"
+        tag = f"stop {hs:.2%}" if hs else "no stop"
         kelly = r.mean() / r.var()
         print(f"-- Nasdaq breakout, {tag}: {len(ds)} sessions {ds[0]} to {ds[-1]}; {r.mean() * 1e4:+.2f} bp a day, "
               f"full Kelly {kelly:.1f}x the index, half Kelly {kelly / 2:.1f}x (TQQQ at {kelly / 6:.2f}x buying power)")
@@ -90,12 +122,13 @@ def main() -> int:
         for bp in (1, 2, 3, 4):
             units = 3 * bp
             res[f"ndx {tag} | TQQQ {bp}x"] = report(ds, r * units * ACCOUNT, lo * units * ACCOUNT, f"TQQQ at {bp}x buying power ({units}x index), {tag}")
-    ndx = ndx_series(0.0025)
+    ndx = series[stop]
     btc = btc_series()
     ds = sorted(set(ndx) & set(btc))
     R = np.array([[ndx[d][0], btc[d][0]] for d in ds])
     L = np.array([[ndx[d][1], btc[d][1]] for d in ds])
-    print(f"-- Nasdaq breakout (stop 0.25%) with an MSTR sleeve: {len(ds)} sessions {ds[0]} to {ds[-1]}; correlation {np.corrcoef(R.T)[0, 1]:+.2f}")
+    print(f"-- Nasdaq breakout (stop {stop:.2%}) with an MSTR sleeve: {len(ds)} sessions {ds[0]} to {ds[-1]}; "
+          f"correlation {np.corrcoef(R.T)[0, 1]:+.2f}")
     for bp_ndx, bp_mstr in ((4, 0), (3, 1), (2, 2), (2, 1), (0, 2)):
         e = np.array([3 * bp_ndx, bp_mstr])
         res[f"TQQQ {bp_ndx}x + MSTR {bp_mstr}x"] = report(ds, R @ e * ACCOUNT, L @ e * ACCOUNT,

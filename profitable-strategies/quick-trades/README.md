@@ -67,36 +67,39 @@ limit.
 A resting stop 0.25% from the entry helps a little (`trend.py`, `hard_stop`).
 It halves the worst day at QQQ 4x, to -$1,300, and with 2 MNQ it gets 45% of
 Combines through and breaches 48%. Recent days make a little less ($24
-instead of $28), and 0.4% and 0.6% stops do not line up with it, so treat it
-as an option rather than a proven improvement.
+instead of $28), and 0.4% and 0.6% stops do not line up with it, so on these
+six years alone it is an option rather than a proven improvement. The longer
+2013-2026 history below settles it: a 0.30% stop, chosen on 2013-2019, held
+up on 2020-2026 and is now part of the rule.
 
 ## Pushing the daily dollars (2026-09-24, evening)
 
 **The change that helped: a resting stop 0.30% from the entry**
-(`books.py`).
+(`books.py`, which also runs the choice).
 - Any stop between 0.2% and 0.5% beat no stop in both halves of 2013-2026.
 - The width was chosen on 2013-2019 and then held on 2020-2026: +4.1 bp a
   day, Sharpe 1.26 (0.98 without it), worst day -186 bp instead of -699 bp.
-- Over all 13.7 years it lifts the Sharpe from 0.92 to 1.19, positive in 13
-  of 14 years.
+- Over all 13.7 years it lifts the Sharpe from 0.92 to 1.17 and makes money
+  in all 14 years. 2026 so far only barely: $4 a day at TQQQ 1x, against $15
+  without the stop.
 
-**The size is what sets the dollars.** The Nasdaq breakout with the stop,
-traded through TQQQ, 2013-2026:
+**The size is what sets the dollars.** The Nasdaq breakout with the 0.30%
+stop, traded through TQQQ, 2013-2026:
 
 | Buying power in TQQQ | Times the index | Average day | Worst day | Worst losing stretch |
 | --- | --- | --- | --- | --- |
-| 1x | 3x | $25 | -$1,170 | -$6,935 (28% of $25,000) |
-| 2x | 6x | $50 | -$2,340 | -$13,870 (55%) |
-| 3x | 9x | $75 | -$3,510 | -$20,806 (83%) |
-| 4x, the day-trading maximum | 12x | $100 | -$4,680 | -$27,741, more than the account |
+| 1x | 3x | $25 | -$1,395 | -$6,966 (28% of $25,000) |
+| 2x | 6x | $51 | -$2,790 | -$13,931 (56%) |
+| 3x | 9x | $76 | -$4,185 | -$20,897 (84%) |
+| 4x, the day-trading maximum | 12x | $102 | -$5,580 | -$27,863, more than the account |
 
 - **Bitcoin sleeve.** A Bitcoin-driven MSTR sleeve barely moves with the
-  Nasdaq (correlation 0.11). TQQQ 2x plus MSTR 1x made $79 a day over
+  Nasdaq (correlation 0.10). TQQQ 2x plus MSTR 1x made $79 a day over
   2017-2026 with a worst stretch of 64%. TQQQ 3x plus MSTR 1x made $109 a
-  day, with a worst stretch of 91%.
-- **Growth-optimal size.** It is about 17 times the index (Kelly). Half of
+  day, with a worst stretch of 90%.
+- **Growth-optimal size.** It is about 16 times the index (Kelly). Half of
   that, the usual guard against an optimistic estimate, is TQQQ at about
-  2.8x buying power: roughly $70 a day, with a worst stretch near 80%.
+  2.7x buying power: roughly $68 a day, with a worst stretch near 75%.
 
 **Letting an optimizer pick the sizes does not work** (`maximize.py`).
 - Fitted to Sep 2022 - Aug 2024, it put everything on the Bitcoin/MSTR leg,
