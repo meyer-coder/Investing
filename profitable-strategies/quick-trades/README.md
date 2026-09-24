@@ -21,6 +21,10 @@ about 3 to 4. Getting to $200 by adding leverage instead (the 3x funds, or
 more micro futures) means a losing stretch bigger than the account. The
 tables show it.
 
+The combined book at 3.3 times this size would have averaged $200 a day
+since 2024. Its worst stretch would then have been about $37,000, more than
+the account.
+
 | Book, $25,000 account | 2020/22-2023 | 2024-Sep 2026 | Sharpe | Days at $200+ | Worst day | Worst losing stretch |
 | --- | --- | --- | --- | --- | --- | --- |
 | **1. Nasdaq-100 noise-area breakout**, QQQ at 4x | $53 a day | $28 | 1.2 | 16% | -$2,431 | -$10,424 (42%) |
@@ -108,6 +112,11 @@ Strategy for the U.S. Equity Market*, limited to what the data here covers.
 
 About two trades a day. Costs are a cent of spread plus $0.007 a share.
 
+- **Stable across settings:** 89 of 96 nearby settings made money in both
+  periods. Those settings were gaps of 1.5% to 3%, stops of 0.5 to 1.5
+  ranges, 2 to 4 names, and a 5 or 10 minute opening range. The median
+  setting made $31 a day before 2024 and $23 after. At twice the costs, this
+  one still makes $24 and $43.
 - **Other variants were weaker.** The published "stocks in play" version
   (tight stops, names picked by how wild their first minutes are) lost money
   on these large caps. So did tighter stops.

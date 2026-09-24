@@ -26,7 +26,7 @@ STORE = ROOT / "data" / "cache" / "duka" / "idx"
 CACHE = ROOT / "data" / "cache" / "quick"
 URL = ("https://freeserv.dukascopy.com/2.0/?path=chart/json3&instrument={inst}&offer_side=B"
        "&interval=1MIN&splits=true&stocks=true&limit=30000&time_direction=N&timestamp={ms}&jsonp=cb")
-INSTRUMENTS = {"USA500": "USA500.IDX%2FUSD", "USSC2000": "USSC2000.IDX%2FUSD", "USA30": "USA30.IDX%2FUSD",
+INSTRUMENTS = {"USATECH": "USATECH.IDX%2FUSD", "USA500": "USA500.IDX%2FUSD", "USSC2000": "USSC2000.IDX%2FUSD", "USA30": "USA30.IDX%2FUSD",
                "WTI": "LIGHT.CMD%2FUSD", "GOLD": "XAU%2FUSD", "TBOND": "USTBOND.TR%2FUSD", "EURUSD": "EUR%2FUSD"}
 # the day each market trades most, New York time: stock indexes 09:30-16:00; crude oil, gold and bonds their
 # pit hours; the euro London's afternoon and New York's morning
