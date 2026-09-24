@@ -175,6 +175,7 @@ fitted on:
 | Market-neutral long-short books rebalanced every 15, 30 or 60 minutes (reversal, momentum, same-half-hour seasonality, gap reversal) | Lost, mostly to costs, with no edge before them |
 | Opening-range breakouts and the opening drive on the index | Positive but noisier; adding them to the noise area lowered its Sharpe |
 | One book of the noise area across the Nasdaq, S&P, Russell and Dow | Lost, because the other three lose |
+| The gap breakout entered on a pullback with a limit order, to skip the spread (`gap_retest.py`) | Lost $72-76 a day from Sep 2024: the breakouts that come back to their level fail |
 
 ## The paper trail
 
