@@ -43,3 +43,4 @@ data/cache/duka/
 
 # Stock panel cache built by strategies/scalp/panel.py
 data/cache/duka/panel*/
+data/cache/quick/

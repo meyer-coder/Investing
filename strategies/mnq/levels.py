@@ -222,10 +222,36 @@ def close_ratio(asof: str) -> Optional[float]:
         return None
 
 
+MIN_CONTRACTS = 1000                                              # before the open most contracts carry no quote
+
+
+def session_for(now: Optional[dt.datetime] = None) -> dt.date:
+    """The session the levels are for: today before 16:00 New York, else the next weekday."""
+    from zoneinfo import ZoneInfo
+    now = now or dt.datetime.now(ZoneInfo("America/New_York"))
+    d = now.date()
+    if now.hour >= 16:
+        d += dt.timedelta(days=1)
+    while d.weekday() >= 5:
+        d += dt.timedelta(days=1)
+    return d
+
+
 def today_levels(save: bool = False) -> dict:
+    """Levels from the latest chain.  Nasdaq stamps its chain with today's date from midnight, but until the
+    open it holds the previous close's prices and only a few contracts have quotes: then `asof` is the last
+    weekday before today, and a pull with fewer than MIN_CONTRACTS contracts never replaces a saved file."""
+    from zoneinfo import ZoneInfo
     try:
         raw = nasdaq_chain("QQQ")
         today = dt.date.fromisoformat(raw["asof"])
+        now = dt.datetime.now(ZoneInfo("America/New_York"))
+        if today >= now.date() and (now.hour, now.minute) < (9, 30):
+            prev = now.date() - dt.timedelta(days=1)
+            while prev.weekday() >= 5:
+                prev -= dt.timedelta(days=1)
+            raw["asof"], today = str(prev), prev
+            raw["timestamp"] = f"{prev} 16:00 New York (Nasdaq, as of the last close)"
     except Exception:
         raw, today = chain("QQQ"), None
     lv = compute(raw, today)
@@ -236,7 +262,14 @@ def today_levels(save: bool = False) -> dict:
                     if lv.get(name)}
     if save:
         OUT.mkdir(parents=True, exist_ok=True)
-        (OUT / f"{dt.date.today().isoformat()}.json").write_text(json.dumps(lv, indent=1))
+        path = OUT / f"{session_for().isoformat()}.json"
+        if path.exists() and (lv.get("contracts") or 0) < MIN_CONTRACTS:
+            kept = json.loads(path.read_text())
+            if (kept.get("contracts") or 0) > (lv.get("contracts") or 0):
+                print(f"kept {path.name}: this pull has {lv.get('contracts')} contracts with quotes, the saved one "
+                      f"{kept.get('contracts')}", file=sys.stderr)
+                return kept
+        path.write_text(json.dumps(lv, indent=1))
     return lv
 
 
