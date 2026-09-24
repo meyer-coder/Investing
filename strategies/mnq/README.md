@@ -24,6 +24,7 @@ an account to run any of these.
 | 08:30 data releases (`releases.py`) | 1,564 weekdays with pre-market minutes | +1 to +4 bp going with a big release move, 50-80 days a period, t below 1.2 |
 | 10-30 second bursts, go with or fade, 10 s to 2 min holds (`bursts.py`) | Dukascopy 10-second bars, 1,048 days, Sep 2022 - Sep 2026 | 0 of 492 setups positive in both halves; the median setup makes 0.0 points before costs |
 | The burst bot, incl. a 15-point stop with a 3:1 target (`burstbot.py`) | 1,008 sessions of 10-second bars | -$2.3 to +$2.7 a day per MNQ; at 5 MNQ, 60-87% of Topstep 100K Combines breach |
+| Wait for the bounce: small target, no stop, big size (`bounce.py`) | 1,504 sessions | Long, +0.15% target: 84% of trades win (+42 pts) but losers average -222 pts; at 10 MNQ the median day is +$475, the average day -$166, the worst -$29,730, and 90% of Topstep 100K Combines breach. Shorter targets and shorts do worse |
 
 ## Why a no-edge bot still shows $150 days
 
