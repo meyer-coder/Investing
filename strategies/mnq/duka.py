@@ -6,9 +6,10 @@
 Dukascopy's chart service returns up to 30,000 one-minute candles a request
 (about a month) for its Nasdaq-100 CFD (USATECH.IDX/USD), which follows the
 index future minute for minute.  Requests are paced three seconds apart.
-Each month's candles between 13:00 and 21:30 UTC (the New York session in
-summer and winter time) land in data/cache/duka/ as a compressed array
-(git-ignored); `load()` turns them into regular-session bars.  The per-day
+Each month's candles between 11:00 and 21:30 UTC (from 07:00 New York in
+summer, 06:00 in winter, so the 08:30 data releases are in) land in
+data/cache/duka/months_wide/ as a compressed array (git-ignored); `load()`
+turns them into regular-session bars, `premarket()` into 08:00-09:29 ones.  The per-day
 archive files (`fetch_days`) are the same data, far slower to fetch.
 
 The candles are the bid side, stamped in UTC.  Volume is Dukascopy's own
@@ -39,7 +40,8 @@ Row = Tuple[str, float, float, float, float, float]
 
 JSON_URL = ("https://freeserv.dukascopy.com/2.0/?path=chart/json3&instrument=USATECH.IDX%2FUSD&offer_side=B"
             "&interval=1MIN&splits=true&stocks=true&limit=30000&time_direction=N&timestamp={ms}&jsonp=cb")
-MONTHS = ROOT / "data" / "cache" / "duka" / "months"
+MONTHS = ROOT / "data" / "cache" / "duka" / "months_wide"     # 11:00-21:30 UTC: from 07:00 New York in summer
+WINDOW = (11 * 60, 21 * 60 + 30)
 
 
 def _json_chunk(ms: int) -> Optional[np.ndarray]:
@@ -92,7 +94,7 @@ def fetch(start: dt.date, end: dt.date, pace: float = 3.0) -> int:
                 t = a[-1, 0] + 60
             a = np.concatenate(parts) if parts else np.zeros((0, 5))
             hm = (a[:, 0] % 86400) / 60.0
-            keep = (hm >= 13 * 60) & (hm < 21 * 60 + 30)
+            keep = (hm >= WINDOW[0]) & (hm < WINDOW[1])
             np.savez_compressed(path, a=a[keep].astype(np.float64))
             got += 1
             print(f"{y}-{m:02d}: {int(keep.sum())} candles in the session window", flush=True)
@@ -193,6 +195,23 @@ def load(start: str = "2000-01-01", end: str = "2100-01-01", rth: bool = True) -
     if rth:
         out = {d: rows for d, rows in out.items()
                if len(rows) >= 380 and np.ptp([r[4] for r in rows]) > 0}
+    return out
+
+
+def premarket(start: str = "2000-01-01", end: str = "2100-01-01", first=(8, 0), last=(9, 29)) -> Dict[str, List[Row]]:
+    """The 08:00-09:29 New York bars of each weekday, by date (the 08:30 data releases fall in them)."""
+    out: Dict[str, List[Row]] = {}
+    for p in sorted(MONTHS.glob("*.npz")):
+        if not (start[:7] <= p.stem <= end[:7]):
+            continue
+        for ts, o, h, l, c in np.load(p)["a"]:
+            u = dt.datetime.fromtimestamp(ts, tz=dt.timezone.utc)
+            t = u.astimezone(NY)
+            if t.weekday() >= 5 or not (first <= (t.hour, t.minute) <= last):
+                continue
+            d = t.strftime("%Y-%m-%d")
+            if start <= d <= end:
+                out.setdefault(d, []).append((u.strftime("%Y-%m-%d %H:%M"), o, h, l, c, 0.0))
     return out
 
 
