@@ -1,0 +1,271 @@
+{
+ "features": [
+  "z1",
+  "z2",
+  "z3",
+  "z5",
+  "z10",
+  "z15",
+  "z30",
+  "z60",
+  "vol",
+  "vol_prev",
+  "range_pos",
+  "from_high",
+  "from_low",
+  "twap",
+  "or_high",
+  "or_low",
+  "day_ret",
+  "open_ret",
+  "gap",
+  "prev_day",
+  "mso",
+  "dow",
+  "body",
+  "bar_range",
+  "since_high",
+  "since_low",
+  "range_day"
+ ],
+ "tune": {
+  "0.9": {
+   "trades": 1090,
+   "per_day": 4.41,
+   "bp_per_trade": -0.57,
+   "t": -1.02,
+   "win": 0.481,
+   "bp_per_day": -2.49,
+   "days_up": 0.421,
+   "thr": 4.493
+  },
+  "0.95": {
+   "trades": 496,
+   "per_day": 2.01,
+   "bp_per_trade": 0.05,
+   "t": 0.05,
+   "win": 0.508,
+   "bp_per_day": 0.1,
+   "days_up": 0.308,
+   "thr": 6.139
+  },
+  "0.98": {
+   "trades": 166,
+   "per_day": 0.67,
+   "bp_per_trade": -0.27,
+   "t": -0.17,
+   "win": 0.5,
+   "bp_per_day": -0.18,
+   "days_up": 0.174,
+   "thr": 8.311
+  },
+  "0.99": {
+   "trades": 82,
+   "per_day": 0.33,
+   "bp_per_trade": 2.57,
+   "t": 1.08,
+   "win": 0.524,
+   "bp_per_day": 0.85,
+   "days_up": 0.089,
+   "thr": 9.97
+  },
+  "0.995": {
+   "trades": 42,
+   "per_day": 0.17,
+   "bp_per_trade": 1.71,
+   "t": 0.51,
+   "win": 0.452,
+   "bp_per_day": 0.29,
+   "days_up": 0.036,
+   "thr": 11.567
+  }
+ },
+ "test": {
+  "0.9": {
+   "trades": 3458,
+   "per_day": 5.14,
+   "bp_per_trade": -0.15,
+   "t": -0.37,
+   "win": 0.494,
+   "bp_per_day": -0.75,
+   "days_up": 0.441,
+   "thr": 3.386,
+   "bp_per_day_by_year": {
+    "2024": 1.75,
+    "2025": -1.0,
+    "2026": -3.82
+   }
+  },
+  "0.95": {
+   "trades": 1741,
+   "per_day": 2.59,
+   "bp_per_trade": -0.48,
+   "t": -0.73,
+   "win": 0.497,
+   "bp_per_day": -1.24,
+   "days_up": 0.306,
+   "thr": 4.743,
+   "bp_per_day_by_year": {
+    "2024": -0.57,
+    "2025": -0.96,
+    "2026": -2.52
+   }
+  },
+  "0.98": {
+   "trades": 730,
+   "per_day": 1.08,
+   "bp_per_trade": -0.83,
+   "t": -0.84,
+   "win": 0.503,
+   "bp_per_day": -0.9,
+   "days_up": 0.187,
+   "thr": 6.628,
+   "bp_per_day_by_year": {
+    "2024": 0.45,
+    "2025": -3.03,
+    "2026": 0.14
+   }
+  },
+  "0.99": {
+   "trades": 373,
+   "per_day": 0.55,
+   "bp_per_trade": 0.03,
+   "t": 0.02,
+   "win": 0.504,
+   "bp_per_day": 0.02,
+   "days_up": 0.1,
+   "thr": 8.117,
+   "bp_per_day_by_year": {
+    "2024": 0.58,
+    "2025": -1.24,
+    "2026": 0.98
+   }
+  },
+  "0.995": {
+   "trades": 188,
+   "per_day": 0.28,
+   "bp_per_trade": 4.12,
+   "t": 2.05,
+   "win": 0.537,
+   "bp_per_day": 1.15,
+   "days_up": 0.051,
+   "thr": 9.696,
+   "bp_per_day_by_year": {
+    "2024": 0.43,
+    "2025": 1.64,
+    "2026": 1.47
+   }
+  }
+ },
+ "importance": [
+  [
+   "vol_prev",
+   1301
+  ],
+  [
+   "prev_day",
+   1253
+  ],
+  [
+   "gap",
+   1057
+  ],
+  [
+   "range_day",
+   993
+  ],
+  [
+   "mso",
+   817
+  ],
+  [
+   "vol",
+   776
+  ],
+  [
+   "day_ret",
+   640
+  ],
+  [
+   "since_low",
+   596
+  ],
+  [
+   "since_high",
+   590
+  ],
+  [
+   "open_ret",
+   422
+  ],
+  [
+   "z60",
+   413
+  ],
+  [
+   "z30",
+   391
+  ],
+  [
+   "or_low",
+   368
+  ],
+  [
+   "from_low",
+   366
+  ],
+  [
+   "dow",
+   366
+  ],
+  [
+   "twap",
+   306
+  ],
+  [
+   "or_high",
+   287
+  ],
+  [
+   "from_high",
+   281
+  ],
+  [
+   "range_pos",
+   185
+  ],
+  [
+   "z10",
+   167
+  ],
+  [
+   "z15",
+   146
+  ],
+  [
+   "z5",
+   106
+  ],
+  [
+   "z3",
+   49
+  ],
+  [
+   "z2",
+   46
+  ],
+  [
+   "bar_range",
+   34
+  ],
+  [
+   "body",
+   29
+  ],
+  [
+   "z1",
+   15
+  ]
+ ],
+ "picked_quantile": 0.99
+}
