@@ -25,6 +25,9 @@ an account to run any of these.
 | 10-30 second bursts, go with or fade, 10 s to 2 min holds (`bursts.py`) | Dukascopy 10-second bars, 1,048 days, Sep 2022 - Sep 2026 | 0 of 492 setups positive in both halves; the median setup makes 0.0 points before costs |
 | The burst bot, incl. a 15-point stop with a 3:1 target (`burstbot.py`) | 1,008 sessions of 10-second bars | -$2.3 to +$2.7 a day per MNQ; at 5 MNQ, 60-87% of Topstep 100K Combines breach |
 | Wait for the bounce: small target, no stop, big size (`bounce.py`) | 1,504 sessions | Long, +0.15% target: 84% of trades win (+42 pts) but losers average -222 pts; at 10 MNQ the median day is +$475, the average day -$166, the worst -$29,730, and 90% of Topstep 100K Combines breach. Shorter targets and shorts do worse |
+| Round QQQ strikes as levels, fade or break the first touch (`strikes.py`) | 1,504 sessions | Target hit 23-27% with a 1:3 bracket, the same as prices halfway between strikes: round numbers alone are not levels |
+| Filters to raise the win rate at levels: calm or wild day, time, expiry Friday, approach speed, extension, a rejection candle (`winrate.py`) | 7,181 strike touches | Almost all within 2 points of break-even; one narrow cell (calm day, after 14:00, go with the break) cleared it on 31 trades |
+| Its general form: on a quiet day, go with the first break of the day's range after 14:00 (`calmbreak.py`) | 1,504 sessions | Positive in both periods at all four stop/target pairs (61% wins at 1:1 against 52% needed), fading it loses; but only 66 trades in six years (t about 1-1.7). Added to the paper trail with its settings fixed |
 
 ## Why a no-edge bot still shows $150 days
 

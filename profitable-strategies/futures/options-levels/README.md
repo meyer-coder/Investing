@@ -53,6 +53,11 @@ the next 45 days), `strategies/mnq/levels.py`:
   ($900). Anything open at 15:55 New York is closed.
 - Entries run from 09:35 to 15:30, one trade per level per day, one position
   at a time. Costs are 1.25 points a round trip per contract.
+- **A second rule rides along:** on a quiet day (range by 14:00 under 60% of
+  the typical pace), go with the first close beyond the day's range between
+  14:00 and 15:30. It uses a 10 bp stop and a 20 bp target (about 29 and 58
+  points). Over six years it was the one filter that cleared break-even in
+  both halves (`strategies/mnq/calmbreak.py`). It fires about once a month.
 
 ## Risk on a Topstep 100K
 

@@ -1,0 +1,610 @@
+{
+ "any day | fade the break | 10/10 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.472,
+   0.468
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -2.12,
+   -2.18
+  ],
+  "t": [
+   -1.47,
+   -1.27
+  ]
+ },
+ "any day | fade the break | 10/20 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.285,
+   0.275
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -2.96,
+   -2.87
+  ],
+  "t": [
+   -1.51,
+   -1.24
+  ]
+ },
+ "any day | fade the break | 10/30 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.203,
+   0.161
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -1.01,
+   -3.29
+  ],
+  "t": [
+   -0.43,
+   -1.23
+  ]
+ },
+ "any day | fade the break | 5/15 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.258,
+   0.232
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -0.53,
+   -1.98
+  ],
+  "t": [
+   -0.42,
+   -1.34
+  ]
+ },
+ "any day | with the break | 10/10 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.495,
+   0.493
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -0.96,
+   -0.73
+  ],
+  "t": [
+   -0.67,
+   -0.43
+  ]
+ },
+ "any day | with the break | 10/20 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.325,
+   0.264
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -0.28,
+   -2.68
+  ],
+  "t": [
+   -0.14,
+   -1.16
+  ]
+ },
+ "any day | with the break | 10/30 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.203,
+   0.154
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -1.05,
+   -3.34
+  ],
+  "t": [
+   -0.44,
+   -1.26
+  ]
+ },
+ "any day | with the break | 5/15 bp": {
+  "n": [
+   400,
+   280
+  ],
+  "win": [
+   0.242,
+   0.246
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -1.48,
+   -0.95
+  ],
+  "t": [
+   -1.19,
+   -0.63
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | fade the break | 10/10 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.364,
+   0.394
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -9.16,
+   -7.4
+  ],
+  "t": [
+   -1.86,
+   -1.48
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | fade the break | 10/20 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.182,
+   0.212
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -14.43,
+   -9.19
+  ],
+  "t": [
+   -2.43,
+   -1.45
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | fade the break | 10/30 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.152,
+   0.152
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -10.56,
+   -7.84
+  ],
+  "t": [
+   -1.41,
+   -1.04
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | fade the break | 5/15 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.212,
+   0.273
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -3.49,
+   0.07
+  ],
+  "t": [
+   -0.83,
+   0.01
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | with the break | 10/10 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.606,
+   0.606
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   4.9,
+   4.9
+  ],
+  "t": [
+   0.98,
+   0.98
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | with the break | 10/20 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.394,
+   0.455
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   4.58,
+   12.84
+  ],
+  "t": [
+   0.61,
+   1.74
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | with the break | 10/30 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.273,
+   0.212
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   6.41,
+   12.68
+  ],
+  "t": [
+   0.7,
+   1.4
+  ]
+ },
+ "range by 14:00 < 0.6x typical pace | with the break | 5/15 bp": {
+  "n": [
+   33,
+   33
+  ],
+  "win": [
+   0.333,
+   0.333
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   3.58,
+   5.03
+  ],
+  "t": [
+   0.74,
+   1.04
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | fade the break | 10/10 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.459,
+   0.44
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -3.19,
+   -3.83
+  ],
+  "t": [
+   -1.16,
+   -1.23
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | fade the break | 10/20 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.261,
+   0.262
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -3.62,
+   -4.17
+  ],
+  "t": [
+   -0.99,
+   -0.99
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | fade the break | 10/30 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.171,
+   0.131
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -3.02,
+   -5.83
+  ],
+  "t": [
+   -0.71,
+   -1.27
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | fade the break | 5/15 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.27,
+   0.25
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   0.5,
+   -1.25
+  ],
+  "t": [
+   0.2,
+   -0.45
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | with the break | 10/10 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.495,
+   0.512
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -1.4,
+   0.64
+  ],
+  "t": [
+   -0.51,
+   0.21
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | with the break | 10/20 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.351,
+   0.31
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   1.37,
+   2.52
+  ],
+  "t": [
+   0.35,
+   0.57
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | with the break | 10/30 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.225,
+   0.179
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   1.54,
+   2.74
+  ],
+  "t": [
+   0.33,
+   0.53
+  ]
+ },
+ "range by 14:00 < 0.8x typical pace | with the break | 5/15 bp": {
+  "n": [
+   111,
+   84
+  ],
+  "win": [
+   0.252,
+   0.286
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -0.7,
+   1.92
+  ],
+  "t": [
+   -0.29,
+   0.66
+  ]
+ },
+ "range by 14:00 < 1x typical pace | fade the break | 10/10 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.469,
+   0.444
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -2.38,
+   -3.27
+  ],
+  "t": [
+   -1.15,
+   -1.28
+  ]
+ },
+ "range by 14:00 < 1x typical pace | fade the break | 10/20 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.265,
+   0.25
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -3.31,
+   -4.41
+  ],
+  "t": [
+   -1.21,
+   -1.3
+  ]
+ },
+ "range by 14:00 < 1x typical pace | fade the break | 10/30 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.184,
+   0.113
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -1.96,
+   -6.24
+  ],
+  "t": [
+   -0.6,
+   -1.69
+  ]
+ },
+ "range by 14:00 < 1x typical pace | fade the break | 5/15 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.245,
+   0.218
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -1.22,
+   -2.71
+  ],
+  "t": [
+   -0.68,
+   -1.25
+  ]
+ },
+ "range by 14:00 < 1x typical pace | with the break | 10/10 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.495,
+   0.5
+  ],
+  "breakeven": 0.522,
+  "pts": [
+   -1.31,
+   0.3
+  ],
+  "t": [
+   -0.63,
+   0.12
+  ]
+ },
+ "range by 14:00 < 1x typical pace | with the break | 10/20 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.321,
+   0.323
+  ],
+  "breakeven": 0.348,
+  "pts": [
+   -1.12,
+   3.6
+  ],
+  "t": [
+   -0.39,
+   0.99
+  ]
+ },
+ "range by 14:00 < 1x typical pace | with the break | 10/30 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.199,
+   0.177
+  ],
+  "breakeven": 0.261,
+  "pts": [
+   -1.84,
+   1.93
+  ],
+  "t": [
+   -0.54,
+   0.46
+  ]
+ },
+ "range by 14:00 < 1x typical pace | with the break | 5/15 bp": {
+  "n": [
+   196,
+   124
+  ],
+  "win": [
+   0.219,
+   0.282
+  ],
+  "breakeven": 0.272,
+  "pts": [
+   -2.79,
+   1.69
+  ],
+  "t": [
+   -1.62,
+   0.71
+  ]
+ }
+}

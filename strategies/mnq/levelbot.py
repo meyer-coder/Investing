@@ -19,7 +19,9 @@ them:
   entry bar when it runs through the stop; 1.25 points a round trip per
   contract.
 
-Entries only 09:35 to 15:30, one trade per level per day.  The ledger,
+Entries only 09:35 to 15:30, one trade per level per day.  A second rule
+rides along, its settings fixed before the test: on a quiet day, go with the
+first break of the day's range after 14:00 (see calm_breakout).  The ledger,
 profitable-strategies/futures/options-levels/paper.json, is written once per
 session and never recomputed.
 """
@@ -120,7 +122,64 @@ def replay(day: str, levels: Dict[str, float]) -> dict:
                            "entry": round(entry, 2), "exit": round(exit_px, 2), "why": why, "points": round(pts, 2),
                            "usd": round(pts * POINT * CONTRACTS, 2)})
             busy_until = exit_i
+    trades += calm_breakout(day, b, busy_until)
     return {"levels": levels, "trades": trades, "usd": round(sum(x["usd"] for x in trades), 2)}
+
+
+CALM, CALM_STOP_BP, CALM_TARGET_BP = 0.6, 10.0, 20.0
+
+
+def calm_breakout(day: str, b: List[tuple], busy_until: int) -> List[dict]:
+    """The second rule, fixed before the paper test (strategies/mnq/calmbreak.py): on a day whose
+    range by 14:00 is under 60% of the typical pace (the median full-day range of the 20 sessions
+    before, times the square root of the time gone), go with the first close beyond the day's range
+    between 14:00 and 15:30, at the next minute's open, stop 10 bp, target 20 bp, out by 15:55."""
+    rows = minute.read("MNQ=F")
+    by: Dict[str, list] = {}
+    for t, v in rows.items():
+        by.setdefault(minute.session_of(t), []).append(v)
+    before = [d for d in sorted(by) if d < day][-20:]
+    if len(before) < 15:
+        return []
+    typical = sorted((max(v[1] for v in by[d]) - min(v[2] for v in by[d])) / by[d][-1][3] for d in before)[len(before) // 2]
+    at2 = next((i for i, x in enumerate(b) if et(x[0]) >= "14:00"), None)
+    if at2 is None or at2 < 60:
+        return []
+    hi, lo = max(x[2] for x in b[:at2]), min(x[3] for x in b[:at2])
+    if (hi - lo) / b[at2 - 1][4] >= CALM * typical * (at2 / 390) ** 0.5:
+        return []
+    for i in range(at2, len(b) - 1):
+        if et(b[i][0]) > "15:30":
+            return []
+        c = b[i][4]
+        if c > hi or c < lo:
+            if i < busy_until:
+                return []
+            s = 1 if c > hi else -1
+            k = i + 1
+            entry = b[k][1]
+            stop, target = entry * (1 - s * CALM_STOP_BP / 1e4), entry * (1 + s * CALM_TARGET_BP / 1e4)
+            exit_px, exit_i, why = None, None, ""
+            for m in range(k, len(b)):
+                tm, om, hm, lm, cm, _ = b[m]
+                if et(tm) >= "15:55":
+                    exit_px, exit_i, why = om, m, "15:55"
+                    break
+                adverse, favour = (lm, hm) if s > 0 else (hm, lm)
+                if s * (adverse - stop) <= 0:
+                    exit_px, exit_i, why = (om if s * (om - stop) < 0 else stop), m, "stop"
+                    break
+                if s * (favour - target) >= 0:
+                    exit_px, exit_i, why = (om if s * (om - target) > 0 else target), m, "target"
+                    break
+            if exit_px is None:
+                exit_px, exit_i, why = b[-1][4], len(b) - 1, "close"
+            pts = s * (exit_px - entry) - COST
+            return [{"level": "quiet-day breakout", "side": "long" if s > 0 else "short", "in": et(b[k][0]),
+                     "out": et(b[exit_i][0]), "entry": round(entry, 2), "exit": round(exit_px, 2), "why": why,
+                     "points": round(pts, 2), "usd": round(pts * POINT * CONTRACTS, 2)}]
+        hi, lo = max(hi, b[i][2]), min(lo, b[i][3])
+    return []
 
 
 def main() -> int:
