@@ -92,6 +92,11 @@ def main() -> int:
         "fade a 10s burst >4x, hold 1m": sim.Rules(signal=fade(1, 4.0), hold=6, last_entry=375, flat_at=385),
         "fade a 30s burst >4x, hold 2m": sim.Rules(signal=fade(3, 4.0), hold=12, last_entry=375, flat_at=385),
         "fade a 10s burst >6x, hold 2m": sim.Rules(signal=fade(1, 6.0), hold=12, last_entry=375, flat_at=385),
+        # the screenshot's shape: about a 15-point stop (5 bp at 29,000) and a target three times as far
+        "fade a 10s burst >4x, stop 5bp, target 15bp": sim.Rules(signal=fade(1, 4.0), hold=60, stop_bp=5, target_bp=15,
+                                                                last_entry=375, flat_at=385),
+        "go with a 10s burst >4x, stop 5bp, target 15bp": sim.Rules(signal=lambda f: -fade(1, 4.0)(f), hold=60, stop_bp=5,
+                                                                   target_bp=15, last_entry=375, flat_at=385),
     }.items():
         r = results[name] = evaluate(days, rules)
         a, f1, f2 = r["all"], r["first_half"], r["second_half"]
