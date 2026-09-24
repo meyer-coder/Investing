@@ -177,6 +177,24 @@ fitted on:
 | One book of the noise area across the Nasdaq, S&P, Russell and Dow | Lost, because the other three lose |
 | The gap breakout entered on a pullback with a limit order, to skip the spread (`gap_retest.py`) | Lost $72-76 a day from Sep 2024: the breakouts that come back to their level fail |
 
+## Connecting a bot
+
+Both Pine Scripts send an alert with a small JSON message on every entry,
+exit and end-of-day flatten. That alert is the plug-in point.
+
+- **Futures (MNQ on a funded account).** A TradingView alert goes to a
+  webhook service that routes orders to the account's platform (for
+  example Tradovate or NinjaTrader). Check the funded account's own rules
+  on automated trading first.
+- **Stocks (QQQ, TQQQ or the gappers).** Use a broker that takes
+  TradingView alerts or webhooks.
+
+The scripts are written for Pine v6. They were not compiled on TradingView in
+this session, because the TradingView connection was down. Load each on a
+1-minute chart and fix anything the editor flags.
+
+Run it on paper, or on a funded account's evaluation, before any money.
+
 ## The paper trail
 
 `python strategies/quick/paper.py` replays both books over each finished
