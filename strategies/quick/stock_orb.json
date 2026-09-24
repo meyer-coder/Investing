@@ -1,0 +1,3890 @@
+{
+ "ORB 15m top 20 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 17.7,
+  "test_usd": 21.8,
+  "test_up": 0.48,
+  "trades_per_day": 17.21,
+  "worst_day": -1946.0,
+  "max_drawdown": -9534.0,
+  "sharpe_dev": 0.52,
+  "sharpe_test": 0.64,
+  "days_200_test": 0.283,
+  "years": {
+   "2022": 207.6,
+   "2023": 5.3,
+   "2024": -20.6,
+   "2025": 17.9,
+   "2026": 27.0
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 14.7,
+  "test_usd": 18.4,
+  "test_up": 0.482,
+  "trades_per_day": 14.18,
+  "worst_day": -1965.0,
+  "max_drawdown": -9307.0,
+  "sharpe_dev": 0.49,
+  "sharpe_test": 0.57,
+  "days_200_test": 0.274,
+  "years": {
+   "2022": 160.9,
+   "2023": 9.8,
+   "2024": -17.8,
+   "2025": 11.9,
+   "2026": 24.9
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 14.2,
+  "test_usd": 16.4,
+  "test_up": 0.47,
+  "trades_per_day": 9.17,
+  "worst_day": -1687.0,
+  "max_drawdown": -15210.0,
+  "sharpe_dev": 0.37,
+  "sharpe_test": 0.41,
+  "days_200_test": 0.327,
+  "years": {
+   "2022": 168.0,
+   "2023": 11.0,
+   "2024": -40.9,
+   "2025": 19.0,
+   "2026": 35.9
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 14.0,
+  "test_usd": 26.6,
+  "test_up": 0.467,
+  "trades_per_day": 7.65,
+  "worst_day": -1764.0,
+  "max_drawdown": -14374.0,
+  "sharpe_dev": 0.4,
+  "sharpe_test": 0.71,
+  "days_200_test": 0.319,
+  "years": {
+   "2022": 157.2,
+   "2023": 10.5,
+   "2024": -29.8,
+   "2025": 24.4,
+   "2026": 45.8
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 12.5,
+  "test_usd": 16.0,
+  "test_up": 0.459,
+  "trades_per_day": 7.06,
+  "worst_day": -1874.0,
+  "max_drawdown": -9483.0,
+  "sharpe_dev": 0.36,
+  "sharpe_test": 0.47,
+  "days_200_test": 0.287,
+  "years": {
+   "2022": 94.6,
+   "2023": 7.2,
+   "2024": -20.3,
+   "2025": 49.8,
+   "2026": -7.1
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 20.0,
+  "test_usd": 11.9,
+  "test_up": 0.431,
+  "trades_per_day": 8.41,
+  "worst_day": -1874.0,
+  "max_drawdown": -11215.0,
+  "sharpe_dev": 0.55,
+  "sharpe_test": 0.32,
+  "days_200_test": 0.303,
+  "years": {
+   "2022": 99.4,
+   "2023": 22.1,
+   "2024": -26.6,
+   "2025": 39.2,
+   "2026": 1.9
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 11.7,
+  "test_usd": 24.3,
+  "test_up": 0.453,
+  "trades_per_day": 4.16,
+  "worst_day": -1264.0,
+  "max_drawdown": -12032.0,
+  "sharpe_dev": 0.35,
+  "sharpe_test": 0.69,
+  "days_200_test": 0.297,
+  "years": {
+   "2022": 81.6,
+   "2023": 2.8,
+   "2024": -19.5,
+   "2025": 59.6,
+   "2026": 10.4
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 10.5,
+  "test_usd": 31.0,
+  "test_up": 0.459,
+  "trades_per_day": 3.56,
+  "worst_day": -1264.0,
+  "max_drawdown": -11879.0,
+  "sharpe_dev": 0.32,
+  "sharpe_test": 0.93,
+  "days_200_test": 0.293,
+  "years": {
+   "2022": 80.2,
+   "2023": 0.9,
+   "2024": -11.9,
+   "2025": 68.5,
+   "2026": 6.7
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 10.1,
+  "test_usd": 12.3,
+  "test_up": 0.329,
+  "trades_per_day": 1.93,
+  "worst_day": -1213.0,
+  "max_drawdown": -4370.0,
+  "sharpe_dev": 0.55,
+  "sharpe_test": 0.62,
+  "days_200_test": 0.161,
+  "years": {
+   "2022": 9.5,
+   "2023": 21.4,
+   "2024": -3.1,
+   "2025": 19.5,
+   "2026": 6.2
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": 9.7,
+  "test_usd": 14.3,
+  "test_up": 0.35,
+  "trades_per_day": 2.26,
+  "worst_day": -1247.0,
+  "max_drawdown": -5069.0,
+  "sharpe_dev": 0.49,
+  "sharpe_test": 0.71,
+  "days_200_test": 0.171,
+  "years": {
+   "2022": -19.0,
+   "2023": 26.0,
+   "2024": -1.8,
+   "2025": 26.1,
+   "2026": 4.6
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 11.8,
+  "test_usd": 8.8,
+  "test_up": 0.331,
+  "trades_per_day": 1.75,
+  "worst_day": -1158.0,
+  "max_drawdown": -8247.0,
+  "sharpe_dev": 0.48,
+  "sharpe_test": 0.32,
+  "days_200_test": 0.226,
+  "years": {
+   "2022": 18.3,
+   "2023": 28.0,
+   "2024": -12.1,
+   "2025": 13.9,
+   "2026": 8.4
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": 8.5,
+  "test_usd": 12.8,
+  "test_up": 0.36,
+  "trades_per_day": 2.05,
+  "worst_day": -1158.0,
+  "max_drawdown": -8466.0,
+  "sharpe_dev": 0.32,
+  "sharpe_test": 0.44,
+  "days_200_test": 0.238,
+  "years": {
+   "2022": -19.2,
+   "2023": 24.9,
+   "2024": -5.3,
+   "2025": 23.9,
+   "2026": 6.3
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 21.1,
+  "test_usd": 8.2,
+  "test_up": 0.461,
+  "trades_per_day": 13.11,
+  "worst_day": -2146.0,
+  "max_drawdown": -8141.0,
+  "sharpe_dev": 0.71,
+  "sharpe_test": 0.28,
+  "days_200_test": 0.26,
+  "years": {
+   "2022": 120.4,
+   "2023": 7.7,
+   "2024": -4.1,
+   "2025": 30.4,
+   "2026": -12.6
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 7.6,
+  "test_usd": 10.8,
+  "test_up": 0.203,
+  "trades_per_day": 1.3,
+  "worst_day": -1118.0,
+  "max_drawdown": -9524.0,
+  "sharpe_dev": 0.38,
+  "sharpe_test": 0.54,
+  "days_200_test": 0.146,
+  "years": {
+   "2022": 5.5,
+   "2023": 20.8,
+   "2024": -18.8,
+   "2025": 3.1,
+   "2026": 41.4
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": 6.2,
+  "test_usd": 15.2,
+  "test_up": 0.445,
+  "trades_per_day": 6.89,
+  "worst_day": -1064.0,
+  "max_drawdown": -9021.0,
+  "sharpe_dev": 0.32,
+  "sharpe_test": 0.75,
+  "days_200_test": 0.167,
+  "years": {
+   "2022": 10.2,
+   "2023": 4.5,
+   "2024": 8.9,
+   "2025": 22.4,
+   "2026": 6.6
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": 5.8,
+  "test_usd": 5.8,
+  "test_up": 0.327,
+  "trades_per_day": 1.96,
+  "worst_day": -712.0,
+  "max_drawdown": -2567.0,
+  "sharpe_dev": 0.59,
+  "sharpe_test": 0.55,
+  "days_200_test": 0.073,
+  "years": {
+   "2022": 7.0,
+   "2023": 10.5,
+   "2024": -0.5,
+   "2025": 10.4,
+   "2026": 1.3
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": 5.3,
+  "test_usd": 6.0,
+  "test_up": 0.346,
+  "trades_per_day": 2.31,
+  "worst_day": -644.0,
+  "max_drawdown": -2773.0,
+  "sharpe_dev": 0.5,
+  "sharpe_test": 0.57,
+  "days_200_test": 0.075,
+  "years": {
+   "2022": -8.7,
+   "2023": 12.6,
+   "2024": -0.0,
+   "2025": 12.2,
+   "2026": 0.3
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": 5.1,
+  "test_usd": 13.6,
+  "test_up": 0.461,
+  "trades_per_day": 5.89,
+  "worst_day": -1131.0,
+  "max_drawdown": -8565.0,
+  "sharpe_dev": 0.28,
+  "sharpe_test": 0.7,
+  "days_200_test": 0.163,
+  "years": {
+   "2022": 38.5,
+   "2023": -5.9,
+   "2024": 10.0,
+   "2025": 10.9,
+   "2026": 16.9
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 3.2,
+  "test_usd": 3.3,
+  "test_up": 0.205,
+  "trades_per_day": 1.43,
+  "worst_day": -932.0,
+  "max_drawdown": -5373.0,
+  "sharpe_dev": 0.28,
+  "sharpe_test": 0.31,
+  "days_200_test": 0.085,
+  "years": {
+   "2022": -4.8,
+   "2023": 11.7,
+   "2024": -9.7,
+   "2025": -3.1,
+   "2026": 21.2
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": 2.2,
+  "test_usd": 10.8,
+  "test_up": 0.222,
+  "trades_per_day": 1.48,
+  "worst_day": -1118.0,
+  "max_drawdown": -10053.0,
+  "sharpe_dev": 0.11,
+  "sharpe_test": 0.52,
+  "days_200_test": 0.144,
+  "years": {
+   "2022": 14.9,
+   "2023": 16.1,
+   "2024": -21.1,
+   "2025": -2.1,
+   "2026": 40.1
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": 1.9,
+  "test_usd": 23.2,
+  "test_up": 0.453,
+  "trades_per_day": 2.88,
+  "worst_day": -1264.0,
+  "max_drawdown": -9726.0,
+  "sharpe_dev": 0.07,
+  "sharpe_test": 0.77,
+  "days_200_test": 0.276,
+  "years": {
+   "2022": 47.9,
+   "2023": 1.3,
+   "2024": -17.1,
+   "2025": 50.5,
+   "2026": 5.0
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 1.4,
+  "test_usd": 13.5,
+  "test_up": 0.451,
+  "trades_per_day": 18.17,
+  "worst_day": -1689.0,
+  "max_drawdown": -14423.0,
+  "sharpe_dev": 0.04,
+  "sharpe_test": 0.4,
+  "days_200_test": 0.281,
+  "years": {
+   "2022": 58.3,
+   "2023": -2.4,
+   "2024": 5.2,
+   "2025": 5.7,
+   "2026": 8.2
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": 1.3,
+  "test_usd": 3.4,
+  "test_up": 0.22,
+  "trades_per_day": 1.63,
+  "worst_day": -932.0,
+  "max_drawdown": -6429.0,
+  "sharpe_dev": 0.11,
+  "sharpe_test": 0.31,
+  "days_200_test": 0.087,
+  "years": {
+   "2022": 0.3,
+   "2023": 11.3,
+   "2024": -11.2,
+   "2025": -5.2,
+   "2026": 19.8
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": 0.5,
+  "test_usd": 17.5,
+  "test_up": 0.441,
+  "trades_per_day": 3.33,
+  "worst_day": -1264.0,
+  "max_drawdown": -9687.0,
+  "sharpe_dev": 0.02,
+  "sharpe_test": 0.56,
+  "days_200_test": 0.281,
+  "years": {
+   "2022": 51.5,
+   "2023": -0.7,
+   "2024": -22.5,
+   "2025": 41.4,
+   "2026": 6.4
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 0.4,
+  "test_usd": 1.4,
+  "test_up": 0.203,
+  "trades_per_day": 1.47,
+  "worst_day": -470.0,
+  "max_drawdown": -3251.0,
+  "sharpe_dev": 0.07,
+  "sharpe_test": 0.25,
+  "days_200_test": 0.041,
+  "years": {
+   "2022": -2.1,
+   "2023": 4.6,
+   "2024": -6.2,
+   "2025": -2.5,
+   "2026": 11.4
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -0.8,
+  "test_usd": 1.2,
+  "test_up": 0.219,
+  "trades_per_day": 1.69,
+  "worst_day": -511.0,
+  "max_drawdown": -3837.0,
+  "sharpe_dev": -0.13,
+  "sharpe_test": 0.21,
+  "days_200_test": 0.045,
+  "years": {
+   "2022": 0.4,
+   "2023": 4.0,
+   "2024": -6.9,
+   "2025": -3.7,
+   "2026": 10.2
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -1.7,
+  "test_usd": 10.0,
+  "test_up": 0.305,
+  "trades_per_day": 1.47,
+  "worst_day": -796.0,
+  "max_drawdown": -2706.0,
+  "sharpe_dev": -0.22,
+  "sharpe_test": 1.19,
+  "days_200_test": 0.065,
+  "years": {
+   "2022": -7.3,
+   "2023": -1.4,
+   "2024": -2.9,
+   "2025": 13.4,
+   "2026": 14.1
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -2.0,
+  "test_usd": 30.3,
+  "test_up": 0.445,
+  "trades_per_day": 6.14,
+  "worst_day": -1473.0,
+  "max_drawdown": -15213.0,
+  "sharpe_dev": -0.06,
+  "sharpe_test": 0.92,
+  "days_200_test": 0.285,
+  "years": {
+   "2022": -12.8,
+   "2023": 0.8,
+   "2024": 6.4,
+   "2025": 45.1,
+   "2026": 13.4
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -2.7,
+  "test_usd": 26.2,
+  "test_up": 0.309,
+  "trades_per_day": 1.3,
+  "worst_day": -1264.0,
+  "max_drawdown": -7148.0,
+  "sharpe_dev": -0.14,
+  "sharpe_test": 1.21,
+  "days_200_test": 0.183,
+  "years": {
+   "2022": 8.2,
+   "2023": -3.7,
+   "2024": -6.7,
+   "2025": 27.6,
+   "2026": 39.9
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -3.3,
+  "test_usd": 9.7,
+  "test_up": 0.311,
+  "trades_per_day": 1.69,
+  "worst_day": -796.0,
+  "max_drawdown": -2497.0,
+  "sharpe_dev": -0.42,
+  "sharpe_test": 1.13,
+  "days_200_test": 0.075,
+  "years": {
+   "2022": -4.9,
+   "2023": -2.9,
+   "2024": -4.2,
+   "2025": 13.2,
+   "2026": 12.2
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": -3.8,
+  "test_usd": 24.8,
+  "test_up": 0.478,
+  "trades_per_day": 4.85,
+  "worst_day": -1260.0,
+  "max_drawdown": -17315.0,
+  "sharpe_dev": -0.1,
+  "sharpe_test": 0.62,
+  "days_200_test": 0.343,
+  "years": {
+   "2022": -30.6,
+   "2023": -8.1,
+   "2024": 18.2,
+   "2025": 45.1,
+   "2026": -4.0
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -3.9,
+  "test_usd": -0.4,
+  "test_up": 0.431,
+  "trades_per_day": 14.18,
+  "worst_day": -1017.0,
+  "max_drawdown": -10547.0,
+  "sharpe_dev": -0.18,
+  "sharpe_test": -0.02,
+  "days_200_test": 0.177,
+  "years": {
+   "2022": 81.6,
+   "2023": -13.0,
+   "2024": -10.6,
+   "2025": -6.9,
+   "2026": -0.2
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 8.4,
+  "test_usd": -4.1,
+  "test_up": 0.392,
+  "trades_per_day": 3.56,
+  "worst_day": -1118.0,
+  "max_drawdown": -15198.0,
+  "sharpe_dev": 0.26,
+  "sharpe_test": -0.13,
+  "days_200_test": 0.254,
+  "years": {
+   "2022": 69.0,
+   "2023": 1.6,
+   "2024": -25.1,
+   "2025": 27.4,
+   "2026": -20.2
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -4.7,
+  "test_usd": 15.8,
+  "test_up": 0.309,
+  "trades_per_day": 1.43,
+  "worst_day": -1426.0,
+  "max_drawdown": -4953.0,
+  "sharpe_dev": -0.35,
+  "sharpe_test": 1.08,
+  "days_200_test": 0.122,
+  "years": {
+   "2022": -9.9,
+   "2023": -4.0,
+   "2024": -7.8,
+   "2025": 18.6,
+   "2026": 26.4
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": 25.2,
+  "test_usd": -4.7,
+  "test_up": 0.437,
+  "trades_per_day": 15.83,
+  "worst_day": -2146.0,
+  "max_drawdown": -9883.0,
+  "sharpe_dev": 0.79,
+  "sharpe_test": -0.15,
+  "days_200_test": 0.262,
+  "years": {
+   "2022": 116.4,
+   "2023": 10.9,
+   "2024": -3.8,
+   "2025": 12.7,
+   "2026": -16.9
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -4.8,
+  "test_usd": -1.0,
+  "test_up": 0.134,
+  "trades_per_day": 1.47,
+  "worst_day": -470.0,
+  "max_drawdown": -4226.0,
+  "sharpe_dev": -1.36,
+  "sharpe_test": -0.24,
+  "days_200_test": 0.02,
+  "years": {
+   "2022": -2.9,
+   "2023": -5.5,
+   "2024": -5.1,
+   "2025": -1.6,
+   "2026": 2.3
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": 6.8,
+  "test_usd": -5.0,
+  "test_up": 0.356,
+  "trades_per_day": 2.88,
+  "worst_day": -1118.0,
+  "max_drawdown": -13289.0,
+  "sharpe_dev": 0.24,
+  "sharpe_test": -0.17,
+  "days_200_test": 0.222,
+  "years": {
+   "2022": 20.4,
+   "2023": 16.1,
+   "2024": -25.7,
+   "2025": 8.7,
+   "2026": -2.3
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -6.0,
+  "test_usd": 23.1,
+  "test_up": 0.455,
+  "trades_per_day": 4.16,
+  "worst_day": -1260.0,
+  "max_drawdown": -18714.0,
+  "sharpe_dev": -0.16,
+  "sharpe_test": 0.6,
+  "days_200_test": 0.313,
+  "years": {
+   "2022": -5.2,
+   "2023": -15.3,
+   "2024": 10.8,
+   "2025": 46.2,
+   "2026": -5.7
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -6.0,
+  "test_usd": 15.0,
+  "test_up": 0.427,
+  "trades_per_day": 4.71,
+  "worst_day": -1698.0,
+  "max_drawdown": -6629.0,
+  "sharpe_dev": -0.38,
+  "sharpe_test": 0.84,
+  "days_200_test": 0.138,
+  "years": {
+   "2022": 5.4,
+   "2023": -4.1,
+   "2024": -14.4,
+   "2025": 36.5,
+   "2026": -0.3
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -6.6,
+  "test_usd": -1.8,
+  "test_up": 0.148,
+  "trades_per_day": 1.69,
+  "worst_day": -488.0,
+  "max_drawdown": -5258.0,
+  "sharpe_dev": -1.83,
+  "sharpe_test": -0.42,
+  "days_200_test": 0.022,
+  "years": {
+   "2022": -3.3,
+   "2023": -6.8,
+   "2024": -6.2,
+   "2025": -3.2,
+   "2026": 0.6
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -6.7,
+  "test_usd": 2.8,
+  "test_up": 0.321,
+  "trades_per_day": 1.65,
+  "worst_day": -838.0,
+  "max_drawdown": -5112.0,
+  "sharpe_dev": -0.8,
+  "sharpe_test": 0.31,
+  "days_200_test": 0.067,
+  "years": {
+   "2022": -3.2,
+   "2023": -12.7,
+   "2024": -1.4,
+   "2025": 12.4,
+   "2026": -6.5
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -6.8,
+  "test_usd": 13.3,
+  "test_up": 0.417,
+  "trades_per_day": 4.8,
+  "worst_day": -1874.0,
+  "max_drawdown": -12587.0,
+  "sharpe_dev": -0.25,
+  "sharpe_test": 0.48,
+  "days_200_test": 0.244,
+  "years": {
+   "2022": 56.7,
+   "2023": -11.2,
+   "2024": -31.4,
+   "2025": 41.9,
+   "2026": -0.8
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -6.9,
+  "test_usd": 16.7,
+  "test_up": 0.315,
+  "trades_per_day": 1.63,
+  "worst_day": -1426.0,
+  "max_drawdown": -4888.0,
+  "sharpe_dev": -0.49,
+  "sharpe_test": 1.09,
+  "days_200_test": 0.138,
+  "years": {
+   "2022": -6.6,
+   "2023": -4.6,
+   "2024": -10.5,
+   "2025": 20.1,
+   "2026": 24.3
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -6.9,
+  "test_usd": 8.0,
+  "test_up": 0.417,
+  "trades_per_day": 5.46,
+  "worst_day": -1698.0,
+  "max_drawdown": -7477.0,
+  "sharpe_dev": -0.41,
+  "sharpe_test": 0.45,
+  "days_200_test": 0.14,
+  "years": {
+   "2022": 11.6,
+   "2023": -4.0,
+   "2024": -19.0,
+   "2025": 26.7,
+   "2026": -5.0
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -6.9,
+  "test_usd": -4.6,
+  "test_up": 0.061,
+  "trades_per_day": 1.47,
+  "worst_day": -245.0,
+  "max_drawdown": -5804.0,
+  "sharpe_dev": -4.14,
+  "sharpe_test": -2.05,
+  "days_200_test": 0.006,
+  "years": {
+   "2022": -6.4,
+   "2023": -7.5,
+   "2024": -6.1,
+   "2025": -2.6,
+   "2026": -6.6
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -7.0,
+  "test_usd": 28.9,
+  "test_up": 0.457,
+  "trades_per_day": 5.25,
+  "worst_day": -1473.0,
+  "max_drawdown": -15119.0,
+  "sharpe_dev": -0.23,
+  "sharpe_test": 0.93,
+  "days_200_test": 0.264,
+  "years": {
+   "2022": 10.5,
+   "2023": -13.3,
+   "2024": 6.7,
+   "2025": 28.9,
+   "2026": 28.3
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -7.0,
+  "test_usd": 18.5,
+  "test_up": 0.435,
+  "trades_per_day": 4.15,
+  "worst_day": -1874.0,
+  "max_drawdown": -11092.0,
+  "sharpe_dev": -0.27,
+  "sharpe_test": 0.69,
+  "days_200_test": 0.238,
+  "years": {
+   "2022": 43.2,
+   "2023": -13.4,
+   "2024": -22.9,
+   "2025": 46.4,
+   "2026": 3.6
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -7.3,
+  "test_usd": 20.6,
+  "test_up": 0.441,
+  "trades_per_day": 3.55,
+  "worst_day": -1260.0,
+  "max_drawdown": -16412.0,
+  "sharpe_dev": -0.21,
+  "sharpe_test": 0.58,
+  "days_200_test": 0.317,
+  "years": {
+   "2022": 26.5,
+   "2023": -18.7,
+   "2024": 7.3,
+   "2025": 28.5,
+   "2026": 5.4
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -7.3,
+  "test_usd": 15.9,
+  "test_up": 0.449,
+  "trades_per_day": 6.11,
+  "worst_day": -1232.0,
+  "max_drawdown": -8822.0,
+  "sharpe_dev": -0.44,
+  "sharpe_test": 0.7,
+  "days_200_test": 0.157,
+  "years": {
+   "2022": 50.3,
+   "2023": -11.6,
+   "2024": -20.5,
+   "2025": 31.7,
+   "2026": 7.1
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -7.3,
+  "test_usd": -2.0,
+  "test_up": 0.217,
+  "trades_per_day": 1.65,
+  "worst_day": -380.0,
+  "max_drawdown": -4690.0,
+  "sharpe_dev": -1.34,
+  "sharpe_test": -0.34,
+  "days_200_test": 0.035,
+  "years": {
+   "2022": -7.9,
+   "2023": -7.4,
+   "2024": -3.9,
+   "2025": 5.2,
+   "2026": -13.9
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -7.4,
+  "test_usd": 18.2,
+  "test_up": 0.445,
+  "trades_per_day": 5.18,
+  "worst_day": -1150.0,
+  "max_drawdown": -7465.0,
+  "sharpe_dev": -0.49,
+  "sharpe_test": 0.83,
+  "days_200_test": 0.152,
+  "years": {
+   "2022": 42.1,
+   "2023": -13.7,
+   "2024": -12.2,
+   "2025": 27.5,
+   "2026": 13.9
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": -7.5,
+  "test_usd": 33.0,
+  "test_up": 0.463,
+  "trades_per_day": 9.7,
+  "worst_day": -2120.0,
+  "max_drawdown": -20186.0,
+  "sharpe_dev": -0.18,
+  "sharpe_test": 0.82,
+  "days_200_test": 0.341,
+  "years": {
+   "2022": -28.0,
+   "2023": 6.1,
+   "2024": -1.1,
+   "2025": 37.7,
+   "2026": 25.2
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -3.9,
+  "test_usd": -7.5,
+  "test_up": 0.217,
+  "trades_per_day": 1.96,
+  "worst_day": -468.0,
+  "max_drawdown": -6598.0,
+  "sharpe_dev": -0.56,
+  "sharpe_test": -1.21,
+  "days_200_test": 0.033,
+  "years": {
+   "2022": 7.0,
+   "2023": -6.3,
+   "2024": -5.3,
+   "2025": -5.2,
+   "2026": -11.1
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -0.0,
+  "test_usd": -7.6,
+  "test_up": 0.358,
+  "trades_per_day": 4.71,
+  "worst_day": -796.0,
+  "max_drawdown": -6122.0,
+  "sharpe_dev": -0.0,
+  "sharpe_test": -0.76,
+  "days_200_test": 0.087,
+  "years": {
+   "2022": 19.2,
+   "2023": 1.4,
+   "2024": -12.3,
+   "2025": -4.7,
+   "2026": -7.1
+  }
+ },
+ "ORB 30m top 20 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -7.7,
+  "test_usd": -5.2,
+  "test_up": 0.073,
+  "trades_per_day": 1.69,
+  "worst_day": -255.0,
+  "max_drawdown": -6505.0,
+  "sharpe_dev": -4.28,
+  "sharpe_test": -2.26,
+  "days_200_test": 0.006,
+  "years": {
+   "2022": -7.6,
+   "2023": -8.2,
+   "2024": -6.5,
+   "2025": -3.2,
+   "2026": -7.6
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -8.0,
+  "test_usd": 24.2,
+  "test_up": 0.319,
+  "trades_per_day": 1.48,
+  "worst_day": -1264.0,
+  "max_drawdown": -7292.0,
+  "sharpe_dev": -0.4,
+  "sharpe_test": 1.09,
+  "days_200_test": 0.195,
+  "years": {
+   "2022": 11.9,
+   "2023": -9.2,
+   "2024": -9.4,
+   "2025": 25.7,
+   "2026": 32.7
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -8.2,
+  "test_usd": 20.0,
+  "test_up": 0.441,
+  "trades_per_day": 15.44,
+  "worst_day": -1800.0,
+  "max_drawdown": -13578.0,
+  "sharpe_dev": -0.26,
+  "sharpe_test": 0.59,
+  "days_200_test": 0.281,
+  "years": {
+   "2022": 76.2,
+   "2023": -26.4,
+   "2024": 8.5,
+   "2025": 0.8,
+   "2026": 29.2
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -8.3,
+  "test_usd": -0.8,
+  "test_up": 0.226,
+  "trades_per_day": 1.92,
+  "worst_day": -427.0,
+  "max_drawdown": -4561.0,
+  "sharpe_dev": -1.41,
+  "sharpe_test": -0.11,
+  "days_200_test": 0.037,
+  "years": {
+   "2022": -10.6,
+   "2023": -8.0,
+   "2024": -3.7,
+   "2025": 8.2,
+   "2026": -15.4
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -8.3,
+  "test_usd": -0.6,
+  "test_up": 0.132,
+  "trades_per_day": 1.43,
+  "worst_day": -494.0,
+  "max_drawdown": -6991.0,
+  "sharpe_dev": -1.22,
+  "sharpe_test": -0.08,
+  "days_200_test": 0.047,
+  "years": {
+   "2022": -4.1,
+   "2023": -9.6,
+   "2024": -9.3,
+   "2025": -0.1,
+   "2026": 3.8
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -6.7,
+  "test_usd": -9.0,
+  "test_up": 0.238,
+  "trades_per_day": 2.31,
+  "worst_day": -468.0,
+  "max_drawdown": -8508.0,
+  "sharpe_dev": -0.87,
+  "sharpe_test": -1.39,
+  "days_200_test": 0.033,
+  "years": {
+   "2022": 1.6,
+   "2023": -5.7,
+   "2024": -11.0,
+   "2025": -7.0,
+   "2026": -11.5
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -9.0,
+  "test_usd": -0.4,
+  "test_up": 0.427,
+  "trades_per_day": 17.21,
+  "worst_day": -963.0,
+  "max_drawdown": -13411.0,
+  "sharpe_dev": -0.35,
+  "sharpe_test": -0.02,
+  "days_200_test": 0.197,
+  "years": {
+   "2022": 92.7,
+   "2023": -20.4,
+   "2024": -19.8,
+   "2025": 0.4,
+   "2026": -5.5
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": 6.7,
+  "test_usd": -9.2,
+  "test_up": 0.372,
+  "trades_per_day": 3.33,
+  "worst_day": -1118.0,
+  "max_drawdown": -16297.0,
+  "sharpe_dev": 0.23,
+  "sharpe_test": -0.31,
+  "days_200_test": 0.23,
+  "years": {
+   "2022": 29.5,
+   "2023": 18.5,
+   "2024": -28.7,
+   "2025": -3.6,
+   "2026": -0.5
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -9.3,
+  "test_usd": 3.4,
+  "test_up": 0.327,
+  "trades_per_day": 1.92,
+  "worst_day": -978.0,
+  "max_drawdown": -5357.0,
+  "sharpe_dev": -1.03,
+  "sharpe_test": 0.33,
+  "days_200_test": 0.069,
+  "years": {
+   "2022": -8.8,
+   "2023": -14.1,
+   "2024": -3.4,
+   "2025": 15.5,
+   "2026": -9.0
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -7.5,
+  "test_usd": -9.5,
+  "test_up": 0.043,
+  "trades_per_day": 1.96,
+  "worst_day": -179.0,
+  "max_drawdown": -8908.0,
+  "sharpe_dev": -3.01,
+  "sharpe_test": -4.17,
+  "days_200_test": 0.008,
+  "years": {
+   "2022": -2.3,
+   "2023": -8.4,
+   "2024": -6.7,
+   "2025": -10.4,
+   "2026": -10.9
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": 13.3,
+  "test_usd": -9.5,
+  "test_up": 0.413,
+  "trades_per_day": 4.16,
+  "worst_day": -1118.0,
+  "max_drawdown": -17505.0,
+  "sharpe_dev": 0.39,
+  "sharpe_test": -0.29,
+  "days_200_test": 0.26,
+  "years": {
+   "2022": 86.3,
+   "2023": 6.8,
+   "2024": -26.4,
+   "2025": 16.4,
+   "2026": -19.1
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -9.6,
+  "test_usd": -7.4,
+  "test_up": 0.057,
+  "trades_per_day": 1.65,
+  "worst_day": -227.0,
+  "max_drawdown": -8362.0,
+  "sharpe_dev": -6.75,
+  "sharpe_test": -4.27,
+  "days_200_test": 0.002,
+  "years": {
+   "2022": -5.9,
+   "2023": -10.9,
+   "2024": -7.5,
+   "2025": -7.3,
+   "2026": -8.9
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -10.1,
+  "test_usd": 11.5,
+  "test_up": 0.49,
+  "trades_per_day": 3.83,
+  "worst_day": -1259.0,
+  "max_drawdown": -14063.0,
+  "sharpe_dev": -0.31,
+  "sharpe_test": 0.33,
+  "days_200_test": 0.321,
+  "years": {
+   "2022": 18.9,
+   "2023": -18.7,
+   "2024": -8.5,
+   "2025": 19.1,
+   "2026": 9.7
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -10.1,
+  "test_usd": 9.5,
+  "test_up": 0.321,
+  "trades_per_day": 1.6,
+  "worst_day": -1201.0,
+  "max_drawdown": -8075.0,
+  "sharpe_dev": -0.69,
+  "sharpe_test": 0.54,
+  "days_200_test": 0.128,
+  "years": {
+   "2022": -6.7,
+   "2023": -16.8,
+   "2024": -4.6,
+   "2025": 27.7,
+   "2026": -6.1
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -10.1,
+  "test_usd": -6.2,
+  "test_up": 0.118,
+  "trades_per_day": 1.65,
+  "worst_day": -375.0,
+  "max_drawdown": -8069.0,
+  "sharpe_dev": -3.6,
+  "sharpe_test": -1.62,
+  "days_200_test": 0.014,
+  "years": {
+   "2022": -8.1,
+   "2023": -9.6,
+   "2024": -8.9,
+   "2025": -2.3,
+   "2026": -12.6
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -10.5,
+  "test_usd": -7.6,
+  "test_up": 0.069,
+  "trades_per_day": 1.92,
+  "worst_day": -227.0,
+  "max_drawdown": -8943.0,
+  "sharpe_dev": -6.42,
+  "sharpe_test": -4.06,
+  "days_200_test": 0.0,
+  "years": {
+   "2022": -7.9,
+   "2023": -11.1,
+   "2024": -8.5,
+   "2025": -7.0,
+   "2026": -10.2
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": 1.2,
+  "test_usd": -10.5,
+  "test_up": 0.36,
+  "trades_per_day": 4.15,
+  "worst_day": -1067.0,
+  "max_drawdown": -9307.0,
+  "sharpe_dev": 0.06,
+  "sharpe_test": -0.58,
+  "days_200_test": 0.167,
+  "years": {
+   "2022": 36.7,
+   "2023": -2.3,
+   "2024": -15.6,
+   "2025": -3.8,
+   "2026": -10.6
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -9.3,
+  "test_usd": -10.7,
+  "test_up": 0.057,
+  "trades_per_day": 2.31,
+  "worst_day": -198.0,
+  "max_drawdown": -10347.0,
+  "sharpe_dev": -3.68,
+  "sharpe_test": -4.52,
+  "days_200_test": 0.006,
+  "years": {
+   "2022": -4.4,
+   "2023": -9.8,
+   "2024": -8.2,
+   "2025": -12.0,
+   "2026": -12.0
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -10.8,
+  "test_usd": 21.0,
+  "test_up": 0.445,
+  "trades_per_day": 4.56,
+  "worst_day": -1283.0,
+  "max_drawdown": -13685.0,
+  "sharpe_dev": -0.43,
+  "sharpe_test": 0.68,
+  "days_200_test": 0.252,
+  "years": {
+   "2022": 70.4,
+   "2023": -19.9,
+   "2024": -27.0,
+   "2025": 35.4,
+   "2026": 19.9
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -11.0,
+  "test_usd": 0.4,
+  "test_up": 0.126,
+  "trades_per_day": 1.3,
+  "worst_day": -595.0,
+  "max_drawdown": -10437.0,
+  "sharpe_dev": -0.85,
+  "sharpe_test": 0.02,
+  "days_200_test": 0.087,
+  "years": {
+   "2022": -1.3,
+   "2023": -13.7,
+   "2024": -15.1,
+   "2025": 5.4,
+   "2026": 4.2
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -11.1,
+  "test_usd": 7.2,
+  "test_up": 0.445,
+  "trades_per_day": 5.39,
+  "worst_day": -1458.0,
+  "max_drawdown": -16145.0,
+  "sharpe_dev": -0.4,
+  "sharpe_test": 0.22,
+  "days_200_test": 0.256,
+  "years": {
+   "2022": 83.2,
+   "2023": -16.8,
+   "2024": -42.6,
+   "2025": 29.5,
+   "2026": 0.3
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -11.2,
+  "test_usd": 10.5,
+  "test_up": 0.325,
+  "trades_per_day": 1.47,
+  "worst_day": -1259.0,
+  "max_drawdown": -10965.0,
+  "sharpe_dev": -0.55,
+  "sharpe_test": 0.43,
+  "days_200_test": 0.181,
+  "years": {
+   "2022": -10.7,
+   "2023": -17.0,
+   "2024": -4.4,
+   "2025": 26.9,
+   "2026": -3.8
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -11.4,
+  "test_usd": -9.8,
+  "test_up": 0.348,
+  "trades_per_day": 5.89,
+  "worst_day": -451.0,
+  "max_drawdown": -12832.0,
+  "sharpe_dev": -0.93,
+  "sharpe_test": -0.83,
+  "days_200_test": 0.118,
+  "years": {
+   "2022": 8.6,
+   "2023": -24.8,
+   "2024": -0.4,
+   "2025": -12.8,
+   "2026": -9.0
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -11.7,
+  "test_usd": -1.9,
+  "test_up": 0.146,
+  "trades_per_day": 1.63,
+  "worst_day": -493.0,
+  "max_drawdown": -8910.0,
+  "sharpe_dev": -1.69,
+  "sharpe_test": -0.25,
+  "days_200_test": 0.049,
+  "years": {
+   "2022": -5.0,
+   "2023": -11.7,
+   "2024": -11.4,
+   "2025": -3.0,
+   "2026": 1.0
+  }
+ },
+ "ORB 15m top 20 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -11.8,
+  "test_usd": -6.7,
+  "test_up": 0.128,
+  "trades_per_day": 1.92,
+  "worst_day": -374.0,
+  "max_drawdown": -9153.0,
+  "sharpe_dev": -3.95,
+  "sharpe_test": -1.57,
+  "days_200_test": 0.012,
+  "years": {
+   "2022": -11.9,
+   "2023": -10.5,
+   "2024": -9.5,
+   "2025": -3.0,
+   "2026": -14.3
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -8.5,
+  "test_usd": -11.9,
+  "test_up": 0.104,
+  "trades_per_day": 1.96,
+  "worst_day": -238.0,
+  "max_drawdown": -10971.0,
+  "sharpe_dev": -1.75,
+  "sharpe_test": -3.45,
+  "days_200_test": 0.014,
+  "years": {
+   "2022": 3.3,
+   "2023": -9.9,
+   "2024": -10.3,
+   "2025": -12.6,
+   "2026": -12.5
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": 0.3,
+  "test_usd": -12.3,
+  "test_up": 0.354,
+  "trades_per_day": 5.46,
+  "worst_day": -796.0,
+  "max_drawdown": -9085.0,
+  "sharpe_dev": 0.02,
+  "sharpe_test": -1.17,
+  "days_200_test": 0.079,
+  "years": {
+   "2022": 23.2,
+   "2023": 3.3,
+   "2024": -14.6,
+   "2025": -12.2,
+   "2026": -10.5
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -12.5,
+  "test_usd": -7.4,
+  "test_up": 0.421,
+  "trades_per_day": 7.65,
+  "worst_day": -1166.0,
+  "max_drawdown": -19356.0,
+  "sharpe_dev": -0.47,
+  "sharpe_test": -0.28,
+  "days_200_test": 0.23,
+  "years": {
+   "2022": 106.8,
+   "2023": -23.8,
+   "2024": -29.7,
+   "2025": 1.1,
+   "2026": -22.3
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.5 ATR either side": {
+  "dev_usd": -12.7,
+  "test_usd": -0.7,
+  "test_up": 0.465,
+  "trades_per_day": 4.54,
+  "worst_day": -1259.0,
+  "max_drawdown": -18681.0,
+  "sharpe_dev": -0.37,
+  "sharpe_test": -0.02,
+  "days_200_test": 0.317,
+  "years": {
+   "2022": 24.1,
+   "2023": -23.9,
+   "2024": -21.7,
+   "2025": 21.7,
+   "2026": -12.0
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -12.7,
+  "test_usd": -8.1,
+  "test_up": 0.063,
+  "trades_per_day": 1.43,
+  "worst_day": -279.0,
+  "max_drawdown": -10569.0,
+  "sharpe_dev": -4.24,
+  "sharpe_test": -1.92,
+  "days_200_test": 0.016,
+  "years": {
+   "2022": -11.9,
+   "2023": -14.2,
+   "2024": -11.0,
+   "2025": -3.5,
+   "2026": -12.8
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -6.9,
+  "test_usd": -13.0,
+  "test_up": 0.276,
+  "trades_per_day": 4.71,
+  "worst_day": -470.0,
+  "max_drawdown": -10791.0,
+  "sharpe_dev": -0.93,
+  "sharpe_test": -1.94,
+  "days_200_test": 0.053,
+  "years": {
+   "2022": 6.0,
+   "2023": -6.4,
+   "2024": -14.4,
+   "2025": -4.7,
+   "2026": -22.5
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -13.2,
+  "test_usd": 11.7,
+  "test_up": 0.459,
+  "trades_per_day": 4.12,
+  "worst_day": -1260.0,
+  "max_drawdown": -16846.0,
+  "sharpe_dev": -0.36,
+  "sharpe_test": 0.32,
+  "days_200_test": 0.335,
+  "years": {
+   "2022": -22.8,
+   "2023": -18.6,
+   "2024": 9.0,
+   "2025": 17.9,
+   "2026": -4.8
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -13.6,
+  "test_usd": -1.9,
+  "test_up": 0.219,
+  "trades_per_day": 1.6,
+  "worst_day": -600.0,
+  "max_drawdown": -7797.0,
+  "sharpe_dev": -1.39,
+  "sharpe_test": -0.16,
+  "days_200_test": 0.091,
+  "years": {
+   "2022": -15.4,
+   "2023": -11.4,
+   "2024": -9.3,
+   "2025": 13.9,
+   "2026": -26.4
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -13.8,
+  "test_usd": 7.1,
+  "test_up": 0.327,
+  "trades_per_day": 1.86,
+  "worst_day": -1338.0,
+  "max_drawdown": -8620.0,
+  "sharpe_dev": -0.88,
+  "sharpe_test": 0.39,
+  "days_200_test": 0.132,
+  "years": {
+   "2022": -10.9,
+   "2023": -20.2,
+   "2024": -7.3,
+   "2025": 26.5,
+   "2026": -11.0
+  }
+ },
+ "ORB 5m top 20 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -11.5,
+  "test_usd": -14.2,
+  "test_up": 0.122,
+  "trades_per_day": 2.31,
+  "worst_day": -245.0,
+  "max_drawdown": -13431.0,
+  "sharpe_dev": -2.31,
+  "sharpe_test": -3.89,
+  "days_200_test": 0.016,
+  "years": {
+   "2022": 0.7,
+   "2023": -12.0,
+   "2024": -13.5,
+   "2025": -15.4,
+   "2026": -14.7
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -14.0,
+  "test_usd": -14.2,
+  "test_up": 0.27,
+  "trades_per_day": 2.88,
+  "worst_day": -595.0,
+  "max_drawdown": -15688.0,
+  "sharpe_dev": -0.76,
+  "sharpe_test": -0.71,
+  "days_200_test": 0.152,
+  "years": {
+   "2022": -22.9,
+   "2023": -12.6,
+   "2024": -17.8,
+   "2025": 11.3,
+   "2026": -42.3
+  }
+ },
+ "ORB 30m top 10 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -14.2,
+  "test_usd": -9.2,
+  "test_up": 0.073,
+  "trades_per_day": 1.63,
+  "worst_day": -304.0,
+  "max_drawdown": -11835.0,
+  "sharpe_dev": -4.35,
+  "sharpe_test": -2.11,
+  "days_200_test": 0.018,
+  "years": {
+   "2022": -14.2,
+   "2023": -15.3,
+   "2024": -12.0,
+   "2025": -4.7,
+   "2026": -14.5
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -14.6,
+  "test_usd": -0.1,
+  "test_up": 0.356,
+  "trades_per_day": 5.18,
+  "worst_day": -598.0,
+  "max_drawdown": -8813.0,
+  "sharpe_dev": -1.48,
+  "sharpe_test": -0.01,
+  "days_200_test": 0.096,
+  "years": {
+   "2022": 15.1,
+   "2023": -18.9,
+   "2024": -8.9,
+   "2025": 4.0,
+   "2026": -12.4
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": 2.1,
+  "test_usd": -14.7,
+  "test_up": 0.358,
+  "trades_per_day": 4.8,
+  "worst_day": -1067.0,
+  "max_drawdown": -11340.0,
+  "sharpe_dev": 0.09,
+  "sharpe_test": -0.78,
+  "days_200_test": 0.183,
+  "years": {
+   "2022": 49.5,
+   "2023": 0.5,
+   "2024": -20.2,
+   "2025": -8.7,
+   "2026": -15.7
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -15.0,
+  "test_usd": -2.1,
+  "test_up": 0.228,
+  "trades_per_day": 1.86,
+  "worst_day": -606.0,
+  "max_drawdown": -8679.0,
+  "sharpe_dev": -1.41,
+  "sharpe_test": -0.17,
+  "days_200_test": 0.093,
+  "years": {
+   "2022": -18.3,
+   "2023": -12.6,
+   "2024": -8.8,
+   "2025": 14.3,
+   "2026": -29.4
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -12.5,
+  "test_usd": -15.1,
+  "test_up": 0.354,
+  "trades_per_day": 6.89,
+  "worst_day": -474.0,
+  "max_drawdown": -16176.0,
+  "sharpe_dev": -0.93,
+  "sharpe_test": -1.21,
+  "days_200_test": 0.136,
+  "years": {
+   "2022": 3.4,
+   "2023": -20.8,
+   "2024": -8.8,
+   "2025": -12.8,
+   "2026": -18.9
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -10.0,
+  "test_usd": -15.7,
+  "test_up": 0.283,
+  "trades_per_day": 4.15,
+  "worst_day": -545.0,
+  "max_drawdown": -15139.0,
+  "sharpe_dev": -0.71,
+  "sharpe_test": -1.31,
+  "days_200_test": 0.102,
+  "years": {
+   "2022": 27.9,
+   "2023": -14.8,
+   "2024": -21.3,
+   "2025": 2.0,
+   "2026": -34.5
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.5 ATR either side": {
+  "dev_usd": -15.9,
+  "test_usd": 3.8,
+  "test_up": 0.325,
+  "trades_per_day": 1.7,
+  "worst_day": -1259.0,
+  "max_drawdown": -12536.0,
+  "sharpe_dev": -0.72,
+  "sharpe_test": 0.15,
+  "days_200_test": 0.189,
+  "years": {
+   "2022": -15.8,
+   "2023": -23.4,
+   "2024": -6.1,
+   "2025": 17.7,
+   "2026": -9.4
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 7.8,
+  "test_usd": -16.4,
+  "test_up": 0.392,
+  "trades_per_day": 13.11,
+  "worst_day": -1061.0,
+  "max_drawdown": -11416.0,
+  "sharpe_dev": 0.35,
+  "sharpe_test": -0.89,
+  "days_200_test": 0.185,
+  "years": {
+   "2022": 81.4,
+   "2023": -4.5,
+   "2024": -7.4,
+   "2025": -10.0,
+   "2026": -26.1
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -7.8,
+  "test_usd": -16.5,
+  "test_up": 0.274,
+  "trades_per_day": 5.46,
+  "worst_day": -488.0,
+  "max_drawdown": -13159.0,
+  "sharpe_dev": -1.01,
+  "sharpe_test": -2.36,
+  "days_200_test": 0.057,
+  "years": {
+   "2022": 2.7,
+   "2023": -4.9,
+   "2024": -16.0,
+   "2025": -9.7,
+   "2026": -26.6
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -8.8,
+  "test_usd": -16.6,
+  "test_up": 0.217,
+  "trades_per_day": 1.93,
+  "worst_day": -936.0,
+  "max_drawdown": -14515.0,
+  "sharpe_dev": -0.66,
+  "sharpe_test": -1.38,
+  "days_200_test": 0.075,
+  "years": {
+   "2022": 14.1,
+   "2023": -12.4,
+   "2024": -12.7,
+   "2025": -14.2,
+   "2026": -21.8
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -17.1,
+  "test_usd": -15.9,
+  "test_up": 0.406,
+  "trades_per_day": 9.17,
+  "worst_day": -1166.0,
+  "max_drawdown": -25564.0,
+  "sharpe_dev": -0.56,
+  "sharpe_test": -0.57,
+  "days_200_test": 0.244,
+  "years": {
+   "2022": 100.7,
+   "2023": -22.0,
+   "2024": -48.2,
+   "2025": 3.6,
+   "2026": -36.9
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -17.4,
+  "test_usd": -2.8,
+  "test_up": 0.14,
+  "trades_per_day": 1.48,
+  "worst_day": -595.0,
+  "max_drawdown": -13991.0,
+  "sharpe_dev": -1.33,
+  "sharpe_test": -0.18,
+  "days_200_test": 0.089,
+  "years": {
+   "2022": -3.1,
+   "2023": -17.2,
+   "2024": -19.2,
+   "2025": -2.1,
+   "2026": -0.4
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -17.8,
+  "test_usd": -0.3,
+  "test_up": 0.374,
+  "trades_per_day": 6.11,
+  "worst_day": -609.0,
+  "max_drawdown": -10634.0,
+  "sharpe_dev": -1.59,
+  "sharpe_test": -0.02,
+  "days_200_test": 0.1,
+  "years": {
+   "2022": 14.8,
+   "2023": -19.8,
+   "2024": -16.7,
+   "2025": 9.8,
+   "2026": -17.1
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.5 ATR either side": {
+  "dev_usd": -18.0,
+  "test_usd": -11.6,
+  "test_up": 0.433,
+  "trades_per_day": 3.71,
+  "worst_day": -1259.0,
+  "max_drawdown": -21923.0,
+  "sharpe_dev": -0.56,
+  "sharpe_test": -0.34,
+  "days_200_test": 0.278,
+  "years": {
+   "2022": 69.9,
+   "2023": -32.5,
+   "2024": -39.9,
+   "2025": 14.5,
+   "2026": -27.6
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -18.3,
+  "test_usd": -14.0,
+  "test_up": 0.057,
+  "trades_per_day": 1.6,
+  "worst_day": -255.0,
+  "max_drawdown": -15903.0,
+  "sharpe_dev": -7.47,
+  "sharpe_test": -4.27,
+  "days_200_test": 0.008,
+  "years": {
+   "2022": -12.9,
+   "2023": -20.9,
+   "2024": -13.8,
+   "2025": -13.3,
+   "2026": -17.5
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -15.9,
+  "test_usd": -18.9,
+  "test_up": 0.041,
+  "trades_per_day": 1.93,
+  "worst_day": -245.0,
+  "max_drawdown": -18239.0,
+  "sharpe_dev": -3.68,
+  "sharpe_test": -4.22,
+  "days_200_test": 0.014,
+  "years": {
+   "2022": -4.6,
+   "2023": -16.7,
+   "2024": -15.2,
+   "2025": -21.0,
+   "2026": -21.4
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -14.9,
+  "test_usd": -19.2,
+  "test_up": 0.236,
+  "trades_per_day": 2.26,
+  "worst_day": -936.0,
+  "max_drawdown": -18333.0,
+  "sharpe_dev": -1.01,
+  "sharpe_test": -1.53,
+  "days_200_test": 0.091,
+  "years": {
+   "2022": 3.2,
+   "2023": -11.1,
+   "2024": -25.1,
+   "2025": -17.0,
+   "2026": -22.3
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -19.4,
+  "test_usd": -11.6,
+  "test_up": 0.12,
+  "trades_per_day": 1.6,
+  "worst_day": -488.0,
+  "max_drawdown": -15366.0,
+  "sharpe_dev": -3.68,
+  "sharpe_test": -1.59,
+  "days_200_test": 0.037,
+  "years": {
+   "2022": -20.3,
+   "2023": -17.6,
+   "2024": -17.1,
+   "2025": -3.4,
+   "2026": -24.5
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": 6.9,
+  "test_usd": -19.4,
+  "test_up": 0.386,
+  "trades_per_day": 7.06,
+  "worst_day": -1067.0,
+  "max_drawdown": -12268.0,
+  "sharpe_dev": 0.25,
+  "sharpe_test": -0.82,
+  "days_200_test": 0.226,
+  "years": {
+   "2022": 54.5,
+   "2023": -0.6,
+   "2024": -11.7,
+   "2025": -1.3,
+   "2026": -38.1
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -20.1,
+  "test_usd": -14.7,
+  "test_up": 0.069,
+  "trades_per_day": 1.86,
+  "worst_day": -255.0,
+  "max_drawdown": -17135.0,
+  "sharpe_dev": -6.81,
+  "sharpe_test": -4.13,
+  "days_200_test": 0.014,
+  "years": {
+   "2022": -16.1,
+   "2023": -21.2,
+   "2024": -15.9,
+   "2025": -13.2,
+   "2026": -20.1
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.5 ATR first-bar side": {
+  "dev_usd": -20.8,
+  "test_usd": 5.4,
+  "test_up": 0.455,
+  "trades_per_day": 3.17,
+  "worst_day": -1259.0,
+  "max_drawdown": -20581.0,
+  "sharpe_dev": -0.7,
+  "sharpe_test": 0.16,
+  "days_200_test": 0.283,
+  "years": {
+   "2022": 50.5,
+   "2023": -33.0,
+   "2024": -28.1,
+   "2025": 21.3,
+   "2026": -4.6
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -12.4,
+  "test_usd": -21.1,
+  "test_up": 0.28,
+  "trades_per_day": 4.8,
+  "worst_day": -545.0,
+  "max_drawdown": -19212.0,
+  "sharpe_dev": -0.84,
+  "sharpe_test": -1.7,
+  "days_200_test": 0.106,
+  "years": {
+   "2022": 24.5,
+   "2023": -13.0,
+   "2024": -26.4,
+   "2025": -5.7,
+   "2026": -39.9
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -19.5,
+  "test_usd": -21.2,
+  "test_up": 0.055,
+  "trades_per_day": 2.26,
+  "worst_day": -245.0,
+  "max_drawdown": -21012.0,
+  "sharpe_dev": -4.37,
+  "sharpe_test": -4.56,
+  "days_200_test": 0.016,
+  "years": {
+   "2022": -8.9,
+   "2023": -19.6,
+   "2024": -18.2,
+   "2025": -24.0,
+   "2026": -23.6
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -21.3,
+  "test_usd": -13.5,
+  "test_up": 0.059,
+  "trades_per_day": 1.3,
+  "worst_day": -357.0,
+  "max_drawdown": -17827.0,
+  "sharpe_dev": -3.84,
+  "sharpe_test": -1.66,
+  "days_200_test": 0.039,
+  "years": {
+   "2022": -20.3,
+   "2023": -24.2,
+   "2024": -18.4,
+   "2025": -2.9,
+   "2026": -24.7
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -16.4,
+  "test_usd": -21.3,
+  "test_up": 0.144,
+  "trades_per_day": 4.71,
+  "worst_day": -245.0,
+  "max_drawdown": -19038.0,
+  "sharpe_dev": -4.65,
+  "sharpe_test": -6.32,
+  "days_200_test": 0.008,
+  "years": {
+   "2022": -7.5,
+   "2023": -18.8,
+   "2024": -18.1,
+   "2025": -14.2,
+   "2026": -30.8
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -21.9,
+  "test_usd": -19.9,
+  "test_up": 0.228,
+  "trades_per_day": 5.18,
+  "worst_day": -375.0,
+  "max_drawdown": -21143.0,
+  "sharpe_dev": -3.69,
+  "sharpe_test": -2.83,
+  "days_200_test": 0.049,
+  "years": {
+   "2022": -10.7,
+   "2023": -25.4,
+   "2024": -19.3,
+   "2025": -12.5,
+   "2026": -32.2
+  }
+ },
+ "ORB 15m top 10 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -22.7,
+  "test_usd": -13.2,
+  "test_up": 0.13,
+  "trades_per_day": 1.86,
+  "worst_day": -488.0,
+  "max_drawdown": -17774.0,
+  "sharpe_dev": -4.01,
+  "sharpe_test": -1.71,
+  "days_200_test": 0.041,
+  "years": {
+   "2022": -26.4,
+   "2023": -19.1,
+   "2024": -18.3,
+   "2025": -6.2,
+   "2026": -28.0
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -22.3,
+  "test_usd": -22.8,
+  "test_up": 0.118,
+  "trades_per_day": 5.18,
+  "worst_day": -227.0,
+  "max_drawdown": -22331.0,
+  "sharpe_dev": -6.9,
+  "sharpe_test": -6.01,
+  "days_200_test": 0.014,
+  "years": {
+   "2022": -19.8,
+   "2023": -24.9,
+   "2024": -17.3,
+   "2025": -18.8,
+   "2026": -33.0
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -22.9,
+  "test_usd": -20.7,
+  "test_up": 0.305,
+  "trades_per_day": 3.56,
+  "worst_day": -599.0,
+  "max_drawdown": -22567.0,
+  "sharpe_dev": -1.17,
+  "sharpe_test": -0.95,
+  "days_200_test": 0.169,
+  "years": {
+   "2022": -31.9,
+   "2023": -27.0,
+   "2024": -22.6,
+   "2025": 18.0,
+   "2026": -63.8
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": 6.8,
+  "test_usd": -22.9,
+  "test_up": 0.396,
+  "trades_per_day": 15.83,
+  "worst_day": -1061.0,
+  "max_drawdown": -15271.0,
+  "sharpe_dev": 0.28,
+  "sharpe_test": -1.17,
+  "days_200_test": 0.201,
+  "years": {
+   "2022": 75.8,
+   "2023": -4.9,
+   "2024": -10.1,
+   "2025": -16.4,
+   "2026": -32.1
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -23.2,
+  "test_usd": -18.2,
+  "test_up": 0.392,
+  "trades_per_day": 15.44,
+  "worst_day": -903.0,
+  "max_drawdown": -23230.0,
+  "sharpe_dev": -1.11,
+  "sharpe_test": -0.85,
+  "days_200_test": 0.181,
+  "years": {
+   "2022": -12.2,
+   "2023": -36.3,
+   "2024": -0.8,
+   "2025": -27.8,
+   "2026": -19.6
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": 8.4,
+  "test_usd": -23.2,
+  "test_up": 0.396,
+  "trades_per_day": 8.41,
+  "worst_day": -1069.0,
+  "max_drawdown": -15062.0,
+  "sharpe_dev": 0.29,
+  "sharpe_test": -0.92,
+  "days_200_test": 0.244,
+  "years": {
+   "2022": 69.7,
+   "2023": 4.5,
+   "2024": -20.9,
+   "2025": -5.8,
+   "2026": -38.7
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -18.8,
+  "test_usd": -23.6,
+  "test_up": 0.274,
+  "trades_per_day": 3.33,
+  "worst_day": -595.0,
+  "max_drawdown": -22867.0,
+  "sharpe_dev": -1.0,
+  "sharpe_test": -1.14,
+  "days_200_test": 0.152,
+  "years": {
+   "2022": -33.9,
+   "2023": -9.7,
+   "2024": -24.4,
+   "2025": -6.7,
+   "2026": -47.7
+  }
+ },
+ "ORB 30m top 5 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -24.2,
+  "test_usd": -16.5,
+  "test_up": 0.069,
+  "trades_per_day": 1.48,
+  "worst_day": -357.0,
+  "max_drawdown": -20715.0,
+  "sharpe_dev": -4.04,
+  "sharpe_test": -2.0,
+  "days_200_test": 0.043,
+  "years": {
+   "2022": -24.2,
+   "2023": -25.9,
+   "2024": -20.7,
+   "2025": -7.6,
+   "2026": -27.6
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -17.6,
+  "test_usd": -24.3,
+  "test_up": 0.106,
+  "trades_per_day": 1.93,
+  "worst_day": -475.0,
+  "max_drawdown": -22530.0,
+  "sharpe_dev": -1.97,
+  "sharpe_test": -3.58,
+  "days_200_test": 0.043,
+  "years": {
+   "2022": 6.5,
+   "2023": -19.6,
+   "2024": -21.9,
+   "2025": -26.7,
+   "2026": -24.7
+  }
+ },
+ "ORB 30m top 20 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -18.2,
+  "test_usd": -24.3,
+  "test_up": 0.157,
+  "trades_per_day": 5.46,
+  "worst_day": -255.0,
+  "max_drawdown": -21314.0,
+  "sharpe_dev": -4.93,
+  "sharpe_test": -6.93,
+  "days_200_test": 0.006,
+  "years": {
+   "2022": -12.6,
+   "2023": -19.5,
+   "2024": -19.7,
+   "2025": -17.5,
+   "2026": -34.3
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -24.6,
+  "test_usd": -7.5,
+  "test_up": 0.352,
+  "trades_per_day": 4.56,
+  "worst_day": -740.0,
+  "max_drawdown": -18010.0,
+  "sharpe_dev": -1.38,
+  "sharpe_test": -0.36,
+  "days_200_test": 0.165,
+  "years": {
+   "2022": 27.5,
+   "2023": -30.4,
+   "2024": -21.9,
+   "2025": 5.8,
+   "2026": -33.2
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -25.8,
+  "test_usd": -24.7,
+  "test_up": 0.24,
+  "trades_per_day": 6.11,
+  "worst_day": -380.0,
+  "max_drawdown": -25603.0,
+  "sharpe_dev": -3.82,
+  "sharpe_test": -3.25,
+  "days_200_test": 0.055,
+  "years": {
+   "2022": -13.3,
+   "2023": -26.4,
+   "2024": -26.0,
+   "2025": -14.9,
+   "2026": -41.0
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -26.8,
+  "test_usd": -5.2,
+  "test_up": 0.219,
+  "trades_per_day": 1.47,
+  "worst_day": -1104.0,
+  "max_drawdown": -16050.0,
+  "sharpe_dev": -1.55,
+  "sharpe_test": -0.25,
+  "days_200_test": 0.146,
+  "years": {
+   "2022": -31.4,
+   "2023": -17.6,
+   "2024": -22.7,
+   "2025": 20.9,
+   "2026": -47.2
+  }
+ },
+ "ORB 15m top 20 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -26.1,
+  "test_usd": -27.0,
+  "test_up": 0.128,
+  "trades_per_day": 6.11,
+  "worst_day": -227.0,
+  "max_drawdown": -26247.0,
+  "sharpe_dev": -7.0,
+  "sharpe_test": -6.81,
+  "days_200_test": 0.012,
+  "years": {
+   "2022": -20.9,
+   "2023": -29.3,
+   "2024": -20.7,
+   "2025": -22.7,
+   "2026": -38.4
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -27.9,
+  "test_usd": -7.4,
+  "test_up": 0.234,
+  "trades_per_day": 1.7,
+  "worst_day": -1104.0,
+  "max_drawdown": -17956.0,
+  "sharpe_dev": -1.47,
+  "sharpe_test": -0.35,
+  "days_200_test": 0.146,
+  "years": {
+   "2022": -37.0,
+   "2023": -18.0,
+   "2024": -20.3,
+   "2025": 17.8,
+   "2026": -53.2
+  }
+ },
+ "ORB 5m top 10 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -23.3,
+  "test_usd": -28.7,
+  "test_up": 0.124,
+  "trades_per_day": 2.26,
+  "worst_day": -475.0,
+  "max_drawdown": -27248.0,
+  "sharpe_dev": -2.52,
+  "sharpe_test": -4.02,
+  "days_200_test": 0.043,
+  "years": {
+   "2022": 1.3,
+   "2023": -23.8,
+   "2024": -27.9,
+   "2025": -32.0,
+   "2026": -29.1
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -26.5,
+  "test_usd": -28.7,
+  "test_up": 0.096,
+  "trades_per_day": 5.89,
+  "worst_day": -250.0,
+  "max_drawdown": -27359.0,
+  "sharpe_dev": -6.72,
+  "sharpe_test": -7.12,
+  "days_200_test": 0.016,
+  "years": {
+   "2022": -33.1,
+   "2023": -29.3,
+   "2024": -18.8,
+   "2025": -29.7,
+   "2026": -32.7
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -29.5,
+  "test_usd": -14.7,
+  "test_up": 0.372,
+  "trades_per_day": 5.39,
+  "worst_day": -740.0,
+  "max_drawdown": -24275.0,
+  "sharpe_dev": -1.46,
+  "sharpe_test": -0.69,
+  "days_200_test": 0.161,
+  "years": {
+   "2022": 29.5,
+   "2023": -28.7,
+   "2024": -38.4,
+   "2025": 7.1,
+   "2026": -48.8
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -25.9,
+  "test_usd": -29.8,
+  "test_up": 0.213,
+  "trades_per_day": 5.89,
+  "worst_day": -458.0,
+  "max_drawdown": -28612.0,
+  "sharpe_dev": -3.34,
+  "sharpe_test": -4.24,
+  "days_200_test": 0.047,
+  "years": {
+   "2022": -10.0,
+   "2023": -31.6,
+   "2024": -24.4,
+   "2025": -30.9,
+   "2026": -30.4
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.5 ATR first-bar side": {
+  "dev_usd": -30.9,
+  "test_usd": 28.1,
+  "test_up": 0.455,
+  "trades_per_day": 8.26,
+  "worst_day": -2154.0,
+  "max_drawdown": -23089.0,
+  "sharpe_dev": -0.81,
+  "sharpe_test": 0.73,
+  "days_200_test": 0.323,
+  "years": {
+   "2022": -58.8,
+   "2023": -28.0,
+   "2024": -2.5,
+   "2025": 23.0,
+   "2026": 29.2
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -20.3,
+  "test_usd": -30.9,
+  "test_up": 0.348,
+  "trades_per_day": 7.06,
+  "worst_day": -545.0,
+  "max_drawdown": -27438.0,
+  "sharpe_dev": -1.2,
+  "sharpe_test": -1.98,
+  "days_200_test": 0.134,
+  "years": {
+   "2022": 2.8,
+   "2023": -24.6,
+   "2024": -26.1,
+   "2025": -2.7,
+   "2026": -68.6
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -26.0,
+  "test_usd": -31.0,
+  "test_up": 0.39,
+  "trades_per_day": 18.17,
+  "worst_day": -956.0,
+  "max_drawdown": -31308.0,
+  "sharpe_dev": -1.08,
+  "sharpe_test": -1.35,
+  "days_200_test": 0.201,
+  "years": {
+   "2022": -13.6,
+   "2023": -35.4,
+   "2024": -11.0,
+   "2025": -28.8,
+   "2026": -48.3
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -28.1,
+  "test_usd": -32.9,
+  "test_up": 0.313,
+  "trades_per_day": 4.16,
+  "worst_day": -704.0,
+  "max_drawdown": -31298.0,
+  "sharpe_dev": -1.37,
+  "sharpe_test": -1.46,
+  "days_200_test": 0.175,
+  "years": {
+   "2022": -55.5,
+   "2023": -27.6,
+   "2024": -25.2,
+   "2025": -2.9,
+   "2026": -70.1
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -31.8,
+  "test_usd": -33.0,
+  "test_up": 0.11,
+  "trades_per_day": 6.89,
+  "worst_day": -257.0,
+  "max_drawdown": -32040.0,
+  "sharpe_dev": -7.67,
+  "sharpe_test": -7.12,
+  "days_200_test": 0.016,
+  "years": {
+   "2022": -39.6,
+   "2023": -34.0,
+   "2024": -24.3,
+   "2025": -34.7,
+   "2026": -35.5
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -28.5,
+  "test_usd": -33.7,
+  "test_up": 0.15,
+  "trades_per_day": 4.15,
+  "worst_day": -284.0,
+  "max_drawdown": -31451.0,
+  "sharpe_dev": -4.51,
+  "sharpe_test": -5.51,
+  "days_200_test": 0.028,
+  "years": {
+   "2022": -8.3,
+   "2023": -35.4,
+   "2024": -30.0,
+   "2025": -20.8,
+   "2026": -49.7
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -34.0,
+  "test_usd": -23.4,
+  "test_up": 0.057,
+  "trades_per_day": 1.47,
+  "worst_day": -306.0,
+  "max_drawdown": -28216.0,
+  "sharpe_dev": -7.62,
+  "sharpe_test": -3.67,
+  "days_200_test": 0.039,
+  "years": {
+   "2022": -31.1,
+   "2023": -38.1,
+   "2024": -23.8,
+   "2025": -20.8,
+   "2026": -31.5
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -34.1,
+  "test_usd": -21.2,
+  "test_up": 0.362,
+  "trades_per_day": 5.25,
+  "worst_day": -936.0,
+  "max_drawdown": -29239.0,
+  "sharpe_dev": -1.73,
+  "sharpe_test": -1.03,
+  "days_200_test": 0.175,
+  "years": {
+   "2022": -24.5,
+   "2023": -51.8,
+   "2024": -12.5,
+   "2025": -20.4,
+   "2026": -25.5
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -19.2,
+  "test_usd": -34.2,
+  "test_up": 0.317,
+  "trades_per_day": 13.11,
+  "worst_day": -542.0,
+  "max_drawdown": -29668.0,
+  "sharpe_dev": -1.44,
+  "sharpe_test": -3.04,
+  "days_200_test": 0.1,
+  "years": {
+   "2022": 29.1,
+   "2023": -27.9,
+   "2024": -23.2,
+   "2025": -25.6,
+   "2026": -53.5
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -34.6,
+  "test_usd": -29.3,
+  "test_up": 0.354,
+  "trades_per_day": 6.14,
+  "worst_day": -936.0,
+  "max_drawdown": -34929.0,
+  "sharpe_dev": -1.54,
+  "sharpe_test": -1.31,
+  "days_200_test": 0.197,
+  "years": {
+   "2022": -17.6,
+   "2023": -45.2,
+   "2024": -28.3,
+   "2025": -19.9,
+   "2026": -40.1
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -28.0,
+  "test_usd": -35.5,
+  "test_up": 0.215,
+  "trades_per_day": 1.75,
+  "worst_day": -931.0,
+  "max_drawdown": -34574.0,
+  "sharpe_dev": -1.38,
+  "sharpe_test": -1.67,
+  "days_200_test": 0.138,
+  "years": {
+   "2022": 20.2,
+   "2023": -31.7,
+   "2024": -37.8,
+   "2025": -30.7,
+   "2026": -45.1
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -29.0,
+  "test_usd": -35.6,
+  "test_up": 0.037,
+  "trades_per_day": 1.75,
+  "worst_day": -343.0,
+  "max_drawdown": -34043.0,
+  "sharpe_dev": -3.6,
+  "sharpe_test": -4.41,
+  "days_200_test": 0.033,
+  "years": {
+   "2022": -7.1,
+   "2023": -28.3,
+   "2024": -33.9,
+   "2025": -34.0,
+   "2026": -43.2
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -35.9,
+  "test_usd": -20.9,
+  "test_up": 0.12,
+  "trades_per_day": 1.47,
+  "worst_day": -589.0,
+  "max_drawdown": -28235.0,
+  "sharpe_dev": -3.95,
+  "sharpe_test": -1.62,
+  "days_200_test": 0.079,
+  "years": {
+   "2022": -38.9,
+   "2023": -32.7,
+   "2024": -29.4,
+   "2025": -6.0,
+   "2026": -46.7
+  }
+ },
+ "ORB 5m top 20 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -31.4,
+  "test_usd": -36.4,
+  "test_up": 0.207,
+  "trades_per_day": 6.89,
+  "worst_day": -458.0,
+  "max_drawdown": -34777.0,
+  "sharpe_dev": -3.9,
+  "sharpe_test": -4.87,
+  "days_200_test": 0.051,
+  "years": {
+   "2022": -16.4,
+   "2023": -37.8,
+   "2024": -29.9,
+   "2025": -37.0,
+   "2026": -36.6
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -37.0,
+  "test_usd": -26.8,
+  "test_up": 0.067,
+  "trades_per_day": 1.7,
+  "worst_day": -306.0,
+  "max_drawdown": -31441.0,
+  "sharpe_dev": -6.76,
+  "sharpe_test": -4.07,
+  "days_200_test": 0.043,
+  "years": {
+   "2022": -37.5,
+   "2023": -37.9,
+   "2024": -27.2,
+   "2025": -25.0,
+   "2026": -36.7
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -38.4,
+  "test_usd": -33.9,
+  "test_up": 0.236,
+  "trades_per_day": 4.56,
+  "worst_day": -532.0,
+  "max_drawdown": -36666.0,
+  "sharpe_dev": -3.47,
+  "sharpe_test": -2.68,
+  "days_200_test": 0.081,
+  "years": {
+   "2022": -22.5,
+   "2023": -43.4,
+   "2024": -35.5,
+   "2025": -15.0,
+   "2026": -60.6
+  }
+ },
+ "ORB 30m top 10 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -32.1,
+  "test_usd": -38.5,
+  "test_up": 0.159,
+  "trades_per_day": 4.8,
+  "worst_day": -310.0,
+  "max_drawdown": -35493.0,
+  "sharpe_dev": -4.84,
+  "sharpe_test": -6.06,
+  "days_200_test": 0.03,
+  "years": {
+   "2022": -16.7,
+   "2023": -37.0,
+   "2024": -33.9,
+   "2025": -26.1,
+   "2026": -55.1
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.05 ATR either side": {
+  "dev_usd": -35.4,
+  "test_usd": -39.2,
+  "test_up": 0.053,
+  "trades_per_day": 2.05,
+  "worst_day": -410.0,
+  "max_drawdown": -38728.0,
+  "sharpe_dev": -4.26,
+  "sharpe_test": -4.64,
+  "days_200_test": 0.037,
+  "years": {
+   "2022": -15.5,
+   "2023": -33.3,
+   "2024": -39.2,
+   "2025": -38.6,
+   "2026": -46.7
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -39.6,
+  "test_usd": -39.6,
+  "test_up": 0.138,
+  "trades_per_day": 2.88,
+  "worst_day": -357.0,
+  "max_drawdown": -39089.0,
+  "sharpe_dev": -4.33,
+  "sharpe_test": -3.7,
+  "days_200_test": 0.075,
+  "years": {
+   "2022": -49.7,
+   "2023": -50.4,
+   "2024": -27.5,
+   "2025": -21.4,
+   "2026": -62.2
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -40.3,
+  "test_usd": -40.3,
+  "test_up": 0.327,
+  "trades_per_day": 14.18,
+  "worst_day": -547.0,
+  "max_drawdown": -43532.0,
+  "sharpe_dev": -3.12,
+  "sharpe_test": -3.37,
+  "days_200_test": 0.104,
+  "years": {
+   "2022": -3.1,
+   "2023": -52.7,
+   "2024": -37.7,
+   "2025": -31.2,
+   "2026": -53.3
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -40.5,
+  "test_usd": -24.8,
+  "test_up": 0.352,
+  "trades_per_day": 3.71,
+  "worst_day": -1104.0,
+  "max_drawdown": -35578.0,
+  "sharpe_dev": -1.26,
+  "sharpe_test": -0.79,
+  "days_200_test": 0.232,
+  "years": {
+   "2022": 18.0,
+   "2023": -27.5,
+   "2024": -54.4,
+   "2025": 12.8,
+   "2026": -89.6
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -26.0,
+  "test_usd": -40.9,
+  "test_up": 0.343,
+  "trades_per_day": 8.41,
+  "worst_day": -673.0,
+  "max_drawdown": -35498.0,
+  "sharpe_dev": -1.45,
+  "sharpe_test": -2.41,
+  "days_200_test": 0.138,
+  "years": {
+   "2022": -8.9,
+   "2023": -28.3,
+   "2024": -33.6,
+   "2025": -17.9,
+   "2026": -71.6
+  }
+ },
+ "ORB 15m top 5 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -41.4,
+  "test_usd": -25.1,
+  "test_up": 0.13,
+  "trades_per_day": 1.7,
+  "worst_day": -589.0,
+  "max_drawdown": -32933.0,
+  "sharpe_dev": -4.19,
+  "sharpe_test": -1.87,
+  "days_200_test": 0.083,
+  "years": {
+   "2022": -51.1,
+   "2023": -34.4,
+   "2024": -30.7,
+   "2025": -13.7,
+   "2026": -53.7
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -40.9,
+  "test_usd": -41.5,
+  "test_up": 0.122,
+  "trades_per_day": 4.56,
+  "worst_day": -278.0,
+  "max_drawdown": -40665.0,
+  "sharpe_dev": -6.89,
+  "sharpe_test": -6.34,
+  "days_200_test": 0.026,
+  "years": {
+   "2022": -36.4,
+   "2023": -46.1,
+   "2024": -32.8,
+   "2025": -30.9,
+   "2026": -61.5
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -41.6,
+  "test_usd": -15.6,
+  "test_up": 0.331,
+  "trades_per_day": 3.17,
+  "worst_day": -1104.0,
+  "max_drawdown": -31184.0,
+  "sharpe_dev": -1.47,
+  "sharpe_test": -0.51,
+  "days_200_test": 0.23,
+  "years": {
+   "2022": 14.9,
+   "2023": -35.6,
+   "2024": -41.1,
+   "2025": 6.6,
+   "2026": -64.2
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.2 ATR either side": {
+  "dev_usd": -39.3,
+  "test_usd": -42.8,
+  "test_up": 0.232,
+  "trades_per_day": 2.05,
+  "worst_day": -1183.0,
+  "max_drawdown": -42829.0,
+  "sharpe_dev": -1.79,
+  "sharpe_test": -1.91,
+  "days_200_test": 0.152,
+  "years": {
+   "2022": -1.4,
+   "2023": -30.0,
+   "2024": -60.3,
+   "2025": -39.1,
+   "2026": -47.8
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -38.8,
+  "test_usd": -44.4,
+  "test_up": 0.102,
+  "trades_per_day": 1.75,
+  "worst_day": -657.0,
+  "max_drawdown": -44918.0,
+  "sharpe_dev": -2.87,
+  "sharpe_test": -3.43,
+  "days_200_test": 0.073,
+  "years": {
+   "2022": 17.4,
+   "2023": -35.6,
+   "2024": -58.1,
+   "2025": -43.4,
+   "2026": -47.4
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -23.6,
+  "test_usd": -45.2,
+  "test_up": 0.319,
+  "trades_per_day": 15.83,
+  "worst_day": -542.0,
+  "max_drawdown": -37184.0,
+  "sharpe_dev": -1.6,
+  "sharpe_test": -3.64,
+  "days_200_test": 0.106,
+  "years": {
+   "2022": 15.1,
+   "2023": -35.5,
+   "2024": -24.6,
+   "2025": -34.6,
+   "2026": -66.1
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -45.6,
+  "test_usd": -43.8,
+  "test_up": 0.24,
+  "trades_per_day": 5.39,
+  "worst_day": -705.0,
+  "max_drawdown": -45595.0,
+  "sharpe_dev": -3.66,
+  "sharpe_test": -3.3,
+  "days_200_test": 0.091,
+  "years": {
+   "2022": -30.7,
+   "2023": -43.6,
+   "2024": -48.7,
+   "2025": -22.9,
+   "2026": -75.6
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -45.7,
+  "test_usd": -19.2,
+  "test_up": 0.362,
+  "trades_per_day": 3.83,
+  "worst_day": -1104.0,
+  "max_drawdown": -34024.0,
+  "sharpe_dev": -1.47,
+  "sharpe_test": -0.58,
+  "days_200_test": 0.252,
+  "years": {
+   "2022": -49.1,
+   "2023": -32.7,
+   "2024": -38.8,
+   "2025": 5.0,
+   "2026": -66.2
+  }
+ },
+ "ORB 30m top 5 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -44.9,
+  "test_usd": -46.3,
+  "test_up": 0.154,
+  "trades_per_day": 3.33,
+  "worst_day": -357.0,
+  "max_drawdown": -45193.0,
+  "sharpe_dev": -4.62,
+  "sharpe_test": -4.16,
+  "days_200_test": 0.085,
+  "years": {
+   "2022": -63.1,
+   "2023": -53.1,
+   "2024": -32.3,
+   "2025": -30.5,
+   "2026": -67.5
+  }
+ },
+ "ORB 15m top 10 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -47.6,
+  "test_usd": -48.2,
+  "test_up": 0.138,
+  "trades_per_day": 5.39,
+  "worst_day": -368.0,
+  "max_drawdown": -47297.0,
+  "sharpe_dev": -7.11,
+  "sharpe_test": -7.06,
+  "days_200_test": 0.031,
+  "years": {
+   "2022": -36.3,
+   "2023": -53.3,
+   "2024": -40.0,
+   "2025": -36.7,
+   "2026": -70.9
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -49.2,
+  "test_usd": -24.1,
+  "test_up": 0.374,
+  "trades_per_day": 4.54,
+  "worst_day": -1104.0,
+  "max_drawdown": -38265.0,
+  "sharpe_dev": -1.42,
+  "sharpe_test": -0.68,
+  "days_200_test": 0.258,
+  "years": {
+   "2022": -79.3,
+   "2023": -28.7,
+   "2024": -49.7,
+   "2025": 24.9,
+   "2026": -95.5
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -48.1,
+  "test_usd": -49.5,
+  "test_up": 0.098,
+  "trades_per_day": 5.25,
+  "worst_day": -264.0,
+  "max_drawdown": -48306.0,
+  "sharpe_dev": -6.64,
+  "sharpe_test": -6.45,
+  "days_200_test": 0.037,
+  "years": {
+   "2022": -56.3,
+   "2023": -52.5,
+   "2024": -34.7,
+   "2025": -48.9,
+   "2026": -60.1
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -50.1,
+  "test_usd": -35.9,
+  "test_up": 0.386,
+  "trades_per_day": 9.7,
+  "worst_day": -1401.0,
+  "max_drawdown": -43817.0,
+  "sharpe_dev": -1.73,
+  "sharpe_test": -1.22,
+  "days_200_test": 0.252,
+  "years": {
+   "2022": -59.9,
+   "2023": -51.6,
+   "2024": -41.4,
+   "2025": -27.3,
+   "2026": -47.1
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -50.3,
+  "test_usd": -48.5,
+  "test_up": 0.339,
+  "trades_per_day": 17.21,
+  "worst_day": -625.0,
+  "max_drawdown": -52620.0,
+  "sharpe_dev": -3.2,
+  "sharpe_test": -3.68,
+  "days_200_test": 0.106,
+  "years": {
+   "2022": -13.6,
+   "2023": -61.2,
+   "2024": -49.3,
+   "2025": -34.5,
+   "2026": -66.8
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -49.9,
+  "test_usd": -50.6,
+  "test_up": 0.22,
+  "trades_per_day": 5.25,
+  "worst_day": -475.0,
+  "max_drawdown": -51321.0,
+  "sharpe_dev": -3.69,
+  "sharpe_test": -3.97,
+  "days_200_test": 0.102,
+  "years": {
+   "2022": -32.3,
+   "2023": -57.2,
+   "2024": -46.5,
+   "2025": -46.8,
+   "2026": -57.4
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -53.1,
+  "test_usd": -43.5,
+  "test_up": 0.299,
+  "trades_per_day": 7.65,
+  "worst_day": -734.0,
+  "max_drawdown": -52013.0,
+  "sharpe_dev": -3.34,
+  "sharpe_test": -2.58,
+  "days_200_test": 0.14,
+  "years": {
+   "2022": 0.7,
+   "2023": -67.5,
+   "2024": -51.1,
+   "2025": -24.4,
+   "2026": -68.5
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -43.0,
+  "test_usd": -53.4,
+  "test_up": 0.197,
+  "trades_per_day": 13.11,
+  "worst_day": -285.0,
+  "max_drawdown": -48071.0,
+  "sharpe_dev": -6.72,
+  "sharpe_test": -9.57,
+  "days_200_test": 0.024,
+  "years": {
+   "2022": -30.4,
+   "2023": -50.6,
+   "2024": -38.0,
+   "2025": -46.1,
+   "2026": -69.2
+  }
+ },
+ "ORB 5m top 5 rr>2.0 stop 0.1 ATR either side": {
+  "dev_usd": -47.6,
+  "test_usd": -55.0,
+  "test_up": 0.122,
+  "trades_per_day": 2.05,
+  "worst_day": -789.0,
+  "max_drawdown": -54058.0,
+  "sharpe_dev": -3.36,
+  "sharpe_test": -4.22,
+  "days_200_test": 0.073,
+  "years": {
+   "2022": 6.9,
+   "2023": -42.3,
+   "2024": -66.9,
+   "2025": -59.2,
+   "2026": -54.3
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -52.5,
+  "test_usd": -55.1,
+  "test_up": 0.152,
+  "trades_per_day": 3.56,
+  "worst_day": -417.0,
+  "max_drawdown": -53191.0,
+  "sharpe_dev": -5.23,
+  "sharpe_test": -4.82,
+  "days_200_test": 0.077,
+  "years": {
+   "2022": -79.2,
+   "2023": -63.1,
+   "2024": -36.1,
+   "2025": -36.3,
+   "2026": -79.6
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -48.5,
+  "test_usd": -56.5,
+  "test_up": 0.213,
+  "trades_per_day": 7.06,
+  "worst_day": -364.0,
+  "max_drawdown": -51935.0,
+  "sharpe_dev": -5.69,
+  "sharpe_test": -7.2,
+  "days_200_test": 0.043,
+  "years": {
+   "2022": -37.3,
+   "2023": -54.6,
+   "2024": -45.6,
+   "2025": -42.6,
+   "2026": -78.8
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -56.6,
+  "test_usd": -56.1,
+  "test_up": 0.112,
+  "trades_per_day": 6.14,
+  "worst_day": -348.0,
+  "max_drawdown": -55682.0,
+  "sharpe_dev": -7.45,
+  "sharpe_test": -6.4,
+  "days_200_test": 0.039,
+  "years": {
+   "2022": -68.9,
+   "2023": -60.4,
+   "2024": -43.3,
+   "2025": -57.7,
+   "2026": -62.0
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -57.7,
+  "test_usd": -48.9,
+  "test_up": 0.217,
+  "trades_per_day": 3.17,
+  "worst_day": -755.0,
+  "max_drawdown": -54733.0,
+  "sharpe_dev": -3.13,
+  "sharpe_test": -2.56,
+  "days_200_test": 0.124,
+  "years": {
+   "2022": -35.7,
+   "2023": -62.3,
+   "2024": -55.7,
+   "2025": -22.9,
+   "2026": -85.0
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -57.4,
+  "test_usd": -57.9,
+  "test_up": 0.175,
+  "trades_per_day": 14.18,
+  "worst_day": -322.0,
+  "max_drawdown": -57981.0,
+  "sharpe_dev": -8.81,
+  "sharpe_test": -8.95,
+  "days_200_test": 0.035,
+  "years": {
+   "2022": -39.2,
+   "2023": -66.5,
+   "2024": -46.7,
+   "2025": -49.9,
+   "2026": -77.9
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -58.6,
+  "test_usd": -26.0,
+  "test_up": 0.404,
+  "trades_per_day": 8.26,
+  "worst_day": -1401.0,
+  "max_drawdown": -43128.0,
+  "sharpe_dev": -2.33,
+  "sharpe_test": -0.95,
+  "days_200_test": 0.226,
+  "years": {
+   "2022": -103.6,
+   "2023": -65.0,
+   "2024": -23.8,
+   "2025": -24.0,
+   "2026": -35.9
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -59.6,
+  "test_usd": -56.0,
+  "test_up": 0.104,
+  "trades_per_day": 3.17,
+  "worst_day": -539.0,
+  "max_drawdown": -57110.0,
+  "sharpe_dev": -6.4,
+  "sharpe_test": -5.89,
+  "days_200_test": 0.061,
+  "years": {
+   "2022": -71.8,
+   "2023": -63.4,
+   "2024": -45.9,
+   "2025": -50.3,
+   "2026": -71.1
+  }
+ },
+ "ORB 5m top 10 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -58.0,
+  "test_usd": -61.4,
+  "test_up": 0.215,
+  "trades_per_day": 6.14,
+  "worst_day": -477.0,
+  "max_drawdown": -61421.0,
+  "sharpe_dev": -4.0,
+  "sharpe_test": -4.43,
+  "days_200_test": 0.108,
+  "years": {
+   "2022": -33.6,
+   "2023": -67.8,
+   "2024": -56.8,
+   "2025": -58.8,
+   "2026": -64.2
+  }
+ },
+ "ORB 30m top 20 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -51.2,
+  "test_usd": -62.0,
+  "test_up": 0.185,
+  "trades_per_day": 15.83,
+  "worst_day": -315.0,
+  "max_drawdown": -55995.0,
+  "sharpe_dev": -7.12,
+  "sharpe_test": -9.58,
+  "days_200_test": 0.03,
+  "years": {
+   "2022": -43.7,
+   "2023": -61.4,
+   "2024": -43.2,
+   "2025": -54.4,
+   "2026": -76.8
+  }
+ },
+ "ORB 30m top 5 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -62.7,
+  "test_usd": -62.4,
+  "test_up": 0.173,
+  "trades_per_day": 4.16,
+  "worst_day": -485.0,
+  "max_drawdown": -61920.0,
+  "sharpe_dev": -5.9,
+  "sharpe_test": -5.22,
+  "days_200_test": 0.085,
+  "years": {
+   "2022": -101.6,
+   "2023": -71.2,
+   "2024": -43.2,
+   "2025": -45.1,
+   "2026": -86.0
+  }
+ },
+ "ORB 30m top 10 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -58.3,
+  "test_usd": -62.9,
+  "test_up": 0.211,
+  "trades_per_day": 8.41,
+  "worst_day": -431.0,
+  "max_drawdown": -59934.0,
+  "sharpe_dev": -6.47,
+  "sharpe_test": -7.08,
+  "days_200_test": 0.045,
+  "years": {
+   "2022": -54.5,
+   "2023": -64.4,
+   "2024": -52.6,
+   "2025": -51.9,
+   "2026": -80.9
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -64.8,
+  "test_usd": -62.8,
+  "test_up": 0.175,
+  "trades_per_day": 7.65,
+  "worst_day": -429.0,
+  "max_drawdown": -63196.0,
+  "sharpe_dev": -7.7,
+  "sharpe_test": -7.2,
+  "days_200_test": 0.051,
+  "years": {
+   "2022": -55.8,
+   "2023": -72.3,
+   "2024": -54.3,
+   "2025": -51.4,
+   "2026": -84.8
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -65.2,
+  "test_usd": -64.5,
+  "test_up": 0.234,
+  "trades_per_day": 3.71,
+  "worst_day": -781.0,
+  "max_drawdown": -66979.0,
+  "sharpe_dev": -3.2,
+  "sharpe_test": -3.22,
+  "days_200_test": 0.126,
+  "years": {
+   "2022": -58.8,
+   "2023": -59.4,
+   "2024": -67.6,
+   "2025": -32.6,
+   "2026": -114.6
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -65.5,
+  "test_usd": -56.0,
+  "test_up": 0.293,
+  "trades_per_day": 9.17,
+  "worst_day": -734.0,
+  "max_drawdown": -63681.0,
+  "sharpe_dev": -3.58,
+  "sharpe_test": -2.96,
+  "days_200_test": 0.142,
+  "years": {
+   "2022": -25.4,
+   "2023": -75.3,
+   "2024": -67.6,
+   "2025": -32.8,
+   "2026": -81.9
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.2 ATR first-bar side": {
+  "dev_usd": -66.5,
+  "test_usd": -42.4,
+  "test_up": 0.339,
+  "trades_per_day": 3.55,
+  "worst_day": -1007.0,
+  "max_drawdown": -57641.0,
+  "sharpe_dev": -2.32,
+  "sharpe_test": -1.34,
+  "days_200_test": 0.222,
+  "years": {
+   "2022": -50.1,
+   "2023": -97.7,
+   "2024": -16.6,
+   "2025": -32.1,
+   "2026": -77.0
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -66.6,
+  "test_usd": -66.2,
+  "test_up": 0.278,
+  "trades_per_day": 15.44,
+  "worst_day": -506.0,
+  "max_drawdown": -65765.0,
+  "sharpe_dev": -5.46,
+  "sharpe_test": -5.15,
+  "days_200_test": 0.106,
+  "years": {
+   "2022": -58.2,
+   "2023": -73.9,
+   "2024": -49.3,
+   "2025": -61.2,
+   "2026": -89.6
+  }
+ },
+ "ORB 15m top 5 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -67.8,
+  "test_usd": -66.6,
+  "test_up": 0.122,
+  "trades_per_day": 3.71,
+  "worst_day": -539.0,
+  "max_drawdown": -66298.0,
+  "sharpe_dev": -6.71,
+  "sharpe_test": -6.72,
+  "days_200_test": 0.067,
+  "years": {
+   "2022": -85.4,
+   "2023": -69.1,
+   "2024": -53.7,
+   "2025": -60.1,
+   "2026": -85.6
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -68.6,
+  "test_usd": -56.9,
+  "test_up": 0.248,
+  "trades_per_day": 3.83,
+  "worst_day": -940.0,
+  "max_drawdown": -63616.0,
+  "sharpe_dev": -3.39,
+  "sharpe_test": -2.72,
+  "days_200_test": 0.142,
+  "years": {
+   "2022": -79.3,
+   "2023": -69.4,
+   "2024": -64.2,
+   "2025": -34.4,
+   "2026": -83.1
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.05 ATR first-bar side": {
+  "dev_usd": -65.2,
+  "test_usd": -70.3,
+  "test_up": 0.069,
+  "trades_per_day": 3.55,
+  "worst_day": -476.0,
+  "max_drawdown": -68122.0,
+  "sharpe_dev": -5.3,
+  "sharpe_test": -5.75,
+  "days_200_test": 0.055,
+  "years": {
+   "2022": -76.7,
+   "2023": -70.6,
+   "2024": -52.0,
+   "2025": -68.9,
+   "2026": -80.6
+  }
+ },
+ "ORB 15m top 20 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -71.2,
+  "test_usd": -68.1,
+  "test_up": 0.175,
+  "trades_per_day": 17.21,
+  "worst_day": -343.0,
+  "max_drawdown": -69150.0,
+  "sharpe_dev": -10.07,
+  "sharpe_test": -9.66,
+  "days_200_test": 0.03,
+  "years": {
+   "2022": -57.4,
+   "2023": -81.1,
+   "2024": -56.7,
+   "2025": -57.1,
+   "2026": -93.0
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.2 ATR either side": {
+  "dev_usd": -75.4,
+  "test_usd": -54.6,
+  "test_up": 0.325,
+  "trades_per_day": 4.16,
+  "worst_day": -1183.0,
+  "max_drawdown": -69783.0,
+  "sharpe_dev": -2.37,
+  "sharpe_test": -1.56,
+  "days_200_test": 0.219,
+  "years": {
+   "2022": -61.5,
+   "2023": -94.1,
+   "2024": -48.5,
+   "2025": -33.6,
+   "2026": -90.2
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.05 ATR either side": {
+  "dev_usd": -75.7,
+  "test_usd": -75.3,
+  "test_up": 0.091,
+  "trades_per_day": 4.16,
+  "worst_day": -476.0,
+  "max_drawdown": -75321.0,
+  "sharpe_dev": -5.93,
+  "sharpe_test": -5.14,
+  "days_200_test": 0.067,
+  "years": {
+   "2022": -96.1,
+   "2023": -78.6,
+   "2024": -63.1,
+   "2025": -76.2,
+   "2026": -79.4
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -73.4,
+  "test_usd": -75.8,
+  "test_up": 0.144,
+  "trades_per_day": 15.44,
+  "worst_day": -277.0,
+  "max_drawdown": -73782.0,
+  "sharpe_dev": -12.21,
+  "sharpe_test": -11.01,
+  "days_200_test": 0.031,
+  "years": {
+   "2022": -111.1,
+   "2023": -76.4,
+   "2024": -54.4,
+   "2025": -68.4,
+   "2026": -94.7
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -76.1,
+  "test_usd": -64.7,
+  "test_up": 0.134,
+  "trades_per_day": 3.83,
+  "worst_day": -633.0,
+  "max_drawdown": -69478.0,
+  "sharpe_dev": -7.93,
+  "sharpe_test": -6.0,
+  "days_200_test": 0.079,
+  "years": {
+   "2022": -109.7,
+   "2023": -76.6,
+   "2024": -58.3,
+   "2025": -58.7,
+   "2026": -78.8
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -76.4,
+  "test_usd": -76.1,
+  "test_up": 0.285,
+  "trades_per_day": 8.26,
+  "worst_day": -710.0,
+  "max_drawdown": -75714.0,
+  "sharpe_dev": -4.54,
+  "sharpe_test": -4.5,
+  "days_200_test": 0.126,
+  "years": {
+   "2022": -106.9,
+   "2023": -73.9,
+   "2024": -60.7,
+   "2025": -68.0,
+   "2026": -100.2
+  }
+ },
+ "ORB 15m top 10 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -77.5,
+  "test_usd": -71.7,
+  "test_up": 0.199,
+  "trades_per_day": 9.17,
+  "worst_day": -459.0,
+  "max_drawdown": -73591.0,
+  "sharpe_dev": -8.17,
+  "sharpe_test": -7.16,
+  "days_200_test": 0.061,
+  "years": {
+   "2022": -74.9,
+   "2023": -85.7,
+   "2024": -65.3,
+   "2025": -60.9,
+   "2026": -90.1
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.2 ATR first-bar side": {
+  "dev_usd": -77.8,
+  "test_usd": -49.6,
+  "test_up": 0.36,
+  "trades_per_day": 4.12,
+  "worst_day": -1223.0,
+  "max_drawdown": -66664.0,
+  "sharpe_dev": -2.56,
+  "sharpe_test": -1.48,
+  "days_200_test": 0.238,
+  "years": {
+   "2022": -82.1,
+   "2023": -103.6,
+   "2024": -23.6,
+   "2025": -42.6,
+   "2026": -83.7
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.1 ATR first-bar side": {
+  "dev_usd": -78.5,
+  "test_usd": -69.4,
+  "test_up": 0.201,
+  "trades_per_day": 3.55,
+  "worst_day": -657.0,
+  "max_drawdown": -76194.0,
+  "sharpe_dev": -4.02,
+  "sharpe_test": -3.37,
+  "days_200_test": 0.13,
+  "years": {
+   "2022": -35.8,
+   "2023": -88.6,
+   "2024": -76.2,
+   "2025": -62.7,
+   "2026": -79.9
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.2 ATR either side": {
+  "dev_usd": -78.9,
+  "test_usd": -52.9,
+  "test_up": 0.35,
+  "trades_per_day": 4.85,
+  "worst_day": -1223.0,
+  "max_drawdown": -69715.0,
+  "sharpe_dev": -2.24,
+  "sharpe_test": -1.4,
+  "days_200_test": 0.246,
+  "years": {
+   "2022": -83.5,
+   "2023": -91.9,
+   "2024": -50.5,
+   "2025": -41.1,
+   "2026": -76.4
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -79.0,
+  "test_usd": -71.9,
+  "test_up": 0.26,
+  "trades_per_day": 4.54,
+  "worst_day": -940.0,
+  "max_drawdown": -76603.0,
+  "sharpe_dev": -3.57,
+  "sharpe_test": -3.15,
+  "days_200_test": 0.144,
+  "years": {
+   "2022": -116.4,
+   "2023": -72.8,
+   "2024": -73.7,
+   "2025": -37.3,
+   "2026": -117.4
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -70.2,
+  "test_usd": -80.3,
+  "test_up": 0.14,
+  "trades_per_day": 8.26,
+  "worst_day": -372.0,
+  "max_drawdown": -74482.0,
+  "sharpe_dev": -7.18,
+  "sharpe_test": -8.44,
+  "days_200_test": 0.049,
+  "years": {
+   "2022": -100.1,
+   "2023": -73.0,
+   "2024": -55.1,
+   "2025": -75.3,
+   "2026": -97.0
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.05 ATR first-bar side": {
+  "dev_usd": -72.7,
+  "test_usd": -82.5,
+  "test_up": 0.081,
+  "trades_per_day": 4.12,
+  "worst_day": -476.0,
+  "max_drawdown": -77618.0,
+  "sharpe_dev": -5.42,
+  "sharpe_test": -6.31,
+  "days_200_test": 0.059,
+  "years": {
+   "2022": -89.4,
+   "2023": -78.0,
+   "2024": -58.1,
+   "2025": -80.6,
+   "2026": -95.9
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -81.4,
+  "test_usd": -85.7,
+  "test_up": 0.264,
+  "trades_per_day": 18.17,
+  "worst_day": -529.0,
+  "max_drawdown": -82795.0,
+  "sharpe_dev": -5.96,
+  "sharpe_test": -6.36,
+  "days_200_test": 0.1,
+  "years": {
+   "2022": -75.2,
+   "2023": -89.4,
+   "2024": -62.5,
+   "2025": -79.6,
+   "2026": -113.4
+  }
+ },
+ "ORB 15m top 5 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -88.9,
+  "test_usd": -75.4,
+  "test_up": 0.156,
+  "trades_per_day": 4.54,
+  "worst_day": -633.0,
+  "max_drawdown": -80988.0,
+  "sharpe_dev": -8.53,
+  "sharpe_test": -6.32,
+  "days_200_test": 0.085,
+  "years": {
+   "2022": -135.0,
+   "2023": -86.5,
+   "2024": -68.7,
+   "2025": -67.6,
+   "2026": -93.6
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -83.8,
+  "test_usd": -89.2,
+  "test_up": 0.106,
+  "trades_per_day": 4.85,
+  "worst_day": -476.0,
+  "max_drawdown": -86005.0,
+  "sharpe_dev": -5.99,
+  "sharpe_test": -5.73,
+  "days_200_test": 0.075,
+  "years": {
+   "2022": -113.5,
+   "2023": -83.7,
+   "2024": -72.3,
+   "2025": -89.3,
+   "2026": -96.4
+  }
+ },
+ "ORB 5m top 20 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -87.3,
+  "test_usd": -89.3,
+  "test_up": 0.148,
+  "trades_per_day": 18.17,
+  "worst_day": -306.0,
+  "max_drawdown": -87253.0,
+  "sharpe_dev": -13.11,
+  "sharpe_test": -11.94,
+  "days_200_test": 0.031,
+  "years": {
+   "2022": -132.5,
+   "2023": -87.6,
+   "2024": -67.5,
+   "2025": -81.8,
+   "2026": -110.1
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.1 ATR first-bar side": {
+  "dev_usd": -89.5,
+  "test_usd": -80.2,
+  "test_up": 0.23,
+  "trades_per_day": 4.12,
+  "worst_day": -660.0,
+  "max_drawdown": -86281.0,
+  "sharpe_dev": -4.23,
+  "sharpe_test": -3.66,
+  "days_200_test": 0.146,
+  "years": {
+   "2022": -66.6,
+   "2023": -96.5,
+   "2024": -82.8,
+   "2025": -80.2,
+   "2026": -84.2
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -81.8,
+  "test_usd": -90.0,
+  "test_up": 0.256,
+  "trades_per_day": 9.7,
+  "worst_day": -710.0,
+  "max_drawdown": -86304.0,
+  "sharpe_dev": -4.28,
+  "sharpe_test": -4.92,
+  "days_200_test": 0.13,
+  "years": {
+   "2022": -96.4,
+   "2023": -80.2,
+   "2024": -74.9,
+   "2025": -83.3,
+   "2026": -109.0
+  }
+ },
+ "ORB 5m top 5 rr>1.5 stop 0.1 ATR either side": {
+  "dev_usd": -90.2,
+  "test_usd": -84.4,
+  "test_up": 0.215,
+  "trades_per_day": 4.16,
+  "worst_day": -789.0,
+  "max_drawdown": -90230.0,
+  "sharpe_dev": -4.26,
+  "sharpe_test": -3.77,
+  "days_200_test": 0.126,
+  "years": {
+   "2022": -45.3,
+   "2023": -98.5,
+   "2024": -94.2,
+   "2025": -81.6,
+   "2026": -85.6
+  }
+ },
+ "ORB 5m top 10 rr>1.0 stop 0.05 ATR either side": {
+  "dev_usd": -79.0,
+  "test_usd": -90.8,
+  "test_up": 0.159,
+  "trades_per_day": 9.7,
+  "worst_day": -372.0,
+  "max_drawdown": -83974.0,
+  "sharpe_dev": -7.33,
+  "sharpe_test": -8.53,
+  "days_200_test": 0.051,
+  "years": {
+   "2022": -108.7,
+   "2023": -79.4,
+   "2024": -68.3,
+   "2025": -88.7,
+   "2026": -101.8
+  }
+ },
+ "ORB 5m top 5 rr>1.0 stop 0.1 ATR either side": {
+  "dev_usd": -99.0,
+  "test_usd": -91.3,
+  "test_up": 0.252,
+  "trades_per_day": 4.85,
+  "worst_day": -789.0,
+  "max_drawdown": -97390.0,
+  "sharpe_dev": -4.17,
+  "sharpe_test": -3.69,
+  "days_200_test": 0.146,
+  "years": {
+   "2022": -67.0,
+   "2023": -100.4,
+   "2024": -103.9,
+   "2025": -98.0,
+   "2026": -82.1
+  }
+ }
+}

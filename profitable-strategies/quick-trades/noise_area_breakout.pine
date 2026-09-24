@@ -1,0 +1,75 @@
+//@version=6
+// Noise-Area Breakout (Zarattini and Aziz, 2023), as tested in strategies/quick/trend.py.
+// For a 1-minute chart of QQQ, TQQQ, SPY, IWM, DIA, NQ/MNQ or ES/MES on regular hours (09:30-16:00 New York).
+// Every half hour (10:00, 10:30 ... 15:30) the bar's close is compared with the band the index usually moves
+// within by that time of day: the average absolute move from the day's open at that time over the last
+// `lookback` sessions, around the larger (smaller) of today's open and yesterday's close.  A close above the
+// upper band buys, below the lower band sells short; a close back inside the band or through VWAP exits; every
+// position is closed at the end of the day.  Orders fill at the next bar's open.  Paper-test before any money.
+strategy("Noise-Area Breakout", overlay = true, default_qty_type = strategy.percent_of_equity, default_qty_value = 100,
+         commission_type = strategy.commission.percent, commission_value = 0.005, slippage = 1,
+         process_orders_on_close = false, calc_on_every_tick = false)
+
+lookback  = input.int(14, "Lookback sessions", minval = 5, maxval = 60)
+every     = input.int(30, "Check every (minutes)", options = [15, 30, 60])
+bandMult  = input.float(1.0, "Band multiplier", minval = 0.5, step = 0.25)
+useVwap   = input.bool(true, "Exit on VWAP as well as the band")
+allowShort = input.bool(true, "Allow shorts")
+sessionIn = input.session("0930-1600", "Regular session (exchange time)")
+tz        = input.string("America/New_York", "Time zone")
+
+inSession = not na(time(timeframe.period, sessionIn, tz))
+newDay    = inSession and not inSession[1]
+minuteOfSession = inSession ? (hour(time, tz) * 60 + minute(time, tz)) - (9 * 60 + 30) : na
+
+var float dayOpen   = na
+var float prevClose = na
+var float lastClose = na
+if newDay
+    prevClose := lastClose
+    dayOpen := open
+if inSession
+    lastClose := close
+
+// for each check time (12 of them at 30 minutes), the last `lookback` |close / open - 1| at that time,
+// kept in a lookback x checks matrix written round-robin
+nChecks = int(390 / every)
+var matrix<float> moves = matrix.new<float>(lookback, 26, na)
+var array<int> filled = array.new<int>(26, 0)
+
+isCheck = inSession and not na(minuteOfSession) and (minuteOfSession + 1) % every == 0 and minuteOfSession + 1 < 390
+checkIdx = isCheck ? int((minuteOfSession + 1) / every) - 1 : na
+
+float upper = na
+float lower = na
+if isCheck and not na(dayOpen) and not na(prevClose) and checkIdx < nChecks
+    n = filled.get(checkIdx)
+    if n >= lookback
+        sigma = bandMult * moves.col(checkIdx).avg()
+        upper := math.max(dayOpen, prevClose) * (1 + sigma)
+        lower := math.min(dayOpen, prevClose) * (1 - sigma)
+    moves.set(n % lookback, checkIdx, math.abs(close / dayOpen - 1))
+    filled.set(checkIdx, n + 1)
+
+vw = ta.vwap(hlc3)
+if isCheck and not na(upper)
+    if strategy.position_size > 0 and close < (useVwap ? math.max(upper, vw) : upper)
+        strategy.close("Long", comment = "back in the band")
+    if strategy.position_size < 0 and close > (useVwap ? math.min(lower, vw) : lower)
+        strategy.close("Short", comment = "back in the band")
+    if strategy.position_size == 0
+        if close > upper
+            strategy.entry("Long", strategy.long)
+            alert('{"action":"buy","reason":"noise-area breakout","price":' + str.tostring(close) + '}', alert.freq_once_per_bar_close)
+        else if close < lower and allowShort
+            strategy.entry("Short", strategy.short)
+            alert('{"action":"sell_short","reason":"noise-area breakdown","price":' + str.tostring(close) + '}', alert.freq_once_per_bar_close)
+
+// flat for the close: the 15:58 bar's order fills at the 15:59 open
+if inSession and minuteOfSession == 388 and strategy.position_size != 0
+    strategy.close_all(comment = "end of day")
+    alert('{"action":"flatten","reason":"end of day"}', alert.freq_once_per_bar_close)
+
+plot(upper, "Upper band", color.new(color.teal, 0), style = plot.style_circles, linewidth = 2)
+plot(lower, "Lower band", color.new(color.red, 0), style = plot.style_circles, linewidth = 2)
+plot(inSession ? vw : na, "VWAP", color.new(color.gray, 30))
