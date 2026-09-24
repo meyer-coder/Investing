@@ -121,6 +121,14 @@ About two trades a day. Costs are a cent of spread plus $0.007 a share.
   (tight stops, names picked by how wild their first minutes are) lost money
   on these large caps. So did tighter stops.
 - **2024 was slightly negative**, at -$7 a day.
+- **Volatile stocks are no better over time** (`gap_volatile.py`, 77 names
+  such as MSTR, COIN, SMCI, HOOD, IONQ and RKLB).
+  - Over the last month on 47 of them, the rule averaged $197 a day.
+  - Over 60 days of five-minute bars, the best version made $111 a day,
+    give or take $86.
+  - Over two years of hourly bars, a first-hour version made $20 to $30 a
+    day, falling from about $45 in the first year to $8 in the second.
+  - The one good month was luck, not a bigger edge.
 
 Pine Script: [gap_breakout.pine](gap_breakout.pine). It runs one chart at a
 time; the paper bot picks the day's three gappers. Research:
