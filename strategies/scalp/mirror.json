@@ -1,0 +1,44 @@
+{
+ "long own-drop": {
+  "original first 14": {
+   "bp": 9.38,
+   "win": 0.587,
+   "per_day": 7.4,
+   "t": 1.27
+  },
+  "original last 7": {
+   "bp": 13.31,
+   "win": 0.536,
+   "per_day": 8.0,
+   "t": 1.61
+  },
+  "fresh all 21": {
+   "bp": 4.38,
+   "win": 0.543,
+   "per_day": 15.0,
+   "t": 1.21
+  },
+  "days_with_edge": 0.75
+ },
+ "short own-rise": {
+  "original first 14": {
+   "bp": -20.25,
+   "win": 0.398,
+   "per_day": 8.1,
+   "t": -3.11
+  },
+  "original last 7": {
+   "bp": -4.59,
+   "win": 0.406,
+   "per_day": 9.1,
+   "t": -0.54
+  },
+  "fresh all 21": {
+   "bp": -3.69,
+   "win": 0.454,
+   "per_day": 14.0,
+   "t": -0.92
+  },
+  "days_with_edge": 0.25
+ }
+}

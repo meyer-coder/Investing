@@ -1,28 +1,28 @@
-"""Paper-trade the opening dip scalper forward: each finished session replayed
+"""Paper-trade the Own-Drop Scalper forward: each finished session replayed
 minute by minute from the archive, every trade written once to a ledger.
 
     python strategies/scalp/replay.py            # replay the sessions since the last one recorded
 
-The scalper is fixed here, as tested (bot.py): buy a name whose one-minute
-return falls more than 0.75 of its 14-minute average range as a share of price,
-from the 09:35 bar to the 09:45 bar New York, at the next minute's open; sell
-four minutes later at the open; at most two positions, each 62.5% of a $25,000
-account (1.25x buying power, as a margin account's day-trading power allows);
-flat by the 15:55 bar in any case.  Costs: a cent plus 1 bp each way, at each
-name's price that day.
+The scalper is fixed here, as tested (owndrop.py): across 47 names, buy one
+whose one-minute return, on a bar from 09:35 to 09:45 New York, falls more
+than 0.75 of its 14-minute average range as a share of price and more than
+two standard deviations below the other names' average that minute; fill at
+the next minute's open, sell four minutes later at the open.  At most three
+positions, each a third of buying power, on a $25,000 account at 2x buying
+power (a margin account's day-trading power allows 4x); flat by the 15:55 bar
+in any case.  Costs: a cent plus 1 bp each way, at each name's price that day.
 
-The session before each one is replayed too, only so the 14-minute range is
-defined at 09:35.  Each session starts at $25,000: the ledger's dollars a day
-are that account's.  Writes profitable-strategies/scalping/opening-dip/paper.json
-and paper/<date>.md.
+The session before each one is replayed too, only so the 14-minute range and
+the residual's last 20 minutes are defined at 09:35.  A name missing from
+either session's archive sits that day out.  Each session starts at $25,000:
+the ledger's dollars a day are that account's.  Writes
+profitable-strategies/scalping/own-drop/paper.json and paper/<date>.md.
 """
 from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import numpy as np
 
@@ -31,31 +31,27 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "strategies" / "soxl"))
 sys.path.insert(0, str(ROOT / "strategies" / "scalp"))
 import minute                                                                # noqa: E402
-from bot import bot                                                          # noqa: E402
-from events import NAMES, cost_bp                                           # noqa: E402
+from events import cost_bp                                                   # noqa: E402
+from owndrop import ACCOUNT, LEVERAGE, OUT, bot, et                          # noqa: E402
+from residbot import ALLOWED, POOL, add_residual                             # noqa: E402
 from evotrader.features import build_features                               # noqa: E402
 from evotrader.genome import compile_genome                                 # noqa: E402
 from evotrader.runner import run_backtest                                   # noqa: E402
 
 GO_LIVE = "2026-09-24"
-ACCOUNT, LEVERAGE = 25_000.0, 1.25
-PARAMS = (0.75, 15, "", 4, 2)                 # drop in ranges, window minutes, filter, hold minutes, slots
-OUT = ROOT / "profitable-strategies" / "scalping" / "opening-dip"
 LEDGER = OUT / "paper.json"
-NY = ZoneInfo("America/New_York")
-
-
-def et(stamp: str) -> str:
-    t = datetime.strptime(stamp, "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
-    return t.astimezone(NY).strftime("%H:%M")
+CORE = ("SOXL", "NVDA", "TQQQ")               # a session is in the archive when these have it
 
 
 def replay(day: str, before: str) -> dict:
-    u = minute.universe(NAMES, [before, day])
+    have = {s: {minute.session_of(t) for t in minute.read(s)} for s in POOL}
+    names = [s for s in POOL if {before, day} <= have[s]]
+    u = minute.universe(names, [before, day])
     f = build_features(u)
+    add_residual(u, f)
     idx = [i for i, t in enumerate(u.calendar) if minute.session_of(t) == day]
-    slip = {s: cost_bp(np.asarray(u.bars[s].close)[idx]) for s in NAMES}
-    r = run_backtest(compile_genome(bot(*PARAMS)), u, f, starting_cash=ACCOUNT, commission_bps=0.0,
+    slip = {s: cost_bp(np.asarray(u.bars[s].close)[idx]) for s in names}
+    r = run_backtest(compile_genome(bot(), ALLOWED), u, f, starting_cash=ACCOUNT, commission_bps=0.0,
                      slippage_bps=2.0, record_thoughts=False, intrabar_stops=True,
                      slippage_by_symbol=slip, leverage=LEVERAGE, start_bar=idx[0] - 30)
     trades = [t for t in r.journal.trades if minute.session_of(t.entry_date) == day]
@@ -64,23 +60,23 @@ def replay(day: str, before: str) -> dict:
              "exit": round(t.exit_price, 4), "shares": round(t.shares, 2),
              "size": round(t.shares * t.entry_price, 0), "pnl": round(t.pnl, 2), "ret_bp": round(t.ret * 1e4, 1),
              "minutes": t.bars_held} for t in trades]
-    return {"pnl": round(sum(x["pnl"] for x in rows), 2), "trades": rows}
+    return {"pnl": round(sum(x["pnl"] for x in rows), 2), "names": len(names), "trades": rows}
 
 
 def main() -> int:
-    minute.update(NAMES)
+    minute.update(POOL)
     ledger = json.loads(LEDGER.read_text()) if LEDGER.exists() else {
-        "bot": bot(*PARAMS).to_dict(), "go_live": GO_LIVE, "account": ACCOUNT, "leverage": LEVERAGE,
+        "bot": bot().to_dict(), "go_live": GO_LIVE, "account": ACCOUNT, "leverage": LEVERAGE,
         "sessions": {}}
-    days = minute.sessions(NAMES)
+    days = minute.sessions(CORE)
     new = [d for d in days if d >= GO_LIVE and d not in ledger["sessions"]]
     OUT.joinpath("paper").mkdir(parents=True, exist_ok=True)
     for d in new:
         before = days[days.index(d) - 1]
         res = replay(d, before)
         ledger["sessions"][d] = res
-        lines = [f"# Opening dip scalper, {d}", "",
-                 f"Paper, $25,000 at {LEVERAGE:g}x buying power. P&L {res['pnl']:+,.2f} over "
+        lines = [f"# Own-Drop Scalper, {d}", "",
+                 f"Paper, $25,000 at {LEVERAGE:g}x buying power, {res['names']} names. P&L {res['pnl']:+,.2f} over "
                  f"{len(res['trades'])} trades.", ""]
         if res["trades"]:
             lines += ["| Name | In (ET) | Out (ET) | Entry | Exit | Size | P&L | bp |",

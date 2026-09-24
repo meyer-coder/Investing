@@ -1,5 +1,12 @@
 # Opening Dip Scalper
 
+**Superseded by the [Own-Drop Scalper](../own-drop/README.md).** This first
+version was found on 17 names and did not carry over: on 30 fresh names it
+made about $10 a day (+1.5 bp a trade). The own-drop version adds one
+condition, that the name falls while the other names do not, and kept both
+groups of names profitable. Its paper trail replaced this one before a
+session was recorded here. Kept for the record.
+
 One bot. Trades last four minutes, and nothing is ever held past the close:
 every trade is over by 09:50 New York. Found 2026-09-23 on one month of
 one-minute data. Backtests and paper trading, not advice.

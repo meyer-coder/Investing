@@ -1,5 +1,14 @@
 # Profitable strategies
 
+**New: [Own-Drop Scalper](scalping/own-drop/README.md).** One bot whose
+trades each last four minutes. Every trade is over by 09:50 New York, so
+nothing is held past the close. Across 47 names, it buys a sharp drop in the
+opening minutes that one name takes while the rest of the market does not. On
+one month of one-minute data it averaged $153 a day at 2x buying power on
+$25,000 (typical day $95). Two days in three made money, and the worst day
+lost $212. It held up on 30 names it was never tuned on. The paper trail
+starts 2026-09-24.
+
 **New: [leveraged tech top 50](leveraged-etfs/README.md).** A seven-hour grind over
 2x and 3x funds on semiconductors, AI and graphics-card names and big tech kept
 5,024 profitable strategies, 2,454 of them at $80+ a session on $25,000 over

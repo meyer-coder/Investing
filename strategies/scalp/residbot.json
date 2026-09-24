@@ -1,0 +1,2342 @@
+{
+ "Residual Dip z<-2.5/15m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 5.9,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -93.0,
+   "trades_per_day": 4.4,
+   "win_rate": 0.516,
+   "avg_trade_bp": 1.1,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -230.0,
+   "pnl_fresh_names": 271.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 51.0,
+    "2026-08-27": -93.0,
+    "2026-08-28": 22.0,
+    "2026-08-31": -80.0,
+    "2026-09-01": -60.0,
+    "2026-09-02": 201.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 48.3,
+   "median": 102.0,
+   "days_up": 0.571,
+   "worst_day": -200.0,
+   "trades_per_day": 5.0,
+   "win_rate": 0.657,
+   "avg_trade_bp": 7.7,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -30.0,
+   "pnl_fresh_names": 365.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 336.0,
+    "2026-09-08": 167.0,
+    "2026-09-09": -200.0,
+    "2026-09-10": 122.0,
+    "2026-09-11": 102.0,
+    "2026-09-14": -189.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 145.1,
+   "median": 155.6,
+   "days_up": 0.714,
+   "worst_day": -38.0,
+   "trades_per_day": 5.1,
+   "win_rate": 0.694,
+   "avg_trade_bp": 22.5,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 520.0,
+   "pnl_fresh_names": 511.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 292.0,
+    "2026-09-17": 220.0,
+    "2026-09-18": 100.0,
+    "2026-09-21": -38.0,
+    "2026-09-22": 286.0,
+    "2026-09-23": 156.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/15m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 26.4,
+   "median": -8.1,
+   "days_up": 0.286,
+   "worst_day": -74.0,
+   "trades_per_day": 5.9,
+   "win_rate": 0.512,
+   "avg_trade_bp": 5.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -104.0,
+   "pnl_fresh_names": 287.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 21.0,
+    "2026-08-27": -74.0,
+    "2026-08-28": -26.0,
+    "2026-08-31": -56.0,
+    "2026-09-01": -8.0,
+    "2026-09-02": 327.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 31.6,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -130.0,
+   "trades_per_day": 6.9,
+   "win_rate": 0.604,
+   "avg_trade_bp": 5.5,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 67.0,
+   "pnl_fresh_names": 152.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 242.0,
+    "2026-09-08": 150.0,
+    "2026-09-09": -80.0,
+    "2026-09-10": -44.0,
+    "2026-09-11": 83.0,
+    "2026-09-14": -130.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 113.0,
+   "median": 125.0,
+   "days_up": 0.714,
+   "worst_day": -73.0,
+   "trades_per_day": 7.0,
+   "win_rate": 0.673,
+   "avg_trade_bp": 19.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 418.0,
+   "pnl_fresh_names": 381.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 287.0,
+    "2026-09-17": 126.0,
+    "2026-09-18": 50.0,
+    "2026-09-21": -73.0,
+    "2026-09-22": 276.0,
+    "2026-09-23": 125.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/15m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 9.9,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -121.0,
+   "trades_per_day": 6.9,
+   "win_rate": 0.479,
+   "avg_trade_bp": 2.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -4.0,
+   "pnl_fresh_names": 73.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 70.0,
+    "2026-08-27": -41.0,
+    "2026-08-28": -58.0,
+    "2026-08-31": -121.0,
+    "2026-09-01": 68.0,
+    "2026-09-02": 151.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 46.2,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -100.0,
+   "trades_per_day": 8.1,
+   "win_rate": 0.596,
+   "avg_trade_bp": 9.1,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 138.0,
+   "pnl_fresh_names": 185.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 165.0,
+    "2026-09-08": 107.0,
+    "2026-09-09": -62.0,
+    "2026-09-10": -17.0,
+    "2026-09-11": 230.0,
+    "2026-09-14": -100.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 87.8,
+   "median": 87.0,
+   "days_up": 0.714,
+   "worst_day": -80.0,
+   "trades_per_day": 8.9,
+   "win_rate": 0.629,
+   "avg_trade_bp": 15.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 434.0,
+   "pnl_fresh_names": 186.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 192.0,
+    "2026-09-17": 87.0,
+    "2026-09-18": 108.0,
+    "2026-09-21": -80.0,
+    "2026-09-22": 221.0,
+    "2026-09-23": 87.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/15m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 13.6,
+   "median": -13.4,
+   "days_up": 0.286,
+   "worst_day": -145.0,
+   "trades_per_day": 3.6,
+   "win_rate": 0.4,
+   "avg_trade_bp": 3.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -155.0,
+   "pnl_fresh_names": 248.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -13.0,
+    "2026-08-27": 128.0,
+    "2026-08-28": -52.0,
+    "2026-08-31": -51.0,
+    "2026-09-01": -145.0,
+    "2026-09-02": 227.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 45.2,
+   "median": 81.2,
+   "days_up": 0.571,
+   "worst_day": -150.0,
+   "trades_per_day": 3.9,
+   "win_rate": 0.556,
+   "avg_trade_bp": 9.4,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -90.0,
+   "pnl_fresh_names": 406.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 150.0,
+    "2026-09-08": 196.0,
+    "2026-09-09": -96.0,
+    "2026-09-10": 135.0,
+    "2026-09-11": 81.0,
+    "2026-09-14": -150.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 75.2,
+   "median": 91.4,
+   "days_up": 0.714,
+   "worst_day": -5.0,
+   "trades_per_day": 4.4,
+   "win_rate": 0.613,
+   "avg_trade_bp": 13.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 490.0,
+   "pnl_fresh_names": 41.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 91.0,
+    "2026-09-17": 129.0,
+    "2026-09-18": 158.0,
+    "2026-09-21": 5.0,
+    "2026-09-22": 149.0,
+    "2026-09-23": -5.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/15m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 41.4,
+   "median": -38.2,
+   "days_up": 0.286,
+   "worst_day": -64.0,
+   "trades_per_day": 5.0,
+   "win_rate": 0.4,
+   "avg_trade_bp": 10.0,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -45.0,
+   "pnl_fresh_names": 333.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -38.0,
+    "2026-08-27": 71.0,
+    "2026-08-28": -51.0,
+    "2026-08-31": -44.0,
+    "2026-09-01": -64.0,
+    "2026-09-02": 416.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 54.8,
+   "median": 40.9,
+   "days_up": 0.714,
+   "worst_day": -155.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.579,
+   "avg_trade_bp": 12.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 80.0,
+   "pnl_fresh_names": 304.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 93.0,
+    "2026-09-08": 241.0,
+    "2026-09-09": 18.0,
+    "2026-09-10": 145.0,
+    "2026-09-11": 41.0,
+    "2026-09-14": -155.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 79.0,
+   "median": 35.5,
+   "days_up": 0.714,
+   "worst_day": -34.0,
+   "trades_per_day": 6.0,
+   "win_rate": 0.571,
+   "avg_trade_bp": 15.8,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 273.0,
+   "pnl_fresh_names": 284.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 149.0,
+    "2026-09-17": 35.0,
+    "2026-09-18": 199.0,
+    "2026-09-21": -34.0,
+    "2026-09-22": 174.0,
+    "2026-09-23": 30.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/15m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 33.6,
+   "median": 13.5,
+   "days_up": 0.571,
+   "worst_day": -75.0,
+   "trades_per_day": 6.3,
+   "win_rate": 0.409,
+   "avg_trade_bp": 8.6,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 51.0,
+   "pnl_fresh_names": 183.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 13.0,
+    "2026-08-27": 60.0,
+    "2026-08-28": -52.0,
+    "2026-08-31": -75.0,
+    "2026-09-01": 38.0,
+    "2026-09-02": 251.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 38.5,
+   "median": 57.1,
+   "days_up": 0.714,
+   "worst_day": -171.0,
+   "trades_per_day": 6.9,
+   "win_rate": 0.583,
+   "avg_trade_bp": 9.0,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -31.0,
+   "pnl_fresh_names": 300.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 57.0,
+    "2026-09-08": 184.0,
+    "2026-09-09": 49.0,
+    "2026-09-10": 72.0,
+    "2026-09-11": 79.0,
+    "2026-09-14": -171.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 54.2,
+   "median": 24.0,
+   "days_up": 0.714,
+   "worst_day": -44.0,
+   "trades_per_day": 7.4,
+   "win_rate": 0.558,
+   "avg_trade_bp": 11.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 238.0,
+   "pnl_fresh_names": 143.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 98.0,
+    "2026-09-17": 2.0,
+    "2026-09-18": 169.0,
+    "2026-09-21": -44.0,
+    "2026-09-22": 130.0,
+    "2026-09-23": 24.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -1.9,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -85.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.5,
+   "avg_trade_bp": -0.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -224.0,
+   "pnl_fresh_names": 210.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 30.0,
+    "2026-08-27": -64.0,
+    "2026-08-28": 87.0,
+    "2026-08-31": -85.0,
+    "2026-09-01": -60.0,
+    "2026-09-02": 78.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 17.5,
+   "median": -29.8,
+   "days_up": 0.286,
+   "worst_day": -200.0,
+   "trades_per_day": 5.9,
+   "win_rate": 0.61,
+   "avg_trade_bp": 2.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -101.0,
+   "pnl_fresh_names": 220.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 336.0,
+    "2026-09-08": 167.0,
+    "2026-09-09": -200.0,
+    "2026-09-10": -47.0,
+    "2026-09-11": -30.0,
+    "2026-09-14": -103.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 119.2,
+   "median": 99.7,
+   "days_up": 0.714,
+   "worst_day": -38.0,
+   "trades_per_day": 5.7,
+   "win_rate": 0.625,
+   "avg_trade_bp": 16.7,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 440.0,
+   "pnl_fresh_names": 405.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 292.0,
+    "2026-09-17": 220.0,
+    "2026-09-18": 100.0,
+    "2026-09-21": -38.0,
+    "2026-09-22": 203.0,
+    "2026-09-23": 58.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 15.2,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -60.0,
+   "trades_per_day": 7.1,
+   "win_rate": 0.5,
+   "avg_trade_bp": 2.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -173.0,
+   "pnl_fresh_names": 279.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 7.0,
+    "2026-08-27": -54.0,
+    "2026-08-28": 50.0,
+    "2026-08-31": -60.0,
+    "2026-09-01": -8.0,
+    "2026-09-02": 172.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 17.9,
+   "median": -4.8,
+   "days_up": 0.286,
+   "worst_day": -156.0,
+   "trades_per_day": 8.0,
+   "win_rate": 0.589,
+   "avg_trade_bp": 2.7,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 67.0,
+   "pnl_fresh_names": 56.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 242.0,
+    "2026-09-08": 150.0,
+    "2026-09-09": -80.0,
+    "2026-09-10": -156.0,
+    "2026-09-11": -5.0,
+    "2026-09-14": -26.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 96.9,
+   "median": 57.3,
+   "days_up": 0.714,
+   "worst_day": -63.0,
+   "trades_per_day": 7.9,
+   "win_rate": 0.618,
+   "avg_trade_bp": 14.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 362.0,
+   "pnl_fresh_names": 322.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 287.0,
+    "2026-09-17": 126.0,
+    "2026-09-18": 50.0,
+    "2026-09-21": -63.0,
+    "2026-09-22": 221.0,
+    "2026-09-23": 57.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 6.6,
+   "median": 33.2,
+   "days_up": 0.571,
+   "worst_day": -123.0,
+   "trades_per_day": 8.3,
+   "win_rate": 0.483,
+   "avg_trade_bp": 1.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -21.0,
+   "pnl_fresh_names": 67.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 60.0,
+    "2026-08-27": -27.0,
+    "2026-08-28": 33.0,
+    "2026-08-31": -123.0,
+    "2026-09-01": 68.0,
+    "2026-09-02": 35.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 31.2,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -101.0,
+   "trades_per_day": 9.4,
+   "win_rate": 0.576,
+   "avg_trade_bp": 5.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 137.0,
+   "pnl_fresh_names": 80.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 165.0,
+    "2026-09-08": 107.0,
+    "2026-09-09": -62.0,
+    "2026-09-10": -101.0,
+    "2026-09-11": 130.0,
+    "2026-09-14": -22.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 75.8,
+   "median": 86.8,
+   "days_up": 0.714,
+   "worst_day": -72.0,
+   "trades_per_day": 9.7,
+   "win_rate": 0.588,
+   "avg_trade_bp": 12.5,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 393.0,
+   "pnl_fresh_names": 142.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 192.0,
+    "2026-09-17": 87.0,
+    "2026-09-18": 108.0,
+    "2026-09-21": -72.0,
+    "2026-09-22": 180.0,
+    "2026-09-23": 36.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 27.0,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -145.0,
+   "trades_per_day": 4.4,
+   "win_rate": 0.419,
+   "avg_trade_bp": 4.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -97.0,
+   "pnl_fresh_names": 284.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -30.0,
+    "2026-08-27": 188.0,
+    "2026-08-28": 5.0,
+    "2026-08-31": -54.0,
+    "2026-09-01": -145.0,
+    "2026-09-02": 225.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 12.5,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -107.0,
+   "trades_per_day": 4.6,
+   "win_rate": 0.5,
+   "avg_trade_bp": 2.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -89.0,
+   "pnl_fresh_names": 175.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 150.0,
+    "2026-09-08": 196.0,
+    "2026-09-09": -96.0,
+    "2026-09-10": 10.0,
+    "2026-09-11": -66.0,
+    "2026-09-14": -107.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 32.5,
+   "median": 26.5,
+   "days_up": 0.714,
+   "worst_day": -182.0,
+   "trades_per_day": 5.0,
+   "win_rate": 0.543,
+   "avg_trade_bp": 5.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 309.0,
+   "pnl_fresh_names": -82.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 91.0,
+    "2026-09-17": 129.0,
+    "2026-09-18": 158.0,
+    "2026-09-21": 5.0,
+    "2026-09-22": 26.0,
+    "2026-09-23": -182.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 55.6,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -64.0,
+   "trades_per_day": 6.0,
+   "win_rate": 0.429,
+   "avg_trade_bp": 11.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -7.0,
+   "pnl_fresh_names": 395.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -49.0,
+    "2026-08-27": 111.0,
+    "2026-08-28": 22.0,
+    "2026-08-31": -46.0,
+    "2026-09-01": -64.0,
+    "2026-09-02": 415.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 52.8,
+   "median": 18.5,
+   "days_up": 0.571,
+   "worst_day": -61.0,
+   "trades_per_day": 6.4,
+   "win_rate": 0.556,
+   "avg_trade_bp": 9.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 154.0,
+   "pnl_fresh_names": 216.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 93.0,
+    "2026-09-08": 314.0,
+    "2026-09-09": 18.0,
+    "2026-09-10": 62.0,
+    "2026-09-11": -57.0,
+    "2026-09-14": -61.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 54.0,
+   "median": 35.5,
+   "days_up": 0.571,
+   "worst_day": -97.0,
+   "trades_per_day": 6.9,
+   "win_rate": 0.521,
+   "avg_trade_bp": 9.5,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 143.0,
+   "pnl_fresh_names": 236.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 149.0,
+    "2026-09-17": 35.0,
+    "2026-09-18": 199.0,
+    "2026-09-21": -0.0,
+    "2026-09-22": 92.0,
+    "2026-09-23": -97.0
+   }
+  }
+ },
+ "Residual Dip z<-2.5/20m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 43.2,
+   "median": 37.9,
+   "days_up": 0.714,
+   "worst_day": -77.0,
+   "trades_per_day": 7.6,
+   "win_rate": 0.434,
+   "avg_trade_bp": 9.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 120.0,
+   "pnl_fresh_names": 184.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 5.0,
+    "2026-08-27": 90.0,
+    "2026-08-28": 43.0,
+    "2026-08-31": -77.0,
+    "2026-09-01": 38.0,
+    "2026-09-02": 204.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 37.5,
+   "median": 9.9,
+   "days_up": 0.571,
+   "worst_day": -56.0,
+   "trades_per_day": 8.1,
+   "win_rate": 0.561,
+   "avg_trade_bp": 7.4,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 27.0,
+   "pnl_fresh_names": 235.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 57.0,
+    "2026-09-08": 238.0,
+    "2026-09-09": 49.0,
+    "2026-09-10": 10.0,
+    "2026-09-11": -36.0,
+    "2026-09-14": -56.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 35.5,
+   "median": 1.8,
+   "days_up": 0.571,
+   "worst_day": -71.0,
+   "trades_per_day": 8.3,
+   "win_rate": 0.517,
+   "avg_trade_bp": 6.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 141.0,
+   "pnl_fresh_names": 107.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 98.0,
+    "2026-09-17": 2.0,
+    "2026-09-18": 169.0,
+    "2026-09-21": -19.0,
+    "2026-09-22": 69.0,
+    "2026-09-23": -71.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -57.6,
+   "median": -118.8,
+   "days_up": 0.286,
+   "worst_day": -204.0,
+   "trades_per_day": 3.0,
+   "win_rate": 0.381,
+   "avg_trade_bp": -15.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -362.0,
+   "pnl_fresh_names": -41.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -204.0,
+    "2026-08-27": -158.0,
+    "2026-08-28": 28.0,
+    "2026-08-31": -188.0,
+    "2026-09-01": -119.0,
+    "2026-09-02": 239.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 135.4,
+   "median": 94.0,
+   "days_up": 0.857,
+   "worst_day": 0.0,
+   "trades_per_day": 4.3,
+   "win_rate": 0.633,
+   "avg_trade_bp": 25.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 636.0,
+   "pnl_fresh_names": 326.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 225.0,
+    "2026-09-08": 198.0,
+    "2026-09-09": 94.0,
+    "2026-09-10": 67.0,
+    "2026-09-11": 295.0,
+    "2026-09-14": 69.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 42.7,
+   "median": 12.4,
+   "days_up": 0.714,
+   "worst_day": -173.0,
+   "trades_per_day": 4.1,
+   "win_rate": 0.552,
+   "avg_trade_bp": 8.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 131.0,
+   "pnl_fresh_names": 167.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 38.0,
+    "2026-09-17": 10.0,
+    "2026-09-18": 159.0,
+    "2026-09-21": -173.0,
+    "2026-09-22": 254.0,
+    "2026-09-23": 12.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 11.1,
+   "median": -70.3,
+   "days_up": 0.286,
+   "worst_day": -102.0,
+   "trades_per_day": 3.9,
+   "win_rate": 0.481,
+   "avg_trade_bp": 3.5,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -140.0,
+   "pnl_fresh_names": 215.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -83.0,
+    "2026-08-27": -102.0,
+    "2026-08-28": 65.0,
+    "2026-08-31": -70.0,
+    "2026-09-01": -79.0,
+    "2026-09-02": 347.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 101.5,
+   "median": 67.2,
+   "days_up": 0.714,
+   "worst_day": -38.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.632,
+   "avg_trade_bp": 22.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 440.0,
+   "pnl_fresh_names": 278.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 194.0,
+    "2026-09-08": 165.0,
+    "2026-09-09": 67.0,
+    "2026-09-10": -38.0,
+    "2026-09-11": 281.0,
+    "2026-09-14": 42.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 36.3,
+   "median": 5.8,
+   "days_up": 0.571,
+   "worst_day": -83.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.526,
+   "avg_trade_bp": 8.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 98.0,
+   "pnl_fresh_names": 156.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 59.0,
+    "2026-09-17": -21.0,
+    "2026-09-18": 18.0,
+    "2026-09-21": -83.0,
+    "2026-09-22": 275.0,
+    "2026-09-23": 6.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 12.0,
+   "median": -41.6,
+   "days_up": 0.286,
+   "worst_day": -89.0,
+   "trades_per_day": 4.7,
+   "win_rate": 0.515,
+   "avg_trade_bp": 4.1,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -109.0,
+   "pnl_fresh_names": 191.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -42.0,
+    "2026-08-27": -69.0,
+    "2026-08-28": 72.0,
+    "2026-08-31": -89.0,
+    "2026-09-01": -59.0,
+    "2026-09-02": 271.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 91.3,
+   "median": 101.2,
+   "days_up": 0.714,
+   "worst_day": -26.0,
+   "trades_per_day": 6.3,
+   "win_rate": 0.659,
+   "avg_trade_bp": 23.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 412.0,
+   "pnl_fresh_names": 233.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 120.0,
+    "2026-09-08": 136.0,
+    "2026-09-09": 50.0,
+    "2026-09-10": -26.0,
+    "2026-09-11": 258.0,
+    "2026-09-14": 101.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 46.3,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -62.0,
+   "trades_per_day": 6.1,
+   "win_rate": 0.558,
+   "avg_trade_bp": 12.1,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 230.0,
+   "pnl_fresh_names": 94.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 96.0,
+    "2026-09-17": -11.0,
+    "2026-09-18": 83.0,
+    "2026-09-21": -62.0,
+    "2026-09-22": 241.0,
+    "2026-09-23": -22.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -39.6,
+   "median": -50.6,
+   "days_up": 0.286,
+   "worst_day": -251.0,
+   "trades_per_day": 2.4,
+   "win_rate": 0.412,
+   "avg_trade_bp": -13.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -333.0,
+   "pnl_fresh_names": 54.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -195.0,
+    "2026-08-27": -74.0,
+    "2026-08-28": 48.0,
+    "2026-08-31": -51.0,
+    "2026-09-01": -251.0,
+    "2026-09-02": 245.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 50.8,
+   "median": 35.4,
+   "days_up": 0.571,
+   "worst_day": -80.0,
+   "trades_per_day": 3.4,
+   "win_rate": 0.583,
+   "avg_trade_bp": 11.8,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 259.0,
+   "pnl_fresh_names": 97.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 64.0,
+    "2026-09-08": 232.0,
+    "2026-09-09": 123.0,
+    "2026-09-10": 35.0,
+    "2026-09-11": -80.0,
+    "2026-09-14": -18.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": -15.3,
+   "median": -6.7,
+   "days_up": 0.286,
+   "worst_day": -120.0,
+   "trades_per_day": 3.7,
+   "win_rate": 0.5,
+   "avg_trade_bp": -3.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 130.0,
+   "pnl_fresh_names": -237.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 66.0,
+    "2026-09-17": -105.0,
+    "2026-09-18": -18.0,
+    "2026-09-21": -120.0,
+    "2026-09-22": 77.0,
+    "2026-09-23": -7.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 20.6,
+   "median": -41.1,
+   "days_up": 0.286,
+   "worst_day": -136.0,
+   "trades_per_day": 3.4,
+   "win_rate": 0.458,
+   "avg_trade_bp": 7.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -160.0,
+   "pnl_fresh_names": 300.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -136.0,
+    "2026-08-27": -41.0,
+    "2026-08-28": 93.0,
+    "2026-08-31": -67.0,
+    "2026-09-01": -123.0,
+    "2026-09-02": 418.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 67.2,
+   "median": 82.1,
+   "days_up": 0.714,
+   "worst_day": -86.0,
+   "trades_per_day": 4.6,
+   "win_rate": 0.656,
+   "avg_trade_bp": 17.6,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 210.0,
+   "pnl_fresh_names": 264.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 100.0,
+    "2026-09-08": 218.0,
+    "2026-09-09": 82.0,
+    "2026-09-10": 56.0,
+    "2026-09-11": 100.0,
+    "2026-09-14": -86.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": -3.1,
+   "median": -2.2,
+   "days_up": 0.286,
+   "worst_day": -120.0,
+   "trades_per_day": 5.0,
+   "win_rate": 0.514,
+   "avg_trade_bp": -0.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 48.0,
+   "pnl_fresh_names": -70.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 36.0,
+    "2026-09-17": -120.0,
+    "2026-09-18": -19.0,
+    "2026-09-21": -52.0,
+    "2026-09-22": 136.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/15m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 8.6,
+   "median": -22.1,
+   "days_up": 0.286,
+   "worst_day": -148.0,
+   "trades_per_day": 4.1,
+   "win_rate": 0.483,
+   "avg_trade_bp": 3.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -155.0,
+   "pnl_fresh_names": 212.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -148.0,
+    "2026-08-27": -22.0,
+    "2026-08-28": 76.0,
+    "2026-08-31": -101.0,
+    "2026-09-01": -92.0,
+    "2026-09-02": 348.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 80.5,
+   "median": 61.6,
+   "days_up": 0.857,
+   "worst_day": 0.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.684,
+   "avg_trade_bp": 23.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 354.0,
+   "pnl_fresh_names": 214.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 66.0,
+    "2026-09-08": 172.0,
+    "2026-09-09": 62.0,
+    "2026-09-10": 57.0,
+    "2026-09-11": 190.0,
+    "2026-09-14": 17.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 7.9,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -106.0,
+   "trades_per_day": 5.7,
+   "win_rate": 0.525,
+   "avg_trade_bp": 2.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 164.0,
+   "pnl_fresh_names": -109.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 45.0,
+    "2026-09-17": -106.0,
+    "2026-09-18": 49.0,
+    "2026-09-21": -39.0,
+    "2026-09-22": 148.0,
+    "2026-09-23": -41.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -58.5,
+   "median": -118.8,
+   "days_up": 0.286,
+   "worst_day": -204.0,
+   "trades_per_day": 3.4,
+   "win_rate": 0.417,
+   "avg_trade_bp": -13.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -334.0,
+   "pnl_fresh_names": -75.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -204.0,
+    "2026-08-27": -129.0,
+    "2026-08-28": 93.0,
+    "2026-08-31": -188.0,
+    "2026-09-01": -119.0,
+    "2026-09-02": 138.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 118.8,
+   "median": 114.4,
+   "days_up": 0.714,
+   "worst_day": -34.0,
+   "trades_per_day": 4.9,
+   "win_rate": 0.618,
+   "avg_trade_bp": 19.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 634.0,
+   "pnl_fresh_names": 208.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 225.0,
+    "2026-09-08": 198.0,
+    "2026-09-09": 94.0,
+    "2026-09-10": -34.0,
+    "2026-09-11": 235.0,
+    "2026-09-14": 114.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 42.7,
+   "median": 12.4,
+   "days_up": 0.714,
+   "worst_day": -173.0,
+   "trades_per_day": 4.1,
+   "win_rate": 0.552,
+   "avg_trade_bp": 8.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 131.0,
+   "pnl_fresh_names": 167.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 38.0,
+    "2026-09-17": 10.0,
+    "2026-09-18": 159.0,
+    "2026-09-21": -173.0,
+    "2026-09-22": 254.0,
+    "2026-09-23": 12.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 10.5,
+   "median": -70.3,
+   "days_up": 0.286,
+   "worst_day": -83.0,
+   "trades_per_day": 4.3,
+   "win_rate": 0.5,
+   "avg_trade_bp": 3.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -121.0,
+   "pnl_fresh_names": 192.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -83.0,
+    "2026-08-27": -82.0,
+    "2026-08-28": 108.0,
+    "2026-08-31": -70.0,
+    "2026-09-01": -79.0,
+    "2026-09-02": 279.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 84.2,
+   "median": 72.2,
+   "days_up": 0.714,
+   "worst_day": -105.0,
+   "trades_per_day": 6.1,
+   "win_rate": 0.605,
+   "avg_trade_bp": 16.4,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 439.0,
+   "pnl_fresh_names": 155.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 194.0,
+    "2026-09-08": 165.0,
+    "2026-09-09": 67.0,
+    "2026-09-10": -105.0,
+    "2026-09-11": 197.0,
+    "2026-09-14": 72.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 36.3,
+   "median": 5.8,
+   "days_up": 0.571,
+   "worst_day": -83.0,
+   "trades_per_day": 5.4,
+   "win_rate": 0.526,
+   "avg_trade_bp": 8.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 98.0,
+   "pnl_fresh_names": 156.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 59.0,
+    "2026-09-17": -21.0,
+    "2026-09-18": 18.0,
+    "2026-09-21": -83.0,
+    "2026-09-22": 275.0,
+    "2026-09-23": 6.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 11.5,
+   "median": -41.6,
+   "days_up": 0.286,
+   "worst_day": -89.0,
+   "trades_per_day": 5.1,
+   "win_rate": 0.528,
+   "avg_trade_bp": 3.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -94.0,
+   "pnl_fresh_names": 174.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -42.0,
+    "2026-08-27": -55.0,
+    "2026-08-28": 104.0,
+    "2026-08-31": -89.0,
+    "2026-09-01": -59.0,
+    "2026-09-02": 221.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 78.3,
+   "median": 119.8,
+   "days_up": 0.714,
+   "worst_day": -77.0,
+   "trades_per_day": 7.0,
+   "win_rate": 0.633,
+   "avg_trade_bp": 17.9,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 411.0,
+   "pnl_fresh_names": 141.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 120.0,
+    "2026-09-08": 136.0,
+    "2026-09-09": 50.0,
+    "2026-09-10": -77.0,
+    "2026-09-11": 195.0,
+    "2026-09-14": 124.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 46.3,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -62.0,
+   "trades_per_day": 6.1,
+   "win_rate": 0.558,
+   "avg_trade_bp": 12.1,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 230.0,
+   "pnl_fresh_names": 94.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 96.0,
+    "2026-09-17": -11.0,
+    "2026-09-18": 83.0,
+    "2026-09-21": -62.0,
+    "2026-09-22": 241.0,
+    "2026-09-23": -22.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -36.1,
+   "median": -14.0,
+   "days_up": 0.286,
+   "worst_day": -251.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.45,
+   "avg_trade_bp": -10.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -274.0,
+   "pnl_fresh_names": 20.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -195.0,
+    "2026-08-27": -14.0,
+    "2026-08-28": 104.0,
+    "2026-08-31": -51.0,
+    "2026-09-01": -251.0,
+    "2026-09-02": 154.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 24.5,
+   "median": 24.7,
+   "days_up": 0.571,
+   "worst_day": -226.0,
+   "trades_per_day": 4.0,
+   "win_rate": 0.536,
+   "avg_trade_bp": 4.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 259.0,
+   "pnl_fresh_names": -89.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 64.0,
+    "2026-09-08": 232.0,
+    "2026-09-09": 123.0,
+    "2026-09-10": -45.0,
+    "2026-09-11": -226.0,
+    "2026-09-14": 25.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": -15.3,
+   "median": -6.7,
+   "days_up": 0.286,
+   "worst_day": -120.0,
+   "trades_per_day": 3.7,
+   "win_rate": 0.5,
+   "avg_trade_bp": -3.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 130.0,
+   "pnl_fresh_names": -237.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 66.0,
+    "2026-09-17": -105.0,
+    "2026-09-18": -18.0,
+    "2026-09-21": -120.0,
+    "2026-09-22": 77.0,
+    "2026-09-23": -7.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 22.9,
+   "median": -0.9,
+   "days_up": 0.286,
+   "worst_day": -136.0,
+   "trades_per_day": 3.9,
+   "win_rate": 0.481,
+   "avg_trade_bp": 7.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -120.0,
+   "pnl_fresh_names": 277.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -136.0,
+    "2026-08-27": -1.0,
+    "2026-08-28": 131.0,
+    "2026-08-31": -67.0,
+    "2026-09-01": -123.0,
+    "2026-09-02": 357.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 47.0,
+   "median": 2.2,
+   "days_up": 0.571,
+   "worst_day": -57.0,
+   "trades_per_day": 5.3,
+   "win_rate": 0.595,
+   "avg_trade_bp": 10.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 191.0,
+   "pnl_fresh_names": 139.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 100.0,
+    "2026-09-08": 218.0,
+    "2026-09-09": 82.0,
+    "2026-09-10": 2.0,
+    "2026-09-11": -16.0,
+    "2026-09-14": -57.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": -3.1,
+   "median": -2.2,
+   "days_up": 0.286,
+   "worst_day": -120.0,
+   "trades_per_day": 5.0,
+   "win_rate": 0.514,
+   "avg_trade_bp": -0.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 48.0,
+   "pnl_fresh_names": -70.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 36.0,
+    "2026-09-17": -120.0,
+    "2026-09-18": -19.0,
+    "2026-09-21": -52.0,
+    "2026-09-22": 136.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-3.0/20m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 10.4,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -148.0,
+   "trades_per_day": 4.6,
+   "win_rate": 0.5,
+   "avg_trade_bp": 3.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -126.0,
+   "pnl_fresh_names": 196.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -148.0,
+    "2026-08-27": 8.0,
+    "2026-08-28": 104.0,
+    "2026-08-31": -101.0,
+    "2026-09-01": -92.0,
+    "2026-09-02": 302.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 65.3,
+   "median": 61.6,
+   "days_up": 0.857,
+   "worst_day": 0.0,
+   "trades_per_day": 6.1,
+   "win_rate": 0.628,
+   "avg_trade_bp": 17.0,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 339.0,
+   "pnl_fresh_names": 121.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 66.0,
+    "2026-09-08": 172.0,
+    "2026-09-09": 62.0,
+    "2026-09-10": 16.0,
+    "2026-09-11": 102.0,
+    "2026-09-14": 39.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 7.9,
+   "median": 0.0,
+   "days_up": 0.429,
+   "worst_day": -106.0,
+   "trades_per_day": 5.7,
+   "win_rate": 0.525,
+   "avg_trade_bp": 2.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 164.0,
+   "pnl_fresh_names": -109.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 45.0,
+    "2026-09-17": -106.0,
+    "2026-09-18": 49.0,
+    "2026-09-21": -39.0,
+    "2026-09-22": 148.0,
+    "2026-09-23": -41.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -25.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -259.0,
+   "trades_per_day": 1.3,
+   "win_rate": 0.333,
+   "avg_trade_bp": -15.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -70.0,
+   "pnl_fresh_names": -106.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -259.0,
+    "2026-08-27": -73.0,
+    "2026-08-28": 69.0,
+    "2026-08-31": -54.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 142.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 44.7,
+   "median": 58.9,
+   "days_up": 0.714,
+   "worst_day": -146.0,
+   "trades_per_day": 2.1,
+   "win_rate": 0.667,
+   "avg_trade_bp": 16.7,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 83.0,
+   "pnl_fresh_names": 230.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 187.0,
+    "2026-09-08": 59.0,
+    "2026-09-09": 6.0,
+    "2026-09-10": -146.0,
+    "2026-09-11": 138.0,
+    "2026-09-14": 69.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 70.4,
+   "median": 26.3,
+   "days_up": 0.571,
+   "worst_day": -21.0,
+   "trades_per_day": 2.4,
+   "win_rate": 0.588,
+   "avg_trade_bp": 23.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 233.0,
+   "pnl_fresh_names": 263.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 163.0,
+    "2026-09-17": 34.0,
+    "2026-09-18": -21.0,
+    "2026-09-21": 26.0,
+    "2026-09-22": 294.0,
+    "2026-09-23": -4.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 3.6,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -173.0,
+   "trades_per_day": 1.6,
+   "win_rate": 0.364,
+   "avg_trade_bp": 2.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -91.0,
+   "pnl_fresh_names": 114.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -173.0,
+    "2026-08-27": -49.0,
+    "2026-08-28": 46.0,
+    "2026-08-31": -81.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 282.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 45.2,
+   "median": 71.8,
+   "days_up": 0.714,
+   "worst_day": -98.0,
+   "trades_per_day": 2.7,
+   "win_rate": 0.684,
+   "avg_trade_bp": 20.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 88.0,
+   "pnl_fresh_names": 230.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 91.0,
+    "2026-09-08": 72.0,
+    "2026-09-09": 4.0,
+    "2026-09-10": -98.0,
+    "2026-09-11": 146.0,
+    "2026-09-14": 102.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 49.5,
+   "median": 17.5,
+   "days_up": 0.571,
+   "worst_day": -14.0,
+   "trades_per_day": 2.7,
+   "win_rate": 0.632,
+   "avg_trade_bp": 21.9,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 155.0,
+   "pnl_fresh_names": 193.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 109.0,
+    "2026-09-17": 29.0,
+    "2026-09-18": -14.0,
+    "2026-09-21": 18.0,
+    "2026-09-22": 208.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -4.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -130.0,
+   "trades_per_day": 1.7,
+   "win_rate": 0.333,
+   "avg_trade_bp": -3.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -116.0,
+   "pnl_fresh_names": 86.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -130.0,
+    "2026-08-27": -36.0,
+    "2026-08-28": 35.0,
+    "2026-08-31": -109.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 211.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 35.6,
+   "median": 66.1,
+   "days_up": 0.714,
+   "worst_day": -73.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.7,
+   "avg_trade_bp": 20.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 78.0,
+   "pnl_fresh_names": 172.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 68.0,
+    "2026-09-08": 66.0,
+    "2026-09-09": 3.0,
+    "2026-09-10": -73.0,
+    "2026-09-11": 109.0,
+    "2026-09-14": 76.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 40.0,
+   "median": 13.1,
+   "days_up": 0.571,
+   "worst_day": -11.0,
+   "trades_per_day": 3.0,
+   "win_rate": 0.619,
+   "avg_trade_bp": 21.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 116.0,
+   "pnl_fresh_names": 165.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 82.0,
+    "2026-09-17": 43.0,
+    "2026-09-18": -11.0,
+    "2026-09-21": 13.0,
+    "2026-09-22": 155.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -3.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -183.0,
+   "trades_per_day": 1.1,
+   "win_rate": 0.375,
+   "avg_trade_bp": -2.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -4.0,
+   "pnl_fresh_names": -19.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -183.0,
+    "2026-08-27": -28.0,
+    "2026-08-28": 92.0,
+    "2026-08-31": -80.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 178.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 51.8,
+   "median": 5.5,
+   "days_up": 0.571,
+   "worst_day": -47.0,
+   "trades_per_day": 2.0,
+   "win_rate": 0.714,
+   "avg_trade_bp": 20.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 71.0,
+   "pnl_fresh_names": 293.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 161.0,
+    "2026-09-08": 203.0,
+    "2026-09-09": 6.0,
+    "2026-09-10": -47.0,
+    "2026-09-11": 59.0,
+    "2026-09-14": -18.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 32.9,
+   "median": 3.4,
+   "days_up": 0.571,
+   "worst_day": -45.0,
+   "trades_per_day": 2.0,
+   "win_rate": 0.714,
+   "avg_trade_bp": 13.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 33.0,
+   "pnl_fresh_names": 198.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 97.0,
+    "2026-09-17": -21.0,
+    "2026-09-18": -45.0,
+    "2026-09-21": 38.0,
+    "2026-09-22": 157.0,
+    "2026-09-23": 3.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 24.7,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -122.0,
+   "trades_per_day": 1.4,
+   "win_rate": 0.4,
+   "avg_trade_bp": 20.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -69.0,
+   "pnl_fresh_names": 239.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -122.0,
+    "2026-08-27": -19.0,
+    "2026-08-28": 61.0,
+    "2026-08-31": -120.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 373.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 44.9,
+   "median": 53.8,
+   "days_up": 0.714,
+   "worst_day": -31.0,
+   "trades_per_day": 2.6,
+   "win_rate": 0.722,
+   "avg_trade_bp": 20.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 49.0,
+   "pnl_fresh_names": 266.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 95.0,
+    "2026-09-08": 137.0,
+    "2026-09-09": 4.0,
+    "2026-09-10": -31.0,
+    "2026-09-11": 54.0,
+    "2026-09-14": 55.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 22.0,
+   "median": 2.2,
+   "days_up": 0.571,
+   "worst_day": -36.0,
+   "trades_per_day": 2.6,
+   "win_rate": 0.611,
+   "avg_trade_bp": 10.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 101.0,
+   "pnl_fresh_names": 53.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 144.0,
+    "2026-09-17": -36.0,
+    "2026-09-18": -30.0,
+    "2026-09-21": 7.0,
+    "2026-09-22": 68.0,
+    "2026-09-23": 2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/15m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 7.9,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -164.0,
+   "trades_per_day": 1.6,
+   "win_rate": 0.364,
+   "avg_trade_bp": 8.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -126.0,
+   "pnl_fresh_names": 179.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -92.0,
+    "2026-08-27": -14.0,
+    "2026-08-28": 46.0,
+    "2026-08-31": -164.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 280.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 36.8,
+   "median": 41.6,
+   "days_up": 0.714,
+   "worst_day": -24.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.75,
+   "avg_trade_bp": 20.6,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 45.0,
+   "pnl_fresh_names": 213.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 71.0,
+    "2026-09-08": 112.0,
+    "2026-09-09": 3.0,
+    "2026-09-10": -24.0,
+    "2026-09-11": 54.0,
+    "2026-09-14": 42.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 11.5,
+   "median": 1.7,
+   "days_up": 0.571,
+   "worst_day": -48.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.55,
+   "avg_trade_bp": 6.4,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 76.0,
+   "pnl_fresh_names": 5.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 108.0,
+    "2026-09-17": -48.0,
+    "2026-09-18": -22.0,
+    "2026-09-21": 5.0,
+    "2026-09-22": 36.0,
+    "2026-09-23": 2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 3m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -25.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -259.0,
+   "trades_per_day": 1.3,
+   "win_rate": 0.333,
+   "avg_trade_bp": -15.6,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -70.0,
+   "pnl_fresh_names": -106.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -259.0,
+    "2026-08-27": -73.0,
+    "2026-08-28": 69.0,
+    "2026-08-31": -54.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 142.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 44.7,
+   "median": 58.9,
+   "days_up": 0.714,
+   "worst_day": -146.0,
+   "trades_per_day": 2.1,
+   "win_rate": 0.667,
+   "avg_trade_bp": 16.7,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 83.0,
+   "pnl_fresh_names": 230.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 187.0,
+    "2026-09-08": 59.0,
+    "2026-09-09": 6.0,
+    "2026-09-10": -146.0,
+    "2026-09-11": 138.0,
+    "2026-09-14": 69.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 70.4,
+   "median": 26.3,
+   "days_up": 0.571,
+   "worst_day": -21.0,
+   "trades_per_day": 2.4,
+   "win_rate": 0.588,
+   "avg_trade_bp": 23.2,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 233.0,
+   "pnl_fresh_names": 263.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 163.0,
+    "2026-09-17": 34.0,
+    "2026-09-18": -21.0,
+    "2026-09-21": 26.0,
+    "2026-09-22": 294.0,
+    "2026-09-23": -4.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 3m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 3.6,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -173.0,
+   "trades_per_day": 1.6,
+   "win_rate": 0.364,
+   "avg_trade_bp": 2.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -91.0,
+   "pnl_fresh_names": 114.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -173.0,
+    "2026-08-27": -49.0,
+    "2026-08-28": 46.0,
+    "2026-08-31": -81.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 282.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 45.2,
+   "median": 71.8,
+   "days_up": 0.714,
+   "worst_day": -98.0,
+   "trades_per_day": 2.7,
+   "win_rate": 0.684,
+   "avg_trade_bp": 20.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 88.0,
+   "pnl_fresh_names": 230.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 91.0,
+    "2026-09-08": 72.0,
+    "2026-09-09": 4.0,
+    "2026-09-10": -98.0,
+    "2026-09-11": 146.0,
+    "2026-09-14": 102.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 49.5,
+   "median": 17.5,
+   "days_up": 0.571,
+   "worst_day": -14.0,
+   "trades_per_day": 2.7,
+   "win_rate": 0.632,
+   "avg_trade_bp": 21.9,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 155.0,
+   "pnl_fresh_names": 193.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 109.0,
+    "2026-09-17": 29.0,
+    "2026-09-18": -14.0,
+    "2026-09-21": 18.0,
+    "2026-09-22": 208.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 3m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -4.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -130.0,
+   "trades_per_day": 1.7,
+   "win_rate": 0.333,
+   "avg_trade_bp": -3.8,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": -116.0,
+   "pnl_fresh_names": 86.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -130.0,
+    "2026-08-27": -36.0,
+    "2026-08-28": 35.0,
+    "2026-08-31": -109.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 211.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 35.6,
+   "median": 66.1,
+   "days_up": 0.714,
+   "worst_day": -73.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.7,
+   "avg_trade_bp": 20.0,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 78.0,
+   "pnl_fresh_names": 172.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 68.0,
+    "2026-09-08": 66.0,
+    "2026-09-09": 3.0,
+    "2026-09-10": -73.0,
+    "2026-09-11": 109.0,
+    "2026-09-14": 76.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 40.0,
+   "median": 13.1,
+   "days_up": 0.571,
+   "worst_day": -11.0,
+   "trades_per_day": 3.0,
+   "win_rate": 0.619,
+   "avg_trade_bp": 21.3,
+   "avg_hold_min": 3.0,
+   "pnl_original_names": 116.0,
+   "pnl_fresh_names": 165.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 82.0,
+    "2026-09-17": 43.0,
+    "2026-09-18": -11.0,
+    "2026-09-21": 13.0,
+    "2026-09-22": 155.0,
+    "2026-09-23": -2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 4m/2 slots": {
+  "sessions 1-7": {
+   "usd_per_day": -3.1,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -183.0,
+   "trades_per_day": 1.1,
+   "win_rate": 0.375,
+   "avg_trade_bp": -2.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -4.0,
+   "pnl_fresh_names": -19.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -183.0,
+    "2026-08-27": -28.0,
+    "2026-08-28": 92.0,
+    "2026-08-31": -80.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 178.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 51.8,
+   "median": 5.5,
+   "days_up": 0.571,
+   "worst_day": -47.0,
+   "trades_per_day": 2.0,
+   "win_rate": 0.714,
+   "avg_trade_bp": 20.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 71.0,
+   "pnl_fresh_names": 293.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 161.0,
+    "2026-09-08": 203.0,
+    "2026-09-09": 6.0,
+    "2026-09-10": -47.0,
+    "2026-09-11": 59.0,
+    "2026-09-14": -18.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 32.9,
+   "median": 3.4,
+   "days_up": 0.571,
+   "worst_day": -45.0,
+   "trades_per_day": 2.0,
+   "win_rate": 0.714,
+   "avg_trade_bp": 13.2,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 33.0,
+   "pnl_fresh_names": 198.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 97.0,
+    "2026-09-17": -21.0,
+    "2026-09-18": -45.0,
+    "2026-09-21": 38.0,
+    "2026-09-22": 157.0,
+    "2026-09-23": 3.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 4m/3 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 24.7,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -122.0,
+   "trades_per_day": 1.4,
+   "win_rate": 0.4,
+   "avg_trade_bp": 20.7,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -69.0,
+   "pnl_fresh_names": 239.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -122.0,
+    "2026-08-27": -19.0,
+    "2026-08-28": 61.0,
+    "2026-08-31": -120.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 373.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 44.9,
+   "median": 53.8,
+   "days_up": 0.714,
+   "worst_day": -31.0,
+   "trades_per_day": 2.6,
+   "win_rate": 0.722,
+   "avg_trade_bp": 20.9,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 49.0,
+   "pnl_fresh_names": 266.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 95.0,
+    "2026-09-08": 137.0,
+    "2026-09-09": 4.0,
+    "2026-09-10": -31.0,
+    "2026-09-11": 54.0,
+    "2026-09-14": 55.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 22.0,
+   "median": 2.2,
+   "days_up": 0.571,
+   "worst_day": -36.0,
+   "trades_per_day": 2.6,
+   "win_rate": 0.611,
+   "avg_trade_bp": 10.3,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 101.0,
+   "pnl_fresh_names": 53.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 144.0,
+    "2026-09-17": -36.0,
+    "2026-09-18": -30.0,
+    "2026-09-21": 7.0,
+    "2026-09-22": 68.0,
+    "2026-09-23": 2.0
+   }
+  }
+ },
+ "Residual Dip z<-4.0/20m/hold 4m/4 slots": {
+  "sessions 1-7": {
+   "usd_per_day": 7.9,
+   "median": 0.0,
+   "days_up": 0.286,
+   "worst_day": -164.0,
+   "trades_per_day": 1.6,
+   "win_rate": 0.364,
+   "avg_trade_bp": 8.1,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": -126.0,
+   "pnl_fresh_names": 179.0,
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": -92.0,
+    "2026-08-27": -14.0,
+    "2026-08-28": 46.0,
+    "2026-08-31": -164.0,
+    "2026-09-01": 0.0,
+    "2026-09-02": 280.0
+   }
+  },
+  "sessions 8-14": {
+   "usd_per_day": 36.8,
+   "median": 41.6,
+   "days_up": 0.714,
+   "worst_day": -24.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.75,
+   "avg_trade_bp": 20.6,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 45.0,
+   "pnl_fresh_names": 213.0,
+   "by_day": {
+    "2026-09-03": 0.0,
+    "2026-09-04": 71.0,
+    "2026-09-08": 112.0,
+    "2026-09-09": 3.0,
+    "2026-09-10": -24.0,
+    "2026-09-11": 54.0,
+    "2026-09-14": 42.0
+   }
+  },
+  "sessions 15-21": {
+   "usd_per_day": 11.5,
+   "median": 1.7,
+   "days_up": 0.571,
+   "worst_day": -48.0,
+   "trades_per_day": 2.9,
+   "win_rate": 0.55,
+   "avg_trade_bp": 6.4,
+   "avg_hold_min": 4.0,
+   "pnl_original_names": 76.0,
+   "pnl_fresh_names": 5.0,
+   "by_day": {
+    "2026-09-15": 0.0,
+    "2026-09-16": 108.0,
+    "2026-09-17": -48.0,
+    "2026-09-18": -22.0,
+    "2026-09-21": 5.0,
+    "2026-09-22": 36.0,
+    "2026-09-23": 2.0
+   }
+  }
+ }
+}

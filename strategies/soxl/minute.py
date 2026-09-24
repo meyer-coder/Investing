@@ -31,6 +31,12 @@ ARCHIVE = ROOT / "data" / "intraday"
 #: the opening dip scalper's names (strategies/scalp): liquid, fast, a cent at most ~4 bp
 SCALP_NAMES = ("SOXL", "SOXS", "MUU", "NVDL", "SMCI", "MSTR", "COIN", "MRVL", "MU", "ARM", "PLTR", "AMD",
                "META", "TSLA", "AVGO", "NVDA", "TQQQ")
+#: 30 names nothing was chosen on, added to test the scalpers out of sample; with SCALP_NAMES
+#: they are the own-drop scalper's pool
+FRESH_NAMES = ("HOOD", "RKLB", "IONQ", "NET", "CRWD", "SHOP", "UBER", "NFLX", "ANET", "APP", "CVNA", "SNOW",
+               "DDOG", "ORCL", "GOOGL", "AMZN", "AAPL", "MSFT", "INTC", "QCOM", "LRCX", "AMAT", "KLAC", "CRWV",
+               "OKLO", "HIMS", "AFRM", "RDDT", "DELL", "ASTS")
+POOL_NAMES = SCALP_NAMES + FRESH_NAMES
 NY = ZoneInfo("America/New_York")
 Row = Tuple[float, float, float, float, float]
 
@@ -137,4 +143,4 @@ def sessions(symbols: Sequence[str] = ("SOXL", "SOXS")) -> List[str]:
 
 
 if __name__ == "__main__":
-    print(update(SCALP_NAMES))
+    print(update(POOL_NAMES))
