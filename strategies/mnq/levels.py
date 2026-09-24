@@ -163,9 +163,10 @@ def implied_vol(price, s, k, t, call) -> np.ndarray:
     return np.where((price > intrinsic + 1e-3) & (iv > 0.011) & (iv < 2.99), iv, np.nan)
 
 
-def nasdaq_chain(sym: str = "QQQ", days: int = HORIZON_DAYS) -> dict:
+def nasdaq_chain(sym: str = "QQQ", days: int = HORIZON_DAYS, session: Optional[dt.date] = None) -> dict:
     """Nasdaq's option chain as CBOE-shaped data (spot, and per contract: option code,
-    open interest, implied volatility and gamma worked out from the bid/ask mid)."""
+    open interest, implied volatility and gamma worked out from the bid/ask mid).  The
+    volatility is solved at the chain's close; gamma is taken at `session` when that is later."""
     today = dt.date.today()
     url = NASDAQ.format(sym=sym, a=today.isoformat(), b=(today + dt.timedelta(days=days)).isoformat())
     req = urllib.request.Request(url, headers=BROWSER)
@@ -197,7 +198,9 @@ def nasdaq_chain(sym: str = "QQQ", days: int = HORIZON_DAYS) -> dict:
     mid = np.array([r[4] for r in rows])
     t = np.array([max((e - asof).days, 0) + 0.25 for e in exp_a]) / 365.0
     iv = implied_vol(mid, spot, k, t, call)
-    gamma = np.nan_to_num(_bs_gamma(np.full(len(k), spot), k, t, np.nan_to_num(iv, nan=0.2)) * ~np.isnan(iv))
+    t0 = max(asof, session) if session else asof
+    t_s = np.array([max((e - t0).days, 0) + 0.25 for e in exp_a]) / 365.0
+    gamma = np.nan_to_num(_bs_gamma(np.full(len(k), spot), k, t_s, np.nan_to_num(iv, nan=0.2)) * ~np.isnan(iv))
     options = [{"option": f"{sym}{e:%y%m%d}{'C' if c else 'P'}{int(round(kk * 1000)):08d}", "open_interest": r[3],
                 "iv": float(np.nan_to_num(v)), "gamma": float(g)}
                for (e, _, kk, _, _), r, c, v, g in zip(rows, rows, call, iv, gamma)]
@@ -242,8 +245,9 @@ def today_levels(save: bool = False) -> dict:
     open it holds the previous close's prices and only a few contracts have quotes: then `asof` is the last
     weekday before today, and a pull with fewer than MIN_CONTRACTS contracts never replaces a saved file."""
     from zoneinfo import ZoneInfo
+    session = session_for()
     try:
-        raw = nasdaq_chain("QQQ")
+        raw = nasdaq_chain("QQQ", session=session)
         today = dt.date.fromisoformat(raw["asof"])
         now = dt.datetime.now(ZoneInfo("America/New_York"))
         if today >= now.date() and (now.hour, now.minute) < (9, 30):
@@ -254,7 +258,10 @@ def today_levels(save: bool = False) -> dict:
             raw["timestamp"] = f"{prev} 16:00 New York (Nasdaq, as of the last close)"
     except Exception:
         raw, today = chain("QQQ"), None
-    lv = compute(raw, today)
+    # times to expiry run from the session the levels are for: after the close that is the next weekday, so the
+    # contracts that expired at the close (the day's 0DTE, the biggest gamma at the money) drop out
+    lv = compute(raw, session)
+    lv["session"] = session.isoformat()
     ratio = close_ratio(raw["asof"]) if "asof" in raw else nq_ratio()
     lv["nq_per_qqq"] = round(ratio, 4) if ratio else None
     if ratio:
@@ -262,7 +269,7 @@ def today_levels(save: bool = False) -> dict:
                     if lv.get(name)}
     if save:
         OUT.mkdir(parents=True, exist_ok=True)
-        path = OUT / f"{session_for().isoformat()}.json"
+        path = OUT / f"{session.isoformat()}.json"
         if path.exists() and (lv.get("contracts") or 0) < MIN_CONTRACTS:
             kept = json.loads(path.read_text())
             if (kept.get("contracts") or 0) > (lv.get("contracts") or 0):
