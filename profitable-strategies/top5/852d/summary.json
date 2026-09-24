@@ -1,0 +1,3253 @@
+{
+ "key": "852d",
+ "name": "AMDL Uptrend Dip (bred 852D)",
+ "file": "12_amdl_uptrend_dip_bred_852d.json",
+ "rules": {
+  "entry": [
+   "(ret1 < -0.06 and (close - low) / (high - low + 0.0001) < 0.28 and volume_ratio > 1.71 or cross_below(sma20, sma50)) and ret1 < 0.04",
+   "dist_sma200 > -0.2 and rsi14 > 64 and vol_ratio_20_60 < 1.37",
+   "ret1 < 0.03 and prev(ret1) < 0.004 and close > sma50 and rsi7 < 58",
+   "ret5 < 0.052 and vol_ratio_20_60 > 1.31 and dist_sma200 < -0.24 or atr_pct < 0.0514 or rsi7 > 76"
+  ],
+  "exit": [
+   "ret1 > 0.02",
+   "position_return > 0.04",
+   "bars_held >= 2"
+  ],
+  "risk": {
+   "max_position_pct": 1.0,
+   "max_positions": 7,
+   "max_gross_exposure": 1.0,
+   "stop_loss_pct": 0.12
+  }
+ },
+ "own": {
+  "funds": [
+   "AMD.2X"
+  ],
+  "from": "2005-10-18",
+  "to": "2026-09-21",
+  "sessions": 5263,
+  "usd_per_day": 46.3,
+  "sharpe": 0.79,
+  "worst_day": -6499.0,
+  "worst_stretch": -34364.0,
+  "days_in_market": 0.404,
+  "trades": 729,
+  "mean_bp": 131.5,
+  "median_bp": 208.1,
+  "win_rate": 0.612,
+  "avg_win_pct": 7.09,
+  "avg_loss_pct": -7.79,
+  "profit_factor": 1.43,
+  "t_stat": 3.69,
+  "years_usd_per_day": {
+   "2005": 44.9,
+   "2006": 71.5,
+   "2007": -8.4,
+   "2008": -77.7,
+   "2009": 83.7,
+   "2010": 2.3,
+   "2011": -80.8,
+   "2012": 11.8,
+   "2013": 116.8,
+   "2014": 16.2,
+   "2015": -8.4,
+   "2016": 114.0,
+   "2017": -21.3,
+   "2018": 193.0,
+   "2019": 45.5,
+   "2020": 43.4,
+   "2021": -6.3,
+   "2022": -31.1,
+   "2023": 101.6,
+   "2024": -6.7,
+   "2025": 206.7,
+   "2026": 274.3
+  },
+  "years_up": 14,
+  "years": 22,
+  "hold_usd_per_day": 59.8,
+  "hold_worst_stretch": -138102.0,
+  "resampled_worst_stretch": {
+   "median": -29558.0,
+   "p05": -52189.0,
+   "p95": -19584.0
+  },
+  "resampled_loses_money": 0.0
+ },
+ "wide": {
+  "funds": 173,
+  "skipped": [
+   "JNPR.2X",
+   "BK.2X",
+   "MMC.2X"
+  ],
+  "trades": 213748,
+  "mean_bp": 6.4,
+  "median_bp": 55.9,
+  "win_rate": 0.557,
+  "avg_win_pct": 3.32,
+  "avg_loss_pct": -4.03,
+  "profit_factor": 1.04,
+  "t_stat": 5.63,
+  "mean_bp_95ci": [
+   4.3,
+   8.4
+  ],
+  "funds_profitable": 0.665,
+  "funds_beat_holding": 0.0,
+  "funds_better_sharpe_than_holding": 0.012,
+  "usd_per_day_median_fund": 3.1,
+  "hold_usd_per_day_median_fund": 24.7,
+  "stock 2x": {
+   "funds": 143,
+   "trades": 176564,
+   "mean_bp": 7.0,
+   "median_bp": 55.3,
+   "win_rate": 0.557,
+   "avg_win_pct": 3.29,
+   "avg_loss_pct": -3.97,
+   "profit_factor": 1.04,
+   "t_stat": 5.68,
+   "funds_profitable": 0.678,
+   "usd_per_day_median_fund": 3.6,
+   "hold_usd_per_day_median_fund": 24.8
+  },
+  "ETF 3x": {
+   "funds": 30,
+   "trades": 37184,
+   "mean_bp": 3.6,
+   "median_bp": 58.4,
+   "win_rate": 0.559,
+   "avg_win_pct": 3.47,
+   "avg_loss_pct": -4.32,
+   "profit_factor": 1.02,
+   "t_stat": 1.23,
+   "funds_profitable": 0.6,
+   "usd_per_day_median_fund": 1.7,
+   "hold_usd_per_day_median_fund": 22.7
+  },
+  "years": {
+   "2005": {
+    "trades": 10274,
+    "mean_bp": 4.8
+   },
+   "2006": {
+    "trades": 10129,
+    "mean_bp": 17.2
+   },
+   "2007": {
+    "trades": 9593,
+    "mean_bp": 1.8
+   },
+   "2008": {
+    "trades": 6099,
+    "mean_bp": -55.0
+   },
+   "2009": {
+    "trades": 7364,
+    "mean_bp": 34.5
+   },
+   "2010": {
+    "trades": 9314,
+    "mean_bp": 15.7
+   },
+   "2011": {
+    "trades": 9213,
+    "mean_bp": -14.4
+   },
+   "2012": {
+    "trades": 10563,
+    "mean_bp": -2.5
+   },
+   "2013": {
+    "trades": 11785,
+    "mean_bp": 35.7
+   },
+   "2014": {
+    "trades": 11633,
+    "mean_bp": 18.0
+   },
+   "2015": {
+    "trades": 10706,
+    "mean_bp": -11.5
+   },
+   "2016": {
+    "trades": 10698,
+    "mean_bp": 14.5
+   },
+   "2017": {
+    "trades": 11582,
+    "mean_bp": 31.9
+   },
+   "2018": {
+    "trades": 9861,
+    "mean_bp": -35.7
+   },
+   "2019": {
+    "trades": 10745,
+    "mean_bp": 25.2
+   },
+   "2020": {
+    "trades": 9039,
+    "mean_bp": 15.7
+   },
+   "2021": {
+    "trades": 10799,
+    "mean_bp": 22.9
+   },
+   "2022": {
+    "trades": 6762,
+    "mean_bp": -53.2
+   },
+   "2023": {
+    "trades": 10421,
+    "mean_bp": -3.5
+   },
+   "2024": {
+    "trades": 10941,
+    "mean_bp": 2.0
+   },
+   "2025": {
+    "trades": 9965,
+    "mean_bp": 15.5
+   },
+   "2026": {
+    "trades": 6262,
+    "mean_bp": 17.0
+   }
+  },
+  "years_up": 15,
+  "other_funds_only": {
+   "trades": 213019,
+   "mean_bp": 6.0,
+   "median_bp": 55.5,
+   "win_rate": 0.557,
+   "avg_win_pct": 3.3,
+   "avg_loss_pct": -4.02,
+   "profit_factor": 1.03,
+   "t_stat": 5.27
+  },
+  "random_mean_bp": 7.0,
+  "random_mean_bp_p95": 9.0,
+  "timing_edge_bp": -0.6,
+  "p_value_vs_random": 0.68,
+  "mean_bp_3x_slippage": -25.6,
+  "mean_bp_5x_slippage": -57.6
+ },
+ "nudges": {
+  "count": 36,
+  "base_wide25": {
+   "trades": 30005,
+   "mean_bp": 5.5,
+   "usd_per_day": 3.6
+  },
+  "base_own_usd_per_day": 46.3,
+  "share_profitable_wide25": 1.0,
+  "share_profitable_own": 1.0,
+  "own_usd_per_day_range": [
+   25.3,
+   50.5
+  ],
+  "wide25_mean_bp_range": [
+   3.8,
+   6.7
+  ],
+  "each": {
+   "x0.8: entry 1: 1.71 -> 1.368": {
+    "wide25": {
+     "trades": 30447,
+     "mean_bp": 6.3,
+     "usd_per_day": 4.1
+    },
+    "own": {
+     "usd_per_day": 43.6,
+     "trades": 768
+    }
+   },
+   "x0.8: entry 1: 0.06 -> 0.048": {
+    "wide25": {
+     "trades": 30046,
+     "mean_bp": 5.6,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 46.5,
+     "trades": 730
+    }
+   },
+   "x0.8: entry 1: 0.04 -> 0.032": {
+    "wide25": {
+     "trades": 29977,
+     "mean_bp": 5.6,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 46.4,
+     "trades": 725
+    }
+   },
+   "x0.8: entry 1: 0.28 -> 0.224": {
+    "wide25": {
+     "trades": 29971,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 45.4,
+     "trades": 725
+    }
+   },
+   "x0.8: entry 2: 64 -> 51": {
+    "wide25": {
+     "trades": 32533,
+     "mean_bp": 6.3,
+     "usd_per_day": 4.4
+    },
+    "own": {
+     "usd_per_day": 25.3,
+     "trades": 959
+    }
+   },
+   "x0.8: entry 2: 1.37 -> 1.096": {
+    "wide25": {
+     "trades": 29894,
+     "mean_bp": 5.3,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 48.0,
+     "trades": 704
+    }
+   },
+   "x0.8: entry 2: 0.2 -> 0.16": {
+    "wide25": {
+     "trades": 29994,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 728
+    }
+   },
+   "x0.8: entry 3: 0.03 -> 0.024": {
+    "wide25": {
+     "trades": 29895,
+     "mean_bp": 5.1,
+     "usd_per_day": 3.3
+    },
+    "own": {
+     "usd_per_day": 45.7,
+     "trades": 725
+    }
+   },
+   "x0.8: entry 3: 58 -> 46": {
+    "wide25": {
+     "trades": 29120,
+     "mean_bp": 3.8,
+     "usd_per_day": 2.5
+    },
+    "own": {
+     "usd_per_day": 43.7,
+     "trades": 631
+    }
+   },
+   "x0.8: entry 3: 0.004 -> 0.0032": {
+    "wide25": {
+     "trades": 29990,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 728
+    }
+   },
+   "x0.8: entry 4: 1.31 -> 1.048": {
+    "wide25": {
+     "trades": 31334,
+     "mean_bp": 6.4,
+     "usd_per_day": 4.3
+    },
+    "own": {
+     "usd_per_day": 49.4,
+     "trades": 865
+    }
+   },
+   "x0.8: entry 4: 0.052 -> 0.0416": {
+    "wide25": {
+     "trades": 29978,
+     "mean_bp": 5.7,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 47.9,
+     "trades": 726
+    }
+   },
+   "x0.8: entry 4: 0.24 -> 0.192": {
+    "wide25": {
+     "trades": 30114,
+     "mean_bp": 5.3,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 46.2,
+     "trades": 731
+    }
+   },
+   "x0.8: entry 4: 76 -> 61": {
+    "wide25": {
+     "trades": 32204,
+     "mean_bp": 4.0,
+     "usd_per_day": 3.1
+    },
+    "own": {
+     "usd_per_day": 45.2,
+     "trades": 983
+    }
+   },
+   "x0.8: entry 4: 0.0514 -> 0.04112": {
+    "wide25": {
+     "trades": 25068,
+     "mean_bp": 6.0,
+     "usd_per_day": 3.3
+    },
+    "own": {
+     "usd_per_day": 43.6,
+     "trades": 722
+    }
+   },
+   "x0.8: exit 1: 0.02 -> 0.016": {
+    "wide25": {
+     "trades": 30987,
+     "mean_bp": 6.3,
+     "usd_per_day": 4.2
+    },
+    "own": {
+     "usd_per_day": 45.2,
+     "trades": 736
+    }
+   },
+   "x0.8: exit 2: 0.04 -> 0.032": {
+    "wide25": {
+     "trades": 30101,
+     "mean_bp": 5.5,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 46.1,
+     "trades": 732
+    }
+   },
+   "x0.8: risk stop_loss_pct: 0.12 -> 0.096": {
+    "wide25": {
+     "trades": 30099,
+     "mean_bp": 5.6,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 39.5,
+     "trades": 740
+    }
+   },
+   "x1.2: entry 1: 0.06 -> 0.072": {
+    "wide25": {
+     "trades": 29962,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 45.8,
+     "trades": 727
+    }
+   },
+   "x1.2: entry 1: 0.28 -> 0.336": {
+    "wide25": {
+     "trades": 30042,
+     "mean_bp": 5.2,
+     "usd_per_day": 3.4
+    },
+    "own": {
+     "usd_per_day": 45.8,
+     "trades": 729
+    }
+   },
+   "x1.2: entry 1: 0.04 -> 0.048": {
+    "wide25": {
+     "trades": 30025,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 730
+    }
+   },
+   "x1.2: entry 1: 1.71 -> 2.052": {
+    "wide25": {
+     "trades": 29819,
+     "mean_bp": 5.5,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 42.2,
+     "trades": 714
+    }
+   },
+   "x1.2: entry 2: 0.2 -> 0.24": {
+    "wide25": {
+     "trades": 30016,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 44.3,
+     "trades": 729
+    }
+   },
+   "x1.2: entry 2: 64 -> 77": {
+    "wide25": {
+     "trades": 29555,
+     "mean_bp": 5.8,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 44.1,
+     "trades": 663
+    }
+   },
+   "x1.2: entry 2: 1.37 -> 1.644": {
+    "wide25": {
+     "trades": 30058,
+     "mean_bp": 6.0,
+     "usd_per_day": 3.9
+    },
+    "own": {
+     "usd_per_day": 45.3,
+     "trades": 734
+    }
+   },
+   "x1.2: entry 3: 0.004 -> 0.0048": {
+    "wide25": {
+     "trades": 30019,
+     "mean_bp": 5.5,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 45.8,
+     "trades": 732
+    }
+   },
+   "x1.2: entry 3: 0.03 -> 0.036": {
+    "wide25": {
+     "trades": 30067,
+     "mean_bp": 5.0,
+     "usd_per_day": 3.3
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 736
+    }
+   },
+   "x1.2: entry 3: 58 -> 70": {
+    "wide25": {
+     "trades": 30462,
+     "mean_bp": 5.3,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 47.7,
+     "trades": 767
+    }
+   },
+   "x1.2: entry 4: 1.31 -> 1.572": {
+    "wide25": {
+     "trades": 29252,
+     "mean_bp": 5.7,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 43.6,
+     "trades": 673
+    }
+   },
+   "x1.2: entry 4: 0.052 -> 0.0624": {
+    "wide25": {
+     "trades": 30024,
+     "mean_bp": 5.7,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 729
+    }
+   },
+   "x1.2: entry 4: 0.24 -> 0.288": {
+    "wide25": {
+     "trades": 29889,
+     "mean_bp": 5.5,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 45.8,
+     "trades": 723
+    }
+   },
+   "x1.2: entry 4: 0.0514 -> 0.06168": {
+    "wide25": {
+     "trades": 33760,
+     "mean_bp": 6.7,
+     "usd_per_day": 4.8
+    },
+    "own": {
+     "usd_per_day": 44.4,
+     "trades": 787
+    }
+   },
+   "x1.2: entry 4: 76 -> 91": {
+    "wide25": {
+     "trades": 29683,
+     "mean_bp": 5.6,
+     "usd_per_day": 3.6
+    },
+    "own": {
+     "usd_per_day": 50.5,
+     "trades": 682
+    }
+   },
+   "x1.2: exit 1: 0.02 -> 0.024": {
+    "wide25": {
+     "trades": 29276,
+     "mean_bp": 5.8,
+     "usd_per_day": 3.7
+    },
+    "own": {
+     "usd_per_day": 42.2,
+     "trades": 723
+    }
+   },
+   "x1.2: exit 2: 0.04 -> 0.048": {
+    "wide25": {
+     "trades": 29969,
+     "mean_bp": 5.4,
+     "usd_per_day": 3.5
+    },
+    "own": {
+     "usd_per_day": 46.3,
+     "trades": 726
+    }
+   },
+   "x1.2: risk stop_loss_pct: 0.12 -> 0.144": {
+    "wide25": {
+     "trades": 29971,
+     "mean_bp": 4.3,
+     "usd_per_day": 2.9
+    },
+    "own": {
+     "usd_per_day": 42.9,
+     "trades": 721
+    }
+   }
+  }
+ },
+ "funds": [
+  {
+   "fund": "AMD.2X",
+   "kind": "stock 2x",
+   "trades": 729,
+   "mean_bp": 131.5,
+   "usd_per_day": 46.3,
+   "sharpe": 0.79,
+   "worst_stretch": -34364.0,
+   "days_in_market": 0.404,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 59.8,
+   "hold_sharpe": 0.51,
+   "hold_worst_stretch": -138102.0
+  },
+  {
+   "fund": "NFLX.2X",
+   "kind": "stock 2x",
+   "trades": 979,
+   "mean_bp": 103.5,
+   "usd_per_day": 46.3,
+   "sharpe": 0.84,
+   "worst_stretch": -31625.0,
+   "days_in_market": 0.555,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 73.9,
+   "hold_sharpe": 0.75,
+   "hold_worst_stretch": -69434.0
+  },
+  {
+   "fund": "NVDA.2X",
+   "kind": "stock 2x",
+   "trades": 941,
+   "mean_bp": 83.0,
+   "usd_per_day": 37.9,
+   "sharpe": 0.69,
+   "worst_stretch": -51933.0,
+   "days_in_market": 0.542,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 82.7,
+   "hold_sharpe": 0.86,
+   "hold_worst_stretch": -78833.0
+  },
+  {
+   "fund": "AAPL.2X",
+   "kind": "stock 2x",
+   "trades": 1251,
+   "mean_bp": 62.6,
+   "usd_per_day": 37.2,
+   "sharpe": 0.87,
+   "worst_stretch": -23369.0,
+   "days_in_market": 0.779,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 55.1,
+   "hold_sharpe": 0.88,
+   "hold_worst_stretch": -39400.0
+  },
+  {
+   "fund": "STX.2X",
+   "kind": "stock 2x",
+   "trades": 886,
+   "mean_bp": 72.4,
+   "usd_per_day": 29.3,
+   "sharpe": 0.61,
+   "worst_stretch": -34450.0,
+   "days_in_market": 0.498,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 58.0,
+   "hold_sharpe": 0.64,
+   "hold_worst_stretch": -95591.0
+  },
+  {
+   "fund": "LRCX.2X",
+   "kind": "stock 2x",
+   "trades": 965,
+   "mean_bp": 51.1,
+   "usd_per_day": 24.1,
+   "sharpe": 0.54,
+   "worst_stretch": -18792.0,
+   "days_in_market": 0.552,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 56.8,
+   "hold_sharpe": 0.67,
+   "hold_worst_stretch": -62233.0
+  },
+  {
+   "fund": "AVGO.2X",
+   "kind": "stock 2x",
+   "trades": 806,
+   "mean_bp": 42.4,
+   "usd_per_day": 21.8,
+   "sharpe": 0.51,
+   "worst_stretch": -25932.0,
+   "days_in_market": 0.621,
+   "first": "2010-05-24",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 77.0,
+   "hold_sharpe": 1.01,
+   "hold_worst_stretch": -29984.0
+  },
+  {
+   "fund": "SOXX.3X",
+   "kind": "ETF 3x",
+   "trades": 982,
+   "mean_bp": 45.5,
+   "usd_per_day": 21.3,
+   "sharpe": 0.44,
+   "worst_stretch": -37267.0,
+   "days_in_market": 0.547,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 54.3,
+   "hold_sharpe": 0.59,
+   "hold_worst_stretch": -79503.0
+  },
+  {
+   "fund": "AMZN.2X",
+   "kind": "stock 2x",
+   "trades": 1122,
+   "mean_bp": 36.4,
+   "usd_per_day": 20.3,
+   "sharpe": 0.42,
+   "worst_stretch": -30070.0,
+   "days_in_market": 0.69,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 53.4,
+   "hold_sharpe": 0.71,
+   "hold_worst_stretch": -44143.0
+  },
+  {
+   "fund": "MRVL.2X",
+   "kind": "stock 2x",
+   "trades": 817,
+   "mean_bp": 48.9,
+   "usd_per_day": 18.2,
+   "sharpe": 0.36,
+   "worst_stretch": -46764.0,
+   "days_in_market": 0.467,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 43.6,
+   "hold_sharpe": 0.45,
+   "hold_worst_stretch": -86268.0
+  },
+  {
+   "fund": "ISRG.2X",
+   "kind": "stock 2x",
+   "trades": 1159,
+   "mean_bp": 31.7,
+   "usd_per_day": 18.2,
+   "sharpe": 0.38,
+   "worst_stretch": -32074.0,
+   "days_in_market": 0.686,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 51.4,
+   "hold_sharpe": 0.65,
+   "hold_worst_stretch": -60037.0
+  },
+  {
+   "fund": "GS.2X",
+   "kind": "stock 2x",
+   "trades": 1316,
+   "mean_bp": 29.7,
+   "usd_per_day": 18.0,
+   "sharpe": 0.43,
+   "worst_stretch": -22464.0,
+   "days_in_market": 0.787,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.5,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -66602.0
+  },
+  {
+   "fund": "SMH.3X",
+   "kind": "ETF 3x",
+   "trades": 935,
+   "mean_bp": 37.7,
+   "usd_per_day": 18.0,
+   "sharpe": 0.37,
+   "worst_stretch": -28578.0,
+   "days_in_market": 0.544,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 56.0,
+   "hold_sharpe": 0.62,
+   "hold_worst_stretch": -75382.0
+  },
+  {
+   "fund": "LLY.2X",
+   "kind": "stock 2x",
+   "trades": 1373,
+   "mean_bp": 27.1,
+   "usd_per_day": 17.4,
+   "sharpe": 0.47,
+   "worst_stretch": -31163.0,
+   "days_in_market": 0.864,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 34.6,
+   "hold_sharpe": 0.66,
+   "hold_worst_stretch": -32948.0
+  },
+  {
+   "fund": "ORCL.2X",
+   "kind": "stock 2x",
+   "trades": 1268,
+   "mean_bp": 26.4,
+   "usd_per_day": 17.3,
+   "sharpe": 0.41,
+   "worst_stretch": -18793.0,
+   "days_in_market": 0.805,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 30.4,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -46753.0
+  },
+  {
+   "fund": "MSFT.2X",
+   "kind": "stock 2x",
+   "trades": 1320,
+   "mean_bp": 26.6,
+   "usd_per_day": 17.0,
+   "sharpe": 0.45,
+   "worst_stretch": -37251.0,
+   "days_in_market": 0.848,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 34.1,
+   "hold_sharpe": 0.62,
+   "hold_worst_stretch": -37823.0
+  },
+  {
+   "fund": "JPM.2X",
+   "kind": "stock 2x",
+   "trades": 1290,
+   "mean_bp": 26.8,
+   "usd_per_day": 16.6,
+   "sharpe": 0.38,
+   "worst_stretch": -21613.0,
+   "days_in_market": 0.805,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 31.7,
+   "hold_sharpe": 0.45,
+   "hold_worst_stretch": -42830.0
+  },
+  {
+   "fund": "SHW.2X",
+   "kind": "stock 2x",
+   "trades": 1318,
+   "mean_bp": 25.2,
+   "usd_per_day": 15.9,
+   "sharpe": 0.43,
+   "worst_stretch": -21470.0,
+   "days_in_market": 0.819,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 32.5,
+   "hold_sharpe": 0.6,
+   "hold_worst_stretch": -26211.0
+  },
+  {
+   "fund": "BKNG.2X",
+   "kind": "stock 2x",
+   "trades": 1164,
+   "mean_bp": 23.0,
+   "usd_per_day": 13.4,
+   "sharpe": 0.31,
+   "worst_stretch": -45131.0,
+   "days_in_market": 0.7,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 55.8,
+   "hold_sharpe": 0.74,
+   "hold_worst_stretch": -48915.0
+  },
+  {
+   "fund": "BLK.2X",
+   "kind": "stock 2x",
+   "trades": 1317,
+   "mean_bp": 21.5,
+   "usd_per_day": 13.3,
+   "sharpe": 0.33,
+   "worst_stretch": -29938.0,
+   "days_in_market": 0.803,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 34.0,
+   "hold_sharpe": 0.52,
+   "hold_worst_stretch": -36101.0
+  },
+  {
+   "fund": "GOOGL.2X",
+   "kind": "stock 2x",
+   "trades": 1268,
+   "mean_bp": 22.0,
+   "usd_per_day": 13.2,
+   "sharpe": 0.32,
+   "worst_stretch": -31123.0,
+   "days_in_market": 0.804,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 39.8,
+   "hold_sharpe": 0.67,
+   "hold_worst_stretch": -47330.0
+  },
+  {
+   "fund": "TJX.2X",
+   "kind": "stock 2x",
+   "trades": 1377,
+   "mean_bp": 20.2,
+   "usd_per_day": 13.2,
+   "sharpe": 0.37,
+   "worst_stretch": -15688.0,
+   "days_in_market": 0.852,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 31.6,
+   "hold_sharpe": 0.61,
+   "hold_worst_stretch": -32757.0
+  },
+  {
+   "fund": "DE.2X",
+   "kind": "stock 2x",
+   "trades": 1245,
+   "mean_bp": 22.2,
+   "usd_per_day": 13.0,
+   "sharpe": 0.32,
+   "worst_stretch": -31686.0,
+   "days_in_market": 0.764,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 35.2,
+   "hold_sharpe": 0.55,
+   "hold_worst_stretch": -55395.0
+  },
+  {
+   "fund": "SPGI.2X",
+   "kind": "stock 2x",
+   "trades": 1316,
+   "mean_bp": 20.7,
+   "usd_per_day": 12.9,
+   "sharpe": 0.34,
+   "worst_stretch": -23862.0,
+   "days_in_market": 0.817,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.2,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -58098.0
+  },
+  {
+   "fund": "YUM.2X",
+   "kind": "stock 2x",
+   "trades": 1394,
+   "mean_bp": 20.4,
+   "usd_per_day": 12.9,
+   "sharpe": 0.35,
+   "worst_stretch": -21293.0,
+   "days_in_market": 0.885,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.8,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -35940.0
+  },
+  {
+   "fund": "XLY.3X",
+   "kind": "ETF 3x",
+   "trades": 1225,
+   "mean_bp": 22.0,
+   "usd_per_day": 12.9,
+   "sharpe": 0.32,
+   "worst_stretch": -21192.0,
+   "days_in_market": 0.756,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.8,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -64690.0
+  },
+  {
+   "fund": "ALL.2X",
+   "kind": "stock 2x",
+   "trades": 1389,
+   "mean_bp": 19.6,
+   "usd_per_day": 12.8,
+   "sharpe": 0.34,
+   "worst_stretch": -36620.0,
+   "days_in_market": 0.874,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.1,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -58889.0
+  },
+  {
+   "fund": "QQQ.3X",
+   "kind": "ETF 3x",
+   "trades": 1257,
+   "mean_bp": 20.8,
+   "usd_per_day": 12.6,
+   "sharpe": 0.32,
+   "worst_stretch": -39327.0,
+   "days_in_market": 0.762,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 39.0,
+   "hold_sharpe": 0.61,
+   "hold_worst_stretch": -54620.0
+  },
+  {
+   "fund": "KLAC.2X",
+   "kind": "stock 2x",
+   "trades": 1049,
+   "mean_bp": 22.8,
+   "usd_per_day": 12.4,
+   "sharpe": 0.29,
+   "worst_stretch": -29465.0,
+   "days_in_market": 0.613,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 48.9,
+   "hold_sharpe": 0.64,
+   "hold_worst_stretch": -64855.0
+  },
+  {
+   "fund": "MCO.2X",
+   "kind": "stock 2x",
+   "trades": 1280,
+   "mean_bp": 20.3,
+   "usd_per_day": 12.4,
+   "sharpe": 0.3,
+   "worst_stretch": -68591.0,
+   "days_in_market": 0.784,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.7,
+   "hold_sharpe": 0.44,
+   "hold_worst_stretch": -65778.0
+  },
+  {
+   "fund": "EWY.3X",
+   "kind": "ETF 3x",
+   "trades": 1172,
+   "mean_bp": 20.9,
+   "usd_per_day": 12.3,
+   "sharpe": 0.22,
+   "worst_stretch": -70703.0,
+   "days_in_market": 0.671,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 34.9,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -87390.0
+  },
+  {
+   "fund": "WMT.2X",
+   "kind": "stock 2x",
+   "trades": 1447,
+   "mean_bp": 17.9,
+   "usd_per_day": 12.1,
+   "sharpe": 0.38,
+   "worst_stretch": -16100.0,
+   "days_in_market": 0.947,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 19.0,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -22589.0
+  },
+  {
+   "fund": "GILD.2X",
+   "kind": "stock 2x",
+   "trades": 1306,
+   "mean_bp": 18.2,
+   "usd_per_day": 11.9,
+   "sharpe": 0.31,
+   "worst_stretch": -25636.0,
+   "days_in_market": 0.795,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 32.1,
+   "hold_sharpe": 0.56,
+   "hold_worst_stretch": -29019.0
+  },
+  {
+   "fund": "TXN.2X",
+   "kind": "stock 2x",
+   "trades": 1239,
+   "mean_bp": 18.8,
+   "usd_per_day": 11.5,
+   "sharpe": 0.29,
+   "worst_stretch": -33175.0,
+   "days_in_market": 0.752,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.9,
+   "hold_sharpe": 0.5,
+   "hold_worst_stretch": -47265.0
+  },
+  {
+   "fund": "TRV.2X",
+   "kind": "stock 2x",
+   "trades": 1416,
+   "mean_bp": 16.2,
+   "usd_per_day": 11.2,
+   "sharpe": 0.31,
+   "worst_stretch": -20009.0,
+   "days_in_market": 0.905,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.0,
+   "hold_sharpe": 0.51,
+   "hold_worst_stretch": -28295.0
+  },
+  {
+   "fund": "DHR.2X",
+   "kind": "stock 2x",
+   "trades": 1363,
+   "mean_bp": 17.7,
+   "usd_per_day": 10.9,
+   "sharpe": 0.26,
+   "worst_stretch": -28981.0,
+   "days_in_market": 0.863,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 28.6,
+   "hold_sharpe": 0.52,
+   "hold_worst_stretch": -28613.0
+  },
+  {
+   "fund": "HPQ.2X",
+   "kind": "stock 2x",
+   "trades": 1148,
+   "mean_bp": 18.9,
+   "usd_per_day": 10.8,
+   "sharpe": 0.25,
+   "worst_stretch": -34431.0,
+   "days_in_market": 0.693,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.2,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -69088.0
+  },
+  {
+   "fund": "CDNS.2X",
+   "kind": "stock 2x",
+   "trades": 1155,
+   "mean_bp": 19.1,
+   "usd_per_day": 10.7,
+   "sharpe": 0.24,
+   "worst_stretch": -35589.0,
+   "days_in_market": 0.698,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 36.2,
+   "hold_sharpe": 0.49,
+   "hold_worst_stretch": -94096.0
+  },
+  {
+   "fund": "XLU.3X",
+   "kind": "ETF 3x",
+   "trades": 1372,
+   "mean_bp": 15.9,
+   "usd_per_day": 10.4,
+   "sharpe": 0.27,
+   "worst_stretch": -29376.0,
+   "days_in_market": 0.833,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 19.7,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -44252.0
+  },
+  {
+   "fund": "USB.2X",
+   "kind": "stock 2x",
+   "trades": 1282,
+   "mean_bp": 16.9,
+   "usd_per_day": 10.2,
+   "sharpe": 0.27,
+   "worst_stretch": -35826.0,
+   "days_in_market": 0.811,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 17.9,
+   "hold_sharpe": 0.27,
+   "hold_worst_stretch": -59903.0
+  },
+  {
+   "fund": "AMAT.2X",
+   "kind": "stock 2x",
+   "trades": 994,
+   "mean_bp": 19.2,
+   "usd_per_day": 10.1,
+   "sharpe": 0.23,
+   "worst_stretch": -32886.0,
+   "days_in_market": 0.575,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 42.7,
+   "hold_sharpe": 0.56,
+   "hold_worst_stretch": -45715.0
+  },
+  {
+   "fund": "IBB.3X",
+   "kind": "ETF 3x",
+   "trades": 1066,
+   "mean_bp": 20.8,
+   "usd_per_day": 10.1,
+   "sharpe": 0.24,
+   "worst_stretch": -49189.0,
+   "days_in_market": 0.619,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.4,
+   "hold_sharpe": 0.39,
+   "hold_worst_stretch": -39641.0
+  },
+  {
+   "fund": "NSC.2X",
+   "kind": "stock 2x",
+   "trades": 1295,
+   "mean_bp": 14.9,
+   "usd_per_day": 10.0,
+   "sharpe": 0.25,
+   "worst_stretch": -35044.0,
+   "days_in_market": 0.798,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.1,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -44544.0
+  },
+  {
+   "fund": "WM.2X",
+   "kind": "stock 2x",
+   "trades": 1437,
+   "mean_bp": 13.9,
+   "usd_per_day": 9.7,
+   "sharpe": 0.29,
+   "worst_stretch": -18171.0,
+   "days_in_market": 0.938,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.6,
+   "hold_sharpe": 0.52,
+   "hold_worst_stretch": -23979.0
+  },
+  {
+   "fund": "XLK.3X",
+   "kind": "ETF 3x",
+   "trades": 1250,
+   "mean_bp": 16.3,
+   "usd_per_day": 9.7,
+   "sharpe": 0.23,
+   "worst_stretch": -52510.0,
+   "days_in_market": 0.751,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 40.9,
+   "hold_sharpe": 0.61,
+   "hold_worst_stretch": -53788.0
+  },
+  {
+   "fund": "ACN.2X",
+   "kind": "stock 2x",
+   "trades": 1341,
+   "mean_bp": 14.3,
+   "usd_per_day": 9.5,
+   "sharpe": 0.25,
+   "worst_stretch": -34291.0,
+   "days_in_market": 0.84,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.9,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -55146.0
+  },
+  {
+   "fund": "CRM.2X",
+   "kind": "stock 2x",
+   "trades": 1009,
+   "mean_bp": 18.3,
+   "usd_per_day": 9.5,
+   "sharpe": 0.21,
+   "worst_stretch": -40565.0,
+   "days_in_market": 0.6,
+   "first": "2005-04-08",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 49.0,
+   "hold_sharpe": 0.6,
+   "hold_worst_stretch": -54864.0
+  },
+  {
+   "fund": "HD.2X",
+   "kind": "stock 2x",
+   "trades": 1334,
+   "mean_bp": 15.4,
+   "usd_per_day": 9.4,
+   "sharpe": 0.28,
+   "worst_stretch": -31810.0,
+   "days_in_market": 0.839,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.5,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -38620.0
+  },
+  {
+   "fund": "NOC.2X",
+   "kind": "stock 2x",
+   "trades": 1415,
+   "mean_bp": 14.2,
+   "usd_per_day": 9.4,
+   "sharpe": 0.26,
+   "worst_stretch": -26061.0,
+   "days_in_market": 0.889,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 26.0,
+   "hold_sharpe": 0.54,
+   "hold_worst_stretch": -42276.0
+  },
+  {
+   "fund": "CAT.2X",
+   "kind": "stock 2x",
+   "trades": 1260,
+   "mean_bp": 16.2,
+   "usd_per_day": 9.2,
+   "sharpe": 0.22,
+   "worst_stretch": -41529.0,
+   "days_in_market": 0.76,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 35.2,
+   "hold_sharpe": 0.56,
+   "hold_worst_stretch": -60016.0
+  },
+  {
+   "fund": "WFC.2X",
+   "kind": "stock 2x",
+   "trades": 1231,
+   "mean_bp": 14.5,
+   "usd_per_day": 8.8,
+   "sharpe": 0.2,
+   "worst_stretch": -43107.0,
+   "days_in_market": 0.762,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 24.3,
+   "hold_sharpe": 0.31,
+   "hold_worst_stretch": -58776.0
+  },
+  {
+   "fund": "SBUX.2X",
+   "kind": "stock 2x",
+   "trades": 1304,
+   "mean_bp": 13.0,
+   "usd_per_day": 8.6,
+   "sharpe": 0.21,
+   "worst_stretch": -38690.0,
+   "days_in_market": 0.807,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.2,
+   "hold_sharpe": 0.38,
+   "hold_worst_stretch": -80655.0
+  },
+  {
+   "fund": "DUK.2X",
+   "kind": "stock 2x",
+   "trades": 1483,
+   "mean_bp": 12.2,
+   "usd_per_day": 8.4,
+   "sharpe": 0.28,
+   "worst_stretch": -17051.0,
+   "days_in_market": 0.962,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.1,
+   "hold_sharpe": 0.41,
+   "hold_worst_stretch": -22410.0
+  },
+  {
+   "fund": "XLF.3X",
+   "kind": "ETF 3x",
+   "trades": 1237,
+   "mean_bp": 14.1,
+   "usd_per_day": 8.4,
+   "sharpe": 0.18,
+   "worst_stretch": -43930.0,
+   "days_in_market": 0.747,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 18.7,
+   "hold_sharpe": 0.22,
+   "hold_worst_stretch": -109883.0
+  },
+  {
+   "fund": "REGN.2X",
+   "kind": "stock 2x",
+   "trades": 882,
+   "mean_bp": 20.3,
+   "usd_per_day": 8.3,
+   "sharpe": 0.17,
+   "worst_stretch": -52615.0,
+   "days_in_market": 0.509,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 54.3,
+   "hold_sharpe": 0.62,
+   "hold_worst_stretch": -43607.0
+  },
+  {
+   "fund": "GD.2X",
+   "kind": "stock 2x",
+   "trades": 1449,
+   "mean_bp": 11.4,
+   "usd_per_day": 8.0,
+   "sharpe": 0.24,
+   "worst_stretch": -21380.0,
+   "days_in_market": 0.918,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.7,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -44046.0
+  },
+  {
+   "fund": "EWT.3X",
+   "kind": "ETF 3x",
+   "trades": 1269,
+   "mean_bp": 12.3,
+   "usd_per_day": 7.9,
+   "sharpe": 0.17,
+   "worst_stretch": -36276.0,
+   "days_in_market": 0.738,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 32.0,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -67024.0
+  },
+  {
+   "fund": "ADP.2X",
+   "kind": "stock 2x",
+   "trades": 1429,
+   "mean_bp": 10.2,
+   "usd_per_day": 7.6,
+   "sharpe": 0.22,
+   "worst_stretch": -20010.0,
+   "days_in_market": 0.919,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.8,
+   "hold_sharpe": 0.51,
+   "hold_worst_stretch": -26884.0
+  },
+  {
+   "fund": "SWKS.2X",
+   "kind": "stock 2x",
+   "trades": 867,
+   "mean_bp": 17.7,
+   "usd_per_day": 7.6,
+   "sharpe": 0.17,
+   "worst_stretch": -49318.0,
+   "days_in_market": 0.494,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 38.5,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -57593.0
+  },
+  {
+   "fund": "MCD.2X",
+   "kind": "stock 2x",
+   "trades": 1472,
+   "mean_bp": 9.6,
+   "usd_per_day": 7.2,
+   "sharpe": 0.24,
+   "worst_stretch": -23245.0,
+   "days_in_market": 0.956,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 22.5,
+   "hold_sharpe": 0.57,
+   "hold_worst_stretch": -21776.0
+  },
+  {
+   "fund": "SPG.2X",
+   "kind": "stock 2x",
+   "trades": 1322,
+   "mean_bp": 11.0,
+   "usd_per_day": 7.0,
+   "sharpe": 0.17,
+   "worst_stretch": -65737.0,
+   "days_in_market": 0.809,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 28.8,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -67669.0
+  },
+  {
+   "fund": "EWZ.3X",
+   "kind": "ETF 3x",
+   "trades": 769,
+   "mean_bp": 14.4,
+   "usd_per_day": 6.5,
+   "sharpe": 0.12,
+   "worst_stretch": -60173.0,
+   "days_in_market": 0.419,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.2,
+   "hold_sharpe": 0.27,
+   "hold_worst_stretch": -96404.0
+  },
+  {
+   "fund": "LMT.2X",
+   "kind": "stock 2x",
+   "trades": 1435,
+   "mean_bp": 8.7,
+   "usd_per_day": 6.1,
+   "sharpe": 0.18,
+   "worst_stretch": -33704.0,
+   "days_in_market": 0.913,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 26.1,
+   "hold_sharpe": 0.57,
+   "hold_worst_stretch": -31842.0
+  },
+  {
+   "fund": "SNPS.2X",
+   "kind": "stock 2x",
+   "trades": 1249,
+   "mean_bp": 9.0,
+   "usd_per_day": 6.0,
+   "sharpe": 0.16,
+   "worst_stretch": -20972.0,
+   "days_in_market": 0.771,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 31.2,
+   "hold_sharpe": 0.52,
+   "hold_worst_stretch": -31382.0
+  },
+  {
+   "fund": "PNC.2X",
+   "kind": "stock 2x",
+   "trades": 1299,
+   "mean_bp": 8.1,
+   "usd_per_day": 6.0,
+   "sharpe": 0.13,
+   "worst_stretch": -37364.0,
+   "days_in_market": 0.799,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 26.4,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -53224.0
+  },
+  {
+   "fund": "DIS.2X",
+   "kind": "stock 2x",
+   "trades": 1380,
+   "mean_bp": 8.5,
+   "usd_per_day": 6.0,
+   "sharpe": 0.16,
+   "worst_stretch": -38326.0,
+   "days_in_market": 0.86,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.1,
+   "hold_sharpe": 0.29,
+   "hold_worst_stretch": -44970.0
+  },
+  {
+   "fund": "HON.2X",
+   "kind": "stock 2x",
+   "trades": 1397,
+   "mean_bp": 8.8,
+   "usd_per_day": 5.7,
+   "sharpe": 0.16,
+   "worst_stretch": -27009.0,
+   "days_in_market": 0.884,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.7,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -44494.0
+  },
+  {
+   "fund": "HAL.2X",
+   "kind": "stock 2x",
+   "trades": 911,
+   "mean_bp": 12.9,
+   "usd_per_day": 5.7,
+   "sharpe": 0.12,
+   "worst_stretch": -57999.0,
+   "days_in_market": 0.523,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.3,
+   "hold_sharpe": 0.25,
+   "hold_worst_stretch": -114811.0
+  },
+  {
+   "fund": "MO.2X",
+   "kind": "stock 2x",
+   "trades": 1445,
+   "mean_bp": 7.8,
+   "usd_per_day": 5.6,
+   "sharpe": 0.18,
+   "worst_stretch": -34135.0,
+   "days_in_market": 0.935,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.1,
+   "hold_sharpe": 0.6,
+   "hold_worst_stretch": -37374.0
+  },
+  {
+   "fund": "SCHW.2X",
+   "kind": "stock 2x",
+   "trades": 1155,
+   "mean_bp": 8.6,
+   "usd_per_day": 5.4,
+   "sharpe": 0.12,
+   "worst_stretch": -35049.0,
+   "days_in_market": 0.684,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 29.7,
+   "hold_sharpe": 0.41,
+   "hold_worst_stretch": -33312.0
+  },
+  {
+   "fund": "IWM.3X",
+   "kind": "ETF 3x",
+   "trades": 1153,
+   "mean_bp": 9.8,
+   "usd_per_day": 5.4,
+   "sharpe": 0.13,
+   "worst_stretch": -36367.0,
+   "days_in_market": 0.684,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 22.6,
+   "hold_sharpe": 0.32,
+   "hold_worst_stretch": -60639.0
+  },
+  {
+   "fund": "TER.2X",
+   "kind": "stock 2x",
+   "trades": 971,
+   "mean_bp": 12.5,
+   "usd_per_day": 5.3,
+   "sharpe": 0.11,
+   "worst_stretch": -34849.0,
+   "days_in_market": 0.549,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 43.0,
+   "hold_sharpe": 0.49,
+   "hold_worst_stretch": -83711.0
+  },
+  {
+   "fund": "ORLY.2X",
+   "kind": "stock 2x",
+   "trades": 1334,
+   "mean_bp": 7.7,
+   "usd_per_day": 5.3,
+   "sharpe": 0.14,
+   "worst_stretch": -28132.0,
+   "days_in_market": 0.834,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 38.4,
+   "hold_sharpe": 0.71,
+   "hold_worst_stretch": -27835.0
+  },
+  {
+   "fund": "BA.2X",
+   "kind": "stock 2x",
+   "trades": 1180,
+   "mean_bp": 9.2,
+   "usd_per_day": 5.1,
+   "sharpe": 0.12,
+   "worst_stretch": -44370.0,
+   "days_in_market": 0.715,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 22.1,
+   "hold_sharpe": 0.32,
+   "hold_worst_stretch": -69264.0
+  },
+  {
+   "fund": "BAC.2X",
+   "kind": "stock 2x",
+   "trades": 1218,
+   "mean_bp": 9.2,
+   "usd_per_day": 4.9,
+   "sharpe": 0.09,
+   "worst_stretch": -50390.0,
+   "days_in_market": 0.741,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 20.5,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -96378.0
+  },
+  {
+   "fund": "GLD.3X",
+   "kind": "ETF 3x",
+   "trades": 1398,
+   "mean_bp": 7.3,
+   "usd_per_day": 4.8,
+   "sharpe": 0.13,
+   "worst_stretch": -71331.0,
+   "days_in_market": 0.882,
+   "first": "2005-09-06",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 25.8,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -48106.0
+  },
+  {
+   "fund": "EOG.2X",
+   "kind": "stock 2x",
+   "trades": 1015,
+   "mean_bp": 7.8,
+   "usd_per_day": 4.4,
+   "sharpe": 0.11,
+   "worst_stretch": -35513.0,
+   "days_in_market": 0.595,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 33.0,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -65760.0
+  },
+  {
+   "fund": "FXI.3X",
+   "kind": "ETF 3x",
+   "trades": 986,
+   "mean_bp": 5.5,
+   "usd_per_day": 4.3,
+   "sharpe": 0.08,
+   "worst_stretch": -64523.0,
+   "days_in_market": 0.589,
+   "first": "2005-07-26",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 20.0,
+   "hold_sharpe": 0.2,
+   "hold_worst_stretch": -82354.0
+  },
+  {
+   "fund": "VRTX.2X",
+   "kind": "stock 2x",
+   "trades": 937,
+   "mean_bp": 9.1,
+   "usd_per_day": 4.2,
+   "sharpe": 0.08,
+   "worst_stretch": -33082.0,
+   "days_in_market": 0.552,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 49.0,
+   "hold_sharpe": 0.55,
+   "hold_worst_stretch": -52614.0
+  },
+  {
+   "fund": "AEP.2X",
+   "kind": "stock 2x",
+   "trades": 1472,
+   "mean_bp": 5.5,
+   "usd_per_day": 4.2,
+   "sharpe": 0.13,
+   "worst_stretch": -33796.0,
+   "days_in_market": 0.946,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 17.9,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -30356.0
+  },
+  {
+   "fund": "ECL.2X",
+   "kind": "stock 2x",
+   "trades": 1427,
+   "mean_bp": 5.5,
+   "usd_per_day": 4.2,
+   "sharpe": 0.12,
+   "worst_stretch": -44455.0,
+   "days_in_market": 0.909,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.1,
+   "hold_sharpe": 0.44,
+   "hold_worst_stretch": -27354.0
+  },
+  {
+   "fund": "PLD.2X",
+   "kind": "stock 2x",
+   "trades": 1340,
+   "mean_bp": 6.2,
+   "usd_per_day": 4.2,
+   "sharpe": 0.09,
+   "worst_stretch": -43002.0,
+   "days_in_market": 0.821,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.8,
+   "hold_sharpe": 0.35,
+   "hold_worst_stretch": -73351.0
+  },
+  {
+   "fund": "XOM.2X",
+   "kind": "stock 2x",
+   "trades": 1390,
+   "mean_bp": 4.6,
+   "usd_per_day": 3.9,
+   "sharpe": 0.1,
+   "worst_stretch": -37362.0,
+   "days_in_market": 0.867,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.3,
+   "hold_sharpe": 0.35,
+   "hold_worst_stretch": -48770.0
+  },
+  {
+   "fund": "CVS.2X",
+   "kind": "stock 2x",
+   "trades": 1339,
+   "mean_bp": 5.4,
+   "usd_per_day": 3.8,
+   "sharpe": 0.09,
+   "worst_stretch": -48661.0,
+   "days_in_market": 0.83,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.2,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -41270.0
+  },
+  {
+   "fund": "TMO.2X",
+   "kind": "stock 2x",
+   "trades": 1373,
+   "mean_bp": 6.1,
+   "usd_per_day": 3.7,
+   "sharpe": 0.1,
+   "worst_stretch": -46515.0,
+   "days_in_market": 0.853,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 30.2,
+   "hold_sharpe": 0.57,
+   "hold_worst_stretch": -35540.0
+  },
+  {
+   "fund": "CSX.2X",
+   "kind": "stock 2x",
+   "trades": 1299,
+   "mean_bp": 4.8,
+   "usd_per_day": 3.6,
+   "sharpe": 0.09,
+   "worst_stretch": -51536.0,
+   "days_in_market": 0.791,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 34.7,
+   "hold_sharpe": 0.57,
+   "hold_worst_stretch": -52411.0
+  },
+  {
+   "fund": "AMT.2X",
+   "kind": "stock 2x",
+   "trades": 1330,
+   "mean_bp": 5.1,
+   "usd_per_day": 3.1,
+   "sharpe": 0.09,
+   "worst_stretch": -44508.0,
+   "days_in_market": 0.831,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.4,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -36731.0
+  },
+  {
+   "fund": "NEE.2X",
+   "kind": "stock 2x",
+   "trades": 1414,
+   "mean_bp": 3.8,
+   "usd_per_day": 2.9,
+   "sharpe": 0.08,
+   "worst_stretch": -44706.0,
+   "days_in_market": 0.907,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.6,
+   "hold_sharpe": 0.54,
+   "hold_worst_stretch": -31491.0
+  },
+  {
+   "fund": "UNH.2X",
+   "kind": "stock 2x",
+   "trades": 1312,
+   "mean_bp": 4.4,
+   "usd_per_day": 2.7,
+   "sharpe": 0.07,
+   "worst_stretch": -70402.0,
+   "days_in_market": 0.811,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 26.7,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -61170.0
+  },
+  {
+   "fund": "MRK.2X",
+   "kind": "stock 2x",
+   "trades": 1427,
+   "mean_bp": 3.1,
+   "usd_per_day": 2.6,
+   "sharpe": 0.07,
+   "worst_stretch": -30116.0,
+   "days_in_market": 0.901,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.2,
+   "hold_sharpe": 0.45,
+   "hold_worst_stretch": -44590.0
+  },
+  {
+   "fund": "BDX.2X",
+   "kind": "stock 2x",
+   "trades": 1435,
+   "mean_bp": 3.0,
+   "usd_per_day": 2.6,
+   "sharpe": 0.08,
+   "worst_stretch": -48526.0,
+   "days_in_market": 0.922,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 15.4,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -26719.0
+  },
+  {
+   "fund": "LOW.2X",
+   "kind": "stock 2x",
+   "trades": 1254,
+   "mean_bp": 4.2,
+   "usd_per_day": 2.6,
+   "sharpe": 0.07,
+   "worst_stretch": -55853.0,
+   "days_in_market": 0.771,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.6,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -39293.0
+  },
+  {
+   "fund": "UNP.2X",
+   "kind": "stock 2x",
+   "trades": 1355,
+   "mean_bp": 2.8,
+   "usd_per_day": 2.3,
+   "sharpe": 0.06,
+   "worst_stretch": -31075.0,
+   "days_in_market": 0.844,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 31.2,
+   "hold_sharpe": 0.57,
+   "hold_worst_stretch": -39522.0
+  },
+  {
+   "fund": "MU.2X",
+   "kind": "stock 2x",
+   "trades": 760,
+   "mean_bp": 5.5,
+   "usd_per_day": 2.1,
+   "sharpe": 0.04,
+   "worst_stretch": -84581.0,
+   "days_in_market": 0.433,
+   "first": "2005-10-18",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 64.8,
+   "hold_sharpe": 0.61,
+   "hold_worst_stretch": -103528.0
+  },
+  {
+   "fund": "MET.2X",
+   "kind": "stock 2x",
+   "trades": 1277,
+   "mean_bp": 1.7,
+   "usd_per_day": 2.1,
+   "sharpe": 0.05,
+   "worst_stretch": -51258.0,
+   "days_in_market": 0.781,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 24.4,
+   "hold_sharpe": 0.31,
+   "hold_worst_stretch": -55959.0
+  },
+  {
+   "fund": "XLV.3X",
+   "kind": "ETF 3x",
+   "trades": 1399,
+   "mean_bp": 3.5,
+   "usd_per_day": 2.1,
+   "sharpe": 0.06,
+   "worst_stretch": -40528.0,
+   "days_in_market": 0.879,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.5,
+   "hold_sharpe": 0.45,
+   "hold_worst_stretch": -37612.0
+  },
+  {
+   "fund": "CSCO.2X",
+   "kind": "stock 2x",
+   "trades": 1372,
+   "mean_bp": 1.7,
+   "usd_per_day": 2.0,
+   "sharpe": 0.05,
+   "worst_stretch": -41203.0,
+   "days_in_market": 0.854,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 21.8,
+   "hold_sharpe": 0.39,
+   "hold_worst_stretch": -40024.0
+  },
+  {
+   "fund": "COST.2X",
+   "kind": "stock 2x",
+   "trades": 1418,
+   "mean_bp": 2.3,
+   "usd_per_day": 1.8,
+   "sharpe": 0.06,
+   "worst_stretch": -22842.0,
+   "days_in_market": 0.905,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.7,
+   "hold_sharpe": 0.67,
+   "hold_worst_stretch": -29955.0
+  },
+  {
+   "fund": "T.2X",
+   "kind": "stock 2x",
+   "trades": 1424,
+   "mean_bp": 2.3,
+   "usd_per_day": 1.8,
+   "sharpe": 0.05,
+   "worst_stretch": -44779.0,
+   "days_in_market": 0.917,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 15.6,
+   "hold_sharpe": 0.35,
+   "hold_worst_stretch": -27704.0
+  },
+  {
+   "fund": "NKE.2X",
+   "kind": "stock 2x",
+   "trades": 1308,
+   "mean_bp": 2.4,
+   "usd_per_day": 1.3,
+   "sharpe": 0.03,
+   "worst_stretch": -34481.0,
+   "days_in_market": 0.811,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 16.3,
+   "hold_sharpe": 0.28,
+   "hold_worst_stretch": -69529.0
+  },
+  {
+   "fund": "SPY.3X",
+   "kind": "ETF 3x",
+   "trades": 1351,
+   "mean_bp": 1.4,
+   "usd_per_day": 1.3,
+   "sharpe": 0.04,
+   "worst_stretch": -34751.0,
+   "days_in_market": 0.85,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 25.8,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -56194.0
+  },
+  {
+   "fund": "CB.2X",
+   "kind": "stock 2x",
+   "trades": 1398,
+   "mean_bp": 0.7,
+   "usd_per_day": 1.1,
+   "sharpe": 0.03,
+   "worst_stretch": -30515.0,
+   "days_in_market": 0.898,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 24.2,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -26955.0
+  },
+  {
+   "fund": "QCOM.2X",
+   "kind": "stock 2x",
+   "trades": 1086,
+   "mean_bp": 2.5,
+   "usd_per_day": 1.0,
+   "sharpe": 0.02,
+   "worst_stretch": -59007.0,
+   "days_in_market": 0.655,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 25.2,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -29387.0
+  },
+  {
+   "fund": "SO.2X",
+   "kind": "stock 2x",
+   "trades": 1469,
+   "mean_bp": 0.6,
+   "usd_per_day": 0.8,
+   "sharpe": 0.03,
+   "worst_stretch": -26141.0,
+   "days_in_market": 0.968,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 15.4,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -21829.0
+  },
+  {
+   "fund": "DIA.3X",
+   "kind": "ETF 3x",
+   "trades": 1380,
+   "mean_bp": 0.5,
+   "usd_per_day": 0.7,
+   "sharpe": 0.02,
+   "worst_stretch": -49537.0,
+   "days_in_market": 0.875,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.5,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -51660.0
+  },
+  {
+   "fund": "ADSK.2X",
+   "kind": "stock 2x",
+   "trades": 1035,
+   "mean_bp": 0.6,
+   "usd_per_day": 0.6,
+   "sharpe": 0.01,
+   "worst_stretch": -42374.0,
+   "days_in_market": 0.608,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 24.7,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -63346.0
+  },
+  {
+   "fund": "KMB.2X",
+   "kind": "stock 2x",
+   "trades": 1475,
+   "mean_bp": 0.4,
+   "usd_per_day": 0.6,
+   "sharpe": 0.02,
+   "worst_stretch": -33675.0,
+   "days_in_market": 0.958,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 9.1,
+   "hold_sharpe": 0.24,
+   "hold_worst_stretch": -21404.0
+  },
+  {
+   "fund": "CVX.2X",
+   "kind": "stock 2x",
+   "trades": 1355,
+   "mean_bp": 0.2,
+   "usd_per_day": 0.6,
+   "sharpe": 0.01,
+   "worst_stretch": -59370.0,
+   "days_in_market": 0.844,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.4,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -37576.0
+  },
+  {
+   "fund": "MLM.2X",
+   "kind": "stock 2x",
+   "trades": 1134,
+   "mean_bp": 0.4,
+   "usd_per_day": 0.6,
+   "sharpe": 0.01,
+   "worst_stretch": -48222.0,
+   "days_in_market": 0.684,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 28.1,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -43536.0
+  },
+  {
+   "fund": "CL.2X",
+   "kind": "stock 2x",
+   "trades": 1485,
+   "mean_bp": 0.1,
+   "usd_per_day": 0.5,
+   "sharpe": 0.02,
+   "worst_stretch": -26361.0,
+   "days_in_market": 0.965,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 13.8,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -18394.0
+  },
+  {
+   "fund": "IYR.3X",
+   "kind": "ETF 3x",
+   "trades": 1268,
+   "mean_bp": 0.8,
+   "usd_per_day": 0.4,
+   "sharpe": 0.01,
+   "worst_stretch": -36481.0,
+   "days_in_market": 0.768,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.3,
+   "hold_sharpe": 0.22,
+   "hold_worst_stretch": -84973.0
+  },
+  {
+   "fund": "JNJ.2X",
+   "kind": "stock 2x",
+   "trades": 1465,
+   "mean_bp": 0.4,
+   "usd_per_day": 0.3,
+   "sharpe": 0.01,
+   "worst_stretch": -26298.0,
+   "days_in_market": 0.974,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.2,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -19533.0
+  },
+  {
+   "fund": "WDC.2X",
+   "kind": "stock 2x",
+   "trades": 890,
+   "mean_bp": 0.3,
+   "usd_per_day": 0.3,
+   "sharpe": 0.01,
+   "worst_stretch": -77002.0,
+   "days_in_market": 0.498,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 55.5,
+   "hold_sharpe": 0.59,
+   "hold_worst_stretch": -63594.0
+  },
+  {
+   "fund": "APD.2X",
+   "kind": "stock 2x",
+   "trades": 1442,
+   "mean_bp": -0.6,
+   "usd_per_day": 0.3,
+   "sharpe": 0.01,
+   "worst_stretch": -38000.0,
+   "days_in_market": 0.898,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.2,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -42079.0
+  },
+  {
+   "fund": "ABT.2X",
+   "kind": "stock 2x",
+   "trades": 1441,
+   "mean_bp": -0.4,
+   "usd_per_day": 0.2,
+   "sharpe": 0.01,
+   "worst_stretch": -41175.0,
+   "days_in_market": 0.924,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 17.6,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -25908.0
+  },
+  {
+   "fund": "ITW.2X",
+   "kind": "stock 2x",
+   "trades": 1424,
+   "mean_bp": -0.4,
+   "usd_per_day": -0.0,
+   "sharpe": -0.0,
+   "worst_stretch": -36642.0,
+   "days_in_market": 0.9,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.0,
+   "hold_sharpe": 0.43,
+   "hold_worst_stretch": -35738.0
+  },
+  {
+   "fund": "EXC.2X",
+   "kind": "stock 2x",
+   "trades": 1438,
+   "mean_bp": -0.3,
+   "usd_per_day": -0.0,
+   "sharpe": -0.0,
+   "worst_stretch": -41957.0,
+   "days_in_market": 0.9,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 10.7,
+   "hold_sharpe": 0.22,
+   "hold_worst_stretch": -43228.0
+  },
+  {
+   "fund": "EBAY.2X",
+   "kind": "stock 2x",
+   "trades": 1107,
+   "mean_bp": -1.2,
+   "usd_per_day": -0.1,
+   "sharpe": -0.0,
+   "worst_stretch": -46249.0,
+   "days_in_market": 0.665,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 20.5,
+   "hold_sharpe": 0.31,
+   "hold_worst_stretch": -73807.0
+  },
+  {
+   "fund": "ADI.2X",
+   "kind": "stock 2x",
+   "trades": 1209,
+   "mean_bp": -1.8,
+   "usd_per_day": -0.2,
+   "sharpe": -0.01,
+   "worst_stretch": -35710.0,
+   "days_in_market": 0.728,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 30.0,
+   "hold_sharpe": 0.48,
+   "hold_worst_stretch": -40855.0
+  },
+  {
+   "fund": "D.2X",
+   "kind": "stock 2x",
+   "trades": 1463,
+   "mean_bp": -1.1,
+   "usd_per_day": -0.2,
+   "sharpe": -0.01,
+   "worst_stretch": -35019.0,
+   "days_in_market": 0.938,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 12.6,
+   "hold_sharpe": 0.3,
+   "hold_worst_stretch": -37574.0
+  },
+  {
+   "fund": "NTAP.2X",
+   "kind": "stock 2x",
+   "trades": 1077,
+   "mean_bp": -2.0,
+   "usd_per_day": -0.4,
+   "sharpe": -0.01,
+   "worst_stretch": -39836.0,
+   "days_in_market": 0.646,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 27.3,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -60697.0
+  },
+  {
+   "fund": "KO.2X",
+   "kind": "stock 2x",
+   "trades": 1472,
+   "mean_bp": -1.3,
+   "usd_per_day": -0.4,
+   "sharpe": -0.01,
+   "worst_stretch": -28701.0,
+   "days_in_market": 0.973,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.6,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -23900.0
+  },
+  {
+   "fund": "AMGN.2X",
+   "kind": "stock 2x",
+   "trades": 1367,
+   "mean_bp": -1.4,
+   "usd_per_day": -0.5,
+   "sharpe": -0.01,
+   "worst_stretch": -55410.0,
+   "days_in_market": 0.856,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.2,
+   "hold_sharpe": 0.41,
+   "hold_worst_stretch": -40025.0
+  },
+  {
+   "fund": "DVN.2X",
+   "kind": "stock 2x",
+   "trades": 891,
+   "mean_bp": -3.0,
+   "usd_per_day": -0.7,
+   "sharpe": -0.02,
+   "worst_stretch": -103801.0,
+   "days_in_market": 0.509,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 20.9,
+   "hold_sharpe": 0.24,
+   "hold_worst_stretch": -104617.0
+  },
+  {
+   "fund": "XLP.3X",
+   "kind": "ETF 3x",
+   "trades": 1447,
+   "mean_bp": -1.3,
+   "usd_per_day": -0.8,
+   "sharpe": -0.02,
+   "worst_stretch": -45039.0,
+   "days_in_market": 0.933,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 17.6,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -29491.0
+  },
+  {
+   "fund": "ETN.2X",
+   "kind": "stock 2x",
+   "trades": 1286,
+   "mean_bp": -2.3,
+   "usd_per_day": -0.9,
+   "sharpe": -0.02,
+   "worst_stretch": -46582.0,
+   "days_in_market": 0.787,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 31.5,
+   "hold_sharpe": 0.52,
+   "hold_worst_stretch": -52546.0
+  },
+  {
+   "fund": "MDY.3X",
+   "kind": "ETF 3x",
+   "trades": 1321,
+   "mean_bp": -2.6,
+   "usd_per_day": -1.5,
+   "sharpe": -0.04,
+   "worst_stretch": -36648.0,
+   "days_in_market": 0.804,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.9,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -55575.0
+  },
+  {
+   "fund": "INTC.2X",
+   "kind": "stock 2x",
+   "trades": 1194,
+   "mean_bp": -4.1,
+   "usd_per_day": -1.9,
+   "sharpe": -0.04,
+   "worst_stretch": -70370.0,
+   "days_in_market": 0.721,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 28.7,
+   "hold_sharpe": 0.38,
+   "hold_worst_stretch": -51995.0
+  },
+  {
+   "fund": "COP.2X",
+   "kind": "stock 2x",
+   "trades": 1199,
+   "mean_bp": -4.3,
+   "usd_per_day": -2.1,
+   "sharpe": -0.05,
+   "worst_stretch": -78034.0,
+   "days_in_market": 0.713,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.3,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -55869.0
+  },
+  {
+   "fund": "MMM.2X",
+   "kind": "stock 2x",
+   "trades": 1415,
+   "mean_bp": -4.1,
+   "usd_per_day": -2.5,
+   "sharpe": -0.07,
+   "worst_stretch": -52500.0,
+   "days_in_market": 0.901,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 13.7,
+   "hold_sharpe": 0.29,
+   "hold_worst_stretch": -42238.0
+  },
+  {
+   "fund": "XLI.3X",
+   "kind": "ETF 3x",
+   "trades": 1321,
+   "mean_bp": -5.2,
+   "usd_per_day": -2.5,
+   "sharpe": -0.06,
+   "worst_stretch": -67335.0,
+   "days_in_market": 0.815,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 25.0,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -69661.0
+  },
+  {
+   "fund": "BIIB.2X",
+   "kind": "stock 2x",
+   "trades": 1056,
+   "mean_bp": -5.3,
+   "usd_per_day": -2.6,
+   "sharpe": -0.06,
+   "worst_stretch": -96582.0,
+   "days_in_market": 0.639,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 20.6,
+   "hold_sharpe": 0.26,
+   "hold_worst_stretch": -61291.0
+  },
+  {
+   "fund": "ADBE.2X",
+   "kind": "stock 2x",
+   "trades": 1165,
+   "mean_bp": -4.7,
+   "usd_per_day": -2.7,
+   "sharpe": -0.06,
+   "worst_stretch": -62529.0,
+   "days_in_market": 0.701,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 24.8,
+   "hold_sharpe": 0.36,
+   "hold_worst_stretch": -56645.0
+  },
+  {
+   "fund": "PG.2X",
+   "kind": "stock 2x",
+   "trades": 1455,
+   "mean_bp": -5.5,
+   "usd_per_day": -2.9,
+   "sharpe": -0.1,
+   "worst_stretch": -36849.0,
+   "days_in_market": 0.961,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 11.9,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -23577.0
+  },
+  {
+   "fund": "AXP.2X",
+   "kind": "stock 2x",
+   "trades": 1304,
+   "mean_bp": -6.5,
+   "usd_per_day": -3.0,
+   "sharpe": -0.08,
+   "worst_stretch": -50317.0,
+   "days_in_market": 0.806,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 26.2,
+   "hold_sharpe": 0.38,
+   "hold_worst_stretch": -75323.0
+  },
+  {
+   "fund": "PEP.2X",
+   "kind": "stock 2x",
+   "trades": 1452,
+   "mean_bp": -6.1,
+   "usd_per_day": -3.3,
+   "sharpe": -0.11,
+   "worst_stretch": -34749.0,
+   "days_in_market": 0.965,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 11.7,
+   "hold_sharpe": 0.32,
+   "hold_worst_stretch": -24390.0
+  },
+  {
+   "fund": "FDX.2X",
+   "kind": "stock 2x",
+   "trades": 1310,
+   "mean_bp": -6.0,
+   "usd_per_day": -3.3,
+   "sharpe": -0.08,
+   "worst_stretch": -50464.0,
+   "days_in_market": 0.794,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.2,
+   "hold_sharpe": 0.29,
+   "hold_worst_stretch": -57174.0
+  },
+  {
+   "fund": "EFA.3X",
+   "kind": "ETF 3x",
+   "trades": 1388,
+   "mean_bp": -5.9,
+   "usd_per_day": -3.3,
+   "sharpe": -0.08,
+   "worst_stretch": -66546.0,
+   "days_in_market": 0.853,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 14.1,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -64071.0
+  },
+  {
+   "fund": "SYK.2X",
+   "kind": "stock 2x",
+   "trades": 1392,
+   "mean_bp": -5.7,
+   "usd_per_day": -3.4,
+   "sharpe": -0.09,
+   "worst_stretch": -40940.0,
+   "days_in_market": 0.879,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.8,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -40967.0
+  },
+  {
+   "fund": "EWJ.3X",
+   "kind": "ETF 3x",
+   "trades": 1422,
+   "mean_bp": -6.3,
+   "usd_per_day": -3.5,
+   "sharpe": -0.08,
+   "worst_stretch": -61709.0,
+   "days_in_market": 0.864,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 11.7,
+   "hold_sharpe": 0.19,
+   "hold_worst_stretch": -58330.0
+  },
+  {
+   "fund": "RTX.2X",
+   "kind": "stock 2x",
+   "trades": 1405,
+   "mean_bp": -5.9,
+   "usd_per_day": -3.9,
+   "sharpe": -0.11,
+   "worst_stretch": -58874.0,
+   "days_in_market": 0.889,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.6,
+   "hold_sharpe": 0.42,
+   "hold_worst_stretch": -34354.0
+  },
+  {
+   "fund": "TGT.2X",
+   "kind": "stock 2x",
+   "trades": 1288,
+   "mean_bp": -8.1,
+   "usd_per_day": -4.2,
+   "sharpe": -0.1,
+   "worst_stretch": -52655.0,
+   "days_in_market": 0.804,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 18.9,
+   "hold_sharpe": 0.31,
+   "hold_worst_stretch": -45164.0
+  },
+  {
+   "fund": "XLB.3X",
+   "kind": "ETF 3x",
+   "trades": 1230,
+   "mean_bp": -9.1,
+   "usd_per_day": -4.8,
+   "sharpe": -0.11,
+   "worst_stretch": -62232.0,
+   "days_in_market": 0.739,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 20.7,
+   "hold_sharpe": 0.3,
+   "hold_worst_stretch": -62116.0
+  },
+  {
+   "fund": "NUE.2X",
+   "kind": "stock 2x",
+   "trades": 1064,
+   "mean_bp": -11.8,
+   "usd_per_day": -5.0,
+   "sharpe": -0.11,
+   "worst_stretch": -70065.0,
+   "days_in_market": 0.631,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 35.3,
+   "hold_sharpe": 0.46,
+   "hold_worst_stretch": -45273.0
+  },
+  {
+   "fund": "MDT.2X",
+   "kind": "stock 2x",
+   "trades": 1435,
+   "mean_bp": -8.8,
+   "usd_per_day": -5.5,
+   "sharpe": -0.16,
+   "worst_stretch": -39616.0,
+   "days_in_market": 0.922,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 9.7,
+   "hold_sharpe": 0.21,
+   "hold_worst_stretch": -42081.0
+  },
+  {
+   "fund": "EEM.3X",
+   "kind": "ETF 3x",
+   "trades": 1286,
+   "mean_bp": -11.0,
+   "usd_per_day": -5.5,
+   "sharpe": -0.11,
+   "worst_stretch": -80437.0,
+   "days_in_market": 0.752,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.2,
+   "hold_sharpe": 0.27,
+   "hold_worst_stretch": -68384.0
+  },
+  {
+   "fund": "INTU.2X",
+   "kind": "stock 2x",
+   "trades": 1244,
+   "mean_bp": -10.9,
+   "usd_per_day": -6.0,
+   "sharpe": -0.15,
+   "worst_stretch": -72398.0,
+   "days_in_market": 0.774,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 29.4,
+   "hold_sharpe": 0.48,
+   "hold_worst_stretch": -53867.0
+  },
+  {
+   "fund": "EWG.3X",
+   "kind": "ETF 3x",
+   "trades": 1308,
+   "mean_bp": -10.0,
+   "usd_per_day": -6.2,
+   "sharpe": -0.13,
+   "worst_stretch": -93506.0,
+   "days_in_market": 0.78,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.8,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -66721.0
+  },
+  {
+   "fund": "VMC.2X",
+   "kind": "stock 2x",
+   "trades": 1128,
+   "mean_bp": -12.9,
+   "usd_per_day": -6.3,
+   "sharpe": -0.15,
+   "worst_stretch": -86250.0,
+   "days_in_market": 0.68,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.4,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -52479.0
+  },
+  {
+   "fund": "IBM.2X",
+   "kind": "stock 2x",
+   "trades": 1429,
+   "mean_bp": -10.9,
+   "usd_per_day": -6.6,
+   "sharpe": -0.18,
+   "worst_stretch": -46231.0,
+   "days_in_market": 0.914,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 14.7,
+   "hold_sharpe": 0.3,
+   "hold_worst_stretch": -28588.0
+  },
+  {
+   "fund": "EMR.2X",
+   "kind": "stock 2x",
+   "trades": 1357,
+   "mean_bp": -11.3,
+   "usd_per_day": -6.6,
+   "sharpe": -0.17,
+   "worst_stretch": -59062.0,
+   "days_in_market": 0.842,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 21.3,
+   "hold_sharpe": 0.38,
+   "hold_worst_stretch": -34673.0
+  },
+  {
+   "fund": "NEM.2X",
+   "kind": "stock 2x",
+   "trades": 969,
+   "mean_bp": -16.1,
+   "usd_per_day": -7.5,
+   "sharpe": -0.17,
+   "worst_stretch": -86248.0,
+   "days_in_market": 0.566,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.4,
+   "hold_sharpe": 0.29,
+   "hold_worst_stretch": -63545.0
+  },
+  {
+   "fund": "SLB.2X",
+   "kind": "stock 2x",
+   "trades": 1020,
+   "mean_bp": -14.2,
+   "usd_per_day": -7.7,
+   "sharpe": -0.18,
+   "worst_stretch": -97202.0,
+   "days_in_market": 0.61,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 17.5,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -96813.0
+  },
+  {
+   "fund": "VZ.2X",
+   "kind": "stock 2x",
+   "trades": 1455,
+   "mean_bp": -11.7,
+   "usd_per_day": -7.7,
+   "sharpe": -0.24,
+   "worst_stretch": -54348.0,
+   "days_in_market": 0.948,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 10.9,
+   "hold_sharpe": 0.26,
+   "hold_worst_stretch": -28180.0
+  },
+  {
+   "fund": "CMCSA.2X",
+   "kind": "stock 2x",
+   "trades": 1322,
+   "mean_bp": -14.4,
+   "usd_per_day": -8.2,
+   "sharpe": -0.21,
+   "worst_stretch": -70057.0,
+   "days_in_market": 0.821,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 13.1,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -40631.0
+  },
+  {
+   "fund": "CTSH.2X",
+   "kind": "stock 2x",
+   "trades": 1250,
+   "mean_bp": -15.1,
+   "usd_per_day": -8.5,
+   "sharpe": -0.2,
+   "worst_stretch": -61730.0,
+   "days_in_market": 0.769,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 23.0,
+   "hold_sharpe": 0.34,
+   "hold_worst_stretch": -47970.0
+  },
+  {
+   "fund": "EWU.3X",
+   "kind": "ETF 3x",
+   "trades": 1370,
+   "mean_bp": -15.3,
+   "usd_per_day": -9.0,
+   "sharpe": -0.21,
+   "worst_stretch": -79012.0,
+   "days_in_market": 0.841,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 11.8,
+   "hold_sharpe": 0.18,
+   "hold_worst_stretch": -68701.0
+  },
+  {
+   "fund": "PFE.2X",
+   "kind": "stock 2x",
+   "trades": 1419,
+   "mean_bp": -15.1,
+   "usd_per_day": -9.4,
+   "sharpe": -0.27,
+   "worst_stretch": -72077.0,
+   "days_in_market": 0.91,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 9.1,
+   "hold_sharpe": 0.2,
+   "hold_worst_stretch": -46143.0
+  },
+  {
+   "fund": "GE.2X",
+   "kind": "stock 2x",
+   "trades": 1222,
+   "mean_bp": -17.9,
+   "usd_per_day": -9.4,
+   "sharpe": -0.24,
+   "worst_stretch": -101618.0,
+   "days_in_market": 0.765,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 15.2,
+   "hold_sharpe": 0.23,
+   "hold_worst_stretch": -78921.0
+  },
+  {
+   "fund": "UPS.2X",
+   "kind": "stock 2x",
+   "trades": 1394,
+   "mean_bp": -15.4,
+   "usd_per_day": -9.5,
+   "sharpe": -0.26,
+   "worst_stretch": -62482.0,
+   "days_in_market": 0.892,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 8.0,
+   "hold_sharpe": 0.16,
+   "hold_worst_stretch": -43344.0
+  },
+  {
+   "fund": "MCHP.2X",
+   "kind": "stock 2x",
+   "trades": 1083,
+   "mean_bp": -20.9,
+   "usd_per_day": -10.0,
+   "sharpe": -0.25,
+   "worst_stretch": -83522.0,
+   "days_in_market": 0.653,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 28.7,
+   "hold_sharpe": 0.4,
+   "hold_worst_stretch": -47354.0
+  },
+  {
+   "fund": "IYT.3X",
+   "kind": "ETF 3x",
+   "trades": 1209,
+   "mean_bp": -20.2,
+   "usd_per_day": -10.4,
+   "sharpe": -0.25,
+   "worst_stretch": -61271.0,
+   "days_in_market": 0.717,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 22.8,
+   "hold_sharpe": 0.32,
+   "hold_worst_stretch": -64038.0
+  },
+  {
+   "fund": "OXY.2X",
+   "kind": "stock 2x",
+   "trades": 1051,
+   "mean_bp": -18.3,
+   "usd_per_day": -10.6,
+   "sharpe": -0.21,
+   "worst_stretch": -89360.0,
+   "days_in_market": 0.636,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 24.8,
+   "hold_sharpe": 0.3,
+   "hold_worst_stretch": -85944.0
+  },
+  {
+   "fund": "ZBH.2X",
+   "kind": "stock 2x",
+   "trades": 1330,
+   "mean_bp": -18.0,
+   "usd_per_day": -10.9,
+   "sharpe": -0.28,
+   "worst_stretch": -69304.0,
+   "days_in_market": 0.837,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 4.8,
+   "hold_sharpe": 0.09,
+   "hold_worst_stretch": -48012.0
+  },
+  {
+   "fund": "TLT.3X",
+   "kind": "ETF 3x",
+   "trades": 1494,
+   "mean_bp": -18.3,
+   "usd_per_day": -12.3,
+   "sharpe": -0.38,
+   "worst_stretch": -77184.0,
+   "days_in_market": 0.939,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 1.2,
+   "hold_sharpe": 0.03,
+   "hold_worst_stretch": -57173.0
+  },
+  {
+   "fund": "C.2X",
+   "kind": "stock 2x",
+   "trades": 1006,
+   "mean_bp": -31.6,
+   "usd_per_day": -12.8,
+   "sharpe": -0.27,
+   "worst_stretch": -79097.0,
+   "days_in_market": 0.616,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 9.6,
+   "hold_sharpe": 0.1,
+   "hold_worst_stretch": -143718.0
+  },
+  {
+   "fund": "BMY.2X",
+   "kind": "stock 2x",
+   "trades": 1405,
+   "mean_bp": -20.2,
+   "usd_per_day": -13.0,
+   "sharpe": -0.35,
+   "worst_stretch": -76909.0,
+   "days_in_market": 0.893,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 16.1,
+   "hold_sharpe": 0.33,
+   "hold_worst_stretch": -34220.0
+  },
+  {
+   "fund": "XLE.3X",
+   "kind": "ETF 3x",
+   "trades": 919,
+   "mean_bp": -30.5,
+   "usd_per_day": -13.4,
+   "sharpe": -0.28,
+   "worst_stretch": -99604.0,
+   "days_in_market": 0.53,
+   "first": "2005-01-04",
+   "last": "2026-09-22",
+   "hold_usd_per_day": 28.5,
+   "hold_sharpe": 0.32,
+   "hold_worst_stretch": -91473.0
+  },
+  {
+   "fund": "AIG.2X",
+   "kind": "stock 2x",
+   "trades": 206,
+   "mean_bp": -95.0,
+   "usd_per_day": -13.5,
+   "sharpe": -0.42,
+   "worst_stretch": -79582.0,
+   "days_in_market": 0.133,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 6.8,
+   "hold_sharpe": 0.06,
+   "hold_worst_stretch": -185152.0
+  },
+  {
+   "fund": "AKAM.2X",
+   "kind": "stock 2x",
+   "trades": 1087,
+   "mean_bp": -28.8,
+   "usd_per_day": -14.2,
+   "sharpe": -0.29,
+   "worst_stretch": -107375.0,
+   "days_in_market": 0.646,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 32.1,
+   "hold_sharpe": 0.38,
+   "hold_worst_stretch": -78606.0
+  },
+  {
+   "fund": "FFIV.2X",
+   "kind": "stock 2x",
+   "trades": 1039,
+   "mean_bp": -30.4,
+   "usd_per_day": -14.3,
+   "sharpe": -0.31,
+   "worst_stretch": -84525.0,
+   "days_in_market": 0.623,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 36.1,
+   "hold_sharpe": 0.47,
+   "hold_worst_stretch": -39619.0
+  },
+  {
+   "fund": "MS.2X",
+   "kind": "stock 2x",
+   "trades": 314,
+   "mean_bp": -108.2,
+   "usd_per_day": -18.1,
+   "sharpe": -0.51,
+   "worst_stretch": -100477.0,
+   "days_in_market": 0.19,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 32.4,
+   "hold_sharpe": 0.35,
+   "hold_worst_stretch": -82851.0
+  },
+  {
+   "fund": "FCX.2X",
+   "kind": "stock 2x",
+   "trades": 420,
+   "mean_bp": -91.6,
+   "usd_per_day": -18.7,
+   "sharpe": -0.52,
+   "worst_stretch": -110364.0,
+   "days_in_market": 0.242,
+   "first": "2005-01-04",
+   "last": "2026-09-21",
+   "hold_usd_per_day": 38.4,
+   "hold_sharpe": 0.37,
+   "hold_worst_stretch": -107754.0
+  }
+ ]
+}

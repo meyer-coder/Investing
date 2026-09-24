@@ -1,0 +1,2330 @@
+[
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred CB51)",
+  "list": "leveraged-etfs #25",
+  "family": "uptrend dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 91.8,
+   "sharpe": 1.27,
+   "worst_day": -7628.0,
+   "worst_stretch": -29427.0,
+   "days_in_market": 0.762
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 63.9,
+   "sharpe": 1.06,
+   "worst_day": -5194.0,
+   "worst_stretch": -26529.0,
+   "days_in_market": 0.801
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 117.1,
+   "sharpe": 1.44,
+   "worst_day": -7628.0,
+   "worst_stretch": -21776.0,
+   "days_in_market": 0.727
+  },
+  "trades": 429,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "MUU Trend Breakout (bred D609)",
+  "list": "leveraged-etfs #02",
+  "family": "trend breakout",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 81.4,
+   "sharpe": 1.33,
+   "worst_day": -6596.0,
+   "worst_stretch": -25851.0,
+   "days_in_market": 0.493
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 43.4,
+   "sharpe": 0.84,
+   "worst_day": -4941.0,
+   "worst_stretch": -24772.0,
+   "days_in_market": 0.499
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 115.8,
+   "sharpe": 1.69,
+   "worst_day": -6596.0,
+   "worst_stretch": -22446.0,
+   "days_in_market": 0.488
+  },
+  "trades": 210,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred CBE3)",
+  "list": "leveraged-etfs #18",
+  "family": "uptrend dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 74.3,
+   "sharpe": 1.14,
+   "worst_day": -7628.0,
+   "worst_stretch": -30328.0,
+   "days_in_market": 0.656
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 56.6,
+   "sharpe": 1.02,
+   "worst_day": -4318.0,
+   "worst_stretch": -21728.0,
+   "days_in_market": 0.707
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 90.3,
+   "sharpe": 1.24,
+   "worst_day": -7628.0,
+   "worst_stretch": -24622.0,
+   "days_in_market": 0.61
+  },
+  "trades": 344,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "AMDL Uptrend Dip (bred 852D)",
+  "list": "leveraged-etfs #12",
+  "family": "uptrend dip",
+  "symbols": [
+   "AMD.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 66.0,
+   "sharpe": 1.1,
+   "worst_day": -5505.0,
+   "worst_stretch": -23123.0,
+   "days_in_market": 0.43
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 60.3,
+   "sharpe": 1.01,
+   "worst_day": -4979.0,
+   "worst_stretch": -21695.0,
+   "days_in_market": 0.449
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 71.0,
+   "sharpe": 1.17,
+   "worst_day": -5505.0,
+   "worst_stretch": -23123.0,
+   "days_in_market": 0.413
+  },
+  "trades": 548,
+  "hold_usd_per_day": 90.9
+ },
+ {
+  "name": "SOXL / TQQQ / TECL Uptrend Dip (bred 01D4)",
+  "list": "leveraged-etfs #35",
+  "family": "uptrend dip",
+  "symbols": [
+   "SOXL",
+   "TQQQ",
+   "TECL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 65.7,
+   "sharpe": 1.0,
+   "worst_day": -7387.0,
+   "worst_stretch": -22086.0,
+   "days_in_market": 0.808
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 25.2,
+   "sharpe": 0.53,
+   "worst_day": -3928.0,
+   "worst_stretch": -22086.0,
+   "days_in_market": 0.802
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 102.5,
+   "sharpe": 1.31,
+   "worst_day": -7387.0,
+   "worst_stretch": -20882.0,
+   "days_in_market": 0.813
+  },
+  "trades": 1437,
+  "hold_usd_per_day": 65.8
+ },
+ {
+  "name": "AMDL Uptrend Dip (bred 9D0B)",
+  "list": "leveraged-etfs #17",
+  "family": "uptrend dip",
+  "symbols": [
+   "AMD.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 63.2,
+   "sharpe": 1.09,
+   "worst_day": -5505.0,
+   "worst_stretch": -23227.0,
+   "days_in_market": 0.441
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 59.7,
+   "sharpe": 1.04,
+   "worst_day": -4586.0,
+   "worst_stretch": -16563.0,
+   "days_in_market": 0.451
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 66.3,
+   "sharpe": 1.13,
+   "worst_day": -5505.0,
+   "worst_stretch": -23227.0,
+   "days_in_market": 0.433
+  },
+  "trades": 559,
+  "hold_usd_per_day": 90.9
+ },
+ {
+  "name": "MUU / SOXL Quick Dip: 2% dip above the 200-day, 4% target, 10% stop, 4 days max",
+  "list": "leveraged-etfs #14",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 59.4,
+   "sharpe": 1.03,
+   "worst_day": -5927.0,
+   "worst_stretch": -20457.0,
+   "days_in_market": 0.493
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 41.3,
+   "sharpe": 0.89,
+   "worst_day": -4707.0,
+   "worst_stretch": -13285.0,
+   "days_in_market": 0.491
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 75.9,
+   "sharpe": 1.15,
+   "worst_day": -5927.0,
+   "worst_stretch": -20457.0,
+   "days_in_market": 0.495
+  },
+  "trades": 477,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day",
+  "list": "leveraged-etfs #24",
+  "family": "short-trend",
+  "symbols": [
+   "NVDA.2X",
+   "AMD.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 59.4,
+   "sharpe": 0.9,
+   "worst_day": -8492.0,
+   "worst_stretch": -23651.0,
+   "days_in_market": 0.573
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 41.9,
+   "sharpe": 0.68,
+   "worst_day": -8100.0,
+   "worst_stretch": -20419.0,
+   "days_in_market": 0.586
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 75.2,
+   "sharpe": 1.08,
+   "worst_day": -8492.0,
+   "worst_stretch": -23651.0,
+   "days_in_market": 0.562
+  },
+  "trades": 266,
+  "hold_usd_per_day": 96.9
+ },
+ {
+  "name": "MUU / SOXL Quick Dip: 2% dip above the 200-day, 2% target, 6% stop, 4 days max",
+  "list": "leveraged-etfs #08",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 58.2,
+   "sharpe": 1.05,
+   "worst_day": -5347.0,
+   "worst_stretch": -18754.0,
+   "days_in_market": 0.459
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 30.8,
+   "sharpe": 0.71,
+   "worst_day": -5194.0,
+   "worst_stretch": -16157.0,
+   "days_in_market": 0.449
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 83.0,
+   "sharpe": 1.29,
+   "worst_day": -5347.0,
+   "worst_stretch": -18754.0,
+   "days_in_market": 0.469
+  },
+  "trades": 577,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred FBB5)",
+  "list": "leveraged-etfs #09",
+  "family": "uptrend dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 56.6,
+   "sharpe": 1.35,
+   "worst_day": -4527.0,
+   "worst_stretch": -11073.0,
+   "days_in_market": 0.27
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 36.9,
+   "sharpe": 1.07,
+   "worst_day": -4376.0,
+   "worst_stretch": -10294.0,
+   "days_in_market": 0.247
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 74.6,
+   "sharpe": 1.57,
+   "worst_day": -4527.0,
+   "worst_stretch": -11073.0,
+   "days_in_market": 0.29
+  },
+  "trades": 337,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "list": "leveraged-etfs #05",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 56.4,
+   "sharpe": 1.15,
+   "worst_day": -6177.0,
+   "worst_stretch": -15364.0,
+   "days_in_market": 0.325
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 40.3,
+   "sharpe": 0.97,
+   "worst_day": -4376.0,
+   "worst_stretch": -11106.0,
+   "days_in_market": 0.33
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 71.1,
+   "sharpe": 1.29,
+   "worst_day": -6177.0,
+   "worst_stretch": -15364.0,
+   "days_in_market": 0.32
+  },
+  "trades": 350,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "AMDL / MUU Quick Dip: 2% dip above the 50-day, 2% target, 6% stop, 4 days max",
+  "list": "leveraged-etfs #33",
+  "family": "quick dip",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 56.2,
+   "sharpe": 0.96,
+   "worst_day": -7019.0,
+   "worst_stretch": -23846.0,
+   "days_in_market": 0.451
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 68.7,
+   "sharpe": 1.21,
+   "worst_day": -7019.0,
+   "worst_stretch": -23846.0,
+   "days_in_market": 0.444
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 44.9,
+   "sharpe": 0.74,
+   "worst_day": -5861.0,
+   "worst_stretch": -16079.0,
+   "days_in_market": 0.457
+  },
+  "trades": 571,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "MUU / SOXL Quick Dip: 2% dip above the 200-day, 4% target, 4% stop, 2 days max",
+  "list": "leveraged-etfs #20",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 53.2,
+   "sharpe": 0.98,
+   "worst_day": -5347.0,
+   "worst_stretch": -18447.0,
+   "days_in_market": 0.458
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 46.7,
+   "sharpe": 1.07,
+   "worst_day": -4704.0,
+   "worst_stretch": -14364.0,
+   "days_in_market": 0.456
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 59.2,
+   "sharpe": 0.95,
+   "worst_day": -5347.0,
+   "worst_stretch": -18447.0,
+   "days_in_market": 0.46
+  },
+  "trades": 609,
+  "hold_usd_per_day": 85.1
+ },
+ {
+  "name": "AMDL / NVDL / MUU Momentum Burst: 20-day gain over 25%, out under the 10-day",
+  "list": "leveraged-etfs #29",
+  "family": "momentum",
+  "symbols": [
+   "AMD.2X",
+   "NVDA.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 52.3,
+   "sharpe": 0.81,
+   "worst_day": -6577.0,
+   "worst_stretch": -22235.0,
+   "days_in_market": 0.505
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 44.6,
+   "sharpe": 0.75,
+   "worst_day": -6577.0,
+   "worst_stretch": -19540.0,
+   "days_in_market": 0.507
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 59.3,
+   "sharpe": 0.86,
+   "worst_day": -6177.0,
+   "worst_stretch": -22235.0,
+   "days_in_market": 0.504
+  },
+  "trades": 234,
+  "hold_usd_per_day": 93.9
+ },
+ {
+  "name": "NVDL / AMDL Volume Momentum: 0% over the 20-day on 1.2x volume, out 2% under",
+  "list": "leveraged-etfs #45",
+  "family": "momentum",
+  "symbols": [
+   "NVDA.2X",
+   "AMD.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 52.2,
+   "sharpe": 0.81,
+   "worst_day": -8393.0,
+   "worst_stretch": -24059.0,
+   "days_in_market": 0.482
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 41.8,
+   "sharpe": 0.67,
+   "worst_day": -8100.0,
+   "worst_stretch": -24059.0,
+   "days_in_market": 0.508
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 61.7,
+   "sharpe": 0.94,
+   "worst_day": -8393.0,
+   "worst_stretch": -23045.0,
+   "days_in_market": 0.458
+  },
+  "trades": 107,
+  "hold_usd_per_day": 96.9
+ },
+ {
+  "name": "Nasdaq-100 noise-area breakout, 0.30% stop, TQQQ at 2x buying power",
+  "list": "quick trades",
+  "family": "intraday breakout",
+  "symbols": [
+   "NQ (USATECH)"
+  ],
+  "trades": null,
+  "all": {
+   "sessions": 3329,
+   "usd_per_day": 50.9,
+   "sharpe": 1.17,
+   "worst_day": -2790.0,
+   "worst_stretch": -13931.0,
+   "days_in_market": 0.587
+  },
+  "2012-18": {
+   "sessions": 1428,
+   "usd_per_day": 46.9,
+   "sharpe": 1.21,
+   "worst_day": -2325.0,
+   "worst_stretch": -11269.0,
+   "days_in_market": 0.584
+  },
+  "2019-26": {
+   "sessions": 1901,
+   "usd_per_day": 53.8,
+   "sharpe": 1.15,
+   "worst_day": -2790.0,
+   "worst_stretch": -13931.0,
+   "days_in_market": 0.589
+  }
+ },
+ {
+  "name": "AMDL / MUU Quick Dip: 2% dip above the 50-day, 2% target, 4% stop, 4 days max",
+  "list": "leveraged-etfs #28",
+  "family": "quick dip",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 50.6,
+   "sharpe": 0.91,
+   "worst_day": -7019.0,
+   "worst_stretch": -23256.0,
+   "days_in_market": 0.436
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 59.6,
+   "sharpe": 1.09,
+   "worst_day": -7019.0,
+   "worst_stretch": -20299.0,
+   "days_in_market": 0.431
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 42.5,
+   "sharpe": 0.75,
+   "worst_day": -5442.0,
+   "worst_stretch": -23256.0,
+   "days_in_market": 0.441
+  },
+  "trades": 604,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 3% target, 4% stop, 4 days max",
+  "list": "leveraged-etfs #26",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 50.4,
+   "sharpe": 1.06,
+   "worst_day": -6177.0,
+   "worst_stretch": -17861.0,
+   "days_in_market": 0.313
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 42.8,
+   "sharpe": 1.06,
+   "worst_day": -4376.0,
+   "worst_stretch": -13694.0,
+   "days_in_market": 0.321
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 57.3,
+   "sharpe": 1.09,
+   "worst_day": -6177.0,
+   "worst_stretch": -17861.0,
+   "days_in_market": 0.305
+  },
+  "trades": 374,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "AMDL / MUU Quick Dip: 2% dip above the 200-day, 3% target, 4% stop, 4 days max",
+  "list": "leveraged-etfs #23",
+  "family": "quick dip",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 50.2,
+   "sharpe": 0.81,
+   "worst_day": -12119.0,
+   "worst_stretch": -26581.0,
+   "days_in_market": 0.471
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 47.3,
+   "sharpe": 0.75,
+   "worst_day": -12119.0,
+   "worst_stretch": -21794.0,
+   "days_in_market": 0.449
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 52.7,
+   "sharpe": 0.86,
+   "worst_day": -5479.0,
+   "worst_stretch": -24423.0,
+   "days_in_market": 0.492
+  },
+  "trades": 622,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "AMDL / MUU Quick Dip: 2% dip above the 50-day, 2% target, 10% stop, 4 days max",
+  "list": "leveraged-etfs #40",
+  "family": "quick dip",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 49.8,
+   "sharpe": 0.83,
+   "worst_day": -7019.0,
+   "worst_stretch": -23889.0,
+   "days_in_market": 0.481
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 58.2,
+   "sharpe": 1.0,
+   "worst_day": -7019.0,
+   "worst_stretch": -23836.0,
+   "days_in_market": 0.475
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 42.2,
+   "sharpe": 0.68,
+   "worst_day": -5861.0,
+   "worst_stretch": -23889.0,
+   "days_in_market": 0.487
+  },
+  "trades": 529,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 4% target, 10% stop, 4 days max",
+  "list": "leveraged-etfs #27",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 47.6,
+   "sharpe": 0.95,
+   "worst_day": -6177.0,
+   "worst_stretch": -20270.0,
+   "days_in_market": 0.34
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 44.8,
+   "sharpe": 1.02,
+   "worst_day": -4376.0,
+   "worst_stretch": -10345.0,
+   "days_in_market": 0.358
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 50.1,
+   "sharpe": 0.91,
+   "worst_day": -6177.0,
+   "worst_stretch": -20270.0,
+   "days_in_market": 0.324
+  },
+  "trades": 318,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "AMDL / MUU Volume Momentum: 0% over the 20-day on 1x volume, out 4% under",
+  "list": "leveraged-etfs #42",
+  "family": "momentum",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 44.7,
+   "sharpe": 0.71,
+   "worst_day": -7186.0,
+   "worst_stretch": -35940.0,
+   "days_in_market": 0.432
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 37.1,
+   "sharpe": 0.63,
+   "worst_day": -7186.0,
+   "worst_stretch": -21530.0,
+   "days_in_market": 0.459
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 51.6,
+   "sharpe": 0.78,
+   "worst_day": -6596.0,
+   "worst_stretch": -35940.0,
+   "days_in_market": 0.408
+  },
+  "trades": 97,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "Managed Long",
+  "list": "nq-2x #15",
+  "family": "nq managed long",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 44.0,
+   "sharpe": 1.44,
+   "worst_day": -2481.0,
+   "worst_stretch": -7915.0,
+   "days_in_market": 0.8
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 33.4,
+   "sharpe": 1.36,
+   "worst_day": -2481.0,
+   "worst_stretch": -4644.0,
+   "days_in_market": 0.813
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 53.6,
+   "sharpe": 1.53,
+   "worst_day": -2220.0,
+   "worst_stretch": -7915.0,
+   "days_in_market": 0.788
+  },
+  "trades": 367,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 3% target, 10% stop, 2 days max",
+  "list": "leveraged-etfs #15",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 43.7,
+   "sharpe": 0.92,
+   "worst_day": -5442.0,
+   "worst_stretch": -24324.0,
+   "days_in_market": 0.315
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 34.3,
+   "sharpe": 0.82,
+   "worst_day": -4655.0,
+   "worst_stretch": -11178.0,
+   "days_in_market": 0.325
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 52.2,
+   "sharpe": 1.01,
+   "worst_day": -5442.0,
+   "worst_stretch": -24324.0,
+   "days_in_market": 0.307
+  },
+  "trades": 363,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "MUU Quick Dip: 3% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "list": "leveraged-etfs #16",
+  "family": "quick dip",
+  "symbols": [
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 41.6,
+   "sharpe": 0.93,
+   "worst_day": -5347.0,
+   "worst_stretch": -16684.0,
+   "days_in_market": 0.263
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 26.6,
+   "sharpe": 0.72,
+   "worst_day": -4376.0,
+   "worst_stretch": -11498.0,
+   "days_in_market": 0.257
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 55.1,
+   "sharpe": 1.09,
+   "worst_day": -5347.0,
+   "worst_stretch": -16684.0,
+   "days_in_market": 0.269
+  },
+  "trades": 291,
+  "hold_usd_per_day": 88.0
+ },
+ {
+  "name": "Calm Trend, Volume-Checked Dips",
+  "list": "nq-2x #03",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 39.3,
+   "sharpe": 1.38,
+   "worst_day": -2877.0,
+   "worst_stretch": -7173.0,
+   "days_in_market": 0.721
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 22.7,
+   "sharpe": 0.99,
+   "worst_day": -2484.0,
+   "worst_stretch": -7173.0,
+   "days_in_market": 0.761
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 54.3,
+   "sharpe": 1.66,
+   "worst_day": -2877.0,
+   "worst_stretch": -6289.0,
+   "days_in_market": 0.686
+  },
+  "trades": 290,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "AMDL / MUU 52-Week High: within 7% of the high, 10% trailing stop",
+  "list": "leveraged-etfs #50",
+  "family": "52-week",
+  "symbols": [
+   "AMD.2X",
+   "MU.2X"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 37.9,
+   "sharpe": 0.74,
+   "worst_day": -5438.0,
+   "worst_stretch": -20098.0,
+   "days_in_market": 0.282
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 35.5,
+   "sharpe": 0.71,
+   "worst_day": -4979.0,
+   "worst_stretch": -20098.0,
+   "days_in_market": 0.343
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 40.1,
+   "sharpe": 0.78,
+   "worst_day": -5438.0,
+   "worst_stretch": -16507.0,
+   "days_in_market": 0.227
+  },
+  "trades": 86,
+  "hold_usd_per_day": 89.4
+ },
+ {
+  "name": "Calm Trend + Washout",
+  "list": "nq-2x #07",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 35.1,
+   "sharpe": 1.29,
+   "worst_day": -2484.0,
+   "worst_stretch": -7186.0,
+   "days_in_market": 0.691
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 24.1,
+   "sharpe": 1.05,
+   "worst_day": -2484.0,
+   "worst_stretch": -6314.0,
+   "days_in_market": 0.751
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 45.1,
+   "sharpe": 1.48,
+   "worst_day": -2374.0,
+   "worst_stretch": -6869.0,
+   "days_in_market": 0.636
+  },
+  "trades": 241,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Calm Trend Champion, No Crash Entry",
+  "list": "nq-2x #02",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 34.4,
+   "sharpe": 1.28,
+   "worst_day": -2877.0,
+   "worst_stretch": -7928.0,
+   "days_in_market": 0.614
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 17.4,
+   "sharpe": 0.83,
+   "worst_day": -2495.0,
+   "worst_stretch": -7928.0,
+   "days_in_market": 0.6
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 49.8,
+   "sharpe": 1.59,
+   "worst_day": -2877.0,
+   "worst_stretch": -6646.0,
+   "days_in_market": 0.627
+  },
+  "trades": 276,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Calm Trend Champion",
+  "list": "nq-2x #01",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 34.2,
+   "sharpe": 1.27,
+   "worst_day": -2877.0,
+   "worst_stretch": -8925.0,
+   "days_in_market": 0.621
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 15.1,
+   "sharpe": 0.71,
+   "worst_day": -2495.0,
+   "worst_stretch": -8122.0,
+   "days_in_market": 0.598
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 51.4,
+   "sharpe": 1.65,
+   "worst_day": -2877.0,
+   "worst_stretch": -6544.0,
+   "days_in_market": 0.642
+  },
+  "trades": 263,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Nasdaq-100 noise-area breakout, 0.30% stop, QQQ at 4x buying power",
+  "list": "quick trades",
+  "family": "intraday breakout",
+  "symbols": [
+   "NQ (USATECH)"
+  ],
+  "trades": null,
+  "all": {
+   "sessions": 3329,
+   "usd_per_day": 33.9,
+   "sharpe": 1.17,
+   "worst_day": -1860.0,
+   "worst_stretch": -9288.0,
+   "days_in_market": 0.587
+  },
+  "2012-18": {
+   "sessions": 1428,
+   "usd_per_day": 31.3,
+   "sharpe": 1.21,
+   "worst_day": -1550.0,
+   "worst_stretch": -7513.0,
+   "days_in_market": 0.584
+  },
+  "2019-26": {
+   "sessions": 1901,
+   "usd_per_day": 35.9,
+   "sharpe": 1.15,
+   "worst_day": -1860.0,
+   "worst_stretch": -9288.0,
+   "days_in_market": 0.589
+  }
+ },
+ {
+  "name": "Calm Trend Champion, 6% Target",
+  "list": "nq-2x #06",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 33.6,
+   "sharpe": 1.24,
+   "worst_day": -2877.0,
+   "worst_stretch": -8925.0,
+   "days_in_market": 0.624
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 14.4,
+   "sharpe": 0.69,
+   "worst_day": -2495.0,
+   "worst_stretch": -8122.0,
+   "days_in_market": 0.593
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 51.0,
+   "sharpe": 1.62,
+   "worst_day": -2877.0,
+   "worst_stretch": -6544.0,
+   "days_in_market": 0.652
+  },
+  "trades": 267,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "SOXL / TQQQ / TECL Pullback in Uptrend: 8% five-day pullback above the 200-day",
+  "list": "leveraged-etfs #49",
+  "family": "pullback",
+  "symbols": [
+   "SOXL",
+   "TQQQ",
+   "TECL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 31.1,
+   "sharpe": 0.86,
+   "worst_day": -3774.0,
+   "worst_stretch": -22500.0,
+   "days_in_market": 0.204
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 22.2,
+   "sharpe": 0.86,
+   "worst_day": -3438.0,
+   "worst_stretch": -12274.0,
+   "days_in_market": 0.184
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 39.2,
+   "sharpe": 0.9,
+   "worst_day": -3774.0,
+   "worst_stretch": -16632.0,
+   "days_in_market": 0.222
+  },
+  "trades": 208,
+  "hold_usd_per_day": 65.8
+ },
+ {
+  "name": "MUU / AMDL / SOXL Momentum Burst: 20-day gain over 40%, out under the 10-day",
+  "list": "leveraged-etfs #48",
+  "family": "momentum",
+  "symbols": [
+   "MU.2X",
+   "AMD.2X",
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 28.8,
+   "sharpe": 0.53,
+   "worst_day": -6283.0,
+   "worst_stretch": -24420.0,
+   "days_in_market": 0.297
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 22.3,
+   "sharpe": 0.44,
+   "worst_day": -6283.0,
+   "worst_stretch": -18670.0,
+   "days_in_market": 0.302
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 34.7,
+   "sharpe": 0.61,
+   "worst_day": -6177.0,
+   "worst_stretch": -17081.0,
+   "days_in_market": 0.292
+  },
+  "trades": 138,
+  "hold_usd_per_day": 87.0
+ },
+ {
+  "name": "Flush Book",
+  "list": "nq-2x #14",
+  "family": "nq flush",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 28.7,
+   "sharpe": 1.32,
+   "worst_day": -2647.0,
+   "worst_stretch": -9512.0,
+   "days_in_market": 0.269
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 6.5,
+   "sharpe": 0.36,
+   "worst_day": -2495.0,
+   "worst_stretch": -9342.0,
+   "days_in_market": 0.294
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 48.9,
+   "sharpe": 1.98,
+   "worst_day": -2647.0,
+   "worst_stretch": -6318.0,
+   "days_in_market": 0.247
+  },
+  "trades": 279,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "SOXL Quick Dip: 2% dip above the 200-day, 4% target, 6% stop, 4 days max",
+  "list": "leveraged-etfs #46",
+  "family": "quick dip",
+  "symbols": [
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 28.3,
+   "sharpe": 0.63,
+   "worst_day": -6334.0,
+   "worst_stretch": -22258.0,
+   "days_in_market": 0.372
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 14.0,
+   "sharpe": 0.42,
+   "worst_day": -3563.0,
+   "worst_stretch": -18922.0,
+   "days_in_market": 0.361
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 41.3,
+   "sharpe": 0.78,
+   "worst_day": -6334.0,
+   "worst_stretch": -22258.0,
+   "days_in_market": 0.382
+  },
+  "trades": 363,
+  "hold_usd_per_day": 82.6
+ },
+ {
+  "name": "Quieter Trend + Z-Dip",
+  "list": "nq-2x #04",
+  "family": "nq dip",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 28.3,
+   "sharpe": 1.13,
+   "worst_day": -2877.0,
+   "worst_stretch": -7915.0,
+   "days_in_market": 0.679
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 20.9,
+   "sharpe": 0.94,
+   "worst_day": -2484.0,
+   "worst_stretch": -7110.0,
+   "days_in_market": 0.734
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 34.9,
+   "sharpe": 1.27,
+   "worst_day": -2877.0,
+   "worst_stretch": -7915.0,
+   "days_in_market": 0.629
+  },
+  "trades": 231,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Calm Trend + Z-Dip Core",
+  "list": "nq-2x #09",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 28.0,
+   "sharpe": 1.09,
+   "worst_day": -2877.0,
+   "worst_stretch": -8358.0,
+   "days_in_market": 0.692
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 21.6,
+   "sharpe": 0.98,
+   "worst_day": -2484.0,
+   "worst_stretch": -7110.0,
+   "days_in_market": 0.735
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 33.9,
+   "sharpe": 1.19,
+   "worst_day": -2877.0,
+   "worst_stretch": -8358.0,
+   "days_in_market": 0.652
+  },
+  "trades": 235,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Calm Trend, Fast Exit",
+  "list": "nq-2x #05",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 27.4,
+   "sharpe": 1.14,
+   "worst_day": -2877.0,
+   "worst_stretch": -7646.0,
+   "days_in_market": 0.658
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 22.0,
+   "sharpe": 1.08,
+   "worst_day": -2465.0,
+   "worst_stretch": -6548.0,
+   "days_in_market": 0.69
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 32.3,
+   "sharpe": 1.21,
+   "worst_day": -2877.0,
+   "worst_stretch": -7646.0,
+   "days_in_market": 0.63
+  },
+  "trades": 304,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "SOXL / TQQQ / TECL Volume Momentum: 1% over the 20-day on 1x volume, out 2% under",
+  "list": "leveraged-etfs #39",
+  "family": "momentum",
+  "symbols": [
+   "SOXL",
+   "TQQQ",
+   "TECL"
+  ],
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 27.2,
+   "sharpe": 0.62,
+   "worst_day": -7628.0,
+   "worst_stretch": -26802.0,
+   "days_in_market": 0.581
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 12.0,
+   "sharpe": 0.37,
+   "worst_day": -3425.0,
+   "worst_stretch": -26802.0,
+   "days_in_market": 0.637
+  },
+  "2019-26": {
+   "sessions": 1940,
+   "usd_per_day": 41.0,
+   "sharpe": 0.8,
+   "worst_day": -7628.0,
+   "worst_stretch": -20630.0,
+   "days_in_market": 0.53
+  },
+  "trades": 122,
+  "hold_usd_per_day": 65.8
+ },
+ {
+  "name": "SOXL 20-Day Burst or Uptrend Flush, out 2% under the 20-day",
+  "list": "leveraged-etfs #31",
+  "family": "burst",
+  "symbols": [
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 26.8,
+   "sharpe": 0.55,
+   "worst_day": -7628.0,
+   "worst_stretch": -23405.0,
+   "days_in_market": 0.392
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 7.8,
+   "sharpe": 0.26,
+   "worst_day": -3698.0,
+   "worst_stretch": -12278.0,
+   "days_in_market": 0.362
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 44.0,
+   "sharpe": 0.72,
+   "worst_day": -7628.0,
+   "worst_stretch": -23405.0,
+   "days_in_market": 0.419
+  },
+  "trades": 98,
+  "hold_usd_per_day": 82.6
+ },
+ {
+  "name": "Washout or Squeeze, Early Exit",
+  "list": "nq-2x #18",
+  "family": "nq squeeze",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 26.8,
+   "sharpe": 1.22,
+   "worst_day": -2647.0,
+   "worst_stretch": -6766.0,
+   "days_in_market": 0.279
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 16.2,
+   "sharpe": 0.9,
+   "worst_day": -2495.0,
+   "worst_stretch": -6766.0,
+   "days_in_market": 0.301
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 36.5,
+   "sharpe": 1.46,
+   "worst_day": -2647.0,
+   "worst_stretch": -4317.0,
+   "days_in_market": 0.26
+  },
+  "trades": 312,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Calm Trend, 10-Session Holds",
+  "list": "nq-2x #08",
+  "family": "nq calm trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 25.8,
+   "sharpe": 1.04,
+   "worst_day": -2877.0,
+   "worst_stretch": -8598.0,
+   "days_in_market": 0.673
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 21.7,
+   "sharpe": 1.04,
+   "worst_day": -2497.0,
+   "worst_stretch": -5303.0,
+   "days_in_market": 0.714
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 29.4,
+   "sharpe": 1.06,
+   "worst_day": -2877.0,
+   "worst_stretch": -8598.0,
+   "days_in_market": 0.636
+  },
+  "trades": 263,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Flush, Washout or Squeeze",
+  "list": "nq-2x #12",
+  "family": "nq flush",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 25.5,
+   "sharpe": 1.2,
+   "worst_day": -2715.0,
+   "worst_stretch": -7258.0,
+   "days_in_market": 0.293
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 15.3,
+   "sharpe": 0.83,
+   "worst_day": -2522.0,
+   "worst_stretch": -7258.0,
+   "days_in_market": 0.32
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 34.7,
+   "sharpe": 1.48,
+   "worst_day": -2715.0,
+   "worst_stretch": -5198.0,
+   "days_in_market": 0.269
+  },
+  "trades": 325,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "SOXL Pullback in Uptrend: 8% five-day pullback above the 200-day",
+  "list": "leveraged-etfs #47",
+  "family": "pullback",
+  "symbols": [
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 24.8,
+   "sharpe": 0.74,
+   "worst_day": -3774.0,
+   "worst_stretch": -34748.0,
+   "days_in_market": 0.149
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 7.2,
+   "sharpe": 0.33,
+   "worst_day": -3438.0,
+   "worst_stretch": -21838.0,
+   "days_in_market": 0.123
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 40.8,
+   "sharpe": 0.98,
+   "worst_day": -3774.0,
+   "worst_stretch": -15692.0,
+   "days_in_market": 0.172
+  },
+  "trades": 149,
+  "hold_usd_per_day": 82.6
+ },
+ {
+  "name": "Deep Pullback Book",
+  "list": "nq-2x #19",
+  "family": "nq pullback",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 24.2,
+   "sharpe": 0.96,
+   "worst_day": -2715.0,
+   "worst_stretch": -8675.0,
+   "days_in_market": 0.408
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 5.0,
+   "sharpe": 0.25,
+   "worst_day": -2495.0,
+   "worst_stretch": -8675.0,
+   "days_in_market": 0.385
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 41.7,
+   "sharpe": 1.42,
+   "worst_day": -2715.0,
+   "worst_stretch": -7585.0,
+   "days_in_market": 0.429
+  },
+  "trades": 421,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Pullback Book, Clean",
+  "list": "nq-2x #20",
+  "family": "nq pullback",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 24.1,
+   "sharpe": 1.02,
+   "worst_day": -2715.0,
+   "worst_stretch": -10380.0,
+   "days_in_market": 0.378
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 8.8,
+   "sharpe": 0.48,
+   "worst_day": -2495.0,
+   "worst_stretch": -6533.0,
+   "days_in_market": 0.36
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 38.0,
+   "sharpe": 1.37,
+   "worst_day": -2715.0,
+   "worst_stretch": -10380.0,
+   "days_in_market": 0.395
+  },
+  "trades": 402,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Bull Market, Crash-Day Exit",
+  "list": "nq-2x #16",
+  "family": "nq bull market, crash-day exit",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 23.9,
+   "sharpe": 0.87,
+   "worst_day": -2495.0,
+   "worst_stretch": -10568.0,
+   "days_in_market": 0.822
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 26.3,
+   "sharpe": 1.04,
+   "worst_day": -2495.0,
+   "worst_stretch": -7091.0,
+   "days_in_market": 0.901
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 21.7,
+   "sharpe": 0.75,
+   "worst_day": -2439.0,
+   "worst_stretch": -10568.0,
+   "days_in_market": 0.751
+  },
+  "trades": 357,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "SOXL Pullback in Uptrend: 12% five-day pullback above the 200-day",
+  "list": "leveraged-etfs #44",
+  "family": "pullback",
+  "symbols": [
+   "SOXL"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 23.8,
+   "sharpe": 0.83,
+   "worst_day": -3774.0,
+   "worst_stretch": -11455.0,
+   "days_in_market": 0.083
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 12.3,
+   "sharpe": 0.73,
+   "worst_day": -3563.0,
+   "worst_stretch": -7370.0,
+   "days_in_market": 0.056
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 34.2,
+   "sharpe": 0.94,
+   "worst_day": -3774.0,
+   "worst_stretch": -11455.0,
+   "days_in_market": 0.108
+  },
+  "trades": 93,
+  "hold_usd_per_day": 82.6
+ },
+ {
+  "name": "Calendar Dips",
+  "list": "nq-2x #13",
+  "family": "nq dip",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 20.3,
+   "sharpe": 1.1,
+   "worst_day": -2500.0,
+   "worst_stretch": -10516.0,
+   "days_in_market": 0.45
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 6.9,
+   "sharpe": 0.46,
+   "worst_day": -2398.0,
+   "worst_stretch": -6726.0,
+   "days_in_market": 0.446
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 32.4,
+   "sharpe": 1.55,
+   "worst_day": -2500.0,
+   "worst_stretch": -10516.0,
+   "days_in_market": 0.454
+  },
+  "trades": 716,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Quick Dip, Trend-Assisted",
+  "list": "nq-2x #11",
+  "family": "nq quick dip",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 20.2,
+   "sharpe": 1.09,
+   "worst_day": -2877.0,
+   "worst_stretch": -7209.0,
+   "days_in_market": 0.432
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 11.7,
+   "sharpe": 0.86,
+   "worst_day": -2465.0,
+   "worst_stretch": -7209.0,
+   "days_in_market": 0.363
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 27.9,
+   "sharpe": 1.27,
+   "worst_day": -2877.0,
+   "worst_stretch": -6666.0,
+   "days_in_market": 0.495
+  },
+  "trades": 550,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Quiet MACD Trend",
+  "list": "nq-2x #10",
+  "family": "nq quiet macd trend",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 15.4,
+   "sharpe": 0.93,
+   "worst_day": -2191.0,
+   "worst_stretch": -7850.0,
+   "days_in_market": 0.45
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 12.3,
+   "sharpe": 0.83,
+   "worst_day": -1260.0,
+   "worst_stretch": -5475.0,
+   "days_in_market": 0.495
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 18.1,
+   "sharpe": 1.01,
+   "worst_day": -2191.0,
+   "worst_stretch": -7850.0,
+   "days_in_market": 0.41
+  },
+  "trades": 187,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Combo: All Five Setups",
+  "list": "first fourteen #02",
+  "family": "etf combo",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 9.8,
+   "sharpe": 0.7,
+   "worst_day": -4160.0,
+   "worst_stretch": -6809.0,
+   "days_in_market": 0.346
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 4.0,
+   "sharpe": 0.4,
+   "worst_day": -1626.0,
+   "worst_stretch": -6390.0,
+   "days_in_market": 0.357
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 15.0,
+   "sharpe": 0.91,
+   "worst_day": -4160.0,
+   "worst_stretch": -5898.0,
+   "days_in_market": 0.336
+  },
+  "trades": 684,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Combo: Capitulation or Oversold",
+  "list": "first fourteen #08",
+  "family": "etf combo",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 8.3,
+   "sharpe": 0.66,
+   "worst_day": -4160.0,
+   "worst_stretch": -5296.0,
+   "days_in_market": 0.241
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 5.0,
+   "sharpe": 0.54,
+   "worst_day": -1626.0,
+   "worst_stretch": -4096.0,
+   "days_in_market": 0.248
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 11.3,
+   "sharpe": 0.75,
+   "worst_day": -4160.0,
+   "worst_stretch": -4972.0,
+   "days_in_market": 0.234
+  },
+  "trades": 486,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Quick Dip, Two Legs",
+  "list": "nq-2x #17",
+  "family": "nq quick dip",
+  "symbols": [
+   "NQ1!"
+  ],
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 7.5,
+   "sharpe": 0.63,
+   "worst_day": -3312.0,
+   "worst_stretch": -6047.0,
+   "days_in_market": 0.095
+  },
+  "2012-18": {
+   "sessions": 1763,
+   "usd_per_day": 4.7,
+   "sharpe": 0.53,
+   "worst_day": -2398.0,
+   "worst_stretch": -6047.0,
+   "days_in_market": 0.067
+  },
+  "2019-26": {
+   "sessions": 1944,
+   "usd_per_day": 10.0,
+   "sharpe": 0.71,
+   "worst_day": -3312.0,
+   "worst_stretch": -4772.0,
+   "days_in_market": 0.12
+  },
+  "trades": 130,
+  "hold_usd_per_day": 18.3
+ },
+ {
+  "name": "Capitulation Close",
+  "list": "first fourteen #05",
+  "family": "etf capitulation close",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 6.5,
+   "sharpe": 0.44,
+   "worst_day": -5144.0,
+   "worst_stretch": -8432.0,
+   "days_in_market": 0.172
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 2.8,
+   "sharpe": 0.27,
+   "worst_day": -2052.0,
+   "worst_stretch": -6499.0,
+   "days_in_market": 0.176
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 9.8,
+   "sharpe": 0.55,
+   "worst_day": -5144.0,
+   "worst_stretch": -8432.0,
+   "days_in_market": 0.167
+  },
+  "trades": 336,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Oversold Dip Above the 50",
+  "list": "first fourteen #14",
+  "family": "etf dip",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 6.0,
+   "sharpe": 0.78,
+   "worst_day": -1902.0,
+   "worst_stretch": -4932.0,
+   "days_in_market": 0.131
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 5.4,
+   "sharpe": 0.79,
+   "worst_day": -1653.0,
+   "worst_stretch": -4187.0,
+   "days_in_market": 0.154
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 6.5,
+   "sharpe": 0.78,
+   "worst_day": -1902.0,
+   "worst_stretch": -4477.0,
+   "days_in_market": 0.11
+  },
+  "trades": 235,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Combo: Recent Winners",
+  "list": "first fourteen #01",
+  "family": "etf combo",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 5.6,
+   "sharpe": 0.46,
+   "worst_day": -4160.0,
+   "worst_stretch": -8298.0,
+   "days_in_market": 0.25
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 3.5,
+   "sharpe": 0.4,
+   "worst_day": -1626.0,
+   "worst_stretch": -5942.0,
+   "days_in_market": 0.252
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 7.5,
+   "sharpe": 0.52,
+   "worst_day": -4160.0,
+   "worst_stretch": -6007.0,
+   "days_in_market": 0.248
+  },
+  "trades": 478,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Pullback Cluster (ungated)",
+  "list": "first fourteen #06",
+  "family": "etf pullback",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 5.2,
+   "sharpe": 0.59,
+   "worst_day": -1954.0,
+   "worst_stretch": -8197.0,
+   "days_in_market": 0.138
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.8,
+   "sharpe": 0.29,
+   "worst_day": -1653.0,
+   "worst_stretch": -3031.0,
+   "days_in_market": 0.136
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 8.3,
+   "sharpe": 0.79,
+   "worst_day": -1954.0,
+   "worst_stretch": -7455.0,
+   "days_in_market": 0.139
+  },
+  "trades": 290,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Squeeze Days (evolved)",
+  "list": "first fourteen #04",
+  "family": "etf squeeze",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 4.1,
+   "sharpe": 0.83,
+   "worst_day": -899.0,
+   "worst_stretch": -3723.0,
+   "days_in_market": 0.09
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.9,
+   "sharpe": 0.64,
+   "worst_day": -576.0,
+   "worst_stretch": -1091.0,
+   "days_in_market": 0.07
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 6.1,
+   "sharpe": 0.99,
+   "worst_day": -899.0,
+   "worst_stretch": -3572.0,
+   "days_in_market": 0.108
+  },
+  "trades": 167,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Red Day Above the 50",
+  "list": "first fourteen #12",
+  "family": "etf red day",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 4.1,
+   "sharpe": 0.5,
+   "worst_day": -2360.0,
+   "worst_stretch": -4974.0,
+   "days_in_market": 0.139
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 2.4,
+   "sharpe": 0.47,
+   "worst_day": -726.0,
+   "worst_stretch": -3854.0,
+   "days_in_market": 0.125
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 5.5,
+   "sharpe": 0.55,
+   "worst_day": -2360.0,
+   "worst_stretch": -3047.0,
+   "days_in_market": 0.153
+  },
+  "trades": 206,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Volume Climax",
+  "list": "first fourteen #11",
+  "family": "etf volume climax",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 3.8,
+   "sharpe": 0.51,
+   "worst_day": -1652.0,
+   "worst_stretch": -7608.0,
+   "days_in_market": 0.072
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 2.8,
+   "sharpe": 0.49,
+   "worst_day": -950.0,
+   "worst_stretch": -4405.0,
+   "days_in_market": 0.086
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 4.8,
+   "sharpe": 0.54,
+   "worst_day": -1652.0,
+   "worst_stretch": -4144.0,
+   "days_in_market": 0.06
+  },
+  "trades": 115,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Prior-Low Break on Volume",
+  "list": "first fourteen #13",
+  "family": "etf prior-low break on volume",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 3.2,
+   "sharpe": 0.34,
+   "worst_day": -2360.0,
+   "worst_stretch": -10358.0,
+   "days_in_market": 0.201
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.4,
+   "sharpe": 0.18,
+   "worst_day": -1106.0,
+   "worst_stretch": -7735.0,
+   "days_in_market": 0.227
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 4.8,
+   "sharpe": 0.45,
+   "worst_day": -2360.0,
+   "worst_stretch": -5480.0,
+   "days_in_market": 0.177
+  },
+  "trades": 358,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Two Red Days (evolved)",
+  "list": "first fourteen #07",
+  "family": "etf red day",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 3.1,
+   "sharpe": 0.83,
+   "worst_day": -809.0,
+   "worst_stretch": -2070.0,
+   "days_in_market": 0.04
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.5,
+   "sharpe": 0.86,
+   "worst_day": -355.0,
+   "worst_stretch": -624.0,
+   "days_in_market": 0.02
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 4.6,
+   "sharpe": 0.94,
+   "worst_day": -809.0,
+   "worst_stretch": -2070.0,
+   "days_in_market": 0.058
+  },
+  "trades": 64,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Pullback Cluster (volume-gated)",
+  "list": "first fourteen #10",
+  "family": "etf pullback",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 3.0,
+   "sharpe": 0.43,
+   "worst_day": -1633.0,
+   "worst_stretch": -7970.0,
+   "days_in_market": 0.102
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.3,
+   "sharpe": 0.25,
+   "worst_day": -1284.0,
+   "worst_stretch": -4946.0,
+   "days_in_market": 0.11
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 4.6,
+   "sharpe": 0.56,
+   "worst_day": -1633.0,
+   "worst_stretch": -5174.0,
+   "days_in_market": 0.094
+  },
+  "trades": 177,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Red Day Near the Mean",
+  "list": "first fourteen #09",
+  "family": "etf red day",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 1.0,
+   "sharpe": 0.16,
+   "worst_day": -2360.0,
+   "worst_stretch": -4815.0,
+   "days_in_market": 0.107
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 0.8,
+   "sharpe": 0.18,
+   "worst_day": -856.0,
+   "worst_stretch": -3749.0,
+   "days_in_market": 0.102
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": 1.3,
+   "sharpe": 0.16,
+   "worst_day": -2360.0,
+   "worst_stretch": -3639.0,
+   "days_in_market": 0.112
+  },
+  "trades": 158,
+  "hold_usd_per_day": 58.7
+ },
+ {
+  "name": "Band Break on Volume",
+  "list": "first fourteen #03",
+  "family": "etf band break on volume",
+  "symbols": [
+   "TQQQ",
+   "SOXL",
+   "QLD"
+  ],
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 0.7,
+   "sharpe": 0.05,
+   "worst_day": -5144.0,
+   "worst_stretch": -15929.0,
+   "days_in_market": 0.103
+  },
+  "2012-18": {
+   "sessions": 1759,
+   "usd_per_day": 1.5,
+   "sharpe": 0.15,
+   "worst_day": -2180.0,
+   "worst_stretch": -4925.0,
+   "days_in_market": 0.11
+  },
+  "2019-26": {
+   "sessions": 1941,
+   "usd_per_day": -0.0,
+   "sharpe": -0.0,
+   "worst_day": -5144.0,
+   "worst_stretch": -14497.0,
+   "days_in_market": 0.097
+  },
+  "trades": 211,
+  "hold_usd_per_day": 58.7
+ }
+]

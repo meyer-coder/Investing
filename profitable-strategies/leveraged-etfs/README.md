@@ -2,6 +2,17 @@
 
 As of 2026-09-23. Backtests on daily bars, not advice.
 
+> **Tested 2026-09-24 ([top5](../top5/README.md)): the dollars below are the
+> funds' rise, not the rules' timing.** Seven of these rules were run over
+> 40,000 to 226,000 trades each on 173 synthetic 2x and 3x funds:
+> - the five that make the most a day over 2012-2026 (#25, #2, #18, #12, #35);
+> - the two on paper as split bots (#5, #24).
+>
+> None picked its days much better than random entries on the same funds held
+> just as long, and none beat simply holding the funds. The best gap over
+> random entries, 3.8 to 5.6 bp a trade, goes negative at three times the
+> slippage.
+
 The 50 most profitable different strategies found in a seven-hour grind over 2x and 3x funds on semiconductors, graphics-card and AI names and big tech. Every one made at least $80 a session over the last six months (never used for breeding), made money over 2019 to March 2026 and over 2012 to 2018, still made money at 3x slippage, and never fell more than 70%.
 
 - **$ a session** is a fixed $25,000 in each trade (cash, no margin, one position at a time), fills at the next open, 8 bp slippage a side.

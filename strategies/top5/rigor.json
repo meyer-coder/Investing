@@ -1,0 +1,2094 @@
+{
+ "cb51": {
+  "key": "cb51",
+  "name": "MUU / SOXL Uptrend Dip (bred CB51)",
+  "file": "25_muu_soxl_uptrend_dip_bred_cb51.json",
+  "rules": {
+   "entry": [
+    "vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855 or vol_ratio_20_60 < 0.71",
+    "dist_sma200 > -0.08 and rsi14 < 44",
+    "ret1 < -0.01 and vol_ratio_20_60 > 1.43"
+   ],
+   "exit": [
+    "mkt_vol20 < 0.499",
+    "position_return > 0.25"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 2,
+    "max_gross_exposure": 1.0,
+    "trailing_stop_pct": 0.08,
+    "min_hold_bars": 10
+   }
+  },
+  "own": {
+   "funds": [
+    "MU.2X",
+    "SOXL"
+   ],
+   "from": "2011-03-10",
+   "to": "2026-09-21",
+   "sessions": 3906,
+   "usd_per_day": 86.5,
+   "sharpe": 1.21,
+   "worst_day": -7628.0,
+   "worst_stretch": -29427.0,
+   "days_in_market": 0.741,
+   "trades": 444,
+   "mean_bp": 389.3,
+   "median_bp": -63.1,
+   "win_rate": 0.489,
+   "avg_win_pct": 16.79,
+   "avg_loss_pct": -8.43,
+   "profit_factor": 1.9,
+   "t_stat": 5.02,
+   "years_usd_per_day": {
+    "2011": -7.9,
+    "2012": -35.1,
+    "2013": 221.2,
+    "2014": 79.5,
+    "2015": -48.9,
+    "2016": 125.0,
+    "2017": 113.1,
+    "2018": -8.3,
+    "2019": 64.4,
+    "2020": 181.0,
+    "2021": 68.6,
+    "2022": -50.2,
+    "2023": 113.0,
+    "2024": 28.7,
+    "2025": 270.6,
+    "2026": 318.5
+   },
+   "years_up": 11,
+   "years": 16,
+   "hold_usd_per_day": 77.3,
+   "hold_worst_stretch": -50718.0,
+   "resampled_worst_stretch": {
+    "median": -27771.0,
+    "p05": -44174.0,
+    "p95": -18471.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 62918,
+   "mean_bp": 68.1,
+   "median_bp": -64.2,
+   "win_rate": 0.473,
+   "avg_win_pct": 9.32,
+   "avg_loss_pct": -7.08,
+   "profit_factor": 1.18,
+   "t_stat": 14.4,
+   "mean_bp_95ci": [
+    58.9,
+    77.4
+   ],
+   "funds_profitable": 0.896,
+   "funds_beat_holding": 0.012,
+   "funds_better_sharpe_than_holding": 0.127,
+   "usd_per_day_median_fund": 10.3,
+   "hold_usd_per_day_median_fund": 24.7,
+   "stock 2x": {
+    "funds": 143,
+    "trades": 52275,
+    "mean_bp": 70.3,
+    "median_bp": -59.2,
+    "win_rate": 0.475,
+    "avg_win_pct": 9.23,
+    "avg_loss_pct": -7.0,
+    "profit_factor": 1.19,
+    "t_stat": 13.46,
+    "funds_profitable": 0.909,
+    "usd_per_day_median_fund": 10.5,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 10643,
+    "mean_bp": 57.7,
+    "median_bp": -95.2,
+    "win_rate": 0.465,
+    "avg_win_pct": 9.81,
+    "avg_loss_pct": -7.47,
+    "profit_factor": 1.14,
+    "t_stat": 5.14,
+    "funds_profitable": 0.833,
+    "usd_per_day_median_fund": 7.8,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "years": {
+    "2005": {
+     "trades": 2745,
+     "mean_bp": 38.5
+    },
+    "2006": {
+     "trades": 2969,
+     "mean_bp": 74.1
+    },
+    "2007": {
+     "trades": 3119,
+     "mean_bp": 34.8
+    },
+    "2008": {
+     "trades": 2098,
+     "mean_bp": -376.5
+    },
+    "2009": {
+     "trades": 2449,
+     "mean_bp": 172.3
+    },
+    "2010": {
+     "trades": 3068,
+     "mean_bp": 76.9
+    },
+    "2011": {
+     "trades": 2893,
+     "mean_bp": -25.6
+    },
+    "2012": {
+     "trades": 2877,
+     "mean_bp": 89.8
+    },
+    "2013": {
+     "trades": 3324,
+     "mean_bp": 224.2
+    },
+    "2014": {
+     "trades": 3510,
+     "mean_bp": 106.8
+    },
+    "2015": {
+     "trades": 2806,
+     "mean_bp": -45.4
+    },
+    "2016": {
+     "trades": 2708,
+     "mean_bp": 118.7
+    },
+    "2017": {
+     "trades": 3257,
+     "mean_bp": 161.0
+    },
+    "2018": {
+     "trades": 2974,
+     "mean_bp": -69.4
+    },
+    "2019": {
+     "trades": 2650,
+     "mean_bp": 132.4
+    },
+    "2020": {
+     "trades": 3586,
+     "mean_bp": 155.4
+    },
+    "2021": {
+     "trades": 3450,
+     "mean_bp": 135.6
+    },
+    "2022": {
+     "trades": 1945,
+     "mean_bp": -136.2
+    },
+    "2023": {
+     "trades": 2300,
+     "mean_bp": 34.8
+    },
+    "2024": {
+     "trades": 3149,
+     "mean_bp": 80.9
+    },
+    "2025": {
+     "trades": 2702,
+     "mean_bp": 180.4
+    },
+    "2026": {
+     "trades": 2339,
+     "mean_bp": 100.5
+    }
+   },
+   "years_up": 17,
+   "other_funds_only": {
+    "trades": 61874,
+    "mean_bp": 65.0,
+    "median_bp": -62.7,
+    "win_rate": 0.474,
+    "avg_win_pct": 9.21,
+    "avg_loss_pct": -7.05,
+    "profit_factor": 1.18,
+    "t_stat": 13.72
+   },
+   "random_mean_bp": 74.6,
+   "random_mean_bp_p95": 82.2,
+   "timing_edge_bp": -6.5,
+   "p_value_vs_random": 0.904,
+   "mean_bp_3x_slippage": 36.1,
+   "mean_bp_5x_slippage": 4.1
+  },
+  "nudges": {
+   "count": 22,
+   "base_wide25": {
+    "trades": 8983,
+    "mean_bp": 80.5,
+    "usd_per_day": 13.8
+   },
+   "base_own_usd_per_day": 86.5,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    62.5,
+    90.3
+   ],
+   "wide25_mean_bp_range": [
+    67.3,
+    96.4
+   ]
+  }
+ },
+ "d609": {
+  "key": "d609",
+  "name": "MUU Trend Breakout (bred D609)",
+  "file": "02_muu_trend_breakout_bred_d609.json",
+  "rules": {
+   "entry": [
+    "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+    "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
+    "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)"
+   ],
+   "exit": [
+    "bars_held > 10",
+    "zscore20 <= -1.05"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 7,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.086,
+    "trailing_stop_pct": 0.142,
+    "cooldown_bars": 3
+   }
+  },
+  "own": {
+   "funds": [
+    "MU.2X"
+   ],
+   "from": "2005-10-18",
+   "to": "2026-09-21",
+   "sessions": 5263,
+   "usd_per_day": 58.4,
+   "sharpe": 0.98,
+   "worst_day": -7705.0,
+   "worst_stretch": -38299.0,
+   "days_in_market": 0.453,
+   "trades": 287,
+   "mean_bp": 475.0,
+   "median_bp": -234.0,
+   "win_rate": 0.429,
+   "avg_win_pct": 22.17,
+   "avg_loss_pct": -8.32,
+   "profit_factor": 2.0,
+   "t_stat": 3.83,
+   "years_usd_per_day": {
+    "2005": -40.2,
+    "2006": -14.7,
+    "2007": -35.7,
+    "2008": 45.4,
+    "2009": 92.1,
+    "2010": -4.5,
+    "2011": -50.2,
+    "2012": -52.3,
+    "2013": 146.7,
+    "2014": 117.7,
+    "2015": -34.2,
+    "2016": 79.4,
+    "2017": 89.5,
+    "2018": -44.1,
+    "2019": 44.1,
+    "2020": 60.4,
+    "2021": -9.1,
+    "2022": 6.0,
+    "2023": 7.4,
+    "2024": 107.6,
+    "2025": 284.6,
+    "2026": 549.3
+   },
+   "years_up": 13,
+   "years": 22,
+   "hold_usd_per_day": 64.8,
+   "hold_worst_stretch": -103528.0,
+   "resampled_worst_stretch": {
+    "median": -28906.0,
+    "p05": -49846.0,
+    "p95": -18663.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 40829,
+   "mean_bp": 47.5,
+   "median_bp": -145.4,
+   "win_rate": 0.433,
+   "avg_win_pct": 9.54,
+   "avg_loss_pct": -6.46,
+   "profit_factor": 1.13,
+   "t_stat": 8.7,
+   "mean_bp_95ci": [
+    37.0,
+    58.4
+   ],
+   "funds_profitable": 0.751,
+   "funds_beat_holding": 0.0,
+   "funds_better_sharpe_than_holding": 0.092,
+   "usd_per_day_median_fund": 3.0,
+   "hold_usd_per_day_median_fund": 24.7,
+   "stock 2x": {
+    "funds": 143,
+    "trades": 33492,
+    "mean_bp": 47.7,
+    "median_bp": -145.6,
+    "win_rate": 0.433,
+    "avg_win_pct": 9.52,
+    "avg_loss_pct": -6.41,
+    "profit_factor": 1.13,
+    "t_stat": 7.88,
+    "funds_profitable": 0.755,
+    "usd_per_day_median_fund": 2.6,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 7337,
+    "mean_bp": 46.4,
+    "median_bp": -144.8,
+    "win_rate": 0.437,
+    "avg_win_pct": 9.63,
+    "avg_loss_pct": -6.66,
+    "profit_factor": 1.12,
+    "t_stat": 3.7,
+    "funds_profitable": 0.733,
+    "usd_per_day_median_fund": 4.2,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "years": {
+    "2005": {
+     "trades": 1774,
+     "mean_bp": 52.7
+    },
+    "2006": {
+     "trades": 1922,
+     "mean_bp": -2.5
+    },
+    "2007": {
+     "trades": 2062,
+     "mean_bp": 5.8
+    },
+    "2008": {
+     "trades": 1564,
+     "mean_bp": -400.6
+    },
+    "2009": {
+     "trades": 1682,
+     "mean_bp": 276.3
+    },
+    "2010": {
+     "trades": 2141,
+     "mean_bp": 67.1
+    },
+    "2011": {
+     "trades": 1933,
+     "mean_bp": -83.0
+    },
+    "2012": {
+     "trades": 1878,
+     "mean_bp": 9.3
+    },
+    "2013": {
+     "trades": 1875,
+     "mean_bp": 225.3
+    },
+    "2014": {
+     "trades": 1816,
+     "mean_bp": 139.4
+    },
+    "2015": {
+     "trades": 1844,
+     "mean_bp": -122.6
+    },
+    "2016": {
+     "trades": 1820,
+     "mean_bp": 77.9
+    },
+    "2017": {
+     "trades": 1633,
+     "mean_bp": 117.1
+    },
+    "2018": {
+     "trades": 1914,
+     "mean_bp": -74.9
+    },
+    "2019": {
+     "trades": 1772,
+     "mean_bp": 234.3
+    },
+    "2020": {
+     "trades": 1890,
+     "mean_bp": 35.8
+    },
+    "2021": {
+     "trades": 2293,
+     "mean_bp": 137.5
+    },
+    "2022": {
+     "trades": 1641,
+     "mean_bp": -124.9
+    },
+    "2023": {
+     "trades": 1793,
+     "mean_bp": 76.1
+    },
+    "2024": {
+     "trades": 1998,
+     "mean_bp": 74.6
+    },
+    "2025": {
+     "trades": 1774,
+     "mean_bp": 77.9
+    },
+    "2026": {
+     "trades": 1810,
+     "mean_bp": 189.8
+    }
+   },
+   "years_up": 16,
+   "other_funds_only": {
+    "trades": 40542,
+    "mean_bp": 44.5,
+    "median_bp": -145.3,
+    "win_rate": 0.433,
+    "avg_win_pct": 9.45,
+    "avg_loss_pct": -6.44,
+    "profit_factor": 1.12,
+    "t_stat": 8.2
+   },
+   "random_mean_bp": 65.6,
+   "random_mean_bp_p95": 74.9,
+   "timing_edge_bp": -18.2,
+   "p_value_vs_random": 1.0,
+   "mean_bp_3x_slippage": 15.5,
+   "mean_bp_5x_slippage": -16.5
+  },
+  "nudges": {
+   "count": 22,
+   "base_wide25": {
+    "trades": 6240,
+    "mean_bp": 81.9,
+    "usd_per_day": 9.0
+   },
+   "base_own_usd_per_day": 58.4,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    37.7,
+    60.4
+   ],
+   "wide25_mean_bp_range": [
+    60.6,
+    84.7
+   ]
+  }
+ },
+ "cbe3": {
+  "key": "cbe3",
+  "name": "MUU / SOXL Uptrend Dip (bred CBE3)",
+  "file": "18_muu_soxl_uptrend_dip_bred_cbe3.json",
+  "rules": {
+   "entry": [
+    "dist_sma200 > -0.08 and rsi14 < 37",
+    "ret1 < -0.01 and vol_ratio_20_60 > 1.43 and bb_pct > 0.5",
+    "vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855"
+   ],
+   "exit": [
+    "mkt_vol20 < 0.499",
+    "position_return > 0.25"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 3,
+    "max_gross_exposure": 1.0,
+    "trailing_stop_pct": 0.08,
+    "min_hold_bars": 10
+   }
+  },
+  "own": {
+   "funds": [
+    "MU.2X",
+    "SOXL"
+   ],
+   "from": "2011-03-10",
+   "to": "2026-09-21",
+   "sessions": 3906,
+   "usd_per_day": 68.5,
+   "sharpe": 1.07,
+   "worst_day": -7628.0,
+   "worst_stretch": -30328.0,
+   "days_in_market": 0.634,
+   "trades": 352,
+   "mean_bp": 348.5,
+   "median_bp": -121.3,
+   "win_rate": 0.474,
+   "avg_win_pct": 16.63,
+   "avg_loss_pct": -8.38,
+   "profit_factor": 1.79,
+   "t_stat": 3.86,
+   "years_usd_per_day": {
+    "2011": -35.6,
+    "2012": -36.7,
+    "2013": 138.6,
+    "2014": 90.2,
+    "2015": -75.6,
+    "2016": 139.7,
+    "2017": 139.1,
+    "2018": -0.0,
+    "2019": 3.4,
+    "2020": 111.1,
+    "2021": 17.7,
+    "2022": -25.4,
+    "2023": 102.9,
+    "2024": -1.1,
+    "2025": 301.2,
+    "2026": 263.3
+   },
+   "years_up": 10,
+   "years": 16,
+   "hold_usd_per_day": 77.3,
+   "hold_worst_stretch": -50718.0,
+   "resampled_worst_stretch": {
+    "median": -29241.0,
+    "p05": -48912.0,
+    "p95": -18424.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 52411,
+   "mean_bp": 60.0,
+   "median_bp": -48.9,
+   "win_rate": 0.479,
+   "avg_win_pct": 8.59,
+   "avg_loss_pct": -6.73,
+   "profit_factor": 1.17,
+   "t_stat": 13.19,
+   "mean_bp_95ci": [
+    50.8,
+    68.3
+   ],
+   "funds_profitable": 0.855,
+   "funds_beat_holding": 0.012,
+   "funds_better_sharpe_than_holding": 0.098,
+   "usd_per_day_median_fund": 7.0,
+   "hold_usd_per_day_median_fund": 24.7,
+   "stock 2x": {
+    "funds": 143,
+    "trades": 43535,
+    "mean_bp": 59.8,
+    "median_bp": -45.1,
+    "win_rate": 0.48,
+    "avg_win_pct": 8.48,
+    "avg_loss_pct": -6.69,
+    "profit_factor": 1.17,
+    "t_stat": 12.04,
+    "funds_profitable": 0.853,
+    "usd_per_day_median_fund": 7.6,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 8876,
+    "mean_bp": 61.1,
+    "median_bp": -73.4,
+    "win_rate": 0.47,
+    "avg_win_pct": 9.12,
+    "avg_loss_pct": -6.93,
+    "profit_factor": 1.17,
+    "t_stat": 5.41,
+    "funds_profitable": 0.867,
+    "usd_per_day_median_fund": 6.3,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "years": {
+    "2005": {
+     "trades": 2352,
+     "mean_bp": 30.5
+    },
+    "2006": {
+     "trades": 2545,
+     "mean_bp": 82.6
+    },
+    "2007": {
+     "trades": 2649,
+     "mean_bp": 33.7
+    },
+    "2008": {
+     "trades": 1101,
+     "mean_bp": -344.3
+    },
+    "2009": {
+     "trades": 1713,
+     "mean_bp": 69.2
+    },
+    "2010": {
+     "trades": 2556,
+     "mean_bp": 72.3
+    },
+    "2011": {
+     "trades": 2413,
+     "mean_bp": -48.0
+    },
+    "2012": {
+     "trades": 2500,
+     "mean_bp": 78.3
+    },
+    "2013": {
+     "trades": 3098,
+     "mean_bp": 214.9
+    },
+    "2014": {
+     "trades": 3282,
+     "mean_bp": 100.2
+    },
+    "2015": {
+     "trades": 2371,
+     "mean_bp": -47.1
+    },
+    "2016": {
+     "trades": 2407,
+     "mean_bp": 101.1
+    },
+    "2017": {
+     "trades": 3044,
+     "mean_bp": 156.5
+    },
+    "2018": {
+     "trades": 2424,
+     "mean_bp": -85.9
+    },
+    "2019": {
+     "trades": 2360,
+     "mean_bp": 103.1
+    },
+    "2020": {
+     "trades": 2498,
+     "mean_bp": 109.9
+    },
+    "2021": {
+     "trades": 3005,
+     "mean_bp": 122.0
+    },
+    "2022": {
+     "trades": 1554,
+     "mean_bp": -155.9
+    },
+    "2023": {
+     "trades": 1770,
+     "mean_bp": 45.7
+    },
+    "2024": {
+     "trades": 2756,
+     "mean_bp": 66.8
+    },
+    "2025": {
+     "trades": 2196,
+     "mean_bp": 128.8
+    },
+    "2026": {
+     "trades": 1817,
+     "mean_bp": 101.7
+    }
+   },
+   "years_up": 17,
+   "other_funds_only": {
+    "trades": 51591,
+    "mean_bp": 57.3,
+    "median_bp": -47.1,
+    "win_rate": 0.479,
+    "avg_win_pct": 8.47,
+    "avg_loss_pct": -6.7,
+    "profit_factor": 1.16,
+    "t_stat": 12.66
+   },
+   "random_mean_bp": 76.1,
+   "random_mean_bp_p95": 84.5,
+   "timing_edge_bp": -16.1,
+   "p_value_vs_random": 1.0,
+   "mean_bp_3x_slippage": 28.0,
+   "mean_bp_5x_slippage": -4.0
+  },
+  "nudges": {
+   "count": 22,
+   "base_wide25": {
+    "trades": 7253,
+    "mean_bp": 81.8,
+    "usd_per_day": 11.0
+   },
+   "base_own_usd_per_day": 68.5,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    39.2,
+    80.8
+   ],
+   "wide25_mean_bp_range": [
+    65.4,
+    129.1
+   ]
+  }
+ },
+ "852d": {
+  "key": "852d",
+  "name": "AMDL Uptrend Dip (bred 852D)",
+  "file": "12_amdl_uptrend_dip_bred_852d.json",
+  "rules": {
+   "entry": [
+    "(ret1 < -0.06 and (close - low) / (high - low + 0.0001) < 0.28 and volume_ratio > 1.71 or cross_below(sma20, sma50)) and ret1 < 0.04",
+    "dist_sma200 > -0.2 and rsi14 > 64 and vol_ratio_20_60 < 1.37",
+    "ret1 < 0.03 and prev(ret1) < 0.004 and close > sma50 and rsi7 < 58",
+    "ret5 < 0.052 and vol_ratio_20_60 > 1.31 and dist_sma200 < -0.24 or atr_pct < 0.0514 or rsi7 > 76"
+   ],
+   "exit": [
+    "ret1 > 0.02",
+    "position_return > 0.04",
+    "bars_held >= 2"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 7,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.12
+   }
+  },
+  "own": {
+   "funds": [
+    "AMD.2X"
+   ],
+   "from": "2005-10-18",
+   "to": "2026-09-21",
+   "sessions": 5263,
+   "usd_per_day": 46.3,
+   "sharpe": 0.79,
+   "worst_day": -6499.0,
+   "worst_stretch": -34364.0,
+   "days_in_market": 0.404,
+   "trades": 729,
+   "mean_bp": 131.5,
+   "median_bp": 208.1,
+   "win_rate": 0.612,
+   "avg_win_pct": 7.09,
+   "avg_loss_pct": -7.79,
+   "profit_factor": 1.43,
+   "t_stat": 3.69,
+   "years_usd_per_day": {
+    "2005": 44.9,
+    "2006": 71.5,
+    "2007": -8.4,
+    "2008": -77.7,
+    "2009": 83.7,
+    "2010": 2.3,
+    "2011": -80.8,
+    "2012": 11.8,
+    "2013": 116.8,
+    "2014": 16.2,
+    "2015": -8.4,
+    "2016": 114.0,
+    "2017": -21.3,
+    "2018": 193.0,
+    "2019": 45.5,
+    "2020": 43.4,
+    "2021": -6.3,
+    "2022": -31.1,
+    "2023": 101.6,
+    "2024": -6.7,
+    "2025": 206.7,
+    "2026": 274.3
+   },
+   "years_up": 14,
+   "years": 22,
+   "hold_usd_per_day": 59.8,
+   "hold_worst_stretch": -138102.0,
+   "resampled_worst_stretch": {
+    "median": -29558.0,
+    "p05": -52189.0,
+    "p95": -19584.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 213748,
+   "mean_bp": 6.4,
+   "median_bp": 55.9,
+   "win_rate": 0.557,
+   "avg_win_pct": 3.32,
+   "avg_loss_pct": -4.03,
+   "profit_factor": 1.04,
+   "t_stat": 5.63,
+   "mean_bp_95ci": [
+    4.3,
+    8.4
+   ],
+   "funds_profitable": 0.665,
+   "funds_beat_holding": 0.0,
+   "funds_better_sharpe_than_holding": 0.012,
+   "usd_per_day_median_fund": 3.1,
+   "hold_usd_per_day_median_fund": 24.7,
+   "stock 2x": {
+    "funds": 143,
+    "trades": 176564,
+    "mean_bp": 7.0,
+    "median_bp": 55.3,
+    "win_rate": 0.557,
+    "avg_win_pct": 3.29,
+    "avg_loss_pct": -3.97,
+    "profit_factor": 1.04,
+    "t_stat": 5.68,
+    "funds_profitable": 0.678,
+    "usd_per_day_median_fund": 3.6,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 37184,
+    "mean_bp": 3.6,
+    "median_bp": 58.4,
+    "win_rate": 0.559,
+    "avg_win_pct": 3.47,
+    "avg_loss_pct": -4.32,
+    "profit_factor": 1.02,
+    "t_stat": 1.23,
+    "funds_profitable": 0.6,
+    "usd_per_day_median_fund": 1.7,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "years": {
+    "2005": {
+     "trades": 10274,
+     "mean_bp": 4.8
+    },
+    "2006": {
+     "trades": 10129,
+     "mean_bp": 17.2
+    },
+    "2007": {
+     "trades": 9593,
+     "mean_bp": 1.8
+    },
+    "2008": {
+     "trades": 6099,
+     "mean_bp": -55.0
+    },
+    "2009": {
+     "trades": 7364,
+     "mean_bp": 34.5
+    },
+    "2010": {
+     "trades": 9314,
+     "mean_bp": 15.7
+    },
+    "2011": {
+     "trades": 9213,
+     "mean_bp": -14.4
+    },
+    "2012": {
+     "trades": 10563,
+     "mean_bp": -2.5
+    },
+    "2013": {
+     "trades": 11785,
+     "mean_bp": 35.7
+    },
+    "2014": {
+     "trades": 11633,
+     "mean_bp": 18.0
+    },
+    "2015": {
+     "trades": 10706,
+     "mean_bp": -11.5
+    },
+    "2016": {
+     "trades": 10698,
+     "mean_bp": 14.5
+    },
+    "2017": {
+     "trades": 11582,
+     "mean_bp": 31.9
+    },
+    "2018": {
+     "trades": 9861,
+     "mean_bp": -35.7
+    },
+    "2019": {
+     "trades": 10745,
+     "mean_bp": 25.2
+    },
+    "2020": {
+     "trades": 9039,
+     "mean_bp": 15.7
+    },
+    "2021": {
+     "trades": 10799,
+     "mean_bp": 22.9
+    },
+    "2022": {
+     "trades": 6762,
+     "mean_bp": -53.2
+    },
+    "2023": {
+     "trades": 10421,
+     "mean_bp": -3.5
+    },
+    "2024": {
+     "trades": 10941,
+     "mean_bp": 2.0
+    },
+    "2025": {
+     "trades": 9965,
+     "mean_bp": 15.5
+    },
+    "2026": {
+     "trades": 6262,
+     "mean_bp": 17.0
+    }
+   },
+   "years_up": 15,
+   "other_funds_only": {
+    "trades": 213019,
+    "mean_bp": 6.0,
+    "median_bp": 55.5,
+    "win_rate": 0.557,
+    "avg_win_pct": 3.3,
+    "avg_loss_pct": -4.02,
+    "profit_factor": 1.03,
+    "t_stat": 5.27
+   },
+   "random_mean_bp": 7.0,
+   "random_mean_bp_p95": 9.0,
+   "timing_edge_bp": -0.6,
+   "p_value_vs_random": 0.68,
+   "mean_bp_3x_slippage": -25.6,
+   "mean_bp_5x_slippage": -57.6
+  },
+  "nudges": {
+   "count": 36,
+   "base_wide25": {
+    "trades": 30005,
+    "mean_bp": 5.5,
+    "usd_per_day": 3.6
+   },
+   "base_own_usd_per_day": 46.3,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    25.3,
+    50.5
+   ],
+   "wide25_mean_bp_range": [
+    3.8,
+    6.7
+   ]
+  }
+ },
+ "01d4": {
+  "key": "01d4",
+  "name": "SOXL / TQQQ / TECL Uptrend Dip (bred 01D4)",
+  "file": "35_soxl_tqqq_tecl_uptrend_dip_bred_01d4.json",
+  "rules": {
+   "entry": [
+    "dist_sma20 < -0.054 and cross_above(close, sma200)",
+    "dist_sma20 < -0.02 and sma20 > sma50 and sma50 > sma200 or ret1 < -0.01 or vol_ratio_20_60 < 0.66",
+    "macd_hist > 1.7"
+   ],
+   "exit": [
+    "ret1 > 0.02",
+    "close < sma50",
+    "mkt_vol20 < 0.38 and cross_below(close, bb_lower)"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 5,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.16
+   }
+  },
+  "own": {
+   "funds": [
+    "SOXL",
+    "TQQQ",
+    "TECL"
+   ],
+   "from": "2010-12-23",
+   "to": "2026-09-21",
+   "sessions": 3958,
+   "usd_per_day": 59.9,
+   "sharpe": 0.91,
+   "worst_day": -7387.0,
+   "worst_stretch": -23885.0,
+   "days_in_market": 0.807,
+   "trades": 1550,
+   "mean_bp": 58.3,
+   "median_bp": 102.0,
+   "win_rate": 0.575,
+   "avg_win_pct": 4.83,
+   "avg_loss_pct": -5.17,
+   "profit_factor": 1.27,
+   "t_stat": 3.46,
+   "years_usd_per_day": {
+    "2010": 20.3,
+    "2011": -37.9,
+    "2012": 4.4,
+    "2013": 64.4,
+    "2014": 28.3,
+    "2015": 29.9,
+    "2016": 12.4,
+    "2017": 79.3,
+    "2018": -45.9,
+    "2019": 120.3,
+    "2020": 197.6,
+    "2021": 39.8,
+    "2022": -6.9,
+    "2023": 85.2,
+    "2024": 13.5,
+    "2025": 161.1,
+    "2026": 274.5
+   },
+   "years_up": 14,
+   "years": 17,
+   "hold_usd_per_day": 61.4,
+   "hold_worst_stretch": -33634.0,
+   "resampled_worst_stretch": {
+    "median": -32762.0,
+    "p05": -55213.0,
+    "p95": -21255.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 225822,
+   "mean_bp": 8.3,
+   "median_bp": 27.3,
+   "win_rate": 0.529,
+   "avg_win_pct": 3.67,
+   "avg_loss_pct": -3.94,
+   "profit_factor": 1.04,
+   "t_stat": 7.12,
+   "mean_bp_95ci": [
+    6.1,
+    10.5
+   ],
+   "funds_profitable": 0.665,
+   "funds_beat_holding": 0.012,
+   "funds_better_sharpe_than_holding": 0.064,
+   "usd_per_day_median_fund": 4.4,
+   "hold_usd_per_day_median_fund": 24.7,
+   "stock 2x": {
+    "funds": 143,
+    "trades": 187766,
+    "mean_bp": 8.3,
+    "median_bp": 25.8,
+    "win_rate": 0.528,
+    "avg_win_pct": 3.62,
+    "avg_loss_pct": -3.87,
+    "profit_factor": 1.05,
+    "t_stat": 6.56,
+    "funds_profitable": 0.671,
+    "usd_per_day_median_fund": 4.4,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 38056,
+    "mean_bp": 8.5,
+    "median_bp": 35.6,
+    "win_rate": 0.534,
+    "avg_win_pct": 3.93,
+    "avg_loss_pct": -4.32,
+    "profit_factor": 1.04,
+    "t_stat": 2.79,
+    "funds_profitable": 0.633,
+    "usd_per_day_median_fund": 3.2,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "years": {
+    "2005": {
+     "trades": 9539,
+     "mean_bp": 11.6
+    },
+    "2006": {
+     "trades": 9816,
+     "mean_bp": 10.1
+    },
+    "2007": {
+     "trades": 10917,
+     "mean_bp": -10.1
+    },
+    "2008": {
+     "trades": 13850,
+     "mean_bp": -5.1
+    },
+    "2009": {
+     "trades": 10954,
+     "mean_bp": 36.8
+    },
+    "2010": {
+     "trades": 10111,
+     "mean_bp": 17.5
+    },
+    "2011": {
+     "trades": 11092,
+     "mean_bp": -13.2
+    },
+    "2012": {
+     "trades": 9383,
+     "mean_bp": 9.9
+    },
+    "2013": {
+     "trades": 8631,
+     "mean_bp": 42.0
+    },
+    "2014": {
+     "trades": 8701,
+     "mean_bp": 9.9
+    },
+    "2015": {
+     "trades": 10456,
+     "mean_bp": -21.9
+    },
+    "2016": {
+     "trades": 9519,
+     "mean_bp": 6.2
+    },
+    "2017": {
+     "trades": 7762,
+     "mean_bp": 38.0
+    },
+    "2018": {
+     "trades": 10759,
+     "mean_bp": -38.7
+    },
+    "2019": {
+     "trades": 9246,
+     "mean_bp": 31.5
+    },
+    "2020": {
+     "trades": 12087,
+     "mean_bp": 38.4
+    },
+    "2021": {
+     "trades": 10259,
+     "mean_bp": 32.7
+    },
+    "2022": {
+     "trades": 12390,
+     "mean_bp": -25.4
+    },
+    "2023": {
+     "trades": 10500,
+     "mean_bp": 2.8
+    },
+    "2024": {
+     "trades": 10160,
+     "mean_bp": -3.6
+    },
+    "2025": {
+     "trades": 11027,
+     "mean_bp": 21.6
+    },
+    "2026": {
+     "trades": 8663,
+     "mean_bp": 17.9
+    }
+   },
+   "years_up": 15,
+   "other_funds_only": {
+    "trades": 220551,
+    "mean_bp": 7.5,
+    "median_bp": 26.3,
+    "win_rate": 0.528,
+    "avg_win_pct": 3.65,
+    "avg_loss_pct": -3.92,
+    "profit_factor": 1.04,
+    "t_stat": 6.37
+   },
+   "random_mean_bp": 4.5,
+   "random_mean_bp_p95": 6.3,
+   "timing_edge_bp": 3.8,
+   "p_value_vs_random": 0.002,
+   "mean_bp_3x_slippage": -23.7,
+   "mean_bp_5x_slippage": -55.7
+  },
+  "nudges": {
+   "count": 16,
+   "base_wide25": {
+    "trades": 34423,
+    "mean_bp": 12.4,
+    "usd_per_day": 8.6
+   },
+   "base_own_usd_per_day": 59.9,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    53.4,
+    61.0
+   ],
+   "wide25_mean_bp_range": [
+    11.2,
+    13.2
+   ]
+  }
+ },
+ "ml": {
+  "key": "ml",
+  "name": "NQ E-mini at 2x: Managed Long",
+  "file": "nq-2x/all.json",
+  "costs": {
+   "own": {
+    "slippage": 1.0,
+    "commission": 0.2,
+    "leverage": 2.0
+   },
+   "wide": {
+    "slippage": 2.0,
+    "commission": 0.2,
+    "leverage": 2.0
+   }
+  },
+  "rules": {
+   "entry": [
+    "volume_ratio <= 2.2"
+   ],
+   "exit": [
+    "close < sma50 and zscore20 > -0.95",
+    "atr_pct > 0.044"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.0425,
+    "take_profit_pct": 0.0639,
+    "max_hold_bars": 13,
+    "cooldown_bars": 2
+   }
+  },
+  "own": {
+   "funds": [
+    "NQ1!"
+   ],
+   "from": "2000-01-04",
+   "to": "2026-09-22",
+   "sessions": 6757,
+   "usd_per_day": 25.0,
+   "sharpe": 0.69,
+   "worst_day": -5428.0,
+   "worst_stretch": -38145.0,
+   "days_in_market": 0.763,
+   "trades": 785,
+   "mean_bp": 42.9,
+   "median_bp": 47.4,
+   "win_rate": 0.59,
+   "avg_win_pct": 2.53,
+   "avg_loss_pct": -2.59,
+   "profit_factor": 1.4,
+   "t_stat": 3.61,
+   "years_usd_per_day": {
+    "2000": 14.4,
+    "2001": -56.0,
+    "2002": -6.7,
+    "2003": 47.0,
+    "2004": -0.7,
+    "2005": 6.3,
+    "2006": 25.4,
+    "2007": -0.3,
+    "2008": -102.9,
+    "2009": 53.0,
+    "2010": 43.5,
+    "2011": -0.7,
+    "2012": 27.8,
+    "2013": 27.3,
+    "2014": 40.6,
+    "2015": 31.2,
+    "2016": 18.1,
+    "2017": 56.7,
+    "2018": 33.4,
+    "2019": 31.0,
+    "2020": 113.8,
+    "2021": 42.6,
+    "2022": 12.3,
+    "2023": 60.1,
+    "2024": 42.8,
+    "2025": 50.5,
+    "2026": 83.1
+   },
+   "years_up": 21,
+   "years": 27,
+   "hold_usd_per_day": 19.3,
+   "hold_worst_stretch": -76119.0,
+   "resampled_worst_stretch": {
+    "median": -11223.0,
+    "p05": -19408.0,
+    "p95": -7255.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR",
+    "BK",
+    "MMC"
+   ],
+   "trades": 142787,
+   "mean_bp": 22.5,
+   "median_bp": 11.0,
+   "win_rate": 0.518,
+   "avg_win_pct": 3.05,
+   "avg_loss_pct": -2.8,
+   "profit_factor": 1.17,
+   "t_stat": 20.89,
+   "mean_bp_95ci": [
+    20.3,
+    24.6
+   ],
+   "funds_profitable": 0.965,
+   "funds_beat_holding": 0.029,
+   "funds_better_sharpe_than_holding": 0.121,
+   "usd_per_day_median_fund": 13.5,
+   "hold_usd_per_day_median_fund": 29.6,
+   "ETF 1x": {
+    "funds": 30,
+    "trades": 21830,
+    "mean_bp": 21.0,
+    "median_bp": 14.6,
+    "win_rate": 0.53,
+    "avg_win_pct": 2.48,
+    "avg_loss_pct": -2.35,
+    "profit_factor": 1.19,
+    "t_stat": 9.29,
+    "funds_profitable": 0.967,
+    "usd_per_day_median_fund": 10.1,
+    "hold_usd_per_day_median_fund": 21.6
+   },
+   "stock 1x": {
+    "funds": 143,
+    "trades": 120957,
+    "mean_bp": 22.8,
+    "median_bp": 10.1,
+    "win_rate": 0.515,
+    "avg_win_pct": 3.15,
+    "avg_loss_pct": -2.88,
+    "profit_factor": 1.16,
+    "t_stat": 18.91,
+    "funds_profitable": 0.965,
+    "usd_per_day_median_fund": 14.1,
+    "hold_usd_per_day_median_fund": 31.9
+   },
+   "years": {
+    "2000": {
+     "trades": 6760,
+     "mean_bp": 9.9
+    },
+    "2001": {
+     "trades": 6694,
+     "mean_bp": 2.9
+    },
+    "2002": {
+     "trades": 6763,
+     "mean_bp": -22.0
+    },
+    "2003": {
+     "trades": 5075,
+     "mean_bp": 67.1
+    },
+    "2004": {
+     "trades": 4762,
+     "mean_bp": 34.8
+    },
+    "2005": {
+     "trades": 4865,
+     "mean_bp": 32.3
+    },
+    "2006": {
+     "trades": 4694,
+     "mean_bp": 50.7
+    },
+    "2007": {
+     "trades": 5128,
+     "mean_bp": 20.5
+    },
+    "2008": {
+     "trades": 7666,
+     "mean_bp": -41.4
+    },
+    "2009": {
+     "trades": 6057,
+     "mean_bp": 43.0
+    },
+    "2010": {
+     "trades": 5033,
+     "mean_bp": 28.3
+    },
+    "2011": {
+     "trades": 5492,
+     "mean_bp": 1.6
+    },
+    "2012": {
+     "trades": 4641,
+     "mean_bp": 41.4
+    },
+    "2013": {
+     "trades": 4045,
+     "mean_bp": 86.0
+    },
+    "2014": {
+     "trades": 4364,
+     "mean_bp": 33.6
+    },
+    "2015": {
+     "trades": 5450,
+     "mean_bp": -6.1
+    },
+    "2016": {
+     "trades": 4852,
+     "mean_bp": 43.5
+    },
+    "2017": {
+     "trades": 4103,
+     "mean_bp": 53.2
+    },
+    "2018": {
+     "trades": 5510,
+     "mean_bp": -10.9
+    },
+    "2019": {
+     "trades": 4522,
+     "mean_bp": 52.1
+    },
+    "2020": {
+     "trades": 5793,
+     "mean_bp": 31.3
+    },
+    "2021": {
+     "trades": 4889,
+     "mean_bp": 48.8
+    },
+    "2022": {
+     "trades": 6165,
+     "mean_bp": -13.4
+    },
+    "2023": {
+     "trades": 5168,
+     "mean_bp": 28.9
+    },
+    "2024": {
+     "trades": 4793,
+     "mean_bp": 34.2
+    },
+    "2025": {
+     "trades": 5330,
+     "mean_bp": 25.5
+    },
+    "2026": {
+     "trades": 4173,
+     "mean_bp": 30.6
+    }
+   },
+   "years_up": 22,
+   "other_funds_only": {
+    "trades": 142039,
+    "mean_bp": 22.3,
+    "median_bp": 10.8,
+    "win_rate": 0.517,
+    "avg_win_pct": 3.05,
+    "avg_loss_pct": -2.8,
+    "profit_factor": 1.17,
+    "t_stat": 20.69
+   },
+   "random_mean_bp": 24.7,
+   "random_mean_bp_p95": 26.4,
+   "timing_edge_bp": -2.2,
+   "p_value_vs_random": 0.976,
+   "mean_bp_3x_slippage": 14.5,
+   "mean_bp_5x_slippage": 6.5
+  },
+  "nudges": {
+   "count": 12,
+   "base_wide25": {
+    "trades": 18566,
+    "mean_bp": 17.0,
+    "usd_per_day": 10.6
+   },
+   "base_own_usd_per_day": 25.0,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    18.0,
+    29.5
+   ],
+   "wide25_mean_bp_range": [
+    15.5,
+    21.3
+   ]
+  }
+ },
+ "q05": {
+  "key": "q05",
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "file": "leveraged-etfs/05_muu_quick_dip_2_dip_above_the_200_day_2_target_10_stop_4_days_max.json",
+  "costs": {
+   "own": {
+    "slippage": 8.0
+   },
+   "wide": {
+    "slippage": 8.0
+   }
+  },
+  "rules": {
+   "entry": [
+    "ret1 < -0.02 and close > sma200"
+   ],
+   "exit": [
+    "bars_held >= 4"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.1,
+    "take_profit_pct": 0.02
+   }
+  },
+  "own": {
+   "funds": [
+    "MU.2X"
+   ],
+   "from": "2005-10-18",
+   "to": "2026-09-21",
+   "sessions": 5263,
+   "usd_per_day": 40.5,
+   "sharpe": 0.89,
+   "worst_day": -6177.0,
+   "worst_stretch": -16352.0,
+   "days_in_market": 0.291,
+   "trades": 443,
+   "mean_bp": 191.0,
+   "median_bp": 360.2,
+   "win_rate": 0.682,
+   "avg_win_pct": 7.12,
+   "avg_loss_pct": -9.26,
+   "profit_factor": 1.65,
+   "t_stat": 4.16,
+   "years_usd_per_day": {
+    "2005": -93.2,
+    "2006": -2.8,
+    "2007": -10.0,
+    "2008": 0.0,
+    "2009": 27.5,
+    "2010": -53.4,
+    "2011": 74.8,
+    "2012": 17.3,
+    "2013": 79.1,
+    "2014": 58.7,
+    "2015": -14.9,
+    "2016": 18.3,
+    "2017": 82.2,
+    "2018": 41.0,
+    "2019": 13.9,
+    "2020": 36.2,
+    "2021": 83.5,
+    "2022": -36.5,
+    "2023": 25.3,
+    "2024": 118.3,
+    "2025": -4.8,
+    "2026": 435.6
+   },
+   "years_up": 14,
+   "years": 22,
+   "hold_usd_per_day": 64.8,
+   "hold_worst_stretch": -103528.0,
+   "resampled_worst_stretch": {
+    "median": -21881.0,
+    "p05": -37177.0,
+    "p95": -14030.0
+   },
+   "resampled_loses_money": 0.0
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 60246,
+   "mean_bp": 24.6,
+   "median_bp": 183.1,
+   "win_rate": 0.625,
+   "avg_win_pct": 4.05,
+   "avg_loss_pct": -6.09,
+   "profit_factor": 1.11,
+   "t_stat": 9.47,
+   "mean_bp_95ci": [
+    19.4,
+    29.6
+   ],
+   "funds_profitable": 0.757,
+   "funds_beat_holding": 0.0,
+   "funds_better_sharpe_than_holding": 0.046,
+   "usd_per_day_median_fund": 2.5,
+   "hold_usd_per_day_median_fund": 24.7,
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 10814,
+    "mean_bp": 23.6,
+    "median_bp": 187.0,
+    "win_rate": 0.63,
+    "avg_win_pct": 4.08,
+    "avg_loss_pct": -6.31,
+    "profit_factor": 1.1,
+    "t_stat": 3.84,
+    "funds_profitable": 0.767,
+    "usd_per_day_median_fund": 2.9,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "stock 2x": {
+    "funds": 143,
+    "trades": 49432,
+    "mean_bp": 24.9,
+    "median_bp": 182.5,
+    "win_rate": 0.624,
+    "avg_win_pct": 4.04,
+    "avg_loss_pct": -6.04,
+    "profit_factor": 1.11,
+    "t_stat": 8.66,
+    "funds_profitable": 0.755,
+    "usd_per_day_median_fund": 2.5,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "years": {
+    "2005": {
+     "trades": 2883,
+     "mean_bp": 41.8
+    },
+    "2006": {
+     "trades": 3052,
+     "mean_bp": 42.3
+    },
+    "2007": {
+     "trades": 3265,
+     "mean_bp": 13.0
+    },
+    "2008": {
+     "trades": 1237,
+     "mean_bp": -104.4
+    },
+    "2009": {
+     "trades": 2465,
+     "mean_bp": 71.5
+    },
+    "2010": {
+     "trades": 3237,
+     "mean_bp": -5.3
+    },
+    "2011": {
+     "trades": 2967,
+     "mean_bp": 16.9
+    },
+    "2012": {
+     "trades": 2601,
+     "mean_bp": 3.8
+    },
+    "2013": {
+     "trades": 3502,
+     "mean_bp": 89.1
+    },
+    "2014": {
+     "trades": 3083,
+     "mean_bp": 12.6
+    },
+    "2015": {
+     "trades": 2390,
+     "mean_bp": -12.2
+    },
+    "2016": {
+     "trades": 2365,
+     "mean_bp": 53.8
+    },
+    "2017": {
+     "trades": 2556,
+     "mean_bp": 79.2
+    },
+    "2018": {
+     "trades": 2594,
+     "mean_bp": -91.8
+    },
+    "2019": {
+     "trades": 2361,
+     "mean_bp": 45.8
+    },
+    "2020": {
+     "trades": 2867,
+     "mean_bp": 38.9
+    },
+    "2021": {
+     "trades": 4189,
+     "mean_bp": 68.5
+    },
+    "2022": {
+     "trades": 1739,
+     "mean_bp": -86.9
+    },
+    "2023": {
+     "trades": 2401,
+     "mean_bp": 3.4
+    },
+    "2024": {
+     "trades": 3242,
+     "mean_bp": 22.5
+    },
+    "2025": {
+     "trades": 2378,
+     "mean_bp": 27.6
+    },
+    "2026": {
+     "trades": 2872,
+     "mean_bp": 65.2
+    }
+   },
+   "years_up": 17,
+   "other_funds_only": {
+    "trades": 59803,
+    "mean_bp": 23.4,
+    "median_bp": 182.4,
+    "win_rate": 0.625,
+    "avg_win_pct": 4.02,
+    "avg_loss_pct": -6.07,
+    "profit_factor": 1.1,
+    "t_stat": 9.01
+   },
+   "random_mean_bp": 19.0,
+   "random_mean_bp_p95": 24.1,
+   "timing_edge_bp": 5.6,
+   "p_value_vs_random": 0.042,
+   "mean_bp_3x_slippage": -7.4,
+   "mean_bp_5x_slippage": -39.4
+  },
+  "nudges": {
+   "count": 8,
+   "base_wide25": {
+    "trades": 8997,
+    "mean_bp": 31.0,
+    "usd_per_day": 5.5
+   },
+   "base_own_usd_per_day": 40.5,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    33.3,
+    41.6
+   ],
+   "wide25_mean_bp_range": [
+    23.3,
+    35.7
+   ]
+  }
+ },
+ "r24": {
+  "key": "r24",
+  "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day",
+  "file": "leveraged-etfs/24_nvdl_amdl_short_trend_rider_above_a_rising_10_day.json",
+  "costs": {
+   "own": {
+    "slippage": 8.0
+   },
+   "wide": {
+    "slippage": 8.0
+   }
+  },
+  "rules": {
+   "entry": [
+    "close > sma10 and sma20_slope > 0 and ret5 > 0"
+   ],
+   "exit": [
+    "close < sma10"
+   ],
+   "risk": {
+    "max_position_pct": 1.0,
+    "max_positions": 1,
+    "max_gross_exposure": 1.0,
+    "stop_loss_pct": 0.1
+   }
+  },
+  "own": {
+   "funds": [
+    "NVDA.2X",
+    "AMD.2X"
+   ],
+   "from": "2005-02-08",
+   "to": "2026-09-21",
+   "sessions": 5438,
+   "usd_per_day": 49.8,
+   "sharpe": 0.76,
+   "worst_day": -8492.0,
+   "worst_stretch": -42209.0,
+   "days_in_market": 0.551,
+   "trades": 384,
+   "mean_bp": 332.2,
+   "median_bp": -226.2,
+   "win_rate": 0.414,
+   "avg_win_pct": 18.44,
+   "avg_loss_pct": -7.36,
+   "profit_factor": 1.77,
+   "t_stat": 2.83,
+   "years_usd_per_day": {
+    "2005": 66.2,
+    "2006": 50.5,
+    "2007": 7.4,
+    "2008": -33.6,
+    "2009": 40.4,
+    "2010": 32.2,
+    "2011": 31.6,
+    "2012": 42.7,
+    "2013": -42.0,
+    "2014": 11.9,
+    "2015": 59.8,
+    "2016": 98.8,
+    "2017": 8.0,
+    "2018": 129.8,
+    "2019": 56.0,
+    "2020": 126.8,
+    "2021": 132.9,
+    "2022": -23.8,
+    "2023": 87.6,
+    "2024": 73.4,
+    "2025": 2.5,
+    "2026": 173.6
+   },
+   "years_up": 19,
+   "years": 22,
+   "hold_usd_per_day": 71.2,
+   "hold_worst_stretch": -108468.0,
+   "resampled_worst_stretch": {
+    "median": -36551.0,
+    "p05": -66457.0,
+    "p95": -23103.0
+   },
+   "resampled_loses_money": 0.002
+  },
+  "wide": {
+   "funds": 173,
+   "skipped": [
+    "JNPR.2X",
+    "BK.2X",
+    "MMC.2X"
+   ],
+   "trades": 49537,
+   "mean_bp": 8.7,
+   "median_bp": -155.5,
+   "win_rate": 0.353,
+   "avg_win_pct": 8.06,
+   "avg_loss_pct": -4.27,
+   "profit_factor": 1.03,
+   "t_stat": 2.08,
+   "mean_bp_95ci": [
+    0.8,
+    16.7
+   ],
+   "funds_profitable": 0.526,
+   "funds_beat_holding": 0.0,
+   "funds_better_sharpe_than_holding": 0.035,
+   "usd_per_day_median_fund": 0.5,
+   "hold_usd_per_day_median_fund": 24.7,
+   "ETF 3x": {
+    "funds": 30,
+    "trades": 8621,
+    "mean_bp": -10.5,
+    "median_bp": -152.3,
+    "win_rate": 0.369,
+    "avg_win_pct": 7.4,
+    "avg_loss_pct": -4.5,
+    "profit_factor": 0.96,
+    "t_stat": -1.12,
+    "funds_profitable": 0.533,
+    "usd_per_day_median_fund": 0.2,
+    "hold_usd_per_day_median_fund": 22.7
+   },
+   "stock 2x": {
+    "funds": 143,
+    "trades": 40916,
+    "mean_bp": 12.8,
+    "median_bp": -156.0,
+    "win_rate": 0.35,
+    "avg_win_pct": 8.2,
+    "avg_loss_pct": -4.22,
+    "profit_factor": 1.05,
+    "t_stat": 2.73,
+    "funds_profitable": 0.524,
+    "usd_per_day_median_fund": 0.6,
+    "hold_usd_per_day_median_fund": 24.8
+   },
+   "years": {
+    "2005": {
+     "trades": 2110,
+     "mean_bp": 56.8
+    },
+    "2006": {
+     "trades": 2457,
+     "mean_bp": 2.3
+    },
+    "2007": {
+     "trades": 2309,
+     "mean_bp": -13.9
+    },
+    "2008": {
+     "trades": 1828,
+     "mean_bp": -316.9
+    },
+    "2009": {
+     "trades": 2622,
+     "mean_bp": -29.9
+    },
+    "2010": {
+     "trades": 2236,
+     "mean_bp": 81.3
+    },
+    "2011": {
+     "trades": 2308,
+     "mean_bp": -133.6
+    },
+    "2012": {
+     "trades": 2426,
+     "mean_bp": 51.7
+    },
+    "2013": {
+     "trades": 2508,
+     "mean_bp": 103.4
+    },
+    "2014": {
+     "trades": 2563,
+     "mean_bp": 30.3
+    },
+    "2015": {
+     "trades": 2141,
+     "mean_bp": -53.7
+    },
+    "2016": {
+     "trades": 2329,
+     "mean_bp": 26.2
+    },
+    "2017": {
+     "trades": 2404,
+     "mean_bp": 65.6
+    },
+    "2018": {
+     "trades": 2004,
+     "mean_bp": 4.4
+    },
+    "2019": {
+     "trades": 2427,
+     "mean_bp": 32.7
+    },
+    "2020": {
+     "trades": 2484,
+     "mean_bp": 21.5
+    },
+    "2021": {
+     "trades": 2351,
+     "mean_bp": 105.1
+    },
+    "2022": {
+     "trades": 1831,
+     "mean_bp": -40.5
+    },
+    "2023": {
+     "trades": 1965,
+     "mean_bp": -4.9
+    },
+    "2024": {
+     "trades": 2341,
+     "mean_bp": 34.0
+    },
+    "2025": {
+     "trades": 2209,
+     "mean_bp": -8.3
+    },
+    "2026": {
+     "trades": 1684,
+     "mean_bp": 113.6
+    }
+   },
+   "years_up": 14,
+   "other_funds_only": {
+    "trades": 49005,
+    "mean_bp": 5.2,
+    "median_bp": -155.0,
+    "win_rate": 0.353,
+    "avg_win_pct": 7.93,
+    "avg_loss_pct": -4.24,
+    "profit_factor": 1.02,
+    "t_stat": 1.26
+   },
+   "random_mean_bp": 51.1,
+   "random_mean_bp_p95": 58.0,
+   "timing_edge_bp": -42.3,
+   "p_value_vs_random": 1.0,
+   "mean_bp_3x_slippage": -23.3,
+   "mean_bp_5x_slippage": -55.3
+  },
+  "nudges": {
+   "count": 2,
+   "base_wide25": {
+    "trades": 7127,
+    "mean_bp": 10.0,
+    "usd_per_day": 2.1
+   },
+   "base_own_usd_per_day": 49.8,
+   "share_profitable_wide25": 1.0,
+   "share_profitable_own": 1.0,
+   "own_usd_per_day_range": [
+    50.5,
+    50.7
+   ],
+   "wide25_mean_bp_range": [
+    8.6,
+    11.0
+   ]
+  }
+ }
+}

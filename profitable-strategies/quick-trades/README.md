@@ -113,6 +113,18 @@ a 1x MSTR sleeve. At 4x it averages about $100 a day, but its worst stretch
 was larger than the account. $200 a day at survivable risk needs about three
 to four times the capital.
 
+**Later that night ([top5](../top5/README.md)):**
+
+- **Retuning does not raise it.** Of 162 settings of the breakout, the ones
+  that led on 2013-2019 did no better on 2020-2026 than the rest.
+- **The edge is the Nasdaq-100's own.** Over 11,801 trades on four US
+  indexes, the Nasdaq-100 carries it (3,176 trades, +3.55 bp, t = 4.2, all
+  14 years up). The S&P 500, the Dow and the Russell 2000 are flat or
+  losing.
+- **Adding NQ Managed Long at 2x** lifts the book to $99-113 a day over
+  2013-2026. But that leg shows no timing skill over 142,787 trades, and lost
+  $38,145 on $25,000 through 2001-2002 and 2008.
+
 ## 1. Nasdaq-100 noise-area breakout
 
 From Zarattini and Aziz (2023), *Beat the Market: An Effective Intraday

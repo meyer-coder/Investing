@@ -39,9 +39,10 @@ T = 390
 
 
 def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 1.0, vwap_stop: bool = True,
-               cost: float = 1e-4, start_check: int = 0, hard_stop: float = 0.0):
+               cost: float = 1e-4, start_check: int = 0, hard_stop: float = 0.0, log: Optional[list] = None):
     """Per day: net return on the notional, the day's lowest running return (open trade marked at bar extremes),
-    trades, and minutes in the market."""
+    trades, and minutes in the market.  With `log`, each finished trade is appended to it as
+    (day index, side, entry minute, exit minute, net return, why)."""
     O, H, L, C, pc = D["O"], D["H"], D["L"], D["C"], D["pc"]
     nd, T = O.shape
     move = np.abs(C / O[:, :1] - 1.0)
@@ -70,6 +71,8 @@ def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 
                         fill = stop_px
                     worst = min(worst, total + pos * (fill / px - 1.0) - cost / 2)
                     total += pos * (fill / px - 1.0) - cost
+                    if log is not None:
+                        log.append((i, pos, t_in, int(k), pos * (fill / px - 1.0) - cost, "stop"))
                     m += k + 1 - t_in
                     pos = 0
                     worst = min(worst, total)
@@ -81,6 +84,8 @@ def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 
                       c[t] > (min(dn[t], vwap[t]) if vwap_stop else dn[t])
                 if out:
                     total += pos * (o[t + 1] / px - 1.0) - cost
+                    if log is not None:
+                        log.append((i, pos, t_in, t + 1, pos * (o[t + 1] / px - 1.0) - cost, "band or VWAP"))
                     m += t + 1 - t_in
                     pos = 0
                     worst = min(worst, total)
@@ -99,12 +104,16 @@ def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 
                 fill = stop_px if k == t_in else (min(o[k], stop_px) if pos > 0 else max(o[k], stop_px))
                 worst = min(worst, total + pos * (fill / px - 1.0) - cost / 2)
                 total += pos * (fill / px - 1.0) - cost
+                if log is not None:
+                    log.append((i, pos, t_in, int(k), pos * (fill / px - 1.0) - cost, "stop"))
                 m += k + 1 - t_in
                 pos = 0
         if pos:
             seg_lo = l[t_in:].min() if pos > 0 else h[t_in:].max()
             worst = min(worst, total + pos * (seg_lo / px - 1.0) - cost / 2)
             total += pos * (c[T - 1] / px - 1.0) - cost
+            if log is not None:
+                log.append((i, pos, t_in, T - 1, pos * (c[T - 1] / px - 1.0) - cost, "close"))
             m += T - t_in
         ret[i], low[i], ntr[i], mins[i] = total, min(worst, total), n, m
     return ret, low, ntr, mins

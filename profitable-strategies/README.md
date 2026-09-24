@@ -1,5 +1,22 @@
 # Profitable strategies
 
+**New: [the top five, tested over 10,000+ trades each](top5/README.md).**
+Every strategy below was ranked on one footing: dollars a day on $25,000,
+2012 to 2026. The five that make the most, $66 to $92 a day, are all swing
+trades on leveraged funds from the top-50 list.
+
+- **No timing skill.** Run over 40,000 to 226,000 trades each on 173 funds,
+  none of them picks its days much better than random entries on the same
+  funds held just as long. The best, 01D4, is ahead by 3.8 bp a trade, gone
+  at three times the slippage. Holding the funds made more.
+- **Paper bots.** The same holds for paper bot #2 and split bots 1 and 2.
+- **The one edge that held.** The Nasdaq-100 breakout: 3,176 trades, t =
+  4.2, every year from 2013 positive. On the S&P 500, the Dow and the
+  Russell 2000 the same rule is flat or losing.
+- **$100 a day.** Adding NQ Managed Long lifts the quick-trade book to about
+  $100 a day over 2013-2026. That leg failed the same test and lost $38,000
+  on $25,000 through 2001-2002 and 2008.
+
 **New: [quick trades, in and out the same day](quick-trades/README.md).** With
 the three-minute cap relaxed, two same-day trades held up in every period and
 setting tested:
