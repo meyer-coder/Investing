@@ -40,3 +40,6 @@ strategies/etf/combos.json
 
 # Dukascopy raw minute files, re-downloadable with strategies/mnq/duka.py
 data/cache/duka/
+
+# Stock panel cache built by strategies/scalp/panel.py
+data/cache/duka/panel*/
