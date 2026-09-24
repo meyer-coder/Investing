@@ -39,7 +39,7 @@ T = 390
 
 
 def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 1.0, vwap_stop: bool = True,
-               cost: float = 1e-4, start_check: int = 0):
+               cost: float = 1e-4, start_check: int = 0, hard_stop: float = 0.0):
     """Per day: net return on the notional, the day's lowest running return (open trade marked at bar extremes),
     trades, and minutes in the market."""
     O, H, L, C, pc = D["O"], D["H"], D["L"], D["C"], D["pc"]
@@ -58,6 +58,22 @@ def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 
         vwap = np.cumsum((h + l + c) / 3) / np.arange(1, T + 1)
         pos, px, t_in, total, worst, n, m = 0, 0.0, 0, 0.0, 0.0, 0, 0
         for t in checks:
+            if pos and hard_stop:
+                # a resting stop hard_stop away from the entry, watched every minute since the last look
+                stop_px = px * (1 - pos * hard_stop)
+                seg = np.arange(max(t_in, t - every + 1), t + 1)
+                hit = seg[(l[seg] <= stop_px) if pos > 0 else (h[seg] >= stop_px)]
+                if len(hit):
+                    k = hit[0]
+                    fill = min(o[k], stop_px) if pos > 0 else max(o[k], stop_px)
+                    if k == t_in:
+                        fill = stop_px
+                    worst = min(worst, total + pos * (fill / px - 1.0) - cost / 2)
+                    total += pos * (fill / px - 1.0) - cost
+                    m += k + 1 - t_in
+                    pos = 0
+                    worst = min(worst, total)
+                    continue
             if pos:
                 seg_lo = l[t_in:t + 1].min() if pos > 0 else h[t_in:t + 1].max()
                 worst = min(worst, total + pos * (seg_lo / px - 1.0) - cost / 2)
@@ -74,6 +90,17 @@ def noise_days(D: dict, lookback: int = 14, every: int = 30, band_mult: float = 
                 if side:
                     pos, px, t_in = side, o[t + 1], t + 1
                     n += 1
+        if pos and hard_stop:
+            stop_px = px * (1 - pos * hard_stop)
+            seg = np.arange(max(t_in, checks[-1] + 1 if checks else t_in), T)
+            hit = seg[(l[seg] <= stop_px) if pos > 0 else (h[seg] >= stop_px)]
+            if len(hit):
+                k = hit[0]
+                fill = stop_px if k == t_in else (min(o[k], stop_px) if pos > 0 else max(o[k], stop_px))
+                worst = min(worst, total + pos * (fill / px - 1.0) - cost / 2)
+                total += pos * (fill / px - 1.0) - cost
+                m += k + 1 - t_in
+                pos = 0
         if pos:
             seg_lo = l[t_in:].min() if pos > 0 else h[t_in:].max()
             worst = min(worst, total + pos * (seg_lo / px - 1.0) - cost / 2)

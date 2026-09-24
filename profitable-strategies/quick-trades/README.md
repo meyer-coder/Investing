@@ -53,6 +53,12 @@ fifth session since 2020, each running until it passed or breached.
 The average day is big enough, but the swings are too big for a $3,000
 limit.
 
+A resting stop 0.25% from the entry helps a little (`trend.py`, `hard_stop`).
+It halves the worst day at QQQ 4x, to -$1,300, and with 2 MNQ it gets 45% of
+Combines through and breaches 48%. Recent days make a little less ($24
+instead of $28), and 0.4% and 0.6% stops do not line up with it, so treat it
+as an option rather than a proven improvement.
+
 ## 1. Nasdaq-100 noise-area breakout
 
 From Zarattini and Aziz (2023), *Beat the Market: An Effective Intraday
