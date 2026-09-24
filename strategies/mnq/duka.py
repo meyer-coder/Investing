@@ -1,6 +1,7 @@
 """Years of one-minute Nasdaq-100 bars from Dukascopy's free archive.
 
     python strategies/mnq/duka.py 2020-09-01 2026-09-23     # six years, a month per request; resumable
+    python strategies/mnq/duka.py 2024-09-01 2026-09-23 10SEC  # 10-second bars (about nine requests a month)
     python strategies/mnq/duka.py --status                  # what is on disk
 
 Dukascopy's chart service returns up to 30,000 one-minute candles a request
@@ -39,14 +40,16 @@ Row = Tuple[str, float, float, float, float, float]
 
 
 JSON_URL = ("https://freeserv.dukascopy.com/2.0/?path=chart/json3&instrument=USATECH.IDX%2FUSD&offer_side=B"
-            "&interval=1MIN&splits=true&stocks=true&limit=30000&time_direction=N&timestamp={ms}&jsonp=cb")
+            "&interval={interval}&splits=true&stocks=true&limit=30000&time_direction=N&timestamp={ms}&jsonp=cb")
+SECONDS = ROOT / "data" / "cache" / "duka" / "seconds10"          # 10-second bars
+STEP = {"1MIN": 60, "10SEC": 10, "1SEC": 1}
 MONTHS = ROOT / "data" / "cache" / "duka" / "months_wide"     # 11:00-21:30 UTC: from 07:00 New York in summer
 WINDOW = (11 * 60, 21 * 60 + 30)
 
 
-def _json_chunk(ms: int) -> Optional[np.ndarray]:
+def _json_chunk(ms: int, interval: str = "1MIN") -> Optional[np.ndarray]:
     """Candles from `ms` on: rows of (epoch seconds, open, high, low, close); None when refused."""
-    req = urllib.request.Request(JSON_URL.format(ms=ms), headers={"User-Agent": "Mozilla/5.0",
+    req = urllib.request.Request(JSON_URL.format(ms=ms, interval=interval), headers={"User-Agent": "Mozilla/5.0",
                                                                   "Referer": "https://freeserv.dukascopy.com/"})
     try:
         with urllib.request.urlopen(req, timeout=90) as r:
@@ -62,14 +65,16 @@ def _json_chunk(ms: int) -> Optional[np.ndarray]:
     return a
 
 
-def fetch(start: dt.date, end: dt.date, pace: float = 3.0) -> int:
-    """Every month from `start` to `end` not yet on disk, one request each
-    (a second one when a month has more candles than a request carries)."""
-    MONTHS.mkdir(parents=True, exist_ok=True)
+def fetch(start: dt.date, end: dt.date, pace: float = 3.0, interval: str = "1MIN") -> int:
+    """Every month from `start` to `end` not yet on disk, as many requests as
+    it takes (a month of minutes is two; of 10-second bars, about nine)."""
+    folder = MONTHS if interval == "1MIN" else SECONDS
+    step = STEP[interval]
+    folder.mkdir(parents=True, exist_ok=True)
     got = 0
     y, m = start.year, start.month
     while (y, m) <= (end.year, end.month):
-        path = MONTHS / f"{y:04d}-{m:02d}.npz"
+        path = folder / f"{y:04d}-{m:02d}.npz"
         nxt = (y + (m == 12), 1 if m == 12 else m + 1)
         month_end = dt.datetime(*nxt, 1, tzinfo=dt.timezone.utc).timestamp()
         if not path.exists() or (y, m) == (end.year, end.month):
@@ -77,7 +82,7 @@ def fetch(start: dt.date, end: dt.date, pace: float = 3.0) -> int:
             parts = []
             while t < month_end:
                 for attempt in range(6):
-                    a = _json_chunk(int(t * 1000))
+                    a = _json_chunk(int(t * 1000), interval)
                     if a is not None:
                         break
                     time.sleep(10 * (attempt + 1))
@@ -89,9 +94,9 @@ def fetch(start: dt.date, end: dt.date, pace: float = 3.0) -> int:
                     break
                 a = a[a[:, 0] < month_end]
                 parts.append(a)
-                if not len(a) or a[-1, 0] + 60 >= month_end:
+                if not len(a) or a[-1, 0] + step >= month_end:
                     break
-                t = a[-1, 0] + 60
+                t = a[-1, 0] + step
             a = np.concatenate(parts) if parts else np.zeros((0, 5))
             hm = (a[:, 0] % 86400) / 60.0
             keep = (hm >= WINDOW[0]) & (hm < WINDOW[1])
@@ -222,9 +227,27 @@ def status() -> str:
             f"{len(days)} per-day files")
 
 
+def load_seconds(start: str = "2000-01-01", end: str = "2100-01-01", first=(8, 0), last=(15, 59)):
+    """10-second bars by New York date: {date: array of (epoch seconds, open, high, low, close)}."""
+    out: Dict[str, list] = {}
+    for p in sorted(SECONDS.glob("*.npz")):
+        if not (start[:7] <= p.stem <= end[:7]):
+            continue
+        a = np.load(p)["a"]
+        for row in a:
+            t = dt.datetime.fromtimestamp(row[0], tz=dt.timezone.utc).astimezone(NY)
+            if t.weekday() >= 5 or not (first <= (t.hour, t.minute) <= last):
+                continue
+            d = t.strftime("%Y-%m-%d")
+            if start <= d <= end:
+                out.setdefault(d, []).append(row)
+    return {d: np.array(v) for d, v in sorted(out.items())}
+
+
 if __name__ == "__main__":
     if "--status" in sys.argv:
         print(status())
     else:
         a, b = (dt.date.fromisoformat(x) for x in sys.argv[1:3])
-        print(fetch(a, b), "days fetched;", status())
+        interval = sys.argv[3] if len(sys.argv) > 3 else "1MIN"
+        print(fetch(a, b, interval=interval), "months fetched;", status())
