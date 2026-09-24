@@ -1,0 +1,1794 @@
+{
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 5.4,
+  "test_usd": 22.0,
+  "test_up": 0.594,
+  "trades_per_day": 13.01,
+  "bp_per_trade": 1.29,
+  "years": {
+   "2022": -19.6,
+   "2023": 17.1,
+   "2024": 4.1,
+   "2025": 23.0,
+   "2026": 22.5
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 5.4,
+  "test_usd": 18.8,
+  "test_up": 0.583,
+  "trades_per_day": 9.01,
+  "bp_per_trade": 1.64,
+  "years": {
+   "2022": -8.4,
+   "2023": 12.4,
+   "2024": 0.7,
+   "2025": 17.6,
+   "2026": 27.9
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 4.9,
+  "test_usd": 16.0,
+  "test_up": 0.575,
+  "trades_per_day": 5.24,
+  "bp_per_trade": 2.43,
+  "years": {
+   "2022": -12.1,
+   "2023": 10.9,
+   "2024": 8.6,
+   "2025": 17.9,
+   "2026": 11.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 4.2,
+  "test_usd": 10.4,
+  "test_up": 0.543,
+  "trades_per_day": 6.0,
+  "bp_per_trade": 1.49,
+  "years": {
+   "2022": -22.2,
+   "2023": 14.3,
+   "2024": 2.6,
+   "2025": 5.3,
+   "2026": 17.6
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 3.2,
+  "test_usd": 5.8,
+  "test_up": 0.541,
+  "trades_per_day": 5.6,
+  "bp_per_trade": 0.97,
+  "years": {
+   "2022": -8.9,
+   "2023": 6.8,
+   "2024": 2.9,
+   "2025": 4.6,
+   "2026": 8.3
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 2.9,
+  "test_usd": 10.1,
+  "test_up": 0.49,
+  "trades_per_day": 2.4,
+  "bp_per_trade": 3.32,
+  "years": {
+   "2022": -0.9,
+   "2023": 5.5,
+   "2024": 4.8,
+   "2025": 10.2,
+   "2026": 8.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 2.9,
+  "test_usd": 22.5,
+  "test_up": 0.606,
+  "trades_per_day": 8.76,
+  "bp_per_trade": 1.79,
+  "years": {
+   "2022": -24.0,
+   "2023": 9.7,
+   "2024": 9.5,
+   "2025": 25.7,
+   "2026": 17.9
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 2.8,
+  "test_usd": 6.1,
+  "test_up": 0.484,
+  "trades_per_day": 2.93,
+  "bp_per_trade": 1.83,
+  "years": {
+   "2022": -12.3,
+   "2023": 6.8,
+   "2024": 5.9,
+   "2025": 4.8,
+   "2026": 4.7
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 2.8,
+  "test_usd": 11.9,
+  "test_up": 0.583,
+  "trades_per_day": 9.98,
+  "bp_per_trade": 1.5,
+  "years": {
+   "2022": -7.8,
+   "2023": 7.5,
+   "2024": 0.5,
+   "2025": 12.0,
+   "2026": 16.1
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 2.6,
+  "test_usd": 19.7,
+  "test_up": 0.6,
+  "trades_per_day": 5.83,
+  "bp_per_trade": 2.35,
+  "years": {
+   "2022": -19.0,
+   "2023": 7.6,
+   "2024": 6.5,
+   "2025": 19.6,
+   "2026": 22.6
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 2.4,
+  "test_usd": 10.0,
+  "test_up": 0.577,
+  "trades_per_day": 5.59,
+  "bp_per_trade": 2.27,
+  "years": {
+   "2022": -6.9,
+   "2023": 6.6,
+   "2024": 4.0,
+   "2025": 10.6,
+   "2026": 8.1
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 2.3,
+  "test_usd": 14.4,
+  "test_up": 0.561,
+  "trades_per_day": 3.4,
+  "bp_per_trade": 3.02,
+  "years": {
+   "2022": -11.6,
+   "2023": 6.4,
+   "2024": 6.6,
+   "2025": 11.9,
+   "2026": 16.3
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 2.2,
+  "test_usd": 12.3,
+  "test_up": 0.581,
+  "trades_per_day": 6.08,
+  "bp_per_trade": 1.47,
+  "years": {
+   "2022": -6.1,
+   "2023": 6.1,
+   "2024": 2.9,
+   "2025": 12.3,
+   "2026": 13.3
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 2.1,
+  "test_usd": 6.5,
+  "test_up": 0.547,
+  "trades_per_day": 6.22,
+  "bp_per_trade": 1.41,
+  "years": {
+   "2022": -15.1,
+   "2023": 8.6,
+   "2024": 1.1,
+   "2025": 3.3,
+   "2026": 11.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 2.0,
+  "test_usd": 8.5,
+  "test_up": 0.549,
+  "trades_per_day": 4.28,
+  "bp_per_trade": 1.51,
+  "years": {
+   "2022": -2.4,
+   "2023": 4.6,
+   "2024": -1.2,
+   "2025": 8.6,
+   "2026": 13.8
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 1.8,
+  "test_usd": 12.3,
+  "test_up": 0.602,
+  "trades_per_day": 15.94,
+  "bp_per_trade": 0.91,
+  "years": {
+   "2022": -14.0,
+   "2023": 10.4,
+   "2024": -1.5,
+   "2025": 13.0,
+   "2026": 14.2
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 1.7,
+  "test_usd": 17.8,
+  "test_up": 0.567,
+  "trades_per_day": 9.76,
+  "bp_per_trade": 1.23,
+  "years": {
+   "2022": -29.8,
+   "2023": 13.1,
+   "2024": -1.5,
+   "2025": 13.0,
+   "2026": 31.0
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 1.5,
+  "test_usd": 4.9,
+  "test_up": 0.516,
+  "trades_per_day": 3.2,
+  "bp_per_trade": 1.23,
+  "years": {
+   "2022": -21.9,
+   "2023": 9.0,
+   "2024": 2.1,
+   "2025": -0.3,
+   "2026": 10.5
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 1.5,
+  "test_usd": 12.0,
+  "test_up": 0.6,
+  "trades_per_day": 6.15,
+  "bp_per_trade": 2.25,
+  "years": {
+   "2022": -12.0,
+   "2023": 4.8,
+   "2024": 3.6,
+   "2025": 12.6,
+   "2026": 13.1
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 1.4,
+  "test_usd": 4.9,
+  "test_up": 0.484,
+  "trades_per_day": 2.62,
+  "bp_per_trade": 1.46,
+  "years": {
+   "2022": -11.9,
+   "2023": 6.3,
+   "2024": 1.4,
+   "2025": -0.0,
+   "2026": 10.9
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 1.3,
+  "test_usd": 3.8,
+  "test_up": 0.486,
+  "trades_per_day": 2.98,
+  "bp_per_trade": 1.73,
+  "years": {
+   "2022": -7.4,
+   "2023": 3.5,
+   "2024": 3.9,
+   "2025": 3.3,
+   "2026": 2.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 1.3,
+  "test_usd": 6.7,
+  "test_up": 0.494,
+  "trades_per_day": 2.55,
+  "bp_per_trade": 3.2,
+  "years": {
+   "2022": -0.1,
+   "2023": 2.8,
+   "2024": 2.3,
+   "2025": 6.6,
+   "2026": 6.3
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 1.3,
+  "test_usd": 8.9,
+  "test_up": 0.559,
+  "trades_per_day": 3.48,
+  "bp_per_trade": 3.02,
+  "years": {
+   "2022": -7.0,
+   "2023": 3.8,
+   "2024": 4.3,
+   "2025": 7.3,
+   "2026": 10.1
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 1.0,
+  "test_usd": 4.2,
+  "test_up": 0.376,
+  "trades_per_day": 1.34,
+  "bp_per_trade": 2.41,
+  "years": {
+   "2022": -5.0,
+   "2023": 4.3,
+   "2024": 1.2,
+   "2025": 3.8,
+   "2026": 3.7
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.7,
+  "test_usd": 11.5,
+  "test_up": 0.563,
+  "trades_per_day": 10.69,
+  "bp_per_trade": 1.18,
+  "years": {
+   "2022": -21.3,
+   "2023": 9.0,
+   "2024": -2.1,
+   "2025": 8.5,
+   "2026": 20.5
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.7,
+  "test_usd": 5.9,
+  "test_up": 0.561,
+  "trades_per_day": 4.79,
+  "bp_per_trade": 1.41,
+  "years": {
+   "2022": -1.9,
+   "2023": 1.9,
+   "2024": -0.7,
+   "2025": 6.6,
+   "2026": 8.3
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.6,
+  "test_usd": 3.3,
+  "test_up": 0.514,
+  "trades_per_day": 3.23,
+  "bp_per_trade": 1.23,
+  "years": {
+   "2022": -13.0,
+   "2023": 4.9,
+   "2024": 1.5,
+   "2025": 0.2,
+   "2026": 6.2
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 0.6,
+  "test_usd": 7.8,
+  "test_up": 0.482,
+  "trades_per_day": 1.83,
+  "bp_per_trade": 2.84,
+  "years": {
+   "2022": -14.1,
+   "2023": 3.6,
+   "2024": 4.8,
+   "2025": 5.6,
+   "2026": 9.3
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 0.6,
+  "test_usd": 6.2,
+  "test_up": 0.545,
+  "trades_per_day": 6.39,
+  "bp_per_trade": 1.08,
+  "years": {
+   "2022": -11.2,
+   "2023": 2.7,
+   "2024": 0.8,
+   "2025": 3.7,
+   "2026": 12.8
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.6,
+  "test_usd": 3.1,
+  "test_up": 0.48,
+  "trades_per_day": 2.69,
+  "bp_per_trade": 1.42,
+  "years": {
+   "2022": -8.7,
+   "2023": 3.9,
+   "2024": 0.4,
+   "2025": 0.3,
+   "2026": 7.0
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 0.5,
+  "test_usd": 10.1,
+  "test_up": 0.537,
+  "trades_per_day": 4.41,
+  "bp_per_trade": 1.48,
+  "years": {
+   "2022": -16.7,
+   "2023": 5.4,
+   "2024": 0.6,
+   "2025": 2.7,
+   "2026": 23.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 0.5,
+  "test_usd": 13.9,
+  "test_up": 0.61,
+  "trades_per_day": 9.91,
+  "bp_per_trade": 1.5,
+  "years": {
+   "2022": -14.7,
+   "2023": 5.4,
+   "2024": 3.4,
+   "2025": 17.0,
+   "2026": 10.3
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": 0.3,
+  "test_usd": 2.3,
+  "test_up": 0.376,
+  "trades_per_day": 1.36,
+  "bp_per_trade": 1.94,
+  "years": {
+   "2022": -3.0,
+   "2023": 2.0,
+   "2024": 0.7,
+   "2025": 2.4,
+   "2026": 1.3
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.3,
+  "test_usd": 6.1,
+  "test_up": 0.541,
+  "trades_per_day": 4.8,
+  "bp_per_trade": 1.37,
+  "years": {
+   "2022": -9.0,
+   "2023": 3.4,
+   "2024": -0.4,
+   "2025": 2.7,
+   "2026": 13.2
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.2,
+  "test_usd": 4.9,
+  "test_up": 0.48,
+  "trades_per_day": 1.86,
+  "bp_per_trade": 2.84,
+  "years": {
+   "2022": -8.5,
+   "2023": 2.1,
+   "2024": 3.2,
+   "2025": 3.7,
+   "2026": 5.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": 0.2,
+  "test_usd": 5.1,
+  "test_up": 0.518,
+  "trades_per_day": 2.6,
+  "bp_per_trade": 2.1,
+  "years": {
+   "2022": 1.6,
+   "2023": 2.1,
+   "2024": 0.1,
+   "2025": 4.3,
+   "2026": 5.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": 0.2,
+  "test_usd": 12.4,
+  "test_up": 0.579,
+  "trades_per_day": 4.1,
+  "bp_per_trade": 1.89,
+  "years": {
+   "2022": -0.3,
+   "2023": 1.7,
+   "2024": 3.5,
+   "2025": 12.8,
+   "2026": 10.9
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": 0.1,
+  "test_usd": 7.7,
+  "test_up": 0.51,
+  "trades_per_day": 2.49,
+  "bp_per_trade": 1.93,
+  "years": {
+   "2022": 2.1,
+   "2023": 3.2,
+   "2024": 0.0,
+   "2025": 6.3,
+   "2026": 8.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": 0.1,
+  "test_usd": 4.9,
+  "test_up": 0.421,
+  "trades_per_day": 1.53,
+  "bp_per_trade": 3.42,
+  "years": {
+   "2022": -1.9,
+   "2023": 1.0,
+   "2024": 1.6,
+   "2025": 4.2,
+   "2026": 5.7
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": 0.0,
+  "test_usd": 8.0,
+  "test_up": 0.423,
+  "trades_per_day": 1.5,
+  "bp_per_trade": 3.32,
+  "years": {
+   "2022": -3.2,
+   "2023": 1.6,
+   "2024": 2.3,
+   "2025": 6.4,
+   "2026": 9.7
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": -0.0,
+  "test_usd": 9.1,
+  "test_up": 0.53,
+  "trades_per_day": 2.72,
+  "bp_per_trade": 2.07,
+  "years": {
+   "2022": -3.3,
+   "2023": 0.7,
+   "2024": 2.5,
+   "2025": 7.3,
+   "2026": 12.4
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": -0.1,
+  "test_usd": 5.3,
+  "test_up": 0.531,
+  "trades_per_day": 2.86,
+  "bp_per_trade": 1.9,
+  "years": {
+   "2022": -2.6,
+   "2023": 0.4,
+   "2024": 1.1,
+   "2025": 5.1,
+   "2026": 6.7
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -0.2,
+  "test_usd": 4.8,
+  "test_up": 0.547,
+  "trades_per_day": 6.17,
+  "bp_per_trade": 0.47,
+  "years": {
+   "2022": -18.6,
+   "2023": 6.4,
+   "2024": -0.9,
+   "2025": 1.1,
+   "2026": 10.3
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -0.3,
+  "test_usd": 7.5,
+  "test_up": 0.569,
+  "trades_per_day": 7.63,
+  "bp_per_trade": 0.98,
+  "years": {
+   "2022": -4.1,
+   "2023": 2.5,
+   "2024": -1.5,
+   "2025": 8.1,
+   "2026": 9.3
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -0.4,
+  "test_usd": 1.3,
+  "test_up": 0.374,
+  "trades_per_day": 1.39,
+  "bp_per_trade": 0.68,
+  "years": {
+   "2022": -0.8,
+   "2023": 0.9,
+   "2024": -0.9,
+   "2025": 0.7,
+   "2026": 2.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -0.4,
+  "test_usd": 8.2,
+  "test_up": 0.587,
+  "trades_per_day": 5.71,
+  "bp_per_trade": 1.42,
+  "years": {
+   "2022": -6.2,
+   "2023": 2.3,
+   "2024": 2.2,
+   "2025": 6.0,
+   "2026": 9.8
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -0.5,
+  "test_usd": 2.4,
+  "test_up": 0.374,
+  "trades_per_day": 1.37,
+  "bp_per_trade": 0.86,
+  "years": {
+   "2022": -1.4,
+   "2023": 2.0,
+   "2024": -1.6,
+   "2025": 1.1,
+   "2026": 3.8
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": -0.6,
+  "test_usd": 0.9,
+  "test_up": 0.374,
+  "trades_per_day": 1.44,
+  "bp_per_trade": 0.28,
+  "years": {
+   "2022": -8.5,
+   "2023": 2.9,
+   "2024": -1.2,
+   "2025": -0.8,
+   "2026": 2.9
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": -0.6,
+  "test_usd": 2.2,
+  "test_up": 0.305,
+  "trades_per_day": 0.82,
+  "bp_per_trade": 2.1,
+  "years": {
+   "2022": -4.5,
+   "2023": 0.8,
+   "2024": -0.2,
+   "2025": 2.5,
+   "2026": 2.0
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": -0.7,
+  "test_usd": 1.8,
+  "test_up": 0.376,
+  "trades_per_day": 1.42,
+  "bp_per_trade": 0.5,
+  "years": {
+   "2022": -14.3,
+   "2023": 5.1,
+   "2024": -2.0,
+   "2025": -1.3,
+   "2026": 5.7
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -0.8,
+  "test_usd": 12.1,
+  "test_up": 0.583,
+  "trades_per_day": 5.45,
+  "bp_per_trade": 1.3,
+  "years": {
+   "2022": -10.1,
+   "2023": 3.8,
+   "2024": 2.7,
+   "2025": 9.2,
+   "2026": 14.2
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -0.8,
+  "test_usd": 7.9,
+  "test_up": 0.583,
+  "trades_per_day": 4.67,
+  "bp_per_trade": 1.59,
+  "years": {
+   "2022": -0.2,
+   "2023": 0.1,
+   "2024": 0.9,
+   "2025": 9.2,
+   "2026": 6.4
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": -0.9,
+  "test_usd": 4.2,
+  "test_up": 0.307,
+  "trades_per_day": 0.81,
+  "bp_per_trade": 2.57,
+  "years": {
+   "2022": -7.6,
+   "2023": 1.6,
+   "2024": -0.3,
+   "2025": 4.2,
+   "2026": 4.6
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -1.0,
+  "test_usd": 2.5,
+  "test_up": 0.49,
+  "trades_per_day": 3.05,
+  "bp_per_trade": 0.54,
+  "years": {
+   "2022": -6.5,
+   "2023": -0.3,
+   "2024": 1.7,
+   "2025": 0.4,
+   "2026": 4.2
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.0,
+  "test_usd": 3.5,
+  "test_up": 0.441,
+  "trades_per_day": 1.55,
+  "bp_per_trade": 1.7,
+  "years": {
+   "2022": -1.9,
+   "2023": -0.5,
+   "2024": 0.4,
+   "2025": 2.1,
+   "2026": 5.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": -1.1,
+  "test_usd": 5.9,
+  "test_up": 0.545,
+  "trades_per_day": 8.18,
+  "bp_per_trade": 0.62,
+  "years": {
+   "2022": -15.2,
+   "2023": 3.8,
+   "2024": -3.5,
+   "2025": 2.3,
+   "2026": 15.4
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -1.2,
+  "test_usd": 3.8,
+  "test_up": 0.49,
+  "trades_per_day": 3.01,
+  "bp_per_trade": 0.55,
+  "years": {
+   "2022": -10.8,
+   "2023": 0.3,
+   "2024": 2.5,
+   "2025": 0.2,
+   "2026": 7.1
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.2,
+  "test_usd": 1.7,
+  "test_up": 0.488,
+  "trades_per_day": 2.74,
+  "bp_per_trade": 0.23,
+  "years": {
+   "2022": -8.7,
+   "2023": 2.2,
+   "2024": -1.6,
+   "2025": -0.6,
+   "2026": 4.7
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.2,
+  "test_usd": 7.9,
+  "test_up": 0.569,
+  "trades_per_day": 3.54,
+  "bp_per_trade": 1.97,
+  "years": {
+   "2022": -8.3,
+   "2023": -0.0,
+   "2024": 3.1,
+   "2025": 4.1,
+   "2026": 12.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.4,
+  "test_usd": 6.9,
+  "test_up": 0.541,
+  "trades_per_day": 6.35,
+  "bp_per_trade": 0.91,
+  "years": {
+   "2022": -12.4,
+   "2023": 2.8,
+   "2024": -0.5,
+   "2025": 3.3,
+   "2026": 12.3
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.5,
+  "test_usd": 1.3,
+  "test_up": 0.303,
+  "trades_per_day": 0.84,
+  "bp_per_trade": -0.06,
+  "years": {
+   "2022": -2.4,
+   "2023": -1.2,
+   "2024": -0.4,
+   "2025": 0.8,
+   "2026": 1.9
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.6,
+  "test_usd": 0.2,
+  "test_up": 0.39,
+  "trades_per_day": 1.46,
+  "bp_per_trade": -0.95,
+  "years": {
+   "2022": -6.3,
+   "2023": 1.0,
+   "2024": -1.9,
+   "2025": -1.8,
+   "2026": 2.1
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.7,
+  "test_usd": 3.8,
+  "test_up": 0.472,
+  "trades_per_day": 1.88,
+  "bp_per_trade": 1.21,
+  "years": {
+   "2022": -7.6,
+   "2023": -1.7,
+   "2024": 2.4,
+   "2025": 1.2,
+   "2026": 6.1
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -1.7,
+  "test_usd": 4.1,
+  "test_up": 0.545,
+  "trades_per_day": 6.69,
+  "bp_per_trade": 0.39,
+  "years": {
+   "2022": -14.8,
+   "2023": 2.2,
+   "2024": -1.3,
+   "2025": 1.6,
+   "2026": 8.7
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -1.7,
+  "test_usd": 5.9,
+  "test_up": 0.575,
+  "trades_per_day": 4.84,
+  "bp_per_trade": 0.91,
+  "years": {
+   "2022": 2.3,
+   "2023": -0.6,
+   "2024": -1.8,
+   "2025": 6.2,
+   "2026": 6.0
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -1.7,
+  "test_usd": 3.8,
+  "test_up": 0.514,
+  "trades_per_day": 2.9,
+  "bp_per_trade": 0.78,
+  "years": {
+   "2022": -0.9,
+   "2023": -1.6,
+   "2024": -0.6,
+   "2025": 2.6,
+   "2026": 6.1
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -1.8,
+  "test_usd": 11.9,
+  "test_up": 0.563,
+  "trades_per_day": 10.42,
+  "bp_per_trade": 1.01,
+  "years": {
+   "2022": -9.0,
+   "2023": -0.0,
+   "2024": -0.1,
+   "2025": 8.7,
+   "2026": 20.0
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.0,
+  "test_usd": 2.9,
+  "test_up": 0.488,
+  "trades_per_day": 2.69,
+  "bp_per_trade": 0.25,
+  "years": {
+   "2022": -12.1,
+   "2023": 3.3,
+   "2024": -2.6,
+   "2025": -1.4,
+   "2026": 8.2
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -2.0,
+  "test_usd": 3.3,
+  "test_up": 0.537,
+  "trades_per_day": 4.91,
+  "bp_per_trade": 0.32,
+  "years": {
+   "2022": -9.4,
+   "2023": 1.2,
+   "2024": -2.9,
+   "2025": 0.8,
+   "2026": 8.6
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -2.1,
+  "test_usd": 3.4,
+  "test_up": 0.506,
+  "trades_per_day": 3.3,
+  "bp_per_trade": 0.47,
+  "years": {
+   "2022": -11.5,
+   "2023": 0.7,
+   "2024": 0.1,
+   "2025": 0.2,
+   "2026": 6.9
+  }
+ },
+ "top 20 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.1,
+  "test_usd": 5.6,
+  "test_up": 0.439,
+  "trades_per_day": 1.53,
+  "bp_per_trade": 1.48,
+  "years": {
+   "2022": -3.2,
+   "2023": -1.2,
+   "2024": 0.3,
+   "2025": 3.3,
+   "2026": 8.2
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -2.1,
+  "test_usd": 3.2,
+  "test_up": 0.535,
+  "trades_per_day": 4.91,
+  "bp_per_trade": 0.27,
+  "years": {
+   "2022": 1.9,
+   "2023": -2.2,
+   "2024": -2.5,
+   "2025": 1.4,
+   "2026": 7.5
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -2.2,
+  "test_usd": 10.2,
+  "test_up": 0.598,
+  "trades_per_day": 6.24,
+  "bp_per_trade": 1.34,
+  "years": {
+   "2022": -10.8,
+   "2023": -0.9,
+   "2024": 1.0,
+   "2025": 8.0,
+   "2026": 15.3
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.3,
+  "test_usd": 2.3,
+  "test_up": 0.303,
+  "trades_per_day": 0.83,
+  "bp_per_trade": 0.13,
+  "years": {
+   "2022": -4.0,
+   "2023": -1.7,
+   "2024": -0.7,
+   "2025": 1.3,
+   "2026": 3.4
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.3,
+  "test_usd": 10.8,
+  "test_up": 0.539,
+  "trades_per_day": 6.21,
+  "bp_per_trade": 0.86,
+  "years": {
+   "2022": -18.2,
+   "2023": 4.3,
+   "2024": -1.7,
+   "2025": 4.4,
+   "2026": 20.8
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.3,
+  "test_usd": 12.2,
+  "test_up": 0.567,
+  "trades_per_day": 3.48,
+  "bp_per_trade": 1.79,
+  "years": {
+   "2022": -13.9,
+   "2023": -0.3,
+   "2024": 3.9,
+   "2025": 6.3,
+   "2026": 19.5
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -2.3,
+  "test_usd": 9.0,
+  "test_up": 0.573,
+  "trades_per_day": 10.2,
+  "bp_per_trade": 0.69,
+  "years": {
+   "2022": -4.0,
+   "2023": -0.9,
+   "2024": -2.1,
+   "2025": 5.3,
+   "2026": 17.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -2.4,
+  "test_usd": 8.2,
+  "test_up": 0.569,
+  "trades_per_day": 4.43,
+  "bp_per_trade": 0.84,
+  "years": {
+   "2022": 3.9,
+   "2023": -0.1,
+   "2024": -2.8,
+   "2025": 8.9,
+   "2026": 7.4
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.5,
+  "test_usd": 0.4,
+  "test_up": 0.39,
+  "trades_per_day": 1.45,
+  "bp_per_trade": -0.84,
+  "years": {
+   "2022": -10.2,
+   "2023": 2.0,
+   "2024": -3.2,
+   "2025": -3.0,
+   "2026": 3.8
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -2.6,
+  "test_usd": 5.5,
+  "test_up": 0.488,
+  "trades_per_day": 3.27,
+  "bp_per_trade": 0.58,
+  "years": {
+   "2022": -21.4,
+   "2023": 3.3,
+   "2024": -2.5,
+   "2025": -0.7,
+   "2026": 15.7
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -2.6,
+  "test_usd": 5.8,
+  "test_up": 0.472,
+  "trades_per_day": 1.87,
+  "bp_per_trade": 1.13,
+  "years": {
+   "2022": -12.6,
+   "2023": -2.7,
+   "2024": 3.9,
+   "2025": 1.6,
+   "2026": 10.0
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -3.0,
+  "test_usd": 6.5,
+  "test_up": 0.533,
+  "trades_per_day": 4.7,
+  "bp_per_trade": 0.49,
+  "years": {
+   "2022": -13.0,
+   "2023": 1.1,
+   "2024": -3.1,
+   "2025": 0.7,
+   "2026": 16.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -3.0,
+  "test_usd": 6.5,
+  "test_up": 0.514,
+  "trades_per_day": 2.82,
+  "bp_per_trade": 0.82,
+  "years": {
+   "2022": -0.5,
+   "2023": -3.4,
+   "2024": -0.5,
+   "2025": 3.9,
+   "2026": 10.7
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -3.0,
+  "test_usd": 5.4,
+  "test_up": 0.535,
+  "trades_per_day": 4.61,
+  "bp_per_trade": 0.35,
+  "years": {
+   "2022": 4.2,
+   "2023": -3.6,
+   "2024": -3.5,
+   "2025": 3.3,
+   "2026": 11.2
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -3.1,
+  "test_usd": 5.2,
+  "test_up": 0.506,
+  "trades_per_day": 3.27,
+  "bp_per_trade": 0.43,
+  "years": {
+   "2022": -18.9,
+   "2023": 1.4,
+   "2024": -0.0,
+   "2025": -0.1,
+   "2026": 11.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": -3.1,
+  "test_usd": 7.0,
+  "test_up": 0.535,
+  "trades_per_day": 6.7,
+  "bp_per_trade": 0.38,
+  "years": {
+   "2022": -24.9,
+   "2023": 4.2,
+   "2024": -5.6,
+   "2025": 2.3,
+   "2026": 18.9
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -3.1,
+  "test_usd": 3.6,
+  "test_up": 0.559,
+  "trades_per_day": 8.18,
+  "bp_per_trade": 0.09,
+  "years": {
+   "2022": 3.9,
+   "2023": -1.9,
+   "2024": -4.6,
+   "2025": 2.5,
+   "2026": 6.0
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -3.2,
+  "test_usd": 11.0,
+  "test_up": 0.61,
+  "trades_per_day": 10.24,
+  "bp_per_trade": 0.81,
+  "years": {
+   "2022": -11.1,
+   "2023": -0.4,
+   "2024": -0.3,
+   "2025": 10.4,
+   "2026": 13.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -3.2,
+  "test_usd": 14.1,
+  "test_up": 0.573,
+  "trades_per_day": 9.6,
+  "bp_per_trade": 0.72,
+  "years": {
+   "2022": -2.6,
+   "2023": -1.7,
+   "2024": -4.0,
+   "2025": 8.9,
+   "2026": 27.8
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 5 slots": {
+  "dev_usd": -3.3,
+  "test_usd": 10.1,
+  "test_up": 0.543,
+  "trades_per_day": 17.84,
+  "bp_per_trade": 0.41,
+  "years": {
+   "2022": -29.5,
+   "2023": 7.9,
+   "2024": -8.8,
+   "2025": 4.3,
+   "2026": 25.2
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -3.4,
+  "test_usd": 1.5,
+  "test_up": 0.48,
+  "trades_per_day": 3.54,
+  "bp_per_trade": -0.51,
+  "years": {
+   "2022": -13.3,
+   "2023": -0.4,
+   "2024": -2.9,
+   "2025": -2.5,
+   "2026": 7.5
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -3.4,
+  "test_usd": 4.1,
+  "test_up": 0.494,
+  "trades_per_day": 3.42,
+  "bp_per_trade": 0.27,
+  "years": {
+   "2022": -15.0,
+   "2023": -0.4,
+   "2024": -2.4,
+   "2025": -0.2,
+   "2026": 11.8
+  }
+ },
+ "top 10 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -3.5,
+  "test_usd": 1.6,
+  "test_up": 0.478,
+  "trades_per_day": 3.45,
+  "bp_per_trade": -0.3,
+  "years": {
+   "2022": -17.7,
+   "2023": 1.8,
+   "2024": -4.4,
+   "2025": -3.2,
+   "2026": 9.4
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -4.0,
+  "test_usd": 8.5,
+  "test_up": 0.559,
+  "trades_per_day": 15.13,
+  "bp_per_trade": 0.33,
+  "years": {
+   "2022": -29.5,
+   "2023": -0.6,
+   "2024": 2.0,
+   "2025": 0.6,
+   "2026": 20.8
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -4.0,
+  "test_usd": 17.6,
+  "test_up": 0.547,
+  "trades_per_day": 8.02,
+  "bp_per_trade": 1.07,
+  "years": {
+   "2022": -20.4,
+   "2023": -0.2,
+   "2024": 1.0,
+   "2025": 14.0,
+   "2026": 25.7
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -4.1,
+  "test_usd": 7.3,
+  "test_up": 0.557,
+  "trades_per_day": 6.98,
+  "bp_per_trade": 0.3,
+  "years": {
+   "2022": 3.5,
+   "2023": -2.7,
+   "2024": -5.0,
+   "2025": 6.4,
+   "2026": 10.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -4.2,
+  "test_usd": 7.4,
+  "test_up": 0.589,
+  "trades_per_day": 16.91,
+  "bp_per_trade": 0.22,
+  "years": {
+   "2022": -4.7,
+   "2023": -0.7,
+   "2024": -5.0,
+   "2025": 3.7,
+   "2026": 14.2
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -4.3,
+  "test_usd": 10.7,
+  "test_up": 0.547,
+  "trades_per_day": 12.98,
+  "bp_per_trade": 0.32,
+  "years": {
+   "2022": -32.0,
+   "2023": 0.1,
+   "2024": 4.1,
+   "2025": 2.8,
+   "2026": 20.5
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -4.3,
+  "test_usd": 7.9,
+  "test_up": 0.53,
+  "trades_per_day": 11.37,
+  "bp_per_trade": 0.35,
+  "years": {
+   "2022": -14.1,
+   "2023": -0.5,
+   "2024": -3.9,
+   "2025": 4.8,
+   "2026": 15.1
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -4.3,
+  "test_usd": 16.2,
+  "test_up": 0.596,
+  "trades_per_day": 6.04,
+  "bp_per_trade": 1.25,
+  "years": {
+   "2022": -16.6,
+   "2023": -2.8,
+   "2024": 1.1,
+   "2025": 12.4,
+   "2026": 25.4
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -4.7,
+  "test_usd": 10.6,
+  "test_up": 0.581,
+  "trades_per_day": 10.95,
+  "bp_per_trade": 0.59,
+  "years": {
+   "2022": -20.1,
+   "2023": 0.7,
+   "2024": -5.0,
+   "2025": 7.4,
+   "2026": 20.3
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -4.7,
+  "test_usd": 16.1,
+  "test_up": 0.608,
+  "trades_per_day": 9.41,
+  "bp_per_trade": 0.77,
+  "years": {
+   "2022": -17.4,
+   "2023": -0.5,
+   "2024": -0.5,
+   "2025": 15.7,
+   "2026": 18.7
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k1.5 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -4.8,
+  "test_usd": 14.5,
+  "test_up": 0.571,
+  "trades_per_day": 14.71,
+  "bp_per_trade": 0.42,
+  "years": {
+   "2022": -7.4,
+   "2023": -0.5,
+   "2024": -5.5,
+   "2025": 11.3,
+   "2026": 23.6
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -5.0,
+  "test_usd": 2.8,
+  "test_up": 0.498,
+  "trades_per_day": 8.63,
+  "bp_per_trade": -0.22,
+  "years": {
+   "2022": -12.6,
+   "2023": -1.2,
+   "2024": -6.9,
+   "2025": -0.9,
+   "2026": 11.4
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 3m | 3 slots": {
+  "dev_usd": -5.8,
+  "test_usd": 13.8,
+  "test_up": 0.524,
+  "trades_per_day": 14.72,
+  "bp_per_trade": 0.35,
+  "years": {
+   "2022": -39.5,
+   "2023": 7.7,
+   "2024": -11.1,
+   "2025": 9.8,
+   "2026": 28.2
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -6.1,
+  "test_usd": 8.8,
+  "test_up": 0.545,
+  "trades_per_day": 14.86,
+  "bp_per_trade": 0.22,
+  "years": {
+   "2022": -25.0,
+   "2023": -0.2,
+   "2024": -7.5,
+   "2025": 4.8,
+   "2026": 21.2
+  }
+ },
+ "top 36 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -6.8,
+  "test_usd": 12.4,
+  "test_up": 0.531,
+  "trades_per_day": 9.57,
+  "bp_per_trade": 0.39,
+  "years": {
+   "2022": -19.5,
+   "2023": -0.9,
+   "2024": -5.8,
+   "2025": 6.6,
+   "2026": 23.7
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -7.1,
+  "test_usd": 5.7,
+  "test_up": 0.504,
+  "trades_per_day": 7.65,
+  "bp_per_trade": -0.08,
+  "years": {
+   "2022": -17.1,
+   "2023": -4.0,
+   "2024": -6.4,
+   "2025": -0.8,
+   "2026": 18.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -7.4,
+  "test_usd": 17.1,
+  "test_up": 0.575,
+  "trades_per_day": 10.43,
+  "bp_per_trade": 0.61,
+  "years": {
+   "2022": -25.7,
+   "2023": -0.5,
+   "2024": -7.8,
+   "2025": 11.0,
+   "2026": 33.9
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -8.1,
+  "test_usd": 3.1,
+  "test_up": 0.506,
+  "trades_per_day": 8.08,
+  "bp_per_trade": -0.57,
+  "years": {
+   "2022": -31.3,
+   "2023": -6.8,
+   "2024": 0.7,
+   "2025": -6.0,
+   "2026": 14.6
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -8.1,
+  "test_usd": 7.5,
+  "test_up": 0.563,
+  "trades_per_day": 15.98,
+  "bp_per_trade": -0.01,
+  "years": {
+   "2022": -23.6,
+   "2023": -6.9,
+   "2024": -1.4,
+   "2025": 0.5,
+   "2026": 18.6
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -9.3,
+  "test_usd": 13.9,
+  "test_up": 0.53,
+  "trades_per_day": 10.14,
+  "bp_per_trade": 0.32,
+  "years": {
+   "2022": -32.9,
+   "2023": -3.1,
+   "2024": -8.8,
+   "2025": 15.3,
+   "2026": 21.4
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -9.8,
+  "test_usd": 1.7,
+  "test_up": 0.541,
+  "trades_per_day": 8.41,
+  "bp_per_trade": -0.91,
+  "years": {
+   "2022": -23.7,
+   "2023": -9.9,
+   "2024": -2.1,
+   "2025": -5.4,
+   "2026": 11.1
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -10.3,
+  "test_usd": 2.1,
+  "test_up": 0.504,
+  "trades_per_day": 7.69,
+  "bp_per_trade": -0.61,
+  "years": {
+   "2022": -49.6,
+   "2023": -7.4,
+   "2024": 1.9,
+   "2025": -10.2,
+   "2026": 17.0
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 5 slots": {
+  "dev_usd": -10.7,
+  "test_usd": 8.2,
+  "test_up": 0.565,
+  "trades_per_day": 18.78,
+  "bp_per_trade": -0.1,
+  "years": {
+   "2022": -25.7,
+   "2023": -4.1,
+   "2024": -12.8,
+   "2025": 2.1,
+   "2026": 23.7
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -10.9,
+  "test_usd": 15.6,
+  "test_up": 0.557,
+  "trades_per_day": 23.89,
+  "bp_per_trade": 0.23,
+  "years": {
+   "2022": -32.2,
+   "2023": -6.2,
+   "2024": -5.9,
+   "2025": 7.1,
+   "2026": 33.2
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -11.8,
+  "test_usd": 1.9,
+  "test_up": 0.486,
+  "trades_per_day": 17.98,
+  "bp_per_trade": -0.53,
+  "years": {
+   "2022": -28.1,
+   "2023": -7.8,
+   "2024": -11.0,
+   "2025": -1.6,
+   "2026": 11.8
+  }
+ },
+ "top 20 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -12.3,
+  "test_usd": 10.9,
+  "test_up": 0.553,
+  "trades_per_day": 14.53,
+  "bp_per_trade": -0.03,
+  "years": {
+   "2022": -37.6,
+   "2023": -9.6,
+   "2024": -2.5,
+   "2025": 0.6,
+   "2026": 27.0
+  }
+ },
+ "top 72 by volatility | own drop 09:35-09:45 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -12.6,
+  "test_usd": 8.0,
+  "test_up": 0.512,
+  "trades_per_day": 13.24,
+  "bp_per_trade": -0.18,
+  "years": {
+   "2022": -26.8,
+   "2023": -10.0,
+   "2024": -8.9,
+   "2025": 2.3,
+   "2026": 21.1
+  }
+ },
+ "top 10 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -13.3,
+  "test_usd": 0.7,
+  "test_up": 0.537,
+  "trades_per_day": 8.17,
+  "bp_per_trade": -0.9,
+  "years": {
+   "2022": -36.1,
+   "2023": -13.2,
+   "2024": -3.2,
+   "2025": -8.2,
+   "2026": 12.9
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z2.0 | hold 2m | 3 slots": {
+  "dev_usd": -14.8,
+  "test_usd": 14.5,
+  "test_up": 0.537,
+  "trades_per_day": 16.73,
+  "bp_per_trade": 0.02,
+  "years": {
+   "2022": -29.2,
+   "2023": -8.5,
+   "2024": -16.1,
+   "2025": 5.7,
+   "2026": 37.6
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -15.5,
+  "test_usd": 12.2,
+  "test_up": 0.569,
+  "trades_per_day": 26.4,
+  "bp_per_trade": -0.09,
+  "years": {
+   "2022": -30.0,
+   "2023": -12.7,
+   "2024": -10.5,
+   "2025": 2.9,
+   "2026": 31.7
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -17.5,
+  "test_usd": 24.1,
+  "test_up": 0.567,
+  "trades_per_day": 18.22,
+  "bp_per_trade": 0.26,
+  "years": {
+   "2022": -52.0,
+   "2023": -10.5,
+   "2024": -7.0,
+   "2025": 15.0,
+   "2026": 42.9
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 5 slots": {
+  "dev_usd": -17.9,
+  "test_usd": 7.0,
+  "test_up": 0.53,
+  "trades_per_day": 33.85,
+  "bp_per_trade": -0.3,
+  "years": {
+   "2022": -43.4,
+   "2023": -10.8,
+   "2024": -18.6,
+   "2025": -1.1,
+   "2026": 29.1
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 3m | 3 slots": {
+  "dev_usd": -20.1,
+  "test_usd": 13.5,
+  "test_up": 0.53,
+  "trades_per_day": 22.88,
+  "bp_per_trade": -0.14,
+  "years": {
+   "2022": -53.2,
+   "2023": -12.4,
+   "2024": -20.1,
+   "2025": 12.7,
+   "2026": 30.3
+  }
+ },
+ "top 36 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -26.0,
+  "test_usd": 18.2,
+  "test_up": 0.543,
+  "trades_per_day": 22.02,
+  "bp_per_trade": -0.17,
+  "years": {
+   "2022": -48.4,
+   "2023": -22.4,
+   "2024": -16.5,
+   "2025": 4.7,
+   "2026": 46.3
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 5 slots": {
+  "dev_usd": -31.3,
+  "test_usd": -0.6,
+  "test_up": 0.482,
+  "trades_per_day": 41.2,
+  "bp_per_trade": -0.75,
+  "years": {
+   "2022": -49.2,
+   "2023": -28.3,
+   "2024": -26.6,
+   "2025": -10.3,
+   "2026": 22.0
+  }
+ },
+ "top 72 by volatility | own drop 09:35-10:00 k0.75 z1.5 | hold 2m | 3 slots": {
+  "dev_usd": -39.8,
+  "test_usd": 8.2,
+  "test_up": 0.504,
+  "trades_per_day": 30.36,
+  "bp_per_trade": -0.59,
+  "years": {
+   "2022": -58.6,
+   "2023": -40.8,
+   "2024": -27.7,
+   "2025": -6.9,
+   "2026": 41.6
+  }
+ }
+}

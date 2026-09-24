@@ -1,6 +1,8 @@
 """Years of one-minute bars for US stocks, from Dukascopy's stock CFDs.
 
     python strategies/scalp/duka_stocks.py 2022-09-01 2026-09-23 AAPL NVDA ...   # fetch; resumable
+    python strategies/scalp/duka_stocks.py --ask 2022-09-01 2026-09-23 AAPL ...   # the offer side
+    python strategies/scalp/duka_stocks.py --10s 2025-09-24 2026-09-23 NVDA ...  # ten-second bars, both sides
     python strategies/scalp/duka_stocks.py --status
 
 Yahoo keeps one-minute stock bars for 30 days only, so the scalpers in this
@@ -27,13 +29,14 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 STORE = ROOT / "data" / "cache" / "duka" / "stocks"
-URL = ("https://freeserv.dukascopy.com/2.0/?path=chart/json3&instrument={sym}.US%2FUSD&offer_side=B&interval=1MIN"
+STORE_ASK = ROOT / "data" / "cache" / "duka" / "stocks_ask"                 # the offer side, same layout
+URL = ("https://freeserv.dukascopy.com/2.0/?path=chart/json3&instrument={sym}.US%2FUSD&offer_side={side}&interval={interval}"
        "&splits=true&stocks=true&limit=30000&time_direction=N&timestamp={ms}&jsonp=cb")
 NY = ZoneInfo("America/New_York")
 
 
-def _chunk(sym: str, ms: int) -> Optional[np.ndarray]:
-    req = urllib.request.Request(URL.format(sym=sym, ms=ms), headers={"User-Agent": "Mozilla/5.0",
+def _chunk(sym: str, ms: int, side: str = "B", interval: str = "1MIN") -> Optional[np.ndarray]:
+    req = urllib.request.Request(URL.format(sym=sym, ms=ms, side=side, interval=interval), headers={"User-Agent": "Mozilla/5.0",
                                                                        "Referer": "https://freeserv.dukascopy.com/"})
     try:
         with urllib.request.urlopen(req, timeout=90) as r:
@@ -47,10 +50,11 @@ def _chunk(sym: str, ms: int) -> Optional[np.ndarray]:
     return np.array([[x[0] / 1000.0, x[1], x[2], x[3], x[4]] for x in rows], dtype=float)
 
 
-def fetch(sym: str, start: dt.date, end: dt.date, pace: float = 3.0) -> int:
-    """All minutes from `start` to `end`, appended to what is on disk."""
-    STORE.mkdir(parents=True, exist_ok=True)
-    path = STORE / f"{sym}.npz"
+def fetch(sym: str, start: dt.date, end: dt.date, pace: float = 3.0, side: str = "B") -> int:
+    """All minutes from `start` to `end`, appended to what is on disk (side "A" for the offer)."""
+    store = STORE_ASK if side == "A" else STORE
+    store.mkdir(parents=True, exist_ok=True)
+    path = store / f"{sym}.npz"
     have = np.load(path)["a"] if path.exists() else np.zeros((0, 5))
     t = dt.datetime(start.year, start.month, start.day, tzinfo=dt.timezone.utc).timestamp()
     if len(have):
@@ -59,7 +63,7 @@ def fetch(sym: str, start: dt.date, end: dt.date, pace: float = 3.0) -> int:
     parts, got = [have], 0
     while t < stop:
         for attempt in range(6):
-            a = _chunk(sym, int(t * 1000))
+            a = _chunk(sym, int(t * 1000), side)
             if a is not None:
                 break
             time.sleep(10 * (attempt + 1))
@@ -100,6 +104,44 @@ def load(sym: str, start: str = "2000-01-01", end: str = "2100-01-01") -> Dict[s
     return {d: np.array(v) for d, v in out.items() if len(v) >= 370}
 
 
+def fetch_seconds(sym: str, start: dt.date, end: dt.date, pace: float = 2.0) -> int:
+    """Ten-second bars, bid and offer, 13:30-20:00 UTC, to data/cache/duka/stocks10s/<SYM>_<B|A>.npz."""
+    store = STORE.parent / "stocks10s"
+    store.mkdir(parents=True, exist_ok=True)
+    got = 0
+    for side in ("B", "A"):
+        path = store / f"{sym}_{side}.npz"
+        have = np.load(path)["a"] if path.exists() else np.zeros((0, 5))
+        t = dt.datetime(start.year, start.month, start.day, tzinfo=dt.timezone.utc).timestamp()
+        if len(have):
+            t = max(t, have[-1, 0] + 10)
+        stop = dt.datetime(end.year, end.month, end.day, 23, 59, tzinfo=dt.timezone.utc).timestamp()
+        parts = [have]
+        while t < stop:
+            for attempt in range(6):
+                a = _chunk(sym, int(t * 1000), side, "10SEC")
+                if a is not None:
+                    break
+                time.sleep(10 * (attempt + 1))
+            else:
+                break
+            time.sleep(pace)
+            if not len(a):
+                break
+            a = a[a[:, 0] < stop]
+            hm = (a[:, 0] % 86400) / 60.0
+            parts.append(a[(hm >= 13 * 60 + 25) & (hm < 20 * 60 + 5)])
+            got += len(a)
+            if not len(a) or a[-1, 0] + 10 >= stop:
+                break
+            t = a[-1, 0] + 10
+        rows = np.concatenate(parts)
+        if len(rows):
+            rows = rows[np.unique(rows[:, 0], return_index=True)[1]]
+        np.savez_compressed(path, a=rows)
+    return got
+
+
 def status() -> str:
     files = sorted(STORE.glob("*.npz"))
     out = []
@@ -114,8 +156,10 @@ if __name__ == "__main__":
     if "--status" in sys.argv:
         print(status())
     else:
-        a, b = (dt.date.fromisoformat(x) for x in sys.argv[1:3])
-        for sym in sys.argv[3:]:
-            n = fetch(sym, a, b)
+        side = "A" if "--ask" in sys.argv else "B"
+        args = [x for x in sys.argv[1:] if x not in ("--ask", "--10s")]
+        a, b = (dt.date.fromisoformat(x) for x in args[:2])
+        for sym in args[2:]:
+            n = fetch_seconds(sym, a, b) if "--10s" in sys.argv else fetch(sym, a, b, side=side)
             print(f"{sym}: {n} minutes fetched", flush=True)
         print(status())
