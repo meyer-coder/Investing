@@ -3,6 +3,7 @@
     python strategies/scalp/owndrop.py          # its tests, into profitable-strategies/scalping/own-drop/backtest.json
     python strategies/scalp/owndrop.py --grid   # the settings around it, week by week, into grid.json
     python strategies/scalp/owndrop.py --orders # names that signal together taken in random orders, into orders.json
+    python strategies/scalp/owndrop.py --slots  # more, smaller positions, into slots.json
 
 It watches 47 liquid names (minute.POOL_NAMES).  On any bar from 09:35 to
 09:45 New York it buys a name that fell hard on its own that minute: a
@@ -160,25 +161,36 @@ def grid(u, f, slip: Dict[str, float], rank: str = "") -> int:
 _SHARED: dict = {}
 
 
-def _one_order(seed: int) -> dict:
+def _one_run(job: tuple) -> dict:
+    """One test in a worker: `seed` None takes names that signal together
+    alphabetically, else in a fresh random order every minute."""
+    seed, params, leverage = job
     u, f, slip = _SHARED["data"]
-    rng = np.random.default_rng(seed)
-    for s in f.symbols:                   # a fresh random order of the names every minute
-        f.matrix[s]["tiebreak"] = rng.random(len(f.dates))
-    r = test(u, f, slip, rank="tiebreak")
-    return {"seed": seed, "usd_per_day": r["usd_per_day"], "median": r["median"], "days_up": r["days_up"],
-            "worst_day": r["worst_day"], "weeks": weeks_of(r["by_day"]),
+    rank = ""
+    if seed is not None:
+        rng = np.random.default_rng(seed)
+        for s in f.symbols:
+            f.matrix[s]["tiebreak"] = rng.random(len(f.dates))
+        rank = "tiebreak"
+    r = test(u, f, slip, leverage=leverage, rank=rank, params=params)
+    return {"seed": seed, "params": params or {}, "leverage": leverage, "usd_per_day": r["usd_per_day"],
+            "median": r["median"], "days_up": r["days_up"], "worst_day": r["worst_day"],
+            "trades_per_day": r["trades_per_day"], "avg_trade_bp": r["avg_trade_bp"], "weeks": weeks_of(r["by_day"]),
             "pnl_original_names": r["pnl_original_names"], "pnl_fresh_names": r["pnl_fresh_names"]}
+
+
+def _pool_map(u, f, slip: Dict[str, float], jobs: list) -> list:
+    import multiprocessing as mp
+    _SHARED["data"] = (u, f, slip)
+    with mp.get_context("fork").Pool(4) as pool:
+        return pool.map(_one_run, jobs)
 
 
 def orders(u, f, slip: Dict[str, float], n: int = 12) -> int:
     """When more names signal in a minute than there are free slots, the bot
     takes them alphabetically.  Is that order lucky?  The same bot with the
     names taken in a random order each minute, n times, at 1x."""
-    import multiprocessing as mp
-    _SHARED["data"] = (u, f, slip)
-    with mp.get_context("fork").Pool(3) as pool:
-        runs = pool.map(_one_order, range(n))
+    runs = _pool_map(u, f, slip, [(seed, None, 1.0) for seed in range(n)])
     usd = np.array([r["usd_per_day"] for r in runs])
     out = {"runs": runs, "mean": round(float(usd.mean()), 1), "min": float(usd.min()), "max": float(usd.max()),
            "alphabetical": test(u, f, slip)["usd_per_day"]}
@@ -192,6 +204,31 @@ def orders(u, f, slip: Dict[str, float], n: int = 12) -> int:
     return 0
 
 
+def slots(u, f, slip: Dict[str, float], counts=(3, 6, 10, 15), seeds=(0, 1, 2, 3)) -> int:
+    """More, smaller positions, so fewer signals are turned away and the
+    order they are taken in matters less: each count of slots, each a
+    1/count share of buying power, alphabetical and in random orders, at 1x."""
+    jobs = [(seed, {"slots": k}, 1.0) for k in counts for seed in (None, *seeds)]
+    runs = _pool_map(u, f, slip, jobs)
+    out = {}
+    for k in counts:
+        rs = [r for r in runs if r["params"]["slots"] == k]
+        alpha = next(r for r in rs if r["seed"] is None)
+        rnd = [r for r in rs if r["seed"] is not None]
+        usd = np.array([r["usd_per_day"] for r in rnd])
+        out[f"{k} slots"] = {"alphabetical": alpha, "random": rnd, "random_mean": round(float(usd.mean()), 1),
+                             "random_min": float(usd.min()), "random_max": float(usd.max())}
+        print(f"{k:2d} slots: alphabetical ${alpha['usd_per_day']:5.0f}/day up {alpha['days_up']:.0%} worst ${alpha['worst_day']:5.0f} "
+              f"{alpha['trades_per_day']} tr/d | random ${usd.mean():5.1f} (${usd.min():.0f} to ${usd.max():.0f}) "
+              f"up {np.mean([r['days_up'] for r in rnd]):.0%} worst ${min(r['worst_day'] for r in rnd):.0f} "
+              f"weeks {np.mean([r['weeks'] for r in rnd], axis=0).round(0).tolist()} "
+              f"orig ${np.mean([r['pnl_original_names'] for r in rnd]):.0f} fresh ${np.mean([r['pnl_fresh_names'] for r in rnd]):.0f}",
+              flush=True)
+    OUT.mkdir(parents=True, exist_ok=True)
+    OUT.joinpath("slots.json").write_text(json.dumps(out, indent=1))
+    return 0
+
+
 def main() -> int:
     days = minute.sessions(POOL)
     u, f = universe(days)
@@ -200,6 +237,8 @@ def main() -> int:
         return grid(u, f, slip)
     if "--orders" in sys.argv:
         return orders(u, f, slip)
+    if "--slots" in sys.argv:
+        return slots(u, f, slip)
     out = {"sessions": [days[0], days[-1], len(days)], "account": ACCOUNT, "bot": bot().to_dict(), "runs": {}}
     runs = {f"{lev:g}x": dict(leverage=lev) for lev in (1.0, 1.5, 2.0)}
     runs.update({"1x, costs doubled": dict(mult=2.0), "1x, costs tripled": dict(mult=3.0),
