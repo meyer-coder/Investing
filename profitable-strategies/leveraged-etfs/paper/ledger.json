@@ -95,36 +95,44 @@
      "cash": 0.0,
      "fund": "MUU",
      "close": 37.19
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 24033.59,
+     "day_pnl": 331.41,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.71
     }
    ],
    "orders": {
-    "after_close": "2026-09-23",
-    "for_open": "2026-09-24",
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
     "sells": [],
     "buys": []
    },
    "levels": {
-    "after_close": "2026-09-23",
+    "after_close": "2026-09-24",
     "funds": {
      "MUU": [
       {
        "action": "sell MUU",
        "from": -0.25,
-       "to": -0.10210937500000002,
-       "price_from": 27.89,
+       "to": -0.11453125,
+       "price_from": 28.28,
        "price_to": 33.39
       },
       {
        "action": "hold MUU",
-       "from": -0.10203125000000002,
+       "from": -0.114453125,
        "to": 0.25,
-       "price_from": 33.4,
-       "price_to": 46.49
+       "price_from": 33.39,
+       "price_to": 47.14
       }
      ]
     }
    },
-   "last_date": "2026-09-23"
+   "last_date": "2026-09-24"
   },
   {
    "id": "split1",
@@ -174,9 +182,27 @@
    },
    "start": "2026-09-23",
    "start_cash": 8333.33,
-   "cash": 8333.33,
-   "position": null,
-   "fills": [],
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 233.73105024752132,
+    "entry_date": "2026-09-24",
+    "entry_price": 35.653499999999994,
+    "why": "entry rule: ret1 < -0.02 and close > sma200",
+    "synced": false
+   },
+   "fills": [
+    {
+     "date": "2026-09-24",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 35.6535,
+     "shares": 233.7311,
+     "value": 8333.33,
+     "why": "entry rule: ret1 < -0.02 and close > sma200",
+     "synced": false
+    }
+   ],
    "closed": [],
    "marks": [
     {
@@ -186,49 +212,49 @@
      "cash": 8333.33,
      "fund": null,
      "close": null
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8814.0,
+     "day_pnl": 480.67,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.71
     }
    ],
    "orders": {
-    "after_close": "2026-09-23",
-    "for_open": "2026-09-24",
-    "sells": [],
-    "buys": [
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [
      {
       "fund": "MUU",
-      "why": "entry rule: ret1 < -0.02 and close > sma200",
-      "synced": false
+      "why": "take profit hit (5.8% >= 2.0%)"
      }
-    ]
+    ],
+    "buys": []
    },
    "levels": {
-    "after_close": "2026-09-23",
+    "after_close": "2026-09-24",
     "funds": {
      "MUU": [
       {
-       "action": "sell MUU",
+       "action": "buy MUU",
        "from": -0.25,
-       "to": -0.099296875,
-       "price_from": 27.89,
-       "price_to": 33.5
+       "to": -0.020078125000000002,
+       "price_from": 28.28,
+       "price_to": 36.95
       },
       {
-       "action": "hold MUU",
-       "from": -0.09921875,
-       "to": 0.020781249999999998,
-       "price_from": 33.5,
-       "price_to": 37.96
-      },
-      {
-       "action": "sell MUU",
-       "from": 0.020859375,
+       "action": "stay in cash",
+       "from": -0.02,
        "to": 0.25,
-       "price_from": 37.97,
-       "price_to": 46.49
+       "price_from": 36.96,
+       "price_to": 47.14
       }
      ]
     }
    },
-   "last_date": "2026-09-23",
+   "last_date": "2026-09-24",
    "group": "Three-bot split account",
    "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   },
@@ -312,31 +338,39 @@
      "cash": 0.0,
      "fund": "AMDL",
      "close": 80.3
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8519.6,
+     "day_pnl": 365.56,
+     "cash": 0.0,
+     "fund": "AMDL",
+     "close": 83.9
     }
    ],
    "orders": {
-    "after_close": "2026-09-23",
-    "for_open": "2026-09-24",
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
     "sells": [],
     "buys": []
    },
    "levels": {
-    "after_close": "2026-09-23",
+    "after_close": "2026-09-24",
     "funds": {
      "AMDL": [
       {
        "action": "sell AMDL + buy NVDL",
        "from": -0.25,
-       "to": -0.17566406249999997,
-       "price_from": 60.22,
-       "price_to": 66.19
+       "to": -0.17628906249999998,
+       "price_from": 62.93,
+       "price_to": 69.11
       },
       {
        "action": "hold AMDL",
-       "from": -0.17562499999999998,
+       "from": -0.17625,
        "to": 0.25,
-       "price_from": 66.2,
-       "price_to": 100.38
+       "price_from": 69.11,
+       "price_to": 104.88
       }
      ],
      "NVDL": [
@@ -344,13 +378,13 @@
        "action": "hold AMDL",
        "from": -0.25,
        "to": 0.25,
-       "price_from": 26.95,
-       "price_to": 44.91
+       "price_from": 26.67,
+       "price_to": 44.45
       }
      ]
     }
    },
-   "last_date": "2026-09-23",
+   "last_date": "2026-09-24",
    "group": "Three-bot split account",
    "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   },
@@ -420,24 +454,32 @@
      "cash": 8333.33,
      "fund": null,
      "close": null
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8333.33,
+     "day_pnl": 0.0,
+     "cash": 8333.33,
+     "fund": null,
+     "close": null
     }
    ],
    "orders": {
-    "after_close": "2026-09-23",
-    "for_open": "2026-09-24",
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
     "sells": [],
     "buys": []
    },
    "levels": {
-    "after_close": "2026-09-23",
+    "after_close": "2026-09-24",
     "funds": {
      "AMDL": [
       {
        "action": "stay in cash",
        "from": -0.25,
        "to": 0.25,
-       "price_from": 60.22,
-       "price_to": 100.38
+       "price_from": 62.93,
+       "price_to": 104.88
       }
      ],
      "NVDL": [
@@ -445,18 +487,18 @@
        "action": "stay in cash",
        "from": -0.25,
        "to": 0.25,
-       "price_from": 26.95,
-       "price_to": 44.91
+       "price_from": 26.67,
+       "price_to": 44.45
       }
      ]
     }
    },
-   "last_date": "2026-09-23",
+   "last_date": "2026-09-24",
    "group": "Three-bot split account",
    "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
   }
  ],
- "updated_after_close": "2026-09-23",
+ "updated_after_close": "2026-09-24",
  "retired": [
   {
    "id": "top1",

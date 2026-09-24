@@ -37,12 +37,115 @@
  "go_live": "2026-09-24",
  "account": 25000.0,
  "leverage": 2.0,
- "sessions": {},
+ "sessions": {
+  "2026-09-24": {
+   "pnl": -245.26,
+   "names": 47,
+   "trades": [
+    {
+     "name": "COIN",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 197.9298,
+     "exit": 198.4201,
+     "shares": 84.2,
+     "size": 16667.0,
+     "pnl": 41.29,
+     "ret_bp": 24.8,
+     "minutes": 4
+    },
+    {
+     "name": "HOOD",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 121.2921,
+     "exit": 121.6878,
+     "shares": 137.41,
+     "size": 16667.0,
+     "pnl": 54.37,
+     "ret_bp": 32.6,
+     "minutes": 4
+    },
+    {
+     "name": "SOXS",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 35.2638,
+     "exit": 34.9863,
+     "shares": 472.63,
+     "size": 16667.0,
+     "pnl": -131.14,
+     "ret_bp": -78.7,
+     "minutes": 4
+    },
+    {
+     "name": "HOOD",
+     "in": "09:42",
+     "out": "09:46",
+     "entry": 120.3419,
+     "exit": 120.0881,
+     "shares": 138.3,
+     "size": 16643.0,
+     "pnl": -35.11,
+     "ret_bp": -21.1,
+     "minutes": 4
+    },
+    {
+     "name": "QCOM",
+     "in": "09:42",
+     "out": "09:46",
+     "entry": 194.5395,
+     "exit": 194.6905,
+     "shares": 85.55,
+     "size": 16643.0,
+     "pnl": 12.92,
+     "ret_bp": 7.8,
+     "minutes": 4
+    },
+    {
+     "name": "APP",
+     "in": "09:43",
+     "out": "09:47",
+     "entry": 311.366,
+     "exit": 309.2292,
+     "shares": 53.08,
+     "size": 16528.0,
+     "pnl": -113.43,
+     "ret_bp": -68.6,
+     "minutes": 4
+    },
+    {
+     "name": "PLTR",
+     "in": "09:46",
+     "out": "09:51",
+     "entry": 190.569,
+     "exit": 190.1961,
+     "shares": 87.23,
+     "size": 16623.0,
+     "pnl": -32.53,
+     "ret_bp": -19.6,
+     "minutes": 4
+    },
+    {
+     "name": "RKLB",
+     "in": "09:46",
+     "out": "09:51",
+     "entry": 69.7701,
+     "exit": 69.5954,
+     "shares": 238.25,
+     "size": 16623.0,
+     "pnl": -41.63,
+     "ret_bp": -25.0,
+     "minutes": 4
+    }
+   ]
+  }
+ },
  "summary": {
-  "sessions": 0,
-  "total": 0,
-  "per_day": 0.0,
+  "sessions": 1,
+  "total": -245.26,
+  "per_day": -245.26,
   "days_up": 0.0,
-  "worst_day": 0.0
+  "worst_day": -245.26
  }
 }

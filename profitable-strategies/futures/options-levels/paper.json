@@ -1,0 +1,43 @@
+{
+ "rules": {
+  "contracts": 10,
+  "stop_points": 15.0,
+  "target_points": 45.0,
+  "cost_points": 1.25,
+  "entries": "09:35-15:30, first touch per level",
+  "flat": "15:55"
+ },
+ "sessions": {
+  "2026-09-24": {
+   "levels": {
+    "spot": 30772.16,
+    "gamma_flip": 30613.98,
+    "call_wall": 30929.51,
+    "put_wall": 30306.77,
+    "max_pain": 30389.8
+   },
+   "trades": [
+    {
+     "level": "gamma flip",
+     "side": "short",
+     "in": "09:48",
+     "out": "09:49",
+     "entry": 30615.8,
+     "exit": 30570.8,
+     "why": "target",
+     "points": 43.75,
+     "usd": 875.0
+    }
+   ],
+   "usd": 875.0
+  }
+ },
+ "summary": {
+  "sessions": 1,
+  "total": 875.0,
+  "per_day": 875.0,
+  "days_150_plus": 1,
+  "days_down": 0,
+  "worst_day": 875.0
+ }
+}
