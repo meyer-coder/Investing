@@ -47,10 +47,21 @@ def gaps(day=None, top=3, gap_min=0.02, stop_atr=1.0, risk=0.02, lev=4.0):
         if day not in ds:
             continue
         i = ds.index(day)
-        if i < 15 or dly["o"][i] is None or None in dly["c"][i - 1:i] or None in dly["h"][i - 14:i] or None in dly["l"][i - 14:i]:
+        if i < 15 or None in dly["c"][i - 1:i] or None in dly["h"][i - 14:i] or None in dly["l"][i - 14:i]:
             continue
         atr = float(np.mean([dly["h"][j] - dly["l"][j] for j in range(i - 14, i)]))
-        g = dly["o"][i] / dly["c"][i - 1] - 1.0
+        # early in the session Yahoo's daily bar for today can carry a stale open: take the 09:30 minute's open
+        m = paper._yahoo(sym, "1m", "1d")
+        op = None
+        if m:
+            for t, o in zip(m["t"], m["o"]):
+                x = dt.datetime.fromtimestamp(t, tz=NY)
+                if o is not None and x.strftime("%Y-%m-%d") == day and (x.hour, x.minute) == (9, 30):
+                    op = o
+                    break
+        if op is None:
+            continue
+        g = op / dly["c"][i - 1] - 1.0
         if abs(g) >= gap_min:
             cands.append((abs(g), n, sym, g, atr))
     cands.sort(reverse=True)
