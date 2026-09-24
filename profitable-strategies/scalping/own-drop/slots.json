@@ -1,0 +1,430 @@
+{
+ "3 slots": {
+  "alphabetical": {
+   "seed": null,
+   "params": {
+    "slots": 3
+   },
+   "leverage": 1.0,
+   "usd_per_day": 76.4,
+   "median": 47.8,
+   "days_up": 0.667,
+   "worst_day": -106.0,
+   "trades_per_day": 7.5,
+   "avg_trade_bp": 12.2,
+   "weeks": [
+    65.0,
+    68.0,
+    96.0
+   ],
+   "pnl_original_names": 709.0,
+   "pnl_fresh_names": 938.0
+  },
+  "random": [
+   {
+    "seed": 0,
+    "params": {
+     "slots": 3
+    },
+    "leverage": 1.0,
+    "usd_per_day": 58.3,
+    "median": 68.7,
+    "days_up": 0.571,
+    "worst_day": -106.0,
+    "trades_per_day": 7.5,
+    "avg_trade_bp": 9.4,
+    "weeks": [
+     27.0,
+     67.0,
+     80.0
+    ],
+    "pnl_original_names": 411.0,
+    "pnl_fresh_names": 837.0
+   },
+   {
+    "seed": 1,
+    "params": {
+     "slots": 3
+    },
+    "leverage": 1.0,
+    "usd_per_day": 47.7,
+    "median": 16.6,
+    "days_up": 0.524,
+    "worst_day": -224.0,
+    "trades_per_day": 7.5,
+    "avg_trade_bp": 7.6,
+    "weeks": [
+     6.0,
+     30.0,
+     107.0
+    ],
+    "pnl_original_names": 484.0,
+    "pnl_fresh_names": 529.0
+   },
+   {
+    "seed": 2,
+    "params": {
+     "slots": 3
+    },
+    "leverage": 1.0,
+    "usd_per_day": 21.8,
+    "median": 39.4,
+    "days_up": 0.619,
+    "worst_day": -214.0,
+    "trades_per_day": 7.5,
+    "avg_trade_bp": 3.5,
+    "weeks": [
+     -26.0,
+     39.0,
+     52.0
+    ],
+    "pnl_original_names": 331.0,
+    "pnl_fresh_names": 125.0
+   },
+   {
+    "seed": 3,
+    "params": {
+     "slots": 3
+    },
+    "leverage": 1.0,
+    "usd_per_day": 63.4,
+    "median": 49.9,
+    "days_up": 0.714,
+    "worst_day": -199.0,
+    "trades_per_day": 7.5,
+    "avg_trade_bp": 10.2,
+    "weeks": [
+     59.0,
+     46.0,
+     85.0
+    ],
+    "pnl_original_names": 118.0,
+    "pnl_fresh_names": 1237.0
+   }
+  ],
+  "random_mean": 47.8,
+  "random_min": 21.8,
+  "random_max": 63.4
+ },
+ "6 slots": {
+  "alphabetical": {
+   "seed": null,
+   "params": {
+    "slots": 6
+   },
+   "leverage": 1.0,
+   "usd_per_day": 37.3,
+   "median": 14.6,
+   "days_up": 0.571,
+   "worst_day": -136.0,
+   "trades_per_day": 12.8,
+   "avg_trade_bp": 7.0,
+   "weeks": [
+    19.0,
+    27.0,
+    66.0
+   ],
+   "pnl_original_names": 76.0,
+   "pnl_fresh_names": 715.0
+  },
+  "random": [
+   {
+    "seed": 0,
+    "params": {
+     "slots": 6
+    },
+    "leverage": 1.0,
+    "usd_per_day": 47.8,
+    "median": 39.3,
+    "days_up": 0.667,
+    "worst_day": -136.0,
+    "trades_per_day": 12.8,
+    "avg_trade_bp": 9.0,
+    "weeks": [
+     37.0,
+     36.0,
+     71.0
+    ],
+    "pnl_original_names": 207.0,
+    "pnl_fresh_names": 811.0
+   },
+   {
+    "seed": 1,
+    "params": {
+     "slots": 6
+    },
+    "leverage": 1.0,
+    "usd_per_day": 43.8,
+    "median": 50.0,
+    "days_up": 0.571,
+    "worst_day": -145.0,
+    "trades_per_day": 12.8,
+    "avg_trade_bp": 8.2,
+    "weeks": [
+     29.0,
+     29.0,
+     74.0
+    ],
+    "pnl_original_names": 229.0,
+    "pnl_fresh_names": 702.0
+   },
+   {
+    "seed": 2,
+    "params": {
+     "slots": 6
+    },
+    "leverage": 1.0,
+    "usd_per_day": 36.9,
+    "median": 39.0,
+    "days_up": 0.619,
+    "worst_day": -131.0,
+    "trades_per_day": 12.9,
+    "avg_trade_bp": 6.9,
+    "weeks": [
+     17.0,
+     33.0,
+     62.0
+    ],
+    "pnl_original_names": -0.0,
+    "pnl_fresh_names": 783.0
+   },
+   {
+    "seed": 3,
+    "params": {
+     "slots": 6
+    },
+    "leverage": 1.0,
+    "usd_per_day": 52.1,
+    "median": 50.0,
+    "days_up": 0.667,
+    "worst_day": -145.0,
+    "trades_per_day": 12.8,
+    "avg_trade_bp": 9.8,
+    "weeks": [
+     16.0,
+     68.0,
+     72.0
+    ],
+    "pnl_original_names": 312.0,
+    "pnl_fresh_names": 800.0
+   }
+  ],
+  "random_mean": 45.1,
+  "random_min": 36.9,
+  "random_max": 52.1
+ },
+ "10 slots": {
+  "alphabetical": {
+   "seed": null,
+   "params": {
+    "slots": 10
+   },
+   "leverage": 1.0,
+   "usd_per_day": 38.1,
+   "median": 16.5,
+   "days_up": 0.571,
+   "worst_day": -81.0,
+   "trades_per_day": 16.9,
+   "avg_trade_bp": 9.0,
+   "weeks": [
+    26.0,
+    57.0,
+    31.0
+   ],
+   "pnl_original_names": 294.0,
+   "pnl_fresh_names": 514.0
+  },
+  "random": [
+   {
+    "seed": 0,
+    "params": {
+     "slots": 10
+    },
+    "leverage": 1.0,
+    "usd_per_day": 34.7,
+    "median": 16.5,
+    "days_up": 0.667,
+    "worst_day": -126.0,
+    "trades_per_day": 16.8,
+    "avg_trade_bp": 8.3,
+    "weeks": [
+     17.0,
+     59.0,
+     29.0
+    ],
+    "pnl_original_names": 260.0,
+    "pnl_fresh_names": 476.0
+   },
+   {
+    "seed": 1,
+    "params": {
+     "slots": 10
+    },
+    "leverage": 1.0,
+    "usd_per_day": 34.1,
+    "median": 16.5,
+    "days_up": 0.571,
+    "worst_day": -126.0,
+    "trades_per_day": 16.8,
+    "avg_trade_bp": 8.1,
+    "weeks": [
+     18.0,
+     57.0,
+     27.0
+    ],
+    "pnl_original_names": 265.0,
+    "pnl_fresh_names": 458.0
+   },
+   {
+    "seed": 2,
+    "params": {
+     "slots": 10
+    },
+    "leverage": 1.0,
+    "usd_per_day": 32.0,
+    "median": 16.5,
+    "days_up": 0.619,
+    "worst_day": -91.0,
+    "trades_per_day": 16.8,
+    "avg_trade_bp": 7.6,
+    "weeks": [
+     20.0,
+     48.0,
+     28.0
+    ],
+    "pnl_original_names": 273.0,
+    "pnl_fresh_names": 405.0
+   },
+   {
+    "seed": 3,
+    "params": {
+     "slots": 10
+    },
+    "leverage": 1.0,
+    "usd_per_day": 36.0,
+    "median": 16.5,
+    "days_up": 0.571,
+    "worst_day": -126.0,
+    "trades_per_day": 16.8,
+    "avg_trade_bp": 8.6,
+    "weeks": [
+     18.0,
+     57.0,
+     33.0
+    ],
+    "pnl_original_names": 276.0,
+    "pnl_fresh_names": 489.0
+   }
+  ],
+  "random_mean": 34.2,
+  "random_min": 32.0,
+  "random_max": 36.0
+ },
+ "15 slots": {
+  "alphabetical": {
+   "seed": null,
+   "params": {
+    "slots": 15
+   },
+   "leverage": 1.0,
+   "usd_per_day": 14.1,
+   "median": 11.0,
+   "days_up": 0.524,
+   "worst_day": -101.0,
+   "trades_per_day": 18.7,
+   "avg_trade_bp": 4.5,
+   "weeks": [
+    2.0,
+    29.0,
+    12.0
+   ],
+   "pnl_original_names": 132.0,
+   "pnl_fresh_names": 166.0
+  },
+  "random": [
+   {
+    "seed": 0,
+    "params": {
+     "slots": 15
+    },
+    "leverage": 1.0,
+    "usd_per_day": 13.2,
+    "median": 17.1,
+    "days_up": 0.571,
+    "worst_day": -125.0,
+    "trades_per_day": 18.7,
+    "avg_trade_bp": 4.2,
+    "weeks": [
+     -1.0,
+     32.0,
+     10.0
+    ],
+    "pnl_original_names": 127.0,
+    "pnl_fresh_names": 150.0
+   },
+   {
+    "seed": 1,
+    "params": {
+     "slots": 15
+    },
+    "leverage": 1.0,
+    "usd_per_day": 13.8,
+    "median": 11.0,
+    "days_up": 0.619,
+    "worst_day": -123.0,
+    "trades_per_day": 18.7,
+    "avg_trade_bp": 4.4,
+    "weeks": [
+     -1.0,
+     30.0,
+     13.0
+    ],
+    "pnl_original_names": 138.0,
+    "pnl_fresh_names": 152.0
+   },
+   {
+    "seed": 2,
+    "params": {
+     "slots": 15
+    },
+    "leverage": 1.0,
+    "usd_per_day": 12.8,
+    "median": 11.0,
+    "days_up": 0.571,
+    "worst_day": -115.0,
+    "trades_per_day": 18.6,
+    "avg_trade_bp": 4.1,
+    "weeks": [
+     0.0,
+     25.0,
+     14.0
+    ],
+    "pnl_original_names": 131.0,
+    "pnl_fresh_names": 138.0
+   },
+   {
+    "seed": 3,
+    "params": {
+     "slots": 15
+    },
+    "leverage": 1.0,
+    "usd_per_day": 11.9,
+    "median": 11.0,
+    "days_up": 0.571,
+    "worst_day": -123.0,
+    "trades_per_day": 18.6,
+    "avg_trade_bp": 3.8,
+    "weeks": [
+     -1.0,
+     23.0,
+     14.0
+    ],
+    "pnl_original_names": 140.0,
+    "pnl_fresh_names": 109.0
+   }
+  ],
+  "random_mean": 12.9,
+  "random_min": 11.9,
+  "random_max": 13.8
+ }
+}
