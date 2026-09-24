@@ -102,12 +102,23 @@ def table(days: Dict[str, data.Day]):
 
 def fit(X, y, seed: int = 0):
     import lightgbm as lgb
-    model = lgb.LGBMRegressor(n_estimators=400, learning_rate=0.03, num_leaves=31, min_child_samples=500,
-                              subsample=0.7, subsample_freq=1, colsample_bytree=0.7, reg_lambda=10.0,
-                              random_state=seed, verbose=-1)
+    params = {"objective": "regression", "learning_rate": 0.03, "num_leaves": 31, "min_data_in_leaf": 500,
+              "bagging_fraction": 0.7, "bagging_freq": 1, "feature_fraction": 0.7, "lambda_l2": 10.0,
+              "seed": seed, "verbose": -1, "num_threads": 4}
     clip = np.clip(y, -60, 60)                   # a few crash minutes should not steer the fit
-    model.fit(X, clip)
-    return model
+    return lgb.train(params, lgb.Dataset(X, clip), num_boost_round=400)
+
+
+CACHE = ROOT / "data" / "cache" / "duka" / "model_table.npz"
+
+
+def cached_table():
+    if CACHE.exists():
+        z = np.load(CACHE, allow_pickle=True)
+        return z["X"], z["y"], z["dates"], z["mins"], list(z["names"])
+    X, y, dates, mins, names = table(data.sessions("duka"))
+    np.savez_compressed(CACHE, X=X, y=y, dates=dates, mins=mins, names=np.array(names))
+    return X, y, dates, mins, names
 
 
 def trade(pred: np.ndarray, y: np.ndarray, dates: np.ndarray, mins: np.ndarray, thr: float) -> dict:
@@ -134,8 +145,7 @@ def trade(pred: np.ndarray, y: np.ndarray, dates: np.ndarray, mins: np.ndarray, 
 
 
 def main() -> int:
-    days = data.sessions("duka")
-    X, y, dates, mins, names = table(days)
+    X, y, dates, mins, names = cached_table()
     print(f"{len(y)} rows, {len(names)} features, {len(set(dates))} sessions", flush=True)
     train = dates < "2023-01-01"
     tune = (dates >= "2023-01-01") & (dates < "2024-01-01")
@@ -163,7 +173,7 @@ def main() -> int:
             sel = np.array([str(d).startswith(yy) for d in dates[test]])
             yrs[yy] = trade(p_test[sel], y[test][sel], dates[test][sel], mins[test][sel], th)["bp_per_day"]
         out["test"][q]["bp_per_day_by_year"] = yrs
-    imp = sorted(zip(names, m2.feature_importances_), key=lambda x: -x[1])
+    imp = sorted(zip(names, m2.feature_importance()), key=lambda x: -x[1])
     out["importance"] = [(k, int(v)) for k, v in imp]
     out["picked_quantile"] = best_q
     print("importance:", imp[:12])
