@@ -25,6 +25,7 @@ wider than a cent. Every other book is flat or losing.
 | 576 simple rules: buy or sell, drops or rises, four windows | up to +$23 | best +$1; 1 of 576 positive in both periods | +$4 |
 | Buy the drop with a limit order at the bid | - | best +$3 | +$11 |
 | Your 10-30 second spike idea, faded or followed (16 names, last year, 10-second bars) | - | best +$5 | +$19 |
+| Names gapping 2-7% on news, first hour, with or against the gap | - | best +$3 | +$12 |
 
 Dollars are per day on $25,000, averaged over the test years (Sep 2024 to
 Sep 2026). Every rule and the model were chosen on Sep 2022 to Aug 2024 only.
@@ -89,7 +90,7 @@ evidence.
 
 ## What was tested overnight
 
-About 1,600 books in all. The scripts are in `strategies/scalp/`, each with
+About 1,700 books in all. The scripts are in `strategies/scalp/`, each with
 its results in a JSON file of the same name.
 
 - Four years of Dukascopy one-minute bars for 72 large US stocks, bid and
@@ -101,6 +102,7 @@ its results in a JSON file of the same name.
 - Only the most volatile names of the moment (`volsubset.py`).
 - A LightGBM model fitted on the first two years (`dropmodel.py`).
 - Limit-order buying (`passive.py`).
+- Names gapping on news in the first hour (`gappers.py`).
 - Ten-second bars for 16 names over the last year (`fastdrop.py`,
   `latency.py`).
 - One-second quotes around real trades (`onesec.py`).

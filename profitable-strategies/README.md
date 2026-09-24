@@ -2,7 +2,7 @@
 
 **New: [stock scalping, holds of 3 minutes or less](scalping/README.md).**
 The overnight search for ten strategies making $200 a day on $25,000 found
-none. It covered about 1,600 books on four years of one-minute bars for 72
+none. It covered about 1,700 books on four years of one-minute bars for 72
 large US stocks, plus ten-second and one-second checks.
 
 On bid-only bars, buying a sharp drop looked strong, up to $278 a day at 1x.
