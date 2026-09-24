@@ -161,7 +161,26 @@ def setups(f: Dict[str, np.ndarray]) -> Dict[str, Tuple[np.ndarray, int]]:
         add(f"day down >{k:.2%} at +{at}m: fade it", w & (f["day_ret"] < -k), 1)
         add(f"open-to-now up >{k:.2%} at +{at}m: go with it", w & (f["ret_open"] > k), 1)
         add(f"open-to-now down >{k:.2%} at +{at}m: go with it", w & (f["ret_open"] < -k), -1)
-    for at in (0, 5, 15, 30, 60, 150, 270, 330, 360, 370):
+    for k in (2.0, 3.0, 4.0):
+        w = mso == 30                                          # the 10:00 bar, when most US data comes out
+        add(f"10:00 bar jump z>{k}: go with it", w & (z1 > k), 1)
+        add(f"10:00 bar drop z<-{k}: go with it", w & (z1 < -k), -1)
+        add(f"10:00 bar jump z>{k}: fade it", w & (z1 > k), -1)
+        add(f"10:00 bar drop z<-{k}: fade it", w & (z1 < -k), 1)
+        w = mso == 0                                           # the opening minute
+        add(f"first minute up z>{k}: go with it", w & (z1 > k), 1)
+        add(f"first minute down z<-{k}: go with it", w & (z1 < -k), -1)
+        add(f"first minute up z>{k}: fade it", w & (z1 > k), -1)
+        add(f"first minute down z<-{k}: fade it", w & (z1 < -k), 1)
+    rng = np.maximum.accumulate(f["c"]) - np.minimum.accumulate(f["c"])
+    pos = (f["c"] - np.minimum.accumulate(f["c"])) / np.where(rng > 0, rng, np.nan)
+    for wn, (a, b) in (("14:30-15:45", (300, 375)), ("11:30-14:30", (120, 300))):
+        w = (mso >= a) & (mso <= b)
+        add(f"in the bottom tenth of the day's range {wn}: buy", w & (pos < 0.1), 1)
+        add(f"in the bottom tenth of the day's range {wn}: sell", w & (pos < 0.1), -1)
+        add(f"in the top tenth of the day's range {wn}: sell", w & (pos > 0.9), -1)
+        add(f"in the top tenth of the day's range {wn}: buy", w & (pos > 0.9), 1)
+    for at in (0, 5, 15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 345, 360, 370, 375):
         w = mso == at
         add(f"every day at +{at}m: long", w, 1)
         add(f"every day at +{at}m: short", w, -1)
