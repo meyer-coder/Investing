@@ -22,7 +22,9 @@ INTC, QCOM, LRCX, AMAT, KLAC, CRWV, OKLO, HIMS, AFRM, RDDT, DELL and ASTS).
 
   The buy fills at the next minute's open.
 - **Sell** at the open four minutes after the buy.
-- **At most three positions**, each a third of buying power.
+- **At most three positions**, each a third of buying power. When more names
+  signal in the same minute than there are free slots, the one that fell
+  hardest on its own goes first.
 - **Never past the close:** a hard exit at 15:55. In practice the last sale
   is at 09:50.
 
@@ -38,23 +40,31 @@ history to judge a drop against, so it counts as a $0 day.
 
 | Buying power | Average day | Typical day (median) | Days up | Days at $100+ | Worst day |
 | --- | --- | --- | --- | --- | --- |
-| 1x ($25,000 of positions) | $76 | $48 | 67% | 33% | -$106 (0.4%) |
-| 1.5x | $115 | $72 | 67% | 48% | -$160 (0.6%) |
-| 2x ($50,000) | $153 | $95 | 67% | 48% | -$212 (0.8%) |
+| 1x ($25,000 of positions) | $73 | $58 | 67% | 33% | -$176 (0.7%) |
+| 1.5x | $109 | $86 | 67% | 43% | -$265 (1.1%) |
+| 2x ($50,000) | $146 | $112 | 67% | 52% | -$353 (1.4%) |
 
-It makes about 7.5 trades a day. 56% of trades win, and a trade averages
-+12.2 bp after costs. The paper trail runs at 2x.
+It makes about 7.5 trades a day. 57% of trades win, and a trade averages
++11.7 bp after costs. The paper trail runs at 2x.
 
 | Check | Result |
 | --- | --- |
-| Each week on its own (2x) | $130, $136 and $192 a day |
-| The 17 original names / the 30 new ones (2x, all 21 sessions) | +$1,469 / +$1,912 |
-| Names | 45 of the 47 traded, and 31 made money. DELL, MRVL, ANET and HOOD made the most; CVNA, HIMS and APP lost the most |
-| Without its best day (Sep 2, +$979 at 2x) | $112 a day at 2x |
-| Losing streaks (2x) | At most three losing days in a row. The worst five-day stretch lost $67 |
-| Costs doubled | $53 a day at 1x (57% of days up), $107 at 2x |
-| Costs tripled | $30 a day at 1x (52% of days up) |
-| Every fill a full minute late | $67 a day at 1x and $134 at 2x, but the last week lost money ($17 a day at 1x) |
+| Each week on its own (2x) | $96, $150 and $191 a day |
+| The 17 original names / the 30 new ones (2x, all 21 sessions) | +$1,053 / +$2,155 |
+| Names | All 47 traded, and 28 made money. DELL, HOOD, SNOW, MRVL and ANET made the most; COIN, INTC, ARM and CVNA lost the most |
+| Without its best day (Sep 2, +$924 at 2x) | $107 a day at 2x |
+| Losing streaks (2x) | At most four losing days in a row. The worst five-day stretch lost $254 |
+| Costs doubled | $50 a day at 1x (62% of days up), $99 at 2x |
+| Costs tripled | $26 a day at 1x (52% of days up) |
+| Every fill a full minute late | $62 a day at 1x and $124 at 2x, but the last week lost money ($20 a day at 1x) |
+| Which names get the slots (1x) | Hardest own drop first: $73 a day. Alphabetical: $76. A random order, 12 times: $51 on average ($22 to $68) |
+
+**About that last row.** The first version of this page took names that
+signalled together alphabetically and reported $153 a day at 2x. Taken in a
+random order, the same bot made a third less. The alphabetical order had
+simply landed on good names this month. Taking the hardest own drop first is
+a rule with a reason behind it. It beat all 12 random orders, in each of the
+three weeks and on both groups of names, and that is the version here.
 
 ## How it was found
 
@@ -69,7 +79,7 @@ It makes about 7.5 trades a day. 56% of trades win, and a trade averages
    had no one-to-four-minute setup that survived costs. The mirror image,
    shorting a name's own sharp rise, lost 4-20 bp a trade on both groups of
    names (`mirror.py`). A lone rise at the open keeps going; a lone drop comes
-   back.
+   back. More, smaller positions (6 to 15 at once) made less (`slots.json`).
 4. **Residual drops** (`residual.py`). A name's drop was measured against the
    other names' average that minute. The setup was chosen on the 17 names'
    first 14 sessions. It held on their last 7 sessions and on the 30 new names
@@ -77,24 +87,26 @@ It makes about 7.5 trades a day. 56% of trades win, and a trade averages
 5. **One bot** (`residbot.py`, `owndrop.py`). Both conditions together, run in
    the engine: next-minute fills, each name's own cost and three positions.
    It kept both groups of names profitable.
+6. **Who gets the slots** (`owndrop.py --orders`). The hardest own drop goes
+   first, as above.
 
 ## Read this before trusting it
 
 - **One month is short.** It covers 21 sessions in one regime, a strong,
   volatile semiconductor rally. The settings were picked on this month, so the
   paper trail from 2026-09-24 is the real test.
-- **About one day in three loses.** At 2x the typical day is $95 and the
-  average is $153, because a few big days lift the average. Judge it over
+- **About one day in three loses.** At 2x the typical day is $112 and the
+  average is $146, because a few big days lift the average. Judge it over
   weeks, not days.
 - **Speed matters.** The signal is gone within a minute or two. Every fill a
   minute late still made money over the month, but lost in the last week. The
   order has to go in within seconds of the minute's close.
 - **The opening minutes are the hardest to fill.** Spreads are wider then than
-  the one-cent cost assumes on some names. Doubled costs leave $53 a day at 1x.
+  the one-cent cost assumes on some names. Doubled costs leave $50 a day at 1x.
 - **It needs day-trading buying power.** At 2x each position is about $16,700
   on a $25,000 account. A margin account over $25,000 gets up to 4x intraday.
   A funded account's buying power and daily loss limit vary, so check both.
-  The worst day at 2x, -$212, is 0.8% of $25,000.
+  The worst day at 2x, -$353, is 1.4% of $25,000.
 - **No TradingView version yet.** The signal needs all 47 names every
   minute, which is more than one Pine script can request. It runs from Python.
 
@@ -103,8 +115,11 @@ It makes about 7.5 trades a day. 56% of trades win, and a trade averages
 - `paper.json` and `paper/<date>.md`: the paper trail at 2x. Each evening
   `python strategies/scalp/replay.py` replays the day from its one-minute
   bars, and each trade is written once.
-- `backtest.json`: every number above, from `python strategies/scalp/owndrop.py`.
+- `backtest.json`: the numbers above, from `python strategies/scalp/owndrop.py`.
+  `orders.json`, `slots.json` and `grid.json` come from its `--orders`,
+  `--slots` and `--grid` options.
 - `strategies/scalp/`: the studies, the bot and the replay.
 - `tests/test_scalp.py` checks that the residual reads only minutes already
-  closed. It also checks that a drop the whole market shares is not bought and
-  that each trade lasts four minutes.
+  closed. It also checks that a drop the whole market shares is not bought,
+  that each trade lasts four minutes, and that the hardest own drop gets the
+  last slot.

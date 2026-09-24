@@ -6,7 +6,7 @@
  ],
  "account": 25000.0,
  "bot": {
-  "id": "5bb3cf4c074b",
+  "id": "b1beb1d1f055",
   "name": "Own-Drop Scalper",
   "thesis": "a name's own sharp drop in the opening minutes, one the rest of the market does not share, snaps back within minutes",
   "entry_rules": [
@@ -37,10 +37,1875 @@
   "parents": [],
   "origin": "seed",
   "rationale": "",
-  "created_at": 1790207691.343831
+  "created_at": 1790208883.1749642
  },
+ "rank_entries_by": "resid_z",
  "runs": {
   "1x": {
+   "usd_per_day": 72.9,
+   "median": 58.0,
+   "days_up": 0.667,
+   "days_100_plus": 0.333,
+   "worst_day": -176.0,
+   "best_day": 461.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.567,
+   "avg_trade_bp": 11.7,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 510.0,
+   "pnl_fresh_names": 1059.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 266.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 208.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 202.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 201.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 197.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 185.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 120.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 119.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 110.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 106.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 101.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 91.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 83.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 82.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 81.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 78.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 57.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 55.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 47.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 36.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 35.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 34.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 21.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": 13.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 9.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 8.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": 7.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": 4.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -3.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -10.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -12.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -15.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -20.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -30.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -30.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -32.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -43.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -51.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -64.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -71.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -71.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -73.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -74.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -80.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -89.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -108.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -114.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 90.0,
+    "2026-08-27": -1.0,
+    "2026-08-28": -115.0,
+    "2026-08-31": -35.0,
+    "2026-09-01": -66.0,
+    "2026-09-02": 461.0,
+    "2026-09-03": 61.0,
+    "2026-09-04": 175.0,
+    "2026-09-08": 105.0,
+    "2026-09-09": 95.0,
+    "2026-09-10": 245.0,
+    "2026-09-11": 23.0,
+    "2026-09-14": -176.0,
+    "2026-09-15": 41.0,
+    "2026-09-16": 150.0,
+    "2026-09-17": 150.0,
+    "2026-09-18": 58.0,
+    "2026-09-21": -11.0,
+    "2026-09-22": 247.0,
+    "2026-09-23": 35.0
+   },
+   "weeks": [
+    48.0,
+    75.0,
+    96.0
+   ]
+  },
+  "1.5x": {
+   "usd_per_day": 109.3,
+   "median": 85.7,
+   "days_up": 0.667,
+   "days_100_plus": 0.429,
+   "worst_day": -265.0,
+   "best_day": 692.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.567,
+   "avg_trade_bp": 11.7,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 778.0,
+   "pnl_fresh_names": 1602.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 400.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 314.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 309.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 305.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 304.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 281.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 182.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 181.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 168.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 161.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 154.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 137.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 127.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 126.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 125.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 119.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 86.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 84.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 72.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 53.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 53.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 52.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 32.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": 18.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 14.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 12.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": 11.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": 6.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -4.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -15.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -20.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -23.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -30.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -45.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -45.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -46.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -65.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -78.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -100.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -109.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -109.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -110.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -112.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -122.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -135.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -164.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -174.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 136.0,
+    "2026-08-27": -1.0,
+    "2026-08-28": -172.0,
+    "2026-08-31": -53.0,
+    "2026-09-01": -99.0,
+    "2026-09-02": 692.0,
+    "2026-09-03": 91.0,
+    "2026-09-04": 263.0,
+    "2026-09-08": 157.0,
+    "2026-09-09": 142.0,
+    "2026-09-10": 367.0,
+    "2026-09-11": 35.0,
+    "2026-09-14": -265.0,
+    "2026-09-15": 62.0,
+    "2026-09-16": 225.0,
+    "2026-09-17": 224.0,
+    "2026-09-18": 86.0,
+    "2026-09-21": -17.0,
+    "2026-09-22": 371.0,
+    "2026-09-23": 53.0
+   },
+   "weeks": [
+    72.0,
+    113.0,
+    143.0
+   ]
+  },
+  "2x": {
+   "usd_per_day": 145.6,
+   "median": 112.4,
+   "days_up": 0.667,
+   "days_100_plus": 0.524,
+   "worst_day": -353.0,
+   "best_day": 924.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.567,
+   "avg_trade_bp": 11.7,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 1053.0,
+   "pnl_fresh_names": 2155.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 534.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 422.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 421.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 416.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 412.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 379.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 245.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 242.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 229.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 218.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 210.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 185.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 171.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 171.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 170.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 160.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 114.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 114.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 97.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 72.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 71.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 71.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 43.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": 22.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 18.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 16.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": 16.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": 8.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -5.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -20.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -28.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -32.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -41.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -58.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -61.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -62.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -89.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -105.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -141.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -148.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -148.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -150.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -150.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -163.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -181.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -221.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -235.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 181.0,
+    "2026-08-27": -2.0,
+    "2026-08-28": -229.0,
+    "2026-08-31": -71.0,
+    "2026-09-01": -133.0,
+    "2026-09-02": 924.0,
+    "2026-09-03": 121.0,
+    "2026-09-04": 351.0,
+    "2026-09-08": 209.0,
+    "2026-09-09": 189.0,
+    "2026-09-10": 490.0,
+    "2026-09-11": 46.0,
+    "2026-09-14": -353.0,
+    "2026-09-15": 82.0,
+    "2026-09-16": 299.0,
+    "2026-09-17": 299.0,
+    "2026-09-18": 112.0,
+    "2026-09-21": -23.0,
+    "2026-09-22": 495.0,
+    "2026-09-23": 71.0
+   },
+   "weeks": [
+    96.0,
+    150.0,
+    191.0
+   ]
+  },
+  "1x, costs doubled": {
+   "usd_per_day": 49.5,
+   "median": 30.8,
+   "days_up": 0.619,
+   "days_100_plus": 0.286,
+   "worst_day": -197.0,
+   "best_day": 435.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.541,
+   "avg_trade_bp": 8.0,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 342.0,
+   "pnl_fresh_names": 711.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 257.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 189.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 189.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 184.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 179.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 150.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 112.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 102.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 89.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 86.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 82.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 77.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 74.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 74.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 72.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 71.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 52.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 50.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 36.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 32.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 22.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 19.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 17.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 5.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": 5.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 4.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": 1.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": -2.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -5.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -23.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -23.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -25.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -26.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -35.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -38.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -41.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -46.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -67.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -75.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -78.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -79.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -82.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -88.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -100.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -106.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -118.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -121.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 69.0,
+    "2026-08-27": -26.0,
+    "2026-08-28": -142.0,
+    "2026-08-31": -58.0,
+    "2026-09-01": -83.0,
+    "2026-09-02": 435.0,
+    "2026-09-03": 31.0,
+    "2026-09-04": 157.0,
+    "2026-09-08": 75.0,
+    "2026-09-09": 65.0,
+    "2026-09-10": 223.0,
+    "2026-09-11": -0.0,
+    "2026-09-14": -197.0,
+    "2026-09-15": 16.0,
+    "2026-09-16": 121.0,
+    "2026-09-17": 133.0,
+    "2026-09-18": 32.0,
+    "2026-09-21": -34.0,
+    "2026-09-22": 212.0,
+    "2026-09-23": 10.0
+   },
+   "weeks": [
+    28.0,
+    51.0,
+    70.0
+   ]
+  },
+  "1x, costs tripled": {
+   "usd_per_day": 26.1,
+   "median": 0.9,
+   "days_up": 0.524,
+   "days_100_plus": 0.238,
+   "worst_day": -217.0,
+   "best_day": 410.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.49,
+   "avg_trade_bp": 4.2,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 176.0,
+   "pnl_fresh_names": 370.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 247.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 177.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 171.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 170.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 157.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 116.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 105.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 93.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 71.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 67.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 67.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 67.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 63.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 59.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 59.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 58.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 49.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 43.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 28.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 26.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 12.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 10.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 3.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 1.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": -1.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": -1.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": -2.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -8.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": -11.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -31.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -32.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -35.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -37.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -40.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -46.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -49.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -50.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -81.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -82.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -87.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -87.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -93.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -96.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -111.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -127.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -128.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -137.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 49.0,
+    "2026-08-27": -50.0,
+    "2026-08-28": -168.0,
+    "2026-08-31": -81.0,
+    "2026-09-01": -100.0,
+    "2026-09-02": 410.0,
+    "2026-09-03": 1.0,
+    "2026-09-04": 139.0,
+    "2026-09-08": 45.0,
+    "2026-09-09": 36.0,
+    "2026-09-10": 200.0,
+    "2026-09-11": -24.0,
+    "2026-09-14": -217.0,
+    "2026-09-15": -9.0,
+    "2026-09-16": 92.0,
+    "2026-09-17": 116.0,
+    "2026-09-18": 5.0,
+    "2026-09-21": -57.0,
+    "2026-09-22": 178.0,
+    "2026-09-23": -15.0
+   },
+   "weeks": [
+    9.0,
+    26.0,
+    44.0
+   ]
+  },
+  "2x, costs doubled": {
+   "usd_per_day": 98.6,
+   "median": 59.3,
+   "days_up": 0.619,
+   "days_100_plus": 0.429,
+   "worst_day": -393.0,
+   "best_day": 872.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.541,
+   "avg_trade_bp": 8.0,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:50",
+   "pnl_original_names": 698.0,
+   "pnl_fresh_names": 1424.0,
+   "by_name": {
+    "DELL": {
+     "trades": 4,
+     "pnl": 511.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 382.0
+    },
+    "SNOW": {
+     "trades": 8,
+     "pnl": 381.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 381.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 369.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 304.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 227.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 208.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 179.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": 176.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 168.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 157.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 153.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 151.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 147.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 144.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 107.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 99.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 75.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 63.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 45.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 38.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 34.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": 10.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": 8.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 7.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": 3.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": -4.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -11.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -46.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": -48.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -53.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -53.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": -71.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": -78.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": -79.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -95.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": -136.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -156.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -161.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -163.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": -170.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -179.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -202.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -215.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -239.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -247.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 139.0,
+    "2026-08-27": -52.0,
+    "2026-08-28": -283.0,
+    "2026-08-31": -117.0,
+    "2026-09-01": -167.0,
+    "2026-09-02": 872.0,
+    "2026-09-03": 61.0,
+    "2026-09-04": 314.0,
+    "2026-09-08": 149.0,
+    "2026-09-09": 129.0,
+    "2026-09-10": 445.0,
+    "2026-09-11": -2.0,
+    "2026-09-14": -393.0,
+    "2026-09-15": 32.0,
+    "2026-09-16": 241.0,
+    "2026-09-17": 265.0,
+    "2026-09-18": 59.0,
+    "2026-09-21": -69.0,
+    "2026-09-22": 426.0,
+    "2026-09-23": 20.0
+   },
+   "weeks": [
+    56.0,
+    100.0,
+    139.0
+   ]
+  },
+  "1x, a minute late": {
+   "usd_per_day": 61.8,
+   "median": 42.4,
+   "days_up": 0.571,
+   "days_100_plus": 0.381,
+   "worst_day": -124.0,
+   "best_day": 365.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.548,
+   "avg_trade_bp": 9.9,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:51",
+   "pnl_original_names": 153.0,
+   "pnl_fresh_names": 1168.0,
+   "by_name": {
+    "SNOW": {
+     "trades": 8,
+     "pnl": 377.0
+    },
+    "DELL": {
+     "trades": 4,
+     "pnl": 288.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 205.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 175.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 146.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 133.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 110.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 108.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 108.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 104.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 101.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 99.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 93.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 77.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": 71.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": 64.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 61.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 54.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": 42.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 41.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 38.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 33.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 25.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 23.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 18.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": 16.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 10.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": 3.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": 1.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": -9.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": -11.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -21.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -45.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -46.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -54.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -63.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": -67.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -73.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": -73.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -75.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -83.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -92.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": -93.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -94.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -107.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -122.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -171.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 42.0,
+    "2026-08-27": 216.0,
+    "2026-08-28": -112.0,
+    "2026-08-31": 76.0,
+    "2026-09-01": 2.0,
+    "2026-09-02": 286.0,
+    "2026-09-03": 120.0,
+    "2026-09-04": 60.0,
+    "2026-09-08": -107.0,
+    "2026-09-09": 163.0,
+    "2026-09-10": 365.0,
+    "2026-09-11": 218.0,
+    "2026-09-14": 103.0,
+    "2026-09-15": -31.0,
+    "2026-09-16": 243.0,
+    "2026-09-17": -39.0,
+    "2026-09-18": -69.0,
+    "2026-09-21": -3.0,
+    "2026-09-22": -114.0,
+    "2026-09-23": -124.0
+   },
+   "weeks": [
+    73.0,
+    132.0,
+    -20.0
+   ]
+  },
+  "2x, a minute late": {
+   "usd_per_day": 123.5,
+   "median": 84.1,
+   "days_up": 0.571,
+   "days_100_plus": 0.476,
+   "worst_day": -247.0,
+   "best_day": 732.0,
+   "trades_per_day": 7.5,
+   "win_rate": 0.548,
+   "avg_trade_bp": 9.9,
+   "avg_hold_min": 4.0,
+   "last_exit_et": "09:51",
+   "pnl_original_names": 335.0,
+   "pnl_fresh_names": 2355.0,
+   "by_name": {
+    "SNOW": {
+     "trades": 8,
+     "pnl": 764.0
+    },
+    "DELL": {
+     "trades": 4,
+     "pnl": 581.0
+    },
+    "HOOD": {
+     "trades": 6,
+     "pnl": 431.0
+    },
+    "SOXS": {
+     "trades": 3,
+     "pnl": 362.0
+    },
+    "OKLO": {
+     "trades": 5,
+     "pnl": 300.0
+    },
+    "NVDL": {
+     "trades": 5,
+     "pnl": 276.0
+    },
+    "ASTS": {
+     "trades": 1,
+     "pnl": 232.0
+    },
+    "CRWD": {
+     "trades": 4,
+     "pnl": 224.0
+    },
+    "AMD": {
+     "trades": 3,
+     "pnl": 219.0
+    },
+    "NET": {
+     "trades": 3,
+     "pnl": 218.0
+    },
+    "ANET": {
+     "trades": 4,
+     "pnl": 205.0
+    },
+    "CRWV": {
+     "trades": 1,
+     "pnl": 202.0
+    },
+    "IONQ": {
+     "trades": 3,
+     "pnl": 188.0
+    },
+    "MRVL": {
+     "trades": 4,
+     "pnl": 174.0
+    },
+    "MSTR": {
+     "trades": 4,
+     "pnl": 144.0
+    },
+    "APP": {
+     "trades": 4,
+     "pnl": 134.0
+    },
+    "TSLA": {
+     "trades": 1,
+     "pnl": 129.0
+    },
+    "MSFT": {
+     "trades": 6,
+     "pnl": 112.0
+    },
+    "AMAT": {
+     "trades": 4,
+     "pnl": 87.0
+    },
+    "META": {
+     "trades": 6,
+     "pnl": 85.0
+    },
+    "MUU": {
+     "trades": 1,
+     "pnl": 77.0
+    },
+    "HIMS": {
+     "trades": 2,
+     "pnl": 69.0
+    },
+    "UBER": {
+     "trades": 1,
+     "pnl": 53.0
+    },
+    "DDOG": {
+     "trades": 3,
+     "pnl": 42.0
+    },
+    "KLAC": {
+     "trades": 2,
+     "pnl": 37.0
+    },
+    "NFLX": {
+     "trades": 4,
+     "pnl": 32.0
+    },
+    "AVGO": {
+     "trades": 2,
+     "pnl": 21.0
+    },
+    "SHOP": {
+     "trades": 3,
+     "pnl": 7.0
+    },
+    "PLTR": {
+     "trades": 2,
+     "pnl": 2.0
+    },
+    "TQQQ": {
+     "trades": 1,
+     "pnl": -19.0
+    },
+    "NVDA": {
+     "trades": 1,
+     "pnl": -23.0
+    },
+    "GOOGL": {
+     "trades": 6,
+     "pnl": -45.0
+    },
+    "AMZN": {
+     "trades": 2,
+     "pnl": -92.0
+    },
+    "CVNA": {
+     "trades": 2,
+     "pnl": -95.0
+    },
+    "ORCL": {
+     "trades": 1,
+     "pnl": -108.0
+    },
+    "AAPL": {
+     "trades": 4,
+     "pnl": -133.0
+    },
+    "MU": {
+     "trades": 2,
+     "pnl": -149.0
+    },
+    "LRCX": {
+     "trades": 4,
+     "pnl": -149.0
+    },
+    "RDDT": {
+     "trades": 3,
+     "pnl": -150.0
+    },
+    "AFRM": {
+     "trades": 8,
+     "pnl": -157.0
+    },
+    "RKLB": {
+     "trades": 3,
+     "pnl": -176.0
+    },
+    "SOXL": {
+     "trades": 2,
+     "pnl": -191.0
+    },
+    "INTC": {
+     "trades": 3,
+     "pnl": -194.0
+    },
+    "SMCI": {
+     "trades": 3,
+     "pnl": -199.0
+    },
+    "ARM": {
+     "trades": 5,
+     "pnl": -219.0
+    },
+    "QCOM": {
+     "trades": 5,
+     "pnl": -263.0
+    },
+    "COIN": {
+     "trades": 3,
+     "pnl": -354.0
+    }
+   },
+   "by_day": {
+    "2026-08-25": 0.0,
+    "2026-08-26": 84.0,
+    "2026-08-27": 432.0,
+    "2026-08-28": -223.0,
+    "2026-08-31": 151.0,
+    "2026-09-01": 2.0,
+    "2026-09-02": 572.0,
+    "2026-09-03": 239.0,
+    "2026-09-04": 119.0,
+    "2026-09-08": -213.0,
+    "2026-09-09": 326.0,
+    "2026-09-10": 732.0,
+    "2026-09-11": 437.0,
+    "2026-09-14": 207.0,
+    "2026-09-15": -63.0,
+    "2026-09-16": 488.0,
+    "2026-09-17": -79.0,
+    "2026-09-18": -138.0,
+    "2026-09-21": -6.0,
+    "2026-09-22": -229.0,
+    "2026-09-23": -247.0
+   },
+   "weeks": [
+    145.0,
+    264.0,
+    -39.0
+   ]
+  },
+  "1x, names taken alphabetically (the first version)": {
    "usd_per_day": 76.4,
    "median": 47.8,
    "days_up": 0.667,
@@ -263,1581 +2128,6 @@
     65.0,
     68.0,
     96.0
-   ]
-  },
-  "1.5x": {
-   "usd_per_day": 114.7,
-   "median": 71.6,
-   "days_up": 0.667,
-   "days_100_plus": 0.476,
-   "worst_day": -160.0,
-   "best_day": 733.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.563,
-   "avg_trade_bp": 12.2,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:50",
-   "pnl_original_names": 1083.0,
-   "pnl_fresh_names": 1421.0,
-   "by_name": {
-    "DELL": {
-     "trades": 4,
-     "pnl": 402.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 360.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 270.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 240.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 202.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 202.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 201.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 201.0
-    },
-    "SNOW": {
-     "trades": 5,
-     "pnl": 167.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 160.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 155.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 133.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 133.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 126.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 123.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 110.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 87.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 79.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": 70.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": 62.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 61.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": 60.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": 60.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 58.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 50.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 47.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 39.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 32.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 30.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": 14.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": 6.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -15.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -27.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -67.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -71.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -77.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -84.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": -92.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -96.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -101.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -106.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -124.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": -143.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -205.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -227.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 110.0,
-    "2026-08-27": 122.0,
-    "2026-08-28": -159.0,
-    "2026-08-31": -3.0,
-    "2026-09-01": -120.0,
-    "2026-09-02": 733.0,
-    "2026-09-03": -9.0,
-    "2026-09-04": 260.0,
-    "2026-09-08": 201.0,
-    "2026-09-09": -160.0,
-    "2026-09-10": 318.0,
-    "2026-09-11": 35.0,
-    "2026-09-14": 72.0,
-    "2026-09-15": 42.0,
-    "2026-09-16": 114.0,
-    "2026-09-17": 295.0,
-    "2026-09-18": 366.0,
-    "2026-09-21": -17.0,
-    "2026-09-22": 174.0,
-    "2026-09-23": 34.0
-   },
-   "weeks": [
-    98.0,
-    102.0,
-    144.0
-   ]
-  },
-  "2x": {
-   "usd_per_day": 152.9,
-   "median": 95.4,
-   "days_up": 0.667,
-   "days_100_plus": 0.476,
-   "worst_day": -212.0,
-   "best_day": 979.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.563,
-   "avg_trade_bp": 12.2,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:50",
-   "pnl_original_names": 1469.0,
-   "pnl_fresh_names": 1912.0,
-   "by_name": {
-    "DELL": {
-     "trades": 4,
-     "pnl": 538.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 490.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 364.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 327.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 275.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 275.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 272.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 270.0
-    },
-    "SNOW": {
-     "trades": 5,
-     "pnl": 222.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 214.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 205.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 179.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 179.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 172.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 166.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 149.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 115.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 107.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": 98.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 84.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": 83.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": 82.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": 79.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 78.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 68.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 63.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 52.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 43.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 40.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": 18.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": 8.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -20.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -37.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -90.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -96.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -105.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -112.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": -121.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -131.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -141.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -145.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -166.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": -191.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -273.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -306.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 147.0,
-    "2026-08-27": 162.0,
-    "2026-08-28": -212.0,
-    "2026-08-31": -4.0,
-    "2026-09-01": -160.0,
-    "2026-09-02": 979.0,
-    "2026-09-03": -12.0,
-    "2026-09-04": 347.0,
-    "2026-09-08": 268.0,
-    "2026-09-09": -212.0,
-    "2026-09-10": 423.0,
-    "2026-09-11": 46.0,
-    "2026-09-14": 95.0,
-    "2026-09-15": 56.0,
-    "2026-09-16": 151.0,
-    "2026-09-17": 394.0,
-    "2026-09-18": 488.0,
-    "2026-09-21": -23.0,
-    "2026-09-22": 232.0,
-    "2026-09-23": 45.0
-   },
-   "weeks": [
-    130.0,
-    136.0,
-    192.0
-   ]
-  },
-  "1x, costs doubled": {
-   "usd_per_day": 53.4,
-   "median": 25.5,
-   "days_up": 0.571,
-   "days_100_plus": 0.286,
-   "worst_day": -135.0,
-   "best_day": 462.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.525,
-   "avg_trade_bp": 8.5,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:50",
-   "pnl_original_names": 576.0,
-   "pnl_fresh_names": 562.0,
-   "by_name": {
-    "DELL": {
-     "trades": 4,
-     "pnl": 257.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 226.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 163.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 145.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 122.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 118.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 113.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 108.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 101.0
-    },
-    "SNOW": {
-     "trades": 5,
-     "pnl": 100.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 97.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 79.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 77.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 75.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 68.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 60.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 50.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": 36.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 33.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 32.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 31.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": 30.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": 26.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 24.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": 20.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 19.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 16.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 16.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 9.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": 5.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": 1.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -16.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -26.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -48.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -52.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -53.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -75.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": -78.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -80.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -80.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -88.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -89.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": -106.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -161.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -166.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 53.0,
-    "2026-08-27": 58.0,
-    "2026-08-28": -133.0,
-    "2026-08-31": -24.0,
-    "2026-09-01": -101.0,
-    "2026-09-02": 462.0,
-    "2026-09-03": -39.0,
-    "2026-09-04": 157.0,
-    "2026-09-08": 108.0,
-    "2026-09-09": -135.0,
-    "2026-09-10": 191.0,
-    "2026-09-11": -1.0,
-    "2026-09-14": 26.0,
-    "2026-09-15": 3.0,
-    "2026-09-16": 52.0,
-    "2026-09-17": 181.0,
-    "2026-09-18": 217.0,
-    "2026-09-21": -34.0,
-    "2026-09-22": 83.0,
-    "2026-09-23": -3.0
-   },
-   "weeks": [
-    45.0,
-    44.0,
-    71.0
-   ]
-  },
-  "1x, costs tripled": {
-   "usd_per_day": 30.4,
-   "median": 3.3,
-   "days_up": 0.524,
-   "days_100_plus": 0.238,
-   "worst_day": -164.0,
-   "best_day": 437.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.5,
-   "avg_trade_bp": 4.9,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:50",
-   "pnl_original_names": 444.0,
-   "pnl_fresh_names": 195.0,
-   "by_name": {
-    "DELL": {
-     "trades": 4,
-     "pnl": 248.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 218.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 148.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 134.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 113.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 104.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 95.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 94.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 91.0
-    },
-    "SNOW": {
-     "trades": 5,
-     "pnl": 88.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 84.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 71.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 71.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 68.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 48.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 47.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 43.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": 30.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 28.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 24.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": 19.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 16.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 12.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 11.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": 8.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 7.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 5.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": 1.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": 1.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": -1.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": -2.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -20.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -34.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -51.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -53.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -61.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -87.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -92.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": -93.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -95.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -97.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": -117.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -120.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -172.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -196.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 32.0,
-    "2026-08-27": 35.0,
-    "2026-08-28": -160.0,
-    "2026-08-31": -46.0,
-    "2026-09-01": -123.0,
-    "2026-09-02": 437.0,
-    "2026-09-03": -72.0,
-    "2026-09-04": 142.0,
-    "2026-09-08": 82.0,
-    "2026-09-09": -164.0,
-    "2026-09-10": 170.0,
-    "2026-09-11": -26.0,
-    "2026-09-14": 3.0,
-    "2026-09-15": -22.0,
-    "2026-09-16": 28.0,
-    "2026-09-17": 165.0,
-    "2026-09-18": 190.0,
-    "2026-09-21": -57.0,
-    "2026-09-22": 50.0,
-    "2026-09-23": -28.0
-   },
-   "weeks": [
-    25.0,
-    19.0,
-    47.0
-   ]
-  },
-  "2x, costs doubled": {
-   "usd_per_day": 106.7,
-   "median": 50.8,
-   "days_up": 0.571,
-   "days_100_plus": 0.476,
-   "worst_day": -269.0,
-   "best_day": 927.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.525,
-   "avg_trade_bp": 8.5,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:50",
-   "pnl_original_names": 1180.0,
-   "pnl_fresh_names": 1127.0,
-   "by_name": {
-    "DELL": {
-     "trades": 4,
-     "pnl": 515.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 466.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 330.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 299.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 250.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 243.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 232.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 218.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 202.0
-    },
-    "SNOW": {
-     "trades": 5,
-     "pnl": 197.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 192.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 160.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 158.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 151.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 137.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 123.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 100.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": 71.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 67.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 66.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 64.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": 59.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": 58.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 50.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": 42.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 38.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 34.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 31.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 18.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": 10.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": 3.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -30.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -54.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -99.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -106.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -107.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": -154.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -161.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -165.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -167.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -178.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -179.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": -213.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -327.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -333.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 105.0,
-    "2026-08-27": 116.0,
-    "2026-08-28": -266.0,
-    "2026-08-31": -48.0,
-    "2026-09-01": -203.0,
-    "2026-09-02": 927.0,
-    "2026-09-03": -78.0,
-    "2026-09-04": 315.0,
-    "2026-09-08": 215.0,
-    "2026-09-09": -269.0,
-    "2026-09-10": 382.0,
-    "2026-09-11": -3.0,
-    "2026-09-14": 51.0,
-    "2026-09-15": 6.0,
-    "2026-09-16": 103.0,
-    "2026-09-17": 362.0,
-    "2026-09-18": 434.0,
-    "2026-09-21": -69.0,
-    "2026-09-22": 166.0,
-    "2026-09-23": -5.0
-   },
-   "weeks": [
-    90.0,
-    88.0,
-    142.0
-   ]
-  },
-  "1x, a minute late": {
-   "usd_per_day": 67.1,
-   "median": 36.4,
-   "days_up": 0.667,
-   "days_100_plus": 0.333,
-   "worst_day": -140.0,
-   "best_day": 350.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.525,
-   "avg_trade_bp": 10.7,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:51",
-   "pnl_original_names": 572.0,
-   "pnl_fresh_names": 867.0,
-   "by_name": {
-    "SNOW": {
-     "trades": 5,
-     "pnl": 312.0
-    },
-    "DELL": {
-     "trades": 4,
-     "pnl": 291.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 263.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 180.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 165.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 157.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 123.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 120.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 111.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 110.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 98.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 96.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 75.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 57.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": 49.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": 46.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 46.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 42.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 40.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 40.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 39.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 30.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 30.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 25.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 19.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 4.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 3.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": -3.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -5.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": -9.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": -11.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": -12.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -20.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": -24.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -31.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -38.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": -54.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -62.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -75.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -108.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -122.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -125.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -126.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -147.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -159.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 65.0,
-    "2026-08-27": 328.0,
-    "2026-08-28": -75.0,
-    "2026-08-31": 92.0,
-    "2026-09-01": 118.0,
-    "2026-09-02": 350.0,
-    "2026-09-03": 7.0,
-    "2026-09-04": 36.0,
-    "2026-09-08": -131.0,
-    "2026-09-09": 45.0,
-    "2026-09-10": 235.0,
-    "2026-09-11": 284.0,
-    "2026-09-14": 173.0,
-    "2026-09-15": -24.0,
-    "2026-09-16": 142.0,
-    "2026-09-17": 34.0,
-    "2026-09-18": 3.0,
-    "2026-09-21": -3.0,
-    "2026-09-22": -130.0,
-    "2026-09-23": -140.0
-   },
-   "weeks": [
-    125.0,
-    93.0,
-    -17.0
-   ]
-  },
-  "2x, a minute late": {
-   "usd_per_day": 134.3,
-   "median": 72.6,
-   "days_up": 0.667,
-   "days_100_plus": 0.429,
-   "worst_day": -279.0,
-   "best_day": 700.0,
-   "trades_per_day": 7.5,
-   "win_rate": 0.525,
-   "avg_trade_bp": 10.7,
-   "avg_hold_min": 4.0,
-   "last_exit_et": "09:51",
-   "pnl_original_names": 1198.0,
-   "pnl_fresh_names": 1743.0,
-   "by_name": {
-    "SNOW": {
-     "trades": 5,
-     "pnl": 635.0
-    },
-    "DELL": {
-     "trades": 4,
-     "pnl": 595.0
-    },
-    "CRWD": {
-     "trades": 7,
-     "pnl": 549.0
-    },
-    "OKLO": {
-     "trades": 4,
-     "pnl": 375.0
-    },
-    "MRVL": {
-     "trades": 2,
-     "pnl": 336.0
-    },
-    "NET": {
-     "trades": 3,
-     "pnl": 335.0
-    },
-    "ANET": {
-     "trades": 5,
-     "pnl": 256.0
-    },
-    "HOOD": {
-     "trades": 3,
-     "pnl": 252.0
-    },
-    "ASTS": {
-     "trades": 1,
-     "pnl": 234.0
-    },
-    "PLTR": {
-     "trades": 2,
-     "pnl": 225.0
-    },
-    "AMD": {
-     "trades": 4,
-     "pnl": 205.0
-    },
-    "NVDL": {
-     "trades": 3,
-     "pnl": 198.0
-    },
-    "META": {
-     "trades": 4,
-     "pnl": 155.0
-    },
-    "NFLX": {
-     "trades": 5,
-     "pnl": 118.0
-    },
-    "COIN": {
-     "trades": 6,
-     "pnl": 108.0
-    },
-    "APP": {
-     "trades": 5,
-     "pnl": 97.0
-    },
-    "MSTR": {
-     "trades": 4,
-     "pnl": 92.0
-    },
-    "MSFT": {
-     "trades": 4,
-     "pnl": 87.0
-    },
-    "CRWV": {
-     "trades": 3,
-     "pnl": 79.0
-    },
-    "MUU": {
-     "trades": 1,
-     "pnl": 78.0
-    },
-    "DDOG": {
-     "trades": 5,
-     "pnl": 77.0
-    },
-    "GOOGL": {
-     "trades": 5,
-     "pnl": 62.0
-    },
-    "SOXS": {
-     "trades": 1,
-     "pnl": 62.0
-    },
-    "UBER": {
-     "trades": 1,
-     "pnl": 53.0
-    },
-    "KLAC": {
-     "trades": 3,
-     "pnl": 40.0
-    },
-    "SMCI": {
-     "trades": 1,
-     "pnl": 8.0
-    },
-    "AMAT": {
-     "trades": 5,
-     "pnl": 6.0
-    },
-    "ORCL": {
-     "trades": 2,
-     "pnl": -6.0
-    },
-    "SHOP": {
-     "trades": 3,
-     "pnl": -11.0
-    },
-    "TQQQ": {
-     "trades": 1,
-     "pnl": -19.0
-    },
-    "NVDA": {
-     "trades": 1,
-     "pnl": -23.0
-    },
-    "IONQ": {
-     "trades": 3,
-     "pnl": -26.0
-    },
-    "AVGO": {
-     "trades": 4,
-     "pnl": -42.0
-    },
-    "INTC": {
-     "trades": 3,
-     "pnl": -60.0
-    },
-    "AAPL": {
-     "trades": 8,
-     "pnl": -63.0
-    },
-    "MU": {
-     "trades": 1,
-     "pnl": -78.0
-    },
-    "ARM": {
-     "trades": 7,
-     "pnl": -106.0
-    },
-    "AMZN": {
-     "trades": 3,
-     "pnl": -126.0
-    },
-    "CVNA": {
-     "trades": 3,
-     "pnl": -154.0
-    },
-    "LRCX": {
-     "trades": 2,
-     "pnl": -221.0
-    },
-    "HIMS": {
-     "trades": 4,
-     "pnl": -261.0
-    },
-    "QCOM": {
-     "trades": 5,
-     "pnl": -265.0
-    },
-    "RDDT": {
-     "trades": 1,
-     "pnl": -267.0
-    },
-    "AFRM": {
-     "trades": 8,
-     "pnl": -311.0
-    },
-    "RKLB": {
-     "trades": 3,
-     "pnl": -338.0
-    }
-   },
-   "by_day": {
-    "2026-08-25": 0.0,
-    "2026-08-26": 130.0,
-    "2026-08-27": 658.0,
-    "2026-08-28": -150.0,
-    "2026-08-31": 184.0,
-    "2026-09-01": 235.0,
-    "2026-09-02": 700.0,
-    "2026-09-03": 13.0,
-    "2026-09-04": 73.0,
-    "2026-09-08": -263.0,
-    "2026-09-09": 90.0,
-    "2026-09-10": 470.0,
-    "2026-09-11": 571.0,
-    "2026-09-14": 346.0,
-    "2026-09-15": -48.0,
-    "2026-09-16": 283.0,
-    "2026-09-17": 67.0,
-    "2026-09-18": 6.0,
-    "2026-09-21": -6.0,
-    "2026-09-22": -259.0,
-    "2026-09-23": -279.0
-   },
-   "weeks": [
-    251.0,
-    186.0,
-    -34.0
    ]
   }
  }
