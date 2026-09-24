@@ -1,0 +1,77 @@
+//@version=6
+// Gap Breakout, as tested in strategies/quick/stock_orb.py and paper-traded by strategies/quick/paper.py.
+// For a 1-minute chart of a large US stock on the morning it opens 2% or more away from yesterday's close.
+// The first five minutes (09:30-09:34) set a range and a direction: if that bar closed up, buy a break of its
+// high; if down, sell short a break of its low (one trade a day, entries up to 15:55).  The stop sits one
+// 14-day average daily range (high minus low) from the entry, and anything open is closed at the end of the
+// day.  Size: the stop distance risks `riskPct` of the account, capped at `maxNotional` of the account.
+// The paper bot runs it on the three biggest gappers among 72 large caps each morning.  Paper-test first.
+strategy("Gap Breakout", overlay = true, default_qty_type = strategy.fixed, default_qty_value = 1,
+         commission_type = strategy.commission.cash_per_order, commission_value = 0.5, slippage = 1,
+         process_orders_on_close = false)
+
+gapMin      = input.float(2.0, "Minimum opening gap (%)", minval = 0.5, step = 0.5)
+atrDays     = input.int(14, "Average daily range, days", minval = 5)
+stopAtr     = input.float(1.0, "Stop, in average daily ranges", minval = 0.1, step = 0.1)
+riskPct     = input.float(2.0, "Risk per trade (% of account)", minval = 0.25, step = 0.25)
+maxNotional = input.float(133.0, "Most notional per trade (% of account; 4x split over 3 names)", minval = 10)
+sessionIn   = input.session("0930-1600", "Regular session (exchange time)")
+tz          = input.string("America/New_York", "Time zone")
+
+// daily bars for yesterday's close, today's open and the average range of the days before today
+[dClose1, dOpen0] = request.security(syminfo.tickerid, "D", [close[1], open], lookahead = barmerge.lookahead_on)
+dRange = request.security(syminfo.tickerid, "D", ta.sma(high - low, atrDays)[1], lookahead = barmerge.lookahead_on)
+
+inSession = not na(time(timeframe.period, sessionIn, tz))
+newDay = inSession and not inSession[1]
+minuteOfSession = inSession ? (hour(time, tz) * 60 + minute(time, tz)) - (9 * 60 + 30) : na
+
+var float orHigh = na
+var float orLow = na
+var float orOpen = na
+var int dir = 0
+var bool traded = false
+if newDay
+    orHigh := high
+    orLow := low
+    orOpen := open
+    dir := 0
+    traded := false
+if inSession and minuteOfSession > 0 and minuteOfSession <= 4
+    orHigh := math.max(orHigh, high)
+    orLow := math.min(orLow, low)
+if inSession and minuteOfSession == 4
+    dir := close > orOpen ? 1 : close < orOpen ? -1 : 0
+
+gapPct = 100 * (dOpen0 / dClose1 - 1)
+bigGap = math.abs(gapPct) >= gapMin
+canEnter = inSession and minuteOfSession >= 4 and minuteOfSession < 385 and not traded and bigGap and dir != 0 and strategy.position_size == 0
+
+stopDist = stopAtr * dRange
+qty = na(stopDist) or stopDist <= 0 ? 0.0 : math.floor(math.min(strategy.equity * riskPct / 100 / stopDist,
+                                                                   strategy.equity * maxNotional / 100 / close))
+if canEnter and qty > 0
+    if dir > 0
+        strategy.entry("Long", strategy.long, qty = qty, stop = orHigh)
+    else
+        strategy.entry("Short", strategy.short, qty = qty, stop = orLow)
+if strategy.position_size > 0
+    traded := true
+    strategy.exit("Long stop", "Long", stop = strategy.position_avg_price - stopDist)
+if strategy.position_size < 0
+    traded := true
+    strategy.exit("Short stop", "Short", stop = strategy.position_avg_price + stopDist)
+// cancel a resting entry once the window closes, and flatten for the close
+if inSession and minuteOfSession >= 385
+    strategy.cancel("Long")
+    strategy.cancel("Short")
+if inSession and minuteOfSession == 388 and strategy.position_size != 0
+    strategy.close_all(comment = "end of day")
+
+if canEnter and qty > 0 and minuteOfSession == 4
+    alert('{"symbol":"' + syminfo.ticker + '","gap_pct":' + str.tostring(gapPct, "#.##") + ',"side":"' + (dir > 0 ? "buy_stop" : "sell_stop") +
+          '","level":' + str.tostring(dir > 0 ? orHigh : orLow) + ',"stop_distance":' + str.tostring(stopDist) + ',"qty":' + str.tostring(qty) + '}',
+          alert.freq_once_per_bar_close)
+
+plot(inSession and minuteOfSession >= 4 ? orHigh : na, "Opening-range high", color.new(color.teal, 0), style = plot.style_linebr)
+plot(inSession and minuteOfSession >= 4 ? orLow : na, "Opening-range low", color.new(color.red, 0), style = plot.style_linebr)

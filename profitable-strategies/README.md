@@ -1,5 +1,18 @@
 # Profitable strategies
 
+**New: [quick trades, in and out the same day](quick-trades/README.md).** With
+the three-minute cap relaxed, two same-day trades held up in every period and
+setting tested:
+
+- the Nasdaq-100 noise-area breakout (QQQ, TQQQ or MNQ);
+- a gap breakout on the day's biggest large-cap gappers.
+
+Together they make about $60 to $110 a day on $25,000 at 4x buying power,
+with a Sharpe of 1.4 and a worst losing stretch of about $11,000. None reaches
+$200 a day reliably; the page shows what leverage would take and the risk it
+adds. Pine Scripts are included, and both are paper-traded after every close
+from 2026-09-24.
+
 **New: [stock scalping, holds of 3 minutes or less](scalping/README.md).**
 The overnight search for ten strategies making $200 a day on $25,000 found
 none. It covered about 1,700 books on four years of one-minute bars for 72
