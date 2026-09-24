@@ -1,0 +1,1226 @@
+{
+ "09:35-10:00 k1.0 z3.0 hold 3m": {
+  "dev_usd": 1.4,
+  "test_usd": 2.8,
+  "test_up": 0.453,
+  "trades_per_day": 2.1,
+  "bp_per_trade": 1.24,
+  "worst_day": -298.0,
+  "years": {
+   "2022": 5.0,
+   "2023": 3.6,
+   "2024": -0.8,
+   "2025": 3.6,
+   "2026": 1.0
+  },
+  "fill_rate": 0.713,
+  "signals_per_day": 3.1
+ },
+ "09:35-10:00 k1.5 z3.0 hold 3m": {
+  "dev_usd": 1.1,
+  "test_usd": 2.1,
+  "test_up": 0.421,
+  "trades_per_day": 1.7,
+  "bp_per_trade": 1.12,
+  "worst_day": -305.0,
+  "years": {
+   "2022": 2.8,
+   "2023": 3.0,
+   "2024": -1.0,
+   "2025": 3.3,
+   "2026": 0.4
+  },
+  "fill_rate": 0.701,
+  "signals_per_day": 2.5
+ },
+ "09:35-10:00 k3.0 z3.0 hold 3m": {
+  "dev_usd": 0.9,
+  "test_usd": 1.0,
+  "test_up": 0.134,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 3.64,
+  "worst_day": -139.0,
+  "years": {
+   "2022": 0.6,
+   "2023": 1.2,
+   "2024": 1.1,
+   "2025": 1.5,
+   "2026": -0.3
+  },
+  "fill_rate": 0.584,
+  "signals_per_day": 0.6
+ },
+ "09:35-10:00 k1.5 z3.0 hold 2m": {
+  "dev_usd": 0.5,
+  "test_usd": 0.4,
+  "test_up": 0.4,
+  "trades_per_day": 1.7,
+  "bp_per_trade": 0.33,
+  "worst_day": -210.0,
+  "years": {
+   "2022": 8.1,
+   "2023": 0.9,
+   "2024": -2.2,
+   "2025": -0.9,
+   "2026": 1.9
+  },
+  "fill_rate": 0.701,
+  "signals_per_day": 2.5
+ },
+ "09:35-10:00 k1.0 z3.0 hold 2m": {
+  "dev_usd": 0.7,
+  "test_usd": 0.3,
+  "test_up": 0.437,
+  "trades_per_day": 2.1,
+  "bp_per_trade": 0.27,
+  "worst_day": -272.0,
+  "years": {
+   "2022": 9.6,
+   "2023": 1.6,
+   "2024": -2.8,
+   "2025": -1.3,
+   "2026": 1.7
+  },
+  "fill_rate": 0.713,
+  "signals_per_day": 3.1
+ },
+ "09:35-10:00 k3.0 z3.0 hold 1m": {
+  "dev_usd": -0.2,
+  "test_usd": -0.1,
+  "test_up": 0.118,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.67,
+  "worst_day": -94.0,
+  "years": {
+   "2022": -0.9,
+   "2023": 0.1,
+   "2024": 0.0,
+   "2025": -0.8,
+   "2026": 0.3
+  },
+  "fill_rate": 0.584,
+  "signals_per_day": 0.6
+ },
+ "09:35-10:00 k3.0 z3.0 hold 2m": {
+  "dev_usd": -0.2,
+  "test_usd": 0.3,
+  "test_up": 0.128,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 0.19,
+  "worst_day": -144.0,
+  "years": {
+   "2022": -0.8,
+   "2023": -0.3,
+   "2024": 0.6,
+   "2025": 0.1,
+   "2026": 0.0
+  },
+  "fill_rate": 0.584,
+  "signals_per_day": 0.6
+ },
+ "09:35-10:00 k3.0 z2.0 hold 3m": {
+  "dev_usd": -0.3,
+  "test_usd": 0.5,
+  "test_up": 0.191,
+  "trades_per_day": 0.6,
+  "bp_per_trade": 0.27,
+  "worst_day": -139.0,
+  "years": {
+   "2022": 0.5,
+   "2023": -0.8,
+   "2024": 0.5,
+   "2025": 0.9,
+   "2026": -0.2
+  },
+  "fill_rate": 0.557,
+  "signals_per_day": 1.2
+ },
+ "09:35-10:00 k1.5 z2.0 hold 3m": {
+  "dev_usd": 0.6,
+  "test_usd": -0.5,
+  "test_up": 0.53,
+  "trades_per_day": 6.7,
+  "bp_per_trade": 0.01,
+  "worst_day": -350.0,
+  "years": {
+   "2022": -2.5,
+   "2023": 4.9,
+   "2024": -5.6,
+   "2025": -0.7,
+   "2026": 3.3
+  },
+  "fill_rate": 0.718,
+  "signals_per_day": 10.4
+ },
+ "09:35-10:30 k3.0 z3.0 hold 3m": {
+  "dev_usd": 0.2,
+  "test_usd": -1.2,
+  "test_up": 0.215,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -1.01,
+  "worst_day": -395.0,
+  "years": {
+   "2022": 1.3,
+   "2023": 0.0,
+   "2024": -1.1,
+   "2025": -1.9,
+   "2026": 0.7
+  },
+  "fill_rate": 0.61,
+  "signals_per_day": 1.1
+ },
+ "09:35-10:30 k3.0 z3.0 hold 2m": {
+  "dev_usd": -1.3,
+  "test_usd": -1.3,
+  "test_up": 0.197,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -2.59,
+  "worst_day": -320.0,
+  "years": {
+   "2022": -0.2,
+   "2023": -1.7,
+   "2024": -1.2,
+   "2025": -2.8,
+   "2026": 0.6
+  },
+  "fill_rate": 0.61,
+  "signals_per_day": 1.1
+ },
+ "09:35-10:30 k3.0 z3.0 hold 1m": {
+  "dev_usd": -1.2,
+  "test_usd": -1.4,
+  "test_up": 0.175,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -2.5,
+  "worst_day": -371.0,
+  "years": {
+   "2022": -0.2,
+   "2023": -1.2,
+   "2024": -0.6,
+   "2025": -3.4,
+   "2026": -0.0
+  },
+  "fill_rate": 0.61,
+  "signals_per_day": 1.1
+ },
+ "09:35-10:00 k1.5 z3.0 hold 1m": {
+  "dev_usd": -0.8,
+  "test_usd": -1.5,
+  "test_up": 0.384,
+  "trades_per_day": 1.7,
+  "bp_per_trade": -0.79,
+  "worst_day": -190.0,
+  "years": {
+   "2022": 3.7,
+   "2023": -1.2,
+   "2024": -1.9,
+   "2025": -4.5,
+   "2026": 2.4
+  },
+  "fill_rate": 0.701,
+  "signals_per_day": 2.5
+ },
+ "09:35-10:00 k3.0 z2.0 hold 2m": {
+  "dev_usd": -1.9,
+  "test_usd": 0.1,
+  "test_up": 0.183,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -1.78,
+  "worst_day": -155.0,
+  "years": {
+   "2022": -0.9,
+   "2023": -2.9,
+   "2024": 0.2,
+   "2025": -0.8,
+   "2026": 0.4
+  },
+  "fill_rate": 0.557,
+  "signals_per_day": 1.2
+ },
+ "09:35-10:30 k3.0 z2.0 hold 3m": {
+  "dev_usd": -1.0,
+  "test_usd": -1.9,
+  "test_up": 0.276,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -1.7,
+  "worst_day": -405.0,
+  "years": {
+   "2022": 1.9,
+   "2023": -2.4,
+   "2024": -2.2,
+   "2025": -3.2,
+   "2026": 1.7
+  },
+  "fill_rate": 0.578,
+  "signals_per_day": 1.9
+ },
+ "09:35-10:00 k1.0 z3.0 hold 1m": {
+  "dev_usd": -1.1,
+  "test_usd": -2.2,
+  "test_up": 0.411,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -0.91,
+  "worst_day": -251.0,
+  "years": {
+   "2022": 2.1,
+   "2023": -0.9,
+   "2024": -2.4,
+   "2025": -5.5,
+   "2026": 2.0
+  },
+  "fill_rate": 0.713,
+  "signals_per_day": 3.1
+ },
+ "09:35-10:00 k3.0 z2.0 hold 1m": {
+  "dev_usd": -2.2,
+  "test_usd": -0.9,
+  "test_up": 0.165,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -2.99,
+  "worst_day": -94.0,
+  "years": {
+   "2022": -1.1,
+   "2023": -2.9,
+   "2024": -1.0,
+   "2025": -2.1,
+   "2026": 0.3
+  },
+  "fill_rate": 0.557,
+  "signals_per_day": 1.2
+ },
+ "09:35-10:30 k3.0 z2.0 hold 2m": {
+  "dev_usd": -3.2,
+  "test_usd": -1.8,
+  "test_up": 0.244,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -2.93,
+  "worst_day": -321.0,
+  "years": {
+   "2022": -0.2,
+   "2023": -4.6,
+   "2024": -2.3,
+   "2025": -4.4,
+   "2026": 1.7
+  },
+  "fill_rate": 0.578,
+  "signals_per_day": 1.9
+ },
+ "09:35-10:30 k3.0 z2.0 hold 1m": {
+  "dev_usd": -3.6,
+  "test_usd": -2.4,
+  "test_up": 0.23,
+  "trades_per_day": 1.1,
+  "bp_per_trade": -3.42,
+  "worst_day": -377.0,
+  "years": {
+   "2022": -0.7,
+   "2023": -4.6,
+   "2024": -2.6,
+   "2025": -5.0,
+   "2026": 0.3
+  },
+  "fill_rate": 0.578,
+  "signals_per_day": 1.9
+ },
+ "09:35-10:00 k1.5 z2.0 hold 2m": {
+  "dev_usd": -6.5,
+  "test_usd": -3.5,
+  "test_up": 0.478,
+  "trades_per_day": 7.0,
+  "bp_per_trade": -0.85,
+  "worst_day": -292.0,
+  "years": {
+   "2022": 1.5,
+   "2023": -4.9,
+   "2024": -11.7,
+   "2025": -7.3,
+   "2026": 4.5
+  },
+  "fill_rate": 0.718,
+  "signals_per_day": 10.4
+ },
+ "09:35-10:30 k1.0 z3.0 hold 3m": {
+  "dev_usd": 0.1,
+  "test_usd": -7.0,
+  "test_up": 0.478,
+  "trades_per_day": 6.1,
+  "bp_per_trade": -0.68,
+  "worst_day": -555.0,
+  "years": {
+   "2022": 10.4,
+   "2023": -1.9,
+   "2024": -4.4,
+   "2025": -10.6,
+   "2026": -1.1
+  },
+  "fill_rate": 0.733,
+  "signals_per_day": 8.6
+ },
+ "10:30-15:50 k3.0 z3.0 hold 3m": {
+  "dev_usd": 4.7,
+  "test_usd": -7.1,
+  "test_up": 0.484,
+  "trades_per_day": 13.9,
+  "bp_per_trade": -0.11,
+  "worst_day": -503.0,
+  "years": {
+   "2022": 5.7,
+   "2023": 5.6,
+   "2024": 5.3,
+   "2025": -18.7,
+   "2026": 0.7
+  },
+  "fill_rate": 0.588,
+  "signals_per_day": 24.8
+ },
+ "09:35-10:30 k1.5 z3.0 hold 3m": {
+  "dev_usd": -1.0,
+  "test_usd": -7.8,
+  "test_up": 0.474,
+  "trades_per_day": 4.9,
+  "bp_per_trade": -1.08,
+  "worst_day": -555.0,
+  "years": {
+   "2022": 4.8,
+   "2023": -3.0,
+   "2024": -4.1,
+   "2025": -10.2,
+   "2026": -3.2
+  },
+  "fill_rate": 0.722,
+  "signals_per_day": 7.0
+ },
+ "09:35-15:50 k3.0 z3.0 hold 3m": {
+  "dev_usd": 5.1,
+  "test_usd": -7.8,
+  "test_up": 0.484,
+  "trades_per_day": 14.5,
+  "bp_per_trade": -0.12,
+  "worst_day": -510.0,
+  "years": {
+   "2022": 6.8,
+   "2023": 5.9,
+   "2024": 5.1,
+   "2025": -20.2,
+   "2026": 1.3
+  },
+  "fill_rate": 0.589,
+  "signals_per_day": 25.9
+ },
+ "09:35-10:30 k1.5 z3.0 hold 2m": {
+  "dev_usd": -1.5,
+  "test_usd": -9.5,
+  "test_up": 0.423,
+  "trades_per_day": 5.0,
+  "bp_per_trade": -1.34,
+  "worst_day": -516.0,
+  "years": {
+   "2022": 9.2,
+   "2023": -3.5,
+   "2024": -5.6,
+   "2025": -14.6,
+   "2026": -2.6
+  },
+  "fill_rate": 0.722,
+  "signals_per_day": 7.0
+ },
+ "09:35-10:30 k1.5 z3.0 hold 1m": {
+  "dev_usd": -4.1,
+  "test_usd": -10.6,
+  "test_up": 0.406,
+  "trades_per_day": 5.0,
+  "bp_per_trade": -1.77,
+  "worst_day": -519.0,
+  "years": {
+   "2022": 5.7,
+   "2023": -6.3,
+   "2024": -8.0,
+   "2025": -14.8,
+   "2026": -4.1
+  },
+  "fill_rate": 0.722,
+  "signals_per_day": 7.0
+ },
+ "09:35-10:30 k1.0 z3.0 hold 2m": {
+  "dev_usd": -0.8,
+  "test_usd": -10.6,
+  "test_up": 0.439,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -1.12,
+  "worst_day": -516.0,
+  "years": {
+   "2022": 12.4,
+   "2023": -1.6,
+   "2024": -7.2,
+   "2025": -16.4,
+   "2026": -3.3
+  },
+  "fill_rate": 0.733,
+  "signals_per_day": 8.6
+ },
+ "09:35-10:00 k1.5 z2.0 hold 1m": {
+  "dev_usd": -10.5,
+  "test_usd": -10.9,
+  "test_up": 0.425,
+  "trades_per_day": 7.3,
+  "bp_per_trade": -1.75,
+  "worst_day": -255.0,
+  "years": {
+   "2022": -1.6,
+   "2023": -10.8,
+   "2024": -14.6,
+   "2025": -15.1,
+   "2026": -3.3
+  },
+  "fill_rate": 0.718,
+  "signals_per_day": 10.4
+ },
+ "09:35-10:00 k1.0 z2.0 hold 3m": {
+  "dev_usd": 0.8,
+  "test_usd": -11.2,
+  "test_up": 0.484,
+  "trades_per_day": 11.0,
+  "bp_per_trade": -0.57,
+  "worst_day": -468.0,
+  "years": {
+   "2022": -11.4,
+   "2023": 13.6,
+   "2024": -14.4,
+   "2025": -12.0,
+   "2026": -6.5
+  },
+  "fill_rate": 0.744,
+  "signals_per_day": 17.5
+ },
+ "09:35-10:00 k1.0 z2.0 hold 2m": {
+  "dev_usd": -9.4,
+  "test_usd": -11.6,
+  "test_up": 0.461,
+  "trades_per_day": 11.9,
+  "bp_per_trade": -1.06,
+  "worst_day": -620.0,
+  "years": {
+   "2022": -4.8,
+   "2023": 0.5,
+   "2024": -24.7,
+   "2025": -13.8,
+   "2026": -4.2
+  },
+  "fill_rate": 0.744,
+  "signals_per_day": 17.5
+ },
+ "10:30-15:50 k3.0 z3.0 hold 2m": {
+  "dev_usd": 0.9,
+  "test_usd": -12.4,
+  "test_up": 0.439,
+  "trades_per_day": 14.0,
+  "bp_per_trade": -0.5,
+  "worst_day": -430.0,
+  "years": {
+   "2022": 4.8,
+   "2023": 2.3,
+   "2024": 0.1,
+   "2025": -22.2,
+   "2026": -7.7
+  },
+  "fill_rate": 0.588,
+  "signals_per_day": 24.8
+ },
+ "09:35-10:30 k1.0 z3.0 hold 1m": {
+  "dev_usd": -5.1,
+  "test_usd": -12.7,
+  "test_up": 0.386,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -1.71,
+  "worst_day": -522.0,
+  "years": {
+   "2022": 3.9,
+   "2023": -6.8,
+   "2024": -9.1,
+   "2025": -17.1,
+   "2026": -6.2
+  },
+  "fill_rate": 0.733,
+  "signals_per_day": 8.6
+ },
+ "10:30-15:50 k3.0 z2.0 hold 3m": {
+  "dev_usd": 2.2,
+  "test_usd": -13.0,
+  "test_up": 0.467,
+  "trades_per_day": 18.4,
+  "bp_per_trade": -0.36,
+  "worst_day": -519.0,
+  "years": {
+   "2022": 1.7,
+   "2023": 5.5,
+   "2024": 0.3,
+   "2025": -28.8,
+   "2026": -0.1
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 34.4
+ },
+ "09:35-15:50 k3.0 z3.0 hold 2m": {
+  "dev_usd": -0.2,
+  "test_usd": -13.4,
+  "test_up": 0.443,
+  "trades_per_day": 14.6,
+  "bp_per_trade": -0.57,
+  "worst_day": -470.0,
+  "years": {
+   "2022": 4.5,
+   "2023": 0.8,
+   "2024": -0.7,
+   "2025": -24.5,
+   "2026": -7.1
+  },
+  "fill_rate": 0.589,
+  "signals_per_day": 25.9
+ },
+ "09:35-15:50 k3.0 z2.0 hold 3m": {
+  "dev_usd": 1.4,
+  "test_usd": -14.4,
+  "test_up": 0.465,
+  "trades_per_day": 19.4,
+  "bp_per_trade": -0.41,
+  "worst_day": -526.0,
+  "years": {
+   "2022": 3.5,
+   "2023": 3.5,
+   "2024": -1.0,
+   "2025": -31.6,
+   "2026": 1.4
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 36.3
+ },
+ "10:30-15:50 k3.0 z2.0 hold 2m": {
+  "dev_usd": -3.1,
+  "test_usd": -20.4,
+  "test_up": 0.407,
+  "trades_per_day": 18.6,
+  "bp_per_trade": -0.77,
+  "worst_day": -457.0,
+  "years": {
+   "2022": 3.1,
+   "2023": 0.2,
+   "2024": -7.6,
+   "2025": -35.6,
+   "2026": -8.9
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 34.4
+ },
+ "09:35-10:00 k1.0 z2.0 hold 1m": {
+  "dev_usd": -19.3,
+  "test_usd": -21.7,
+  "test_up": 0.386,
+  "trades_per_day": 12.7,
+  "bp_per_trade": -1.94,
+  "worst_day": -420.0,
+  "years": {
+   "2022": -17.0,
+   "2023": -15.5,
+   "2024": -26.7,
+   "2025": -25.9,
+   "2026": -13.3
+  },
+  "fill_rate": 0.744,
+  "signals_per_day": 17.5
+ },
+ "09:35-15:50 k3.0 z2.0 hold 2m": {
+  "dev_usd": -6.1,
+  "test_usd": -21.8,
+  "test_up": 0.417,
+  "trades_per_day": 19.6,
+  "bp_per_trade": -0.86,
+  "worst_day": -498.0,
+  "years": {
+   "2022": 2.9,
+   "2023": -4.2,
+   "2024": -9.6,
+   "2025": -39.4,
+   "2026": -7.0
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 36.3
+ },
+ "09:35-10:30 k1.5 z2.0 hold 3m": {
+  "dev_usd": -4.7,
+  "test_usd": -24.9,
+  "test_up": 0.435,
+  "trades_per_day": 17.1,
+  "bp_per_trade": -1.05,
+  "worst_day": -607.0,
+  "years": {
+   "2022": 15.0,
+   "2023": -7.1,
+   "2024": -25.0,
+   "2025": -23.5,
+   "2026": -13.8
+  },
+  "fill_rate": 0.726,
+  "signals_per_day": 27.7
+ },
+ "10:30-15:50 k3.0 z3.0 hold 1m": {
+  "dev_usd": -4.5,
+  "test_usd": -25.6,
+  "test_up": 0.301,
+  "trades_per_day": 14.2,
+  "bp_per_trade": -1.28,
+  "worst_day": -550.0,
+  "years": {
+   "2022": 2.2,
+   "2023": -2.8,
+   "2024": -9.4,
+   "2025": -36.1,
+   "2026": -19.3
+  },
+  "fill_rate": 0.588,
+  "signals_per_day": 24.8
+ },
+ "09:35-15:50 k3.0 z3.0 hold 1m": {
+  "dev_usd": -5.5,
+  "test_usd": -27.0,
+  "test_up": 0.309,
+  "trades_per_day": 14.8,
+  "bp_per_trade": -1.33,
+  "worst_day": -554.0,
+  "years": {
+   "2022": 1.9,
+   "2023": -3.9,
+   "2024": -10.1,
+   "2025": -39.1,
+   "2026": -19.5
+  },
+  "fill_rate": 0.589,
+  "signals_per_day": 25.9
+ },
+ "09:35-10:30 k1.5 z2.0 hold 2m": {
+  "dev_usd": -16.2,
+  "test_usd": -27.3,
+  "test_up": 0.4,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -1.44,
+  "worst_day": -521.0,
+  "years": {
+   "2022": 1.9,
+   "2023": -17.8,
+   "2024": -32.6,
+   "2025": -34.1,
+   "2026": -6.8
+  },
+  "fill_rate": 0.726,
+  "signals_per_day": 27.7
+ },
+ "10:30-15:50 k3.0 z2.0 hold 1m": {
+  "dev_usd": -10.2,
+  "test_usd": -37.8,
+  "test_up": 0.274,
+  "trades_per_day": 19.0,
+  "bp_per_trade": -1.53,
+  "worst_day": -571.0,
+  "years": {
+   "2022": 0.7,
+   "2023": -6.8,
+   "2024": -21.1,
+   "2025": -51.4,
+   "2026": -26.5
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 34.4
+ },
+ "09:35-15:50 k3.0 z2.0 hold 1m": {
+  "dev_usd": -13.7,
+  "test_usd": -40.2,
+  "test_up": 0.268,
+  "trades_per_day": 20.1,
+  "bp_per_trade": -1.62,
+  "worst_day": -574.0,
+  "years": {
+   "2022": 0.0,
+   "2023": -11.2,
+   "2024": -23.8,
+   "2025": -55.9,
+   "2026": -26.4
+  },
+  "fill_rate": 0.576,
+  "signals_per_day": 36.3
+ },
+ "09:35-10:30 k1.5 z2.0 hold 1m": {
+  "dev_usd": -26.8,
+  "test_usd": -41.2,
+  "test_up": 0.305,
+  "trades_per_day": 19.5,
+  "bp_per_trade": -2.1,
+  "worst_day": -637.0,
+  "years": {
+   "2022": -6.1,
+   "2023": -26.8,
+   "2024": -44.7,
+   "2025": -48.6,
+   "2026": -22.6
+  },
+  "fill_rate": 0.726,
+  "signals_per_day": 27.7
+ },
+ "09:35-10:30 k1.0 z2.0 hold 3m": {
+  "dev_usd": -10.1,
+  "test_usd": -44.9,
+  "test_up": 0.38,
+  "trades_per_day": 28.3,
+  "bp_per_trade": -1.18,
+  "worst_day": -732.0,
+  "years": {
+   "2022": 15.5,
+   "2023": -7.1,
+   "2024": -41.3,
+   "2025": -44.6,
+   "2026": -34.1
+  },
+  "fill_rate": 0.751,
+  "signals_per_day": 49.4
+ },
+ "09:35-10:30 k1.0 z2.0 hold 2m": {
+  "dev_usd": -27.3,
+  "test_usd": -50.9,
+  "test_up": 0.348,
+  "trades_per_day": 31.9,
+  "bp_per_trade": -1.48,
+  "worst_day": -781.0,
+  "years": {
+   "2022": -5.0,
+   "2023": -19.7,
+   "2024": -59.3,
+   "2025": -55.4,
+   "2026": -32.1
+  },
+  "fill_rate": 0.751,
+  "signals_per_day": 49.4
+ },
+ "10:30-15:50 k1.5 z3.0 hold 3m": {
+  "dev_usd": 8.5,
+  "test_usd": -74.1,
+  "test_up": 0.301,
+  "trades_per_day": 71.8,
+  "bp_per_trade": -0.56,
+  "worst_day": -597.0,
+  "years": {
+   "2022": 28.7,
+   "2023": 19.2,
+   "2024": -20.7,
+   "2025": -87.7,
+   "2026": -76.3
+  },
+  "fill_rate": 0.67,
+  "signals_per_day": 117.8
+ },
+ "09:35-10:30 k1.0 z2.0 hold 1m": {
+  "dev_usd": -51.3,
+  "test_usd": -77.1,
+  "test_up": 0.236,
+  "trades_per_day": 35.7,
+  "bp_per_trade": -2.16,
+  "worst_day": -707.0,
+  "years": {
+   "2022": -34.3,
+   "2023": -46.9,
+   "2024": -75.4,
+   "2025": -84.3,
+   "2026": -59.7
+  },
+  "fill_rate": 0.751,
+  "signals_per_day": 49.4
+ },
+ "09:35-15:50 k1.5 z3.0 hold 3m": {
+  "dev_usd": 8.1,
+  "test_usd": -81.1,
+  "test_up": 0.309,
+  "trades_per_day": 76.5,
+  "bp_per_trade": -0.58,
+  "worst_day": -712.0,
+  "years": {
+   "2022": 32.9,
+   "2023": 17.1,
+   "2024": -23.8,
+   "2025": -97.3,
+   "2026": -79.1
+  },
+  "fill_rate": 0.673,
+  "signals_per_day": 124.5
+ },
+ "10:30-15:50 k1.5 z3.0 hold 2m": {
+  "dev_usd": -5.4,
+  "test_usd": -86.8,
+  "test_up": 0.234,
+  "trades_per_day": 74.5,
+  "bp_per_trade": -0.75,
+  "worst_day": -570.0,
+  "years": {
+   "2022": 22.7,
+   "2023": 8.0,
+   "2024": -39.7,
+   "2025": -102.3,
+   "2026": -86.4
+  },
+  "fill_rate": 0.67,
+  "signals_per_day": 117.8
+ },
+ "10:30-15:50 k1.0 z3.0 hold 3m": {
+  "dev_usd": 2.3,
+  "test_usd": -88.5,
+  "test_up": 0.26,
+  "trades_per_day": 85.6,
+  "bp_per_trade": -0.61,
+  "worst_day": -604.0,
+  "years": {
+   "2022": 14.6,
+   "2023": 19.2,
+   "2024": -31.5,
+   "2025": -104.2,
+   "2026": -90.5
+  },
+  "fill_rate": 0.68,
+  "signals_per_day": 139.8
+ },
+ "09:35-15:50 k1.0 z3.0 hold 3m": {
+  "dev_usd": 3.1,
+  "test_usd": -94.9,
+  "test_up": 0.266,
+  "trades_per_day": 91.4,
+  "bp_per_trade": -0.61,
+  "worst_day": -690.0,
+  "years": {
+   "2022": 24.3,
+   "2023": 18.4,
+   "2024": -34.8,
+   "2025": -114.1,
+   "2026": -91.6
+  },
+  "fill_rate": 0.683,
+  "signals_per_day": 148.1
+ },
+ "09:35-15:50 k1.5 z3.0 hold 2m": {
+  "dev_usd": -6.5,
+  "test_usd": -95.6,
+  "test_up": 0.252,
+  "trades_per_day": 79.2,
+  "bp_per_trade": -0.78,
+  "worst_day": -647.0,
+  "years": {
+   "2022": 31.3,
+   "2023": 5.0,
+   "2024": -44.7,
+   "2025": -116.2,
+   "2026": -88.1
+  },
+  "fill_rate": 0.673,
+  "signals_per_day": 124.5
+ },
+ "10:30-15:50 k1.0 z3.0 hold 2m": {
+  "dev_usd": -11.8,
+  "test_usd": -102.2,
+  "test_up": 0.211,
+  "trades_per_day": 89.4,
+  "bp_per_trade": -0.77,
+  "worst_day": -605.0,
+  "years": {
+   "2022": 14.6,
+   "2023": 6.5,
+   "2024": -51.3,
+   "2025": -118.0,
+   "2026": -104.2
+  },
+  "fill_rate": 0.68,
+  "signals_per_day": 139.8
+ },
+ "09:35-15:50 k1.0 z3.0 hold 2m": {
+  "dev_usd": -12.2,
+  "test_usd": -112.0,
+  "test_up": 0.224,
+  "trades_per_day": 95.3,
+  "bp_per_trade": -0.79,
+  "worst_day": -688.0,
+  "years": {
+   "2022": 26.0,
+   "2023": 5.4,
+   "2024": -57.7,
+   "2025": -133.6,
+   "2026": -106.7
+  },
+  "fill_rate": 0.683,
+  "signals_per_day": 148.1
+ },
+ "10:30-15:50 k1.5 z3.0 hold 1m": {
+  "dev_usd": -30.3,
+  "test_usd": -119.5,
+  "test_up": 0.142,
+  "trades_per_day": 77.2,
+  "bp_per_trade": -1.17,
+  "worst_day": -808.0,
+  "years": {
+   "2022": -3.1,
+   "2023": -19.2,
+   "2024": -64.4,
+   "2025": -131.6,
+   "2026": -123.8
+  },
+  "fill_rate": 0.67,
+  "signals_per_day": 117.8
+ },
+ "09:35-15:50 k1.5 z3.0 hold 1m": {
+  "dev_usd": -34.0,
+  "test_usd": -129.9,
+  "test_up": 0.148,
+  "trades_per_day": 82.0,
+  "bp_per_trade": -1.21,
+  "worst_day": -830.0,
+  "years": {
+   "2022": 2.3,
+   "2023": -24.9,
+   "2024": -72.3,
+   "2025": -146.1,
+   "2026": -127.4
+  },
+  "fill_rate": 0.673,
+  "signals_per_day": 124.5
+ },
+ "10:30-15:50 k1.0 z3.0 hold 1m": {
+  "dev_usd": -39.3,
+  "test_usd": -139.9,
+  "test_up": 0.112,
+  "trades_per_day": 93.1,
+  "bp_per_trade": -1.16,
+  "worst_day": -810.0,
+  "years": {
+   "2022": -13.9,
+   "2023": -23.9,
+   "2024": -79.8,
+   "2025": -151.5,
+   "2026": -146.5
+  },
+  "fill_rate": 0.68,
+  "signals_per_day": 139.8
+ },
+ "09:35-15:50 k1.0 z3.0 hold 1m": {
+  "dev_usd": -43.9,
+  "test_usd": -152.3,
+  "test_up": 0.12,
+  "trades_per_day": 99.1,
+  "bp_per_trade": -1.2,
+  "worst_day": -835.0,
+  "years": {
+   "2022": -10.5,
+   "2023": -30.0,
+   "2024": -88.7,
+   "2025": -168.1,
+   "2026": -152.3
+  },
+  "fill_rate": 0.683,
+  "signals_per_day": 148.1
+ },
+ "10:30-15:50 k1.5 z2.0 hold 3m": {
+  "dev_usd": -29.2,
+  "test_usd": -197.5,
+  "test_up": 0.209,
+  "trades_per_day": 155.8,
+  "bp_per_trade": -0.88,
+  "worst_day": -857.0,
+  "years": {
+   "2022": -16.5,
+   "2023": 2.8,
+   "2024": -91.0,
+   "2025": -238.6,
+   "2026": -182.4
+  },
+  "fill_rate": 0.668,
+  "signals_per_day": 328.2
+ },
+ "09:35-15:50 k1.5 z2.0 hold 3m": {
+  "dev_usd": -33.8,
+  "test_usd": -220.4,
+  "test_up": 0.217,
+  "trades_per_day": 172.3,
+  "bp_per_trade": -0.89,
+  "worst_day": -1058.0,
+  "years": {
+   "2022": -4.4,
+   "2023": -3.7,
+   "2024": -114.5,
+   "2025": -260.8,
+   "2026": -193.5
+  },
+  "fill_rate": 0.672,
+  "signals_per_day": 354.9
+ },
+ "10:30-15:50 k1.5 z2.0 hold 2m": {
+  "dev_usd": -65.1,
+  "test_usd": -252.9,
+  "test_up": 0.112,
+  "trades_per_day": 178.1,
+  "bp_per_trade": -1.08,
+  "worst_day": -943.0,
+  "years": {
+   "2022": -15.6,
+   "2023": -29.5,
+   "2024": -151.3,
+   "2025": -303.1,
+   "2026": -222.5
+  },
+  "fill_rate": 0.668,
+  "signals_per_day": 328.2
+ },
+ "10:30-15:50 k1.0 z2.0 hold 3m": {
+  "dev_usd": -49.7,
+  "test_usd": -276.5,
+  "test_up": 0.165,
+  "trades_per_day": 220.9,
+  "bp_per_trade": -0.89,
+  "worst_day": -1628.0,
+  "years": {
+   "2022": -33.8,
+   "2023": 11.9,
+   "2024": -156.4,
+   "2025": -324.3,
+   "2026": -259.0
+  },
+  "fill_rate": 0.695,
+  "signals_per_day": 527.7
+ },
+ "09:35-15:50 k1.5 z2.0 hold 2m": {
+  "dev_usd": -81.1,
+  "test_usd": -278.8,
+  "test_up": 0.146,
+  "trades_per_day": 195.7,
+  "bp_per_trade": -1.11,
+  "worst_day": -1023.0,
+  "years": {
+   "2022": -16.2,
+   "2023": -46.4,
+   "2024": -183.3,
+   "2025": -335.8,
+   "2026": -227.4
+  },
+  "fill_rate": 0.672,
+  "signals_per_day": 354.9
+ },
+ "09:35-15:50 k1.0 z2.0 hold 3m": {
+  "dev_usd": -58.6,
+  "test_usd": -318.6,
+  "test_up": 0.173,
+  "trades_per_day": 248.2,
+  "bp_per_trade": -0.92,
+  "worst_day": -1679.0,
+  "years": {
+   "2022": -22.0,
+   "2023": 7.1,
+   "2024": -195.0,
+   "2025": -368.0,
+   "2026": -288.2
+  },
+  "fill_rate": 0.699,
+  "signals_per_day": 575.5
+ },
+ "10:30-15:50 k1.5 z2.0 hold 1m": {
+  "dev_usd": -147.1,
+  "test_usd": -364.8,
+  "test_up": 0.028,
+  "trades_per_day": 204.3,
+  "bp_per_trade": -1.51,
+  "worst_day": -1076.0,
+  "years": {
+   "2022": -66.3,
+   "2023": -111.6,
+   "2024": -253.4,
+   "2025": -400.1,
+   "2026": -354.4
+  },
+  "fill_rate": 0.668,
+  "signals_per_day": 328.2
+ },
+ "10:30-15:50 k1.0 z2.0 hold 2m": {
+  "dev_usd": -102.3,
+  "test_usd": -365.4,
+  "test_up": 0.083,
+  "trades_per_day": 272.0,
+  "bp_per_trade": -1.04,
+  "worst_day": -1251.0,
+  "years": {
+   "2022": -41.9,
+   "2023": -35.9,
+   "2024": -234.3,
+   "2025": -422.2,
+   "2026": -344.3
+  },
+  "fill_rate": 0.695,
+  "signals_per_day": 527.7
+ },
+ "09:35-15:50 k1.5 z2.0 hold 1m": {
+  "dev_usd": -173.3,
+  "test_usd": -404.7,
+  "test_up": 0.024,
+  "trades_per_day": 223.1,
+  "bp_per_trade": -1.56,
+  "worst_day": -1237.0,
+  "years": {
+   "2022": -73.1,
+   "2023": -137.5,
+   "2024": -297.6,
+   "2025": -447.0,
+   "2026": -375.8
+  },
+  "fill_rate": 0.672,
+  "signals_per_day": 354.9
+ },
+ "09:35-15:50 k1.0 z2.0 hold 2m": {
+  "dev_usd": -128.0,
+  "test_usd": -414.7,
+  "test_up": 0.091,
+  "trades_per_day": 302.9,
+  "bp_per_trade": -1.08,
+  "worst_day": -1305.0,
+  "years": {
+   "2022": -49.4,
+   "2023": -53.2,
+   "2024": -291.7,
+   "2025": -476.6,
+   "2026": -373.5
+  },
+  "fill_rate": 0.699,
+  "signals_per_day": 575.5
+ },
+ "10:30-15:50 k1.0 z2.0 hold 1m": {
+  "dev_usd": -242.5,
+  "test_usd": -558.8,
+  "test_up": 0.006,
+  "trades_per_day": 336.5,
+  "bp_per_trade": -1.44,
+  "worst_day": -1292.0,
+  "years": {
+   "2022": -123.9,
+   "2023": -184.0,
+   "2024": -402.5,
+   "2025": -593.5,
+   "2026": -568.9
+  },
+  "fill_rate": 0.695,
+  "signals_per_day": 527.7
+ },
+ "09:35-15:50 k1.0 z2.0 hold 1m": {
+  "dev_usd": -292.0,
+  "test_usd": -634.1,
+  "test_up": 0.012,
+  "trades_per_day": 371.1,
+  "bp_per_trade": -1.5,
+  "worst_day": -1430.0,
+  "years": {
+   "2022": -156.7,
+   "2023": -228.9,
+   "2024": -476.1,
+   "2025": -675.9,
+   "2026": -626.7
+  },
+  "fill_rate": 0.699,
+  "signals_per_day": 575.5
+ }
+}

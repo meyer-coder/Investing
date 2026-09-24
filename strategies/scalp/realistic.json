@@ -1,0 +1,125 @@
+{
+ "latency_keep": 1.232,
+ "books": {
+  "opening own drop | 1 cent spread": {
+   "dev_usd": 8.2,
+   "test_usd": -1.4,
+   "test_up": 0.541,
+   "trades_per_day": 10.9,
+   "bp_per_trade": 0.37,
+   "worst_day": -570.0,
+   "years": {
+    "2022": -6.5,
+    "2023": 24.7,
+    "2024": -8.3,
+    "2025": 6.0,
+    "2026": -9.2
+   }
+  },
+  "model pick | 1 cent spread": {
+   "dev_usd": 314.0,
+   "test_usd": 8.4,
+   "test_up": 0.51,
+   "trades_per_day": 59.8,
+   "bp_per_trade": 3.2,
+   "worst_day": -1376.0,
+   "years": {
+    "2022": 505.8,
+    "2023": 332.1,
+    "2024": 131.7,
+    "2025": -8.9,
+    "2026": 32.0
+   }
+  },
+  "opening own drop | 2 bp spread": {
+   "dev_usd": -2.9,
+   "test_usd": -13.4,
+   "test_up": 0.486,
+   "trades_per_day": 10.9,
+   "bp_per_trade": -0.9,
+   "worst_day": -579.0,
+   "years": {
+    "2022": -12.5,
+    "2023": 14.1,
+    "2024": -22.4,
+    "2025": -7.5,
+    "2026": -18.4
+   }
+  },
+  "model pick | 2 bp spread": {
+   "dev_usd": 201.7,
+   "test_usd": -38.4,
+   "test_up": 0.457,
+   "trades_per_day": 27.9,
+   "bp_per_trade": 3.45,
+   "worst_day": -1414.0,
+   "years": {
+    "2022": 323.1,
+    "2023": 215.9,
+    "2024": 81.0,
+    "2025": -28.0,
+    "2026": -69.6
+   }
+  },
+  "opening own drop | 4 bp spread": {
+   "dev_usd": -20.1,
+   "test_usd": -31.7,
+   "test_up": 0.433,
+   "trades_per_day": 10.9,
+   "bp_per_trade": -2.86,
+   "worst_day": -596.0,
+   "years": {
+    "2022": -22.5,
+    "2023": -2.5,
+    "2024": -44.1,
+    "2025": -27.8,
+    "2026": -32.6
+   }
+  },
+  "model pick | 4 bp spread": {
+   "dev_usd": 78.9,
+   "test_usd": -28.9,
+   "test_up": 0.465,
+   "trades_per_day": 8.8,
+   "bp_per_trade": 3.31,
+   "worst_day": -1498.0,
+   "years": {
+    "2022": 125.6,
+    "2023": 80.8,
+    "2024": 40.5,
+    "2025": -18.9,
+    "2026": -62.2
+   }
+  },
+  "opening own drop | 6 bp spread": {
+   "dev_usd": -37.8,
+   "test_usd": -50.2,
+   "test_up": 0.364,
+   "trades_per_day": 10.9,
+   "bp_per_trade": -4.84,
+   "worst_day": -614.0,
+   "years": {
+    "2022": -33.1,
+    "2023": -19.5,
+    "2024": -66.0,
+    "2025": -48.5,
+    "2026": -46.8
+   }
+  },
+  "model pick | 6 bp spread": {
+   "dev_usd": 34.2,
+   "test_usd": -19.2,
+   "test_up": 0.386,
+   "trades_per_day": 3.4,
+   "bp_per_trade": 2.55,
+   "worst_day": -1283.0,
+   "years": {
+    "2022": 39.4,
+    "2023": 39.9,
+    "2024": 16.8,
+    "2025": -11.6,
+    "2026": -39.5
+   }
+  }
+ }
+}

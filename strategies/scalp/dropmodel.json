@@ -1,0 +1,271 @@
+{
+ "test_corr": 0.0936,
+ "importance": {
+  "minute": 0.0,
+  "r1_atr": 0.0,
+  "resid_z": 0.0,
+  "r1": 0.0,
+  "atr": 0.0,
+  "resid": 0.1,
+  "gap": 0.0,
+  "mkt_r1": 0.0,
+  "mkt_r5": 0.0,
+  "ret5": 0.0,
+  "ret15": 0.0,
+  "ret30": 0.0,
+  "day_ret": 0.0,
+  "range_pos": 0.0,
+  "clv": 0.0,
+  "bar_range": 0.0,
+  "breadth_down": 0.0,
+  "breadth_up": 0.0,
+  "prev_z": 0.0,
+  "prev_r1_atr": 0.0,
+  "vol20": 0.0,
+  "atr_ratio": 0.0,
+  "prev_day_ret": 0.0,
+  "sector_z": 0.0
+ },
+ "books": {
+  "model pick, base cost, edge > 0 bp, 3 slots": {
+   "dev_usd": 442.8,
+   "test_usd": 190.9,
+   "test_up": 0.652,
+   "trades_per_day": 192.9,
+   "bp_per_trade": 1.96,
+   "worst_day": -1020.0,
+   "years": {
+    "2022": 607.6,
+    "2023": 508.0,
+    "2024": 214.6,
+    "2025": 122.4,
+    "2026": 318.7
+   }
+  },
+  "model pick, base cost, edge > 0 bp, 5 slots": {
+   "dev_usd": 316.7,
+   "test_usd": 129.1,
+   "test_up": 0.642,
+   "trades_per_day": 235.6,
+   "bp_per_trade": 1.88,
+   "worst_day": -914.0,
+   "years": {
+    "2022": 455.5,
+    "2023": 361.1,
+    "2024": 143.9,
+    "2025": 81.2,
+    "2026": 222.3
+   }
+  },
+  "model pick, base cost, edge > 1 bp, 3 slots": {
+   "dev_usd": 458.7,
+   "test_usd": 251.2,
+   "test_up": 0.722,
+   "trades_per_day": 148.8,
+   "bp_per_trade": 2.85,
+   "worst_day": -939.0,
+   "years": {
+    "2022": 613.1,
+    "2023": 512.0,
+    "2024": 255.4,
+    "2025": 173.6,
+    "2026": 398.1
+   }
+  },
+  "model pick, base cost, edge > 1 bp, 5 slots": {
+   "dev_usd": 313.1,
+   "test_usd": 175.4,
+   "test_up": 0.711,
+   "trades_per_day": 171.9,
+   "bp_per_trade": 2.83,
+   "worst_day": -751.0,
+   "years": {
+    "2022": 430.9,
+    "2023": 346.5,
+    "2024": 168.5,
+    "2025": 118.0,
+    "2026": 290.1
+   }
+  },
+  "model pick, base cost, edge > 2 bp, 3 slots": {
+   "dev_usd": 410.9,
+   "test_usd": 278.0,
+   "test_up": 0.764,
+   "trades_per_day": 110.3,
+   "bp_per_trade": 3.74,
+   "worst_day": -914.0,
+   "years": {
+    "2022": 542.9,
+    "2023": 448.5,
+    "2024": 249.5,
+    "2025": 196.0,
+    "2026": 439.0
+   }
+  },
+  "model pick, base cost, edge > 2 bp, 5 slots": {
+   "dev_usd": 270.5,
+   "test_usd": 186.9,
+   "test_up": 0.752,
+   "trades_per_day": 122.2,
+   "bp_per_trade": 3.74,
+   "worst_day": -602.0,
+   "years": {
+    "2022": 367.3,
+    "2023": 293.7,
+    "2024": 159.6,
+    "2025": 125.0,
+    "2026": 309.6
+   }
+  },
+  "model pick, base cost, edge > 4 bp, 3 slots": {
+   "dev_usd": 249.6,
+   "test_usd": 219.8,
+   "test_up": 0.801,
+   "trades_per_day": 51.2,
+   "bp_per_trade": 5.49,
+   "worst_day": -702.0,
+   "years": {
+    "2022": 319.3,
+    "2023": 258.4,
+    "2024": 178.1,
+    "2025": 153.0,
+    "2026": 350.9
+   }
+  },
+  "model pick, base cost, edge > 4 bp, 5 slots": {
+   "dev_usd": 158.6,
+   "test_usd": 142.6,
+   "test_up": 0.799,
+   "trades_per_day": 54.2,
+   "bp_per_trade": 5.56,
+   "worst_day": -458.0,
+   "years": {
+    "2022": 205.9,
+    "2023": 163.0,
+    "2024": 112.1,
+    "2025": 98.5,
+    "2026": 231.3
+   }
+  },
+  "model pick, tight cost, edge > 0 bp, 3 slots": {
+   "dev_usd": 689.6,
+   "test_usd": 359.1,
+   "test_up": 0.76,
+   "trades_per_day": 281.1,
+   "bp_per_trade": 2.23,
+   "worst_day": -914.0,
+   "years": {
+    "2022": 901.5,
+    "2023": 781.0,
+    "2024": 394.9,
+    "2025": 236.8,
+    "2026": 558.3
+   }
+  },
+  "model pick, tight cost, edge > 0 bp, 5 slots": {
+   "dev_usd": 531.6,
+   "test_usd": 259.0,
+   "test_up": 0.732,
+   "trades_per_day": 390.5,
+   "bp_per_trade": 2.02,
+   "worst_day": -672.0,
+   "years": {
+    "2022": 723.6,
+    "2023": 606.0,
+    "2024": 274.6,
+    "2025": 176.6,
+    "2026": 410.9
+   }
+  },
+  "model pick, tight cost, edge > 1 bp, 3 slots": {
+   "dev_usd": 752.2,
+   "test_usd": 428.8,
+   "test_up": 0.805,
+   "trades_per_day": 228.0,
+   "bp_per_trade": 3.1,
+   "worst_day": -904.0,
+   "years": {
+    "2022": 975.0,
+    "2023": 850.1,
+    "2024": 445.9,
+    "2025": 315.5,
+    "2026": 621.1
+   }
+  },
+  "model pick, tight cost, edge > 1 bp, 5 slots": {
+   "dev_usd": 550.9,
+   "test_usd": 310.1,
+   "test_up": 0.793,
+   "trades_per_day": 292.2,
+   "bp_per_trade": 2.94,
+   "worst_day": -739.0,
+   "years": {
+    "2022": 755.7,
+    "2023": 620.8,
+    "2024": 303.8,
+    "2025": 222.6,
+    "2026": 469.8
+   }
+  },
+  "model pick, tight cost, edge > 2 bp, 3 slots": {
+   "dev_usd": 740.6,
+   "test_usd": 453.9,
+   "test_up": 0.846,
+   "trades_per_day": 182.5,
+   "bp_per_trade": 3.92,
+   "worst_day": -712.0,
+   "years": {
+    "2022": 995.0,
+    "2023": 813.6,
+    "2024": 446.3,
+    "2025": 333.0,
+    "2026": 676.1
+   }
+  },
+  "model pick, tight cost, edge > 2 bp, 5 slots": {
+   "dev_usd": 522.8,
+   "test_usd": 321.9,
+   "test_up": 0.848,
+   "trades_per_day": 219.5,
+   "bp_per_trade": 3.84,
+   "worst_day": -515.0,
+   "years": {
+    "2022": 744.9,
+    "2023": 570.6,
+    "2024": 294.9,
+    "2025": 233.0,
+    "2026": 497.7
+   }
+  },
+  "model pick, tight cost, edge > 4 bp, 3 slots": {
+   "dev_usd": 569.0,
+   "test_usd": 414.7,
+   "test_up": 0.866,
+   "trades_per_day": 103.4,
+   "bp_per_trade": 5.7,
+   "worst_day": -725.0,
+   "years": {
+    "2022": 760.1,
+    "2023": 610.7,
+    "2024": 369.4,
+    "2025": 300.4,
+    "2026": 629.4
+   }
+  },
+  "model pick, tight cost, edge > 4 bp, 5 slots": {
+   "dev_usd": 371.9,
+   "test_usd": 277.9,
+   "test_up": 0.872,
+   "trades_per_day": 113.6,
+   "bp_per_trade": 5.71,
+   "worst_day": -568.0,
+   "years": {
+    "2022": 506.0,
+    "2023": 398.3,
+    "2024": 235.6,
+    "2025": 196.0,
+    "2026": 436.3
+   }
+  }
+ }
+}

@@ -1,0 +1,8642 @@
+{
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": 2.0,
+  "test_usd": 0.6,
+  "test_up": 0.455,
+  "trades_per_day": 2.8,
+  "bp_per_trade": 0.54,
+  "worst_day": -378.0,
+  "years": {
+   "2022": 6.8,
+   "2023": 4.8,
+   "2024": -2.3,
+   "2025": -2.4,
+   "2026": 3.9
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": 0.6,
+  "test_usd": 0.0,
+  "test_up": 0.128,
+  "trades_per_day": 0.5,
+  "bp_per_trade": 0.78,
+  "worst_day": -94.0,
+  "years": {
+   "2022": 3.2,
+   "2023": 0.6,
+   "2024": -0.4,
+   "2025": 0.6,
+   "2026": -0.9
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -0.1,
+  "test_usd": 0.8,
+  "test_up": 0.386,
+  "trades_per_day": 1.7,
+  "bp_per_trade": 0.24,
+  "worst_day": -182.0,
+  "years": {
+   "2022": 0.8,
+   "2023": 1.3,
+   "2024": -1.2,
+   "2025": -2.6,
+   "2026": 5.0
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": 0.3,
+  "test_usd": -0.2,
+  "test_up": 0.104,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 0.13,
+  "worst_day": -90.0,
+  "years": {
+   "2022": 1.6,
+   "2023": 0.8,
+   "2024": -0.9,
+   "2025": 0.3,
+   "2026": -0.9
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": 1.1,
+  "test_usd": -0.3,
+  "test_up": 0.098,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 1.41,
+  "worst_day": -130.0,
+  "years": {
+   "2022": 3.4,
+   "2023": 1.4,
+   "2024": -0.9,
+   "2025": 1.0,
+   "2026": -1.5
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": 1.8,
+  "test_usd": -0.3,
+  "test_up": 0.116,
+  "trades_per_day": 0.4,
+  "bp_per_trade": 2.04,
+  "worst_day": -113.0,
+  "years": {
+   "2022": 5.6,
+   "2023": 1.9,
+   "2024": -0.4,
+   "2025": 0.7,
+   "2026": -1.3
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": 0.8,
+  "test_usd": -0.4,
+  "test_up": 0.128,
+  "trades_per_day": 0.5,
+  "bp_per_trade": 0.51,
+  "worst_day": -97.0,
+  "years": {
+   "2022": 3.6,
+   "2023": 0.6,
+   "2024": -0.6,
+   "2025": -0.6,
+   "2026": 0.2
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": 0.0,
+  "test_usd": -0.4,
+  "test_up": 0.079,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -0.72,
+  "worst_day": -124.0,
+  "years": {
+   "2022": 1.2,
+   "2023": -0.9,
+   "2024": 0.1,
+   "2025": 0.4,
+   "2026": -1.2
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -0.3,
+  "test_usd": -0.5,
+  "test_up": 0.102,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -1.44,
+  "worst_day": -91.0,
+  "years": {
+   "2022": 1.2,
+   "2023": 0.3,
+   "2024": -1.4,
+   "2025": -0.2,
+   "2026": -1.0
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -0.1,
+  "test_usd": -0.5,
+  "test_up": 0.124,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -0.81,
+  "worst_day": -118.0,
+  "years": {
+   "2022": 2.7,
+   "2023": -0.2,
+   "2024": -1.1,
+   "2025": -0.1,
+   "2026": -1.0
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": 0.1,
+  "test_usd": -0.6,
+  "test_up": 0.315,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -0.25,
+  "worst_day": -249.0,
+  "years": {
+   "2022": 0.8,
+   "2023": 2.4,
+   "2024": -2.7,
+   "2025": -1.1,
+   "2026": -0.0
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": 0.4,
+  "test_usd": -0.6,
+  "test_up": 0.1,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.41,
+  "worst_day": -97.0,
+  "years": {
+   "2022": 1.8,
+   "2023": 0.2,
+   "2024": -0.2,
+   "2025": -1.0,
+   "2026": -0.0
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": 0.5,
+  "test_usd": -0.6,
+  "test_up": 0.093,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.16,
+  "worst_day": -131.0,
+  "years": {
+   "2022": 3.0,
+   "2023": 0.9,
+   "2024": -1.4,
+   "2025": 0.5,
+   "2026": -1.6
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": 0.1,
+  "test_usd": -0.6,
+  "test_up": 0.073,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.93,
+  "worst_day": -170.0,
+  "years": {
+   "2022": 1.3,
+   "2023": -0.8,
+   "2024": 0.0,
+   "2025": 0.1,
+   "2026": -1.2
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -0.3,
+  "test_usd": -0.6,
+  "test_up": 0.1,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -1.16,
+  "worst_day": -170.0,
+  "years": {
+   "2022": -0.3,
+   "2023": -0.8,
+   "2024": -0.2,
+   "2025": 0.4,
+   "2026": -1.5
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -0.2,
+  "test_usd": -0.7,
+  "test_up": 0.213,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -0.59,
+  "worst_day": -95.0,
+  "years": {
+   "2022": 3.7,
+   "2023": -0.8,
+   "2024": -1.2,
+   "2025": -0.4,
+   "2026": -0.9
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -0.4,
+  "test_usd": -0.7,
+  "test_up": 0.1,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -1.48,
+  "worst_day": -135.0,
+  "years": {
+   "2022": 1.2,
+   "2023": -1.6,
+   "2024": -0.1,
+   "2025": 0.2,
+   "2026": -1.7
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -0.2,
+  "test_usd": -0.8,
+  "test_up": 0.398,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -0.34,
+  "worst_day": -154.0,
+  "years": {
+   "2022": -0.6,
+   "2023": 0.3,
+   "2024": -0.2,
+   "2025": -4.7,
+   "2026": 3.5
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": 0.1,
+  "test_usd": -0.8,
+  "test_up": 0.327,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -0.3,
+  "worst_day": -154.0,
+  "years": {
+   "2022": 1.2,
+   "2023": 0.1,
+   "2024": -0.1,
+   "2025": -3.2,
+   "2026": 1.9
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": 0.2,
+  "test_usd": -0.8,
+  "test_up": 0.443,
+  "trades_per_day": 2.9,
+  "bp_per_trade": -0.13,
+  "worst_day": -266.0,
+  "years": {
+   "2022": 6.1,
+   "2023": 3.6,
+   "2024": -4.3,
+   "2025": -4.0,
+   "2026": 1.9
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": 0.8,
+  "test_usd": -0.8,
+  "test_up": 0.421,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -0.01,
+  "worst_day": -250.0,
+  "years": {
+   "2022": 8.0,
+   "2023": 2.9,
+   "2024": -3.3,
+   "2025": -2.8,
+   "2026": 0.7
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": 1.7,
+  "test_usd": -0.8,
+  "test_up": 0.415,
+  "trades_per_day": 2.2,
+  "bp_per_trade": 0.23,
+  "worst_day": -364.0,
+  "years": {
+   "2022": 6.0,
+   "2023": 4.7,
+   "2024": -3.6,
+   "2025": -1.2,
+   "2026": -0.3
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": 0.2,
+  "test_usd": -0.8,
+  "test_up": 0.209,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -0.39,
+  "worst_day": -105.0,
+  "years": {
+   "2022": 3.9,
+   "2023": -0.3,
+   "2024": -1.5,
+   "2025": -1.0,
+   "2026": 0.3
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": 1.1,
+  "test_usd": -0.8,
+  "test_up": 0.11,
+  "trades_per_day": 0.4,
+  "bp_per_trade": 0.46,
+  "worst_day": -114.0,
+  "years": {
+   "2022": 5.1,
+   "2023": 1.1,
+   "2024": -1.1,
+   "2025": -0.0,
+   "2026": -1.4
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -0.5,
+  "test_usd": -0.8,
+  "test_up": 0.077,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -2.2,
+  "worst_day": -126.0,
+  "years": {
+   "2022": 0.9,
+   "2023": -1.5,
+   "2024": -0.5,
+   "2025": -0.0,
+   "2026": -1.3
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": 2.9,
+  "test_usd": -0.9,
+  "test_up": 0.516,
+  "trades_per_day": 3.8,
+  "bp_per_trade": 0.3,
+  "worst_day": -299.0,
+  "years": {
+   "2022": 9.0,
+   "2023": 5.6,
+   "2024": -7.1,
+   "2025": 3.0,
+   "2026": -1.1
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": 1.1,
+  "test_usd": -0.9,
+  "test_up": 0.191,
+  "trades_per_day": 0.9,
+  "bp_per_trade": 0.12,
+  "worst_day": -220.0,
+  "years": {
+   "2022": 5.9,
+   "2023": 0.5,
+   "2024": -0.8,
+   "2025": -0.3,
+   "2026": -1.5
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": 0.1,
+  "test_usd": -0.9,
+  "test_up": 0.108,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -1.08,
+  "worst_day": -101.0,
+  "years": {
+   "2022": 3.1,
+   "2023": -0.2,
+   "2024": -1.3,
+   "2025": -1.3,
+   "2026": 0.1
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -0.5,
+  "test_usd": -0.9,
+  "test_up": 0.073,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.4,
+  "worst_day": -172.0,
+  "years": {
+   "2022": 1.0,
+   "2023": -1.4,
+   "2024": -0.5,
+   "2025": -0.3,
+   "2026": -1.3
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -0.6,
+  "test_usd": -1.0,
+  "test_up": 0.175,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -1.46,
+  "worst_day": -95.0,
+  "years": {
+   "2022": 3.3,
+   "2023": -1.0,
+   "2024": -2.0,
+   "2025": -0.8,
+   "2026": -0.8
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": 0.4,
+  "test_usd": -1.0,
+  "test_up": 0.165,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -0.59,
+  "worst_day": -168.0,
+  "years": {
+   "2022": 5.4,
+   "2023": -0.3,
+   "2024": -1.5,
+   "2025": -0.2,
+   "2026": -1.5
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -0.2,
+  "test_usd": -1.0,
+  "test_up": 0.087,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -1.99,
+  "worst_day": -101.0,
+  "years": {
+   "2022": 1.4,
+   "2023": -0.4,
+   "2024": -0.8,
+   "2025": -1.5,
+   "2026": -0.2
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": 0.1,
+  "test_usd": -1.0,
+  "test_up": 0.128,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -0.82,
+  "worst_day": -124.0,
+  "years": {
+   "2022": 2.4,
+   "2023": -1.1,
+   "2024": 0.1,
+   "2025": -0.4,
+   "2026": -1.7
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": 0.6,
+  "test_usd": -1.0,
+  "test_up": 0.128,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -0.46,
+  "worst_day": -170.0,
+  "years": {
+   "2022": 3.5,
+   "2023": 0.0,
+   "2024": -0.2,
+   "2025": -0.8,
+   "2026": -1.6
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -1.0,
+  "test_usd": -1.0,
+  "test_up": 0.094,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -2.7,
+  "worst_day": -172.0,
+  "years": {
+   "2022": -0.9,
+   "2023": -1.5,
+   "2024": -0.9,
+   "2025": -0.2,
+   "2026": -1.7
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -1.0,
+  "test_usd": -0.2,
+  "test_up": 0.124,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -1.61,
+  "worst_day": -488.0,
+  "years": {
+   "2022": -2.3,
+   "2023": 0.1,
+   "2024": -1.3,
+   "2025": -1.6,
+   "2026": 1.3
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": 1.0,
+  "test_usd": -1.1,
+  "test_up": 0.396,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -0.04,
+  "worst_day": -204.0,
+  "years": {
+   "2022": 8.3,
+   "2023": 0.1,
+   "2024": -1.3,
+   "2025": -4.7,
+   "2026": 3.7
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -1.1,
+  "test_usd": -0.3,
+  "test_up": 0.102,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -2.24,
+  "worst_day": -404.0,
+  "years": {
+   "2022": -1.9,
+   "2023": -0.4,
+   "2024": -1.1,
+   "2025": -1.3,
+   "2026": 1.0
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -1.1,
+  "test_usd": -0.1,
+  "test_up": 0.12,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.01,
+  "worst_day": -370.0,
+  "years": {
+   "2022": -2.0,
+   "2023": -0.4,
+   "2024": -1.1,
+   "2025": -1.0,
+   "2026": 0.9
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -1.1,
+  "test_usd": -0.3,
+  "test_up": 0.14,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -1.9,
+  "worst_day": -443.0,
+  "years": {
+   "2022": -0.8,
+   "2023": -0.6,
+   "2024": -1.3,
+   "2025": -1.7,
+   "2026": 1.2
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -0.4,
+  "test_usd": -1.2,
+  "test_up": 0.167,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -1.37,
+  "worst_day": -105.0,
+  "years": {
+   "2022": 2.3,
+   "2023": -1.1,
+   "2024": -1.3,
+   "2025": -1.7,
+   "2026": -0.0
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": 0.5,
+  "test_usd": -1.2,
+  "test_up": 0.169,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -0.49,
+  "worst_day": -170.0,
+  "years": {
+   "2022": 2.6,
+   "2023": 0.3,
+   "2024": -0.6,
+   "2025": -0.5,
+   "2026": -2.0
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -1.1,
+  "test_usd": -1.2,
+  "test_up": 0.096,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -3.02,
+  "worst_day": -142.0,
+  "years": {
+   "2022": 0.7,
+   "2023": -2.4,
+   "2024": -0.8,
+   "2025": -0.4,
+   "2026": -1.8
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": 0.1,
+  "test_usd": -1.3,
+  "test_up": 0.104,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -1.62,
+  "worst_day": -211.0,
+  "years": {
+   "2022": 1.0,
+   "2023": -0.8,
+   "2024": 0.5,
+   "2025": -0.8,
+   "2026": -2.4
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -1.3,
+  "test_usd": -1.0,
+  "test_up": 0.453,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -0.31,
+  "worst_day": -407.0,
+  "years": {
+   "2022": -11.9,
+   "2023": 0.6,
+   "2024": 0.5,
+   "2025": -0.6,
+   "2026": -1.5
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -1.3,
+  "test_usd": 0.8,
+  "test_up": 0.106,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.88,
+  "worst_day": -229.0,
+  "years": {
+   "2022": -3.4,
+   "2023": -0.1,
+   "2024": -1.5,
+   "2025": 0.7,
+   "2026": 1.5
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -1.4,
+  "test_usd": -1.1,
+  "test_up": 0.384,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -0.82,
+  "worst_day": -207.0,
+  "years": {
+   "2022": -2.4,
+   "2023": 1.4,
+   "2024": -2.5,
+   "2025": -4.6,
+   "2026": 1.9
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -0.8,
+  "test_usd": -1.4,
+  "test_up": 0.323,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -1.03,
+  "worst_day": -205.0,
+  "years": {
+   "2022": -0.7,
+   "2023": 1.3,
+   "2024": -2.1,
+   "2025": -3.3,
+   "2026": -0.3
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -1.4,
+  "test_usd": -0.5,
+  "test_up": 0.094,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -3.27,
+  "worst_day": -162.0,
+  "years": {
+   "2022": -2.4,
+   "2023": -1.9,
+   "2024": -0.2,
+   "2025": -1.3,
+   "2026": 0.6
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": 0.3,
+  "test_usd": -1.4,
+  "test_up": 0.085,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.05,
+  "worst_day": -211.0,
+  "years": {
+   "2022": 2.8,
+   "2023": -1.1,
+   "2024": 0.5,
+   "2025": -1.5,
+   "2026": -1.7
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -1.5,
+  "test_usd": -0.3,
+  "test_up": 0.148,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -1.58,
+  "worst_day": -163.0,
+  "years": {
+   "2022": -4.7,
+   "2023": -1.3,
+   "2024": -0.1,
+   "2025": -1.1,
+   "2026": 0.6
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -1.5,
+  "test_usd": -0.1,
+  "test_up": 0.085,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.75,
+  "worst_day": -125.0,
+  "years": {
+   "2022": -2.6,
+   "2023": -1.3,
+   "2024": -0.8,
+   "2025": -0.1,
+   "2026": -0.2
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -0.4,
+  "test_usd": -1.5,
+  "test_up": 0.163,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -1.29,
+  "worst_day": -135.0,
+  "years": {
+   "2022": 2.7,
+   "2023": -1.9,
+   "2024": -0.4,
+   "2025": -0.9,
+   "2026": -2.2
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -1.5,
+  "test_usd": 0.4,
+  "test_up": 0.136,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -1.44,
+  "worst_day": -229.0,
+  "years": {
+   "2022": -2.1,
+   "2023": -0.7,
+   "2024": -1.9,
+   "2025": -0.4,
+   "2026": 2.0
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -0.7,
+  "test_usd": -1.6,
+  "test_up": 0.15,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.11,
+  "worst_day": -178.0,
+  "years": {
+   "2022": 4.7,
+   "2023": -1.5,
+   "2024": -2.5,
+   "2025": -1.1,
+   "2026": -1.6
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": 0.2,
+  "test_usd": -1.6,
+  "test_up": 0.423,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -0.28,
+  "worst_day": -220.0,
+  "years": {
+   "2022": 6.3,
+   "2023": -0.0,
+   "2024": -1.7,
+   "2025": -6.0,
+   "2026": 3.9
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -0.9,
+  "test_usd": -1.6,
+  "test_up": 0.116,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.31,
+  "worst_day": -126.0,
+  "years": {
+   "2022": 1.7,
+   "2023": -2.2,
+   "2024": -0.9,
+   "2025": -1.3,
+   "2026": -1.8
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -1.6,
+  "test_usd": -0.6,
+  "test_up": 0.096,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -3.73,
+  "worst_day": -421.0,
+  "years": {
+   "2022": -2.2,
+   "2023": -1.0,
+   "2024": -1.7,
+   "2025": -1.7,
+   "2026": 0.9
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -1.6,
+  "test_usd": -0.4,
+  "test_up": 0.108,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -3.48,
+  "worst_day": -380.0,
+  "years": {
+   "2022": -2.3,
+   "2023": -1.0,
+   "2024": -1.6,
+   "2025": -1.4,
+   "2026": 0.8
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -1.7,
+  "test_usd": -1.7,
+  "test_up": 0.163,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.98,
+  "worst_day": -102.0,
+  "years": {
+   "2022": 2.6,
+   "2023": -2.2,
+   "2024": -3.0,
+   "2025": -1.8,
+   "2026": -1.0
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -1.6,
+  "test_usd": -1.7,
+  "test_up": 0.191,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -2.09,
+  "worst_day": -112.0,
+  "years": {
+   "2022": 2.8,
+   "2023": -2.4,
+   "2024": -2.6,
+   "2025": -1.7,
+   "2026": -1.1
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -1.7,
+  "test_usd": -0.2,
+  "test_up": 0.14,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -1.66,
+  "worst_day": -126.0,
+  "years": {
+   "2022": -3.7,
+   "2023": -1.3,
+   "2024": -0.8,
+   "2025": -0.3,
+   "2026": -0.3
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -0.4,
+  "test_usd": -1.7,
+  "test_up": 0.124,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -1.95,
+  "worst_day": -172.0,
+  "years": {
+   "2022": 2.9,
+   "2023": -1.1,
+   "2024": -1.1,
+   "2025": -1.7,
+   "2026": -1.7
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -0.2,
+  "test_usd": -1.7,
+  "test_up": 0.081,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -3.52,
+  "worst_day": -212.0,
+  "years": {
+   "2022": 2.5,
+   "2023": -1.7,
+   "2024": -0.0,
+   "2025": -1.9,
+   "2026": -1.9
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -0.6,
+  "test_usd": -1.7,
+  "test_up": 0.098,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -3.15,
+  "worst_day": -212.0,
+  "years": {
+   "2022": 0.5,
+   "2023": -1.5,
+   "2024": -0.2,
+   "2025": -1.4,
+   "2026": -2.5
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -1.3,
+  "test_usd": -1.8,
+  "test_up": 0.175,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -1.89,
+  "worst_day": -108.0,
+  "years": {
+   "2022": 3.1,
+   "2023": -1.9,
+   "2024": -3.0,
+   "2025": -2.4,
+   "2026": 0.1
+  }
+ },
+ "buy the drop 09:35-10:00 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -0.3,
+  "test_usd": -1.8,
+  "test_up": 0.177,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -1.39,
+  "worst_day": -233.0,
+  "years": {
+   "2022": 5.1,
+   "2023": -1.1,
+   "2024": -2.2,
+   "2025": -1.5,
+   "2026": -1.7
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -1.8,
+  "test_usd": 0.5,
+  "test_up": 0.104,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.34,
+  "worst_day": -239.0,
+  "years": {
+   "2022": -3.8,
+   "2023": -0.7,
+   "2024": -2.1,
+   "2025": 0.3,
+   "2026": 1.4
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -1.8,
+  "test_usd": -0.7,
+  "test_up": 0.116,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -3.15,
+  "worst_day": -517.0,
+  "years": {
+   "2022": -2.9,
+   "2023": -0.6,
+   "2024": -2.1,
+   "2025": -2.2,
+   "2026": 1.2
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -1.8,
+  "test_usd": -0.8,
+  "test_up": 0.128,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -3.43,
+  "worst_day": -461.0,
+  "years": {
+   "2022": -1.4,
+   "2023": -1.3,
+   "2024": -2.0,
+   "2025": -2.3,
+   "2026": 1.1
+  }
+ },
+ "buy the drop 09:35-09:45 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -1.5,
+  "test_usd": -1.9,
+  "test_up": 0.142,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.89,
+  "worst_day": -108.0,
+  "years": {
+   "2022": 1.7,
+   "2023": -2.3,
+   "2024": -2.3,
+   "2025": -2.7,
+   "2026": -0.2
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -1.9,
+  "test_usd": -0.8,
+  "test_up": 0.087,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -4.84,
+  "worst_day": -167.0,
+  "years": {
+   "2022": -2.9,
+   "2023": -2.5,
+   "2024": -0.7,
+   "2025": -1.8,
+   "2026": 0.5
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -0.6,
+  "test_usd": -1.9,
+  "test_up": 0.291,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -1.16,
+  "worst_day": -221.0,
+  "years": {
+   "2022": 4.5,
+   "2023": -1.0,
+   "2024": -3.2,
+   "2025": -3.0,
+   "2026": 0.9
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -2.0,
+  "test_usd": -1.0,
+  "test_up": 0.114,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -3.94,
+  "worst_day": -197.0,
+  "years": {
+   "2022": -4.2,
+   "2023": -2.0,
+   "2024": -1.0,
+   "2025": -2.0,
+   "2026": 0.5
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -2.0,
+  "test_usd": -0.3,
+  "test_up": 0.173,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.16,
+  "worst_day": -404.0,
+  "years": {
+   "2022": -3.6,
+   "2023": -1.2,
+   "2024": -2.0,
+   "2025": -1.4,
+   "2026": 1.4
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -2.1,
+  "test_usd": -0.5,
+  "test_up": 0.075,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -4.33,
+  "worst_day": -130.0,
+  "years": {
+   "2022": -3.0,
+   "2023": -1.9,
+   "2024": -1.4,
+   "2025": -0.6,
+   "2026": -0.3
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -0.8,
+  "test_usd": -2.1,
+  "test_up": 0.159,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -1.99,
+  "worst_day": -172.0,
+  "years": {
+   "2022": 1.7,
+   "2023": -1.1,
+   "2024": -1.9,
+   "2025": -1.8,
+   "2026": -2.2
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -2.2,
+  "test_usd": -0.4,
+  "test_up": 0.094,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -4.55,
+  "worst_day": -254.0,
+  "years": {
+   "2022": -4.2,
+   "2023": -2.5,
+   "2024": -0.2,
+   "2025": -1.9,
+   "2026": 1.2
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -2.2,
+  "test_usd": 0.1,
+  "test_up": 0.335,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -0.96,
+  "worst_day": -407.0,
+  "years": {
+   "2022": -2.7,
+   "2023": -1.7,
+   "2024": -1.1,
+   "2025": -0.7,
+   "2026": 0.3
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -2.2,
+  "test_usd": -0.0,
+  "test_up": 0.134,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -2.97,
+  "worst_day": -239.0,
+  "years": {
+   "2022": -2.7,
+   "2023": -1.4,
+   "2024": -2.6,
+   "2025": -1.0,
+   "2026": 1.9
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -1.9,
+  "test_usd": -2.3,
+  "test_up": 0.299,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -1.99,
+  "worst_day": -255.0,
+  "years": {
+   "2022": -0.5,
+   "2023": 0.4,
+   "2024": -5.0,
+   "2025": -2.9,
+   "2026": -1.4
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -2.3,
+  "test_usd": -0.6,
+  "test_up": 0.1,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -3.69,
+  "worst_day": -190.0,
+  "years": {
+   "2022": -4.6,
+   "2023": -2.1,
+   "2024": -0.8,
+   "2025": -0.9,
+   "2026": -0.6
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": 0.4,
+  "test_usd": -2.3,
+  "test_up": 0.142,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -1.82,
+  "worst_day": -211.0,
+  "years": {
+   "2022": 4.1,
+   "2023": -0.2,
+   "2024": -0.4,
+   "2025": -2.7,
+   "2026": -2.6
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -2.3,
+  "test_usd": 1.1,
+  "test_up": 0.163,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -1.15,
+  "worst_day": -169.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -1.9,
+   "2024": -1.4,
+   "2025": 1.1,
+   "2026": 2.3
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -2.3,
+  "test_usd": -0.3,
+  "test_up": 0.203,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -1.73,
+  "worst_day": -468.0,
+  "years": {
+   "2022": -4.6,
+   "2023": -1.0,
+   "2024": -2.3,
+   "2025": -1.7,
+   "2026": 1.8
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -2.4,
+  "test_usd": -0.3,
+  "test_up": 0.161,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -2.44,
+  "worst_day": -254.0,
+  "years": {
+   "2022": -6.8,
+   "2023": -2.0,
+   "2024": -0.5,
+   "2025": -1.7,
+   "2026": 1.2
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -0.1,
+  "test_usd": -2.4,
+  "test_up": 0.37,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -0.83,
+  "worst_day": -256.0,
+  "years": {
+   "2022": 6.2,
+   "2023": -1.0,
+   "2024": -1.6,
+   "2025": -5.7,
+   "2026": 1.4
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -0.2,
+  "test_usd": -2.4,
+  "test_up": 0.295,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -1.24,
+  "worst_day": -256.0,
+  "years": {
+   "2022": 5.9,
+   "2023": -1.2,
+   "2024": -1.8,
+   "2025": -3.7,
+   "2026": -0.8
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -1.7,
+  "test_usd": -2.4,
+  "test_up": 0.144,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -2.79,
+  "worst_day": -142.0,
+  "years": {
+   "2022": 1.8,
+   "2023": -3.4,
+   "2024": -1.8,
+   "2025": -2.1,
+   "2026": -2.4
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": 0.6,
+  "test_usd": -2.4,
+  "test_up": 0.183,
+  "trades_per_day": 0.8,
+  "bp_per_trade": -1.3,
+  "worst_day": -211.0,
+  "years": {
+   "2022": 3.6,
+   "2023": -0.1,
+   "2024": -0.2,
+   "2025": -2.2,
+   "2026": -3.2
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -2.4,
+  "test_usd": -0.2,
+  "test_up": 0.177,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -2.51,
+  "worst_day": -370.0,
+  "years": {
+   "2022": -4.8,
+   "2023": -2.2,
+   "2024": -1.6,
+   "2025": -0.9,
+   "2026": 1.3
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -2.4,
+  "test_usd": 0.0,
+  "test_up": 0.443,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -0.65,
+  "worst_day": -590.0,
+  "years": {
+   "2022": -11.3,
+   "2023": -1.2,
+   "2024": -1.3,
+   "2025": 1.0,
+   "2026": 0.6
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -1.9,
+  "test_usd": -2.5,
+  "test_up": 0.301,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.04,
+  "worst_day": -158.0,
+  "years": {
+   "2022": -0.2,
+   "2023": -2.0,
+   "2024": -2.4,
+   "2025": -5.1,
+   "2026": 0.6
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -2.5,
+  "test_usd": -1.0,
+  "test_up": 0.14,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -3.1,
+  "worst_day": -170.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -2.5,
+   "2024": -1.1,
+   "2025": -2.0,
+   "2026": 0.4
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -0.5,
+  "test_usd": -2.6,
+  "test_up": 0.366,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -0.99,
+  "worst_day": -221.0,
+  "years": {
+   "2022": 3.8,
+   "2023": -0.3,
+   "2024": -3.6,
+   "2025": -5.0,
+   "2026": 1.8
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -2.7,
+  "test_usd": -0.7,
+  "test_up": 0.087,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -6.12,
+  "worst_day": -262.0,
+  "years": {
+   "2022": -4.6,
+   "2023": -3.1,
+   "2024": -0.7,
+   "2025": -2.4,
+   "2026": 1.1
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -2.7,
+  "test_usd": -1.1,
+  "test_up": 0.179,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -2.43,
+  "worst_day": -197.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -2.4,
+   "2024": -1.7,
+   "2025": -2.2,
+   "2026": 0.5
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -2.7,
+  "test_usd": -1.5,
+  "test_up": 0.102,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -5.53,
+  "worst_day": -211.0,
+  "years": {
+   "2022": -4.7,
+   "2023": -2.8,
+   "2024": -1.7,
+   "2025": -2.7,
+   "2026": 0.4
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -2.7,
+  "test_usd": 0.9,
+  "test_up": 0.419,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -0.47,
+  "worst_day": -512.0,
+  "years": {
+   "2022": -6.3,
+   "2023": -0.7,
+   "2024": -2.1,
+   "2025": 0.6,
+   "2026": 1.0
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -1.5,
+  "test_usd": -2.8,
+  "test_up": 0.474,
+  "trades_per_day": 6.6,
+  "bp_per_trade": -0.4,
+  "worst_day": -397.0,
+  "years": {
+   "2022": -4.6,
+   "2023": 0.4,
+   "2024": -4.4,
+   "2025": -1.0,
+   "2026": -3.2
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -2.8,
+  "test_usd": -0.9,
+  "test_up": 0.12,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -3.18,
+  "worst_day": -133.0,
+  "years": {
+   "2022": -4.4,
+   "2023": -2.5,
+   "2024": -1.9,
+   "2025": -1.3,
+   "2026": -0.4
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -2.9,
+  "test_usd": -1.5,
+  "test_up": 0.362,
+  "trades_per_day": 1.7,
+  "bp_per_trade": -1.5,
+  "worst_day": -191.0,
+  "years": {
+   "2022": -1.2,
+   "2023": -1.5,
+   "2024": -4.0,
+   "2025": -5.1,
+   "2026": 3.0
+  }
+ },
+ "buy the rise 09:35-09:45 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -0.5,
+  "test_usd": -2.9,
+  "test_up": 0.132,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -3.31,
+  "worst_day": -212.0,
+  "years": {
+   "2022": 3.5,
+   "2023": -1.3,
+   "2024": -1.3,
+   "2025": -3.6,
+   "2026": -2.7
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -3.0,
+  "test_usd": -1.1,
+  "test_up": 0.089,
+  "trades_per_day": 0.5,
+  "bp_per_trade": -5.28,
+  "worst_day": -193.0,
+  "years": {
+   "2022": -5.1,
+   "2023": -2.9,
+   "2024": -1.5,
+   "2025": -1.6,
+   "2026": -0.7
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -3.0,
+  "test_usd": -1.0,
+  "test_up": 0.154,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -3.65,
+  "worst_day": -421.0,
+  "years": {
+   "2022": -4.3,
+   "2023": -2.3,
+   "2024": -2.9,
+   "2025": -2.3,
+   "2026": 1.3
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -2.9,
+  "test_usd": -3.1,
+  "test_up": 0.285,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.77,
+  "worst_day": -212.0,
+  "years": {
+   "2022": -2.0,
+   "2023": -0.7,
+   "2024": -4.4,
+   "2025": -5.1,
+   "2026": -1.6
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -3.1,
+  "test_usd": -0.2,
+  "test_up": 0.419,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -1.01,
+  "worst_day": -407.0,
+  "years": {
+   "2022": -3.1,
+   "2023": -2.9,
+   "2024": -1.8,
+   "2025": -1.0,
+   "2026": 0.4
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -3.1,
+  "test_usd": -0.6,
+  "test_up": 0.431,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -1.01,
+  "worst_day": -542.0,
+  "years": {
+   "2022": -9.0,
+   "2023": -1.9,
+   "2024": -1.7,
+   "2025": 0.6,
+   "2026": -2.0
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -3.1,
+  "test_usd": -0.5,
+  "test_up": 0.207,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -2.51,
+  "worst_day": -439.0,
+  "years": {
+   "2022": -4.5,
+   "2023": -3.2,
+   "2024": -2.0,
+   "2025": -1.9,
+   "2026": 1.6
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -3.1,
+  "test_usd": -3.2,
+  "test_up": 0.36,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -2.07,
+  "worst_day": -158.0,
+  "years": {
+   "2022": -2.7,
+   "2023": -2.6,
+   "2024": -3.0,
+   "2025": -7.2,
+   "2026": 1.5
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -3.2,
+  "test_usd": -1.1,
+  "test_up": 0.173,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -2.63,
+  "worst_day": -190.0,
+  "years": {
+   "2022": -5.6,
+   "2023": -3.1,
+   "2024": -1.4,
+   "2025": -1.7,
+   "2026": -0.7
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -3.2,
+  "test_usd": -0.6,
+  "test_up": 0.12,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -5.2,
+  "worst_day": -217.0,
+  "years": {
+   "2022": -6.6,
+   "2023": -3.3,
+   "2024": -1.0,
+   "2025": -2.0,
+   "2026": 0.9
+  }
+ },
+ "buy the rise 09:35-10:00 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -0.7,
+  "test_usd": -3.2,
+  "test_up": 0.169,
+  "trades_per_day": 0.8,
+  "bp_per_trade": -2.81,
+  "worst_day": -212.0,
+  "years": {
+   "2022": 2.7,
+   "2023": -1.5,
+   "2024": -1.5,
+   "2025": -3.4,
+   "2026": -3.4
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -3.2,
+  "test_usd": 0.7,
+  "test_up": 0.199,
+  "trades_per_day": 0.8,
+  "bp_per_trade": -1.7,
+  "worst_day": -205.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -2.7,
+   "2024": -2.3,
+   "2025": -0.1,
+   "2026": 2.9
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -3.3,
+  "test_usd": -2.0,
+  "test_up": 0.297,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.45,
+  "worst_day": -244.0,
+  "years": {
+   "2022": -2.0,
+   "2023": -5.3,
+   "2024": -2.4,
+   "2025": -0.5,
+   "2026": -2.5
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -3.3,
+  "test_usd": 0.5,
+  "test_up": 0.156,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -2.63,
+  "worst_day": -181.0,
+  "years": {
+   "2022": -6.0,
+   "2023": -3.0,
+   "2024": -2.3,
+   "2025": 0.2,
+   "2026": 2.2
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -2.6,
+  "test_usd": -3.4,
+  "test_up": 0.423,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -1.25,
+  "worst_day": -385.0,
+  "years": {
+   "2022": 2.9,
+   "2023": 0.1,
+   "2024": -6.8,
+   "2025": -6.9,
+   "2026": 0.6
+  }
+ },
+ "sell the rise 09:35-09:45 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -3.4,
+  "test_usd": -0.9,
+  "test_up": 0.163,
+  "trades_per_day": 0.6,
+  "bp_per_trade": -4.0,
+  "worst_day": -380.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -3.3,
+   "2024": -2.6,
+   "2025": -1.8,
+   "2026": 1.2
+  }
+ },
+ "sell the drop 09:35-09:45 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -3.5,
+  "test_usd": -1.0,
+  "test_up": 0.152,
+  "trades_per_day": 0.7,
+  "bp_per_trade": -3.96,
+  "worst_day": -262.0,
+  "years": {
+   "2022": -7.5,
+   "2023": -3.1,
+   "2024": -1.5,
+   "2025": -2.6,
+   "2026": 1.1
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -3.5,
+  "test_usd": 0.2,
+  "test_up": 0.461,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -0.63,
+  "worst_day": -563.0,
+  "years": {
+   "2022": -7.0,
+   "2023": -2.0,
+   "2024": -2.9,
+   "2025": 0.1,
+   "2026": 0.8
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -3.5,
+  "test_usd": -2.1,
+  "test_up": 0.476,
+  "trades_per_day": 8.4,
+  "bp_per_trade": -0.4,
+  "worst_day": -484.0,
+  "years": {
+   "2022": -12.0,
+   "2023": -3.1,
+   "2024": -0.2,
+   "2025": -1.1,
+   "2026": -4.0
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -2.0,
+  "test_usd": -3.6,
+  "test_up": 0.278,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.58,
+  "worst_day": -199.0,
+  "years": {
+   "2022": -0.8,
+   "2023": -2.7,
+   "2024": -3.2,
+   "2025": -3.1,
+   "2026": -3.0
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -2.7,
+  "test_usd": -3.6,
+  "test_up": 0.272,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.94,
+  "worst_day": -224.0,
+  "years": {
+   "2022": 2.7,
+   "2023": -3.1,
+   "2024": -5.4,
+   "2025": -4.8,
+   "2026": -0.5
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -3.7,
+  "test_usd": -1.5,
+  "test_up": 0.356,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.38,
+  "worst_day": -542.0,
+  "years": {
+   "2022": -8.0,
+   "2023": -3.3,
+   "2024": -1.0,
+   "2025": -0.8,
+   "2026": -3.5
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -3.7,
+  "test_usd": -1.2,
+  "test_up": 0.173,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -3.24,
+  "worst_day": -500.0,
+  "years": {
+   "2022": -5.6,
+   "2023": -2.5,
+   "2024": -3.6,
+   "2025": -3.0,
+   "2026": 1.6
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -0.6,
+  "test_usd": -3.8,
+  "test_up": 0.445,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -0.61,
+  "worst_day": -248.0,
+  "years": {
+   "2022": 9.0,
+   "2023": -3.3,
+   "2024": -3.1,
+   "2025": -3.3,
+   "2026": -3.1
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -1.7,
+  "test_usd": -3.9,
+  "test_up": 0.39,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -1.58,
+  "worst_day": -370.0,
+  "years": {
+   "2022": 3.7,
+   "2023": 1.2,
+   "2024": -7.2,
+   "2025": -4.7,
+   "2026": -2.7
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -3.9,
+  "test_usd": -1.1,
+  "test_up": 0.108,
+  "trades_per_day": 0.4,
+  "bp_per_trade": -6.78,
+  "worst_day": -231.0,
+  "years": {
+   "2022": -7.1,
+   "2023": -4.0,
+   "2024": -1.7,
+   "2025": -2.7,
+   "2026": 0.8
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -3.9,
+  "test_usd": -1.0,
+  "test_up": 0.354,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.31,
+  "worst_day": -590.0,
+  "years": {
+   "2022": -9.4,
+   "2023": -3.1,
+   "2024": -2.4,
+   "2025": 0.1,
+   "2026": -1.9
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -2.6,
+  "test_usd": -4.0,
+  "test_up": 0.38,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -1.81,
+  "worst_day": -256.0,
+  "years": {
+   "2022": 5.6,
+   "2023": -0.6,
+   "2024": -7.0,
+   "2025": -6.4,
+   "2026": -1.8
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -4.0,
+  "test_usd": -0.9,
+  "test_up": 0.205,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -3.13,
+  "worst_day": -234.0,
+  "years": {
+   "2022": -7.6,
+   "2023": -3.6,
+   "2024": -2.1,
+   "2025": -2.3,
+   "2026": 1.1
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -2.3,
+  "test_usd": -4.0,
+  "test_up": 0.274,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -3.01,
+  "worst_day": -260.0,
+  "years": {
+   "2022": 4.2,
+   "2023": -3.3,
+   "2024": -3.9,
+   "2025": -5.6,
+   "2026": -2.1
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -1.6,
+  "test_usd": -4.1,
+  "test_up": 0.451,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -0.85,
+  "worst_day": -544.0,
+  "years": {
+   "2022": -16.7,
+   "2023": -1.9,
+   "2024": 0.9,
+   "2025": 0.6,
+   "2026": -7.7
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -4.2,
+  "test_usd": -3.4,
+  "test_up": 0.35,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -2.56,
+  "worst_day": -214.0,
+  "years": {
+   "2022": -4.6,
+   "2023": -1.5,
+   "2024": -5.3,
+   "2025": -7.1,
+   "2026": -0.1
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -4.2,
+  "test_usd": -2.7,
+  "test_up": 0.299,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -3.23,
+  "worst_day": -254.0,
+  "years": {
+   "2022": -3.3,
+   "2023": -6.4,
+   "2024": -1.8,
+   "2025": -2.6,
+   "2026": -2.7
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -4.2,
+  "test_usd": -2.0,
+  "test_up": 0.169,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -3.94,
+  "worst_day": -211.0,
+  "years": {
+   "2022": -6.2,
+   "2023": -4.0,
+   "2024": -3.1,
+   "2025": -3.5,
+   "2026": 0.3
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -4.2,
+  "test_usd": -1.0,
+  "test_up": 0.476,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -1.03,
+  "worst_day": -590.0,
+  "years": {
+   "2022": -15.6,
+   "2023": -2.3,
+   "2024": -2.8,
+   "2025": 1.3,
+   "2026": -2.0
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": 0.0,
+  "test_usd": -4.2,
+  "test_up": 0.512,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -0.34,
+  "worst_day": -634.0,
+  "years": {
+   "2022": -16.4,
+   "2023": -1.6,
+   "2024": 4.2,
+   "2025": -3.6,
+   "2026": -2.9
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -2.5,
+  "test_usd": -4.3,
+  "test_up": 0.362,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -1.84,
+  "worst_day": -213.0,
+  "years": {
+   "2022": 6.0,
+   "2023": -3.5,
+   "2024": -5.0,
+   "2025": -8.3,
+   "2026": 1.3
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -4.3,
+  "test_usd": -3.6,
+  "test_up": 0.364,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -2.65,
+  "worst_day": -244.0,
+  "years": {
+   "2022": -1.9,
+   "2023": -7.2,
+   "2024": -3.2,
+   "2025": -0.5,
+   "2026": -6.0
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -4.3,
+  "test_usd": -2.7,
+  "test_up": 0.293,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -3.18,
+  "worst_day": -131.0,
+  "years": {
+   "2022": -3.8,
+   "2023": -4.2,
+   "2024": -4.5,
+   "2025": -0.7,
+   "2026": -4.7
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -4.4,
+  "test_usd": -1.6,
+  "test_up": 0.315,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -2.74,
+  "worst_day": -425.0,
+  "years": {
+   "2022": -4.4,
+   "2023": -3.9,
+   "2024": -3.3,
+   "2025": -2.6,
+   "2026": -1.1
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": 0.5,
+  "test_usd": -4.5,
+  "test_up": 0.455,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -0.6,
+  "worst_day": -283.0,
+  "years": {
+   "2022": 12.2,
+   "2023": -1.1,
+   "2024": -5.7,
+   "2025": -4.9,
+   "2026": -0.9
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -4.5,
+  "test_usd": -1.4,
+  "test_up": 0.191,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -4.02,
+  "worst_day": -459.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -4.6,
+   "2024": -3.3,
+   "2025": -3.1,
+   "2026": 1.4
+  }
+ },
+ "sell the rise 09:35-10:00 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -4.5,
+  "test_usd": -0.1,
+  "test_up": 0.193,
+  "trades_per_day": 0.8,
+  "bp_per_trade": -3.2,
+  "worst_day": -206.0,
+  "years": {
+   "2022": -6.4,
+   "2023": -4.1,
+   "2024": -3.6,
+   "2025": -1.3,
+   "2026": 2.7
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -4.6,
+  "test_usd": -2.0,
+  "test_up": 0.146,
+  "trades_per_day": 1.0,
+  "bp_per_trade": -4.14,
+  "worst_day": -193.0,
+  "years": {
+   "2022": -6.4,
+   "2023": -4.7,
+   "2024": -2.9,
+   "2025": -3.1,
+   "2026": -0.9
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -3.2,
+  "test_usd": -4.8,
+  "test_up": 0.498,
+  "trades_per_day": 7.9,
+  "bp_per_trade": -0.6,
+  "worst_day": -557.0,
+  "years": {
+   "2022": -13.3,
+   "2023": -6.9,
+   "2024": 1.3,
+   "2025": -0.9,
+   "2026": -7.2
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -4.4,
+  "test_usd": -4.9,
+  "test_up": 0.404,
+  "trades_per_day": 2.9,
+  "bp_per_trade": -1.92,
+  "worst_day": -273.0,
+  "years": {
+   "2022": 2.2,
+   "2023": -1.2,
+   "2024": -8.7,
+   "2025": -8.6,
+   "2026": -1.6
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -3.1,
+  "test_usd": -4.9,
+  "test_up": 0.341,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -2.56,
+  "worst_day": -199.0,
+  "years": {
+   "2022": -2.8,
+   "2023": -3.5,
+   "2024": -4.0,
+   "2025": -4.6,
+   "2026": -4.7
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -3.1,
+  "test_usd": -4.9,
+  "test_up": 0.346,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -2.62,
+  "worst_day": -260.0,
+  "years": {
+   "2022": 3.2,
+   "2023": -4.2,
+   "2024": -4.4,
+   "2025": -8.4,
+   "2026": -0.6
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -1.4,
+  "test_usd": -5.0,
+  "test_up": 0.463,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -0.46,
+  "worst_day": -290.0,
+  "years": {
+   "2022": 9.6,
+   "2023": -3.5,
+   "2024": -5.2,
+   "2025": -4.9,
+   "2026": -3.6
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -3.6,
+  "test_usd": -5.0,
+  "test_up": 0.333,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -2.78,
+  "worst_day": -224.0,
+  "years": {
+   "2022": 0.9,
+   "2023": -3.4,
+   "2024": -6.5,
+   "2025": -7.8,
+   "2026": -0.3
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -5.0,
+  "test_usd": -1.7,
+  "test_up": 0.463,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -1.29,
+  "worst_day": -542.0,
+  "years": {
+   "2022": -11.8,
+   "2023": -4.3,
+   "2024": -2.8,
+   "2025": 0.4,
+   "2026": -3.9
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": 4.0,
+  "test_usd": -5.2,
+  "test_up": 0.508,
+  "trades_per_day": 7.6,
+  "bp_per_trade": -0.1,
+  "worst_day": -388.0,
+  "years": {
+   "2022": 9.9,
+   "2023": 9.2,
+   "2024": -8.7,
+   "2025": -1.9,
+   "2026": -6.3
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -0.0,
+  "test_usd": -5.2,
+  "test_up": 0.47,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -0.83,
+  "worst_day": -611.0,
+  "years": {
+   "2022": -14.2,
+   "2023": 1.9,
+   "2024": -0.6,
+   "2025": -3.4,
+   "2026": -5.2
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -5.3,
+  "test_usd": -3.7,
+  "test_up": 0.272,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.19,
+  "worst_day": -246.0,
+  "years": {
+   "2022": -3.3,
+   "2023": -7.3,
+   "2024": -4.7,
+   "2025": -2.3,
+   "2026": -3.9
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -4.2,
+  "test_usd": -5.3,
+  "test_up": 0.246,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.36,
+  "worst_day": -201.0,
+  "years": {
+   "2022": -2.6,
+   "2023": -4.8,
+   "2024": -5.4,
+   "2025": -4.9,
+   "2026": -4.4
+  }
+ },
+ "sell the drop 09:35-10:00 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -5.4,
+  "test_usd": -1.7,
+  "test_up": 0.193,
+  "trades_per_day": 0.9,
+  "bp_per_trade": -4.63,
+  "worst_day": -240.0,
+  "years": {
+   "2022": -8.4,
+   "2023": -5.2,
+   "2024": -3.5,
+   "2025": -3.5,
+   "2026": 0.9
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -5.5,
+  "test_usd": -5.3,
+  "test_up": 0.354,
+  "trades_per_day": 1.7,
+  "bp_per_trade": -3.71,
+  "worst_day": -306.0,
+  "years": {
+   "2022": -5.0,
+   "2023": -7.0,
+   "2024": -4.4,
+   "2025": -2.3,
+   "2026": -8.9
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -5.6,
+  "test_usd": -3.9,
+  "test_up": 0.335,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -3.14,
+  "worst_day": -213.0,
+  "years": {
+   "2022": -3.8,
+   "2023": -6.2,
+   "2024": -5.6,
+   "2025": -0.5,
+   "2026": -7.7
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -4.4,
+  "test_usd": -5.6,
+  "test_up": 0.366,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -2.72,
+  "worst_day": -221.0,
+  "years": {
+   "2022": 2.6,
+   "2023": -5.9,
+   "2024": -5.6,
+   "2025": -7.8,
+   "2026": -2.7
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -5.6,
+  "test_usd": -5.5,
+  "test_up": 0.474,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -0.78,
+  "worst_day": -409.0,
+  "years": {
+   "2022": -11.6,
+   "2023": -7.4,
+   "2024": -2.6,
+   "2025": -2.6,
+   "2026": -8.3
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -5.6,
+  "test_usd": -2.4,
+  "test_up": 0.398,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -2.57,
+  "worst_day": -542.0,
+  "years": {
+   "2022": -9.7,
+   "2023": -6.1,
+   "2024": -2.1,
+   "2025": -0.5,
+   "2026": -6.0
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -4.5,
+  "test_usd": -5.7,
+  "test_up": 0.378,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -2.07,
+  "worst_day": -230.0,
+  "years": {
+   "2022": 2.4,
+   "2023": -4.9,
+   "2024": -6.3,
+   "2025": -10.6,
+   "2026": 0.4
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -5.8,
+  "test_usd": -3.2,
+  "test_up": 0.331,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.16,
+  "worst_day": -547.0,
+  "years": {
+   "2022": -9.7,
+   "2023": -5.5,
+   "2024": -3.2,
+   "2025": -2.6,
+   "2026": -4.8
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -6.0,
+  "test_usd": -2.4,
+  "test_up": 0.392,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -2.74,
+  "worst_day": -590.0,
+  "years": {
+   "2022": -12.0,
+   "2023": -5.2,
+   "2024": -4.1,
+   "2025": 0.3,
+   "2026": -5.5
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -6.0,
+  "test_usd": -2.6,
+  "test_up": 0.333,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.08,
+  "worst_day": -593.0,
+  "years": {
+   "2022": -11.2,
+   "2023": -5.2,
+   "2024": -4.6,
+   "2025": -1.8,
+   "2026": -3.2
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -6.1,
+  "test_usd": -3.0,
+  "test_up": 0.415,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -2.52,
+  "worst_day": -593.0,
+  "years": {
+   "2022": -14.5,
+   "2023": -5.0,
+   "2024": -4.9,
+   "2025": -2.6,
+   "2026": -1.7
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -6.2,
+  "test_usd": -4.4,
+  "test_up": 0.285,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.96,
+  "worst_day": -262.0,
+  "years": {
+   "2022": -4.6,
+   "2023": -8.4,
+   "2024": -4.1,
+   "2025": -4.5,
+   "2026": -4.0
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -5.0,
+  "test_usd": -6.2,
+  "test_up": 0.36,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -3.08,
+  "worst_day": -285.0,
+  "years": {
+   "2022": 4.9,
+   "2023": -6.5,
+   "2024": -6.0,
+   "2025": -8.0,
+   "2026": -5.3
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -6.2,
+  "test_usd": -2.7,
+  "test_up": 0.374,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -2.79,
+  "worst_day": -425.0,
+  "years": {
+   "2022": -6.0,
+   "2023": -6.1,
+   "2024": -4.7,
+   "2025": -3.8,
+   "2026": -1.8
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -4.7,
+  "test_usd": -6.3,
+  "test_up": 0.474,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -0.79,
+  "worst_day": -416.0,
+  "years": {
+   "2022": -1.2,
+   "2023": -7.8,
+   "2024": -3.6,
+   "2025": -7.8,
+   "2026": -4.0
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -3.1,
+  "test_usd": -6.3,
+  "test_up": 0.463,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -1.48,
+  "worst_day": -311.0,
+  "years": {
+   "2022": 5.3,
+   "2023": -0.4,
+   "2024": -13.6,
+   "2025": -3.0,
+   "2026": -5.3
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -0.3,
+  "test_usd": -6.4,
+  "test_up": 0.484,
+  "trades_per_day": 8.1,
+  "bp_per_trade": -0.51,
+  "worst_day": -396.0,
+  "years": {
+   "2022": 12.7,
+   "2023": -0.8,
+   "2024": -8.3,
+   "2025": -7.7,
+   "2026": -1.7
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -6.4,
+  "test_usd": -4.4,
+  "test_up": 0.278,
+  "trades_per_day": 1.3,
+  "bp_per_trade": -4.91,
+  "worst_day": -133.0,
+  "years": {
+   "2022": -5.1,
+   "2023": -6.2,
+   "2024": -6.9,
+   "2025": -2.6,
+   "2026": -6.1
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -6.5,
+  "test_usd": -2.3,
+  "test_up": 0.378,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -2.35,
+  "worst_day": -557.0,
+  "years": {
+   "2022": -9.5,
+   "2023": -4.7,
+   "2024": -5.8,
+   "2025": -3.1,
+   "2026": -1.4
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -5.5,
+  "test_usd": -6.8,
+  "test_up": 0.4,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -2.4,
+  "worst_day": -224.0,
+  "years": {
+   "2022": 1.3,
+   "2023": -6.7,
+   "2024": -6.6,
+   "2025": -10.0,
+   "2026": -3.2
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -6.9,
+  "test_usd": -3.7,
+  "test_up": 0.392,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -2.87,
+  "worst_day": -547.0,
+  "years": {
+   "2022": -12.2,
+   "2023": -5.7,
+   "2024": -5.4,
+   "2025": -3.0,
+   "2026": -4.4
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -7.2,
+  "test_usd": -5.9,
+  "test_up": 0.335,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -4.39,
+  "worst_day": -246.0,
+  "years": {
+   "2022": -4.0,
+   "2023": -10.1,
+   "2024": -6.1,
+   "2025": -3.0,
+   "2026": -8.1
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -5.0,
+  "test_usd": -7.2,
+  "test_up": 0.333,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -3.27,
+  "worst_day": -192.0,
+  "years": {
+   "2022": -0.1,
+   "2023": -7.3,
+   "2024": -5.2,
+   "2025": -8.0,
+   "2026": -5.8
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -6.2,
+  "test_usd": -7.4,
+  "test_up": 0.39,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -2.68,
+  "worst_day": -354.0,
+  "years": {
+   "2022": 5.2,
+   "2023": -8.5,
+   "2024": -6.5,
+   "2025": -10.7,
+   "2026": -4.9
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -3.6,
+  "test_usd": -7.5,
+  "test_up": 0.457,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -0.89,
+  "worst_day": -409.0,
+  "years": {
+   "2022": -5.1,
+   "2023": -3.8,
+   "2024": -3.6,
+   "2025": -8.9,
+   "2026": -6.3
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -6.3,
+  "test_usd": -7.5,
+  "test_up": 0.297,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -4.34,
+  "worst_day": -201.0,
+  "years": {
+   "2022": -5.7,
+   "2023": -6.7,
+   "2024": -6.9,
+   "2025": -7.4,
+   "2026": -6.9
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -7.7,
+  "test_usd": -5.4,
+  "test_up": 0.37,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -3.59,
+  "worst_day": -561.0,
+  "years": {
+   "2022": -12.7,
+   "2023": -9.9,
+   "2024": -4.0,
+   "2025": -4.2,
+   "2026": -5.6
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -7.9,
+  "test_usd": -5.2,
+  "test_up": 0.376,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -3.56,
+  "worst_day": -537.0,
+  "years": {
+   "2022": -13.0,
+   "2023": -7.3,
+   "2024": -6.2,
+   "2025": -2.5,
+   "2026": -8.7
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -8.3,
+  "test_usd": -7.6,
+  "test_up": 0.341,
+  "trades_per_day": 1.7,
+  "bp_per_trade": -5.45,
+  "worst_day": -310.0,
+  "years": {
+   "2022": -7.1,
+   "2023": -9.8,
+   "2024": -7.2,
+   "2025": -4.8,
+   "2026": -10.9
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -5.3,
+  "test_usd": -8.3,
+  "test_up": 0.472,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -1.26,
+  "worst_day": -623.0,
+  "years": {
+   "2022": -24.7,
+   "2023": -2.6,
+   "2024": -6.1,
+   "2025": -4.7,
+   "2026": -8.4
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -8.3,
+  "test_usd": -7.2,
+  "test_up": 0.406,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -2.15,
+  "worst_day": -425.0,
+  "years": {
+   "2022": -17.9,
+   "2023": -6.4,
+   "2024": -6.8,
+   "2025": -7.6,
+   "2026": -6.4
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -8.4,
+  "test_usd": -6.3,
+  "test_up": 0.301,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -4.87,
+  "worst_day": -217.0,
+  "years": {
+   "2022": -5.9,
+   "2023": -9.1,
+   "2024": -8.5,
+   "2025": -3.1,
+   "2026": -9.8
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -8.5,
+  "test_usd": -5.3,
+  "test_up": 0.392,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -3.83,
+  "worst_day": -553.0,
+  "years": {
+   "2022": -10.6,
+   "2023": -11.6,
+   "2024": -3.8,
+   "2025": -5.7,
+   "2026": -4.5
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -8.1,
+  "test_usd": -8.7,
+  "test_up": 0.329,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -4.59,
+  "worst_day": -228.0,
+  "years": {
+   "2022": -0.6,
+   "2023": -9.8,
+   "2024": -9.3,
+   "2025": -11.4,
+   "2026": -5.1
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -8.7,
+  "test_usd": -4.9,
+  "test_up": 0.364,
+  "trades_per_day": 1.9,
+  "bp_per_trade": -4.35,
+  "worst_day": -547.0,
+  "years": {
+   "2022": -12.6,
+   "2023": -9.2,
+   "2024": -5.0,
+   "2025": -3.2,
+   "2026": -8.1
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -8.8,
+  "test_usd": -4.2,
+  "test_up": 0.392,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -2.48,
+  "worst_day": -614.0,
+  "years": {
+   "2022": -12.3,
+   "2023": -7.6,
+   "2024": -7.7,
+   "2025": -4.9,
+   "2026": -2.8
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -7.2,
+  "test_usd": -8.9,
+  "test_up": 0.35,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -3.08,
+  "worst_day": -220.0,
+  "years": {
+   "2022": -3.5,
+   "2023": -9.2,
+   "2024": -6.6,
+   "2025": -9.9,
+   "2026": -8.0
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -6.9,
+  "test_usd": -8.9,
+  "test_up": 0.449,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -1.27,
+  "worst_day": -559.0,
+  "years": {
+   "2022": -15.9,
+   "2023": -11.6,
+   "2024": -2.7,
+   "2025": -1.1,
+   "2026": -15.5
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -9.1,
+  "test_usd": -4.9,
+  "test_up": 0.368,
+  "trades_per_day": 1.8,
+  "bp_per_trade": -4.52,
+  "worst_day": -593.0,
+  "years": {
+   "2022": -14.9,
+   "2023": -8.3,
+   "2024": -7.0,
+   "2025": -2.4,
+   "2026": -7.6
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -8.8,
+  "test_usd": -9.2,
+  "test_up": 0.333,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -4.95,
+  "worst_day": -291.0,
+  "years": {
+   "2022": 1.7,
+   "2023": -10.4,
+   "2024": -9.7,
+   "2025": -11.5,
+   "2026": -7.6
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -9.4,
+  "test_usd": -5.2,
+  "test_up": 0.437,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -2.88,
+  "worst_day": -593.0,
+  "years": {
+   "2022": -20.9,
+   "2023": -7.8,
+   "2024": -7.5,
+   "2025": -3.4,
+   "2026": -5.5
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -9.5,
+  "test_usd": -7.3,
+  "test_up": 0.388,
+  "trades_per_day": 2.9,
+  "bp_per_trade": -3.46,
+  "worst_day": -552.0,
+  "years": {
+   "2022": -14.0,
+   "2023": -13.3,
+   "2024": -4.7,
+   "2025": -5.0,
+   "2026": -8.7
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -9.6,
+  "test_usd": -6.7,
+  "test_up": 0.394,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -3.31,
+  "worst_day": -531.0,
+  "years": {
+   "2022": -14.2,
+   "2023": -9.8,
+   "2024": -7.3,
+   "2025": -3.3,
+   "2026": -10.9
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -7.3,
+  "test_usd": -9.9,
+  "test_up": 0.382,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -2.39,
+  "worst_day": -267.0,
+  "years": {
+   "2022": 5.1,
+   "2023": -10.1,
+   "2024": -10.7,
+   "2025": -10.2,
+   "2026": -7.8
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -8.2,
+  "test_usd": -9.9,
+  "test_up": 0.419,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -2.69,
+  "worst_day": -558.0,
+  "years": {
+   "2022": -22.3,
+   "2023": -8.5,
+   "2024": -5.8,
+   "2025": -6.0,
+   "2026": -12.4
+  }
+ },
+ "buy the drop 09:35-09:45 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -5.8,
+  "test_usd": -10.2,
+  "test_up": 0.4,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -2.38,
+  "worst_day": -296.0,
+  "years": {
+   "2022": 8.4,
+   "2023": -7.5,
+   "2024": -12.7,
+   "2025": -11.3,
+   "2026": -5.3
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -10.2,
+  "test_usd": -6.0,
+  "test_up": 0.415,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -3.14,
+  "worst_day": -547.0,
+  "years": {
+   "2022": -17.1,
+   "2023": -9.8,
+   "2024": -7.5,
+   "2025": -4.4,
+   "2026": -7.4
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -4.3,
+  "test_usd": -10.3,
+  "test_up": 0.492,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -0.62,
+  "worst_day": -561.0,
+  "years": {
+   "2022": -15.9,
+   "2023": 3.0,
+   "2024": -8.7,
+   "2025": -8.8,
+   "2026": -13.8
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -8.8,
+  "test_usd": -10.4,
+  "test_up": 0.283,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -5.14,
+  "worst_day": -204.0,
+  "years": {
+   "2022": -3.4,
+   "2023": -11.3,
+   "2024": -8.9,
+   "2025": -11.7,
+   "2026": -8.2
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -8.5,
+  "test_usd": -10.6,
+  "test_up": 0.447,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -0.72,
+  "worst_day": -540.0,
+  "years": {
+   "2022": -5.2,
+   "2023": -18.2,
+   "2024": -6.8,
+   "2025": -0.6,
+   "2026": -15.8
+  }
+ },
+ "sell the rise 09:35-09:45 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -6.2,
+  "test_usd": -10.7,
+  "test_up": 0.435,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -2.67,
+  "worst_day": -619.0,
+  "years": {
+   "2022": -19.7,
+   "2023": -4.3,
+   "2024": -6.8,
+   "2025": -9.6,
+   "2026": -9.7
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -11.0,
+  "test_usd": -8.6,
+  "test_up": 0.407,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -4.13,
+  "worst_day": -544.0,
+  "years": {
+   "2022": -14.5,
+   "2023": -14.2,
+   "2024": -6.5,
+   "2025": -6.4,
+   "2026": -10.7
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -9.8,
+  "test_usd": -11.1,
+  "test_up": 0.449,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -0.71,
+  "worst_day": -365.0,
+  "years": {
+   "2022": -7.3,
+   "2023": -11.5,
+   "2024": -10.2,
+   "2025": -13.7,
+   "2026": -6.5
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -11.1,
+  "test_usd": -8.5,
+  "test_up": 0.348,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -5.4,
+  "worst_day": -574.0,
+  "years": {
+   "2022": -15.0,
+   "2023": -13.5,
+   "2024": -7.7,
+   "2025": -7.7,
+   "2026": -8.1
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -10.8,
+  "test_usd": -11.1,
+  "test_up": 0.354,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -4.25,
+  "worst_day": -237.0,
+  "years": {
+   "2022": -3.9,
+   "2023": -12.2,
+   "2024": -11.3,
+   "2025": -14.8,
+   "2026": -6.7
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -10.6,
+  "test_usd": -11.3,
+  "test_up": 0.433,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -0.99,
+  "worst_day": -435.0,
+  "years": {
+   "2022": -5.4,
+   "2023": -6.6,
+   "2024": -17.9,
+   "2025": -18.5,
+   "2026": 0.3
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -11.4,
+  "test_usd": -8.4,
+  "test_up": 0.341,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -5.36,
+  "worst_day": -551.0,
+  "years": {
+   "2022": -15.3,
+   "2023": -10.9,
+   "2024": -9.9,
+   "2025": -6.1,
+   "2026": -11.2
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -11.4,
+  "test_usd": -9.8,
+  "test_up": 0.465,
+  "trades_per_day": 17.8,
+  "bp_per_trade": -0.71,
+  "worst_day": -557.0,
+  "years": {
+   "2022": -5.3,
+   "2023": -17.5,
+   "2024": -8.7,
+   "2025": -3.6,
+   "2026": -15.3
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -11.5,
+  "test_usd": -7.6,
+  "test_up": 0.407,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -2.84,
+  "worst_day": -362.0,
+  "years": {
+   "2022": 5.4,
+   "2023": -11.3,
+   "2024": -14.5,
+   "2025": -13.8,
+   "2026": -1.5
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -11.4,
+  "test_usd": -11.6,
+  "test_up": 0.364,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -4.53,
+  "worst_day": -361.0,
+  "years": {
+   "2022": -0.0,
+   "2023": -13.9,
+   "2024": -11.2,
+   "2025": -15.4,
+   "2026": -8.4
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -9.3,
+  "test_usd": -11.7,
+  "test_up": 0.482,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -0.79,
+  "worst_day": -581.0,
+  "years": {
+   "2022": -13.5,
+   "2023": -7.3,
+   "2024": -10.2,
+   "2025": -12.5,
+   "2026": -11.2
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -9.8,
+  "test_usd": -11.7,
+  "test_up": 0.433,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -0.94,
+  "worst_day": -435.0,
+  "years": {
+   "2022": -2.2,
+   "2023": -5.5,
+   "2024": -18.9,
+   "2025": -18.4,
+   "2026": -0.5
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -6.0,
+  "test_usd": -11.7,
+  "test_up": 0.443,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -0.76,
+  "worst_day": -613.0,
+  "years": {
+   "2022": -17.2,
+   "2023": -10.2,
+   "2024": -6.4,
+   "2025": -4.4,
+   "2026": -12.8
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -11.9,
+  "test_usd": -8.4,
+  "test_up": 0.36,
+  "trades_per_day": 2.2,
+  "bp_per_trade": -5.63,
+  "worst_day": -566.0,
+  "years": {
+   "2022": -12.9,
+   "2023": -15.1,
+   "2024": -7.4,
+   "2025": -9.2,
+   "2026": -6.9
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -12.0,
+  "test_usd": -12.3,
+  "test_up": 0.431,
+  "trades_per_day": 6.6,
+  "bp_per_trade": -2.21,
+  "worst_day": -413.0,
+  "years": {
+   "2022": -14.2,
+   "2023": -10.7,
+   "2024": -14.3,
+   "2025": -10.8,
+   "2026": -12.1
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -12.3,
+  "test_usd": -5.8,
+  "test_up": 0.421,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -2.86,
+  "worst_day": -445.0,
+  "years": {
+   "2022": 3.2,
+   "2023": -14.1,
+   "2024": -11.9,
+   "2025": -9.0,
+   "2026": -3.7
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -9.1,
+  "test_usd": -12.7,
+  "test_up": 0.453,
+  "trades_per_day": 13.2,
+  "bp_per_trade": -0.99,
+  "worst_day": -578.0,
+  "years": {
+   "2022": -7.5,
+   "2023": -4.4,
+   "2024": -17.4,
+   "2025": -20.7,
+   "2026": 0.8
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -12.8,
+  "test_usd": -11.5,
+  "test_up": 0.384,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -3.37,
+  "worst_day": -310.0,
+  "years": {
+   "2022": -0.3,
+   "2023": -14.6,
+   "2024": -15.2,
+   "2025": -13.5,
+   "2026": -8.1
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -12.9,
+  "test_usd": -8.4,
+  "test_up": 0.4,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -2.94,
+  "worst_day": -276.0,
+  "years": {
+   "2022": -16.8,
+   "2023": -10.4,
+   "2024": -12.1,
+   "2025": -10.5,
+   "2026": -6.2
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -13.2,
+  "test_usd": -6.8,
+  "test_up": 0.417,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -2.95,
+  "worst_day": -258.0,
+  "years": {
+   "2022": -19.9,
+   "2023": -11.9,
+   "2024": -8.4,
+   "2025": -7.9,
+   "2026": -7.8
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -12.6,
+  "test_usd": -13.2,
+  "test_up": 0.299,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -4.93,
+  "worst_day": -230.0,
+  "years": {
+   "2022": -8.7,
+   "2023": -14.9,
+   "2024": -11.3,
+   "2025": -14.8,
+   "2026": -11.6
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -7.2,
+  "test_usd": -13.3,
+  "test_up": 0.441,
+  "trades_per_day": 13.6,
+  "bp_per_trade": -0.91,
+  "worst_day": -581.0,
+  "years": {
+   "2022": -2.0,
+   "2023": -2.4,
+   "2024": -18.2,
+   "2025": -20.3,
+   "2026": -0.5
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -14.1,
+  "test_usd": -11.4,
+  "test_up": 0.368,
+  "trades_per_day": 2.9,
+  "bp_per_trade": -5.25,
+  "worst_day": -568.0,
+  "years": {
+   "2022": -17.9,
+   "2023": -18.1,
+   "2024": -9.2,
+   "2025": -9.5,
+   "2026": -12.1
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -14.3,
+  "test_usd": -10.9,
+  "test_up": 0.344,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -5.1,
+  "worst_day": -547.0,
+  "years": {
+   "2022": -18.1,
+   "2023": -14.8,
+   "2024": -11.9,
+   "2025": -7.9,
+   "2026": -14.4
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -10.4,
+  "test_usd": -14.6,
+  "test_up": 0.407,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -1.11,
+  "worst_day": -466.0,
+  "years": {
+   "2022": -6.0,
+   "2023": -6.4,
+   "2024": -18.5,
+   "2025": -21.7,
+   "2026": -3.1
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -9.4,
+  "test_usd": -14.6,
+  "test_up": 0.417,
+  "trades_per_day": 13.8,
+  "bp_per_trade": -1.05,
+  "worst_day": -805.0,
+  "years": {
+   "2022": -3.0,
+   "2023": -12.5,
+   "2024": -13.4,
+   "2025": -18.9,
+   "2026": -4.4
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -14.7,
+  "test_usd": -9.7,
+  "test_up": 0.396,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -3.86,
+  "worst_day": -397.0,
+  "years": {
+   "2022": -16.5,
+   "2023": -17.7,
+   "2024": -6.0,
+   "2025": -15.1,
+   "2026": -7.2
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -9.4,
+  "test_usd": -15.4,
+  "test_up": 0.409,
+  "trades_per_day": 14.0,
+  "bp_per_trade": -1.07,
+  "worst_day": -466.0,
+  "years": {
+   "2022": -2.3,
+   "2023": -5.7,
+   "2024": -18.8,
+   "2025": -23.1,
+   "2026": -2.8
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -15.5,
+  "test_usd": -12.6,
+  "test_up": 0.384,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -5.92,
+  "worst_day": -560.0,
+  "years": {
+   "2022": -18.4,
+   "2023": -18.9,
+   "2024": -11.0,
+   "2025": -10.9,
+   "2026": -14.0
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -12.2,
+  "test_usd": -15.6,
+  "test_up": 0.459,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -2.22,
+  "worst_day": -644.0,
+  "years": {
+   "2022": -26.6,
+   "2023": -14.0,
+   "2024": -8.7,
+   "2025": -16.7,
+   "2026": -11.7
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -8.0,
+  "test_usd": -15.6,
+  "test_up": 0.402,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -1.07,
+  "worst_day": -805.0,
+  "years": {
+   "2022": -0.4,
+   "2023": -11.9,
+   "2024": -11.9,
+   "2025": -19.8,
+   "2026": -6.3
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -7.8,
+  "test_usd": -16.4,
+  "test_up": 0.435,
+  "trades_per_day": 7.6,
+  "bp_per_trade": -1.91,
+  "worst_day": -410.0,
+  "years": {
+   "2022": 2.4,
+   "2023": -2.4,
+   "2024": -22.2,
+   "2025": -14.5,
+   "2026": -15.1
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -16.4,
+  "test_usd": -10.5,
+  "test_up": 0.445,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -2.47,
+  "worst_day": -432.0,
+  "years": {
+   "2022": 2.9,
+   "2023": -19.6,
+   "2024": -13.9,
+   "2025": -15.2,
+   "2026": -9.2
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -16.0,
+  "test_usd": -16.7,
+  "test_up": 0.404,
+  "trades_per_day": 17.9,
+  "bp_per_trade": -1.1,
+  "worst_day": -478.0,
+  "years": {
+   "2022": -11.7,
+   "2023": -8.5,
+   "2024": -29.2,
+   "2025": -24.9,
+   "2026": -0.2
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -16.1,
+  "test_usd": -16.7,
+  "test_up": 0.413,
+  "trades_per_day": 7.9,
+  "bp_per_trade": -2.48,
+  "worst_day": -569.0,
+  "years": {
+   "2022": -23.8,
+   "2023": -19.9,
+   "2024": -12.4,
+   "2025": -14.5,
+   "2026": -16.2
+  }
+ },
+ "sell the rise 09:35-10:00 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -17.1,
+  "test_usd": -14.7,
+  "test_up": 0.392,
+  "trades_per_day": 8.4,
+  "bp_per_trade": -2.28,
+  "worst_day": -539.0,
+  "years": {
+   "2022": -23.0,
+   "2023": -16.8,
+   "2024": -14.8,
+   "2025": -15.6,
+   "2026": -13.3
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -14.7,
+  "test_usd": -17.5,
+  "test_up": 0.445,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -1.09,
+  "worst_day": -599.0,
+  "years": {
+   "2022": -13.1,
+   "2023": -6.8,
+   "2024": -28.3,
+   "2025": -25.8,
+   "2026": -0.5
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -14.4,
+  "test_usd": -17.6,
+  "test_up": 0.386,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -2.26,
+  "worst_day": -314.0,
+  "years": {
+   "2022": 1.8,
+   "2023": -16.4,
+   "2024": -20.5,
+   "2025": -19.2,
+   "2026": -13.1
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -6.5,
+  "test_usd": -17.6,
+  "test_up": 0.415,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -1.08,
+  "worst_day": -656.0,
+  "years": {
+   "2022": 5.3,
+   "2023": -9.4,
+   "2024": -13.1,
+   "2025": -19.9,
+   "2026": -11.6
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -7.3,
+  "test_usd": -17.6,
+  "test_up": 0.411,
+  "trades_per_day": 13.9,
+  "bp_per_trade": -1.08,
+  "worst_day": -656.0,
+  "years": {
+   "2022": 4.1,
+   "2023": -9.9,
+   "2024": -13.7,
+   "2025": -20.9,
+   "2026": -10.6
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -16.2,
+  "test_usd": -17.7,
+  "test_up": 0.409,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -3.12,
+  "worst_day": -633.0,
+  "years": {
+   "2022": -35.5,
+   "2023": -13.7,
+   "2024": -16.2,
+   "2025": -14.7,
+   "2026": -17.3
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -16.0,
+  "test_usd": -17.9,
+  "test_up": 0.4,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -1.08,
+  "worst_day": -454.0,
+  "years": {
+   "2022": -8.0,
+   "2023": -8.7,
+   "2024": -31.1,
+   "2025": -25.8,
+   "2026": -1.1
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -17.9,
+  "test_usd": -12.5,
+  "test_up": 0.425,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -2.44,
+  "worst_day": -376.0,
+  "years": {
+   "2022": -7.6,
+   "2023": -13.8,
+   "2024": -20.6,
+   "2025": -21.5,
+   "2026": -4.3
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -18.1,
+  "test_usd": -13.5,
+  "test_up": 0.376,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -4.68,
+  "worst_day": -369.0,
+  "years": {
+   "2022": -0.3,
+   "2023": -17.8,
+   "2024": -21.3,
+   "2025": -20.4,
+   "2026": -6.1
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -15.5,
+  "test_usd": -18.2,
+  "test_up": 0.4,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -2.7,
+  "worst_day": -427.0,
+  "years": {
+   "2022": -15.6,
+   "2023": -16.4,
+   "2024": -15.0,
+   "2025": -20.1,
+   "2026": -16.4
+  }
+ },
+ "buy the drop 09:35-10:00 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -12.7,
+  "test_usd": -18.3,
+  "test_up": 0.415,
+  "trades_per_day": 8.1,
+  "bp_per_trade": -2.31,
+  "worst_day": -419.0,
+  "years": {
+   "2022": 5.0,
+   "2023": -13.0,
+   "2024": -22.7,
+   "2025": -21.1,
+   "2026": -10.8
+  }
+ },
+ "buy the drop 09:35-09:45 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -18.2,
+  "test_usd": -18.4,
+  "test_up": 0.368,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -2.59,
+  "worst_day": -439.0,
+  "years": {
+   "2022": -12.3,
+   "2023": -21.9,
+   "2024": -16.7,
+   "2025": -20.6,
+   "2026": -15.2
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -18.4,
+  "test_usd": -11.3,
+  "test_up": 0.378,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -4.7,
+  "worst_day": -452.0,
+  "years": {
+   "2022": -2.3,
+   "2023": -20.3,
+   "2024": -18.1,
+   "2025": -15.2,
+   "2026": -8.2
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -13.5,
+  "test_usd": -18.7,
+  "test_up": 0.437,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -1.05,
+  "worst_day": -625.0,
+  "years": {
+   "2022": -7.2,
+   "2023": -6.1,
+   "2024": -29.6,
+   "2025": -26.3,
+   "2026": -1.8
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -19.5,
+  "test_usd": -12.4,
+  "test_up": 0.38,
+  "trades_per_day": 4.0,
+  "bp_per_trade": -4.73,
+  "worst_day": -268.0,
+  "years": {
+   "2022": -23.7,
+   "2023": -18.3,
+   "2024": -15.4,
+   "2025": -14.3,
+   "2026": -12.2
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -19.3,
+  "test_usd": -19.5,
+  "test_up": 0.38,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -3.13,
+  "worst_day": -579.0,
+  "years": {
+   "2022": -27.7,
+   "2023": -24.3,
+   "2024": -14.4,
+   "2025": -12.4,
+   "2026": -25.5
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -19.6,
+  "test_usd": -16.0,
+  "test_up": 0.425,
+  "trades_per_day": 6.6,
+  "bp_per_trade": -3.23,
+  "worst_day": -401.0,
+  "years": {
+   "2022": -14.4,
+   "2023": -22.5,
+   "2024": -15.4,
+   "2025": -18.6,
+   "2026": -14.7
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -19.6,
+  "test_usd": -14.4,
+  "test_up": 0.325,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -4.71,
+  "worst_day": -293.0,
+  "years": {
+   "2022": -20.7,
+   "2023": -17.3,
+   "2024": -19.7,
+   "2025": -17.3,
+   "2026": -10.8
+  }
+ },
+ "buy the rise 09:35-09:45 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -19.8,
+  "test_usd": -17.7,
+  "test_up": 0.333,
+  "trades_per_day": 4.3,
+  "bp_per_trade": -5.21,
+  "worst_day": -323.0,
+  "years": {
+   "2022": -6.3,
+   "2023": -21.6,
+   "2024": -22.5,
+   "2025": -20.5,
+   "2026": -12.9
+  }
+ },
+ "sell the rise 09:35-09:45 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -19.8,
+  "test_usd": -17.6,
+  "test_up": 0.398,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -2.63,
+  "worst_day": -428.0,
+  "years": {
+   "2022": -25.0,
+   "2023": -22.1,
+   "2024": -15.9,
+   "2025": -15.4,
+   "2026": -19.4
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -15.3,
+  "test_usd": -20.1,
+  "test_up": 0.413,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -1.16,
+  "worst_day": -769.0,
+  "years": {
+   "2022": -7.3,
+   "2023": -18.2,
+   "2024": -20.9,
+   "2025": -25.4,
+   "2026": -6.9
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -20.3,
+  "test_usd": -13.9,
+  "test_up": 0.425,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -2.73,
+  "worst_day": -324.0,
+  "years": {
+   "2022": -15.7,
+   "2023": -21.3,
+   "2024": -19.1,
+   "2025": -13.6,
+   "2026": -13.8
+  }
+ },
+ "sell the drop 09:35-09:45 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -20.7,
+  "test_usd": -15.1,
+  "test_up": 0.362,
+  "trades_per_day": 3.8,
+  "bp_per_trade": -5.65,
+  "worst_day": -402.0,
+  "years": {
+   "2022": -20.2,
+   "2023": -23.7,
+   "2024": -12.6,
+   "2025": -21.1,
+   "2026": -11.4
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -7.7,
+  "test_usd": -20.8,
+  "test_up": 0.36,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -1.26,
+  "worst_day": -581.0,
+  "years": {
+   "2022": 2.2,
+   "2023": -7.2,
+   "2024": -18.1,
+   "2025": -22.2,
+   "2026": -15.7
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -8.6,
+  "test_usd": -21.1,
+  "test_up": 0.36,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -1.27,
+  "worst_day": -581.0,
+  "years": {
+   "2022": -0.5,
+   "2023": -7.1,
+   "2024": -19.2,
+   "2025": -23.8,
+   "2026": -14.4
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -16.1,
+  "test_usd": -21.3,
+  "test_up": 0.36,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -1.23,
+  "worst_day": -494.0,
+  "years": {
+   "2022": -11.9,
+   "2023": -9.7,
+   "2024": -29.1,
+   "2025": -29.4,
+   "2026": -5.5
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -12.3,
+  "test_usd": -21.5,
+  "test_up": 0.402,
+  "trades_per_day": 17.5,
+  "bp_per_trade": -1.16,
+  "worst_day": -689.0,
+  "years": {
+   "2022": -1.5,
+   "2023": -15.6,
+   "2024": -19.2,
+   "2025": -26.5,
+   "2026": -9.6
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -22.2,
+  "test_usd": -17.8,
+  "test_up": 0.362,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -2.83,
+  "worst_day": -278.0,
+  "years": {
+   "2022": -21.2,
+   "2023": -20.3,
+   "2024": -22.7,
+   "2025": -17.8,
+   "2026": -18.3
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -15.8,
+  "test_usd": -22.6,
+  "test_up": 0.366,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -1.2,
+  "worst_day": -467.0,
+  "years": {
+   "2022": -8.0,
+   "2023": -9.9,
+   "2024": -30.5,
+   "2025": -31.3,
+   "2026": -5.2
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -22.6,
+  "test_usd": -19.1,
+  "test_up": 0.38,
+  "trades_per_day": 7.9,
+  "bp_per_trade": -3.16,
+  "worst_day": -362.0,
+  "years": {
+   "2022": -7.5,
+   "2023": -19.0,
+   "2024": -28.9,
+   "2025": -26.5,
+   "2026": -10.8
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -22.9,
+  "test_usd": -18.6,
+  "test_up": 0.378,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -2.92,
+  "worst_day": -318.0,
+  "years": {
+   "2022": -15.1,
+   "2023": -21.9,
+   "2024": -24.1,
+   "2025": -23.1,
+   "2026": -14.0
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -23.8,
+  "test_usd": -23.0,
+  "test_up": 0.354,
+  "trades_per_day": 8.4,
+  "bp_per_trade": -3.36,
+  "worst_day": -328.0,
+  "years": {
+   "2022": -9.8,
+   "2023": -24.3,
+   "2024": -28.9,
+   "2025": -27.9,
+   "2026": -14.6
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -11.8,
+  "test_usd": -24.1,
+  "test_up": 0.394,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -1.22,
+  "worst_day": -635.0,
+  "years": {
+   "2022": 1.8,
+   "2023": -13.1,
+   "2024": -21.9,
+   "2025": -27.0,
+   "2026": -16.6
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -14.4,
+  "test_usd": -24.3,
+  "test_up": 0.39,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -1.26,
+  "worst_day": -635.0,
+  "years": {
+   "2022": -2.5,
+   "2023": -15.9,
+   "2024": -23.1,
+   "2025": -28.1,
+   "2026": -15.1
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -24.4,
+  "test_usd": -20.2,
+  "test_up": 0.352,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -3.15,
+  "worst_day": -328.0,
+  "years": {
+   "2022": -25.2,
+   "2023": -22.2,
+   "2024": -25.2,
+   "2025": -23.5,
+   "2026": -15.5
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -24.4,
+  "test_usd": -17.4,
+  "test_up": 0.356,
+  "trades_per_day": 8.1,
+  "bp_per_trade": -3.11,
+  "worst_day": -304.0,
+  "years": {
+   "2022": -28.0,
+   "2023": -23.7,
+   "2024": -20.6,
+   "2025": -19.1,
+   "2026": -16.5
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -24.6,
+  "test_usd": -18.6,
+  "test_up": 0.37,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -3.43,
+  "worst_day": -451.0,
+  "years": {
+   "2022": -4.1,
+   "2023": -23.1,
+   "2024": -30.0,
+   "2025": -22.4,
+   "2026": -14.6
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -12.8,
+  "test_usd": -27.1,
+  "test_up": 0.305,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -1.33,
+  "worst_day": -596.0,
+  "years": {
+   "2022": -1.0,
+   "2023": -11.3,
+   "2024": -27.0,
+   "2025": -29.4,
+   "2026": -18.7
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -27.2,
+  "test_usd": -20.0,
+  "test_up": 0.407,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -4.33,
+  "worst_day": -446.0,
+  "years": {
+   "2022": -7.9,
+   "2023": -30.7,
+   "2024": -23.9,
+   "2025": -25.2,
+   "2026": -18.1
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -15.0,
+  "test_usd": -27.4,
+  "test_up": 0.321,
+  "trades_per_day": 18.9,
+  "bp_per_trade": -1.35,
+  "worst_day": -596.0,
+  "years": {
+   "2022": -5.7,
+   "2023": -12.3,
+   "2024": -28.9,
+   "2025": -31.1,
+   "2026": -16.9
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -27.5,
+  "test_usd": -17.4,
+  "test_up": 0.388,
+  "trades_per_day": 7.6,
+  "bp_per_trade": -3.52,
+  "worst_day": -422.0,
+  "years": {
+   "2022": -24.9,
+   "2023": -32.5,
+   "2024": -18.5,
+   "2025": -23.3,
+   "2026": -11.3
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -30.1,
+  "test_usd": -25.4,
+  "test_up": 0.376,
+  "trades_per_day": 6.6,
+  "bp_per_trade": -5.05,
+  "worst_day": -412.0,
+  "years": {
+   "2022": -23.9,
+   "2023": -33.6,
+   "2024": -25.3,
+   "2025": -28.4,
+   "2026": -23.7
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -30.3,
+  "test_usd": -23.2,
+  "test_up": 0.356,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -4.29,
+  "worst_day": -392.0,
+  "years": {
+   "2022": -19.3,
+   "2023": -26.6,
+   "2024": -32.2,
+   "2025": -32.9,
+   "2026": -14.3
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -27.4,
+  "test_usd": -30.7,
+  "test_up": 0.413,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -2.47,
+  "worst_day": -583.0,
+  "years": {
+   "2022": -37.1,
+   "2023": -21.3,
+   "2024": -30.5,
+   "2025": -29.9,
+   "2026": -33.1
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -25.8,
+  "test_usd": -31.7,
+  "test_up": 0.211,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -2.53,
+  "worst_day": -468.0,
+  "years": {
+   "2022": -20.3,
+   "2023": -20.4,
+   "2024": -38.6,
+   "2025": -32.4,
+   "2026": -25.8
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -26.3,
+  "test_usd": -32.2,
+  "test_up": 0.226,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -2.49,
+  "worst_day": -468.0,
+  "years": {
+   "2022": -18.7,
+   "2023": -22.0,
+   "2024": -39.0,
+   "2025": -31.9,
+   "2026": -27.4
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -30.0,
+  "test_usd": -32.2,
+  "test_up": 0.39,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -2.65,
+  "worst_day": -672.0,
+  "years": {
+   "2022": -41.0,
+   "2023": -35.6,
+   "2024": -27.7,
+   "2025": -26.1,
+   "2026": -31.9
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -32.3,
+  "test_usd": -24.5,
+  "test_up": 0.376,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -4.53,
+  "worst_day": -337.0,
+  "years": {
+   "2022": -26.2,
+   "2023": -33.9,
+   "2024": -30.5,
+   "2025": -24.9,
+   "2026": -23.8
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -26.6,
+  "test_usd": -34.1,
+  "test_up": 0.246,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -2.71,
+  "worst_day": -545.0,
+  "years": {
+   "2022": -22.6,
+   "2023": -17.9,
+   "2024": -43.1,
+   "2025": -33.8,
+   "2026": -29.1
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -27.2,
+  "test_usd": -34.9,
+  "test_up": 0.252,
+  "trades_per_day": 13.9,
+  "bp_per_trade": -2.68,
+  "worst_day": -545.0,
+  "years": {
+   "2022": -22.6,
+   "2023": -18.8,
+   "2024": -43.9,
+   "2025": -33.8,
+   "2026": -30.5
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -35.1,
+  "test_usd": -34.7,
+  "test_up": 0.398,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -2.63,
+  "worst_day": -605.0,
+  "years": {
+   "2022": -36.5,
+   "2023": -34.6,
+   "2024": -34.7,
+   "2025": -36.6,
+   "2026": -32.8
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -35.5,
+  "test_usd": -31.0,
+  "test_up": 0.333,
+  "trades_per_day": 7.9,
+  "bp_per_trade": -5.04,
+  "worst_day": -369.0,
+  "years": {
+   "2022": -18.0,
+   "2023": -32.0,
+   "2024": -42.6,
+   "2025": -40.2,
+   "2026": -19.7
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -24.8,
+  "test_usd": -35.5,
+  "test_up": 0.262,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -2.72,
+  "worst_day": -489.0,
+  "years": {
+   "2022": -16.9,
+   "2023": -15.2,
+   "2024": -43.8,
+   "2025": -33.4,
+   "2026": -34.1
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -35.6,
+  "test_usd": -33.6,
+  "test_up": 0.378,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -2.61,
+  "worst_day": -575.0,
+  "years": {
+   "2022": -31.0,
+   "2023": -46.9,
+   "2024": -31.1,
+   "2025": -25.0,
+   "2026": -36.9
+  }
+ },
+ "sell the drop 09:35-09:45 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -35.7,
+  "test_usd": -29.9,
+  "test_up": 0.276,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -4.64,
+  "worst_day": -298.0,
+  "years": {
+   "2022": -32.4,
+   "2023": -34.3,
+   "2024": -35.8,
+   "2025": -30.7,
+   "2026": -29.4
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -22.5,
+  "test_usd": -35.8,
+  "test_up": 0.217,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -2.59,
+  "worst_day": -768.0,
+  "years": {
+   "2022": -11.4,
+   "2023": -18.8,
+   "2024": -39.2,
+   "2025": -31.2,
+   "2026": -35.5
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 1m | tight": {
+  "dev_usd": -24.8,
+  "test_usd": -35.9,
+  "test_up": 0.228,
+  "trades_per_day": 14.0,
+  "bp_per_trade": -2.62,
+  "worst_day": -768.0,
+  "years": {
+   "2022": -16.1,
+   "2023": -20.9,
+   "2024": -40.1,
+   "2025": -31.2,
+   "2026": -36.0
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -26.8,
+  "test_usd": -36.1,
+  "test_up": 0.289,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -2.84,
+  "worst_day": -475.0,
+  "years": {
+   "2022": -13.9,
+   "2023": -19.0,
+   "2024": -46.3,
+   "2025": -44.5,
+   "2026": -18.6
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -23.0,
+  "test_usd": -36.5,
+  "test_up": 0.295,
+  "trades_per_day": 13.2,
+  "bp_per_trade": -2.71,
+  "worst_day": -1095.0,
+  "years": {
+   "2022": -9.5,
+   "2023": -20.2,
+   "2024": -38.9,
+   "2025": -30.7,
+   "2026": -38.4
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -36.7,
+  "test_usd": -29.4,
+  "test_up": 0.305,
+  "trades_per_day": 8.1,
+  "bp_per_trade": -4.92,
+  "worst_day": -315.0,
+  "years": {
+   "2022": -35.7,
+   "2023": -35.9,
+   "2024": -35.1,
+   "2025": -32.5,
+   "2026": -25.6
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -26.2,
+  "test_usd": -36.7,
+  "test_up": 0.301,
+  "trades_per_day": 13.6,
+  "bp_per_trade": -2.78,
+  "worst_day": -1095.0,
+  "years": {
+   "2022": -16.1,
+   "2023": -23.6,
+   "2024": -39.4,
+   "2025": -32.4,
+   "2026": -37.5
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -36.9,
+  "test_usd": -29.9,
+  "test_up": 0.331,
+  "trades_per_day": 7.5,
+  "bp_per_trade": -5.32,
+  "worst_day": -464.0,
+  "years": {
+   "2022": -14.3,
+   "2023": -35.4,
+   "2024": -43.0,
+   "2025": -35.5,
+   "2026": -23.3
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -26.7,
+  "test_usd": -37.0,
+  "test_up": 0.293,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -2.79,
+  "worst_day": -475.0,
+  "years": {
+   "2022": -11.2,
+   "2023": -18.6,
+   "2024": -47.9,
+   "2025": -45.1,
+   "2026": -19.6
+  }
+ },
+ "buy the rise 09:35-09:45 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -37.2,
+  "test_usd": -30.6,
+  "test_up": 0.299,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -4.78,
+  "worst_day": -334.0,
+  "years": {
+   "2022": -28.4,
+   "2023": -36.5,
+   "2024": -37.4,
+   "2025": -35.9,
+   "2026": -25.2
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -25.2,
+  "test_usd": -37.3,
+  "test_up": 0.307,
+  "trades_per_day": 13.2,
+  "bp_per_trade": -2.85,
+  "worst_day": -619.0,
+  "years": {
+   "2022": -16.1,
+   "2023": -16.7,
+   "2024": -45.6,
+   "2025": -46.4,
+   "2026": -18.1
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 3m | tight": {
+  "dev_usd": -24.8,
+  "test_usd": -37.3,
+  "test_up": 0.268,
+  "trades_per_day": 13.8,
+  "bp_per_trade": -2.71,
+  "worst_day": -489.0,
+  "years": {
+   "2022": -15.3,
+   "2023": -16.0,
+   "2024": -43.7,
+   "2025": -35.2,
+   "2026": -36.3
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -37.4,
+  "test_usd": -32.8,
+  "test_up": 0.278,
+  "trades_per_day": 8.5,
+  "bp_per_trade": -4.96,
+  "worst_day": -373.0,
+  "years": {
+   "2022": -33.0,
+   "2023": -35.0,
+   "2024": -40.5,
+   "2025": -37.7,
+   "2026": -25.0
+  }
+ },
+ "buy the rise 09:35-10:00 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -37.4,
+  "test_usd": -35.6,
+  "test_up": 0.256,
+  "trades_per_day": 8.4,
+  "bp_per_trade": -5.24,
+  "worst_day": -345.0,
+  "years": {
+   "2022": -20.7,
+   "2023": -38.0,
+   "2024": -43.5,
+   "2025": -42.5,
+   "2026": -23.9
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -23.9,
+  "test_usd": -38.3,
+  "test_up": 0.311,
+  "trades_per_day": 13.6,
+  "bp_per_trade": -2.75,
+  "worst_day": -623.0,
+  "years": {
+   "2022": -11.0,
+   "2023": -15.4,
+   "2024": -46.9,
+   "2025": -46.6,
+   "2026": -19.5
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -21.8,
+  "test_usd": -38.3,
+  "test_up": 0.246,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -2.72,
+  "worst_day": -988.0,
+  "years": {
+   "2022": -11.7,
+   "2023": -18.2,
+   "2024": -39.0,
+   "2025": -33.4,
+   "2026": -38.2
+  }
+ },
+ "buy the drop 09:35-10:00 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -38.4,
+  "test_usd": -36.8,
+  "test_up": 0.327,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -2.55,
+  "worst_day": -408.0,
+  "years": {
+   "2022": -32.1,
+   "2023": -41.8,
+   "2024": -37.6,
+   "2025": -40.7,
+   "2026": -30.4
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 2m | tight": {
+  "dev_usd": -23.9,
+  "test_usd": -38.7,
+  "test_up": 0.248,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -2.74,
+  "worst_day": -988.0,
+  "years": {
+   "2022": -15.9,
+   "2023": -20.7,
+   "2024": -39.2,
+   "2025": -34.8,
+   "2026": -37.7
+  }
+ },
+ "sell the drop 09:35-10:00 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -39.2,
+  "test_usd": -28.6,
+  "test_up": 0.335,
+  "trades_per_day": 7.6,
+  "bp_per_trade": -5.33,
+  "worst_day": -434.0,
+  "years": {
+   "2022": -32.5,
+   "2023": -44.1,
+   "2024": -32.0,
+   "2025": -36.0,
+   "2026": -20.1
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -34.5,
+  "test_usd": -39.6,
+  "test_up": 0.187,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -2.46,
+  "worst_day": -473.0,
+  "years": {
+   "2022": -25.2,
+   "2023": -28.3,
+   "2024": -51.6,
+   "2025": -41.0,
+   "2026": -29.2
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -26.8,
+  "test_usd": -39.8,
+  "test_up": 0.201,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -2.96,
+  "worst_day": -512.0,
+  "years": {
+   "2022": -14.7,
+   "2023": -19.0,
+   "2024": -47.3,
+   "2025": -48.2,
+   "2026": -22.3
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -26.5,
+  "test_usd": -40.6,
+  "test_up": 0.301,
+  "trades_per_day": 13.8,
+  "bp_per_trade": -2.93,
+  "worst_day": -829.0,
+  "years": {
+   "2022": -12.2,
+   "2023": -26.8,
+   "2024": -41.9,
+   "2025": -46.0,
+   "2026": -24.8
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -34.9,
+  "test_usd": -40.9,
+  "test_up": 0.189,
+  "trades_per_day": 18.9,
+  "bp_per_trade": -2.41,
+  "worst_day": -473.0,
+  "years": {
+   "2022": -22.3,
+   "2023": -30.2,
+   "2024": -52.2,
+   "2025": -41.5,
+   "2026": -31.3
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -26.5,
+  "test_usd": -41.0,
+  "test_up": 0.201,
+  "trades_per_day": 14.0,
+  "bp_per_trade": -2.91,
+  "worst_day": -512.0,
+  "years": {
+   "2022": -11.5,
+   "2023": -19.0,
+   "2024": -48.3,
+   "2025": -50.3,
+   "2026": -22.2
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -34.6,
+  "test_usd": -41.1,
+  "test_up": 0.24,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -2.57,
+  "worst_day": -544.0,
+  "years": {
+   "2022": -27.1,
+   "2023": -26.0,
+   "2024": -55.2,
+   "2025": -41.7,
+   "2026": -30.2
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -24.4,
+  "test_usd": -41.2,
+  "test_up": 0.291,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -2.96,
+  "worst_day": -829.0,
+  "years": {
+   "2022": -9.0,
+   "2023": -25.5,
+   "2024": -39.7,
+   "2025": -46.3,
+   "2026": -26.5
+  }
+ },
+ "sell the rise 09:35-10:00 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -41.7,
+  "test_usd": -35.4,
+  "test_up": 0.343,
+  "trades_per_day": 17.8,
+  "bp_per_trade": -2.6,
+  "worst_day": -624.0,
+  "years": {
+   "2022": -33.7,
+   "2023": -50.0,
+   "2024": -35.8,
+   "2025": -31.0,
+   "2026": -38.8
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -41.9,
+  "test_usd": -30.6,
+  "test_up": 0.368,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -3.07,
+  "worst_day": -504.0,
+  "years": {
+   "2022": -26.6,
+   "2023": -51.5,
+   "2024": -34.7,
+   "2025": -33.6,
+   "2026": -24.8
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -41.9,
+  "test_usd": -29.3,
+  "test_up": 0.407,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -3.03,
+  "worst_day": -515.0,
+  "years": {
+   "2022": -30.3,
+   "2023": -40.6,
+   "2024": -36.2,
+   "2025": -38.8,
+   "2026": -25.4
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -42.4,
+  "test_usd": -34.5,
+  "test_up": 0.341,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -2.9,
+  "worst_day": -387.0,
+  "years": {
+   "2022": -32.4,
+   "2023": -47.4,
+   "2024": -38.9,
+   "2025": -35.6,
+   "2026": -32.0
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -34.5,
+  "test_usd": -42.5,
+  "test_up": 0.248,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -2.5,
+  "worst_day": -544.0,
+  "years": {
+   "2022": -24.5,
+   "2023": -26.0,
+   "2024": -56.5,
+   "2025": -42.8,
+   "2026": -32.0
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -33.6,
+  "test_usd": -42.9,
+  "test_up": 0.254,
+  "trades_per_day": 17.5,
+  "bp_per_trade": -2.63,
+  "worst_day": -477.0,
+  "years": {
+   "2022": -23.7,
+   "2023": -23.1,
+   "2024": -56.6,
+   "2025": -41.2,
+   "2026": -36.7
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -23.0,
+  "test_usd": -43.4,
+  "test_up": 0.276,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -2.97,
+  "worst_day": -680.0,
+  "years": {
+   "2022": -3.4,
+   "2023": -23.1,
+   "2024": -41.2,
+   "2025": -46.7,
+   "2026": -32.0
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -24.5,
+  "test_usd": -43.9,
+  "test_up": 0.28,
+  "trades_per_day": 13.9,
+  "bp_per_trade": -2.96,
+  "worst_day": -680.0,
+  "years": {
+   "2022": -5.1,
+   "2023": -24.3,
+   "2024": -42.5,
+   "2025": -48.3,
+   "2026": -31.1
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -32.3,
+  "test_usd": -44.1,
+  "test_up": 0.185,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -2.51,
+  "worst_day": -787.0,
+  "years": {
+   "2022": -15.5,
+   "2023": -27.6,
+   "2024": -53.6,
+   "2025": -40.2,
+   "2026": -39.6
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 1m | tight": {
+  "dev_usd": -35.4,
+  "test_usd": -44.6,
+  "test_up": 0.195,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -2.5,
+  "worst_day": -787.0,
+  "years": {
+   "2022": -21.1,
+   "2023": -30.6,
+   "2024": -54.9,
+   "2025": -40.9,
+   "2026": -40.4
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -32.1,
+  "test_usd": -45.5,
+  "test_up": 0.285,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -2.64,
+  "worst_day": -1225.0,
+  "years": {
+   "2022": -13.7,
+   "2023": -29.5,
+   "2024": -51.2,
+   "2025": -41.0,
+   "2026": -43.3
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -45.5,
+  "test_usd": -35.5,
+  "test_up": 0.364,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -3.05,
+  "worst_day": -521.0,
+  "years": {
+   "2022": -46.6,
+   "2023": -39.4,
+   "2024": -41.8,
+   "2025": -48.3,
+   "2026": -26.5
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -33.1,
+  "test_usd": -45.8,
+  "test_up": 0.262,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -2.59,
+  "worst_day": -480.0,
+  "years": {
+   "2022": -19.6,
+   "2023": -23.3,
+   "2024": -57.3,
+   "2025": -44.4,
+   "2026": -39.7
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 3m | tight": {
+  "dev_usd": -35.9,
+  "test_usd": -45.9,
+  "test_up": 0.289,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -2.65,
+  "worst_day": -1225.0,
+  "years": {
+   "2022": -21.3,
+   "2023": -33.2,
+   "2024": -52.5,
+   "2025": -42.7,
+   "2026": -42.4
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -31.4,
+  "test_usd": -47.1,
+  "test_up": 0.234,
+  "trades_per_day": 17.9,
+  "bp_per_trade": -2.64,
+  "worst_day": -988.0,
+  "years": {
+   "2022": -15.2,
+   "2023": -28.1,
+   "2024": -51.7,
+   "2025": -42.9,
+   "2026": -44.0
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -24.5,
+  "test_usd": -47.1,
+  "test_up": 0.173,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -3.15,
+  "worst_day": -608.0,
+  "years": {
+   "2022": -6.9,
+   "2023": -21.0,
+   "2024": -46.5,
+   "2025": -49.6,
+   "2026": -36.4
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -47.4,
+  "test_usd": -40.4,
+  "test_up": 0.299,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -2.97,
+  "worst_day": -399.0,
+  "years": {
+   "2022": -42.4,
+   "2023": -49.0,
+   "2024": -44.6,
+   "2025": -40.3,
+   "2026": -41.3
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 2m | tight": {
+  "dev_usd": -34.1,
+  "test_usd": -47.7,
+  "test_up": 0.244,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -2.62,
+  "worst_day": -988.0,
+  "years": {
+   "2022": -20.6,
+   "2023": -30.9,
+   "2024": -52.5,
+   "2025": -44.4,
+   "2026": -43.6
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -26.1,
+  "test_usd": -47.8,
+  "test_up": 0.175,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -3.15,
+  "worst_day": -608.0,
+  "years": {
+   "2022": -10.1,
+   "2023": -21.6,
+   "2024": -48.3,
+   "2025": -51.7,
+   "2026": -35.3
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -39.7,
+  "test_usd": -48.7,
+  "test_up": 0.266,
+  "trades_per_day": 17.9,
+  "bp_per_trade": -2.96,
+  "worst_day": -533.0,
+  "years": {
+   "2022": -25.2,
+   "2023": -26.8,
+   "2024": -69.6,
+   "2025": -58.8,
+   "2026": -22.3
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -38.0,
+  "test_usd": -49.0,
+  "test_up": 0.278,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -2.96,
+  "worst_day": -666.0,
+  "years": {
+   "2022": -26.5,
+   "2023": -24.9,
+   "2024": -68.0,
+   "2025": -59.2,
+   "2026": -22.4
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -49.3,
+  "test_usd": -41.5,
+  "test_up": 0.299,
+  "trades_per_day": 17.8,
+  "bp_per_trade": -3.06,
+  "worst_day": -388.0,
+  "years": {
+   "2022": -51.5,
+   "2023": -47.4,
+   "2024": -45.5,
+   "2025": -51.3,
+   "2026": -31.7
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -41.0,
+  "test_usd": -50.7,
+  "test_up": 0.264,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -2.93,
+  "worst_day": -511.0,
+  "years": {
+   "2022": -22.3,
+   "2023": -28.6,
+   "2024": -72.8,
+   "2025": -60.9,
+   "2026": -23.4
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -38.2,
+  "test_usd": -51.1,
+  "test_up": 0.276,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -2.9,
+  "worst_day": -694.0,
+  "years": {
+   "2022": -21.4,
+   "2023": -25.8,
+   "2024": -70.7,
+   "2025": -60.9,
+   "2026": -23.9
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -39.4,
+  "test_usd": -53.0,
+  "test_up": 0.274,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -3.04,
+  "worst_day": -798.0,
+  "years": {
+   "2022": -20.7,
+   "2023": -38.9,
+   "2024": -60.1,
+   "2025": -60.3,
+   "2026": -30.3
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -35.2,
+  "test_usd": -53.6,
+  "test_up": 0.268,
+  "trades_per_day": 17.5,
+  "bp_per_trade": -3.06,
+  "worst_day": -716.0,
+  "years": {
+   "2022": -14.0,
+   "2023": -35.0,
+   "2024": -57.1,
+   "2025": -60.4,
+   "2026": -32.8
+  }
+ },
+ "buy the drop 10:00-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -40.3,
+  "test_usd": -54.0,
+  "test_up": 0.159,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -3.1,
+  "worst_day": -555.0,
+  "years": {
+   "2022": -25.7,
+   "2023": -28.4,
+   "2024": -70.5,
+   "2025": -64.3,
+   "2026": -28.0
+  }
+ },
+ "buy the drop 09:35-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -41.4,
+  "test_usd": -56.1,
+  "test_up": 0.157,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -3.05,
+  "worst_day": -530.0,
+  "years": {
+   "2022": -22.6,
+   "2023": -30.1,
+   "2024": -73.3,
+   "2025": -67.4,
+   "2026": -27.9
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -35.0,
+  "test_usd": -56.8,
+  "test_up": 0.242,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -3.12,
+  "worst_day": -664.0,
+  "years": {
+   "2022": -10.8,
+   "2023": -32.6,
+   "2024": -60.4,
+   "2025": -61.3,
+   "2026": -40.0
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -38.9,
+  "test_usd": -57.7,
+  "test_up": 0.254,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -3.14,
+  "worst_day": -664.0,
+  "years": {
+   "2022": -16.0,
+   "2023": -36.8,
+   "2024": -62.8,
+   "2025": -63.5,
+   "2026": -38.7
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -42.6,
+  "test_usd": -57.9,
+  "test_up": 0.118,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -4.42,
+  "worst_day": -480.0,
+  "years": {
+   "2022": -29.3,
+   "2023": -34.2,
+   "2024": -67.0,
+   "2025": -59.7,
+   "2026": -46.5
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -43.8,
+  "test_usd": -58.9,
+  "test_up": 0.118,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -4.38,
+  "worst_day": -480.0,
+  "years": {
+   "2022": -28.3,
+   "2023": -36.6,
+   "2024": -68.0,
+   "2025": -59.8,
+   "2026": -48.3
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -43.2,
+  "test_usd": -59.9,
+  "test_up": 0.152,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -4.6,
+  "worst_day": -556.0,
+  "years": {
+   "2022": -31.3,
+   "2023": -31.5,
+   "2024": -71.2,
+   "2025": -60.7,
+   "2026": -49.5
+  }
+ },
+ "sell the rise 10:00-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -36.4,
+  "test_usd": -60.5,
+  "test_up": 0.161,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -3.23,
+  "worst_day": -629.0,
+  "years": {
+   "2022": -14.1,
+   "2023": -31.1,
+   "2024": -66.2,
+   "2025": -64.6,
+   "2026": -42.6
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -38.9,
+  "test_usd": -61.0,
+  "test_up": 0.132,
+  "trades_per_day": 13.5,
+  "bp_per_trade": -4.45,
+  "worst_day": -777.0,
+  "years": {
+   "2022": -20.1,
+   "2023": -31.3,
+   "2024": -68.0,
+   "2025": -57.6,
+   "2026": -54.7
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -39.0,
+  "test_usd": -61.0,
+  "test_up": 0.209,
+  "trades_per_day": 13.2,
+  "bp_per_trade": -4.56,
+  "worst_day": -1103.0,
+  "years": {
+   "2022": -18.1,
+   "2023": -32.6,
+   "2024": -67.1,
+   "2025": -56.4,
+   "2026": -57.3
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -41.3,
+  "test_usd": -61.1,
+  "test_up": 0.167,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -4.61,
+  "worst_day": -521.0,
+  "years": {
+   "2022": -25.5,
+   "2023": -28.8,
+   "2024": -71.7,
+   "2025": -60.0,
+   "2026": -54.4
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -44.4,
+  "test_usd": -61.1,
+  "test_up": 0.167,
+  "trades_per_day": 13.9,
+  "bp_per_trade": -4.56,
+  "worst_day": -556.0,
+  "years": {
+   "2022": -31.8,
+   "2023": -33.2,
+   "2024": -72.7,
+   "2025": -61.2,
+   "2026": -51.0
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 1m | base": {
+  "dev_usd": -42.0,
+  "test_usd": -61.6,
+  "test_up": 0.134,
+  "trades_per_day": 14.0,
+  "bp_per_trade": -4.46,
+  "worst_day": -777.0,
+  "years": {
+   "2022": -25.3,
+   "2023": -34.2,
+   "2024": -69.5,
+   "2025": -58.4,
+   "2026": -55.5
+  }
+ },
+ "sell the rise 09:35-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -39.9,
+  "test_usd": -61.6,
+  "test_up": 0.175,
+  "trades_per_day": 18.9,
+  "bp_per_trade": -3.23,
+  "worst_day": -629.0,
+  "years": {
+   "2022": -19.7,
+   "2023": -33.6,
+   "2024": -69.5,
+   "2025": -67.4,
+   "2026": -41.0
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -42.9,
+  "test_usd": -61.7,
+  "test_up": 0.209,
+  "trades_per_day": 13.6,
+  "bp_per_trade": -4.62,
+  "worst_day": -1103.0,
+  "years": {
+   "2022": -25.1,
+   "2023": -36.6,
+   "2024": -68.1,
+   "2025": -58.7,
+   "2026": -56.5
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -38.0,
+  "test_usd": -63.0,
+  "test_up": 0.165,
+  "trades_per_day": 13.3,
+  "bp_per_trade": -4.57,
+  "worst_day": -997.0,
+  "years": {
+   "2022": -20.3,
+   "2023": -30.6,
+   "2024": -67.5,
+   "2025": -59.4,
+   "2026": -57.1
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z3.0 hold 3m | base": {
+  "dev_usd": -41.9,
+  "test_usd": -63.3,
+  "test_up": 0.171,
+  "trades_per_day": 13.8,
+  "bp_per_trade": -4.59,
+  "worst_day": -541.0,
+  "years": {
+   "2022": -24.5,
+   "2023": -30.2,
+   "2024": -72.3,
+   "2025": -62.3,
+   "2026": -56.7
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z3.0 hold 2m | base": {
+  "dev_usd": -40.8,
+  "test_usd": -63.9,
+  "test_up": 0.171,
+  "trades_per_day": 13.7,
+  "bp_per_trade": -4.59,
+  "worst_day": -997.0,
+  "years": {
+   "2022": -25.0,
+   "2023": -33.8,
+   "2024": -68.3,
+   "2025": -61.4,
+   "2026": -56.8
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -64.9,
+  "test_usd": -51.0,
+  "test_up": 0.309,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -4.92,
+  "worst_day": -520.0,
+  "years": {
+   "2022": -47.8,
+   "2023": -75.8,
+   "2024": -56.4,
+   "2025": -54.7,
+   "2026": -44.1
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -65.9,
+  "test_usd": -49.7,
+  "test_up": 0.329,
+  "trades_per_day": 14.1,
+  "bp_per_trade": -4.93,
+  "worst_day": -539.0,
+  "years": {
+   "2022": -54.0,
+   "2023": -66.0,
+   "2024": -57.6,
+   "2025": -60.5,
+   "2026": -44.5
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -68.3,
+  "test_usd": -57.6,
+  "test_up": 0.274,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -4.74,
+  "worst_day": -411.0,
+  "years": {
+   "2022": -55.4,
+   "2023": -74.7,
+   "2024": -63.4,
+   "2025": -59.7,
+   "2026": -53.7
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -72.6,
+  "test_usd": -58.5,
+  "test_up": 0.295,
+  "trades_per_day": 15.9,
+  "bp_per_trade": -4.94,
+  "worst_day": -554.0,
+  "years": {
+   "2022": -72.4,
+   "2023": -68.1,
+   "2024": -66.1,
+   "2025": -72.8,
+   "2026": -47.7
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -58.1,
+  "test_usd": -73.0,
+  "test_up": 0.093,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -4.36,
+  "worst_day": -490.0,
+  "years": {
+   "2022": -38.3,
+   "2023": -48.2,
+   "2024": -90.9,
+   "2025": -76.1,
+   "2026": -53.2
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -57.8,
+  "test_usd": -73.8,
+  "test_up": 0.132,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -4.46,
+  "worst_day": -557.0,
+  "years": {
+   "2022": -39.7,
+   "2023": -45.5,
+   "2024": -93.7,
+   "2025": -76.1,
+   "2026": -53.6
+  }
+ },
+ "buy the rise 10:00-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -56.5,
+  "test_usd": -75.1,
+  "test_up": 0.148,
+  "trades_per_day": 17.5,
+  "bp_per_trade": -4.52,
+  "worst_day": -523.0,
+  "years": {
+   "2022": -36.2,
+   "2023": -42.5,
+   "2024": -94.5,
+   "2025": -75.1,
+   "2026": -59.8
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -59.8,
+  "test_usd": -75.1,
+  "test_up": 0.098,
+  "trades_per_day": 18.9,
+  "bp_per_trade": -4.28,
+  "worst_day": -490.0,
+  "years": {
+   "2022": -36.3,
+   "2023": -51.4,
+   "2024": -92.7,
+   "2025": -77.9,
+   "2026": -55.4
+  }
+ },
+ "sell the drop 09:35-10:00 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -76.0,
+  "test_usd": -66.1,
+  "test_up": 0.203,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -4.82,
+  "worst_day": -454.0,
+  "years": {
+   "2022": -67.2,
+   "2023": -79.2,
+   "2024": -72.0,
+   "2025": -67.3,
+   "2026": -65.2
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -59.0,
+  "test_usd": -76.0,
+  "test_up": 0.15,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -4.38,
+  "worst_day": -557.0,
+  "years": {
+   "2022": -38.0,
+   "2023": -46.9,
+   "2024": -96.3,
+   "2025": -78.2,
+   "2026": -55.6
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -56.5,
+  "test_usd": -76.8,
+  "test_up": 0.098,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -4.38,
+  "worst_day": -800.0,
+  "years": {
+   "2022": -29.3,
+   "2023": -46.2,
+   "2024": -95.0,
+   "2025": -75.1,
+   "2026": -62.2
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -55.4,
+  "test_usd": -77.0,
+  "test_up": 0.195,
+  "trades_per_day": 17.7,
+  "bp_per_trade": -4.51,
+  "worst_day": -1238.0,
+  "years": {
+   "2022": -27.1,
+   "2023": -47.7,
+   "2024": -90.9,
+   "2025": -74.3,
+   "2026": -65.2
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 1m | base": {
+  "dev_usd": -61.0,
+  "test_usd": -78.2,
+  "test_up": 0.106,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -4.36,
+  "worst_day": -800.0,
+  "years": {
+   "2022": -35.7,
+   "2023": -50.8,
+   "2024": -97.6,
+   "2025": -77.0,
+   "2026": -63.1
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -60.6,
+  "test_usd": -78.2,
+  "test_up": 0.195,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -4.5,
+  "worst_day": -1238.0,
+  "years": {
+   "2022": -35.5,
+   "2023": -52.8,
+   "2024": -93.5,
+   "2025": -77.3,
+   "2026": -64.5
+  }
+ },
+ "buy the rise 09:35-15:50 k3.0 z2.0 hold 3m | base": {
+  "dev_usd": -57.3,
+  "test_usd": -78.7,
+  "test_up": 0.154,
+  "trades_per_day": 18.3,
+  "bp_per_trade": -4.47,
+  "worst_day": -543.0,
+  "years": {
+   "2022": -33.1,
+   "2023": -44.1,
+   "2024": -96.5,
+   "2025": -79.4,
+   "2026": -63.1
+  }
+ },
+ "sell the drop 10:00-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -55.1,
+  "test_usd": -79.1,
+  "test_up": 0.15,
+  "trades_per_day": 17.9,
+  "bp_per_trade": -4.51,
+  "worst_day": -1001.0,
+  "years": {
+   "2022": -28.7,
+   "2023": -46.4,
+   "2024": -92.1,
+   "2025": -76.8,
+   "2026": -66.1
+  }
+ },
+ "buy the rise 09:35-10:00 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -79.7,
+  "test_usd": -67.2,
+  "test_up": 0.183,
+  "trades_per_day": 17.8,
+  "bp_per_trade": -4.95,
+  "worst_day": -405.0,
+  "years": {
+   "2022": -80.0,
+   "2023": -79.8,
+   "2024": -72.6,
+   "2025": -78.7,
+   "2026": -55.2
+  }
+ },
+ "sell the drop 09:35-15:50 k3.0 z2.0 hold 2m | base": {
+  "dev_usd": -59.2,
+  "test_usd": -80.4,
+  "test_up": 0.157,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -4.47,
+  "worst_day": -1001.0,
+  "years": {
+   "2022": -34.9,
+   "2023": -50.8,
+   "2024": -94.2,
+   "2025": -79.5,
+   "2026": -65.9
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -48.9,
+  "test_usd": -92.9,
+  "test_up": 0.285,
+  "trades_per_day": 88.2,
+  "bp_per_trade": -0.97,
+  "worst_day": -924.0,
+  "years": {
+   "2022": -31.6,
+   "2023": -44.5,
+   "2024": -75.7,
+   "2025": -109.1,
+   "2026": -67.7
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -46.9,
+  "test_usd": -94.7,
+  "test_up": 0.283,
+  "trades_per_day": 90.1,
+  "bp_per_trade": -0.95,
+  "worst_day": -957.0,
+  "years": {
+   "2022": -24.7,
+   "2023": -40.3,
+   "2024": -78.8,
+   "2025": -111.4,
+   "2026": -69.1
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -54.3,
+  "test_usd": -97.1,
+  "test_up": 0.264,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -0.99,
+  "worst_day": -754.0,
+  "years": {
+   "2022": -16.0,
+   "2023": -51.5,
+   "2024": -88.4,
+   "2025": -110.5,
+   "2026": -72.7
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -53.0,
+  "test_usd": -99.0,
+  "test_up": 0.272,
+  "trades_per_day": 94.4,
+  "bp_per_trade": -0.97,
+  "worst_day": -772.0,
+  "years": {
+   "2022": -6.9,
+   "2023": -48.6,
+   "2024": -91.4,
+   "2025": -114.7,
+   "2026": -72.9
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -63.0,
+  "test_usd": -99.8,
+  "test_up": 0.281,
+  "trades_per_day": 93.2,
+  "bp_per_trade": -1.05,
+  "worst_day": -1002.0,
+  "years": {
+   "2022": -22.9,
+   "2023": -74.8,
+   "2024": -93.3,
+   "2025": -113.4,
+   "2026": -58.4
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -59.5,
+  "test_usd": -100.0,
+  "test_up": 0.264,
+  "trades_per_day": 91.2,
+  "bp_per_trade": -1.05,
+  "worst_day": -885.0,
+  "years": {
+   "2022": -6.0,
+   "2023": -73.5,
+   "2024": -92.6,
+   "2025": -114.6,
+   "2026": -58.5
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -64.0,
+  "test_usd": -109.5,
+  "test_up": 0.197,
+  "trades_per_day": 96.4,
+  "bp_per_trade": -1.08,
+  "worst_day": -829.0,
+  "years": {
+   "2022": -29.6,
+   "2023": -57.5,
+   "2024": -100.0,
+   "2025": -118.3,
+   "2026": -93.4
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -62.6,
+  "test_usd": -111.4,
+  "test_up": 0.205,
+  "trades_per_day": 98.4,
+  "bp_per_trade": -1.06,
+  "worst_day": -843.0,
+  "years": {
+   "2022": -19.5,
+   "2023": -57.6,
+   "2024": -100.9,
+   "2025": -124.0,
+   "2026": -90.3
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -65.7,
+  "test_usd": -112.6,
+  "test_up": 0.244,
+  "trades_per_day": 112.6,
+  "bp_per_trade": -0.95,
+  "worst_day": -969.0,
+  "years": {
+   "2022": -36.4,
+   "2023": -60.9,
+   "2024": -97.7,
+   "2025": -123.8,
+   "2026": -94.4
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -63.4,
+  "test_usd": -112.6,
+  "test_up": 0.258,
+  "trades_per_day": 115.1,
+  "bp_per_trade": -0.92,
+  "worst_day": -1002.0,
+  "years": {
+   "2022": -29.5,
+   "2023": -56.3,
+   "2024": -99.4,
+   "2025": -127.0,
+   "2026": -91.2
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -63.7,
+  "test_usd": -115.2,
+  "test_up": 0.224,
+  "trades_per_day": 95.6,
+  "bp_per_trade": -1.13,
+  "worst_day": -756.0,
+  "years": {
+   "2022": -2.3,
+   "2023": -74.3,
+   "2024": -104.0,
+   "2025": -124.1,
+   "2026": -84.4
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -66.9,
+  "test_usd": -115.4,
+  "test_up": 0.232,
+  "trades_per_day": 97.6,
+  "bp_per_trade": -1.12,
+  "worst_day": -756.0,
+  "years": {
+   "2022": -15.0,
+   "2023": -75.8,
+   "2024": -104.6,
+   "2025": -123.2,
+   "2026": -86.3
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -73.6,
+  "test_usd": -115.9,
+  "test_up": 0.224,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -0.95,
+  "worst_day": -763.0,
+  "years": {
+   "2022": -28.2,
+   "2023": -68.6,
+   "2024": -112.9,
+   "2025": -125.3,
+   "2026": -95.7
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -72.9,
+  "test_usd": -117.5,
+  "test_up": 0.23,
+  "trades_per_day": 122.1,
+  "bp_per_trade": -0.94,
+  "worst_day": -764.0,
+  "years": {
+   "2022": -21.4,
+   "2023": -64.9,
+   "2024": -116.5,
+   "2025": -130.5,
+   "2026": -94.6
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -77.2,
+  "test_usd": -124.6,
+  "test_up": 0.157,
+  "trades_per_day": 101.4,
+  "bp_per_trade": -1.2,
+  "worst_day": -620.0,
+  "years": {
+   "2022": -25.3,
+   "2023": -78.0,
+   "2024": -116.9,
+   "2025": -133.5,
+   "2026": -101.7
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -74.7,
+  "test_usd": -125.1,
+  "test_up": 0.156,
+  "trades_per_day": 99.4,
+  "bp_per_trade": -1.21,
+  "worst_day": -665.0,
+  "years": {
+   "2022": -17.4,
+   "2023": -77.9,
+   "2024": -115.4,
+   "2025": -133.3,
+   "2026": -102.6
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -83.0,
+  "test_usd": -126.1,
+  "test_up": 0.248,
+  "trades_per_day": 116.8,
+  "bp_per_trade": -1.08,
+  "worst_day": -1331.0,
+  "years": {
+   "2022": -32.6,
+   "2023": -99.1,
+   "2024": -115.7,
+   "2025": -138.0,
+   "2026": -85.3
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -88.3,
+  "test_usd": -126.7,
+  "test_up": 0.27,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -1.08,
+  "worst_day": -1205.0,
+  "years": {
+   "2022": -53.8,
+   "2023": -101.7,
+   "2024": -117.8,
+   "2025": -136.6,
+   "2026": -87.4
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -87.7,
+  "test_usd": -136.4,
+  "test_up": 0.144,
+  "trades_per_day": 125.7,
+  "bp_per_trade": -1.07,
+  "worst_day": -864.0,
+  "years": {
+   "2022": -48.5,
+   "2023": -82.3,
+   "2024": -126.2,
+   "2025": -142.1,
+   "2026": -123.2
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -87.0,
+  "test_usd": -138.5,
+  "test_up": 0.154,
+  "trades_per_day": 128.4,
+  "bp_per_trade": -1.06,
+  "worst_day": -867.0,
+  "years": {
+   "2022": -40.7,
+   "2023": -82.3,
+   "2024": -127.3,
+   "2025": -148.9,
+   "2026": -119.9
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -91.4,
+  "test_usd": -141.5,
+  "test_up": 0.203,
+  "trades_per_day": 124.2,
+  "bp_per_trade": -1.13,
+  "worst_day": -918.0,
+  "years": {
+   "2022": -26.1,
+   "2023": -107.8,
+   "2024": -127.1,
+   "2025": -148.2,
+   "2026": -113.3
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -96.4,
+  "test_usd": -142.8,
+  "test_up": 0.213,
+  "trades_per_day": 127.0,
+  "bp_per_trade": -1.13,
+  "worst_day": -843.0,
+  "years": {
+   "2022": -41.3,
+   "2023": -111.6,
+   "2024": -128.5,
+   "2025": -147.7,
+   "2026": -117.1
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -105.7,
+  "test_usd": -155.9,
+  "test_up": 0.122,
+  "trades_per_day": 130.4,
+  "bp_per_trade": -1.21,
+  "worst_day": -1128.0,
+  "years": {
+   "2022": -44.2,
+   "2023": -114.2,
+   "2024": -141.8,
+   "2025": -164.0,
+   "2026": -134.5
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -108.8,
+  "test_usd": -156.0,
+  "test_up": 0.128,
+  "trades_per_day": 133.2,
+  "bp_per_trade": -1.2,
+  "worst_day": -1051.0,
+  "years": {
+   "2022": -52.1,
+   "2023": -115.2,
+   "2024": -143.9,
+   "2025": -165.0,
+   "2026": -133.9
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -143.9,
+  "test_usd": -209.3,
+  "test_up": 0.189,
+  "trades_per_day": 184.3,
+  "bp_per_trade": -1.15,
+  "worst_day": -1072.0,
+  "years": {
+   "2022": -106.3,
+   "2023": -132.2,
+   "2024": -192.2,
+   "2025": -235.7,
+   "2026": -169.9
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -165.6,
+  "test_usd": -210.0,
+  "test_up": 0.203,
+  "trades_per_day": 189.0,
+  "bp_per_trade": -1.19,
+  "worst_day": -1584.0,
+  "years": {
+   "2022": -55.8,
+   "2023": -184.7,
+   "2024": -226.6,
+   "2025": -237.7,
+   "2026": -132.5
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -196.3,
+  "test_usd": -212.8,
+  "test_up": 0.102,
+  "trades_per_day": 88.2,
+  "bp_per_trade": -2.79,
+  "worst_day": -1925.0,
+  "years": {
+   "2022": -149.3,
+   "2023": -191.7,
+   "2024": -226.3,
+   "2025": -193.1,
+   "2026": -233.8
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -139.4,
+  "test_usd": -214.5,
+  "test_up": 0.22,
+  "trades_per_day": 191.1,
+  "bp_per_trade": -1.11,
+  "worst_day": -1068.0,
+  "years": {
+   "2022": -97.5,
+   "2023": -123.2,
+   "2024": -199.6,
+   "2025": -237.0,
+   "2026": -176.5
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -166.2,
+  "test_usd": -214.5,
+  "test_up": 0.228,
+  "trades_per_day": 195.8,
+  "bp_per_trade": -1.17,
+  "worst_day": -1558.0,
+  "years": {
+   "2022": -76.3,
+   "2023": -185.3,
+   "2024": -223.3,
+   "2025": -241.3,
+   "2026": -136.2
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -204.4,
+  "test_usd": -216.4,
+  "test_up": 0.108,
+  "trades_per_day": 90.1,
+  "bp_per_trade": -2.8,
+  "worst_day": -1925.0,
+  "years": {
+   "2022": -160.4,
+   "2023": -202.0,
+   "2024": -229.6,
+   "2025": -197.0,
+   "2026": -236.7
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -201.1,
+  "test_usd": -217.0,
+  "test_up": 0.091,
+  "trades_per_day": 91.2,
+  "bp_per_trade": -2.75,
+  "worst_day": -840.0,
+  "years": {
+   "2022": -202.1,
+   "2023": -180.9,
+   "2024": -214.4,
+   "2025": -200.8,
+   "2026": -255.2
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -205.4,
+  "test_usd": -220.0,
+  "test_up": 0.077,
+  "trades_per_day": 95.6,
+  "bp_per_trade": -2.67,
+  "worst_day": -835.0,
+  "years": {
+   "2022": -210.2,
+   "2023": -186.5,
+   "2024": -217.6,
+   "2025": -208.5,
+   "2026": -249.0
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 3m | tight": {
+  "dev_usd": -204.5,
+  "test_usd": -222.5,
+  "test_up": 0.108,
+  "trades_per_day": 93.2,
+  "bp_per_trade": -2.75,
+  "worst_day": -826.0,
+  "years": {
+   "2022": -191.0,
+   "2023": -186.5,
+   "2024": -220.4,
+   "2025": -207.9,
+   "2026": -259.4
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -209.0,
+  "test_usd": -225.1,
+  "test_up": 0.087,
+  "trades_per_day": 97.6,
+  "bp_per_trade": -2.67,
+  "worst_day": -835.0,
+  "years": {
+   "2022": -203.3,
+   "2023": -192.1,
+   "2024": -223.7,
+   "2025": -215.4,
+   "2026": -251.2
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -201.5,
+  "test_usd": -225.9,
+  "test_up": 0.037,
+  "trades_per_day": 99.4,
+  "bp_per_trade": -2.58,
+  "worst_day": -760.0,
+  "years": {
+   "2022": -199.7,
+   "2023": -189.5,
+   "2024": -217.1,
+   "2025": -214.3,
+   "2026": -248.6
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -199.4,
+  "test_usd": -226.1,
+  "test_up": 0.069,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -2.76,
+  "worst_day": -1474.0,
+  "years": {
+   "2022": -169.0,
+   "2023": -191.3,
+   "2024": -228.4,
+   "2025": -208.5,
+   "2026": -247.4
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -197.7,
+  "test_usd": -229.3,
+  "test_up": 0.041,
+  "trades_per_day": 96.4,
+  "bp_per_trade": -2.66,
+  "worst_day": -1027.0,
+  "years": {
+   "2022": -159.5,
+   "2023": -191.9,
+   "2024": -230.0,
+   "2025": -214.9,
+   "2026": -244.1
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 2m | tight": {
+  "dev_usd": -206.8,
+  "test_usd": -229.7,
+  "test_up": 0.079,
+  "trades_per_day": 94.4,
+  "bp_per_trade": -2.78,
+  "worst_day": -1474.0,
+  "years": {
+   "2022": -182.4,
+   "2023": -200.3,
+   "2024": -231.9,
+   "2025": -210.6,
+   "2026": -251.6
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -206.1,
+  "test_usd": -231.9,
+  "test_up": 0.035,
+  "trades_per_day": 101.4,
+  "bp_per_trade": -2.59,
+  "worst_day": -796.0,
+  "years": {
+   "2022": -197.5,
+   "2023": -196.7,
+   "2024": -222.3,
+   "2025": -220.3,
+   "2026": -253.7
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 1m | tight": {
+  "dev_usd": -205.3,
+  "test_usd": -233.0,
+  "test_up": 0.037,
+  "trades_per_day": 98.4,
+  "bp_per_trade": -2.67,
+  "worst_day": -1027.0,
+  "years": {
+   "2022": -173.9,
+   "2023": -198.1,
+   "2024": -235.7,
+   "2025": -215.6,
+   "2026": -251.6
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -171.5,
+  "test_usd": -245.7,
+  "test_up": 0.089,
+  "trades_per_day": 88.2,
+  "bp_per_trade": -2.84,
+  "worst_day": -1056.0,
+  "years": {
+   "2022": -122.1,
+   "2023": -162.6,
+   "2024": -226.6,
+   "2025": -260.2,
+   "2026": -218.5
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -172.5,
+  "test_usd": -250.2,
+  "test_up": 0.093,
+  "trades_per_day": 90.1,
+  "bp_per_trade": -2.82,
+  "worst_day": -1096.0,
+  "years": {
+   "2022": -117.2,
+   "2023": -161.4,
+   "2024": -233.0,
+   "2025": -265.6,
+   "2026": -221.9
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -174.7,
+  "test_usd": -253.1,
+  "test_up": 0.138,
+  "trades_per_day": 216.6,
+  "bp_per_trade": -1.19,
+  "worst_day": -1051.0,
+  "years": {
+   "2022": -100.7,
+   "2023": -156.0,
+   "2024": -254.9,
+   "2025": -285.1,
+   "2026": -194.4
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -189.9,
+  "test_usd": -258.5,
+  "test_up": 0.098,
+  "trades_per_day": 91.2,
+  "bp_per_trade": -2.95,
+  "worst_day": -1020.0,
+  "years": {
+   "2022": -110.1,
+   "2023": -200.6,
+   "2024": -246.0,
+   "2025": -272.3,
+   "2026": -215.4
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -181.2,
+  "test_usd": -258.7,
+  "test_up": 0.077,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -2.86,
+  "worst_day": -903.0,
+  "years": {
+   "2022": -108.5,
+   "2023": -172.8,
+   "2024": -246.8,
+   "2025": -270.0,
+   "2026": -232.8
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -173.8,
+  "test_usd": -260.4,
+  "test_up": 0.156,
+  "trades_per_day": 223.8,
+  "bp_per_trade": -1.17,
+  "worst_day": -1069.0,
+  "years": {
+   "2022": -85.9,
+   "2023": -156.2,
+   "2024": -262.4,
+   "2025": -293.5,
+   "2026": -197.0
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -196.7,
+  "test_usd": -260.9,
+  "test_up": 0.1,
+  "trades_per_day": 93.2,
+  "bp_per_trade": -2.95,
+  "worst_day": -1135.0,
+  "years": {
+   "2022": -129.8,
+   "2023": -205.5,
+   "2024": -250.1,
+   "2025": -274.0,
+   "2026": -217.3
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -183.0,
+  "test_usd": -263.3,
+  "test_up": 0.073,
+  "trades_per_day": 94.4,
+  "bp_per_trade": -2.84,
+  "worst_day": -923.0,
+  "years": {
+   "2022": -101.5,
+   "2023": -173.0,
+   "2024": -253.0,
+   "2025": -277.4,
+   "2026": -235.1
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -270.5,
+  "test_usd": -251.7,
+  "test_up": 0.094,
+  "trades_per_day": 112.6,
+  "bp_per_trade": -2.78,
+  "worst_day": -1963.0,
+  "years": {
+   "2022": -273.3,
+   "2023": -277.2,
+   "2024": -258.3,
+   "2025": -239.1,
+   "2026": -266.9
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -202.1,
+  "test_usd": -273.2,
+  "test_up": 0.146,
+  "trades_per_day": 222.2,
+  "bp_per_trade": -1.29,
+  "worst_day": -1658.0,
+  "years": {
+   "2022": -65.5,
+   "2023": -211.4,
+   "2024": -293.4,
+   "2025": -305.2,
+   "2026": -185.9
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -273.9,
+  "test_usd": -252.3,
+  "test_up": 0.087,
+  "trades_per_day": 116.8,
+  "bp_per_trade": -2.7,
+  "worst_day": -917.0,
+  "years": {
+   "2022": -309.9,
+   "2023": -261.0,
+   "2024": -250.3,
+   "2025": -241.2,
+   "2026": -291.4
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -204.6,
+  "test_usd": -277.1,
+  "test_up": 0.156,
+  "trades_per_day": 229.4,
+  "bp_per_trade": -1.26,
+  "worst_day": -1621.0,
+  "years": {
+   "2022": -81.1,
+   "2023": -216.9,
+   "2024": -291.2,
+   "2025": -305.0,
+   "2026": -192.7
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -278.1,
+  "test_usd": -259.0,
+  "test_up": 0.089,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -2.69,
+  "worst_day": -903.0,
+  "years": {
+   "2022": -298.2,
+   "2023": -268.2,
+   "2024": -256.7,
+   "2025": -250.6,
+   "2026": -295.5
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -194.9,
+  "test_usd": -278.9,
+  "test_up": 0.03,
+  "trades_per_day": 96.4,
+  "bp_per_trade": -2.95,
+  "worst_day": -1000.0,
+  "years": {
+   "2022": -124.2,
+   "2023": -182.2,
+   "2024": -265.0,
+   "2025": -284.9,
+   "2026": -262.2
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -279.0,
+  "test_usd": -274.2,
+  "test_up": 0.047,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -2.78,
+  "worst_day": -1510.0,
+  "years": {
+   "2022": -292.6,
+   "2023": -284.7,
+   "2024": -264.7,
+   "2025": -261.7,
+   "2026": -294.6
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -279.2,
+  "test_usd": -276.8,
+  "test_up": 0.028,
+  "trades_per_day": 125.7,
+  "bp_per_trade": -2.65,
+  "worst_day": -1018.0,
+  "years": {
+   "2022": -283.6,
+   "2023": -283.5,
+   "2024": -270.7,
+   "2025": -266.1,
+   "2026": -293.8
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 3m | tight": {
+  "dev_usd": -281.0,
+  "test_usd": -258.7,
+  "test_up": 0.1,
+  "trades_per_day": 115.1,
+  "bp_per_trade": -2.81,
+  "worst_day": -1873.0,
+  "years": {
+   "2022": -287.3,
+   "2023": -290.2,
+   "2024": -264.4,
+   "2025": -243.8,
+   "2026": -276.2
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -282.6,
+  "test_usd": -273.6,
+  "test_up": 0.026,
+  "trades_per_day": 130.4,
+  "bp_per_trade": -2.56,
+  "worst_day": -866.0,
+  "years": {
+   "2022": -322.8,
+   "2023": -276.6,
+   "2024": -262.9,
+   "2025": -263.4,
+   "2026": -300.4
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -198.2,
+  "test_usd": -282.8,
+  "test_up": 0.071,
+  "trades_per_day": 95.6,
+  "bp_per_trade": -3.02,
+  "worst_day": -894.0,
+  "years": {
+   "2022": -108.6,
+   "2023": -204.7,
+   "2024": -264.9,
+   "2025": -290.3,
+   "2026": -251.1
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -283.0,
+  "test_usd": -264.3,
+  "test_up": 0.053,
+  "trades_per_day": 124.2,
+  "bp_per_trade": -2.64,
+  "worst_day": -899.0,
+  "years": {
+   "2022": -329.6,
+   "2023": -269.2,
+   "2024": -260.6,
+   "2025": -257.3,
+   "2026": -293.9
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -196.6,
+  "test_usd": -283.6,
+  "test_up": 0.028,
+  "trades_per_day": 98.4,
+  "bp_per_trade": -2.93,
+  "worst_day": -1016.0,
+  "years": {
+   "2022": -116.2,
+   "2023": -185.5,
+   "2024": -269.2,
+   "2025": -293.8,
+   "2026": -261.2
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -204.9,
+  "test_usd": -285.7,
+  "test_up": 0.075,
+  "trades_per_day": 97.6,
+  "bp_per_trade": -3.02,
+  "worst_day": -894.0,
+  "years": {
+   "2022": -124.2,
+   "2023": -209.8,
+   "2024": -268.8,
+   "2025": -292.5,
+   "2026": -255.1
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -287.7,
+  "test_usd": -270.4,
+  "test_up": 0.077,
+  "trades_per_day": 127.0,
+  "bp_per_trade": -2.64,
+  "worst_day": -925.0,
+  "years": {
+   "2022": -323.9,
+   "2023": -275.4,
+   "2024": -267.8,
+   "2025": -265.9,
+   "2026": -296.5
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 2m | tight": {
+  "dev_usd": -288.0,
+  "test_usd": -279.7,
+  "test_up": 0.045,
+  "trades_per_day": 122.1,
+  "bp_per_trade": -2.79,
+  "worst_day": -1508.0,
+  "years": {
+   "2022": -306.5,
+   "2023": -297.0,
+   "2024": -269.0,
+   "2025": -264.6,
+   "2026": -301.9
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -288.4,
+  "test_usd": -282.0,
+  "test_up": 0.022,
+  "trades_per_day": 128.4,
+  "bp_per_trade": -2.67,
+  "worst_day": -1057.0,
+  "years": {
+   "2022": -298.5,
+   "2023": -292.3,
+   "2024": -277.7,
+   "2025": -267.6,
+   "2026": -303.4
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 1m | tight": {
+  "dev_usd": -289.3,
+  "test_usd": -281.1,
+  "test_up": 0.03,
+  "trades_per_day": 133.2,
+  "bp_per_trade": -2.57,
+  "worst_day": -902.0,
+  "years": {
+   "2022": -324.4,
+   "2023": -285.8,
+   "2024": -269.5,
+   "2025": -270.8,
+   "2026": -307.4
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -229.4,
+  "test_usd": -289.7,
+  "test_up": 0.169,
+  "trades_per_day": 283.8,
+  "bp_per_trade": -1.1,
+  "worst_day": -1552.0,
+  "years": {
+   "2022": -165.4,
+   "2023": -222.5,
+   "2024": -280.2,
+   "2025": -329.4,
+   "2026": -231.6
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -233.9,
+  "test_usd": -294.7,
+  "test_up": 0.071,
+  "trades_per_day": 112.6,
+  "bp_per_trade": -2.82,
+  "worst_day": -1121.0,
+  "years": {
+   "2022": -191.2,
+   "2023": -230.0,
+   "2024": -275.7,
+   "2025": -305.2,
+   "2026": -275.1
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -235.6,
+  "test_usd": -298.3,
+  "test_up": 0.073,
+  "trades_per_day": 115.1,
+  "bp_per_trade": -2.79,
+  "worst_day": -1161.0,
+  "years": {
+   "2022": -187.8,
+   "2023": -229.5,
+   "2024": -281.3,
+   "2025": -312.4,
+   "2026": -274.9
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -232.3,
+  "test_usd": -300.4,
+  "test_up": 0.197,
+  "trades_per_day": 296.6,
+  "bp_per_trade": -1.08,
+  "worst_day": -1717.0,
+  "years": {
+   "2022": -183.8,
+   "2023": -218.8,
+   "2024": -288.0,
+   "2025": -336.9,
+   "2026": -245.7
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -212.8,
+  "test_usd": -300.6,
+  "test_up": 0.039,
+  "trades_per_day": 99.4,
+  "bp_per_trade": -3.11,
+  "worst_day": -836.0,
+  "years": {
+   "2022": -125.9,
+   "2023": -211.6,
+   "2024": -281.6,
+   "2025": -307.1,
+   "2026": -278.2
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -218.8,
+  "test_usd": -302.8,
+  "test_up": 0.043,
+  "trades_per_day": 101.4,
+  "bp_per_trade": -3.09,
+  "worst_day": -847.0,
+  "years": {
+   "2022": -136.7,
+   "2023": -215.4,
+   "2024": -286.6,
+   "2025": -310.4,
+   "2026": -279.5
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -266.6,
+  "test_usd": -308.4,
+  "test_up": 0.163,
+  "trades_per_day": 286.3,
+  "bp_per_trade": -1.21,
+  "worst_day": -2028.0,
+  "years": {
+   "2022": -193.8,
+   "2023": -283.8,
+   "2024": -311.9,
+   "2025": -321.2,
+   "2026": -257.3
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -249.9,
+  "test_usd": -310.9,
+  "test_up": 0.055,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -2.82,
+  "worst_day": -952.0,
+  "years": {
+   "2022": -188.6,
+   "2023": -245.2,
+   "2024": -301.7,
+   "2025": -318.8,
+   "2026": -290.8
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -261.5,
+  "test_usd": -315.3,
+  "test_up": 0.077,
+  "trades_per_day": 116.8,
+  "bp_per_trade": -2.97,
+  "worst_day": -1471.0,
+  "years": {
+   "2022": -203.9,
+   "2023": -279.2,
+   "2024": -298.7,
+   "2025": -327.6,
+   "2026": -273.7
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -253.4,
+  "test_usd": -316.2,
+  "test_up": 0.055,
+  "trades_per_day": 122.1,
+  "bp_per_trade": -2.8,
+  "worst_day": -956.0,
+  "years": {
+   "2022": -185.4,
+   "2023": -245.9,
+   "2024": -309.3,
+   "2025": -328.1,
+   "2026": -292.8
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -271.6,
+  "test_usd": -319.5,
+  "test_up": 0.075,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -2.97,
+  "worst_day": -1347.0,
+  "years": {
+   "2022": -229.8,
+   "2023": -286.7,
+   "2024": -305.1,
+   "2025": -330.2,
+   "2026": -278.8
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -274.8,
+  "test_usd": -321.6,
+  "test_up": 0.175,
+  "trades_per_day": 299.1,
+  "bp_per_trade": -1.2,
+  "worst_day": -2225.0,
+  "years": {
+   "2022": -220.6,
+   "2023": -293.5,
+   "2024": -320.3,
+   "2025": -328.7,
+   "2026": -270.0
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -225.7,
+  "test_usd": -326.7,
+  "test_up": 0.073,
+  "trades_per_day": 255.9,
+  "bp_per_trade": -1.3,
+  "worst_day": -1152.0,
+  "years": {
+   "2022": -133.8,
+   "2023": -193.7,
+   "2024": -334.9,
+   "2025": -360.6,
+   "2026": -262.4
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -226.1,
+  "test_usd": -331.8,
+  "test_up": 0.075,
+  "trades_per_day": 263.6,
+  "bp_per_trade": -1.27,
+  "worst_day": -1224.0,
+  "years": {
+   "2022": -120.9,
+   "2023": -197.5,
+   "2024": -339.2,
+   "2025": -365.2,
+   "2026": -266.1
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -271.1,
+  "test_usd": -343.1,
+  "test_up": 0.016,
+  "trades_per_day": 125.7,
+  "bp_per_trade": -2.94,
+  "worst_day": -1076.0,
+  "years": {
+   "2022": -214.5,
+   "2023": -265.2,
+   "2024": -324.6,
+   "2025": -346.2,
+   "2026": -331.7
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -278.7,
+  "test_usd": -344.4,
+  "test_up": 0.03,
+  "trades_per_day": 124.2,
+  "bp_per_trade": -3.01,
+  "worst_day": -1081.0,
+  "years": {
+   "2022": -204.0,
+   "2023": -296.3,
+   "2024": -321.0,
+   "2025": -350.9,
+   "2026": -317.0
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -247.5,
+  "test_usd": -346.2,
+  "test_up": 0.093,
+  "trades_per_day": 261.3,
+  "bp_per_trade": -1.37,
+  "worst_day": -1178.0,
+  "years": {
+   "2022": -110.2,
+   "2023": -245.2,
+   "2024": -352.8,
+   "2025": -383.0,
+   "2026": -261.9
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -250.0,
+  "test_usd": -347.7,
+  "test_up": 0.1,
+  "trades_per_day": 268.9,
+  "bp_per_trade": -1.34,
+  "worst_day": -1171.0,
+  "years": {
+   "2022": -123.5,
+   "2023": -246.8,
+   "2024": -351.9,
+   "2025": -383.7,
+   "2026": -265.2
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -274.6,
+  "test_usd": -348.8,
+  "test_up": 0.016,
+  "trades_per_day": 128.4,
+  "bp_per_trade": -2.92,
+  "worst_day": -1082.0,
+  "years": {
+   "2022": -210.4,
+   "2023": -269.6,
+   "2024": -329.7,
+   "2025": -357.1,
+   "2026": -331.6
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -288.4,
+  "test_usd": -349.4,
+  "test_up": 0.035,
+  "trades_per_day": 127.0,
+  "bp_per_trade": -3.02,
+  "worst_day": -1009.0,
+  "years": {
+   "2022": -223.9,
+   "2023": -305.1,
+   "2024": -326.7,
+   "2025": -354.6,
+   "2026": -323.8
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -318.9,
+  "test_usd": -365.6,
+  "test_up": 0.031,
+  "trades_per_day": 88.2,
+  "bp_per_trade": -4.66,
+  "worst_day": -1991.0,
+  "years": {
+   "2022": -239.8,
+   "2023": -309.8,
+   "2024": -377.2,
+   "2025": -344.2,
+   "2026": -384.6
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -299.9,
+  "test_usd": -370.6,
+  "test_up": 0.012,
+  "trades_per_day": 130.4,
+  "bp_per_trade": -3.09,
+  "worst_day": -1308.0,
+  "years": {
+   "2022": -227.7,
+   "2023": -309.5,
+   "2024": -344.1,
+   "2025": -377.7,
+   "2026": -352.0
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -330.0,
+  "test_usd": -371.9,
+  "test_up": 0.033,
+  "trades_per_day": 90.1,
+  "bp_per_trade": -4.68,
+  "worst_day": -1991.0,
+  "years": {
+   "2022": -253.0,
+   "2023": -323.2,
+   "2024": -383.8,
+   "2025": -351.2,
+   "2026": -389.6
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -307.8,
+  "test_usd": -374.5,
+  "test_up": 0.01,
+  "trades_per_day": 133.2,
+  "bp_per_trade": -3.08,
+  "worst_day": -1235.0,
+  "years": {
+   "2022": -240.3,
+   "2023": -315.8,
+   "2024": -350.5,
+   "2025": -382.9,
+   "2026": -354.6
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -331.4,
+  "test_usd": -375.5,
+  "test_up": 0.033,
+  "trades_per_day": 91.2,
+  "bp_per_trade": -4.65,
+  "worst_day": -1017.0,
+  "years": {
+   "2022": -306.2,
+   "2023": -308.0,
+   "2024": -367.9,
+   "2025": -358.4,
+   "2026": -412.0
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 3m | base": {
+  "dev_usd": -338.3,
+  "test_usd": -383.6,
+  "test_up": 0.043,
+  "trades_per_day": 93.2,
+  "bp_per_trade": -4.65,
+  "worst_day": -1009.0,
+  "years": {
+   "2022": -297.9,
+   "2023": -317.2,
+   "2024": -377.2,
+   "2025": -368.5,
+   "2026": -418.3
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -339.9,
+  "test_usd": -387.5,
+  "test_up": 0.022,
+  "trades_per_day": 95.6,
+  "bp_per_trade": -4.57,
+  "worst_day": -993.0,
+  "years": {
+   "2022": -316.5,
+   "2023": -316.9,
+   "2024": -378.4,
+   "2025": -374.8,
+   "2026": -415.7
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -326.3,
+  "test_usd": -387.7,
+  "test_up": 0.024,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -4.64,
+  "worst_day": -1543.0,
+  "years": {
+   "2022": -261.5,
+   "2023": -312.6,
+   "2024": -386.8,
+   "2025": -368.0,
+   "2026": -407.5
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -313.6,
+  "test_usd": -393.1,
+  "test_up": 0.094,
+  "trades_per_day": 371.9,
+  "bp_per_trade": -1.14,
+  "worst_day": -1299.0,
+  "years": {
+   "2022": -222.2,
+   "2023": -287.4,
+   "2024": -404.2,
+   "2025": -436.8,
+   "2026": -322.9
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -336.8,
+  "test_usd": -394.0,
+  "test_up": 0.024,
+  "trades_per_day": 94.4,
+  "bp_per_trade": -4.65,
+  "worst_day": -1543.0,
+  "years": {
+   "2022": -277.0,
+   "2023": -324.8,
+   "2024": -393.6,
+   "2025": -373.2,
+   "2026": -413.8
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 2m | base": {
+  "dev_usd": -347.0,
+  "test_usd": -395.3,
+  "test_up": 0.028,
+  "trades_per_day": 97.6,
+  "bp_per_trade": -4.57,
+  "worst_day": -993.0,
+  "years": {
+   "2022": -312.4,
+   "2023": -326.0,
+   "2024": -387.9,
+   "2025": -384.7,
+   "2026": -420.0
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -328.6,
+  "test_usd": -398.6,
+  "test_up": 0.006,
+  "trades_per_day": 96.4,
+  "bp_per_trade": -4.53,
+  "worst_day": -1096.0,
+  "years": {
+   "2022": -254.1,
+   "2023": -316.5,
+   "2024": -395.0,
+   "2025": -381.5,
+   "2026": -412.8
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -339.6,
+  "test_usd": -401.4,
+  "test_up": 0.012,
+  "trades_per_day": 99.4,
+  "bp_per_trade": -4.48,
+  "worst_day": -888.0,
+  "years": {
+   "2022": -308.3,
+   "2023": -323.2,
+   "2024": -383.3,
+   "2025": -388.1,
+   "2026": -424.2
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -339.3,
+  "test_usd": -405.2,
+  "test_up": 0.006,
+  "trades_per_day": 98.4,
+  "bp_per_trade": -4.54,
+  "worst_day": -1096.0,
+  "years": {
+   "2022": -270.6,
+   "2023": -326.0,
+   "2024": -404.1,
+   "2025": -385.5,
+   "2026": -422.5
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -321.4,
+  "test_usd": -405.5,
+  "test_up": 0.102,
+  "trades_per_day": 386.5,
+  "bp_per_trade": -1.13,
+  "worst_day": -1328.0,
+  "years": {
+   "2022": -233.3,
+   "2023": -293.5,
+   "2024": -414.1,
+   "2025": -448.5,
+   "2026": -336.2
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z3.0 hold 1m | base": {
+  "dev_usd": -347.7,
+  "test_usd": -410.1,
+  "test_up": 0.014,
+  "trades_per_day": 101.4,
+  "bp_per_trade": -4.49,
+  "worst_day": -978.0,
+  "years": {
+   "2022": -308.9,
+   "2023": -334.1,
+   "2024": -391.9,
+   "2025": -397.2,
+   "2026": -431.5
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -419.8,
+  "test_usd": -401.8,
+  "test_up": 0.073,
+  "trades_per_day": 184.3,
+  "bp_per_trade": -2.67,
+  "worst_day": -1942.0,
+  "years": {
+   "2022": -333.7,
+   "2023": -418.0,
+   "2024": -464.2,
+   "2025": -381.3,
+   "2026": -402.6
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -421.3,
+  "test_usd": -415.9,
+  "test_up": 0.039,
+  "trades_per_day": 189.0,
+  "bp_per_trade": -2.66,
+  "worst_day": -1319.0,
+  "years": {
+   "2022": -416.9,
+   "2023": -393.0,
+   "2024": -440.8,
+   "2025": -398.5,
+   "2026": -451.1
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -355.3,
+  "test_usd": -431.2,
+  "test_up": 0.104,
+  "trades_per_day": 376.2,
+  "bp_per_trade": -1.26,
+  "worst_day": -1612.0,
+  "years": {
+   "2022": -209.7,
+   "2023": -379.0,
+   "2024": -434.4,
+   "2025": -456.4,
+   "2026": -356.5
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -438.7,
+  "test_usd": -433.9,
+  "test_up": 0.024,
+  "trades_per_day": 112.6,
+  "bp_per_trade": -4.65,
+  "worst_day": -2073.0,
+  "years": {
+   "2022": -428.1,
+   "2023": -446.3,
+   "2024": -436.2,
+   "2025": -420.5,
+   "2026": -447.6
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -364.4,
+  "test_usd": -441.5,
+  "test_up": 0.11,
+  "trades_per_day": 390.7,
+  "bp_per_trade": -1.24,
+  "worst_day": -1675.0,
+  "years": {
+   "2022": -220.5,
+   "2023": -395.9,
+   "2024": -440.4,
+   "2025": -458.0,
+   "2026": -372.1
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -442.9,
+  "test_usd": -431.6,
+  "test_up": 0.047,
+  "trades_per_day": 195.8,
+  "bp_per_trade": -2.68,
+  "worst_day": -1338.0,
+  "years": {
+   "2022": -414.8,
+   "2023": -414.8,
+   "2024": -467.3,
+   "2025": -417.9,
+   "2026": -463.1
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 3m | tight": {
+  "dev_usd": -445.3,
+  "test_usd": -416.6,
+  "test_up": 0.083,
+  "trades_per_day": 191.1,
+  "bp_per_trade": -2.7,
+  "worst_day": -1955.0,
+  "years": {
+   "2022": -355.5,
+   "2023": -447.7,
+   "2024": -481.1,
+   "2025": -402.6,
+   "2026": -411.5
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -452.4,
+  "test_usd": -441.5,
+  "test_up": 0.024,
+  "trades_per_day": 116.8,
+  "bp_per_trade": -4.59,
+  "worst_day": -1088.0,
+  "years": {
+   "2022": -481.2,
+   "2023": -441.0,
+   "2024": -433.3,
+   "2025": -430.8,
+   "2026": -479.7
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -453.2,
+  "test_usd": -444.4,
+  "test_up": 0.022,
+  "trades_per_day": 115.1,
+  "bp_per_trade": -4.68,
+  "worst_day": -1987.0,
+  "years": {
+   "2022": -445.6,
+   "2023": -463.5,
+   "2024": -446.2,
+   "2025": -429.2,
+   "2026": -460.0
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 3m | base": {
+  "dev_usd": -461.4,
+  "test_usd": -451.8,
+  "test_up": 0.03,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -4.58,
+  "worst_day": -1074.0,
+  "years": {
+   "2022": -474.2,
+   "2023": -453.2,
+   "2024": -444.0,
+   "2025": -444.2,
+   "2026": -486.9
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -455.3,
+  "test_usd": -469.2,
+  "test_up": 0.01,
+  "trades_per_day": 119.5,
+  "bp_per_trade": -4.64,
+  "worst_day": -1626.0,
+  "years": {
+   "2022": -453.0,
+   "2023": -461.3,
+   "2024": -453.5,
+   "2025": -455.2,
+   "2026": -489.7
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -470.3,
+  "test_usd": -467.2,
+  "test_up": 0.01,
+  "trades_per_day": 124.2,
+  "bp_per_trade": -4.53,
+  "worst_day": -1114.0,
+  "years": {
+   "2022": -507.5,
+   "2023": -457.7,
+   "2024": -454.5,
+   "2025": -460.0,
+   "2026": -497.5
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -467.4,
+  "test_usd": -476.7,
+  "test_up": 0.018,
+  "trades_per_day": 222.2,
+  "bp_per_trade": -2.55,
+  "worst_day": -1238.0,
+  "years": {
+   "2022": -446.5,
+   "2023": -436.2,
+   "2024": -506.5,
+   "2025": -456.9,
+   "2026": -506.5
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -468.1,
+  "test_usd": -478.0,
+  "test_up": 0.031,
+  "trades_per_day": 216.6,
+  "bp_per_trade": -2.62,
+  "worst_day": -1550.0,
+  "years": {
+   "2022": -372.7,
+   "2023": -460.7,
+   "2024": -527.7,
+   "2025": -455.8,
+   "2026": -484.8
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -468.5,
+  "test_usd": -478.4,
+  "test_up": 0.012,
+  "trades_per_day": 122.1,
+  "bp_per_trade": -4.65,
+  "worst_day": -1628.0,
+  "years": {
+   "2022": -470.5,
+   "2023": -477.9,
+   "2024": -461.7,
+   "2025": -462.2,
+   "2026": -500.2
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 2m | base": {
+  "dev_usd": -479.7,
+  "test_usd": -477.1,
+  "test_up": 0.014,
+  "trades_per_day": 127.0,
+  "bp_per_trade": -4.52,
+  "worst_day": -1143.0,
+  "years": {
+   "2022": -506.4,
+   "2023": -468.9,
+   "2024": -466.0,
+   "2025": -472.8,
+   "2026": -503.3
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -462.6,
+  "test_usd": -483.4,
+  "test_up": 0.004,
+  "trades_per_day": 125.7,
+  "bp_per_trade": -4.52,
+  "worst_day": -1134.0,
+  "years": {
+   "2022": -449.7,
+   "2023": -466.4,
+   "2024": -469.2,
+   "2025": -470.2,
+   "2026": -502.3
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -476.7,
+  "test_usd": -488.4,
+  "test_up": 0.004,
+  "trades_per_day": 130.4,
+  "bp_per_trade": -4.44,
+  "worst_day": -1063.0,
+  "years": {
+   "2022": -506.3,
+   "2023": -472.0,
+   "2024": -465.2,
+   "2025": -477.0,
+   "2026": -517.8
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -491.4,
+  "test_usd": -492.0,
+  "test_up": 0.03,
+  "trades_per_day": 223.8,
+  "bp_per_trade": -2.64,
+  "worst_day": -1448.0,
+  "years": {
+   "2022": -400.7,
+   "2023": -482.6,
+   "2024": -546.4,
+   "2025": -471.5,
+   "2026": -498.3
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -476.0,
+  "test_usd": -492.3,
+  "test_up": 0.002,
+  "trades_per_day": 128.4,
+  "bp_per_trade": -4.53,
+  "worst_day": -1176.0,
+  "years": {
+   "2022": -468.2,
+   "2023": -479.7,
+   "2024": -480.1,
+   "2025": -475.8,
+   "2026": -515.0
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 2m | tight": {
+  "dev_usd": -488.2,
+  "test_usd": -494.1,
+  "test_up": 0.026,
+  "trades_per_day": 229.4,
+  "bp_per_trade": -2.57,
+  "worst_day": -1326.0,
+  "years": {
+   "2022": -449.8,
+   "2023": -454.2,
+   "2024": -533.7,
+   "2025": -481.4,
+   "2026": -516.1
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z3.0 hold 1m | base": {
+  "dev_usd": -488.4,
+  "test_usd": -499.6,
+  "test_up": 0.006,
+  "trades_per_day": 133.2,
+  "bp_per_trade": -4.45,
+  "worst_day": -1101.0,
+  "years": {
+   "2022": -512.6,
+   "2023": -486.3,
+   "2024": -476.1,
+   "2025": -488.7,
+   "2026": -528.1
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -425.8,
+  "test_usd": -514.8,
+  "test_up": 0.043,
+  "trades_per_day": 184.3,
+  "bp_per_trade": -3.07,
+  "worst_day": -1397.0,
+  "years": {
+   "2022": -326.3,
+   "2023": -407.3,
+   "2024": -520.3,
+   "2025": -544.2,
+   "2026": -456.2
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -459.1,
+  "test_usd": -522.9,
+  "test_up": 0.047,
+  "trades_per_day": 189.0,
+  "bp_per_trade": -3.12,
+  "worst_day": -1904.0,
+  "years": {
+   "2022": -292.1,
+   "2023": -473.6,
+   "2024": -560.3,
+   "2025": -555.9,
+   "2026": -424.3
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -431.7,
+  "test_usd": -530.1,
+  "test_up": 0.049,
+  "trades_per_day": 191.1,
+  "bp_per_trade": -3.02,
+  "worst_day": -1403.0,
+  "years": {
+   "2022": -323.9,
+   "2023": -408.6,
+   "2024": -540.0,
+   "2025": -556.7,
+   "2026": -470.6
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -470.8,
+  "test_usd": -537.5,
+  "test_up": 0.053,
+  "trades_per_day": 195.8,
+  "bp_per_trade": -3.09,
+  "worst_day": -1879.0,
+  "years": {
+   "2022": -321.9,
+   "2023": -485.3,
+   "2024": -568.6,
+   "2025": -571.0,
+   "2026": -435.9
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -511.4,
+  "test_usd": -552.5,
+  "test_up": 0.008,
+  "trades_per_day": 255.9,
+  "bp_per_trade": -2.5,
+  "worst_day": -1240.0,
+  "years": {
+   "2022": -387.1,
+   "2023": -497.5,
+   "2024": -604.8,
+   "2025": -532.5,
+   "2026": -546.0
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -513.4,
+  "test_usd": -552.5,
+  "test_up": 0.006,
+  "trades_per_day": 261.3,
+  "bp_per_trade": -2.45,
+  "worst_day": -1171.0,
+  "years": {
+   "2022": -446.0,
+   "2023": -476.8,
+   "2024": -598.8,
+   "2025": -533.6,
+   "2026": -559.8
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -534.5,
+  "test_usd": -570.0,
+  "test_up": 0.01,
+  "trades_per_day": 263.6,
+  "bp_per_trade": -2.52,
+  "worst_day": -1324.0,
+  "years": {
+   "2022": -413.5,
+   "2023": -516.9,
+   "2024": -628.4,
+   "2025": -553.5,
+   "2026": -559.2
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 1m | tight": {
+  "dev_usd": -535.7,
+  "test_usd": -573.6,
+  "test_up": 0.012,
+  "trades_per_day": 268.9,
+  "bp_per_trade": -2.48,
+  "worst_day": -1476.0,
+  "years": {
+   "2022": -452.5,
+   "2023": -500.2,
+   "2024": -626.2,
+   "2025": -558.8,
+   "2026": -573.4
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -465.3,
+  "test_usd": -601.2,
+  "test_up": 0.02,
+  "trades_per_day": 503.2,
+  "bp_per_trade": -1.27,
+  "worst_day": -1438.0,
+  "years": {
+   "2022": -309.4,
+   "2023": -439.4,
+   "2024": -595.7,
+   "2025": -638.3,
+   "2026": -539.7
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -473.3,
+  "test_usd": -612.0,
+  "test_up": 0.03,
+  "trades_per_day": 519.5,
+  "bp_per_trade": -1.26,
+  "worst_day": -1493.0,
+  "years": {
+   "2022": -311.2,
+   "2023": -451.1,
+   "2024": -604.1,
+   "2025": -650.0,
+   "2026": -547.6
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -496.2,
+  "test_usd": -618.7,
+  "test_up": 0.026,
+  "trades_per_day": 216.6,
+  "bp_per_trade": -3.09,
+  "worst_day": -1443.0,
+  "years": {
+   "2022": -337.4,
+   "2023": -464.4,
+   "2024": -646.2,
+   "2025": -655.6,
+   "2026": -533.9
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -507.1,
+  "test_usd": -624.7,
+  "test_up": 0.045,
+  "trades_per_day": 510.2,
+  "bp_per_trade": -1.33,
+  "worst_day": -1936.0,
+  "years": {
+   "2022": -330.9,
+   "2023": -518.9,
+   "2024": -614.5,
+   "2025": -653.4,
+   "2026": -555.3
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -517.7,
+  "test_usd": -634.8,
+  "test_up": 0.039,
+  "trades_per_day": 526.5,
+  "bp_per_trade": -1.31,
+  "worst_day": -2144.0,
+  "years": {
+   "2022": -340.9,
+   "2023": -534.2,
+   "2024": -621.1,
+   "2025": -659.1,
+   "2026": -570.6
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -506.3,
+  "test_usd": -636.6,
+  "test_up": 0.026,
+  "trades_per_day": 223.8,
+  "bp_per_trade": -3.07,
+  "worst_day": -1477.0,
+  "years": {
+   "2022": -329.2,
+   "2023": -475.6,
+   "2024": -666.9,
+   "2025": -676.0,
+   "2026": -544.6
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -536.8,
+  "test_usd": -648.1,
+  "test_up": 0.026,
+  "trades_per_day": 222.2,
+  "bp_per_trade": -3.2,
+  "worst_day": -2029.0,
+  "years": {
+   "2022": -321.5,
+   "2023": -535.2,
+   "2024": -693.4,
+   "2025": -686.3,
+   "2026": -532.1
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -551.1,
+  "test_usd": -662.7,
+  "test_up": 0.026,
+  "trades_per_day": 229.4,
+  "bp_per_trade": -3.18,
+  "worst_day": -1993.0,
+  "years": {
+   "2022": -346.6,
+   "2023": -552.5,
+   "2024": -703.7,
+   "2025": -698.2,
+   "2026": -547.0
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -685.8,
+  "test_usd": -561.2,
+  "test_up": 0.03,
+  "trades_per_day": 286.3,
+  "bp_per_trade": -2.61,
+  "worst_day": -1961.0,
+  "years": {
+   "2022": -789.1,
+   "2023": -692.6,
+   "2024": -587.6,
+   "2025": -562.1,
+   "2026": -582.0
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -701.7,
+  "test_usd": -707.3,
+  "test_up": 0.014,
+  "trades_per_day": 184.3,
+  "bp_per_trade": -4.59,
+  "worst_day": -2136.0,
+  "years": {
+   "2022": -553.7,
+   "2023": -693.1,
+   "2024": -792.4,
+   "2025": -689.7,
+   "2026": -688.8
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -707.4,
+  "test_usd": -573.0,
+  "test_up": 0.037,
+  "trades_per_day": 283.8,
+  "bp_per_trade": -2.7,
+  "worst_day": -2874.0,
+  "years": {
+   "2022": -785.2,
+   "2023": -732.5,
+   "2024": -620.3,
+   "2025": -543.9,
+   "2026": -601.6
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -697.7,
+  "test_usd": -721.0,
+  "test_up": 0.022,
+  "trades_per_day": 283.8,
+  "bp_per_trade": -3.0,
+  "worst_day": -2183.0,
+  "years": {
+   "2022": -640.8,
+   "2023": -700.0,
+   "2024": -730.5,
+   "2025": -766.0,
+   "2026": -648.2
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -721.1,
+  "test_usd": -584.8,
+  "test_up": 0.035,
+  "trades_per_day": 299.1,
+  "bp_per_trade": -2.62,
+  "worst_day": -2021.0,
+  "years": {
+   "2022": -806.4,
+   "2023": -728.8,
+   "2024": -617.9,
+   "2025": -593.0,
+   "2026": -604.2
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -714.7,
+  "test_usd": -728.8,
+  "test_up": 0.002,
+  "trades_per_day": 189.0,
+  "bp_per_trade": -4.58,
+  "worst_day": -1602.0,
+  "years": {
+   "2022": -653.2,
+   "2023": -681.9,
+   "2024": -774.4,
+   "2025": -716.7,
+   "2026": -742.8
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -737.7,
+  "test_usd": -732.2,
+  "test_up": 0.018,
+  "trades_per_day": 191.1,
+  "bp_per_trade": -4.61,
+  "worst_day": -2152.0,
+  "years": {
+   "2022": -581.9,
+   "2023": -733.1,
+   "2024": -821.5,
+   "2025": -722.4,
+   "2026": -705.5
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -742.7,
+  "test_usd": -743.2,
+  "test_up": 0.024,
+  "trades_per_day": 286.3,
+  "bp_per_trade": -3.11,
+  "worst_day": -2561.0,
+  "years": {
+   "2022": -685.2,
+   "2023": -772.0,
+   "2024": -761.7,
+   "2025": -762.8,
+   "2026": -677.0
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 3m | tight": {
+  "dev_usd": -746.4,
+  "test_usd": -599.3,
+  "test_up": 0.043,
+  "trades_per_day": 296.6,
+  "bp_per_trade": -2.72,
+  "worst_day": -3084.0,
+  "years": {
+   "2022": -804.7,
+   "2023": -780.4,
+   "2024": -652.0,
+   "2025": -574.8,
+   "2026": -622.6
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -721.6,
+  "test_usd": -750.2,
+  "test_up": 0.02,
+  "trades_per_day": 296.6,
+  "bp_per_trade": -2.98,
+  "worst_day": -2297.0,
+  "years": {
+   "2022": -678.0,
+   "2023": -718.4,
+   "2024": -758.0,
+   "2025": -792.7,
+   "2026": -679.8
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 3m | base": {
+  "dev_usd": -747.5,
+  "test_usd": -754.7,
+  "test_up": 0.008,
+  "trades_per_day": 195.8,
+  "bp_per_trade": -4.6,
+  "worst_day": -1669.0,
+  "years": {
+   "2022": -660.4,
+   "2023": -714.8,
+   "2024": -812.6,
+   "2025": -747.6,
+   "2026": -762.8
+  }
+ },
+ "buy the drop 10:00-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -594.3,
+  "test_usd": -766.4,
+  "test_up": 0.01,
+  "trades_per_day": 255.9,
+  "bp_per_trade": -3.2,
+  "worst_day": -1877.0,
+  "years": {
+   "2022": -394.2,
+   "2023": -539.3,
+   "2024": -804.8,
+   "2025": -807.2,
+   "2026": -666.6
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -772.8,
+  "test_usd": -774.8,
+  "test_up": 0.024,
+  "trades_per_day": 299.1,
+  "bp_per_trade": -3.1,
+  "worst_day": -2798.0,
+  "years": {
+   "2022": -734.0,
+   "2023": -804.6,
+   "2024": -789.4,
+   "2025": -789.6,
+   "2026": -707.0
+  }
+ },
+ "buy the drop 09:35-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -606.3,
+  "test_usd": -782.7,
+  "test_up": 0.008,
+  "trades_per_day": 263.6,
+  "bp_per_trade": -3.17,
+  "worst_day": -1970.0,
+  "years": {
+   "2022": -388.1,
+   "2023": -554.7,
+   "2024": -822.9,
+   "2025": -824.6,
+   "2026": -678.8
+  }
+ },
+ "sell the rise 10:00-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -627.9,
+  "test_usd": -795.5,
+  "test_up": 0.012,
+  "trades_per_day": 261.3,
+  "bp_per_trade": -3.27,
+  "worst_day": -1658.0,
+  "years": {
+   "2022": -388.2,
+   "2023": -606.2,
+   "2024": -828.6,
+   "2025": -841.3,
+   "2026": -672.8
+  }
+ },
+ "sell the rise 09:35-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -642.9,
+  "test_usd": -808.3,
+  "test_up": 0.01,
+  "trades_per_day": 268.9,
+  "bp_per_trade": -3.24,
+  "worst_day": -1790.0,
+  "years": {
+   "2022": -411.5,
+   "2023": -620.4,
+   "2024": -841.0,
+   "2025": -854.9,
+   "2026": -684.5
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -789.6,
+  "test_usd": -843.6,
+  "test_up": 0.006,
+  "trades_per_day": 216.6,
+  "bp_per_trade": -4.53,
+  "worst_day": -1759.0,
+  "years": {
+   "2022": -609.3,
+   "2023": -769.1,
+   "2024": -919.0,
+   "2025": -826.3,
+   "2026": -824.4
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -802.1,
+  "test_usd": -851.6,
+  "test_up": 0.0,
+  "trades_per_day": 222.2,
+  "bp_per_trade": -4.47,
+  "worst_day": -1650.0,
+  "years": {
+   "2022": -702.5,
+   "2023": -760.0,
+   "2024": -906.5,
+   "2025": -837.9,
+   "2026": -852.8
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -823.9,
+  "test_usd": -868.2,
+  "test_up": 0.006,
+  "trades_per_day": 223.8,
+  "bp_per_trade": -4.54,
+  "worst_day": -1687.0,
+  "years": {
+   "2022": -644.0,
+   "2023": -802.0,
+   "2024": -950.8,
+   "2025": -853.9,
+   "2026": -845.9
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -875.8,
+  "test_usd": -724.5,
+  "test_up": 0.008,
+  "trades_per_day": 376.2,
+  "bp_per_trade": -2.55,
+  "worst_day": -1839.0,
+  "years": {
+   "2022": -1014.4,
+   "2023": -883.0,
+   "2024": -757.0,
+   "2025": -712.3,
+   "2026": -763.0
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 2m | base": {
+  "dev_usd": -834.7,
+  "test_usd": -879.7,
+  "test_up": 0.0,
+  "trades_per_day": 229.4,
+  "bp_per_trade": -4.49,
+  "worst_day": -1767.0,
+  "years": {
+   "2022": -715.3,
+   "2023": -789.7,
+   "2024": -946.1,
+   "2025": -874.6,
+   "2026": -870.4
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -895.2,
+  "test_usd": -749.9,
+  "test_up": 0.01,
+  "trades_per_day": 371.9,
+  "bp_per_trade": -2.65,
+  "worst_day": -2609.0,
+  "years": {
+   "2022": -970.7,
+   "2023": -943.5,
+   "2024": -779.5,
+   "2025": -716.1,
+   "2026": -788.2
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -916.3,
+  "test_usd": -755.9,
+  "test_up": 0.016,
+  "trades_per_day": 390.7,
+  "bp_per_trade": -2.57,
+  "worst_day": -2270.0,
+  "years": {
+   "2022": -1051.6,
+   "2023": -918.7,
+   "2024": -795.3,
+   "2025": -754.7,
+   "2026": -786.2
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 2m | tight": {
+  "dev_usd": -934.8,
+  "test_usd": -779.5,
+  "test_up": 0.01,
+  "trades_per_day": 386.5,
+  "bp_per_trade": -2.66,
+  "worst_day": -2817.0,
+  "years": {
+   "2022": -1001.0,
+   "2023": -987.3,
+   "2024": -814.6,
+   "2025": -748.2,
+   "2026": -814.5
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -918.0,
+  "test_usd": -964.6,
+  "test_up": 0.006,
+  "trades_per_day": 371.9,
+  "bp_per_trade": -3.04,
+  "worst_day": -1845.0,
+  "years": {
+   "2022": -818.6,
+   "2023": -902.8,
+   "2024": -996.1,
+   "2025": -1013.3,
+   "2026": -878.5
+  }
+ },
+ "sell the drop 10:00-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -880.0,
+  "test_usd": -992.2,
+  "test_up": 0.002,
+  "trades_per_day": 255.9,
+  "bp_per_trade": -4.39,
+  "worst_day": -1824.0,
+  "years": {
+   "2022": -647.5,
+   "2023": -843.1,
+   "2024": -1074.7,
+   "2025": -979.1,
+   "2026": -950.2
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -949.4,
+  "test_usd": -998.0,
+  "test_up": 0.008,
+  "trades_per_day": 386.5,
+  "bp_per_trade": -3.02,
+  "worst_day": -1986.0,
+  "years": {
+   "2022": -850.4,
+   "2023": -933.9,
+   "2024": -1028.4,
+   "2025": -1046.9,
+   "2026": -911.6
+  }
+ },
+ "buy the rise 10:00-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -893.9,
+  "test_usd": -1001.8,
+  "test_up": 0.002,
+  "trades_per_day": 261.3,
+  "bp_per_trade": -4.36,
+  "worst_day": -1724.0,
+  "years": {
+   "2022": -724.0,
+   "2023": -837.9,
+   "2024": -1074.6,
+   "2025": -991.9,
+   "2026": -970.7
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -970.9,
+  "test_usd": -1009.0,
+  "test_up": 0.016,
+  "trades_per_day": 376.2,
+  "bp_per_trade": -3.16,
+  "worst_day": -2347.0,
+  "years": {
+   "2022": -821.7,
+   "2023": -1010.0,
+   "2024": -1030.1,
+   "2025": -1040.7,
+   "2026": -916.3
+  }
+ },
+ "sell the drop 09:35-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -914.8,
+  "test_usd": -1021.0,
+  "test_up": 0.0,
+  "trades_per_day": 263.6,
+  "bp_per_trade": -4.41,
+  "worst_day": -1934.0,
+  "years": {
+   "2022": -680.7,
+   "2023": -874.1,
+   "2024": -1112.1,
+   "2025": -1012.8,
+   "2026": -971.9
+  }
+ },
+ "buy the rise 09:35-15:50 k1.5 z2.0 hold 1m | base": {
+  "dev_usd": -928.6,
+  "test_usd": -1034.2,
+  "test_up": 0.002,
+  "trades_per_day": 268.9,
+  "bp_per_trade": -4.38,
+  "worst_day": -2015.0,
+  "years": {
+   "2022": -740.5,
+   "2023": -873.7,
+   "2024": -1115.3,
+   "2025": -1030.0,
+   "2026": -992.7
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -1004.7,
+  "test_usd": -1040.2,
+  "test_up": 0.014,
+  "trades_per_day": 390.7,
+  "bp_per_trade": -3.14,
+  "worst_day": -2473.0,
+  "years": {
+   "2022": -856.6,
+   "2023": -1053.2,
+   "2024": -1058.2,
+   "2025": -1064.3,
+   "2026": -951.3
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -1114.8,
+  "test_usd": -974.6,
+  "test_up": 0.006,
+  "trades_per_day": 510.2,
+  "bp_per_trade": -2.46,
+  "worst_day": -1979.0,
+  "years": {
+   "2022": -1226.0,
+   "2023": -1133.6,
+   "2024": -1005.6,
+   "2025": -953.6,
+   "2026": -1013.5
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -1124.8,
+  "test_usd": -976.3,
+  "test_up": 0.0,
+  "trades_per_day": 503.2,
+  "bp_per_trade": -2.5,
+  "worst_day": -2152.0,
+  "years": {
+   "2022": -1197.8,
+   "2023": -1170.1,
+   "2024": -1012.8,
+   "2025": -939.3,
+   "2026": -1017.8
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -1160.1,
+  "test_usd": -1011.2,
+  "test_up": 0.004,
+  "trades_per_day": 526.5,
+  "bp_per_trade": -2.47,
+  "worst_day": -2117.0,
+  "years": {
+   "2022": -1269.0,
+   "2023": -1178.1,
+   "2024": -1048.6,
+   "2025": -997.5,
+   "2026": -1041.5
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -1162.0,
+  "test_usd": -996.0,
+  "test_up": 0.006,
+  "trades_per_day": 286.3,
+  "bp_per_trade": -4.52,
+  "worst_day": -2329.0,
+  "years": {
+   "2022": -1280.5,
+   "2023": -1180.8,
+   "2024": -1037.4,
+   "2025": -1003.8,
+   "2026": -1001.7
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 1m | tight": {
+  "dev_usd": -1169.4,
+  "test_usd": -1012.6,
+  "test_up": 0.0,
+  "trades_per_day": 519.5,
+  "bp_per_trade": -2.52,
+  "worst_day": -2286.0,
+  "years": {
+   "2022": -1240.8,
+   "2023": -1214.1,
+   "2024": -1054.8,
+   "2025": -977.1,
+   "2026": -1053.7
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -1175.8,
+  "test_usd": -1004.3,
+  "test_up": 0.0,
+  "trades_per_day": 283.8,
+  "bp_per_trade": -4.61,
+  "worst_day": -3315.0,
+  "years": {
+   "2022": -1260.5,
+   "2023": -1209.9,
+   "2024": -1070.6,
+   "2025": -980.6,
+   "2026": -1018.2
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -1219.0,
+  "test_usd": -1038.0,
+  "test_up": 0.008,
+  "trades_per_day": 299.1,
+  "bp_per_trade": -4.52,
+  "worst_day": -2408.0,
+  "years": {
+   "2022": -1319.8,
+   "2023": -1239.9,
+   "2024": -1087.0,
+   "2025": -1053.8,
+   "2026": -1041.3
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 3m | base": {
+  "dev_usd": -1235.7,
+  "test_usd": -1049.1,
+  "test_up": 0.0,
+  "trades_per_day": 296.6,
+  "bp_per_trade": -4.62,
+  "worst_day": -3543.0,
+  "years": {
+   "2022": -1298.9,
+   "2023": -1280.0,
+   "2024": -1122.0,
+   "2025": -1030.6,
+   "2026": -1056.7
+  }
+ },
+ "buy the drop 10:00-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1260.3,
+  "test_usd": -1390.0,
+  "test_up": 0.002,
+  "trades_per_day": 503.2,
+  "bp_per_trade": -3.16,
+  "worst_day": -2243.0,
+  "years": {
+   "2022": -1063.0,
+   "2023": -1244.2,
+   "2024": -1400.0,
+   "2025": -1427.2,
+   "2026": -1318.4
+  }
+ },
+ "buy the drop 09:35-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1294.6,
+  "test_usd": -1424.2,
+  "test_up": 0.002,
+  "trades_per_day": 519.5,
+  "bp_per_trade": -3.14,
+  "worst_day": -2336.0,
+  "years": {
+   "2022": -1087.3,
+   "2023": -1283.7,
+   "2024": -1433.5,
+   "2025": -1463.5,
+   "2026": -1348.2
+  }
+ },
+ "sell the rise 10:00-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1318.1,
+  "test_usd": -1424.3,
+  "test_up": 0.004,
+  "trades_per_day": 510.2,
+  "bp_per_trade": -3.23,
+  "worst_day": -2790.0,
+  "years": {
+   "2022": -1109.4,
+   "2023": -1345.2,
+   "2024": -1424.5,
+   "2025": -1456.9,
+   "2026": -1339.7
+  }
+ },
+ "sell the rise 09:35-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1356.6,
+  "test_usd": -1457.8,
+  "test_up": 0.002,
+  "trades_per_day": 526.5,
+  "bp_per_trade": -3.21,
+  "worst_day": -3045.0,
+  "years": {
+   "2022": -1145.9,
+   "2023": -1390.3,
+   "2024": -1455.9,
+   "2025": -1487.4,
+   "2026": -1376.7
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -1491.4,
+  "test_usd": -1302.4,
+  "test_up": 0.0,
+  "trades_per_day": 376.2,
+  "bp_per_trade": -4.45,
+  "worst_day": -2464.0,
+  "years": {
+   "2022": -1626.5,
+   "2023": -1514.0,
+   "2024": -1352.6,
+   "2025": -1296.7,
+   "2026": -1322.8
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -1499.6,
+  "test_usd": -1321.4,
+  "test_up": 0.0,
+  "trades_per_day": 371.9,
+  "bp_per_trade": -4.55,
+  "worst_day": -3160.0,
+  "years": {
+   "2022": -1567.1,
+   "2023": -1558.9,
+   "2024": -1371.4,
+   "2025": -1292.6,
+   "2026": -1343.8
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -1556.6,
+  "test_usd": -1354.6,
+  "test_up": 0.0,
+  "trades_per_day": 390.7,
+  "bp_per_trade": -4.47,
+  "worst_day": -2894.0,
+  "years": {
+   "2022": -1687.7,
+   "2023": -1576.0,
+   "2024": -1413.1,
+   "2025": -1361.0,
+   "2026": -1365.4
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 2m | base": {
+  "dev_usd": -1562.8,
+  "test_usd": -1372.0,
+  "test_up": 0.0,
+  "trades_per_day": 386.5,
+  "bp_per_trade": -4.55,
+  "worst_day": -3386.0,
+  "years": {
+   "2022": -1618.1,
+   "2023": -1627.7,
+   "2024": -1429.0,
+   "2025": -1346.6,
+   "2026": -1389.8
+  }
+ },
+ "sell the drop 10:00-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1919.8,
+  "test_usd": -1765.1,
+  "test_up": 0.0,
+  "trades_per_day": 503.2,
+  "bp_per_trade": -4.39,
+  "worst_day": -3015.0,
+  "years": {
+   "2022": -1951.5,
+   "2023": -1974.9,
+   "2024": -1817.0,
+   "2025": -1728.2,
+   "2026": -1796.5
+  }
+ },
+ "buy the rise 10:00-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1925.8,
+  "test_usd": -1774.2,
+  "test_up": 0.0,
+  "trades_per_day": 510.2,
+  "bp_per_trade": -4.35,
+  "worst_day": -2942.0,
+  "years": {
+   "2022": -2004.5,
+   "2023": -1959.9,
+   "2024": -1815.6,
+   "2025": -1757.1,
+   "2026": -1797.9
+  }
+ },
+ "sell the drop 09:35-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1990.8,
+  "test_usd": -1824.9,
+  "test_up": 0.0,
+  "trades_per_day": 519.5,
+  "bp_per_trade": -4.4,
+  "worst_day": -3218.0,
+  "years": {
+   "2022": -2016.8,
+   "2023": -2046.7,
+   "2024": -1884.3,
+   "2025": -1790.6,
+   "2026": -1854.3
+  }
+ },
+ "buy the rise 09:35-15:50 k0.75 z2.0 hold 1m | base": {
+  "dev_usd": -1999.1,
+  "test_usd": -1834.2,
+  "test_up": 0.0,
+  "trades_per_day": 526.5,
+  "bp_per_trade": -4.37,
+  "worst_day": -3003.0,
+  "years": {
+   "2022": -2073.9,
+   "2023": -2034.2,
+   "2024": -1883.5,
+   "2025": -1825.8,
+   "2026": -1847.5
+  }
+ }
+}

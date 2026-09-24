@@ -1,0 +1,98 @@
+{
+ "own drop 09:35-10:00 k1.5 z1.5": {
+  "events": 41,
+  "minute_bars_bid": -1.53,
+  "tight_cost_bp": 1.5,
+  "lag0": {
+   "bid": -1.53,
+   "mid": -1.57,
+   "ask_to_bid": -4.1,
+   "cfd_spread": 2.57
+  },
+  "lag10": {
+   "bid": -2.68,
+   "mid": -2.76,
+   "ask_to_bid": -5.26,
+   "cfd_spread": 2.57
+  },
+  "lag20": {
+   "bid": -3.65,
+   "mid": -3.81,
+   "ask_to_bid": -6.27,
+   "cfd_spread": 2.62
+  },
+  "lag30": {
+   "bid": -2.01,
+   "mid": -2.05,
+   "ask_to_bid": -4.65,
+   "cfd_spread": 2.64
+  },
+  "by_name_mid0_bp": {
+   "NVDA": -1.57
+  }
+ },
+ "own drop all day k1.5 z3.0": {
+  "events": 300,
+  "minute_bars_bid": 0.43,
+  "tight_cost_bp": 1.5,
+  "lag0": {
+   "bid": 0.43,
+   "mid": 0.42,
+   "ask_to_bid": -1.21,
+   "cfd_spread": 1.64
+  },
+  "lag10": {
+   "bid": -0.41,
+   "mid": -0.45,
+   "ask_to_bid": -2.12,
+   "cfd_spread": 1.71
+  },
+  "lag20": {
+   "bid": -0.39,
+   "mid": -0.4,
+   "ask_to_bid": -2.06,
+   "cfd_spread": 1.67
+  },
+  "lag30": {
+   "bid": -0.92,
+   "mid": -0.95,
+   "ask_to_bid": -2.64,
+   "cfd_spread": 1.72
+  },
+  "by_name_mid0_bp": {
+   "NVDA": 0.42
+  }
+ },
+ "own drop all day k1.0 z2.0": {
+  "events": 1905,
+  "minute_bars_bid": 0.97,
+  "tight_cost_bp": 1.51,
+  "lag0": {
+   "bid": 0.97,
+   "mid": 0.96,
+   "ask_to_bid": -0.66,
+   "cfd_spread": 1.63
+  },
+  "lag10": {
+   "bid": 0.39,
+   "mid": 0.36,
+   "ask_to_bid": -1.3,
+   "cfd_spread": 1.69
+  },
+  "lag20": {
+   "bid": 0.31,
+   "mid": 0.27,
+   "ask_to_bid": -1.4,
+   "cfd_spread": 1.71
+  },
+  "lag30": {
+   "bid": 0.14,
+   "mid": 0.12,
+   "ask_to_bid": -1.55,
+   "cfd_spread": 1.7
+  },
+  "by_name_mid0_bp": {
+   "NVDA": 0.96
+  }
+ }
+}

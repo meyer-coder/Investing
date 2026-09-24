@@ -1,0 +1,51 @@
+{
+ "trades": 492,
+ "from": "2025-09-24",
+ "minute_bar_bid_bp": 5.41,
+ "tight_cost_bp": 1.52,
+ "by_lag": {
+  "0": {
+   "mid_bp": 3.98,
+   "bid_bp": 8.11,
+   "ask_to_bid_bp": -19.67,
+   "mid_net_tight_bp": 2.46,
+   "win_mid": 0.565
+  },
+  "1": {
+   "mid_bp": 3.53,
+   "bid_bp": 7.18,
+   "ask_to_bid_bp": -19.67,
+   "mid_net_tight_bp": 2.0,
+   "win_mid": 0.547
+  },
+  "2": {
+   "mid_bp": 3.46,
+   "bid_bp": 6.65,
+   "ask_to_bid_bp": -19.43,
+   "mid_net_tight_bp": 1.94,
+   "win_mid": 0.543
+  },
+  "3": {
+   "mid_bp": 3.43,
+   "bid_bp": 6.57,
+   "ask_to_bid_bp": -19.13,
+   "mid_net_tight_bp": 1.91,
+   "win_mid": 0.559
+  },
+  "5": {
+   "mid_bp": 3.35,
+   "bid_bp": 6.15,
+   "ask_to_bid_bp": -19.09,
+   "mid_net_tight_bp": 1.82,
+   "win_mid": 0.543
+  },
+  "10": {
+   "mid_bp": 3.2,
+   "bid_bp": 5.46,
+   "ask_to_bid_bp": -18.48,
+   "mid_net_tight_bp": 1.67,
+   "win_mid": 0.541
+  }
+ },
+ "book": "model"
+}

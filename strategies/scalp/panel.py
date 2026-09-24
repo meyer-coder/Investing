@@ -112,8 +112,44 @@ def build(names: Sequence[str] = NAMES, min_names: int = 50) -> Path:
     return path
 
 
-def load_panel():
-    z = np.load(CACHE / "panel.npz", allow_pickle=True)
+def build_mid() -> Path:
+    """The same sessions and names on mid prices: the bid panel averaged with the offer side (duka_stocks --ask)."""
+    cube, dates, names = load_panel()
+    ask = np.full_like(cube, np.nan)
+    pos = {d: i for i, d in enumerate(dates)}
+    for k, n in enumerate(names):
+        p = duka_stocks.STORE_ASK / f"{n}.npz"
+        if not p.exists():
+            continue
+        a = np.load(p)["a"]
+        local = a[:, 0] + _ny_offsets(a[:, 0])
+        day = np.floor(local / 86400).astype(np.int64)
+        mod = ((local % 86400) // 60).astype(np.int64) - (9 * 60 + 30)
+        keep = (mod >= 0) & (mod < 390)
+        day, mod, rows = day[keep], mod[keep], a[keep, 1:5]
+        i = np.array([pos.get(dt.date.fromordinal(719163 + int(x)).isoformat(), -1) for x in np.unique(day)])
+        i = i[np.searchsorted(np.unique(day), day)]
+        ok = i >= 0
+        ask[i[ok], k, mod[ok]] = rows[ok]
+    for i in range(len(dates)):
+        c = ask[i, :, :, 3]
+        has = ~np.isnan(c).all(axis=1)
+        if has.any():
+            cf = _ffill(c[has])
+            for j in range(3):
+                col = ask[i][has][:, :, j]
+                ask[i, np.flatnonzero(has)[:, None], np.arange(390)[None, :], j] = np.where(np.isnan(col), cf, col)
+            ask[i, has, :, 3] = cf
+    mid = np.where(np.isnan(ask), cube, (cube + ask) / 2).astype(np.float32)
+    spread = np.where(np.isnan(ask[..., 0]), np.nan, (ask[..., 0] - cube[..., 0]) / cube[..., 0]).astype(np.float32)
+    path = CACHE / "panel_mid.npz"
+    np.savez_compressed(path, cube=mid, dates=np.array(dates), names=np.array(names), spread=spread)
+    return path
+
+
+def load_panel(kind: str = "bid"):
+    """The bid panel (build) or the mid-price panel (build_mid)."""
+    z = np.load(CACHE / ("panel_mid.npz" if kind == "mid" else "panel.npz"), allow_pickle=True)
     return z["cube"], list(z["dates"]), list(z["names"])
 
 

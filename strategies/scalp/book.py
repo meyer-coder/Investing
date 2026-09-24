@@ -28,19 +28,22 @@ import candidates                                                            # n
 
 ACCOUNT = 25_000.0
 SPLIT = "2024-09-01"
-COSTS = {"base": lambda px: 2 * (0.01 / px + 1e-4), "tight": lambda px: 0.01 / px + 1e-4}
+COSTS = {"base": lambda px: 2 * (0.01 / px + 1e-4), "tight": lambda px: 0.01 / px + 1e-4, "none": lambda px: np.zeros_like(px)}
 
 
-def load() -> dict:
-    d = candidates.load()
+def load(kind: str = "bid") -> dict:
+    d = candidates.load(kind)
     d["f"] = {k: d["x"][:, j] for j, k in enumerate(d["features"])}
     d["date_of"] = np.array(d["dates"])[d["day"]]
     return d
 
 
 def replay(d: dict, mask: np.ndarray, side: np.ndarray, prio: np.ndarray, hold: int = 3, slots: int = 3,
-           delay: int = 0, cost: str = "base", max_per_day: Optional[int] = None) -> Dict[str, tuple]:
-    """{date: (dollars at 1x, trades, sum of net returns)} for every session in the table."""
+           delay: int = 0, cost: str = "base", max_per_day: Optional[int] = None,
+           taken: Optional[list] = None) -> Dict[str, tuple]:
+    """{date: (dollars at 1x, trades, sum of net returns)} for every session in the table.
+
+    Pass a list as `taken` to get the candidate rows actually traded."""
     hz = list(d["horizons"]).index(hold)
     idx = np.flatnonzero(mask & ~np.isnan(d["y"][:, delay, hz]))
     day, t, nm = d["day"][idx].astype(int), d["f"]["minute"][idx].astype(int), d["name"][idx].astype(int)
@@ -66,6 +69,8 @@ def replay(d: dict, mask: np.ndarray, side: np.ndarray, prio: np.ndarray, hold: 
                 break
             pnl += size * net[e]
             cnt += 1
+            if taken is not None:
+                taken.append(int(idx[e]))
             s += net[e]
             busy.append((t_in + hold, nm[e]))
         out[d["dates"][day[j]]] = (pnl, cnt, s)

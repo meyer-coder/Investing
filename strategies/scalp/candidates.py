@@ -1,6 +1,7 @@
 """Every sharp one-minute move in four years of stock minutes, with what came next.
 
     python strategies/scalp/candidates.py          # builds data/cache/duka/panel/candidates.npz
+    python strategies/scalp/candidates.py --mid    # the same on mid prices (after panel.build_mid())
 
 The family searches rerun the whole panel for each rule.  This pulls out, once,
 every (session, name, minute) where a name moved hard on its own (a one-minute
@@ -25,6 +26,7 @@ import panel                                                                 # n
 import splits                                                                # noqa: E402
 
 OUT = panel.CACHE / "candidates.npz"
+KIND = "bid"                                                                 # "mid": the mid-price panel (panel.build_mid)
 FEATURES = ["minute", "r1_atr", "resid_z", "r1", "atr", "resid", "gap", "mkt_r1", "mkt_r5", "ret5", "ret15", "ret30",
             "day_ret", "range_pos", "clv", "bar_range", "breadth_down", "breadth_up", "prev_z", "prev_r1_atr",
             "vol20", "atr_ratio", "px", "prev_day_ret", "sector_z"]
@@ -79,25 +81,29 @@ def _day(i: int):
         bar_range[ks, ts], down[ts], up[ts], prev_z[ks, ts], prev_r[ks, ts], v20[ks], atr[ks, ts] / _P["atr20"][i, ks],
         o[ks, np.minimum(ts + 1, T - 1)] * fac[i, ks], prev_day[ks], sz[ks, ts]]).astype(np.float32)
     fwd = np.full((len(ks), 2, len(HORIZONS)), np.nan, dtype=np.float32)
+    has_ask = ~np.isnan(_P["spread"][i]) if _P.get("spread") is not None else None
     for j, hz in enumerate(HORIZONS):
         for dl in (0, 1):
             t_in, t_out = ts + 1 + dl, ts + 1 + dl + hz
             ok = t_out < 386
+            if has_ask is not None:                                          # mid prices need both sides
+                ok &= has_ask[ks, np.minimum(t_in, 389)] & has_ask[ks, np.minimum(t_out, 389)]
             fwd[ok, dl, j] = o[ks[ok], t_out[ok]] / o[ks[ok], t_in[ok]] - 1.0
     return np.full(len(ks), i, dtype=np.int16), ks.astype(np.int16), feats, fwd
 
 
-def build() -> Path:
+def build(kind: str = "bid") -> Path:
     import multiprocessing as mp
     import families2
-    cube, dates, names = panel.load_panel()
+    cube, dates, names = panel.load_panel(kind)
     vol = np.nanstd(cube[:, :, 1:, 3] / cube[:, :, :-1, 3] - 1.0, axis=2)
     atr_day = np.nanmean((cube[:, :, 15:, 1] - cube[:, :, 15:, 2]) / cube[:, :, 15:, 3], axis=2)
     atr20 = np.full_like(atr_day, np.nan)
     for i in range(len(dates)):
         if i >= 5:
             atr20[i] = np.nanmean(atr_day[max(i - 20, 0):i], axis=0)
-    _P.update(cube=cube, names=names, vol=vol, fac=splits.matrix(dates, names), atr20=atr20,
+    spread = np.load(panel.CACHE / "panel_mid.npz")["spread"] if kind == "mid" else None
+    _P.update(cube=cube, names=names, vol=vol, fac=splits.matrix(dates, names), atr20=atr20, spread=spread,
               sector=lambda f: families2.sector_resid(f, names))
     with mp.get_context("fork").Pool(4) as pool:
         parts = [p for p in pool.map(_day, range(1, len(dates)), chunksize=8) if p is not None]
@@ -105,19 +111,21 @@ def build() -> Path:
     name = np.concatenate([p[1] for p in parts])
     x = np.concatenate([p[2] for p in parts])
     y = np.concatenate([p[3] for p in parts])
-    np.savez_compressed(OUT, day=day, name=name, x=x, y=y, dates=np.array(dates), names=np.array(names),
+    out = OUT if kind == "bid" else OUT.with_name(f"candidates_{kind}.npz")
+    np.savez_compressed(out, day=day, name=name, x=x, y=y, dates=np.array(dates), names=np.array(names),
                         features=np.array(FEATURES), horizons=np.array(HORIZONS))
-    return OUT
+    return out
 
 
-def load():
-    z = np.load(OUT, allow_pickle=True)
+def load(kind: str = "bid"):
+    z = np.load(OUT if kind == "bid" else OUT.with_name(f"candidates_{kind}.npz"), allow_pickle=True)
     return {k: z[k] for k in z.files}
 
 
 if __name__ == "__main__":
     import time
     t0 = time.time()
-    p = build()
-    d = load()
+    kind = "mid" if "--mid" in sys.argv else "bid"
+    p = build(kind)
+    d = load(kind)
     print(f"{len(d['day'])} candidate minutes, {d['x'].shape[1]} features, {time.time() - t0:.0f} s -> {p}")
