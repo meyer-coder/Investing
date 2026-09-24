@@ -264,7 +264,8 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
                  intrabar_stops: bool = False, day_trade: bool = False,
                  carry: bool = False, day_stop: float = 0.0, day_stop_exit: bool = True,
                  exec_bars: Optional[Dict[str, Bars]] = None,
-                 slippage_by_symbol: Optional[Dict[str, float]] = None) -> BacktestResult:
+                 slippage_by_symbol: Optional[Dict[str, float]] = None,
+                 rank_entries_by: Optional[str] = None) -> BacktestResult:
     """Simulate one genome and return its journal plus summary statistics.
 
     ``leverage`` is the account's, not the genome's: a rule's weight is a share
@@ -300,6 +301,12 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
 
     ``slippage_by_symbol`` charges a symbol its own slippage instead of
     ``slippage_bps``: a scalper across many names pays each one's spread.
+
+    ``rank_entries_by`` names a feature that decides who gets the risk budget
+    when more symbols signal on a bar than it can take: the lowest value is
+    bought first ("-name" for the highest).  By default symbols are visited in
+    alphabetical order (and always in the carried day-trade mode).  A dip
+    buyer ranks by how hard each name fell.
     """
     genome = compiled.genome
     risk = compiled.risk
@@ -398,7 +405,11 @@ def run_backtest(compiled: CompiledGenome, universe: Universe, features: Feature
         open_after_sells = len(broker.positions) - len(sells)
         invested_after = broker.invested(prices) - sum(
             broker.positions[s].value(prices[s]) for s, _ in sells)
-        for sym in symbols:
+        order = symbols
+        if rank_entries_by:
+            key, sign = rank_entries_by.lstrip("-"), (-1.0 if rank_entries_by.startswith("-") else 1.0)
+            order = sorted(symbols, key=lambda s: sign * snaps[s].get(key, 0.0))
+        for sym in order:
             if sym in broker.positions and sym not in {s for s, _ in sells}:
                 continue
             if sym in {s for s, _ in sells} or sym in stopped_now:

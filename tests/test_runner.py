@@ -94,3 +94,34 @@ def test_buy_and_hold_benchmark_grows_with_the_market():
     features = build_features(universe)
     curve = buy_and_hold(universe, features, starting_cash=1000.0)
     assert curve[-1] > curve[0] > 0
+
+
+def test_rank_entries_by_gives_the_last_slot_to_the_strongest_signal():
+    """Two names drop on the same bar and there is one slot: by default the first
+    alphabetically gets it; ranked by ret1, the one that fell harder does."""
+    n = 60
+    dates = [f"d{i:04d}" for i in range(n)]
+    bars = {}
+    for sym, drop in (("AAA", 0.02), ("BBB", 0.05)):
+        close = np.full(n, 100.0)
+        close[40:] = 100.0 * (1 - drop)
+        bars[sym] = Bars(sym, dates, np.concatenate([[100.0], close[:-1]]), close * 1.001, close * 0.999,
+                         close, np.full(n, 1e6))
+    universe = Universe(bars, dates)
+    features = build_features(universe)
+    genome = Genome.from_dict({
+        "name": "one dip",
+        "entry_rules": [{"when": "ret1 < -0.01", "weight": 1.0}],
+        "exit_rules": ["bars_held >= 2"],
+        "risk": {"max_position_pct": 1.0, "max_positions": 1, "stop_loss_pct": 0.0},
+    })
+    compiled = compile_genome(genome)
+    from evotrader.runner import run_backtest
+    plain = run_backtest(compiled, universe, features, record_thoughts=False, start_bar=20)
+    ranked = run_backtest(compiled, universe, features, record_thoughts=False, start_bar=20,
+                          rank_entries_by="ret1")
+    highest = run_backtest(compiled, universe, features, record_thoughts=False, start_bar=20,
+                           rank_entries_by="-ret1")
+    assert [t.symbol for t in plain.journal.trades] == ["AAA"]
+    assert [t.symbol for t in ranked.journal.trades] == ["BBB"]
+    assert [t.symbol for t in highest.journal.trades] == ["AAA"]
