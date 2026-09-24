@@ -2,6 +2,7 @@
 
     python strategies/scalp/owndrop.py          # its tests, into profitable-strategies/scalping/own-drop/backtest.json
     python strategies/scalp/owndrop.py --grid   # the settings around it, week by week, into grid.json
+    python strategies/scalp/owndrop.py --orders # names that signal together taken in random orders, into orders.json
 
 It watches 47 liquid names (minute.POOL_NAMES).  On any bar from 09:35 to
 09:45 New York it buys a name that fell hard on its own that minute: a
@@ -156,12 +157,49 @@ def grid(u, f, slip: Dict[str, float], rank: str = "") -> int:
     return 0
 
 
+_SHARED: dict = {}
+
+
+def _one_order(seed: int) -> dict:
+    u, f, slip = _SHARED["data"]
+    rng = np.random.default_rng(seed)
+    for s in f.symbols:                   # a fresh random order of the names every minute
+        f.matrix[s]["tiebreak"] = rng.random(len(f.dates))
+    r = test(u, f, slip, rank="tiebreak")
+    return {"seed": seed, "usd_per_day": r["usd_per_day"], "median": r["median"], "days_up": r["days_up"],
+            "worst_day": r["worst_day"], "weeks": weeks_of(r["by_day"]),
+            "pnl_original_names": r["pnl_original_names"], "pnl_fresh_names": r["pnl_fresh_names"]}
+
+
+def orders(u, f, slip: Dict[str, float], n: int = 12) -> int:
+    """When more names signal in a minute than there are free slots, the bot
+    takes them alphabetically.  Is that order lucky?  The same bot with the
+    names taken in a random order each minute, n times, at 1x."""
+    import multiprocessing as mp
+    _SHARED["data"] = (u, f, slip)
+    with mp.get_context("fork").Pool(3) as pool:
+        runs = pool.map(_one_order, range(n))
+    usd = np.array([r["usd_per_day"] for r in runs])
+    out = {"runs": runs, "mean": round(float(usd.mean()), 1), "min": float(usd.min()), "max": float(usd.max()),
+           "alphabetical": test(u, f, slip)["usd_per_day"]}
+    print(f"random orders at 1x: mean ${out['mean']}/day, ${out['min']:.0f} to ${out['max']:.0f}; "
+          f"alphabetical ${out['alphabetical']}")
+    for r in runs:
+        print(f"  seed {r['seed']:2d}: ${r['usd_per_day']:5.0f}/day median ${r['median']:4.0f} up {r['days_up']:.0%} "
+              f"worst ${r['worst_day']:5.0f} weeks {r['weeks']} orig ${r['pnl_original_names']:.0f} fresh ${r['pnl_fresh_names']:.0f}")
+    OUT.mkdir(parents=True, exist_ok=True)
+    OUT.joinpath("orders.json").write_text(json.dumps(out, indent=1))
+    return 0
+
+
 def main() -> int:
     days = minute.sessions(POOL)
     u, f = universe(days)
     slip = {s: cost_bp(np.asarray(u.bars[s].close)) for s in POOL}
     if "--grid" in sys.argv:
         return grid(u, f, slip)
+    if "--orders" in sys.argv:
+        return orders(u, f, slip)
     out = {"sessions": [days[0], days[-1], len(days)], "account": ACCOUNT, "bot": bot().to_dict(), "runs": {}}
     runs = {f"{lev:g}x": dict(leverage=lev) for lev in (1.0, 1.5, 2.0)}
     runs.update({"1x, costs doubled": dict(mult=2.0), "1x, costs tripled": dict(mult=3.0),
