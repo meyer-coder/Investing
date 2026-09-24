@@ -28,6 +28,7 @@ an account to run any of these.
 | Round QQQ strikes as levels, fade or break the first touch (`strikes.py`) | 1,504 sessions | Target hit 23-27% with a 1:3 bracket, the same as prices halfway between strikes: round numbers alone are not levels |
 | Filters to raise the win rate at levels: calm or wild day, time, expiry Friday, approach speed, extension, a rejection candle (`winrate.py`) | 7,181 strike touches | Almost all within 2 points of break-even; one narrow cell (calm day, after 14:00, go with the break) cleared it on 31 trades |
 | Its general form: on a quiet day, go with the first break of the day's range after 14:00 (`calmbreak.py`) | 1,504 sessions | Positive in both periods at all four stop/target pairs (61% wins at 1:1 against 52% needed), fading it loses; but only 66 trades in six years (t about 1-1.7). Added to the paper trail with its settings fixed |
+| Two bots on one account: short sharp dips, buy sharp rallies (`twobots.py`) | 1,504 sessions | 0 of 27 variants positive (5 or 15 minute moves of 0.25-0.5%, three stop/target pairs, shorts only, both, or buying the dip); the best loses $5 a day per MNQ, and at 10 MNQ 81-95% of Topstep 100K Combines breach |
 
 ## Why a no-edge bot still shows $150 days
 
