@@ -77,8 +77,8 @@ About 0.9 trades a day, in the market about 100 minutes a day. It adds up to
   checks every 15 or 30 minutes, VWAP exit or not, band x1 or x1.5) made
   money both in 2020-2023 and in 2024-2026.
 - **Only on the Nasdaq:** on the same data, the S&P 500 was weak and faded
-  to losses by 2025. The Russell 2000, the Dow, crude oil, gold and the euro
-  all lost.
+  to losses by 2025. The Russell 2000, the Dow, crude oil, gold, the euro and
+  the 30-year Treasury all lost.
 - **How to trade it:** QQQ or TQQQ in a stock account, or MNQ/NQ on a futures
   account. The signal is the same.
 

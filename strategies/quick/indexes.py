@@ -31,6 +31,9 @@ INSTRUMENTS = {"USA500": "USA500.IDX%2FUSD", "USSC2000": "USSC2000.IDX%2FUSD", "
 # the day each market trades most, New York time: stock indexes 09:30-16:00; crude oil, gold and bonds their
 # pit hours; the euro London's afternoon and New York's morning
 SESSIONS = {"WTI": ((9, 0), (14, 30)), "GOLD": ((8, 20), (13, 30)), "TBOND": ((8, 20), (15, 0)), "EURUSD": ((8, 0), (16, 0))}
+# the bond CFD prints a bar only when its quote changes (about 320 of 400 minutes on a typical day): a missing
+# minute there is an unchanged price, so it is filled forward and the day kept
+COVERAGE = {"TBOND": 0.5}
 NY = ZoneInfo("America/New_York")
 WINDOW = (11 * 60, 21 * 60 + 30)
 T = 390
@@ -105,7 +108,7 @@ def load(inst: str) -> dict:
     dates, X = [], []
     for d in sorted(by):
         v = by[d]
-        if len(v) < 0.97 * n_min:
+        if len(v) < COVERAGE.get(inst, 0.97) * n_min:
             continue
         a = np.full((n_min, 4), np.nan)
         for k, o, h, l, c in v:
