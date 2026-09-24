@@ -16,6 +16,13 @@ They do that with a Sharpe of 1.4 and a worst losing stretch of about $11,000,
 45% of the account. (Sharpe is return per unit of daily swing, over a year: 1
 is decent, 2 is rare for anything a retail bot can run.)
 
+Costs change that. Bid-ask spreads measured at today's open were wider than
+the cent assumed here: 1 to 3 bp on the biggest names, 10 to 40 bp on
+software mid caps. At half those spreads (paid going in; the closing auction
+costs nothing coming out), the stock half earns much less. The book then
+makes about $40 to $90 a day, with a Sharpe of 1.1 and a worst stretch of
+about $13,700.
+
 A $200 average day on $25,000 with that kind of risk would need a Sharpe of
 about 3 to 4. Getting to $200 by adding leverage instead (the 3x funds, or
 more micro futures) means a losing stretch bigger than the account. The
@@ -126,6 +133,19 @@ About two trades a day. Costs are a cent of spread plus $0.007 a share.
 - **Other variants were weaker.** The published "stocks in play" version
   (tight stops, names picked by how wild their first minutes are) lost money
   on these large caps. So did tighter stops.
+- **Sensitive to the spread** (`stock_orb.py`, `spread_bp`). Opening
+  spreads are wide on gap days. Using spreads sampled from Nasdaq's quote
+  service at the 2026-09-24 open (`spreads.py`; likely Nasdaq's own book, so
+  an upper bound on the best national quote):
+
+  | Cost per trade | Sep 2022-Aug 2024 | Sep 2024-Sep 2026 |
+  | --- | --- | --- |
+  | A cent of spread plus $0.007 a share (the tables above) | $29 a day | $47 |
+  | Half the measured spread plus 2 bp (spread paid going in, closing auction out) | $9 | $28 |
+  | The full measured spread plus 2 bp | -$10 | $12 |
+
+  Real costs are probably near the middle row. Paper results with real fills
+  will settle it.
 - **2024 was slightly negative**, at -$7 a day.
 - **Volatile stocks are no better over time** (`gap_volatile.py`, 77 names
   such as MSTR, COIN, SMCI, HOOD, IONQ and RKLB).

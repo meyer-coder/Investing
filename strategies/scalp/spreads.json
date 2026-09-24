@@ -1,0 +1,443 @@
+{
+ "sessions": [
+  {
+   "utc": "2026-09-24T13:57:33+00:00",
+   "new_york": "2026-09-24 09:57",
+   "rounds": 52,
+   "names": {
+    "MRVL": {
+     "n": 52,
+     "median_cents": 26.5,
+     "median_bp": 10.27,
+     "p90_bp": 13.63
+    },
+    "MU": {
+     "n": 52,
+     "median_cents": 49.0,
+     "median_bp": 4.64,
+     "p90_bp": 6.19
+    },
+    "PLTR": {
+     "n": 52,
+     "median_cents": 15.0,
+     "median_bp": 7.88,
+     "p90_bp": 11.98
+    },
+    "AMD": {
+     "n": 52,
+     "median_cents": 29.5,
+     "median_bp": 4.75,
+     "p90_bp": 7.35
+    },
+    "FB": {
+     "n": 52,
+     "median_cents": 49.5,
+     "median_bp": 6.53,
+     "p90_bp": 9.93
+    },
+    "TSLA": {
+     "n": 52,
+     "median_cents": 12.5,
+     "median_bp": 3.3,
+     "p90_bp": 5.29
+    },
+    "AVGO": {
+     "n": 52,
+     "median_cents": 11.0,
+     "median_bp": 3.15,
+     "p90_bp": 4.88
+    },
+    "NVDA": {
+     "n": 52,
+     "median_cents": 3.0,
+     "median_bp": 1.35,
+     "p90_bp": 1.8
+    },
+    "UBER": {
+     "n": 52,
+     "median_cents": 3.0,
+     "median_bp": 4.31,
+     "p90_bp": 8.62
+    },
+    "NFLX": {
+     "n": 52,
+     "median_cents": 2.0,
+     "median_bp": 2.8,
+     "p90_bp": 5.61
+    },
+    "CVNA": {
+     "n": 52,
+     "median_cents": 9.0,
+     "median_bp": 14.34,
+     "p90_bp": 23.92
+    },
+    "SNOW": {
+     "n": 52,
+     "median_cents": 88.5,
+     "median_bp": 26.76,
+     "p90_bp": 41.07
+    },
+    "ORCL": {
+     "n": 52,
+     "median_cents": 9.5,
+     "median_bp": 6.98,
+     "p90_bp": 13.84
+    },
+    "GOOGL": {
+     "n": 52,
+     "median_cents": 7.0,
+     "median_bp": 2.07,
+     "p90_bp": 2.92
+    },
+    "AMZN": {
+     "n": 52,
+     "median_cents": 4.0,
+     "median_bp": 1.63,
+     "p90_bp": 2.44
+    },
+    "AAPL": {
+     "n": 52,
+     "median_cents": 7.0,
+     "median_bp": 2.08,
+     "p90_bp": 3.28
+    },
+    "MSFT": {
+     "n": 52,
+     "median_cents": 16.5,
+     "median_bp": 3.36,
+     "p90_bp": 5.65
+    },
+    "INTC": {
+     "n": 52,
+     "median_cents": 3.0,
+     "median_bp": 2.43,
+     "p90_bp": 4.05
+    },
+    "QCOM": {
+     "n": 52,
+     "median_cents": 17.5,
+     "median_bp": 9.03,
+     "p90_bp": 18.02
+    },
+    "LRCX": {
+     "n": 52,
+     "median_cents": 41.0,
+     "median_bp": 13.56,
+     "p90_bp": 20.43
+    },
+    "AMAT": {
+     "n": 52,
+     "median_cents": 53.0,
+     "median_bp": 11.42,
+     "p90_bp": 15.92
+    },
+    "DELL": {
+     "n": 52,
+     "median_cents": 149.0,
+     "median_bp": 27.62,
+     "p90_bp": 46.47
+    },
+    "ADBE": {
+     "n": 52,
+     "median_cents": 30.0,
+     "median_bp": 12.56,
+     "p90_bp": 18.41
+    },
+    "CRM": {
+     "n": 52,
+     "median_cents": 37.0,
+     "median_bp": 15.56,
+     "p90_bp": 25.64
+    },
+    "PYPL": {
+     "n": 52,
+     "median_cents": 2.0,
+     "median_bp": 3.83,
+     "p90_bp": 5.74
+    },
+    "SQ": {
+     "n": 52,
+     "median_cents": 9.0,
+     "median_bp": 12.02,
+     "p90_bp": 21.36
+    },
+    "BA": {
+     "n": 52,
+     "median_cents": 18.5,
+     "median_bp": 9.45,
+     "p90_bp": 18.72
+    },
+    "DIS": {
+     "n": 52,
+     "median_cents": 4.0,
+     "median_bp": 3.79,
+     "p90_bp": 4.75
+    },
+    "JPM": {
+     "n": 52,
+     "median_cents": 30.5,
+     "median_bp": 9.06,
+     "p90_bp": 14.53
+    },
+    "GS": {
+     "n": 52,
+     "median_cents": 85.5,
+     "median_bp": 9.29,
+     "p90_bp": 15.3
+    },
+    "BAC": {
+     "n": 52,
+     "median_cents": 1.0,
+     "median_bp": 1.78,
+     "p90_bp": 3.57
+    },
+    "XOM": {
+     "n": 52,
+     "median_cents": 8.0,
+     "median_bp": 4.89,
+     "p90_bp": 11.47
+    },
+    "CVX": {
+     "n": 52,
+     "median_cents": 8.0,
+     "median_bp": 3.86,
+     "p90_bp": 8.16
+    },
+    "WMT": {
+     "n": 52,
+     "median_cents": 4.0,
+     "median_bp": 3.64,
+     "p90_bp": 4.56
+    },
+    "COST": {
+     "n": 52,
+     "median_cents": 56.0,
+     "median_bp": 6.17,
+     "p90_bp": 10.91
+    },
+    "HD": {
+     "n": 52,
+     "median_cents": 32.5,
+     "median_bp": 11.02,
+     "p90_bp": 17.3
+    },
+    "NKE": {
+     "n": 52,
+     "median_cents": 2.0,
+     "median_bp": 5.57,
+     "p90_bp": 5.59
+    },
+    "SBUX": {
+     "n": 52,
+     "median_cents": 11.0,
+     "median_bp": 11.71,
+     "p90_bp": 19.21
+    },
+    "MCD": {
+     "n": 52,
+     "median_cents": 13.0,
+     "median_bp": 5.42,
+     "p90_bp": 9.53
+    },
+    "V": {
+     "n": 52,
+     "median_cents": 33.5,
+     "median_bp": 9.2,
+     "p90_bp": 15.39
+    },
+    "MA": {
+     "n": 52,
+     "median_cents": 47.5,
+     "median_bp": 8.46,
+     "p90_bp": 17.06
+    },
+    "LLY": {
+     "n": 52,
+     "median_cents": 206.0,
+     "median_bp": 17.42,
+     "p90_bp": 29.83
+    },
+    "UNH": {
+     "n": 52,
+     "median_cents": 45.0,
+     "median_bp": 12.16,
+     "p90_bp": 20.99
+    },
+    "PFE": {
+     "n": 52,
+     "median_cents": 1.0,
+     "median_bp": 3.5,
+     "p90_bp": 3.5
+    },
+    "MRNA": {
+     "n": 52,
+     "median_cents": 30.0,
+     "median_bp": 16.41,
+     "p90_bp": 29.43
+    },
+    "JNJ": {
+     "n": 52,
+     "median_cents": 28.5,
+     "median_bp": 10.44,
+     "p90_bp": 15.99
+    },
+    "TXN": {
+     "n": 52,
+     "median_cents": 29.0,
+     "median_bp": 10.84,
+     "p90_bp": 17.82
+    },
+    "ADI": {
+     "n": 52,
+     "median_cents": 43.0,
+     "median_bp": 11.34,
+     "p90_bp": 16.59
+    },
+    "MCHP": {
+     "n": 52,
+     "median_cents": 7.5,
+     "median_bp": 10.21,
+     "p90_bp": 18.85
+    },
+    "ON": {
+     "n": 52,
+     "median_cents": 8.5,
+     "median_bp": 11.71,
+     "p90_bp": 24.88
+    },
+    "TSM": {
+     "n": 52,
+     "median_cents": 18.0,
+     "median_bp": 4.07,
+     "p90_bp": 6.76
+    },
+    "BABA": {
+     "n": 52,
+     "median_cents": 5.5,
+     "median_bp": 4.95,
+     "p90_bp": 8.99
+    },
+    "NIO": {
+     "n": 52,
+     "median_cents": 1.0,
+     "median_bp": 27.59,
+     "p90_bp": 27.59
+    },
+    "F": {
+     "n": 52,
+     "median_cents": 1.0,
+     "median_bp": 7.8,
+     "p90_bp": 7.81
+    },
+    "GM": {
+     "n": 52,
+     "median_cents": 14.0,
+     "median_bp": 17.01,
+     "p90_bp": 25.1
+    },
+    "SNAP": {
+     "n": 52,
+     "median_cents": 1.0,
+     "median_bp": 18.92,
+     "p90_bp": 19.06
+    },
+    "ROKU": {
+     "n": 52,
+     "median_cents": 16.0,
+     "median_bp": 10.44,
+     "p90_bp": 15.56
+    },
+    "ZM": {
+     "n": 52,
+     "median_cents": 18.5,
+     "median_bp": 20.5,
+     "p90_bp": 30.8
+    },
+    "DOCU": {
+     "n": 52,
+     "median_cents": 18.0,
+     "median_bp": 26.22,
+     "p90_bp": 47.77
+    },
+    "TWLO": {
+     "n": 52,
+     "median_cents": 124.5,
+     "median_bp": 42.96,
+     "p90_bp": 66.26
+    },
+    "PANW": {
+     "n": 52,
+     "median_cents": 51.5,
+     "median_bp": 13.15,
+     "p90_bp": 22.15
+    },
+    "FTNT": {
+     "n": 52,
+     "median_cents": 35.0,
+     "median_bp": 19.56,
+     "p90_bp": 29.05
+    },
+    "ZS": {
+     "n": 52,
+     "median_cents": 62.0,
+     "median_bp": 28.97,
+     "p90_bp": 44.6
+    },
+    "OKTA": {
+     "n": 52,
+     "median_cents": 42.0,
+     "median_bp": 20.55,
+     "p90_bp": 36.61
+    },
+    "WDAY": {
+     "n": 52,
+     "median_cents": 63.0,
+     "median_bp": 33.02,
+     "p90_bp": 54.29
+    },
+    "NOW": {
+     "n": 52,
+     "median_cents": 20.0,
+     "median_bp": 14.45,
+     "p90_bp": 25.87
+    },
+    "INTU": {
+     "n": 52,
+     "median_cents": 48.0,
+     "median_bp": 16.8,
+     "p90_bp": 28.71
+    },
+    "TEAM": {
+     "n": 52,
+     "median_cents": 74.0,
+     "median_bp": 38.4,
+     "p90_bp": 56.9
+    },
+    "MDB": {
+     "n": 52,
+     "median_cents": 158.0,
+     "median_bp": 37.3,
+     "p90_bp": 79.52
+    },
+    "SPOT": {
+     "n": 52,
+     "median_cents": 122.5,
+     "median_bp": 24.16,
+     "p90_bp": 33.95
+    },
+    "CSCO": {
+     "n": 52,
+     "median_cents": 4.5,
+     "median_bp": 4.24,
+     "p90_bp": 7.56
+    },
+    "IBM": {
+     "n": 52,
+     "median_cents": 35.5,
+     "median_bp": 15.55,
+     "p90_bp": 27.5
+    }
+   }
+  }
+ ]
+}

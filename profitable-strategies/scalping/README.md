@@ -119,10 +119,16 @@ which has 66 trades in six years.
 
 ## What could change the answer
 
-- **Real spreads.** The table uses assumed spreads (1 cent, 2, 4 and 6 bp).
-  `spreads.py` samples Nasdaq's live bid and offer for all 72 names. It is
-  set to run at today's open and at midday, and the table will be updated
-  with the measured spreads.
+- **Real spreads, measured.** `spreads.py` sampled Nasdaq's live bid and
+  offer for all 72 names from 09:37 to 09:57 on 2026-09-24 (52 quotes each,
+  in `spreads.json`). This is probably Nasdaq's own book, so it is an upper
+  bound on the best national quote: AAPL showed 7 cents where it usually
+  trades a cent wide.
+  - Mega caps quoted 1 to 3 bp (NVDA 1.4, AMZN 1.6, AAPL 2.1, MSFT 3.4).
+  - The software mid caps the model favored quoted 25 to 45 bp (TWLO 43,
+    TEAM 38, MDB 37, WDAY 33, ZS 29, SNOW 27).
+  - Both are far more than the 3 to 4 bp midpoint bounce, so the verdict
+    stands. A midday sample is scheduled.
 - **The volatile names the one-month result came from.** MSTR, COIN, SOXL,
   SMCI, IONQ, RKLB and HOOD are not in the Dukascopy data. A free Alpaca
   account gives years of their minute bars and quotes.
