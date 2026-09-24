@@ -128,7 +128,10 @@ which has 66 trades in six years.
   - The software mid caps the model favored quoted 25 to 45 bp (TWLO 43,
     TEAM 38, MDB 37, WDAY 33, ZS 29, SNOW 27).
   - Both are far more than the 3 to 4 bp midpoint bounce, so the verdict
-    stands. A midday sample is scheduled.
+    stands.
+  - At midday (12:31 to 12:46) spreads were about half as wide: a median of
+    4.6 bp across the names against 10.2 at the open, with MDB at 14 bp,
+    TEAM 15 and TWLO 13. That is still several times the bounce.
 - **The volatile names the one-month result came from.** MSTR, COIN, SOXL,
   SMCI, IONQ, RKLB and HOOD are not in the Dukascopy data. A free Alpaca
   account gives years of their minute bars and quotes.

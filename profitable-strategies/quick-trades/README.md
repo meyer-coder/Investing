@@ -145,7 +145,8 @@ About two trades a day. Costs are a cent of spread plus $0.007 a share.
   | The full measured spread plus 2 bp | -$10 | $12 |
 
   Real costs are probably near the middle row. Paper results with real fills
-  will settle it.
+  will settle it. Midday spreads measured about half the opening ones, but
+  these trades enter in the first minutes, when spreads are widest.
 - **2024 was slightly negative**, at -$7 a day.
 - **Volatile stocks are no better over time** (`gap_volatile.py`, 77 names
   such as MSTR, COIN, SMCI, HOOD, IONQ and RKLB).
