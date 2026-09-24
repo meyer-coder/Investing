@@ -5,9 +5,10 @@
 
 * Nasdaq-100 noise-area breakout (trend.py): on Yahoo's one-minute NQ=F bars
   (archived by strategies/soxl/minute.py), the band from the last 14
-  sessions, checks every half hour, the VWAP exit, flat at the close.  Booked
-  as 2 MNQ ($2 a point each, 1.25 points a round trip) and, for the $25,000
-  stock account, as QQQ at 4x (the same return on $100,000, 1 bp a round trip).
+  sessions, checks every half hour, the VWAP exit, flat at the close; from
+  2026-09-25 also a resting stop 0.30% from the entry (books.py).  Booked as
+  2 MNQ ($2 a point each, 1.25 points a round trip) and, for the $25,000 stock
+  account, as QQQ at 4x and TQQQ at 2x buying power (six times the index).
 * Gap breakout on large caps (stock_orb.py): the three names among the 72
   that opened more than 2% from their previous close, taking the first five
   minutes' bar direction; a stop order at that bar's high (low) after 09:35,
@@ -45,6 +46,7 @@ START = "2026-09-24"
 ACCOUNT = 25_000.0
 MNQ, POINT, MNQ_COST = 2, 2.0, 1.25
 LOOKBACK, EVERY = 14, 30
+STOP = 0.003                     # a resting stop 0.30% from the entry (chosen on 2013-2019 in books.py; from 2026-09-25)
 TICKER = {"FB": "META", "SQ": "XYZ"}
 
 
@@ -88,7 +90,19 @@ def noise_area_day(day: str) -> Optional[dict]:
     dn = min(o[0], pc) * (1 - sig)
     vwap = np.cumsum((h + l + c) / 3) / np.arange(1, 391)
     trades, pos, px, t_in = [], 0, 0.0, 0
+    stop_on = day >= "2026-09-25"
     for t in range(EVERY - 1, 389, EVERY):
+        if pos and stop_on:
+            stop_px = px * (1 - pos * STOP)
+            seg = np.arange(max(t_in, t - EVERY + 1), t + 1)
+            hit = seg[(l[seg] <= stop_px) if pos > 0 else (h[seg] >= stop_px)]
+            if len(hit):
+                k = int(hit[0])
+                fill = stop_px if k == t_in else (min(o[k], stop_px) if pos > 0 else max(o[k], stop_px))
+                trades.append({"side": "long" if pos > 0 else "short", "in": _hm(t_in), "entry": round(px, 2),
+                               "out": _hm(k) + " stop", "exit": round(fill, 2), "points": round(pos * (fill - px), 2)})
+                pos = 0
+                continue
         if pos:
             out = c[t] < max(up[t], vwap[t]) if pos > 0 else c[t] > min(dn[t], vwap[t])
             if out:
@@ -100,6 +114,16 @@ def noise_area_day(day: str) -> Optional[dict]:
             side = 1 if c[t] > up[t] else (-1 if c[t] < dn[t] else 0)
             if side:
                 pos, px, t_in = side, o[t + 1], t + 1
+    if pos and stop_on:
+        stop_px = px * (1 - pos * STOP)
+        seg = np.arange(max(t_in, 360), 390)
+        hit = seg[(l[seg] <= stop_px) if pos > 0 else (h[seg] >= stop_px)]
+        if len(hit):
+            k = int(hit[0])
+            fill = stop_px if k == t_in else (min(o[k], stop_px) if pos > 0 else max(o[k], stop_px))
+            trades.append({"side": "long" if pos > 0 else "short", "in": _hm(t_in), "entry": round(px, 2),
+                           "out": _hm(k) + " stop", "exit": round(fill, 2), "points": round(pos * (fill - px), 2)})
+            pos = 0
     if pos:
         trades.append({"side": "long" if pos > 0 else "short", "in": _hm(t_in), "entry": round(px, 2),
                        "out": "15:59 close", "exit": round(c[389], 2), "points": round(pos * (c[389] - px), 2)})
@@ -107,7 +131,8 @@ def noise_area_day(day: str) -> Optional[dict]:
     mnq_usd = pts * POINT * MNQ - MNQ_COST * POINT * MNQ * len(trades)
     ret = sum(x["points"] / x["entry"] for x in trades) - 1e-4 * len(trades)
     return {"trades": trades, "band_at_10:00": [round(dn[29], 2), round(up[29], 2)], "points": round(pts, 2),
-            "mnq_usd": round(mnq_usd, 2), "qqq_4x_usd": round(ret * 4 * ACCOUNT, 2)}
+            "mnq_usd": round(mnq_usd, 2), "qqq_4x_usd": round(ret * 4 * ACCOUNT, 2),
+            "tqqq_2x_usd": round(ret * 6 * ACCOUNT, 2), "stop": STOP if stop_on else None}
 
 
 def _hm(k: int) -> str:
@@ -233,7 +258,8 @@ def main() -> int:
         lines = [f"# Quick trades, {day}", ""]
         if na and "trades" in na:
             lines.append(f"Nasdaq-100 noise-area breakout: {len(na['trades'])} trade(s), {na['points']:+.2f} points; "
-                         f"2 MNQ ${na['mnq_usd']:+.2f}; QQQ at 4x on $25,000 ${na['qqq_4x_usd']:+.2f}.")
+                         f"2 MNQ ${na['mnq_usd']:+.2f}; QQQ at 4x on $25,000 ${na['qqq_4x_usd']:+.2f}; "
+                         f"TQQQ at 2x ${na.get('tqqq_2x_usd', 0):+.2f}.")
             for t in na["trades"]:
                 lines.append(f"- {t['side']} {t['in']} at {t['entry']}, out {t['out']} at {t['exit']} ({t['points']:+.2f} points)")
         else:

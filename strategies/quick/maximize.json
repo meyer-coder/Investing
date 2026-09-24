@@ -1,0 +1,151 @@
+{
+ "legs": [
+  "ndx",
+  "gap",
+  "mstr",
+  "semis"
+ ],
+ "sessions": 928,
+ "budgets": {
+  "worst stretch within 25%": {
+   "exposure": [
+    3.0,
+    0.0,
+    2.5,
+    0.0
+   ],
+   "dev": {
+    "usd": 235.0,
+    "median": 0.0,
+    "up": 0.365,
+    "days_200": 0.299,
+    "worst_day": -2753.0,
+    "max_drawdown": -5891.0,
+    "sharpe": 2.82
+   },
+   "test": {
+    "usd": 34.8,
+    "median": 0.0,
+    "up": 0.326,
+    "days_200": 0.247,
+    "worst_day": -3712.0,
+    "max_drawdown": -27866.0,
+    "sharpe": 0.44
+   },
+   "all": {
+    "usd": 126.5,
+    "median": 0.0,
+    "up": 0.344,
+    "days_200": 0.27,
+    "worst_day": -3712.0,
+    "max_drawdown": -27866.0,
+    "sharpe": 1.55
+   }
+  },
+  "worst stretch within 50%": {
+   "exposure": [
+    0.0,
+    0.0,
+    4.0,
+    0.0
+   ],
+   "dev": {
+    "usd": 320.1,
+    "median": 0.0,
+    "up": 0.231,
+    "days_200": 0.209,
+    "worst_day": -4405.0,
+    "max_drawdown": -10647.0,
+    "sharpe": 2.48
+   },
+   "test": {
+    "usd": 15.5,
+    "median": 0.0,
+    "up": 0.237,
+    "days_200": 0.203,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 0.14
+   },
+   "all": {
+    "usd": 155.0,
+    "median": 0.0,
+    "up": 0.234,
+    "days_200": 0.206,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 1.31
+   }
+  },
+  "worst stretch within 75%": {
+   "exposure": [
+    0.0,
+    0.0,
+    4.0,
+    0.0
+   ],
+   "dev": {
+    "usd": 320.1,
+    "median": 0.0,
+    "up": 0.231,
+    "days_200": 0.209,
+    "worst_day": -4405.0,
+    "max_drawdown": -10647.0,
+    "sharpe": 2.48
+   },
+   "test": {
+    "usd": 15.5,
+    "median": 0.0,
+    "up": 0.237,
+    "days_200": 0.203,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 0.14
+   },
+   "all": {
+    "usd": 155.0,
+    "median": 0.0,
+    "up": 0.234,
+    "days_200": 0.206,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 1.31
+   }
+  },
+  "no budget (4x buying power)": {
+   "exposure": [
+    0.0,
+    0.0,
+    4.0,
+    0.0
+   ],
+   "dev": {
+    "usd": 320.1,
+    "median": 0.0,
+    "up": 0.231,
+    "days_200": 0.209,
+    "worst_day": -4405.0,
+    "max_drawdown": -10647.0,
+    "sharpe": 2.48
+   },
+   "test": {
+    "usd": 15.5,
+    "median": 0.0,
+    "up": 0.237,
+    "days_200": 0.203,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 0.14
+   },
+   "all": {
+    "usd": 155.0,
+    "median": 0.0,
+    "up": 0.234,
+    "days_200": 0.206,
+    "worst_day": -6487.0,
+    "max_drawdown": -50454.0,
+    "sharpe": 1.31
+   }
+  }
+ }
+}

@@ -70,6 +70,46 @@ Combines through and breaches 48%. Recent days make a little less ($24
 instead of $28), and 0.4% and 0.6% stops do not line up with it, so treat it
 as an option rather than a proven improvement.
 
+## Pushing the daily dollars (2026-09-24, evening)
+
+**The change that helped: a resting stop 0.30% from the entry**
+(`books.py`).
+- Any stop between 0.2% and 0.5% beat no stop in both halves of 2013-2026.
+- The width was chosen on 2013-2019 and then held on 2020-2026: +4.1 bp a
+  day, Sharpe 1.26 (0.98 without it), worst day -186 bp instead of -699 bp.
+- Over all 13.7 years it lifts the Sharpe from 0.92 to 1.19, positive in 13
+  of 14 years.
+
+**The size is what sets the dollars.** The Nasdaq breakout with the stop,
+traded through TQQQ, 2013-2026:
+
+| Buying power in TQQQ | Times the index | Average day | Worst day | Worst losing stretch |
+| --- | --- | --- | --- | --- |
+| 1x | 3x | $25 | -$1,170 | -$6,935 (28% of $25,000) |
+| 2x | 6x | $50 | -$2,340 | -$13,870 (55%) |
+| 3x | 9x | $75 | -$3,510 | -$20,806 (83%) |
+| 4x, the day-trading maximum | 12x | $100 | -$4,680 | -$27,741, more than the account |
+
+- **Bitcoin sleeve.** A Bitcoin-driven MSTR sleeve barely moves with the
+  Nasdaq (correlation 0.11). TQQQ 2x plus MSTR 1x made $79 a day over
+  2017-2026 with a worst stretch of 64%. TQQQ 3x plus MSTR 1x made $109 a
+  day, with a worst stretch of 91%.
+- **Growth-optimal size.** It is about 17 times the index (Kelly). Half of
+  that, the usual guard against an optimistic estimate, is TQQQ at about
+  2.8x buying power: roughly $70 a day, with a worst stretch near 80%.
+
+**Letting an optimizer pick the sizes does not work** (`maximize.py`).
+- Fitted to Sep 2022 - Aug 2024, it put everything on the Bitcoin/MSTR leg,
+  which had its best run then. It made $320 a day in those years.
+- On Sep 2024 - Sep 2026 it made $15 a day, with a worst stretch of $50,000.
+- The sizes above are fixed in advance instead.
+
+**The most the account can make and survive its worst stretch is about $50
+to $80 a day.** That is TQQQ at 2x buying power with the stop, with or without
+a 1x MSTR sleeve. At 4x it averages about $100 a day, but its worst stretch
+was larger than the account. $200 a day at survivable risk needs about three
+to four times the capital.
+
 ## 1. Nasdaq-100 noise-area breakout
 
 From Zarattini and Aziz (2023), *Beat the Market: An Effective Intraday
