@@ -1,0 +1,81 @@
+{
+ "start": "2026-09-24",
+ "updated_after_close": "2026-09-24",
+ "sessions": {
+  "2026-09-24": {
+   "noise_area": {
+    "trades": [],
+    "band_at_10:00": [
+     30425.59,
+     30864.68
+    ],
+    "points": 0,
+    "mnq_usd": 0.0,
+    "qqq_4x_usd": 0.0
+   },
+   "gap_breakout": {
+    "gappers": [
+     [
+      "ORCL",
+      -5.01
+     ],
+     [
+      "MRVL",
+      -2.64
+     ],
+     [
+      "DELL",
+      -2.52
+     ],
+     [
+      "AMD",
+      -2.25
+     ],
+     [
+      "AMAT",
+      -2.23
+     ],
+     [
+      "MU",
+      -2.06
+     ]
+    ],
+    "trades": [
+     {
+      "name": "ORCL",
+      "gap": -5.01,
+      "side": "short",
+      "in": "09:48",
+      "entry": 136.37,
+      "stop": 142.97,
+      "out": "15:59",
+      "exit": 139.52,
+      "why": "close",
+      "shares": 75,
+      "usd": -240.05
+     },
+     {
+      "name": "MRVL",
+      "gap": -2.64,
+      "side": "short",
+      "result": "no break"
+     },
+     {
+      "name": "DELL",
+      "gap": -2.52,
+      "side": "long",
+      "in": "09:36",
+      "entry": 542.0,
+      "stop": 512.11,
+      "out": "15:59",
+      "exit": 536.1,
+      "why": "close",
+      "shares": 16,
+      "usd": -98.98
+     }
+    ],
+    "usd": -339.04
+   }
+  }
+ }
+}
