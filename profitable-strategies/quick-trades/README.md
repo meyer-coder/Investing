@@ -86,6 +86,12 @@ About 0.9 trades a day, in the market about 100 minutes a day. It adds up to
 - **Stable across settings:** all 24 settings tried (14 or 10 or 20 days,
   checks every 15 or 30 minutes, VWAP exit or not, band x1 or x1.5) made
   money both in 2020-2023 and in 2024-2026.
+- **Weaker over the long run:** 2013 to August 2020 (1,856 sessions, not
+  used to choose anything) made +1.9 bp a day, Sharpe 0.65, about $19 a day
+  at QQQ 4x.
+  - It was positive in 6 of 8 years, but 2018 alone made +10 bp a day.
+  - 2016 and early 2020 were slightly negative.
+  - Across 2013-2026 it is a real but small and uneven edge.
 - **Only on the Nasdaq:** on the same data, the S&P 500 was weak and faded
   to losses by 2025. The Russell 2000, the Dow, crude oil, gold, the euro and
   the 30-year Treasury all lost.
