@@ -16,6 +16,16 @@ path alone gives no short-term edge. So any profit has to come from where the
 levels are. At three to one with costs, trades at the levels must win more
 than about 27% of the time to make money.
 
+The walls almost always sit on round QQQ strikes, which do have a price
+history. On six years of Nasdaq-100 minutes (`strategies/mnq/strikes.py`),
+the same stop and target at the first touch of each day's round strikes
+reached the target 23-27% of the time. That holds whether the trade fades
+the touch or goes with it. Round strikes did no better than prices halfway
+between two strikes, where no option sits. So round numbers alone are not
+levels. That lowers the odds but does not settle them: the real walls are
+the few strikes with the most open interest on the day, and only the
+forward test can check those.
+
 ## The levels, each morning before the open
 
 From the delayed QQQ option chain on nasdaq.com (all contracts expiring in
