@@ -161,6 +161,41 @@ Pine Script: [gap_breakout.pine](gap_breakout.pine). It runs one chart at a
 time; the paper bot picks the day's three gappers. Research:
 `strategies/quick/stock_orb.py`.
 
+## TQQQ, SOXL, MSTR and other funds and stocks
+
+The same two trades were run on 34 other funds and stocks (`funds.py`). The
+long one-minute history used above does not cover these, so this uses
+Yahoo's bars:
+
+- **Hourly bars, two years.** The noise area is checked at each hourly
+  close, alongside a first-hour range breakout.
+- **Five-minute bars, 60 days.** The noise area is checked every half hour,
+  alongside 5- and 30-minute range breakouts.
+
+The hourly version is a coarse copy of the rule. On QQQ it kept only about a
+third of what the one-minute rule made over the same two years.
+
+| Name | Hourly, 2 years (1st / 2nd year) | 5-minute, 60 days | Verdict |
+| --- | --- | --- | --- |
+| **TQQQ** | about 0 bp a day | +18.5 bp a day | The one-minute Nasdaq rule at three times the size: $21 a day at 1x, $84 at 4x since 2024, with a worst stretch of $31,000 at 4x |
+| **SOXL** | +6.5 (+19.0 / -6.0) noise area; +15.5 (+20.6 / +10.5) first-hour breakout | -30.6 | Weak and unsteady. At about $27 a share, a round trip costs about 7 bp |
+| **MSTR** | +13.5 (+23.2 / +3.8), Sharpe 1.2 | +25.9 | Positive, but fading, and it follows Bitcoin (below). $34 a day at 1x; $135 at 4x with a worst day of -$7,700 and a worst stretch of -$27,900 |
+| **COIN** | +9.6 (+13.2 / +6.0), Sharpe 0.9 | +17.3 | Same as MSTR |
+| QQQ, SPY, IWM, UPRO, TNA, GLD, TLT, XLE, AMD, SMCI, PLTR, META | mostly negative | mixed | No |
+
+**MSTR and COIN are mostly Bitcoin** (`crypto.py`).
+- From 09:30 to 16:00, MSTR moves 1.8 times Bitcoin (correlation 0.73) and
+  COIN 1.5 times (0.70).
+- On ten years of Bitcoin during US hours (2,304 sessions), the same rule
+  made +3.1 bp a day with a Sharpe of 0.4. It was positive in only 5 of 10
+  years.
+- Bitcoin's good years were 2019 (+23 bp), 2023 (+24) and 2024 (+11); 2018
+  (-17) and 2025 (-6) were bad.
+- MSTR's two good hourly years sit in that 2023-2024 run, and its second
+  year faded as Bitcoin's 2025 turned negative.
+- It is a regime that comes and goes, not a steady edge, and it is not a
+  $200-a-day trade.
+
 ## What did not work
 
 Every book below lost money or stayed within noise, in the years it was not
