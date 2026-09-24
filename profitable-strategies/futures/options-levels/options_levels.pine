@@ -1,0 +1,61 @@
+//@version=6
+// Options levels on MNQ: fade the first touch of the day's call wall, put wall and gamma flip.
+// Paste each morning's levels (NQ points) from data/levels/<date>.json or the morning message into the inputs.
+// Paper and backtest use only: this is a forward test with no track record yet.
+strategy("MNQ Options Levels (first touch, 15-pt stop, 45-pt target)", overlay = true, pyramiding = 0,
+         default_qty_type = strategy.fixed, default_qty_value = 10,
+         commission_type = strategy.commission.cash_per_contract, commission_value = 0.75, slippage = 1,
+         process_orders_on_close = false)
+
+callWall  = input.float(0.0, "Call wall (NQ points, 0 = off)")
+putWall   = input.float(0.0, "Put wall (NQ points, 0 = off)")
+gammaFlip = input.float(0.0, "Gamma flip (NQ points, 0 = off)")
+stopPts   = input.float(15.0, "Stop (points)")
+targetPts = input.float(45.0, "Target (points)")
+touch     = input.float(1.0, "Counts as reached within (points)")
+
+ny = "America/New_York"
+mins = hour(time, ny) * 60 + minute(time, ny)
+newDay = ta.change(time("D", "", ny)) != 0
+inWindow = mins >= 9 * 60 + 35 and mins <= 15 * 60 + 30
+flatTime = mins >= 15 * 60 + 55
+
+var bool usedCall = false
+var bool usedPut = false
+var bool usedFlip = false
+if newDay
+    usedCall := false
+    usedPut := false
+    usedFlip := false
+
+flat = strategy.position_size == 0
+// short the first rise into the call wall
+if inWindow and flat and callWall > 0 and not usedCall and close[1] < callWall - touch and high >= callWall - touch
+    usedCall := true
+    strategy.entry("Call wall short", strategy.short, alert_message = "MNQ: sell at the call wall " + str.tostring(callWall - touch))
+// buy the first dip into the put wall
+else if inWindow and flat and putWall > 0 and not usedPut and close[1] > putWall + touch and low <= putWall + touch
+    usedPut := true
+    strategy.entry("Put wall long", strategy.long, alert_message = "MNQ: buy at the put wall " + str.tostring(putWall + touch))
+// fade the first touch of the gamma flip from whichever side it comes
+else if inWindow and flat and gammaFlip > 0 and not usedFlip and close[1] < gammaFlip - touch and high >= gammaFlip - touch
+    usedFlip := true
+    strategy.entry("Flip short", strategy.short, alert_message = "MNQ: sell at the gamma flip " + str.tostring(gammaFlip - touch))
+else if inWindow and flat and gammaFlip > 0 and not usedFlip and close[1] > gammaFlip + touch and low <= gammaFlip + touch
+    usedFlip := true
+    strategy.entry("Flip long", strategy.long, alert_message = "MNQ: buy at the gamma flip " + str.tostring(gammaFlip + touch))
+
+// every position gets its bracket at once: a 15-point stop and a 45-point target from the fill
+if strategy.position_size > 0
+    strategy.exit("Bracket long", stop = strategy.position_avg_price - stopPts, limit = strategy.position_avg_price + targetPts,
+                  alert_message = "MNQ: long closed by its stop or target")
+if strategy.position_size < 0
+    strategy.exit("Bracket short", stop = strategy.position_avg_price + stopPts, limit = strategy.position_avg_price - targetPts,
+                  alert_message = "MNQ: short closed by its stop or target")
+// nothing held past 15:55 New York
+if flatTime and strategy.position_size != 0
+    strategy.close_all(comment = "15:55 flat", alert_message = "MNQ: flat at 15:55")
+
+plot(callWall > 0 ? callWall : na, "Call wall", color = color.red, style = plot.style_linebr)
+plot(putWall > 0 ? putWall : na, "Put wall", color = color.green, style = plot.style_linebr)
+plot(gammaFlip > 0 ? gammaFlip : na, "Gamma flip", color = color.orange, style = plot.style_linebr)
