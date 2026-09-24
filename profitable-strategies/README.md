@@ -1,13 +1,20 @@
 # Profitable strategies
 
-**New: [Own-Drop Scalper](scalping/own-drop/README.md).** One bot whose
-trades each last four minutes. Every trade is over by 09:50 New York, so
-nothing is held past the close. Across 47 names, it buys a sharp drop in the
-opening minutes that one name takes while the rest of the market does not. On
-one month of one-minute data it averaged $146 a day at 2x buying power on
-$25,000 (typical day $112). Two days in three made money, and the worst day
-lost $353. It held up on 30 names it was never tuned on. The paper trail
-starts 2026-09-24.
+**New: [stock scalping, holds of 3 minutes or less](scalping/README.md).**
+The overnight search for ten strategies making $200 a day on $25,000 found
+none. It covered about 1,600 books on four years of one-minute bars for 72
+large US stocks, plus ten-second and one-second checks.
+
+On bid-only bars, buying a sharp drop looked strong, up to $278 a day at 1x.
+With both sides of the quote, most of that bounce turned out to be the
+spread settling. Priced the way a bot would trade, the best book makes about
+$8 a day at 1x in the years it was not fitted on, and it loses once spreads
+are wider than a cent.
+
+**Correction: the [Own-Drop Scalper](scalping/own-drop/README.md)**, listed
+here yesterday, is the same rule. Its $146 a day at 2x came from one month of last-sale bars,
+which carry the same effect. Treat it as unproven. Its paper trail replays
+the same bars and cannot show this.
 
 **New: [leveraged tech top 50](leveraged-etfs/README.md).** A seven-hour grind over
 2x and 3x funds on semiconductors, AI and graphics-card names and big tech kept

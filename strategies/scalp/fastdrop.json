@@ -1,1154 +1,3458 @@
 {
- "09:35-10:00 k1.5 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": 0.9,
-  "days_up": 0.113,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 4.66
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": 4.8,
+  "days_up": 0.347,
+  "trades_per_day": 1.6,
+  "bp_per_trade": 3.7
  },
- "09:35-10:00 k1.5 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": 0.8,
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": 4.3,
+  "days_up": 0.488,
+  "trades_per_day": 3.6,
+  "bp_per_trade": 1.44
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": 4.0,
+  "days_up": 0.488,
+  "trades_per_day": 3.5,
+  "bp_per_trade": 1.38
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": 3.9,
+  "days_up": 0.488,
+  "trades_per_day": 3.6,
+  "bp_per_trade": 1.29
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": 3.6,
+  "days_up": 0.46,
+  "trades_per_day": 3.5,
+  "bp_per_trade": 1.23
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": 3.5,
+  "days_up": 0.359,
+  "trades_per_day": 1.6,
+  "bp_per_trade": 2.74
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": 3.4,
+  "days_up": 0.347,
+  "trades_per_day": 1.5,
+  "bp_per_trade": 2.66
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": 3.3,
+  "days_up": 0.335,
+  "trades_per_day": 1.5,
+  "bp_per_trade": 2.61
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": 2.7,
+  "days_up": 0.315,
+  "trades_per_day": 1.6,
+  "bp_per_trade": 2.1
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": 2.1,
   "days_up": 0.121,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 4.25
+  "trades_per_day": 0.3,
+  "bp_per_trade": 9.27
  },
- "09:35-10:00 k1.5 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": 0.6,
+ "follow both 09:35-10:00 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": 2.0,
   "days_up": 0.109,
   "trades_per_day": 0.2,
-  "bp_per_trade": 3.16
+  "bp_per_trade": 9.93
  },
- "09:35-10:00 k1.5 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": 0.5,
+ "follow both 09:35-10:00 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": 1.7,
+  "days_up": 0.105,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 7.71
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": 1.7,
+  "days_up": 0.097,
+  "trades_per_day": 0.2,
+  "bp_per_trade": 8.35
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": 1.5,
+  "days_up": 0.343,
+  "trades_per_day": 1.6,
+  "bp_per_trade": 1.13
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": 1.4,
+  "days_up": 0.331,
+  "trades_per_day": 1.5,
+  "bp_per_trade": 1.06
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": 1.3,
+  "days_up": 0.323,
+  "trades_per_day": 1.5,
+  "bp_per_trade": 1.01
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": 1.3,
+  "days_up": 0.117,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 5.95
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": 1.2,
   "days_up": 0.105,
   "trades_per_day": 0.2,
-  "bp_per_trade": 2.75
+  "bp_per_trade": 6.04
  },
- "09:35-10:00 k1.5 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": 0.5,
+ "follow both 09:35-10:00 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": 1.1,
   "days_up": 0.109,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 2.64
+  "trades_per_day": 0.3,
+  "bp_per_trade": 4.89
  },
- "09:35-10:00 k1.5 z3.0 hold 30s lag 0s tight": {
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": 1.0,
+  "days_up": 0.504,
+  "trades_per_day": 3.7,
+  "bp_per_trade": 0.32
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": 1.0,
+  "days_up": 0.105,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 4.38
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": 0.9,
+  "days_up": 0.093,
+  "trades_per_day": 0.2,
+  "bp_per_trade": 4.46
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": 0.9,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": 4.62
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": 0.7,
+  "days_up": 0.105,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 3.32
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": 0.6,
+  "days_up": 0.097,
+  "trades_per_day": 0.2,
+  "bp_per_trade": 3.05
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": 0.5,
+  "days_up": 0.117,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 2.42
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": 0.4,
+  "days_up": 0.468,
+  "trades_per_day": 3.7,
+  "bp_per_trade": 0.12
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": 0.4,
+  "days_up": 0.137,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 1.86
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 60s lag 0s tight": {
   "usd_per_day_1x": 0.4,
   "days_up": 0.125,
   "trades_per_day": 0.2,
-  "bp_per_trade": 2.13
+  "bp_per_trade": 1.76
  },
- "09:35-10:00 k1.5 z3.0 hold 60s lag 0s tight": {
+ "follow both 09:35-10:00 k3.0 z5.0 hold 120s lag 10s tight": {
   "usd_per_day_1x": 0.4,
   "days_up": 0.109,
   "trades_per_day": 0.2,
-  "bp_per_trade": 2.11
+  "bp_per_trade": 2.03
  },
- "09:35-10:00 k1.5 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": 0.4,
-  "days_up": 0.109,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 1.96
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": 0.2,
+  "days_up": 0.319,
+  "trades_per_day": 1.6,
+  "bp_per_trade": 0.17
  },
- "09:35-10:00 k1.5 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": 0.3,
-  "days_up": 0.113,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 1.23
- },
- "09:35-10:00 k1.5 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": 0.3,
-  "days_up": 0.109,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 1.32
- },
- "09:35-10:00 k3.0 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": 0.3,
-  "days_up": 0.028,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 7.23
- },
- "09:35-10:00 k1.5 z3.0 hold 180s lag 0s base": {
+ "follow both 09:35-10:00 k1.5 z5.0 hold 120s lag 10s base": {
   "usd_per_day_1x": 0.2,
   "days_up": 0.109,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 0.86
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": 0.1,
+  "days_up": 0.121,
+  "trades_per_day": 0.3,
+  "bp_per_trade": 0.29
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": 0.1,
+  "days_up": 0.101,
   "trades_per_day": 0.2,
-  "bp_per_trade": 1.14
+  "bp_per_trade": 0.45
  },
- "09:35-10:00 k1.5 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 8.08
- },
- "09:35-10:00 k1.5 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 9.3
- },
- "09:35-10:00 k1.5 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 7.79
- },
- "09:35-10:00 k3.0 z3.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.032,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 4.04
- },
- "09:35-10:00 k3.0 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.028,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.73
- },
- "09:35-10:00 k3.0 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.024,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.93
- },
- "09:35-10:00 k3.0 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.024,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 4.43
- },
- "09:35-10:00 k3.0 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 10.38
- },
- "09:35-10:00 k3.0 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 12.3
- },
- "09:35-10:00 k3.0 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 10.81
- },
- "09:35-10:00 k3.0 z5.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 9.67
- },
- "09:35-10:00 k3.0 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": 0.2,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 9.18
- },
- "09:35-10:00 k1.5 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.117,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 0.63
- },
- "09:35-10:00 k1.5 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.109,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 0.6
- },
- "09:35-10:00 k1.5 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.097,
-  "trades_per_day": 0.2,
-  "bp_per_trade": 0.46
- },
- "09:35-10:00 k1.5 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 6.66
- },
- "09:35-10:00 k1.5 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.16
- },
- "09:35-10:00 k1.5 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 3.64
- },
- "09:35-10:00 k1.5 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.27
- },
- "09:35-10:00 k1.5 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 3.77
- },
- "09:35-10:00 k1.5 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 6.57
- },
- "09:35-10:00 k1.5 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.008,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 4.82
- },
- "09:35-10:00 k1.5 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.008,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 3.31
- },
- "09:35-10:00 k1.5 z5.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 7.42
- },
- "09:35-10:00 k1.5 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.91
- },
- "09:35-10:00 k3.0 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.032,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 2.55
- },
- "09:35-10:00 k3.0 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.02,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 2.47
- },
- "09:35-10:00 k3.0 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.028,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 3.04
- },
- "09:35-10:00 k3.0 z3.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.028,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 1.54
- },
- "09:35-10:00 k3.0 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 8.89
- },
- "09:35-10:00 k3.0 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.43
- },
- "09:35-10:00 k3.0 z5.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 3.94
- },
- "09:35-10:00 k3.0 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 7.45
- },
- "09:35-10:00 k3.0 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 5.96
- },
- "09:35-10:00 k3.0 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.008,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 6.15
- },
- "09:35-10:00 k3.0 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.008,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 4.66
- },
- "09:35-10:00 k3.0 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.012,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 8.18
- },
- "09:35-10:00 k3.0 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": 0.1,
-  "days_up": 0.008,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 7.69
- },
- "09:35-10:00 k1.5 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -0.0,
-  "days_up": 0.109,
-  "trades_per_day": 0.2,
-  "bp_per_trade": -0.19
- },
- "09:35-10:00 k1.5 z5.0 hold 30s lag 10s base": {
+ "follow both 09:35-10:00 k3.0 z5.0 hold 60s lag 0s base": {
   "usd_per_day_1x": 0.0,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 2.13
+  "days_up": 0.109,
+  "trades_per_day": 0.2,
+  "bp_per_trade": 0.19
  },
- "09:35-10:00 k1.5 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 0.39
- },
- "09:35-10:00 k1.5 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -0.0,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": -1.11
- },
- "09:35-10:00 k3.0 z3.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 0.98
- },
- "09:35-10:00 k3.0 z3.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 0.37
- },
- "09:35-10:00 k3.0 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.1,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
   "bp_per_trade": -1.13
  },
- "09:35-10:00 k3.0 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 1.21
- },
- "09:35-10:00 k3.0 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": -0.28
- },
- "09:35-10:00 k3.0 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.02,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 0.66
- },
- "09:35-10:00 k3.0 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -0.0,
-  "days_up": 0.016,
-  "trades_per_day": 0.0,
-  "bp_per_trade": -0.83
- },
- "09:35-10:00 k3.0 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 2.05
- },
- "09:35-10:00 k3.0 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": 0.0,
-  "days_up": 0.004,
-  "trades_per_day": 0.0,
-  "bp_per_trade": 0.56
- },
- "09:35-10:00 k1.5 z3.0 hold 30s lag 10s base": {
+ "follow both 09:35-10:00 k1.5 z5.0 hold 30s lag 10s tight": {
   "usd_per_day_1x": -0.1,
-  "days_up": 0.093,
-  "trades_per_day": 0.2,
-  "bp_per_trade": -0.27
+  "days_up": 0.113,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -0.47
  },
- "09:35-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 120s lag 10s base": {
   "usd_per_day_1x": -0.2,
-  "days_up": 0.294,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.31
+  "days_up": 0.431,
+  "trades_per_day": 3.6,
+  "bp_per_trade": -0.06
  },
- "09:35-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -0.3,
-  "days_up": 0.298,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.45
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.2,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -1.24
  },
- "10:00-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -0.4,
-  "days_up": 0.29,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.54
- },
- "09:35-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -0.4,
-  "days_up": 0.29,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.64
- },
- "10:00-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -0.5,
-  "days_up": 0.29,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.74
- },
- "10:00-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -0.6,
-  "days_up": 0.29,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -0.88
- },
- "09:35-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -0.7,
-  "days_up": 0.339,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -0.77
- },
- "09:35-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -0.7,
-  "days_up": 0.331,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -0.8
- },
- "09:35-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -0.7,
-  "days_up": 0.335,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -0.78
- },
- "10:00-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -0.8,
-  "days_up": 0.327,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -0.98
- },
- "10:00-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -0.8,
-  "days_up": 0.335,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -0.98
- },
- "09:35-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -0.8,
-  "days_up": 0.278,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.17
- },
- "10:00-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -0.9,
-  "days_up": 0.331,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.01
- },
- "10:00-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -0.9,
-  "days_up": 0.274,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.37
- },
- "09:35-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -0.9,
-  "days_up": 0.367,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -0.56
- },
- "09:35-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -0.9,
-  "days_up": 0.23,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.34
- },
- "09:35-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -1.0,
-  "days_up": 0.323,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.12
- },
- "09:35-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.0,
-  "days_up": 0.198,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.42
- },
- "10:00-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -1.1,
-  "days_up": 0.319,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.27
- },
- "10:00-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -1.1,
-  "days_up": 0.359,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -0.69
- },
- "10:00-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.1,
-  "days_up": 0.194,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.68
- },
- "10:00-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -1.1,
-  "days_up": 0.226,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.58
- },
- "09:35-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -1.2,
-  "days_up": 0.177,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.73
- },
- "09:35-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -1.2,
-  "days_up": 0.206,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.78
- },
- "09:35-15:50 k3.0 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -1.2,
-  "days_up": 0.262,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.82
- },
- "10:00-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -1.3,
-  "days_up": 0.173,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.95
- },
- "10:00-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -1.3,
-  "days_up": 0.202,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.92
- },
- "09:35-15:50 k3.0 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -1.3,
-  "days_up": 0.27,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -1.96
- },
- "10:00-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -1.4,
-  "days_up": 0.355,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -0.91
- },
- "10:00-15:50 k3.0 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -1.4,
-  "days_up": 0.258,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.04
- },
- "09:35-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.4,
-  "days_up": 0.234,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -1.56
- },
- "09:35-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -1.4,
-  "days_up": 0.359,
-  "trades_per_day": 1.9,
+ "follow both 09:35-10:00 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.2,
+  "days_up": 0.121,
+  "trades_per_day": 0.3,
   "bp_per_trade": -0.86
  },
- "10:00-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.5,
-  "days_up": 0.23,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.77
+ "follow both 09:35-10:00 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.2,
+  "days_up": 0.085,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -1.21
  },
- "10:00-15:50 k3.0 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -1.5,
-  "days_up": 0.262,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.25
+ "follow both 09:35-10:00 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.2,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -1.17
  },
- "09:35-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -1.5,
-  "days_up": 0.262,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -1.69
- },
- "09:35-15:50 k3.0 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -1.5,
-  "days_up": 0.25,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.14
- },
- "10:00-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -1.6,
-  "days_up": 0.258,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.89
- },
- "10:00-15:50 k3.0 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -1.6,
-  "days_up": 0.246,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.39
- },
- "09:35-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -1.6,
-  "days_up": 0.222,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -1.86
- },
- "09:35-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -1.6,
-  "days_up": 0.242,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -1.85
- },
- "10:00-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -1.7,
-  "days_up": 0.238,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -1.96
- },
- "09:35-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.7,
-  "days_up": 0.286,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.02
- },
- "10:00-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -1.8,
-  "days_up": 0.218,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.03
- },
- "10:00-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -1.8,
-  "days_up": 0.278,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.1
- },
- "09:35-15:50 k3.0 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -1.8,
-  "days_up": 0.23,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.67
- },
- "10:00-15:50 k3.0 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -1.9,
-  "days_up": 0.23,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.87
- },
- "10:00-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.306,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.22
- },
- "10:00-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.363,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -1.28
- },
- "09:35-15:50 k1.5 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.298,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.28
- },
- "09:35-15:50 k1.5 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.302,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.3
- },
- "09:35-15:50 k1.5 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.298,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.29
- },
- "09:35-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.363,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -1.23
- },
- "09:35-15:50 k3.0 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.161,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.92
- },
- "09:35-15:50 k3.0 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -2.0,
-  "days_up": 0.173,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -2.84
- },
- "10:00-15:50 k1.5 z5.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -2.1,
-  "days_up": 0.298,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.48
- },
- "10:00-15:50 k1.5 z5.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -2.1,
-  "days_up": 0.294,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.48
- },
- "10:00-15:50 k3.0 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -2.1,
-  "days_up": 0.173,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.08
- },
- "09:35-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -2.1,
-  "days_up": 0.315,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.25
- },
- "09:35-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -2.1,
-  "days_up": 0.363,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.27
- },
- "10:00-15:50 k1.5 z5.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -2.2,
-  "days_up": 0.29,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.51
- },
- "10:00-15:50 k3.0 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -2.2,
-  "days_up": 0.153,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.18
- },
- "09:35-15:50 k3.0 z5.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -2.2,
-  "days_up": 0.133,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.23
- },
- "10:00-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -2.3,
-  "days_up": 0.355,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -1.4
- },
- "10:00-15:50 k3.0 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -2.3,
-  "days_up": 0.145,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.42
- },
- "09:35-15:50 k1.5 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -2.3,
-  "days_up": 0.262,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.63
- },
- "09:35-15:50 k3.0 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -2.3,
-  "days_up": 0.145,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.29
- },
- "10:00-15:50 k1.5 z5.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -2.4,
-  "days_up": 0.262,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -2.78
- },
- "10:00-15:50 k3.0 z5.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -2.4,
-  "days_up": 0.129,
-  "trades_per_day": 0.8,
-  "bp_per_trade": -3.46
- },
- "09:35-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -2.6,
-  "days_up": 0.254,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.53
- },
- "10:00-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -2.7,
-  "days_up": 0.242,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.61
- },
- "10:00-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -2.7,
-  "days_up": 0.258,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.61
- },
- "09:35-15:50 k1.5 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -2.7,
-  "days_up": 0.185,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -3.07
- },
- "09:35-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -2.7,
-  "days_up": 0.266,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -1.6
- },
- "09:35-15:50 k1.5 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -2.8,
-  "days_up": 0.194,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -3.2
- },
- "10:00-15:50 k1.5 z5.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -2.9,
-  "days_up": 0.177,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -3.28
- },
- "10:00-15:50 k1.5 z5.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -2.9,
-  "days_up": 0.194,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -3.39
- },
- "09:35-15:50 k1.5 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -2.9,
-  "days_up": 0.177,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -3.35
- },
- "10:00-15:50 k1.5 z5.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -3.0,
-  "days_up": 0.177,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -3.46
- },
- "09:35-15:50 k1.5 z5.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -3.0,
-  "days_up": 0.161,
-  "trades_per_day": 1.1,
-  "bp_per_trade": -3.36
- },
- "10:00-15:50 k1.5 z5.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -3.1,
-  "days_up": 0.157,
-  "trades_per_day": 1.0,
-  "bp_per_trade": -3.54
- },
- "09:35-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -3.2,
-  "days_up": 0.48,
-  "trades_per_day": 8.8,
-  "bp_per_trade": -0.44
- },
- "09:35-15:50 k3.0 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -3.4,
-  "days_up": 0.302,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.06
- },
- "10:00-15:50 k3.0 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -3.5,
-  "days_up": 0.298,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -2.19
- },
- "10:00-15:50 k3.0 z3.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -3.8,
-  "days_up": 0.306,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -2.41
- },
- "09:35-15:50 k3.0 z3.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -3.8,
-  "days_up": 0.31,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -2.36
- },
- "10:00-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
-  "usd_per_day_1x": -3.9,
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -0.3,
   "days_up": 0.456,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -0.55
+  "trades_per_day": 3.5,
+  "bp_per_trade": -0.12
  },
- "09:35-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -3.9,
-  "days_up": 0.484,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -0.54
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.3,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -2.77
  },
- "10:00-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
-  "usd_per_day_1x": -4.3,
-  "days_up": 0.492,
-  "trades_per_day": 8.4,
-  "bp_per_trade": -0.62
- },
- "10:00-15:50 k3.0 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -4.3,
-  "days_up": 0.21,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.6
- },
- "09:35-15:50 k3.0 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -4.3,
-  "days_up": 0.218,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.52
- },
- "10:00-15:50 k3.0 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -4.4,
-  "days_up": 0.294,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -2.78
- },
- "09:35-15:50 k3.0 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -4.4,
-  "days_up": 0.294,
-  "trades_per_day": 1.9,
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.3,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
   "bp_per_trade": -2.73
  },
- "10:00-15:50 k3.0 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -4.5,
-  "days_up": 0.218,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.72
+ "fade both 09:35-10:00 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.3,
+  "days_up": 0.089,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -1.42
  },
- "09:35-15:50 k3.0 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -4.5,
-  "days_up": 0.266,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.76
- },
- "09:35-15:50 k3.0 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -4.6,
-  "days_up": 0.222,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -2.75
- },
- "10:00-15:50 k3.0 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -4.7,
-  "days_up": 0.262,
-  "trades_per_day": 1.9,
-  "bp_per_trade": -2.9
- },
- "10:00-15:50 k3.0 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -5.1,
-  "days_up": 0.19,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -3.11
- },
- "09:35-15:50 k3.0 z3.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -5.1,
-  "days_up": 0.169,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -3.03
- },
- "10:00-15:50 k3.0 z3.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -5.2,
-  "days_up": 0.161,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -3.11
- },
- "09:35-15:50 k3.0 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -5.2,
-  "days_up": 0.198,
-  "trades_per_day": 2.0,
-  "bp_per_trade": -3.1
- },
- "09:35-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -5.7,
-  "days_up": 0.427,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -0.8
- },
- "10:00-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
-  "usd_per_day_1x": -5.9,
-  "days_up": 0.419,
-  "trades_per_day": 8.4,
-  "bp_per_trade": -0.85
- },
- "09:35-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -5.9,
-  "days_up": 0.423,
-  "trades_per_day": 8.8,
-  "bp_per_trade": -0.8
- },
- "10:00-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
-  "usd_per_day_1x": -6.5,
-  "days_up": 0.415,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -0.91
- },
- "09:35-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -6.9,
-  "days_up": 0.363,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -0.91
- },
- "10:00-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
-  "usd_per_day_1x": -7.2,
-  "days_up": 0.343,
-  "trades_per_day": 8.9,
-  "bp_per_trade": -0.97
- },
- "09:35-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -7.9,
-  "days_up": 0.335,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -1.05
- },
- "10:00-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
-  "usd_per_day_1x": -8.2,
-  "days_up": 0.335,
-  "trades_per_day": 8.9,
-  "bp_per_trade": -1.1
- },
- "09:35-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -8.5,
-  "days_up": 0.294,
-  "trades_per_day": 9.3,
-  "bp_per_trade": -1.09
- },
- "10:00-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
-  "usd_per_day_1x": -8.8,
-  "days_up": 0.282,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -1.16
- },
- "09:35-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -10.4,
-  "days_up": 0.206,
-  "trades_per_day": 9.3,
+ "follow both 09:35-10:00 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.3,
+  "days_up": 0.097,
+  "trades_per_day": 0.3,
   "bp_per_trade": -1.34
  },
- "10:00-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
-  "usd_per_day_1x": -10.6,
-  "days_up": 0.198,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -1.39
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.4,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -2.88
  },
- "09:35-15:50 k1.5 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -14.3,
-  "days_up": 0.294,
-  "trades_per_day": 8.8,
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.4,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -2.87
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.4,
+  "days_up": 0.113,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -1.79
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.4,
+  "days_up": 0.113,
+  "trades_per_day": 0.2,
   "bp_per_trade": -1.95
  },
- "09:35-15:50 k1.5 z3.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -14.6,
-  "days_up": 0.331,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -2.05
+ "fade both 09:35-10:00 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.4,
+  "days_up": 0.085,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -1.98
  },
- "10:00-15:50 k1.5 z3.0 hold 120s lag 0s base": {
-  "usd_per_day_1x": -14.7,
-  "days_up": 0.278,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -2.06
- },
- "10:00-15:50 k1.5 z3.0 hold 180s lag 0s base": {
-  "usd_per_day_1x": -14.8,
-  "days_up": 0.315,
-  "trades_per_day": 8.4,
-  "bp_per_trade": -2.12
- },
- "10:00-15:50 k1.5 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -16.4,
-  "days_up": 0.274,
-  "trades_per_day": 8.4,
-  "bp_per_trade": -2.35
- },
- "09:35-15:50 k1.5 z3.0 hold 180s lag 10s base": {
-  "usd_per_day_1x": -16.5,
-  "days_up": 0.29,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -2.31
- },
- "09:35-15:50 k1.5 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -16.9,
-  "days_up": 0.262,
-  "trades_per_day": 8.8,
-  "bp_per_trade": -2.31
- },
- "10:00-15:50 k1.5 z3.0 hold 120s lag 10s base": {
-  "usd_per_day_1x": -17.3,
-  "days_up": 0.234,
-  "trades_per_day": 8.6,
-  "bp_per_trade": -2.42
- },
- "10:00-15:50 k1.5 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -18.3,
-  "days_up": 0.173,
-  "trades_per_day": 8.9,
-  "bp_per_trade": -2.48
- },
- "09:35-15:50 k1.5 z3.0 hold 60s lag 0s base": {
-  "usd_per_day_1x": -18.3,
-  "days_up": 0.19,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -2.41
- },
- "10:00-15:50 k1.5 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -19.3,
-  "days_up": 0.169,
-  "trades_per_day": 8.9,
-  "bp_per_trade": -2.61
- },
- "09:35-15:50 k1.5 z3.0 hold 60s lag 10s base": {
-  "usd_per_day_1x": -19.3,
-  "days_up": 0.19,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -2.55
- },
- "10:00-15:50 k1.5 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -20.2,
-  "days_up": 0.101,
-  "trades_per_day": 9.1,
-  "bp_per_trade": -2.67
- },
- "09:35-15:50 k1.5 z3.0 hold 30s lag 0s base": {
-  "usd_per_day_1x": -20.2,
+ "follow both 09:35-10:00 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.4,
   "days_up": 0.113,
-  "trades_per_day": 9.3,
-  "bp_per_trade": -2.6
+  "trades_per_day": 0.2,
+  "bp_per_trade": -1.74
  },
- "10:00-15:50 k1.5 z3.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -22.0,
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.5,
   "days_up": 0.069,
-  "trades_per_day": 9.1,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -4.19
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -0.5,
+  "days_up": 0.069,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -3.98
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.5,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -4.37
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -0.5,
+  "days_up": 0.085,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.27
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.5,
+  "days_up": 0.105,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.03
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.5,
+  "days_up": 0.109,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.43
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.468,
+  "trades_per_day": 3.6,
+  "bp_per_trade": -0.21
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -4.51
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.085,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -2.66
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.081,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -2.99
+ },
+ "follow both 09:35-10:00 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.089,
+  "trades_per_day": 0.3,
   "bp_per_trade": -2.9
  },
- "09:35-15:50 k1.5 z3.0 hold 30s lag 10s base": {
-  "usd_per_day_1x": -22.0,
+ "follow both 09:35-10:00 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.081,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -2.78
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.6,
+  "days_up": 0.097,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -2.75
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.065,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -5.83
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.319,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -0.51
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.065,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -5.62
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.109,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -3.36
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.109,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -3.52
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.081,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -3.56
+ },
+ "follow both 09:35-10:00 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.7,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -3.31
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -0.8,
+  "days_up": 0.44,
+  "trades_per_day": 3.5,
+  "bp_per_trade": -0.27
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -0.9,
+  "days_up": 0.065,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -7.4
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -0.9,
+  "days_up": 0.081,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -4.23
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -0.9,
   "days_up": 0.077,
-  "trades_per_day": 9.3,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -3.83
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -1.0,
+  "days_up": 0.06,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -7.88
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -1.0,
+  "days_up": 0.077,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -4.91
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.13
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.01
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.06,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.04
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.23
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.21
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.077,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -4.99
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -1.1,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -5.18
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -1.2,
+  "days_up": 0.056,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -9.52
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -1.2,
+  "days_up": 0.101,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -5.55
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -1.3,
+  "days_up": 0.036,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -10.77
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -1.3,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -10.65
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -1.3,
+  "days_up": 0.036,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -10.87
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -1.3,
+  "days_up": 0.048,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -10.85
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -1.3,
+  "days_up": 0.073,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -6.49
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -1.4,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -6.76
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -1.5,
+  "days_up": 0.073,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -6.55
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -1.5,
+  "days_up": 0.403,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -0.64
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -1.6,
+  "days_up": 0.052,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -13.45
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -1.6,
+  "days_up": 0.101,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -7.12
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -1.6,
+  "days_up": 0.109,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -7.78
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -1.7,
+  "days_up": 0.052,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -13.44
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -1.8,
+  "days_up": 0.056,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -14.66
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -1.8,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -15.09
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -1.8,
+  "days_up": 0.056,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -14.96
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -1.8,
+  "days_up": 0.113,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -8.02
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -1.9,
+  "days_up": 0.044,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -15.08
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -1.9,
+  "days_up": 0.298,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -1.44
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -1.9,
+  "days_up": 0.403,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -0.75
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -1.9,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -9.19
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -1.9,
+  "days_up": 0.105,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -9.35
+ },
+ "fade drops 09:35-10:00 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -2.0,
+  "days_up": 0.056,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -16.3
+ },
+ "fade drops 09:35-10:00 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -2.0,
+  "days_up": 0.056,
+  "trades_per_day": 0.1,
+  "bp_per_trade": -16.6
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -2.0,
+  "days_up": 0.101,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -9.08
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -2.1,
+  "days_up": 0.109,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -9.58
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -2.2,
+  "days_up": 0.093,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -10.77
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -2.3,
+  "days_up": 0.399,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -0.88
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -2.4,
+  "days_up": 0.093,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -10.64
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -2.7,
+  "days_up": 0.323,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -2.02
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -2.7,
+  "days_up": 0.395,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -1.15
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -2.7,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -13.08
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -2.8,
+  "days_up": 0.101,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -12.4
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -2.9,
+  "days_up": 0.274,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -2.12
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -2.9,
+  "days_up": 0.355,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -1.1
+ },
+ "fade both 09:35-10:00 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -3.0,
+  "days_up": 0.101,
+  "trades_per_day": 0.2,
+  "bp_per_trade": -14.66
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -3.1,
+  "days_up": 0.331,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -2.32
+ },
+ "fade both 09:35-10:00 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -3.1,
+  "days_up": 0.101,
+  "trades_per_day": 0.3,
+  "bp_per_trade": -13.97
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -3.2,
+  "days_up": 0.444,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -1.03
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -3.2,
+  "days_up": 0.44,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -1.03
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -3.2,
+  "days_up": 0.48,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -0.63
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -3.4,
+  "days_up": 0.464,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -0.66
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -3.6,
+  "days_up": 0.452,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -1.19
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -3.6,
+  "days_up": 0.423,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -1.47
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -4.1,
+  "days_up": 0.407,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -1.56
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -4.1,
+  "days_up": 0.387,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -1.58
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -4.1,
+  "days_up": 0.379,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -1.6
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -4.2,
+  "days_up": 0.387,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -1.69
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -4.3,
+  "days_up": 0.403,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -1.39
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -4.3,
+  "days_up": 0.435,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -0.72
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -4.3,
+  "days_up": 0.375,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -1.62
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -4.6,
+  "days_up": 0.419,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -0.77
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -4.7,
+  "days_up": 0.431,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -2.01
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -4.8,
+  "days_up": 0.298,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -3.63
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -5.0,
+  "days_up": 0.46,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -0.88
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -5.2,
+  "days_up": 0.395,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -2.22
+ },
+ "fade drops 09:35-10:00 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -5.3,
+  "days_up": 0.29,
+  "trades_per_day": 1.6,
+  "bp_per_trade": -3.93
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -5.5,
+  "days_up": 0.383,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -2.08
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -5.7,
+  "days_up": 0.363,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -2.33
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -5.9,
+  "days_up": 0.371,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -2.3
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -5.9,
+  "days_up": 0.407,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -2.41
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -5.9,
+  "days_up": 0.411,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -2.51
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -6.4,
+  "days_up": 0.371,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -2.46
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -6.4,
+  "days_up": 0.387,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -2.73
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -6.6,
+  "days_up": 0.435,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -1.21
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -6.8,
+  "days_up": 0.484,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -1.24
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -6.9,
+  "days_up": 0.435,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -1.2
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -7.2,
+  "days_up": 0.323,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -2.69
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -7.5,
+  "days_up": 0.407,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -3.05
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -7.8,
+  "days_up": 0.403,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -2.54
+ },
+ "fade drops 09:35-10:00 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -7.9,
+  "days_up": 0.391,
+  "trades_per_day": 3.7,
+  "bp_per_trade": -2.54
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -8.0,
+  "days_up": 0.363,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -3.27
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -8.2,
+  "days_up": 0.351,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -3.16
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -8.2,
+  "days_up": 0.339,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -3.19
+ },
+ "fade both 09:35-10:00 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -8.4,
+  "days_up": 0.339,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -3.15
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -8.4,
+  "days_up": 0.403,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -3.58
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -8.6,
+  "days_up": 0.327,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -3.21
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -9.4,
+  "days_up": 0.423,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -0.59
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -9.6,
+  "days_up": 0.444,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -1.76
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -9.6,
+  "days_up": 0.391,
+  "trades_per_day": 2.8,
+  "bp_per_trade": -4.09
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -9.8,
+  "days_up": 0.427,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -1.79
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -9.8,
+  "days_up": 0.319,
+  "trades_per_day": 3.2,
+  "bp_per_trade": -3.67
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -9.8,
+  "days_up": 0.379,
+  "trades_per_day": 3.0,
+  "bp_per_trade": -3.99
+ },
+ "follow both 09:35-10:00 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -10.0,
+  "days_up": 0.327,
+  "trades_per_day": 3.1,
+  "bp_per_trade": -3.89
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -10.2,
+  "days_up": 0.435,
+  "trades_per_day": 19.3,
+  "bp_per_trade": -0.63
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -10.4,
+  "days_up": 0.419,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -1.82
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -10.8,
+  "days_up": 0.427,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -0.72
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -10.9,
+  "days_up": 0.435,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -2.13
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -11.1,
+  "days_up": 0.452,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -2.16
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -11.6,
+  "days_up": 0.431,
+  "trades_per_day": 18.2,
+  "bp_per_trade": -0.76
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -12.0,
+  "days_up": 0.448,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -2.34
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -12.2,
+  "days_up": 0.431,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -2.37
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -12.3,
+  "days_up": 0.407,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -2.14
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -12.7,
+  "days_up": 0.403,
+  "trades_per_day": 19.5,
+  "bp_per_trade": -0.78
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -13.3,
+  "days_up": 0.419,
+  "trades_per_day": 18.4,
+  "bp_per_trade": -0.87
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -13.3,
+  "days_up": 0.355,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -2.23
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -13.4,
+  "days_up": 0.375,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -2.25
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -13.6,
+  "days_up": 0.403,
+  "trades_per_day": 19.6,
+  "bp_per_trade": -0.83
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -13.6,
+  "days_up": 0.335,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -2.28
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -13.7,
+  "days_up": 0.379,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -2.38
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -13.7,
+  "days_up": 0.411,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -2.3
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -14.2,
+  "days_up": 0.415,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -0.92
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -14.8,
+  "days_up": 0.407,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -2.71
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -14.9,
+  "days_up": 0.444,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -2.74
+ },
+ "fade both 09:35-10:00 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -15.5,
+  "days_up": 0.367,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -2.7
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -17.8,
+  "days_up": 0.427,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -3.26
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -17.9,
+  "days_up": 0.379,
+  "trades_per_day": 6.5,
+  "bp_per_trade": -3.3
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -18.1,
+  "days_up": 0.391,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -1.13
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -19.1,
+  "days_up": 0.351,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -3.32
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -19.5,
+  "days_up": 0.383,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -1.29
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -19.7,
+  "days_up": 0.407,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -3.84
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -19.8,
+  "days_up": 0.391,
+  "trades_per_day": 19.3,
+  "bp_per_trade": -1.23
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -19.9,
+  "days_up": 0.399,
+  "trades_per_day": 6.2,
+  "bp_per_trade": -3.87
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -20.9,
+  "days_up": 0.363,
+  "trades_per_day": 6.9,
+  "bp_per_trade": -3.64
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -21.1,
+  "days_up": 0.379,
+  "trades_per_day": 18.2,
+  "bp_per_trade": -1.39
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -22.2,
+  "days_up": 0.347,
+  "trades_per_day": 18.6,
+  "bp_per_trade": -1.43
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -22.4,
+  "days_up": 0.335,
+  "trades_per_day": 19.7,
+  "bp_per_trade": -1.36
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -22.4,
+  "days_up": 0.351,
+  "trades_per_day": 18.7,
+  "bp_per_trade": -1.44
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -22.4,
+  "days_up": 0.294,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -3.76
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -22.6,
+  "days_up": 0.343,
+  "trades_per_day": 19.9,
+  "bp_per_trade": -1.37
+ },
+ "follow both 09:35-10:00 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -22.7,
+  "days_up": 0.319,
+  "trades_per_day": 7.2,
+  "bp_per_trade": -3.81
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -23.4,
+  "days_up": 0.363,
+  "trades_per_day": 19.5,
+  "bp_per_trade": -1.44
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -24.3,
+  "days_up": 0.351,
+  "trades_per_day": 18.4,
+  "bp_per_trade": -1.59
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -24.9,
+  "days_up": 0.367,
+  "trades_per_day": 19.6,
+  "bp_per_trade": -1.52
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -24.9,
+  "days_up": 0.331,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -0.79
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -25.3,
+  "days_up": 0.331,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -0.8
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -25.8,
+  "days_up": 0.351,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -1.68
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -26.5,
+  "days_up": 0.266,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -1.69
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -26.6,
+  "days_up": 0.27,
+  "trades_per_day": 19.0,
+  "bp_per_trade": -1.68
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -27.2,
+  "days_up": 0.25,
+  "trades_per_day": 20.0,
+  "bp_per_trade": -1.63
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -27.3,
+  "days_up": 0.254,
+  "trades_per_day": 20.1,
+  "bp_per_trade": -1.62
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -29.1,
+  "days_up": 0.319,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -0.87
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -29.2,
+  "days_up": 0.395,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -0.96
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -29.2,
+  "days_up": 0.415,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -1.01
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -29.5,
+  "days_up": 0.319,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -0.88
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -30.4,
+  "days_up": 0.419,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -1.05
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -30.6,
+  "days_up": 0.407,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -1.0
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -30.8,
+  "days_up": 0.347,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -1.0
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -31.1,
+  "days_up": 0.355,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -1.01
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -32.9,
+  "days_up": 0.302,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -2.06
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -33.1,
+  "days_up": 0.319,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -2.2
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -33.9,
+  "days_up": 0.306,
+  "trades_per_day": 19.3,
+  "bp_per_trade": -2.1
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -34.0,
+  "days_up": 0.302,
+  "trades_per_day": 18.6,
+  "bp_per_trade": -2.2
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -34.0,
+  "days_up": 0.323,
+  "trades_per_day": 18.2,
+  "bp_per_trade": -2.24
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -34.1,
+  "days_up": 0.306,
+  "trades_per_day": 19.7,
+  "bp_per_trade": -2.07
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -34.2,
+  "days_up": 0.375,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -1.15
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -34.3,
+  "days_up": 0.371,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -1.1
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -35.0,
+  "days_up": 0.383,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -1.18
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -35.0,
+  "days_up": 0.315,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -1.07
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -35.1,
+  "days_up": 0.31,
+  "trades_per_day": 19.9,
+  "bp_per_trade": -2.12
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -35.1,
+  "days_up": 0.306,
+  "trades_per_day": 18.7,
+  "bp_per_trade": -2.25
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -35.3,
+  "days_up": 0.379,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -1.12
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -35.4,
+  "days_up": 0.323,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -1.09
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -35.7,
+  "days_up": 0.262,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -2.27
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -35.9,
+  "days_up": 0.27,
+  "trades_per_day": 18.4,
+  "bp_per_trade": -2.35
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -36.0,
+  "days_up": 0.323,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -1.21
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -36.1,
+  "days_up": 0.266,
+  "trades_per_day": 20.0,
+  "bp_per_trade": -2.16
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -36.1,
+  "days_up": 0.278,
+  "trades_per_day": 19.0,
+  "bp_per_trade": -2.29
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -36.6,
+  "days_up": 0.266,
+  "trades_per_day": 19.5,
+  "bp_per_trade": -2.25
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -36.6,
+  "days_up": 0.278,
+  "trades_per_day": 20.1,
+  "bp_per_trade": -2.18
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -36.9,
+  "days_up": 0.327,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -1.24
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -37.0,
+  "days_up": 0.266,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -2.4
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -37.7,
+  "days_up": 0.266,
+  "trades_per_day": 19.6,
+  "bp_per_trade": -2.31
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -38.8,
+  "days_up": 0.339,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -1.34
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -40.0,
+  "days_up": 0.23,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -1.27
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -40.2,
+  "days_up": 0.222,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -1.27
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -40.4,
+  "days_up": 0.339,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -1.4
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -40.7,
+  "days_up": 0.274,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -1.33
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -40.9,
+  "days_up": 0.27,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -1.33
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -41.1,
+  "days_up": 0.315,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -1.31
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -41.6,
+  "days_up": 0.282,
+  "trades_per_day": 19.2,
+  "bp_per_trade": -2.6
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -41.7,
+  "days_up": 0.286,
+  "trades_per_day": 18.1,
+  "bp_per_trade": -2.77
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -42.1,
+  "days_up": 0.306,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -1.34
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -42.3,
+  "days_up": 0.266,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -1.3
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -42.7,
+  "days_up": 0.266,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -1.31
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -43.3,
+  "days_up": 0.218,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -1.3
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -43.4,
+  "days_up": 0.214,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -1.29
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -43.5,
+  "days_up": 0.282,
+  "trades_per_day": 19.3,
+  "bp_per_trade": -2.7
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -43.6,
+  "days_up": 0.282,
+  "trades_per_day": 18.2,
+  "bp_per_trade": -2.87
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -43.9,
+  "days_up": 0.363,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -1.44
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -43.9,
+  "days_up": 0.327,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -1.43
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -44.6,
+  "days_up": 0.363,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -1.55
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -45.1,
+  "days_up": 0.198,
+  "trades_per_day": 18.6,
+  "bp_per_trade": -2.91
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -45.5,
+  "days_up": 0.202,
+  "trades_per_day": 18.7,
+  "bp_per_trade": -2.92
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -45.5,
+  "days_up": 0.331,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -1.5
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -46.1,
+  "days_up": 0.367,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -1.51
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -46.6,
+  "days_up": 0.194,
+  "trades_per_day": 19.7,
+  "bp_per_trade": -2.83
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -46.8,
+  "days_up": 0.363,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -1.61
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -46.9,
+  "days_up": 0.242,
+  "trades_per_day": 18.4,
+  "bp_per_trade": -3.07
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -47.0,
+  "days_up": 0.185,
+  "trades_per_day": 19.9,
   "bp_per_trade": -2.84
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -47.2,
+  "days_up": 0.242,
+  "trades_per_day": 19.5,
+  "bp_per_trade": -2.91
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -48.6,
+  "days_up": 0.246,
+  "trades_per_day": 18.5,
+  "bp_per_trade": -3.16
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -49.0,
+  "days_up": 0.242,
+  "trades_per_day": 19.6,
+  "bp_per_trade": -2.99
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -49.7,
+  "days_up": 0.109,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -3.16
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -49.9,
+  "days_up": 0.323,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -1.59
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -49.9,
+  "days_up": 0.242,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -1.63
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -50.0,
+  "days_up": 0.117,
+  "trades_per_day": 19.0,
+  "bp_per_trade": -3.16
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -50.2,
+  "days_up": 0.234,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -1.63
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -50.6,
+  "days_up": 0.335,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -1.71
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -51.4,
+  "days_up": 0.327,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -1.63
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -51.7,
+  "days_up": 0.105,
+  "trades_per_day": 20.0,
+  "bp_per_trade": -3.1
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -52.0,
+  "days_up": 0.113,
+  "trades_per_day": 20.1,
+  "bp_per_trade": -3.1
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -52.0,
+  "days_up": 0.335,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -1.74
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -53.0,
+  "days_up": 0.238,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -1.63
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -53.0,
+  "days_up": 0.298,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -1.78
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -53.1,
+  "days_up": 0.177,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -1.68
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -53.2,
+  "days_up": 0.282,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -1.8
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -53.2,
+  "days_up": 0.238,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -1.63
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -53.5,
+  "days_up": 0.173,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -1.69
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -54.3,
+  "days_up": 0.319,
+  "trades_per_day": 76.5,
+  "bp_per_trade": -0.85
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -54.8,
+  "days_up": 0.181,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -1.64
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -55.2,
+  "days_up": 0.286,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -1.9
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -55.3,
+  "days_up": 0.181,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -1.65
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -55.9,
+  "days_up": 0.29,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -1.94
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -56.9,
+  "days_up": 0.185,
+  "trades_per_day": 18.6,
+  "bp_per_trade": -3.67
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -57.2,
+  "days_up": 0.29,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -1.82
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -57.5,
+  "days_up": 0.294,
+  "trades_per_day": 82.5,
+  "bp_per_trade": -0.84
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -57.6,
+  "days_up": 0.274,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -1.84
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -58.2,
+  "days_up": 0.339,
+  "trades_per_day": 75.1,
+  "bp_per_trade": -0.93
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -58.2,
+  "days_up": 0.19,
+  "trades_per_day": 18.7,
+  "bp_per_trade": -3.73
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -58.3,
+  "days_up": 0.177,
+  "trades_per_day": 19.7,
+  "bp_per_trade": -3.54
+ },
+ "fade drops 10:00-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -58.9,
+  "days_up": 0.157,
+  "trades_per_day": 18.8,
+  "bp_per_trade": -3.75
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -59.4,
+  "days_up": 0.242,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -1.94
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -59.4,
+  "days_up": 0.282,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -1.94
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -59.5,
+  "days_up": 0.185,
+  "trades_per_day": 19.9,
+  "bp_per_trade": -3.59
+ },
+ "fade drops 09:35-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -59.5,
+  "days_up": 0.157,
+  "trades_per_day": 19.0,
+  "bp_per_trade": -3.76
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -59.9,
+  "days_up": 0.25,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -1.85
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -60.2,
+  "days_up": 0.282,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -1.98
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -60.3,
+  "days_up": 0.242,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -1.95
+ },
+ "fade drops 10:00-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -60.6,
+  "days_up": 0.145,
+  "trades_per_day": 20.0,
+  "bp_per_trade": -3.63
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -60.8,
+  "days_up": 0.246,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -1.86
+ },
+ "fade drops 09:35-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -61.3,
+  "days_up": 0.141,
+  "trades_per_day": 20.1,
+  "bp_per_trade": -3.65
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -62.7,
+  "days_up": 0.286,
+  "trades_per_day": 81.0,
+  "bp_per_trade": -0.93
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -68.2,
+  "days_up": 0.165,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -2.16
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -68.4,
+  "days_up": 0.177,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -2.16
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -69.0,
+  "days_up": 0.173,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -2.07
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -69.2,
+  "days_up": 0.173,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -2.06
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -71.5,
+  "days_up": 0.137,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -2.27
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -71.7,
+  "days_up": 0.242,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -2.49
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -72.1,
+  "days_up": 0.137,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -2.27
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -73.2,
+  "days_up": 0.242,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -2.53
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -73.8,
+  "days_up": 0.23,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -2.43
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -75.6,
+  "days_up": 0.23,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -2.47
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -76.4,
+  "days_up": 0.173,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -2.49
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -76.4,
+  "days_up": 0.19,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -2.47
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -77.9,
+  "days_up": 0.218,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -2.63
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -78.1,
+  "days_up": 0.129,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -2.34
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -78.8,
+  "days_up": 0.129,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -2.35
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -79.0,
+  "days_up": 0.226,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -2.65
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -80.0,
+  "days_up": 0.222,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -2.68
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -80.3,
+  "days_up": 0.198,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -2.57
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -80.6,
+  "days_up": 0.206,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -2.72
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -81.6,
+  "days_up": 0.21,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -2.59
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -81.6,
+  "days_up": 0.23,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -2.82
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -82.9,
+  "days_up": 0.246,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -2.88
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -83.0,
+  "days_up": 0.177,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -2.56
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -83.0,
+  "days_up": 0.19,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -2.54
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -86.0,
+  "days_up": 0.137,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -2.8
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -86.5,
+  "days_up": 0.141,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -2.8
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -86.6,
+  "days_up": 0.081,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -2.74
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -87.1,
+  "days_up": 0.242,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -3.02
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -87.1,
+  "days_up": 0.085,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -2.74
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -87.4,
+  "days_up": 0.19,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -2.78
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -88.0,
+  "days_up": 0.177,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -2.81
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -88.6,
+  "days_up": 0.25,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -2.91
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -88.9,
+  "days_up": 0.194,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -2.9
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -89.6,
+  "days_up": 0.25,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -3.09
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -89.9,
+  "days_up": 0.125,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -2.77
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -90.2,
+  "days_up": 0.19,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -2.96
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -90.6,
+  "days_up": 0.125,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -2.78
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -91.1,
+  "days_up": 0.258,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -2.98
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -91.3,
+  "days_up": 0.23,
+  "trades_per_day": 89.6,
+  "bp_per_trade": -1.22
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -91.7,
+  "days_up": 0.226,
+  "trades_per_day": 88.0,
+  "bp_per_trade": -1.25
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -92.4,
+  "days_up": 0.077,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -2.77
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -92.8,
+  "days_up": 0.081,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -2.76
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -94.3,
+  "days_up": 0.19,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -3.18
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -95.1,
+  "days_up": 0.286,
+  "trades_per_day": 76.5,
+  "bp_per_trade": -1.49
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -95.2,
+  "days_up": 0.121,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -3.1
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -95.8,
+  "days_up": 0.29,
+  "trades_per_day": 124.5,
+  "bp_per_trade": -0.92
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -95.8,
+  "days_up": 0.19,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -3.06
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -95.8,
+  "days_up": 0.117,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -3.1
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -96.0,
+  "days_up": 0.185,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -3.22
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -97.0,
+  "days_up": 0.198,
+  "trades_per_day": 35.6,
+  "bp_per_trade": -3.27
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -97.0,
+  "days_up": 0.202,
+  "trades_per_day": 35.8,
+  "bp_per_trade": -3.25
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -97.3,
+  "days_up": 0.315,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -0.98
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -97.4,
+  "days_up": 0.31,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -0.95
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -97.6,
+  "days_up": 0.185,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -3.1
+ },
+ "follow both 09:35-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -98.0,
+  "days_up": 0.21,
+  "trades_per_day": 34.8,
+  "bp_per_trade": -3.38
+ },
+ "follow both 10:00-15:50 k3.0 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -98.4,
+  "days_up": 0.198,
+  "trades_per_day": 34.6,
+  "bp_per_trade": -3.41
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -98.9,
+  "days_up": 0.274,
+  "trades_per_day": 75.1,
+  "bp_per_trade": -1.58
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -99.7,
+  "days_up": 0.048,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -3.16
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -100.2,
+  "days_up": 0.29,
+  "trades_per_day": 121.1,
+  "bp_per_trade": -0.99
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -100.3,
+  "days_up": 0.052,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -3.16
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -100.6,
+  "days_up": 0.113,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -3.1
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -101.1,
+  "days_up": 0.105,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -3.1
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -103.5,
+  "days_up": 0.173,
+  "trades_per_day": 37.5,
+  "bp_per_trade": -3.31
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -103.5,
+  "days_up": 0.173,
+  "trades_per_day": 37.8,
+  "bp_per_trade": -3.29
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -103.8,
+  "days_up": 0.044,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -3.11
+ },
+ "follow both 09:35-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -104.4,
+  "days_up": 0.185,
+  "trades_per_day": 36.7,
+  "bp_per_trade": -3.41
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -104.6,
+  "days_up": 0.044,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -3.12
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -104.7,
+  "days_up": 0.161,
+  "trades_per_day": 36.8,
+  "bp_per_trade": -3.41
+ },
+ "follow both 10:00-15:50 k1.5 z5.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -104.9,
+  "days_up": 0.173,
+  "trades_per_day": 36.5,
+  "bp_per_trade": -3.45
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -105.9,
+  "days_up": 0.161,
+  "trades_per_day": 37.0,
+  "bp_per_trade": -3.43
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -106.5,
+  "days_up": 0.266,
+  "trades_per_day": 137.2,
+  "bp_per_trade": -0.93
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -107.5,
+  "days_up": 0.137,
+  "trades_per_day": 38.9,
+  "bp_per_trade": -3.32
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -108.8,
+  "days_up": 0.25,
+  "trades_per_day": 82.5,
+  "bp_per_trade": -1.58
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -108.8,
+  "days_up": 0.145,
+  "trades_per_day": 39.1,
+  "bp_per_trade": -3.33
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -111.0,
+  "days_up": 0.246,
+  "trades_per_day": 133.8,
+  "bp_per_trade": -1.0
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -111.1,
+  "days_up": 0.27,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -0.98
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -111.4,
+  "days_up": 0.286,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -0.96
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -112.0,
+  "days_up": 0.109,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -1.45
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -112.4,
+  "days_up": 0.129,
+  "trades_per_day": 94.1,
+  "bp_per_trade": -1.43
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -112.6,
+  "days_up": 0.21,
+  "trades_per_day": 81.0,
+  "bp_per_trade": -1.67
+ },
+ "fade both 10:00-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -114.8,
+  "days_up": 0.077,
+  "trades_per_day": 37.9,
+  "bp_per_trade": -3.64
+ },
+ "fade both 09:35-15:50 k3.0 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -115.3,
+  "days_up": 0.081,
+  "trades_per_day": 38.1,
+  "bp_per_trade": -3.63
+ },
+ "fade both 10:00-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -118.1,
+  "days_up": 0.069,
+  "trades_per_day": 40.1,
+  "bp_per_trade": -3.54
+ },
+ "fade both 09:35-15:50 k1.5 z5.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -118.6,
+  "days_up": 0.069,
+  "trades_per_day": 40.3,
+  "bp_per_trade": -3.53
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -124.8,
+  "days_up": 0.254,
+  "trades_per_day": 124.5,
+  "bp_per_trade": -1.2
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -129.0,
+  "days_up": 0.222,
+  "trades_per_day": 121.1,
+  "bp_per_trade": -1.28
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -136.9,
+  "days_up": 0.133,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -0.94
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -141.3,
+  "days_up": 0.125,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -0.95
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -141.6,
+  "days_up": 0.262,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -1.42
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -145.7,
+  "days_up": 0.21,
+  "trades_per_day": 137.2,
+  "bp_per_trade": -1.27
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -146.8,
+  "days_up": 0.149,
+  "trades_per_day": 88.0,
+  "bp_per_trade": -2.0
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -147.9,
+  "days_up": 0.25,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -1.45
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -148.2,
+  "days_up": 0.125,
+  "trades_per_day": 151.3,
+  "bp_per_trade": -1.18
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -149.3,
+  "days_up": 0.125,
+  "trades_per_day": 147.7,
+  "bp_per_trade": -1.21
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -149.5,
+  "days_up": 0.177,
+  "trades_per_day": 133.8,
+  "bp_per_trade": -1.34
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -149.5,
+  "days_up": 0.169,
+  "trades_per_day": 89.6,
+  "bp_per_trade": -2.0
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -151.6,
+  "days_up": 0.202,
+  "trades_per_day": 76.5,
+  "bp_per_trade": -2.38
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -152.4,
+  "days_up": 0.177,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -1.15
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -152.8,
+  "days_up": 0.173,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -1.16
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -153.5,
+  "days_up": 0.149,
+  "trades_per_day": 75.1,
+  "bp_per_trade": -2.45
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -154.4,
+  "days_up": 0.198,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -1.15
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -156.9,
+  "days_up": 0.153,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -1.17
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -158.2,
+  "days_up": 0.222,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -1.04
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -160.2,
+  "days_up": 0.226,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -1.02
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -161.9,
+  "days_up": 0.206,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -1.62
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -162.4,
+  "days_up": 0.173,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -1.43
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -162.5,
+  "days_up": 0.137,
+  "trades_per_day": 82.5,
+  "bp_per_trade": -2.36
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -162.6,
+  "days_up": 0.214,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -1.59
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -165.0,
+  "days_up": 0.101,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -2.14
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -165.7,
+  "days_up": 0.137,
+  "trades_per_day": 81.0,
+  "bp_per_trade": -2.45
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -167.8,
+  "days_up": 0.185,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -1.45
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -167.9,
+  "days_up": 0.109,
+  "trades_per_day": 94.1,
+  "bp_per_trade": -2.14
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -178.1,
+  "days_up": 0.056,
+  "trades_per_day": 159.2,
+  "bp_per_trade": -1.34
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -178.4,
+  "days_up": 0.036,
+  "trades_per_day": 155.6,
+  "bp_per_trade": -1.38
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -181.1,
+  "days_up": 0.234,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -1.0
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -183.6,
+  "days_up": 0.173,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -1.61
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -185.6,
+  "days_up": 0.198,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -1.6
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -186.6,
+  "days_up": 0.234,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -1.0
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -192.4,
+  "days_up": 0.145,
+  "trades_per_day": 76.5,
+  "bp_per_trade": -3.02
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -194.2,
+  "days_up": 0.121,
+  "trades_per_day": 75.1,
+  "bp_per_trade": -3.1
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -197.7,
+  "days_up": 0.109,
+  "trades_per_day": 147.7,
+  "bp_per_trade": -1.61
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -200.9,
+  "days_up": 0.125,
+  "trades_per_day": 151.3,
+  "bp_per_trade": -1.59
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -201.0,
+  "days_up": 0.194,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -1.32
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -202.0,
+  "days_up": 0.185,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -1.28
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -203.6,
+  "days_up": 0.056,
+  "trades_per_day": 88.0,
+  "bp_per_trade": -2.78
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -205.3,
+  "days_up": 0.06,
+  "trades_per_day": 89.6,
+  "bp_per_trade": -2.75
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -206.2,
+  "days_up": 0.153,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -2.07
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -207.8,
+  "days_up": 0.052,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -1.43
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -210.4,
+  "days_up": 0.052,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -1.42
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -213.1,
+  "days_up": 0.157,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -2.09
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -213.8,
+  "days_up": 0.113,
+  "trades_per_day": 82.5,
+  "bp_per_trade": -3.11
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -215.6,
+  "days_up": 0.089,
+  "trades_per_day": 81.0,
+  "bp_per_trade": -3.19
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -227.3,
+  "days_up": 0.056,
+  "trades_per_day": 155.6,
+  "bp_per_trade": -1.75
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -229.7,
+  "days_up": 0.016,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -2.98
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -230.5,
+  "days_up": 0.065,
+  "trades_per_day": 159.2,
+  "bp_per_trade": -1.74
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -232.2,
+  "days_up": 0.016,
+  "trades_per_day": 94.1,
+  "bp_per_trade": -2.96
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -234.9,
+  "days_up": 0.125,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -2.07
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -235.1,
+  "days_up": 0.173,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -1.29
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -235.4,
+  "days_up": 0.048,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -1.62
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -240.5,
+  "days_up": 0.165,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -1.29
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -240.9,
+  "days_up": 0.056,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -1.63
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -242.1,
+  "days_up": 0.145,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -2.09
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -242.9,
+  "days_up": 0.109,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -1.59
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -247.1,
+  "days_up": 0.121,
+  "trades_per_day": 124.5,
+  "bp_per_trade": -2.38
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -247.4,
+  "days_up": 0.101,
+  "trades_per_day": 121.1,
+  "bp_per_trade": -2.45
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -249.0,
+  "days_up": 0.113,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -2.5
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -249.3,
+  "days_up": 0.125,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -1.89
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -249.7,
+  "days_up": 0.06,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -1.89
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -252.6,
+  "days_up": 0.129,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -2.48
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -253.0,
+  "days_up": 0.121,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -1.88
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -255.6,
+  "days_up": 0.073,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -1.9
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 180s lag 0s tight": {
+  "usd_per_day_1x": -256.5,
+  "days_up": 0.117,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -1.63
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -258.7,
+  "days_up": 0.069,
+  "trades_per_day": 88.0,
+  "bp_per_trade": -3.53
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -263.3,
+  "days_up": 0.06,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -1.19
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -263.5,
+  "days_up": 0.073,
+  "trades_per_day": 89.6,
+  "bp_per_trade": -3.53
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -270.1,
+  "days_up": 0.077,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -1.19
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -273.5,
+  "days_up": 0.077,
+  "trades_per_day": 137.2,
+  "bp_per_trade": -2.39
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -273.7,
+  "days_up": 0.06,
+  "trades_per_day": 133.8,
+  "bp_per_trade": -2.46
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -276.1,
+  "days_up": 0.093,
+  "trades_per_day": 124.5,
+  "bp_per_trade": -2.66
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -276.2,
+  "days_up": 0.089,
+  "trades_per_day": 121.1,
+  "bp_per_trade": -2.74
+ },
+ "fade drops 10:00-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -282.7,
+  "days_up": 0.048,
+  "trades_per_day": 92.5,
+  "bp_per_trade": -3.67
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -284.0,
+  "days_up": 0.073,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -2.5
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -285.7,
+  "days_up": 0.089,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -1.87
+ },
+ "fade drops 09:35-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -287.6,
+  "days_up": 0.044,
+  "trades_per_day": 94.1,
+  "bp_per_trade": -3.67
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -288.1,
+  "days_up": 0.093,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -2.48
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -293.2,
+  "days_up": 0.101,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -1.61
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -293.3,
+  "days_up": 0.097,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -2.94
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -296.5,
+  "days_up": 0.012,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -1.2
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -297.6,
+  "days_up": 0.024,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -1.35
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 180s lag 10s tight": {
+  "usd_per_day_1x": -298.2,
+  "days_up": 0.085,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -1.89
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -303.1,
+  "days_up": 0.117,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -2.97
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 120s lag 0s tight": {
+  "usd_per_day_1x": -303.4,
+  "days_up": 0.093,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -1.62
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -306.3,
+  "days_up": 0.056,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -2.11
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -309.7,
+  "days_up": 0.032,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -1.37
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -310.0,
+  "days_up": 0.016,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -1.23
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -310.1,
+  "days_up": 0.065,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -2.09
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -312.1,
+  "days_up": 0.056,
+  "trades_per_day": 133.8,
+  "bp_per_trade": -2.8
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -312.7,
+  "days_up": 0.065,
+  "trades_per_day": 137.2,
+  "bp_per_trade": -2.73
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -313.6,
+  "days_up": 0.093,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -3.14
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -317.8,
+  "days_up": 0.089,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -3.12
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -329.1,
+  "days_up": 0.004,
+  "trades_per_day": 147.7,
+  "bp_per_trade": -2.67
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -332.5,
+  "days_up": 0.008,
+  "trades_per_day": 151.3,
+  "bp_per_trade": -2.64
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -335.4,
+  "days_up": 0.06,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -2.95
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -337.2,
+  "days_up": 0.016,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -1.37
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -341.6,
+  "days_up": 0.012,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -1.35
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -344.6,
+  "days_up": 0.065,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -2.97
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -345.2,
+  "days_up": 0.052,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -1.56
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -347.2,
+  "days_up": 0.073,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -1.91
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 60s lag 0s tight": {
+  "usd_per_day_1x": -349.9,
+  "days_up": 0.069,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -1.55
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -353.4,
+  "days_up": 0.02,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -2.68
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -353.8,
+  "days_up": 0.012,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -2.68
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -356.5,
+  "days_up": 0.069,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -3.13
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 120s lag 10s tight": {
+  "usd_per_day_1x": -357.3,
+  "days_up": 0.069,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -1.91
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -357.9,
+  "days_up": 0.069,
+  "trades_per_day": 119.7,
+  "bp_per_trade": -3.59
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -358.5,
+  "days_up": 0.008,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -2.46
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -359.4,
+  "days_up": 0.036,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -2.67
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -361.9,
+  "days_up": 0.016,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -2.69
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -362.3,
+  "days_up": 0.069,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -3.12
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -367.0,
+  "days_up": 0.004,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -2.48
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -367.9,
+  "days_up": 0.0,
+  "trades_per_day": 155.6,
+  "bp_per_trade": -2.84
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -368.3,
+  "days_up": 0.085,
+  "trades_per_day": 122.4,
+  "bp_per_trade": -3.61
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -372.1,
+  "days_up": 0.0,
+  "trades_per_day": 159.2,
+  "bp_per_trade": -2.81
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -377.6,
+  "days_up": 0.02,
+  "trades_per_day": 147.7,
+  "bp_per_trade": -3.07
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -379.6,
+  "days_up": 0.024,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -1.72
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -380.1,
+  "days_up": 0.048,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -2.49
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -381.8,
+  "days_up": 0.0,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -1.55
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -385.2,
+  "days_up": 0.028,
+  "trades_per_day": 151.3,
+  "bp_per_trade": -3.06
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -389.5,
+  "days_up": 0.056,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -2.47
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 60s lag 10s tight": {
+  "usd_per_day_1x": -389.5,
+  "days_up": 0.024,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -1.72
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 30s lag 10s tight": {
+  "usd_per_day_1x": -394.8,
+  "days_up": 0.0,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -1.56
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -407.9,
+  "days_up": 0.052,
+  "trades_per_day": 136.5,
+  "bp_per_trade": -3.59
+ },
+ "fade drops 10:00-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -416.8,
+  "days_up": 0.004,
+  "trades_per_day": 155.6,
+  "bp_per_trade": -3.22
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -418.8,
+  "days_up": 0.06,
+  "trades_per_day": 139.3,
+  "bp_per_trade": -3.61
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -422.5,
+  "days_up": 0.028,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -1.71
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -423.0,
+  "days_up": 0.056,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -2.77
+ },
+ "fade drops 09:35-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -424.5,
+  "days_up": 0.008,
+  "trades_per_day": 159.2,
+  "bp_per_trade": -3.2
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 30s lag 0s tight": {
+  "usd_per_day_1x": -426.4,
+  "days_up": 0.024,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -1.69
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -429.4,
+  "days_up": 0.008,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -2.95
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -431.2,
+  "days_up": 0.069,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -2.74
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -436.1,
+  "days_up": 0.008,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -2.95
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -445.3,
+  "days_up": 0.036,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -2.45
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -450.3,
+  "days_up": 0.04,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -3.41
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -450.8,
+  "days_up": 0.008,
+  "trades_per_day": 158.5,
+  "bp_per_trade": -3.41
+ },
+ "follow both 10:00-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -457.1,
+  "days_up": 0.004,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -3.14
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -458.0,
+  "days_up": 0.04,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -3.4
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -458.5,
+  "days_up": 0.04,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -2.45
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -460.6,
+  "days_up": 0.012,
+  "trades_per_day": 161.4,
+  "bp_per_trade": -3.42
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -464.8,
+  "days_up": 0.012,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -3.04
+ },
+ "follow both 09:35-15:50 k3.0 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -466.6,
+  "days_up": 0.004,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -3.15
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 180s lag 0s base": {
+  "usd_per_day_1x": -485.7,
+  "days_up": 0.012,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -3.08
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -499.3,
+  "days_up": 0.036,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -2.75
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -507.7,
+  "days_up": 0.008,
+  "trades_per_day": 183.2,
+  "bp_per_trade": -3.32
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -512.4,
+  "days_up": 0.04,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -2.74
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 180s lag 10s base": {
+  "usd_per_day_1x": -527.4,
+  "days_up": 0.012,
+  "trades_per_day": 189.1,
+  "bp_per_trade": -3.35
+ },
+ "fade both 10:00-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -528.0,
+  "days_up": 0.016,
+  "trades_per_day": 174.6,
+  "bp_per_trade": -3.63
+ },
+ "fade both 09:35-15:50 k3.0 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -535.8,
+  "days_up": 0.02,
+  "trades_per_day": 177.6,
+  "bp_per_trade": -3.62
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -557.4,
+  "days_up": 0.008,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -3.07
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 120s lag 0s base": {
+  "usd_per_day_1x": -575.4,
+  "days_up": 0.008,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -3.08
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -584.8,
+  "days_up": 0.004,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -2.65
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -599.9,
+  "days_up": 0.008,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -2.65
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -611.4,
+  "days_up": 0.004,
+  "trades_per_day": 218.0,
+  "bp_per_trade": -3.37
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -619.1,
+  "days_up": 0.0,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -2.81
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 120s lag 10s base": {
+  "usd_per_day_1x": -629.3,
+  "days_up": 0.008,
+  "trades_per_day": 224.2,
+  "bp_per_trade": -3.37
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -639.5,
+  "days_up": 0.0,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -2.83
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -656.0,
+  "days_up": 0.0,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -2.66
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -666.7,
+  "days_up": 0.008,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -3.02
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -678.2,
+  "days_up": 0.0,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -2.69
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 60s lag 0s base": {
+  "usd_per_day_1x": -679.6,
+  "days_up": 0.008,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -3.0
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -696.6,
+  "days_up": 0.0,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -2.83
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -701.0,
+  "days_up": 0.0,
+  "trades_per_day": 264.8,
+  "bp_per_trade": -3.18
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -709.7,
+  "days_up": 0.0,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -2.81
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 60s lag 10s base": {
+  "usd_per_day_1x": -719.2,
+  "days_up": 0.0,
+  "trades_per_day": 271.4,
+  "bp_per_trade": -3.18
+ },
+ "follow both 10:00-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -741.3,
+  "days_up": 0.0,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -3.01
+ },
+ "follow both 09:35-15:50 k1.5 z3.0 hold 30s lag 10s base": {
+  "usd_per_day_1x": -763.0,
+  "days_up": 0.0,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -3.02
+ },
+ "fade both 10:00-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -782.0,
+  "days_up": 0.0,
+  "trades_per_day": 295.8,
+  "bp_per_trade": -3.17
+ },
+ "fade both 09:35-15:50 k1.5 z3.0 hold 30s lag 0s base": {
+  "usd_per_day_1x": -794.6,
+  "days_up": 0.0,
+  "trades_per_day": 302.7,
+  "bp_per_trade": -3.15
  }
 }

@@ -1,5 +1,16 @@
 # Own-Drop Scalper
 
+> **Read this first (2026-09-24).** A four-year test of this rule, using both
+> sides of the quote ([scalping/README.md](../README.md)), found that most of
+> the bounce it buys is the spread settling after the selling. A buyer who
+> pays the offer cannot collect that. Priced that way, the rule loses about
+> $1 a day at 1x.
+>
+> The results below come from one month of last-sale bars, which carry the
+> same effect. The paper trail replays those same bars, so it cannot show
+> this. Treat these numbers as unproven, and do not run this on a funded
+> account on this evidence.
+
 One bot. Every trade lasts four minutes, and nothing is ever held past the
 close: the day's last sale is at 09:50 New York. Found 2026-09-23 on one month
 of one-minute data. Backtests and paper trading, not advice.
