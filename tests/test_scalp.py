@@ -30,15 +30,17 @@ def _stamps():
 
 def _universe(drop=(), at=7):
     """Four names wiggling on their own (a sine a basis point high, each with its own phase),
-    and the names in `drop` falling 1% on the second session's minute `at`."""
+    and the names in `drop` falling on the second session's minute `at`: 1% each, or as
+    much as a {name: fall} mapping says."""
     stamps = _stamps()
     n = len(stamps)
     event = 390 + at
+    falls = drop if isinstance(drop, dict) else {s: 0.01 for s in drop}
     bars = {}
     for i, s in enumerate(NAMES):
         r = 1e-4 * np.sin(0.7 * np.arange(n) + i)
-        if s in drop:
-            r[event] = -0.01
+        if s in falls:
+            r[event] = -falls[s]
         c = 100.0 * np.cumprod(1.0 + r)
         o = np.concatenate([[100.0], c[:-1]])
         bars[s] = Bars(s, list(stamps), o, np.maximum(o, c) * 1.00005, np.minimum(o, c) * 0.99995, c,
@@ -52,10 +54,10 @@ def _features(u):
     return f
 
 
-def _trades(u, f):
-    r = run_backtest(compile_genome(owndrop.bot(), residbot.ALLOWED), u, f, starting_cash=25_000.0,
+def _trades(u, f, slots=owndrop.SLOTS, rank=owndrop.RANK):
+    r = run_backtest(compile_genome(owndrop.bot(slots=slots), residbot.ALLOWED), u, f, starting_cash=25_000.0,
                      commission_bps=0.0, slippage_bps=2.0, record_thoughts=False, intrabar_stops=True,
-                     leverage=2.0)
+                     leverage=2.0, rank_entries_by=rank or None)
     return r.journal.trades
 
 
@@ -98,3 +100,10 @@ def test_it_only_buys_in_the_opening_minutes():
     for at in (3, 20, 200):                          # 09:33, 09:50, 12:50
         u = _universe(drop=("AAA",), at=at)
         assert _trades(u, _features(u)) == []
+
+
+def test_with_one_slot_left_it_takes_the_hardest_own_drop():
+    u = _universe(drop={"AAA": 0.01, "BBB": 0.02})
+    f = _features(u)
+    assert [t.symbol for t in _trades(u, f, slots=1)] == ["BBB"]
+    assert [t.symbol for t in _trades(u, f, slots=1, rank="")] == ["AAA"]      # alphabetical, the first version

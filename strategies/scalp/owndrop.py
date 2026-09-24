@@ -52,6 +52,7 @@ NY = ZoneInfo("America/New_York")
 
 
 K, Z, WINDOW, SLOTS = 0.75, 2.0, 15, 3      # drop in ranges, residual z, last minute of the window, positions
+RANK = "resid_z"       # names that signal in the same minute, more than the free slots: the hardest own drop first
 
 
 def entry(late: bool = False, k: float = K, z: float = Z, window: int = WINDOW) -> str:
@@ -134,13 +135,15 @@ def weeks_of(by_day: Dict[str, float]) -> list:
     return [round(float(np.mean(by[a:b])), 0) for a, b in ((0, 7), (7, 14), (14, len(by)))]
 
 
-def grid(u, f, slip: Dict[str, float], rank: str = "") -> int:
+def grid(u, f, slip: Dict[str, float], rank: str = RANK) -> int:
     """Every setting around the chosen one at 1x, week by week: how much of the
     result is the family and how much the pick.  Also the walk-forward pick:
     the setting best over the first two weeks, and what it made in the third."""
     rows = {}
-    for k, z, w, slots in itertools.product((0.5, 0.75, 1.0), (2.0, 2.5), (15, 20), (2, 3, 4)):
-        r = test(u, f, slip, rank=rank, params=dict(k=k, z=z, window=w, slots=slots))
+    settings = list(itertools.product((0.5, 0.75, 1.0), (2.0, 2.5), (15, 20), (2, 3, 4)))
+    results = _pool_map(u, f, slip, [dict(rank=rank, params=dict(k=k, z=z, window=w, slots=n))
+                                     for k, z, w, n in settings], _one_test)
+    for (k, z, w, slots), r in zip(settings, results):
         key = f"{k}atr z<-{z} 09:35-{9 + (30 + w) // 60:02d}:{(30 + w) % 60:02d} {slots} slots"
         rows[key] = {"usd_per_day": r["usd_per_day"], "days_up": r["days_up"], "weeks": weeks_of(r["by_day"]),
                      "pnl_original_names": r["pnl_original_names"], "pnl_fresh_names": r["pnl_fresh_names"]}
@@ -179,11 +182,16 @@ def _one_run(job: tuple) -> dict:
             "pnl_original_names": r["pnl_original_names"], "pnl_fresh_names": r["pnl_fresh_names"]}
 
 
-def _pool_map(u, f, slip: Dict[str, float], jobs: list) -> list:
+def _pool_map(u, f, slip: Dict[str, float], jobs: list, fn=_one_run) -> list:
     import multiprocessing as mp
     _SHARED["data"] = (u, f, slip)
     with mp.get_context("fork").Pool(4) as pool:
-        return pool.map(_one_run, jobs)
+        return pool.map(fn, jobs)
+
+
+def _one_test(kw: dict) -> dict:
+    u, f, slip = _SHARED["data"]
+    return test(u, f, slip, **kw)
 
 
 def orders(u, f, slip: Dict[str, float], n: int = 12) -> int:
@@ -239,13 +247,16 @@ def main() -> int:
         return orders(u, f, slip)
     if "--slots" in sys.argv:
         return slots(u, f, slip)
-    out = {"sessions": [days[0], days[-1], len(days)], "account": ACCOUNT, "bot": bot().to_dict(), "runs": {}}
+    out = {"sessions": [days[0], days[-1], len(days)], "account": ACCOUNT, "bot": bot().to_dict(),
+           "rank_entries_by": RANK, "runs": {}}
     runs = {f"{lev:g}x": dict(leverage=lev) for lev in (1.0, 1.5, 2.0)}
     runs.update({"1x, costs doubled": dict(mult=2.0), "1x, costs tripled": dict(mult=3.0),
                  "2x, costs doubled": dict(leverage=2.0, mult=2.0),
                  "1x, a minute late": dict(late=True), "2x, a minute late": dict(leverage=2.0, late=True)})
-    for key, kw in runs.items():
-        r = out["runs"][key] = test(u, f, slip, **kw)
+    jobs = [dict(kw, rank=RANK) for kw in runs.values()] + [dict()]
+    keys = list(runs) + ["1x, names taken alphabetically (the first version)"]
+    for key, r in zip(keys, _pool_map(u, f, slip, jobs, _one_test)):
+        out["runs"][key] = r
         weeks = r["weeks"] = weeks_of(r["by_day"])
         print(f"{key:20s} ${r['usd_per_day']:5.0f}/day median ${r['median']:5.0f} up {r['days_up']:.0%} "
               f">=$100 {r['days_100_plus']:.0%} worst ${r['worst_day']:5.0f} | weeks {weeks} | "

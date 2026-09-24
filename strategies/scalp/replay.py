@@ -9,8 +9,9 @@ than 0.75 of its 14-minute average range as a share of price and more than
 two standard deviations below the other names' average that minute; fill at
 the next minute's open, sell four minutes later at the open.  At most three
 positions, each a third of buying power, on a $25,000 account at 2x buying
-power (a margin account's day-trading power allows 4x); flat by the 15:55 bar
-in any case.  Costs: a cent plus 1 bp each way, at each name's price that day.
+power (a margin account's day-trading power allows 4x); when more names signal
+in a minute than there are free slots, the hardest own drop goes first.  Flat
+by the 15:55 bar in any case.  Costs: a cent plus 1 bp each way, at each name's price that day.
 
 The session before each one is replayed too, only so the 14-minute range and
 the residual's last 20 minutes are defined at 09:35.  A name missing from
@@ -32,7 +33,7 @@ sys.path.insert(0, str(ROOT / "strategies" / "soxl"))
 sys.path.insert(0, str(ROOT / "strategies" / "scalp"))
 import minute                                                                # noqa: E402
 from events import cost_bp                                                   # noqa: E402
-from owndrop import ACCOUNT, LEVERAGE, OUT, bot, et                          # noqa: E402
+from owndrop import ACCOUNT, LEVERAGE, OUT, RANK, bot, et                    # noqa: E402
 from residbot import ALLOWED, POOL, add_residual                             # noqa: E402
 from evotrader.features import build_features                               # noqa: E402
 from evotrader.genome import compile_genome                                 # noqa: E402
@@ -53,7 +54,7 @@ def replay(day: str, before: str) -> dict:
     slip = {s: cost_bp(np.asarray(u.bars[s].close)[idx]) for s in names}
     r = run_backtest(compile_genome(bot(), ALLOWED), u, f, starting_cash=ACCOUNT, commission_bps=0.0,
                      slippage_bps=2.0, record_thoughts=False, intrabar_stops=True,
-                     slippage_by_symbol=slip, leverage=LEVERAGE, start_bar=idx[0] - 30)
+                     slippage_by_symbol=slip, leverage=LEVERAGE, start_bar=idx[0] - 30, rank_entries_by=RANK)
     trades = [t for t in r.journal.trades if minute.session_of(t.entry_date) == day]
     assert all(minute.session_of(t.exit_date) == day for t in trades), "a position crossed the close"
     rows = [{"name": t.symbol, "in": et(t.entry_date), "out": et(t.exit_date), "entry": round(t.entry_price, 4),
@@ -66,8 +67,8 @@ def replay(day: str, before: str) -> dict:
 def main() -> int:
     minute.update(POOL)
     ledger = json.loads(LEDGER.read_text()) if LEDGER.exists() else {
-        "bot": bot().to_dict(), "go_live": GO_LIVE, "account": ACCOUNT, "leverage": LEVERAGE,
-        "sessions": {}}
+        "bot": bot().to_dict(), "rank_entries_by": RANK, "go_live": GO_LIVE, "account": ACCOUNT,
+        "leverage": LEVERAGE, "sessions": {}}
     days = minute.sessions(CORE)
     new = [d for d in days if d >= GO_LIVE and d not in ledger["sessions"]]
     OUT.joinpath("paper").mkdir(parents=True, exist_ok=True)

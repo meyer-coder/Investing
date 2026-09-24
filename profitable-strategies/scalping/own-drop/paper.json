@@ -33,6 +33,7 @@
   "rationale": "",
   "created_at": 1790208024.5667536
  },
+ "rank_entries_by": "resid_z",
  "go_live": "2026-09-24",
  "account": 25000.0,
  "leverage": 2.0,
