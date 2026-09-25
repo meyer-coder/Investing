@@ -84,6 +84,10 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
                 exit_px, why = stop - sd * slip, "stop"
             elif sd * (favour - target) >= r.tick_size:
                 exit_px, why = target, "target"
+            elif m + s.bar_minutes > flat_at:
+                # the flatten time falls inside this bar: out at its close, the
+                # last price before the deadline (coarse bars, e.g. hourly)
+                exit_px, why = c - sd * slip, "flatten"
             elif m + s.bar_minutes - pos["minute"] >= p.max_hold_minutes:
                 exit_px, why = c - sd * slip, "time"
             elif i == len(s) - 1:
@@ -91,14 +95,15 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
             # Worst price seen in the trade.  Exits at the open or at the stop
             # end the trade before the rest of the bar; otherwise assume the
             # bar went against the position before it went for it.
-            bar_worst = exit_px if why in ("flatten", "stop (gap)", "stop") else adverse
+            at_open = why == "stop (gap)" or (why == "flatten" and m >= flat_at)
+            bar_worst = exit_px if at_open or why == "stop" else adverse
             if sd * (bar_worst - pos["worst"]) < 0:
                 pos["worst"] = bar_worst
             if exit_px is not None:
                 n, entry = pos["n"], pos["entry"]
                 pnl = sd * (exit_px - entry) * r.point_value * n - r.commission_rt * n
                 mae = min(0.0, sd * (pos["worst"] - entry) * r.point_value * n) - r.commission_rt * n
-                exit_min = m if why in ("flatten", "stop (gap)") else m + s.bar_minutes
+                exit_min = m if at_open else m + s.bar_minutes
                 trades.append(Trade(s.date, pos["setup"], pos["minute"], exit_min, entry,
                                     exit_px, n, stop, target, round(pnl, 2),
                                     round(min(mae, pnl), 2), why, pos["reason"], sd))
