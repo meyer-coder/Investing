@@ -33,6 +33,35 @@ rather than on how exciting the market looks:
 | 7 | **Small-cap equities** | `07-smallcap-gap.md` | Cross-sectional gap-and-go | By far the largest per-trade moves (20–200% days) and a screener that supplies fresh candidates daily. Hardest data and hardest execution — high ceiling, high difficulty. |
 | 8 | **SPX 0DTE options** | `08-spx-0dte.md` | Defined-risk premium selling | The most *distinct* family here — the edge is structural (theta, variance risk premium), not directional. Lowest correlation to everything else in the fleet. |
 
+## Data-matched briefs (09-12)
+
+The eight briefs above are organised by *market*. These four are organised by
+**what the data you actually have can support** — the Databento futures files
+from `scripts/fetch_databento.py` and the TradingView MCP tunnel. Each was
+chosen because a specific capability of those two sources makes it possible.
+
+| # | Strategy family | File | The capability it depends on |
+|---|---|---|---|
+| 9 | **Volume profile / value area** | `09-volume-profile.md` | Databento's **real CME contract volume** at 1-minute resolution. CFD and FX feeds report tick counts, so every profile built on them is fiction. Impossible without this file. |
+| 10 | **Overnight session handoff** | `10-overnight-handoff.md` | Databento's **full 23-hour Globex session**. The tunnel serves regular hours only for equities (measured 13:30-19:55 UTC), so the overnight window is unreachable there. |
+| 11 | **Cross-asset regime conditioning** | `11-cross-asset-regime.md` | **Both sources at once.** The tunnel gives 4 years of daily bars on any symbol (VIX, DXY, bonds, credit); Databento gives 5-minute execution. Neither answers this alone. |
+| 12 | **NQ/ES relative value** | `12-nq-es-spread.md` | Databento serving **both legs from one tape with aligned timestamps**. Stitching two vendors manufactures fake dislocations — you trade your own data errors. |
+
+How they differ from 01-08: those hunt for a better entry. **11 assumes the
+entry is fine and asks when it works.** **12 removes direction entirely** and is
+close to uncorrelated with everything else here, which matters more to a
+portfolio of agents than a higher standalone Sharpe. **9 and 10** exploit the
+two things the futures tape gives you that no other feed in this library does —
+genuine transacted volume, and the hours while the cash market is shut.
+
+Build order for these: **10** is the simplest (once-per-day setup, few moving
+parts). Then **9**, whose profile construction must be validated before any
+strategy work. Then **11**, which needs a working baseline to condition. Then
+**12**, which is the most technically demanding and where double-leg costs may
+kill the edge outright.
+
+---
+
 ## Deliberately excluded
 
 - **Low-float pre-IPO / OTC** — unbacktestable fills, no borrow, no reliable data.
