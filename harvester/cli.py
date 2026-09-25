@@ -1,5 +1,7 @@
 """Command line for the harvester.
 
+    harvest all --group all
+    harvest all --top 500 --loop
     harvest archive --root NQ --timeframe 5 --since 2015
     harvest fetch --symbols NASDAQ:AAPL,AMEX:SPY --timeframes 60,1D
     harvest depth --symbol NASDAQ:AAPL
@@ -11,10 +13,116 @@ from __future__ import annotations
 import argparse
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+import time
 from typing import Optional, Sequence
 
-from . import tvarchive, tvcache, tvdata
+from . import sweep, tvarchive, tvcache, tvdata, universe
+
+
+def _universe(args: argparse.Namespace) -> list:
+    """Whichever universe the flags describe, de-duplicated and ordered."""
+    picked = []
+    if args.symbols:
+        picked.extend(s.strip() for s in args.symbols.split(",") if s.strip())
+    if args.universe:
+        picked.extend(universe.read_file(args.universe))
+    if args.top:
+        picked.extend(universe.from_screener(args.top, sort_by=args.sort_by))
+    if args.group:
+        picked.extend(universe.group(
+            [g for g in args.group.split(",") if g.strip()]))
+    if not picked:
+        picked = universe.group(["all"])
+    return universe.dedupe(picked)
+
+
+def cmd_all(args: argparse.Namespace) -> int:
+    """Sweep a whole universe as deep as the feed goes, repeatedly if asked."""
+    try:
+        symbols = _universe(args)
+    except tvdata.TradingViewError as exc:
+        print(f"cannot build the universe: {exc}", file=sys.stderr)
+        return 1
+    timeframes = [t.strip() for t in args.timeframes.split(",") if t.strip()] \
+        if args.timeframes else list(sweep.LADDER)
+    if args.list:
+        for s in symbols:
+            print(s)
+        print(f"\n{len(symbols)} symbols x {len(timeframes)} timeframes "
+              f"= {len(symbols) * len(timeframes)} series", file=sys.stderr)
+        return 0
+    if args.save_universe:
+        print(f"wrote {universe.write_file(args.save_universe, symbols)}")
+
+    started = time.monotonic()
+    passes = 0
+    failures = 0
+    while True:
+        passes += 1
+        todo = sweep.plan(symbols, timeframes, sweep.load_ledger(),
+                          redo=args.redo, floor=args.floor * 3600.0)
+        head = (f"pass {passes}: {len(todo.jobs)} series to pull"
+                if args.loop else
+                f"{len(symbols)} symbols x {len(timeframes)} timeframes "
+                f"-> {len(todo.jobs)} to pull")
+        if todo.fresh:
+            head += f", {len(todo.fresh)} already fresh"
+        print(head, flush=True)
+
+        clock = [time.monotonic()]
+
+        def progress(result: sweep.Result, index: int, total: int) -> None:
+            elapsed = time.monotonic() - clock[0]
+            eta = (elapsed / index) * (total - index) if index else 0.0
+            state = (f"{result.bars:>8,} bars {result.start[:10]}..{result.end[:10]} "
+                     f"{result.added:>+7,}") if result.ok else f"FAILED {result.error[:60]}"
+            print(f"  [{index:>4}/{total}] {result.symbol:<20} {result.timeframe:<4} "
+                  f"{state}  eta {sweep._clock(eta)}", flush=True)
+
+        results = sweep.run(symbols, timeframes, timeout=args.timeout,
+                            pause=args.pause, redo=args.redo,
+                            floor=args.floor * 3600.0, progress=progress)
+        summary = sweep.summarise(results)
+        failures += int(summary["failed"])
+        print()
+        print(sweep.describe(summary), flush=True)
+
+        if args.with_archives:
+            _archives(args)
+
+        rows = tvcache.cache_summary()
+        print(f"\n  store now holds {sum(int(r['bars']) for r in rows):,} bars "
+              f"across {len(rows)} series at {tvcache.CACHE_DIR}", flush=True)
+
+        if not args.loop:
+            break
+        if args.passes and passes >= args.passes:
+            break
+        wake = datetime.now(timezone.utc) + timedelta(seconds=args.every * 3600.0)
+        print(f"\nsleeping until {wake:%Y-%m-%d %H:%M} UTC "
+              f"(pass {passes + 1} in {args.every}h)", flush=True)
+        time.sleep(args.every * 3600.0)
+
+    print(f"\ntotal wall clock {sweep._clock(time.monotonic() - started)}")
+    return 1 if failures and not tvcache.cache_summary() else 0
+
+
+def _archives(args: argparse.Namespace) -> None:
+    """Deep futures history for the roots that roll on the quarterly calendar."""
+    print("\nbuilding futures archives from expired contracts")
+    for exchange, root in universe.FUTURES_ROOTS:
+        for timeframe in [t.strip() for t in args.archive_timeframes.split(",")
+                          if t.strip()]:
+            try:
+                report = tvarchive.build(exchange, root, timeframe,
+                                         since_year=args.since, bars=args.bars,
+                                         pause=args.pause)
+                print("  " + tvarchive.describe(report).replace("\n", "\n  "),
+                      flush=True)
+            except Exception as exc:  # noqa: BLE001 - one root must not stop the rest
+                print(f"  {exchange}:{root} {timeframe}: {str(exc)[:70]}",
+                      file=sys.stderr, flush=True)
 
 
 def cmd_archive(args: argparse.Namespace) -> int:
@@ -146,6 +254,32 @@ def build_parser() -> argparse.ArgumentParser:
         prog="harvest",
         description="Pull TradingView candles and keep them on disk.")
     sub = p.add_subparsers(dest="command", required=True)
+
+    al = sub.add_parser("all", help="sweep a whole universe as deep as it goes")
+    al.add_argument("--group", help="etfs,futures,fx,crypto,indices,megacaps,all")
+    al.add_argument("--universe", help="file of exchange-qualified symbols")
+    al.add_argument("--top", type=int, help="top N stocks from the screener")
+    al.add_argument("--sort-by", default="market_cap",
+                    help="screener ranking: market_cap, volume, ...")
+    al.add_argument("--symbols", help="extra symbols, comma separated")
+    al.add_argument("--timeframes", help=f"default {','.join(sweep.LADDER)}")
+    al.add_argument("--timeout", type=float, default=300.0,
+                    help="seconds per series; raise it for deeper pulls")
+    al.add_argument("--pause", type=float, default=0.4)
+    al.add_argument("--floor", type=float, default=1.0,
+                    help="hours before a series is pulled again")
+    al.add_argument("--redo", action="store_true", help="ignore the ledger")
+    al.add_argument("--loop", action="store_true", help="keep sweeping forever")
+    al.add_argument("--every", type=float, default=6.0, help="hours between passes")
+    al.add_argument("--passes", type=int, help="stop after this many passes")
+    al.add_argument("--with-archives", action="store_true",
+                    help="also rebuild the futures contract archives")
+    al.add_argument("--archive-timeframes", default="1D,60")
+    al.add_argument("--since", type=int, default=2015)
+    al.add_argument("--bars", type=int, default=20000)
+    al.add_argument("--list", action="store_true", help="print the universe and stop")
+    al.add_argument("--save-universe", help="write the resolved universe to a file")
+    al.set_defaults(func=cmd_all)
 
     a = sub.add_parser("archive", help="deep futures history from expired contracts")
     a.add_argument("--exchange", default="CME_MINI")

@@ -38,7 +38,109 @@ to `~/.config/harvest/tradingview.json` with mode 0600, nowhere else.
 If `~/.config/evotrader/tradingview.json` already exists, that login is used
 and you can skip this step.
 
-## What it does
+## `harvest all` — pull everything
+
+This is the point of the tool. Not "fetch me this symbol" — walk a whole
+universe, take the deepest history the feed will serve for every symbol at
+every timeframe, merge it into the store, and keep going when one fails.
+
+```sh
+harvest all                      # the built-in universe, full timeframe ladder
+harvest all --top 500            # top 500 US stocks from the screener
+harvest all --group futures,etfs # just those groups
+harvest all --loop --every 6     # forever, a pass every 6 hours
+```
+
+Defaults: every group (88 symbols) across `1W,1D,240,60,30,15,5,1` — coarse
+first, so an interrupted run still leaves every symbol with usable daily
+history.
+
+**It resumes.** Every pull is written to a ledger (`sweep.json` in the store)
+the moment it finishes, so a run killed after four hours picks up where it
+stopped rather than starting over. A series pulled within the last bar's worth
+of time is skipped; `--redo` ignores the ledger, `--floor HOURS` changes the
+threshold.
+
+**It does not stop on failures.** A delisted ticker, a bad exchange prefix, a
+dropped socket — each is recorded and the sweep moves on, with the failures
+listed at the end. Failed series are retried on the next pass.
+
+### Building the universe
+
+| flag | what it pulls |
+|---|---|
+| `--group etfs,futures,fx,crypto,indices,megacaps,all` | the built-in lists |
+| `--top 500` | top N US common stocks from TradingView's screener |
+| `--sort-by volume` | rank the screener by volume instead of market cap |
+| `--universe file.txt` | your own list, one symbol per line |
+| `--symbols NASDAQ:AAPL,AMEX:SPY` | a few extra on top |
+| `--list` | print the resolved universe and stop |
+| `--save-universe u.txt` | write it to a file to edit and reuse |
+
+Flags combine, and the result is de-duplicated.
+
+### How deep it actually gets
+
+One pull exhausts everything TradingView will serve **backwards** for a
+series, and that limit is fixed — asking again immediately gets you nothing
+more. Depth beyond it comes from calendar time: each pass merges in whatever
+has happened since. A real pass:
+
+```
+  [   5/12] TVC:DJI       1D     32,630 bars 1896-05-26..2026-09-23  +32,630
+  [   3/12] NASDAQ:NDX    1D     10,492 bars 1985-01-31..2026-09-23  +10,492
+  [   2/12] SP:SPX        60      6,521 bars 2023-01-03..2026-09-24   +6,521
+            NASDAQ:AAPL   5       5,226 bars 2026-06-22..2026-09-24   +5,226
+```
+
+Daily reaches back a century. 5-minute reaches back three months. That gap is
+the whole reason for `--loop`: **the 1-minute store is built by sweeping on a
+schedule for a year, not by one clever request.** Start it now and it is worth
+something later.
+
+### Run it on a schedule
+
+macOS — save as `~/Library/LaunchAgents/com.harvest.sweep.plist`, then
+`launchctl load ~/Library/LaunchAgents/com.harvest.sweep.plist`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.harvest.sweep</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/PATH/TO/tunnel/.venv/bin/harvest</string>
+    <string>all</string><string>--loop</string>
+    <string>--every</string><string>6</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict><key>HARVEST_CACHE</key><string>/PATH/TO/candles</string></dict>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>/tmp/harvest.log</string>
+  <key>StandardErrorPath</key><string>/tmp/harvest.log</string>
+</dict></plist>
+```
+
+Linux — `crontab -e`:
+
+```
+0 */6 * * * cd /PATH/TO/tunnel && .venv/bin/harvest all >> /tmp/harvest.log 2>&1
+```
+
+### Futures archives in the same pass
+
+```sh
+harvest all --group futures --with-archives --archive-timeframes 1D,60
+```
+
+Also walks NQ, ES, RTY and YM back through their expired quarterly contracts
+(see `harvest archive` below). Worth doing on daily and hourly; see the
+coverage warning before trusting it at 5-minute.
+
+## The rest of the commands
 
 ### `harvest depth` — how far back one request reaches
 
@@ -120,6 +222,7 @@ from a broker or a paid vendor alongside what TradingView gives you.
 | | |
 |---|---|
 | candle store | `data/cache/tv/` — override with `HARVEST_CACHE` |
+| sweep ledger | `sweep.json` inside the store — delete it to force a full re-pull |
 | login | `~/.config/harvest/tradingview.json` — override with `TRADINGVIEW_CREDENTIALS` |
 
 Point `HARVEST_CACHE` at an external drive if you are building up years of
@@ -141,7 +244,8 @@ drops straight into pandas or any backtester.
 ## Fair warnings
 
 - Bar caps are per request and per timeframe. Depth on 1-minute data comes
-  from fetching repeatedly over time, not from one big pull.
+  from sweeping repeatedly over time, not from one big pull. Running
+  `harvest all --redo` twice in an afternoon gains you nothing.
 - The archive's coverage number is the honest measure of what you got. A
   strategy evaluated on 34%-covered history has been evaluated on 34% of the
   history.
