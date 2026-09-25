@@ -18,6 +18,14 @@
      "stop": 30.0,
      "target": 45.0,
      "size": 2
+    },
+    {
+     "at": "12:20",
+     "action": "short",
+     "why": "Failed breakout at the day high: 12:10 and 12:15 both pushed to 30,950-30,952 (double top) and got sold, 12:15 closing at 30,901 back under the old 30,926 high, near its low. Momentum had faded (bodies 84 -> 57 -> 16 -> red). Late breakout buyers trapped above. Target 45 toward the 12:00 breakout base (~30,855); stop 30.",
+     "stop": 30.0,
+     "target": 45.0,
+     "size": 2
     }
    ],
    "trades": [
@@ -49,7 +57,14 @@
     }
    ],
    "position": null,
-   "pending": null,
+   "pending": {
+    "action": "short",
+    "after": 1790353200,
+    "stop": 30.0,
+    "target": 45.0,
+    "size": 2,
+    "why": "Failed breakout at the day high: 12:10 and 12:15 both pushed to 30,950-30,952 (double top) and got sold, 12:15 closing at 30,901 back under the old 30,926 high, near its low. Momentum had faded (bodies 84 -> 57 -> 16 -> red). Late breakout buyers trapped above. Target 45 toward the 12:00 breakout base (~30,855); stop 30."
+   },
    "realized": 354.0,
    "done": null
   }
