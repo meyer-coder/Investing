@@ -21,10 +21,12 @@ between 09:45 and 15:00 New York time:
 
 **Exits.** Stops and targets are measured in *units*: one unit is the normal
 30-minute range at that time of day.
-- Stop: 1 unit above the entry.
-- Target: 1.5 units below the entry.
+- Stop: 1 unit against the entry, rounded to a whole tick away from it.
+- Target: 1.5 units in the trade's favour, rounded to the nearest tick.
 - Time limit: 90 minutes.
-- Everything is flat by 15:50, and flat before 2 PM on Fed announcement days.
+- Everything is flat by 15:50.
+- On Fed announcement days, trades opened before 13:55 are closed by 13:55.
+  There are no new entries from 13:25 to 14:45, and trading resumes after.
 
 **Sizing.** About $250 of risk per trade, 1–3 MNQ.
 
@@ -37,32 +39,57 @@ between 09:45 and 15:00 New York time:
 Every number is a setting. `python -m shortbot init-config bot.json` writes
 them all to a file you can edit.
 
-## Results so far (2026-09-25)
+## Results (re-run 2026-09-25 after the bug fixes)
 
-Fills were modelled one tick worse than the quoted price, with $1.22
-commission per round trip. Within a bar, the stop is assumed to fill before
-the target.
+**How these numbers were made:**
+- **Fills:** one tick worse than the quoted price, with $1.22 commission per
+  round trip. Within a bar, the stop is assumed to fill before the target.
+- **Data removed:** the week of each quarterly expiry (Yahoo's NQ=F mixes
+  two contracts then), plus broken days and today's unfinished session.
+  Every backtest prints what it dropped.
+- **Coin flips:** "Beats coin flips" ranks the trading P&L against 200 random
+  bots with the same trade count, long/short mix, stops, sizing and limits.
+- **Whole plan:** "Whole plan" follows Topstep from the first day of the
+  data: buy, reset until it passes, trade the funded account until it is
+  blown, repeat. Every fee is counted.
 
-| Data | Trades | Net | Topstep 50K Combine |
+**Two years of hourly NQ** (May 2024 – Sep 2026, 545 sessions):
+
+| Preset | Trades | Trading P&L (first 60% / last 40%) | Beats coin flips | Combines passed | Whole plan |
+|---|---|---|---|---|---|
+| Default: 3 short setups, ~$250 a trade | 251 | −$2,181 (−$2,529 / +$348) | 29% | 0% | −$1,602, no payouts |
+| Big-drop short, 50K, ~$1,000 | 63 | +$2,633 (−$596 / +$3,228) | 73% | 29% | −$1,753, no payouts |
+| Big-drop short, 100K, ~$1,500 | 63 | +$2,448 (−$1,489 / +$3,937) | 65% | 23% | −$3,101, no payouts |
+| Basic follow, ~$1,000 | 251 | −$7,495 (−$8,442 / +$947) | 32% | 19% | +$3,314, 4 payouts |
+| Basic fade, ~$1,000 | 255 | **+$8,389 (+$2,991 / +$5,398)** | **84%** | 30% | +$2,466, 4 payouts |
+
+**The last 44 sessions on 5-minute bars** (Jul–Sep 2026; MNQ +7.5%):
+
+| Preset | Trades | Trading P&L | Beats coin flips |
 |---|---|---|---|
-| 5-minute NQ, 39 sessions (Jul–Sep 2026) | 45 (1.2/day) | **−$1,507** | 0 passed, 15 failed |
-| Hourly NQ, 577 sessions (May 2024 – Sep 2026) | 272 (0.5/day) | +$234 (about break-even) | 33% passed; median 178 days to pass |
+| Default: 3 short setups | 41 | −$1,861 | 14% |
+| Big-drop short, 50K | 6 | −$2,108 | 15% |
+| Basic follow | 48 | −$5,881 | 12% |
+| Basic fade | 47 | **+$4,887** (+$5,770 / −$883) | **90%** |
 
-- On the two hourly years, `momentum` was the only setup with a positive
-  total (+$1,112). It lost $1,030 in the first 17 months and made $2,141 in
-  the last 11.
-- On the 5-minute sample, every setup lost money or roughly broke even.
-- The settings sweep does not prove anything: even the untuned defaults made
-  money in the period it tested on, because that period happened to suit
-  shorts.
-- A "only short in a downtrend" filter made results worse, so it is off by
-  default.
-
-**Why the results are weak:**
-- MNQ rose about 13% during the 5-minute sample, which is hard for a
-  short-only bot.
-- 39 sessions is far too few to judge anything.
-- The hourly test is coarse: entries only on the hour, and no `orb` setup.
+**What this says:**
+- **Nothing clears the bar.** The bar for an edge is beating about 95% of
+  coin flips, in more than one period.
+- **Basic fade is now the best lead** on both data sets. That means buying a
+  big red run and shorting a big green run, after 10:00. On the 5-minute
+  data, though, almost all of its profit came in the first 60%.
+- **Big-drop short** is positive on the hourly data, but only in the last 11
+  months. Following the Topstep plan with it since May 2024 never produced
+  a payout.
+- **The hourly test is a coarse stand-in for the 5-minute bot.** On 60-minute
+  bars the 30-minute unit becomes 60 minutes, the 15-minute run becomes one
+  hourly candle, and the 90-minute hold becomes 120. The backtest prints a
+  warning when this happens.
+- **Whole-plan results are mostly luck:** basic follow lost $7,495 trading
+  yet netted +$3,314 on the plan. Judge ideas on trading P&L against coin
+  flips.
+- **A "only short in a downtrend" filter** made results worse, so it is off
+  by default.
 
 The next real step is several years of 5-minute MNQ data. Pass any CSV with
 `--data`.
@@ -74,64 +101,25 @@ day:
 - only the `momentum` setup ("the last hour fell 1.5× its normal range");
 - at most one trade a day;
 - about $1,000 of risk, around half the Combine's $2,000 max loss;
-- target 2.5 units below the entry, exit within 90 minutes.
+- target 2.5 units in its favour, exit within 90 minutes.
 
-```bash
-python -m shortbot backtest --data yahoo-hourly --config configs/shortbot-bigdrop.json
-python -m shortbot live --config configs/shortbot-bigdrop.json     # dry run
-```
+`configs/shortbot-bigdrop-100k.json` is the same at about $1,500 a trade on
+the 100K Combine.
 
-**How big should the one trade be?** Two years of hourly NQ, big-drop setup
-only, one trade a day at most:
+**How big should the one trade be?** Two years of hourly NQ, big-drop only:
 
-| Risk per trade | Topstep 50K Combines passed | Notes |
-|---|---|---|
-| ~$250 (normal) | 0% | Too slow: the trailing $2,000 limit catches it first |
-| **~$1,000 (this preset)** | **26%, median 50 days** | Total +$4,058 over 77 trades, all of it in the last 11 months |
-| ~$2,000 | 16% | Blows up in about 21 days |
-| All-in, 50 MNQ | 0% (495 of 495 failed) | +$30,958 on paper, but one trade lost $26,161; the account dies at −$2,000 |
-
-**What to expect:**
-- **Frequency:** the setup fires about once every 7–8 trading days, not
-  every day.
-- **Swings:** in an account with no loss limit, the preset's worst drawdown
-  over the two years was −$9,650.
-- **Recent 5-minute sample:** its last 6 trades lost $1,979.
-- **Bigger account:** the 150K Combine passes at the same rate (26%) and
-  costs $199/month instead of $49.
+| Risk per trade | Trading P&L | Worst trade | 50K Combines passed | Whole plan |
+|---|---|---|---|---|
+| ~$250 | −$473 | −$234 | none finished (too slow) | −$1,651 |
+| ~$500 | +$903 | −$484 | 0% | −$1,553 |
+| **~$1,000 (preset)** | +$2,633 | −$994 | **29%**, median 49 days | −$1,753 |
+| ~$2,000 | +$5,294 | −$1,998 | 11% | −$2,000 |
+| All-in, 50 MNQ | +$68,257 on paper | −$17,511 | 4% | −$1,702 |
+| 100K, ~$1,500 | +$2,448 | −$1,508 | 23% | −$3,101 |
 
 **Safety check:** the live bot refuses to trade settings where a single
 stop-out could use up the account's whole max loss, unless you pass
 `--allow-account-risk`.
-
-### 50K or 100K? Follow the whole plan, fees and payouts included
-
-Every backtest now also replays the whole plan:
-1. Buy a Combine and reset until it passes.
-2. Trade the Express Funded account until it is blown, taking each payout
-   as soon as it is allowed.
-3. Buy again.
-
-Fees count subscriptions, resets, the $149 activation and the $14.50/mo API.
-`--account 50k|100k|150k` switches the rules and prices.
-
-| Two years of hourly NQ, May 2024 – Sep 2026 | 50K, ~$1,000 a trade | 100K, ~$1,500 a trade |
-|---|---|---|
-| Straight losses that end a Combine | 2 | 2 |
-| Combines passed | 26% | 26% |
-| First funded account | blown, no payout | blown, no payout |
-| Second funded account | one payout: $1,800 to you | one payout: $2,692 to you |
-| Fees over the whole period | $1,684 | $2,684 |
-| **Net** | **+$116** | **+$8** |
-
-Both are about break-even: the one payout roughly covers the fees.
-Starting on a different day gives +$8 to +$1,519. Those runs share most of
-their trades, so they are one history seen from different doors, not
-hundreds of independent trials.
-
-```bash
-python -m shortbot backtest --data yahoo-hourly --config configs/shortbot-bigdrop-100k.json
-```
 
 ## Basic mode: react to the candles, both ways
 
@@ -144,31 +132,52 @@ it. It takes at most 3 trades a day, with about $1,000 of risk each.
   preset.
 - `basic_mode: "fade"`: buy the red dip, short the green rip.
 
-## Is it better than luck?
-
-Topstep's structure can make pure luck look good: a blown account only
-costs the fee, while lucky upswings get paid out. So every idea should be
-ranked against coin-flip bots. These take the same number of trades, with
-the same stops, targets, sizing and limits, but enter at random times in a
-random direction.
-
 ```bash
-python -m shortbot vs-random --data yahoo-hourly --config configs/shortbot-basic.json
+python -m shortbot vs-random --data yahoo --config configs/shortbot-basic.json
 ```
 
-| Two years of hourly NQ, ~$1,000 a trade | Trading P&L | Beats this % of 200 coin-flip bots |
-|---|---|---|
-| Big-drop short (`shortbot-bigdrop.json`) | +$4,058 | **80%**, the best so far |
-| Basic follow (buy green, short red) | −$873 | 62%, about random |
-| Basic fade (buy dips, short rips) | −$13,736 | 16%, worse than random |
-| Basic follow, 5-minute data, last 49 days | −$4,135 | 21% |
+## What was wrong before (fixed 2026-09-25)
 
-**How to read it:**
-- Only the trading P&L ranking says anything about skill.
-- The whole-plan result is mostly luck. Fade did worse than most coin
-  flips on its trades, yet its whole-plan result beat 96% of them.
-- **The bar for calling something an edge is beating about 95% of coin
-  flips, in more than one period.** Nothing here does yet.
+Two independent reviews and a second, separately written implementation of
+the fill and Topstep rules (`tests/test_shortbot_reference.py`) found the
+problems below. The core fill engine and the Topstep Combine and Express
+Funded rules were confirmed correct.
+
+**Data**
+- Yahoo's NQ=F mixed the December and March contracts on
+  2025-12-16/17, and switched contracts inside a bar on 2026-09-14. Expiry
+  weeks are now dropped.
+- A mid-session refresh could include today's unfinished session. It is now
+  dropped.
+
+**Hourly tests**
+- The 09:00 hourly bar includes pre-market trading, and it was allowed to
+  trigger trades the live bot could never take.
+  - Its 82 fade trades lost $9,362; removing them flips fade from −$10,328
+    to +$8,389.
+  - Follow's 09:00 trades made $3,266.
+- Fed-day positions were closed at 14:00, not before.
+
+**Strategy rules**
+- Fed-day trading never resumed after 14:45.
+
+**Fees**
+- Reset credits were overcounted, which understated fees.
+
+**Random benchmark**
+- It traded both directions against short-only presets.
+
+**Earlier figures replaced by this version**
+- Big-drop +$4,058 (now +$2,633).
+- Basic fade −$13,736 (now +$8,389).
+- Basic follow −$873 (now −$7,495).
+- The 50K big-drop plan "+$116 with one payout" (now −$1,753 with none).
+- "MNQ rose 13%" (it rose 7.5%).
+
+**Live bot**
+- 12 safety bugs, including network errors that could leave a position
+  without a stop and keep adding contracts. All are fixed, each with a
+  failure test (`tests/test_shortbot_live_failures.py`).
 
 ## Commands
 
@@ -221,19 +230,31 @@ python -m shortbot init-config bot.json          # then: --config bot.json on an
 
 ### Safety features
 
-- **One protective stop.** A buy-stop is placed as soon as a short fills. If
-  it can't be placed, the short is closed immediately.
-- **Crash-safe.** Only the stop rests at the exchange. The target, time exit
-  and flatten are done by the bot, so a crash leaves you protected, not
-  exposed.
-- **Clean start.** On start-up, any MNQ position or order left on the
-  account is closed or cancelled.
-- **Stopping it.** Create a file named `STOP` in the working folder, or
-  press Ctrl-C. Either one flattens and exits.
-- **Error guard.** After 5 errors in a row while holding a position, the bot
-  flattens.
-- **No late entries.** It never acts on a bar that closed more than a minute
-  ago, for example after a restart.
+- **Stop straight away.** Every entry gets a protective stop the moment the
+  position shows the ordered size.
+- **Failed entries.** If any step of an entry fails (an error, a timeout, a
+  wrong size), every MNQ order is cancelled, every MNQ position is closed,
+  and the bot takes no more entries that day.
+- **Checked closes.** The bot cancels the stop, closes the position, then
+  checks the account is flat with no orders left. If the close fails, the
+  stop is put back before the error is reported.
+- **Stop-outs.** A stop-out is only accepted when two reads a second apart
+  both show the position gone.
+- **Exits without a price.** The flatten and time exits still happen when no
+  price can be fetched, and a position is never forgotten outside trading
+  hours or overnight.
+- **Account check before each trade.** Before every new trade the bot checks
+  the account is really flat. Anything unexpected is closed, and it stops
+  for the day.
+- **Clean start.** On start-up, MNQ orders and positions in any contract
+  month are cleaned up.
+- **Simulated accounts only.** It refuses any account not explicitly marked
+  simulated.
+- **Stopping it.** Create a file named `STOP` in the working folder, or press
+  Ctrl-C. Either one flattens and exits, retrying and saying loudly if it
+  cannot confirm the account is flat.
+- **No late entries.** It never acts on a bar that closed more than 60
+  seconds ago.
 
 ### Check during the dry run (not confirmed from the docs)
 
@@ -255,7 +276,7 @@ shortbot/
   cli.py        command line
 ```
 
-Tests: `python -m pytest tests/test_shortbot.py tests/test_shortbot_live.py`.
+Tests: `python -m pytest tests -k shortbot`.
 They cover:
 - short profit and loss, fills, and the stop-before-target rule;
 - that no decision uses a future bar;

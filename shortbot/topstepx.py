@@ -15,6 +15,7 @@ Topstep rules that apply to anything built on this:
 """
 from __future__ import annotations
 
+import http.client
 import json
 import time
 import urllib.error
@@ -89,7 +90,10 @@ def _iso(dt: datetime) -> str:
 
 
 def _epoch(s: str) -> int:
-    return int(datetime.fromisoformat(s.replace("Z", "+00:00")).timestamp())
+    dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+    if dt.tzinfo is None:                    # the API sends UTC; never read it as local time
+        dt = dt.replace(tzinfo=timezone.utc)
+    return int(dt.timestamp())
 
 
 class TopstepXClient:
@@ -124,7 +128,11 @@ class TopstepXClient:
         headers = {"Content-Type": "application/json", "accept": "application/json, text/plain"}
         if auth:
             headers["Authorization"] = f"Bearer {self.token}"
-        status, raw = self._transport(self.base_url + path, json.dumps(body).encode(), headers)
+        try:
+            status, raw = self._transport(self.base_url + path, json.dumps(body).encode(), headers)
+        except (OSError, urllib.error.URLError, http.client.HTTPException) as e:
+            # timeouts, refused or reset connections: report them like any API failure
+            raise ApiError(path, "network", repr(e)) from e
         if status == 401 and auth and _retry == 0:
             self.token = None                       # expired: log in again once
             return self._post(path, body, auth, _retry + 1)
@@ -133,8 +141,13 @@ class TopstepXClient:
             return self._post(path, body, auth, _retry + 1)
         if status != 200:
             raise ApiError(path, f"HTTP {status}", raw[:200].decode(errors="replace"))
-        out = json.loads(raw.decode() or "{}")
-        if not out.get("success", False):
+        try:
+            out = json.loads(raw.decode() or "{}")
+        except (ValueError, UnicodeDecodeError) as e:
+            raise ApiError(path, "bad reply", raw[:200]) from e
+        if not isinstance(out, dict) or not out.get("success", False):
+            if not isinstance(out, dict):
+                raise ApiError(path, "bad reply", str(out)[:200])
             raise ApiError(path, out.get("errorCode"), out.get("errorMessage"))
         return out
 
@@ -152,8 +165,12 @@ class TopstepXClient:
     def _validate(self) -> Dict:
         headers = {"Content-Type": "application/json", "accept": "application/json, text/plain",
                    "Authorization": f"Bearer {self.token}"}
-        status, raw = self._transport(self.base_url + "/api/Auth/validate", b"{}", headers)
-        out = json.loads(raw.decode() or "{}") if status == 200 else {}
+        try:
+            status, raw = self._transport(self.base_url + "/api/Auth/validate", b"{}", headers)
+            out = json.loads(raw.decode() or "{}") if status == 200 else {}
+        except (OSError, urllib.error.URLError, http.client.HTTPException, ValueError) as e:
+            raise ApiError("/api/Auth/validate", "network", repr(e)) from e
+        out = out if isinstance(out, dict) else {}
         if not out.get("success"):
             raise ApiError("/api/Auth/validate", out.get("errorCode", f"HTTP {status}"),
                            out.get("errorMessage"))

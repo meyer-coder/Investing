@@ -274,3 +274,108 @@ def test_basic_follow_buys_green_runs_and_fade_sells_them():
 def test_config_rejects_an_unknown_basic_mode():
     with pytest.raises(ValueError):
         BotConfig.from_dict({"strategy": {"basic_mode": "sideways"}})
+
+
+# --------------------------------------------------- fixes found in review
+
+def test_expiry_weeks_are_the_weeks_of_the_third_friday():
+    from shortbot.data import expiry_week
+    assert expiry_week("2025-12-16") and expiry_week("2025-12-19")       # Dec 2025 expiry: 19th
+    assert expiry_week("2026-09-14") and not expiry_week("2026-09-11")   # Sep 2026: 18th
+    assert not expiry_week("2025-12-22") and not expiry_week("2025-11-18")
+
+
+def test_broken_price_jumps_and_expiry_weeks_are_dropped():
+    from shortbot.data import clean_sessions
+    ok = make_session("2026-01-05", [20000.0 + k for k in range(78)])
+    jumpy = make_session("2026-01-06", [20000.0 + k for k in range(78)])
+    jumpy.open[40] += 240                                   # contract switch mid-session
+    expiry = make_session("2026-03-18", [20000.0 + k for k in range(78)])
+    dropped = []
+    kept = clean_sessions([ok, jumpy, expiry], True, dropped)
+    assert [s.date for s in kept] == ["2026-01-05"]
+    assert {d for d, _ in dropped} == {"2026-01-06", "2026-03-18"}
+
+
+def test_unfinished_today_and_off_grid_rows_are_dropped():
+    from datetime import datetime, timezone
+    from shortbot.data import NY, _drop_unfinished_today, _on_grid, to_sessions
+    base = 1767623400                                        # 2026-01-05 09:30 New York
+    rows = [(base + 300 * k, 1, 2, 0.5, 1.5, 10) for k in range(70)]
+    rows.append((base + 300 * 69 + 43, 1, 9, 0.1, 1.5, 10))  # a live quote at 15:15:43
+    assert len(_on_grid(rows, 5)) == 70
+    ss = to_sessions(_on_grid(rows, 5), 5)
+    during = datetime(2026, 1, 5, 15, 20, tzinfo=NY)
+    after = datetime(2026, 1, 5, 16, 30, tzinfo=NY)
+    assert _drop_unfinished_today(ss, during) == []
+    assert len(_drop_unfinished_today(ss, after)) == 1
+
+
+def test_a_csv_with_the_wrong_bar_size_is_refused(tmp_path):
+    from shortbot.data import load_sessions
+    path = tmp_path / "one_minute.csv"
+    path.write_text("\n".join(f"{1767623400 + 60 * k},1,2,0.5,1.5,10" for k in range(500)))
+    with pytest.raises(ValueError, match="1-minute bars"):
+        load_sessions(str(path), bar_minutes=5)
+
+
+def test_fed_days_flatten_before_2pm_and_resume_after():
+    strat = ShortStrategy(StrategyParams(skip_fomc=True))
+    fed = "2026-07-29"
+    assert strat.deadline(fed, 12 * 60) == 13 * 60 + 55     # opened before: out by 13:55
+    assert strat.deadline(fed, 14 * 60 + 50) == 15 * 60 + 50  # opened after the resume
+    s = make_session(fed, [20000.0] * 78)
+    prof = Profile([make_session("2026-07-28", [20000.0 + (k % 2) * 4 for k in range(78)])], [30])
+    at = lambda hhmm: int((hhmm - 570) / 5) - 1                # bar whose close is hhmm
+    assert strat.entry_unit(s, at(13 * 60 + 40), DayState(), prof) == 0   # blackout
+    assert strat.entry_unit(s, at(14 * 60 + 50), DayState(), prof) > 0    # resumed
+
+
+def test_no_signal_from_a_bar_that_began_before_the_open():
+    strat = ShortStrategy(StrategyParams(skip_fomc=False, first_entry_minute=0))
+    rows = [(540 + 60 * k, 20000.0, 20010.0, 19990.0, 20000.0, 1.0) for k in range(7)]
+    s = session_from_bars("2026-01-05", 60, rows)             # hourly: 09:00 .. 15:00
+    prof = Profile([session_from_bars("2026-01-02", 60, rows)], [30, 60])
+    assert strat.entry_unit(s, 0, DayState(), prof) == 0      # the 09:00 bar
+    assert strat.entry_unit(s, 1, DayState(), prof) > 0       # the 10:00 bar
+
+
+def test_stops_and_targets_sit_on_the_tick_grid():
+    assert bt.stop_price(20000.25, -1, 40.1, 0.25) == 20040.5    # short: rounded up, away
+    assert bt.stop_price(20000.25, +1, 40.1, 0.25) == 19960.0    # long: rounded down, away
+    assert bt.target_price(20000.25, -1, 60.1, 0.25) == 19940.25
+
+
+def test_backtest_caps_size_at_the_account_limit():
+    closes = [20000.0] * 5 + [20000.0 - 5 * k for k in range(1, 40)]
+    s = make_session("2026-01-05", closes)
+    r = RiskParams(risk_per_trade_usd=1e9, max_contracts=500, max_stop_risk_usd=1e9)
+    (t,) = bt.run_session(s, EnterAt(at=3, stop=5, target=30), None, r, max_contracts=50)
+    assert t.contracts == 50
+
+
+def test_a_signal_is_skipped_when_the_next_bar_is_missing():
+    s = make_session("2026-01-05", [20000.0] * 60)
+    keep = np.ones(len(s), bool)
+    keep[4] = False                                          # bar after the signal is missing
+    gap = Session(s.date, 5, s.minute[keep], s.open[keep], s.high[keep], s.low[keep],
+                  s.close[keep], s.volume[keep])
+    assert bt.run_session(gap, EnterAt(at=3), None, RISK) == []
+
+
+def test_fees_follow_topstep_billing():
+    rules = AccountRules(daily_loss=0, api_fee=0.0)
+    days = [f"d{k:02d}" for k in range(60)]
+    # fail on day 3, then pass on day 8: purchase + one paid reset (no credit yet)
+    trades = {"d02": [T("d02", -2100, mae=-2100)], **{d: [T(d, 700)] for d in days[3:8]}}
+    c = bt.cycle(trades, days[:8], rules)
+    assert c.combine_fails == 1 and c.combines_passed == 1
+    assert c.fees == pytest.approx(rules.monthly_fee + rules.reset_fee)   # passed on the last day: no activation
+    # an attempt that runs 30 trading days pays one rebill and earns a credit,
+    # which then covers the reset after it fails
+    long = {"d29": [T("d29", -2100, mae=-2100)], **{d: [T(d, 700)] for d in days[30:35]}}
+    c = bt.cycle(long, days[:40], rules)
+    assert c.fees == pytest.approx(2 * rules.monthly_fee + rules.activation_fee)
+    # failing on the last day of data buys no reset
+    c = bt.cycle({"d02": [T("d02", -2100, mae=-2100)]}, days[:3], rules)
+    assert c.fees == pytest.approx(rules.monthly_fee)

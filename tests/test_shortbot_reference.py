@@ -106,7 +106,11 @@ def test_every_trade_matches_the_reference_fills(source, name):
         # the signal bar is the one just before the entry bar, and they touch
         assert k >= 1 and int(s.minute[k - 1]) + s.bar_minutes == t.entry_minute
         exit_px, why, worst = ref_trade(s, k, t.side, t.stop, t.target,
-                                        cfg.strategy.max_hold_minutes, strat.flatten_minute(t.date))
+                                        cfg.strategy.max_hold_minutes,
+                                        strat.deadline(t.date, t.entry_minute))
+        # stops and targets are real prices: on the 0.25 tick grid
+        assert (t.stop / TICK) == pytest.approx(round(t.stop / TICK))
+        assert (t.target / TICK) == pytest.approx(round(t.target / TICK))
         assert why == t.exit_reason, (t, why)
         assert exit_px == pytest.approx(t.exit), (t, exit_px)
         if t.side == 1:
@@ -146,10 +150,11 @@ def test_trades_respect_the_day_rules(source, name):
             assert 1 <= t.contracts <= min(r.max_contracts, cfg.account.max_contracts)
             losses += t.pnl_usd < 0
             pnl += t.pnl_usd
-        flat = ShortStrategy(p).flatten_minute(day)
         for t in ts:
-            # out by the flatten time, or at the close of the bar it falls inside
+            # out by the deadline, or at the close of the bar it falls inside
+            flat = ShortStrategy(p).deadline(day, t.entry_minute)
             assert t.exit_minute <= flat or t.exit_minute - bar < flat, (day, t)
+            assert t.entry_minute - bar >= 9 * 60 + 30     # the signal bar began at/after 09:30
 
 
 @pytest.mark.parametrize("source", ["yahoo", "yahoo-hourly"])

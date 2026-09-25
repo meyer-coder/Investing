@@ -33,12 +33,39 @@ def _only_setups(cfg: BotConfig, setups: Optional[str]) -> BotConfig:
     if not setups:
         return cfg
     names = {s.strip() for s in setups.split(",") if s.strip()}
-    bad = names - {"momentum", "orb", "vwap_reject"}
+    bad = names - {"momentum", "orb", "vwap_reject", "basic"}
     if bad:
         raise SystemExit(f"unknown setups: {sorted(bad)}")
     cfg.strategy = replace(cfg.strategy, momentum="momentum" in names, orb="orb" in names,
-                           vwap_reject="vwap_reject" in names)
+                           vwap_reject="vwap_reject" in names, basic="basic" in names)
     return cfg
+
+
+def _load(a, cfg: BotConfig):
+    """Load bars, say which days were dropped, and warn when the bar size
+    forces the strategy's minute-based windows to be rounded."""
+    dropped: list = []
+    sessions = load_sessions(a.data, a.bar_minutes, a.refresh, dropped=dropped)
+    if dropped:
+        reasons: dict = {}
+        for d, why in dropped:
+            reasons.setdefault(why, []).append(d)
+        for why, days in reasons.items():
+            show = ", ".join(days[:6]) + (" ..." if len(days) > 6 else "")
+            print(f"dropped {len(days)} session(s): {why}: {show}")
+    bar = sessions[0].bar_minutes if sessions else a.bar_minutes
+    p = cfg.strategy
+    windows = {"unit_minutes": p.unit_minutes, "max_hold_minutes": p.max_hold_minutes}
+    if p.momentum:
+        windows["mom_minutes"] = p.mom_minutes
+    if p.basic:
+        windows["basic_minutes"] = p.basic_minutes
+    off = {k: v for k, v in windows.items() if v % bar}
+    if off:
+        print(f"WARNING: {bar}-minute bars round these settings to whole bars: "
+              + ", ".join(f"{k} {v}m" for k, v in off.items())
+              + ". Results only loosely match the live bot, which uses 5-minute bars.")
+    return sessions
 
 
 def _split(sessions: Sequence[Session], cfg: BotConfig, frac: float):
@@ -81,7 +108,7 @@ def _cycle_report(trades, dates, cfg) -> str:
 
 def cmd_backtest(a) -> None:
     cfg = _only_setups(_config(a.config, a.account), a.setups)
-    sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
+    sessions = _load(a, cfg)
     trades = bt.run(sessions, cfg)
     dates, first, last = _split(sessions, cfg, 0.6)
     print(f"data: {a.data}  {sessions[0].date} .. {sessions[-1].date}  "
@@ -110,7 +137,7 @@ def cmd_sweep(a) -> None:
     """Small grid search.  Settings are chosen on the first 60% of sessions
     only; the last 40% shows whether the choice held up."""
     base = _only_setups(_config(a.config, a.account), a.setups)
-    sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
+    sessions = _load(a, base)
     dates, first, last = _split(sessions, base, 0.6)
     fs, ls = set(first), set(last)
     grid = {"mom_k": [1.25, 1.5, 2.0], "stop_units": [0.75, 1.0, 1.5],
@@ -144,26 +171,28 @@ def cmd_vs_random(a) -> None:
     import numpy as np
     from .strategy import RandomStrategy, ShortStrategy
     cfg = _only_setups(_config(a.config, a.account), a.setups)
-    sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
+    sessions = _load(a, cfg)
     dates, _, _ = _split(sessions, cfg, 0.6)
     real = bt.run(sessions, cfg)
+    long_share = (sum(t.side > 0 for t in real) / len(real)) if real else 0.5
     real_pnl = sum(t.pnl_usd for t in real)
     real_net = bt.cycles(real, dates, cfg.account, starts=1)[0].net
     # match the trade count: tune the coin's per-bar rate until it trades about as often
     need = ShortStrategy(cfg.strategy).warmup_days()
     rate = max(len(real), 1) / max(1, sum(len(s) for s in sessions[need:]))
     for _ in range(5):
-        n = len(bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, 10_000)))
+        n = len(bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, 10_000, long_share)))
         rate = min(1.0, rate * max(len(real), 1) / max(n, 1))
     pnls, nets, counts = [], [], []
     for seed in range(a.runs):
-        tr = bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, seed))
+        tr = bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, seed, long_share))
         pnls.append(sum(t.pnl_usd for t in tr))
         nets.append(bt.cycles(tr, dates, cfg.account, starts=1)[0].net)
         counts.append(len(tr))
     pnls, nets = np.asarray(pnls), np.asarray(nets)
-    print(f"{a.data}: {dates[0]} .. {dates[-1]}; strategy took {len(real)} trades, "
-          f"the {a.runs} coin-flip bots took {np.median(counts):.0f} each (median)")
+    print(f"{a.data}: {dates[0]} .. {dates[-1]}; strategy took {len(real)} trades "
+          f"({long_share * 100:.0f}% long); the {a.runs} coin-flip bots took "
+          f"{np.median(counts):.0f} each (median), with the same long/short mix")
     for label, mine, dist in (("trading P&L", real_pnl, pnls),
                               (f"whole plan on {cfg.account.name}", real_net, nets)):
         print(f"   {label:<34} strategy ${mine:+9,.0f} | coin flips: median ${np.median(dist):+,.0f}, "

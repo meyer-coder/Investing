@@ -47,57 +47,14 @@ RTH_CLOSE = 16 * 60         # 16:00 New York
 
 
 # --------------------------------------------------------------------------- data
+# Bars come from shortbot.data, which drops the week of each quarterly expiry
+# (Yahoo's continuous NQ=F mixes two contracts then), sessions with broken
+# price jumps, today's unfinished session and off-grid live-quote rows.
 
-@dataclass
-class Session:
-    """One trading day's bars, ascending, New York time."""
+import sys
 
-    date: str
-    minute: np.ndarray      # minutes since midnight at the bar's start
-    open: np.ndarray
-    high: np.ndarray
-    low: np.ndarray
-    close: np.ndarray
-
-
-def fetch(symbol: str, interval: str, rng: str, refresh: bool = False) -> List[Tuple]:
-    """(epoch, open, high, low, close) rows from Yahoo, cached as CSV."""
-    os.makedirs(CACHE_DIR, exist_ok=True)
-    path = os.path.join(CACHE_DIR, f"{symbol.replace('=', '_')}_{interval}_{rng}.csv")
-    if os.path.exists(path) and not refresh:
-        with open(path, newline="") as f:
-            return [(int(r[0]), *map(float, r[1:5])) for r in csv.reader(f)]
-
-    req = urllib.request.Request(_YAHOO.format(symbol=symbol, interval=interval, rng=rng),
-                                 headers={"User-Agent": _UA})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        chart = json.load(resp)["chart"]
-    if not chart.get("result"):
-        raise RuntimeError(f"Yahoo returned no data for {symbol}: {chart.get('error')}")
-    res = chart["result"][0]
-    q = res["indicators"]["quote"][0]
-    rows = [(t, o, h, lo, c) for t, o, h, lo, c in
-            zip(res["timestamp"], q["open"], q["high"], q["low"], q["close"])
-            if None not in (o, h, lo, c)]
-    with open(path, "w", newline="") as f:
-        csv.writer(f).writerows(rows)
-    return rows
-
-
-def sessions(rows: List[Tuple], start_min: int, end_min: int) -> List[Session]:
-    """Group bars into per-day sessions covering [start_min, end_min) New York time."""
-    by_day: Dict[str, List[Tuple]] = {}
-    for t, o, h, lo, c in rows:
-        dt = datetime.fromtimestamp(t, timezone.utc).astimezone(NY)
-        m = dt.hour * 60 + dt.minute
-        if start_min <= m < end_min and dt.weekday() < 5:
-            by_day.setdefault(dt.strftime("%Y-%m-%d"), []).append((m, o, h, lo, c))
-    out = []
-    for day in sorted(by_day):
-        b = sorted(by_day[day])
-        a = np.asarray(b, dtype=float)
-        out.append(Session(day, a[:, 0].astype(int), a[:, 1], a[:, 2], a[:, 3], a[:, 4]))
-    return out
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from shortbot.data import Session, load_sessions  # noqa: E402
 
 
 # ---------------------------------------------------------------- statistics
@@ -114,7 +71,7 @@ class Outcome:
 
     def row(self) -> str:
         return (f"{self.label:<34} n={self.n:>4}  avg {self.mean_pts:+7.1f} pts  "
-                f"median {self.median_pts:+7.1f}  win {self.win_rate * 100:5.1f}%  "
+                f"median {self.median_pts:+7.1f}  win* {self.win_rate * 100:5.1f}%  "
                 f"t {self.t_stat:+5.2f}  net ${self.net_usd:+7.2f}/MNQ")
 
 
@@ -125,7 +82,8 @@ def summarise(label: str, pts: List[float]) -> Outcome:
     sd = float(np.std(a, ddof=1)) if a.size > 1 else 0.0
     t = float(np.mean(a) / (sd / math.sqrt(a.size))) if sd > 0 else 0.0
     return Outcome(label, int(a.size), float(np.mean(a)), float(np.median(a)),
-                   float(np.mean(a > 0)), t, (float(np.mean(a)) - COST_POINTS) * POINT_VALUE)
+                   float(np.mean(a - COST_POINTS > 0)), t,
+                   (float(np.mean(a)) - COST_POINTS) * POINT_VALUE)
 
 
 # ------------------------------------------------- 1. normal candle size by time
@@ -193,11 +151,11 @@ def stretch_events(days: List[Session], exp: List[np.ndarray], *, look: int, k: 
     trades = []
     for s, e in zip(days, exp):
         n = len(s.minute)
-        t = look
+        t = look - 1                       # the first full window ends on bar look-1
         while t < n - 1:
             ref = e[t]
-            if window and not (window[0] <= s.minute[t] < window[1]):
-                t += 1
+            if s.minute[t] < RTH_OPEN or (window and not (window[0] <= s.minute[t] < window[1])):
+                t += 1                     # no signal from a bar that began before 09:30
                 continue
             if math.isnan(ref) or ref <= 0:
                 t += 1
@@ -219,7 +177,7 @@ def stretch_events(days: List[Session], exp: List[np.ndarray], *, look: int, k: 
                             fade, exit_i = dist, j
                             break
                 trades.append((s.date, float(fade)))
-                t = exit_i + 1          # one position at a time
+                t = exit_i              # one position at a time; the exit bar can signal again
                 continue
             t += 1
     return trades
@@ -250,8 +208,8 @@ def day_range_events(days: List[Session], frac: float, direction: int,
         for j in range(len(s.minute)):
             hit = s.high[j] >= level if direction > 0 else s.low[j] <= level
             if hit:
-                # The first bar can gap straight through the level; fill at
-                # its open in that case, never at a better price.
+                # A bar can open beyond the level (a gap); a resting limit order
+                # then fills at that open, which is better than the level.
                 fill = s.open[j] if (direction > 0 and s.open[j] > level) or \
                     (direction < 0 and s.open[j] < level) else level
                 out.append((s.date, float((fill - s.close[-1]) * direction)))
@@ -263,17 +221,16 @@ def day_range_events(days: List[Session], frac: float, direction: int,
 
 def main(argv: Optional[List[str]] = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--symbol", default="NQ=F")
     ap.add_argument("--refresh", action="store_true", help="re-download bars")
     ap.add_argument("--json", default="", help="also write results to this JSON file")
     args = ap.parse_args(argv)
 
-    result: Dict = {"symbol": args.symbol, "point_value": POINT_VALUE,
+    result: Dict = {"symbol": "NQ=F", "point_value": POINT_VALUE,
                     "cost_points": COST_POINTS}
 
     # ---- 5-minute bars, regular trading hours
-    days5 = sessions(fetch(args.symbol, "5m", "60d", args.refresh), RTH_OPEN, RTH_CLOSE)
-    days5 = [d for d in days5 if len(d.minute) >= 60]           # drop half days
+    dropped: list = []
+    days5 = load_sessions("yahoo", refresh=args.refresh, dropped=dropped)
     result["five_min"] = {"sessions": len(days5), "first": days5[0].date, "last": days5[-1].date}
     print(f"\n5-minute bars: {len(days5)} regular sessions, {days5[0].date} .. {days5[-1].date}")
 
@@ -289,7 +246,9 @@ def main(argv: Optional[List[str]] = None) -> None:
     exp = expected_ranges(days5)
     dates = sorted({d.date for d in days5[10:]})
     mid = dates[len(dates) // 2]
+    print(f"   (dropped {len(dropped)} sessions so far: contract-switch weeks, unfinished or broken days)")
     print("\n2) After a 15-minute move of k normal candles, FADE it (buy drops / short rips)")
+    print("   win* = share of trades that made money after costs")
     print("   positive = the move snapped back, negative = it kept going; bracket = stop and")
     print("   target each 2 normal candles away (rows with fewer than 20 trades hidden)")
     stretch = []
@@ -318,8 +277,8 @@ def main(argv: Optional[List[str]] = None) -> None:
     result["stretch"] = stretch
 
     # ---- hourly bars, two years: day-level stretch
-    days60 = sessions(fetch(args.symbol, "60m", "730d", args.refresh), 9 * 60, RTH_CLOSE)
-    days60 = [d for d in days60 if len(d.minute) >= 6]
+    days60 = load_sessions("yahoo-hourly", refresh=args.refresh, dropped=dropped)
+    result["dropped"] = dropped
     result["hourly"] = {"sessions": len(days60), "first": days60[0].date, "last": days60[-1].date}
     adr_pts = float(np.mean([s.high.max() - s.low.min() for s in days60[-20:]]))
     print(f"\n3) Hourly bars: {len(days60)} sessions {days60[0].date} .. {days60[-1].date}"
@@ -367,7 +326,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                                   for g in groups if g != "all")
                 a = row["all"]
                 print(f"   {dname:<11} k={k:g} {hold_name:<8} all {a['mean_pts']:+6.1f} pts "
-                      f"n={a['n']:>3} win {a['win_rate'] * 100:4.1f}% t {a['t_stat']:+5.2f} | {parts}")
+                      f"n={a['n']:>3} win* {a['win_rate'] * 100:4.1f}% t {a['t_stat']:+5.2f} | {parts}")
     result["hourly_robustness"] = robust
 
     if args.json:

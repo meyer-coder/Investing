@@ -55,18 +55,30 @@ def size_trade(e: Entry, r: RiskParams) -> int:
     return int(max(1, min(r.max_contracts, math.floor(r.risk_per_trade_usd / one_lot))))
 
 
+def stop_price(entry: float, side: int, stop_pts: float, tick: float) -> float:
+    """Stop ``stop_pts`` against the trade, rounded to a tick away from the entry
+    (the live bot rounds the same way)."""
+    raw = entry - side * stop_pts
+    return (math.floor(raw / tick + 1e-9) if side > 0 else math.ceil(raw / tick - 1e-9)) * tick
+
+
+def target_price(entry: float, side: int, target_pts: float, tick: float) -> float:
+    """Target ``target_pts`` in the trade's favour, rounded to the nearest tick."""
+    return round((entry + side * target_pts) / tick) * tick
+
+
 def _hhmm(m: int) -> str:
     return f"{m // 60:02d}:{m % 60:02d}"
 
 
-def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[Trade]:
+def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams,
+                max_contracts: Optional[int] = None) -> List[Trade]:
     """All trades the bot would have taken in one session."""
     p = strat.p
     slip = r.slippage_ticks * r.tick_size
     day = DayState()
     trades: List[Trade] = []
     pos: Optional[dict] = None
-    flat_at = strat.flatten_minute(s.date)
 
     for i in range(len(s)):
         m = int(s.minute[i])
@@ -74,6 +86,7 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
 
         if pos is not None and i >= pos["i"]:
             sd, stop, target = pos["side"], pos["stop"], pos["target"]   # sd: +1 long, -1 short
+            flat_at = pos["flat_at"]
             adverse, favour = (lo, h) if sd > 0 else (h, lo)
             exit_px, why = None, ""
             if m >= flat_at:
@@ -112,16 +125,21 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
                     day.done = True
                 pos = None
 
-        if pos is None and i + 1 < len(s):
+        # a new entry needs the next bar to follow on directly (no gap in the data)
+        if pos is None and i + 1 < len(s) and int(s.minute[i + 1]) == m + s.bar_minutes:
             e = strat.decide(s, i, day, prof)
             if e is not None:
                 n = size_trade(e, r)
+                if max_contracts is not None:
+                    n = min(n, max_contracts)
                 if n > 0:
                     sd = e.side
                     entry = float(s.open[i + 1]) + sd * slip
-                    pos = {"i": i + 1, "minute": int(s.minute[i + 1]), "entry": entry, "n": n,
-                           "side": sd, "stop": entry - sd * e.stop_pts,
-                           "target": entry + sd * e.target_pts, "worst": entry,
+                    start = int(s.minute[i + 1])
+                    pos = {"i": i + 1, "minute": start, "entry": entry, "n": n, "side": sd,
+                           "stop": stop_price(entry, sd, e.stop_pts, r.tick_size),
+                           "target": target_price(entry, sd, e.target_pts, r.tick_size),
+                           "flat_at": strat.deadline(s.date, start), "worst": entry,
                            "setup": e.setup, "reason": e.reason}
                     day.in_position = True
                     day.setups_used[e.setup] = day.setups_used.get(e.setup, 0) + 1
@@ -137,7 +155,7 @@ def run(sessions: Sequence[Session], cfg: BotConfig,
         if not strat.day_allowed(sessions[:d]):
             continue
         prof = strat.profile(sessions[d - cfg.strategy.profile_days:d])
-        trades.extend(run_session(sessions[d], strat, prof, cfg.risk))
+        trades.extend(run_session(sessions[d], strat, prof, cfg.risk, cfg.account.max_contracts))
     return trades
 
 
@@ -266,36 +284,48 @@ class Cycle:
 
 def cycle(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
           rules: AccountRules) -> Cycle:
+    """Billing follows Topstep's Standard path: buying a Combine starts a
+    30-day subscription (~21 trading days); each rebill charges the monthly
+    fee and adds a reset credit; after a failure a reset uses a credit or
+    costs the reset fee, and restarts the 30-day clock; passing ends the
+    subscription and costs the activation fee when the funded account opens."""
     k = passed = fails = payouts = 0
     paid = fees = 0.0
-    trading_days_per_month = 21
+    days_per_month = 21
     story: List[str] = []
     while k < len(dates):
-        phase_start, phase_fails = k, 0
-        while k < len(dates):                               # Combine phase
+        fees += rules.monthly_fee                            # buy a Combine
+        credits = 0
+        while k < len(dates):                               # attempts until it passes
             a = combine_attempt(trades_by_day, dates[k:], rules)
             story.append(f"{dates[k]}  Combine {a.outcome} after {a.days} trading days "
                          f"({a.profit:+,.0f})")
+            rebills = (a.days - 1) // days_per_month        # still running at day 22, 43, ...
+            fees += rebills * rules.monthly_fee
+            credits += rebills
             k += a.days
             if a.outcome != "failed":
                 break
-            phase_fails += 1
-        months = max(1, math.ceil((k - phase_start) / trading_days_per_month))
-        fees += rules.monthly_fee * months + rules.reset_fee * max(0, phase_fails - months)
-        fails += phase_fails
+            fails += 1
+            if k >= len(dates):
+                break                                       # data ends: no reset bought
+            if credits:
+                credits -= 1
+            else:
+                fees += rules.reset_fee
         if a.outcome != "passed":
             break
         passed += 1
-        fees += rules.activation_fee
         if k >= len(dates):
-            break
+            break                                           # passed on the last day of data
+        fees += rules.activation_fee
         f = funded_attempt(trades_by_day, dates[k:], rules)   # funded phase
         story.append(f"{dates[k]}  Express Funded {f.outcome} after {f.days} trading days: "
                      f"{f.payouts} payout(s), ${f.paid_to_trader:,.0f} to you")
         k += f.days
         payouts += f.payouts
         paid += f.paid_to_trader
-    fees += rules.api_fee * math.ceil(len(dates) / trading_days_per_month)
+    fees += rules.api_fee * math.ceil(len(dates) / days_per_month)
     return Cycle(dates[0], len(dates), passed, fails, payouts, paid, fees, story)
 
 
@@ -382,8 +412,9 @@ def describe(trades: Sequence[Trade], days: int, attempts: Sequence[Attempt], ti
             med = float(np.median([a.days for a in passed])) if passed else float("nan")
             lines.append(f"   {account} started on each day: {len(passed)} passed, "
                          f"{len(failed)} failed, {len(attempts) - len(done)} ran out of data"
-                         f"  -> pass rate {len(passed) / len(done) * 100:.0f}% of finished attempts"
-                         + (f", median {med:.0f} days to pass" if passed else ""))
+                         f" -> {len(passed) / len(done) * 100:.0f}% of the finished ones passed"
+                         + (f", median {med:.0f} days to pass" if passed else "")
+                         + " (overlapping start days: a handful of independent episodes)")
         else:
             lines.append(f"   {account}: none of {len(attempts)} attempts finished "
                          f"inside the data")

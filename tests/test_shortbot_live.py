@@ -165,10 +165,10 @@ def test_stop_fill_is_detected_and_reported():
     ex = FakeExchange(price=20000.0)
     b = broker(ex)
     b.open(-1, 1, 40, ref_price=20000.0)
-    assert b.stopped_out(20010.0, 19990.0) is None
+    assert b.check_flat(20010.0, 19990.0) == (False, None)
     ex.price = 20041.0
     ex.trigger_stops()
-    assert b.stopped_out(20041.0, 20000.0) == 20041.0
+    assert b.check_flat(20041.0, 20000.0) == (True, 20041.0)
     assert ex.open_orders(1) == []
 
 
@@ -210,7 +210,7 @@ class ReplayFeed:
         return Session(f.date, 5, f.minute[:k], f.open[:k], f.high[:k], f.low[:k],
                        f.close[:k], f.volume[:k])
 
-    def last_price(self, now):
+    def last_price(self, now, since=None):
         m = now.astimezone(NY).hour * 60 + now.astimezone(NY).minute
         j = int(np.searchsorted(self.full.minute, m, side="right")) - 1
         if j < 0:
@@ -264,6 +264,7 @@ def test_kill_switch_flattens_and_stops(tmp_path):
     bot = LiveBot(cfg, feed, PaperBroker(cfg.risk, logs.append), logs.append,
                   kill_file=str(tmp_path / "STOP"), trade_log=str(tmp_path / "t.csv"))
     bot.pos = {"side": -1, "entry": 20010.0, "stop": 20050.0, "target": 19950.0, "n": 1, "minute": 600,
+               "deadline": 950, "opened_ts": 0.0,
                "setup": "test", "reason": ""}
     bot.date = "2026-03-18"
     (tmp_path / "STOP").write_text("")

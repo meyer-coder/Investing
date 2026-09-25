@@ -12,8 +12,8 @@ import json
 import os
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime, timezone
-from typing import Dict, Iterable, List, Sequence, Tuple
+from datetime import date, datetime, timedelta, timezone
+from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 from zoneinfo import ZoneInfo
 
 import numpy as np
@@ -119,17 +119,100 @@ def full_day_bars(bar_minutes: int, start_min: int = RTH_OPEN, end_min: int = RT
     return (end_min - start_min) // bar_minutes
 
 
-def load_sessions(source: str, bar_minutes: int = 5, refresh: bool = False) -> List[Session]:
+def expiry_week(day: str) -> bool:
+    """True for Monday-Friday of the week holding a quarterly equity-index
+    futures expiry (third Friday of March, June, September, December).
+    Continuous series such as Yahoo's NQ=F switch contracts during this week
+    and can mix the old and new contract's prices."""
+    d = date.fromisoformat(day)
+    if d.month not in (3, 6, 9, 12):
+        return False
+    first = date(d.year, d.month, 1)
+    third_friday = first + timedelta(days=(4 - first.weekday()) % 7 + 14)
+    monday = third_friday - timedelta(days=4)
+    return monday <= d <= third_friday
+
+
+def price_jump(s: Session) -> float:
+    """Largest gap between one bar's close and the next bar's open.  Futures
+    trade continuously through the session, so a big gap means the series
+    switched contracts (or the data is broken)."""
+    if len(s) < 2:
+        return 0.0
+    return float(abs(s.open[1:] - s.close[:-1]).max())
+
+
+def clean_sessions(sessions: Sequence[Session], drop_expiry_weeks: bool,
+                   dropped: Optional[List[Tuple[str, str]]] = None) -> List[Session]:
+    """Remove sessions that would corrupt a backtest, recording why."""
+    kept: List[Session] = []
+    for s in sessions:
+        typical = float(np.median(s.high - s.low))
+        jump = price_jump(s)
+        why = ""
+        if drop_expiry_weeks and expiry_week(s.date):
+            why = "quarterly expiry week (contract switch)"
+        elif jump > max(50.0, 1.5 * typical):
+            why = f"{jump:.0f}-point jump between two bars (broken data)"
+        if why:
+            if dropped is not None:
+                dropped.append((s.date, why))
+            continue
+        kept.append(s)
+    return kept
+
+
+def _drop_unfinished_today(sessions: List[Session], now: Optional[datetime] = None,
+                           dropped: Optional[List[Tuple[str, str]]] = None) -> List[Session]:
+    ny = (now or datetime.now(timezone.utc)).astimezone(NY)
+    if sessions and sessions[-1].date == ny.strftime("%Y-%m-%d") and \
+            ny.hour * 60 + ny.minute < RTH_CLOSE + 15:
+        if dropped is not None:
+            dropped.append((sessions[-1].date, "today's session is not finished"))
+        return sessions[:-1]
+    return sessions
+
+
+def bar_spacing(rows: Sequence[Row]) -> int:
+    """The most common gap between consecutive bars, in minutes."""
+    if len(rows) < 3:
+        return 0
+    diffs = np.diff(np.asarray([r[0] for r in rows], dtype=np.int64)) // 60
+    diffs = diffs[diffs > 0]
+    vals, counts = np.unique(diffs, return_counts=True)
+    return int(vals[np.argmax(counts)])
+
+
+def _on_grid(rows: Sequence[Row], bar_minutes: int) -> List[Row]:
+    """Drop rows whose timestamp is not on the bar grid, e.g. the live
+    quote Yahoo appends to intraday data during the session."""
+    step = 60 * bar_minutes
+    return [r for r in rows if r[0] % step == 0]
+
+
+def load_sessions(source: str, bar_minutes: int = 5, refresh: bool = False,
+                  dropped: Optional[List[Tuple[str, str]]] = None,
+                  now: Optional[datetime] = None) -> List[Session]:
     """``yahoo`` (60 days of 5-minute bars), ``yahoo-hourly`` (two years of
-    60-minute bars, 09:00-16:00) or a path to a CSV."""
+    60-minute bars, 09:00-16:00) or a path to a CSV.
+
+    Unfinished, broken and (for Yahoo's continuous series) contract-switch
+    sessions are removed; pass a list as ``dropped`` to see which and why."""
     if source == "yahoo":
-        rows = fetch_yahoo("NQ=F", "5m", "60d", refresh)
-        return to_sessions(rows, 5, min_bars=int(0.8 * full_day_bars(5)))
+        rows = _on_grid(fetch_yahoo("NQ=F", "5m", "60d", refresh), 5)
+        out = to_sessions(rows, 5, min_bars=int(0.8 * full_day_bars(5)))
+        return clean_sessions(_drop_unfinished_today(out, now, dropped), True, dropped)
     if source == "yahoo-hourly":
-        rows = fetch_yahoo("NQ=F", "60m", "730d", refresh)
-        return to_sessions(rows, 60, start_min=9 * 60, min_bars=6)
+        rows = _on_grid(fetch_yahoo("NQ=F", "60m", "730d", refresh), 60)
+        out = to_sessions(rows, 60, start_min=9 * 60, min_bars=7)
+        return clean_sessions(_drop_unfinished_today(out, now, dropped), True, dropped)
     rows = load_csv(source)
-    return to_sessions(rows, bar_minutes, min_bars=int(0.8 * full_day_bars(bar_minutes)))
+    found = bar_spacing(rows)
+    if found and found != bar_minutes:
+        raise ValueError(f"{source} has {found}-minute bars, but --bar-minutes is {bar_minutes}")
+    rows = _on_grid(rows, bar_minutes)
+    out = to_sessions(rows, bar_minutes, min_bars=int(0.8 * full_day_bars(bar_minutes)))
+    return clean_sessions(_drop_unfinished_today(out, now, dropped), False, dropped)
 
 
 def session_from_bars(date: str, bar_minutes: int,

@@ -29,13 +29,12 @@ Stopping it
 from __future__ import annotations
 
 import csv
-import math
 import os
 import time
 from datetime import datetime, timedelta, timezone
 from typing import Callable, Dict, List, Optional, Tuple
 
-from .backtest import size_trade
+from .backtest import size_trade, stop_price, target_price
 from .config import BotConfig, RiskParams
 from .data import NY, RTH_CLOSE, RTH_OPEN, Session, full_day_bars, to_sessions
 from .strategy import DayState, ShortStrategy
@@ -81,13 +80,20 @@ class TopstepFeed:
         ss = to_sessions(rows, self.bar_minutes)
         return ss[-1] if ss and ss[-1].date == ny.strftime("%Y-%m-%d") else None
 
-    def last_price(self, now: datetime) -> Optional[Tuple[float, float, float]]:
-        """(last price, high, low of the last two minutes) from 1-minute bars."""
+    def last_price(self, now: datetime, since: Optional[float] = None
+                   ) -> Optional[Tuple[float, float, float]]:
+        """(last price, high, low) from the last two 1-minute bars.  With
+        ``since`` (epoch seconds) the high and low only use bars that began at
+        or after it, so prices from before an entry never count."""
         rows = self.client.bars(self.contract_id, now - timedelta(minutes=3), now,
                                 BarUnit.MINUTE, 1, include_partial=True)
         if not rows:
             return None
-        return rows[-1][4], max(r[2] for r in rows[-2:]), min(r[3] for r in rows[-2:])
+        last = rows[-1][4]
+        recent = [r for r in rows[-2:] if since is None or r[0] >= since]
+        if not recent:
+            return last, last, last
+        return last, max(r[2] for r in recent), min(r[3] for r in recent)
 
 
 # ---------------------------------------------------------------------- brokers
@@ -104,28 +110,26 @@ class PaperBroker:
     def reconcile(self) -> None:
         pass
 
+    def ensure_flat(self) -> bool:
+        return True
+
     def open(self, side: int, n: int, stop_pts: float, ref_price: float) -> Tuple[float, float]:
         slip = self.r.slippage_ticks * self.r.tick_size
         entry = ref_price + side * slip
         self.side, self.n = side, n
-        self.stop = _stop_price(entry, side, stop_pts, self.r.tick_size)
+        self.stop = stop_price(entry, side, stop_pts, self.r.tick_size)
         return entry, self.stop
 
-    def stopped_out(self, high: float, low: float) -> Optional[float]:
+    def check_flat(self, high: float, low: float) -> Tuple[bool, Optional[float]]:
+        """(position gone?, exit price if known)."""
         if self.n and self.side * ((low if self.side > 0 else high) - self.stop) <= 0:
             self.n = 0
-            return self.stop - self.side * self.r.slippage_ticks * self.r.tick_size
-        return None
+            return True, self.stop - self.side * self.r.slippage_ticks * self.r.tick_size
+        return self.n == 0, None
 
     def close(self, ref_price: float) -> float:
         self.n = 0
         return ref_price - self.side * self.r.slippage_ticks * self.r.tick_size
-
-
-def _stop_price(entry: float, side: int, stop_pts: float, tick: float) -> float:
-    """Stop ``stop_pts`` against the trade, rounded to a tick away from the entry."""
-    raw = entry - side * stop_pts
-    return (math.floor(raw / tick + 1e-9) if side > 0 else math.ceil(raw / tick - 1e-9)) * tick
 
 
 class TopstepBroker:
@@ -137,7 +141,8 @@ class TopstepBroker:
                  risk: RiskParams, log: Log, sleep: Callable[[float], None] = time.sleep):
         self.c, self.acct, self.feed, self.r, self.log = client, account_id, feed, risk, log
         self.sleep = sleep
-        self.side = 0
+        self.root = f"CON.F.US.{getattr(feed, 'symbol', 'MNQ')}."
+        self.side, self.n, self.stop = 0, 0, 0.0
         self.stop_order: Optional[int] = None
         self.opened_at: Optional[datetime] = None
 
@@ -145,26 +150,44 @@ class TopstepBroker:
     def contract(self) -> str:
         return self.feed.contract_id
 
+    def _ours(self, contract_id) -> bool:
+        return contract_id == self.contract or str(contract_id).startswith(self.root)
+
+    def _positions(self) -> List[Dict]:
+        return [p for p in self.c.open_positions(self.acct)
+                if self._ours(p.get("contractId")) and int(p.get("size", 0))]
+
+    def _orders(self) -> List[Dict]:
+        return [o for o in self.c.open_orders(self.acct) if self._ours(o.get("contractId"))]
+
     def _position(self) -> Tuple[int, float]:
-        """(signed contracts: + long, - short; average price)."""
-        for p in self.c.open_positions(self.acct):
+        """(signed contracts in the current contract: + long, - short; average price)."""
+        for p in self._positions():
             if p.get("contractId") == self.contract:
-                size = int(p.get("size", 0))
                 sign = -1 if p.get("type") == PositionType.SHORT else 1
-                return sign * size, float(p.get("averagePrice") or 0.0)
+                return sign * int(p["size"]), float(p.get("averagePrice") or 0.0)
         return 0, 0.0
 
-    def _cancel_all(self) -> None:
-        for o in self.c.open_orders(self.acct):
-            if o.get("contractId") == self.contract:
+    def _cancel_orders(self, tries: int = 3) -> None:
+        """Cancel every MNQ order and make sure none is left resting."""
+        for _ in range(tries):
+            left = self._orders()
+            if not left:
+                return
+            for o in left:
                 try:
                     self.c.cancel_order(self.acct, o["id"])
                 except ApiError as e:
                     self.log(f"cancel {o['id']} failed: {e}")
+            self.sleep(0.5)
+        left = self._orders()
+        if left:
+            raise RuntimeError(f"orders {[o['id'] for o in left]} are still resting after "
+                               f"cancelling; cancel them in TopstepX NOW")
 
     def _wait_flat(self, tries: int = 20) -> bool:
         for _ in range(tries):
-            if self._position()[0] == 0:
+            if not self._positions():
                 return True
             self.sleep(0.5)
         return False
@@ -178,57 +201,80 @@ class TopstepBroker:
                  and not t.get("voided")]
         return float(fills[-1]["price"]) if fills else None
 
+    def flatten_everything(self, why: str) -> None:
+        """Cancel every MNQ order and close every MNQ position; raise if the
+        account cannot be confirmed flat."""
+        self.log(f"flattening all MNQ orders and positions: {why}")
+        try:
+            self._cancel_orders()
+        except (ApiError, RuntimeError) as e:
+            self.log(f"cancelling failed: {e}")
+        for p in self._positions():
+            try:
+                self.c.close_position(self.acct, p["contractId"])
+            except ApiError as e:
+                self.log(f"closing {p['contractId']} failed: {e}")
+        if not self._wait_flat():
+            raise RuntimeError("COULD NOT FLATTEN the account; close it in TopstepX NOW")
+        self._cancel_orders()
+        self.stop_order, self.n = None, 0
+
     def reconcile(self) -> None:
-        """Start from a clean slate: cancel MNQ orders and close any MNQ position."""
-        self._cancel_all()
-        size, _ = self._position()
-        if size != 0:
-            self.log(f"found an existing position of {size:+d} contracts; closing it")
-            self.c.close_position(self.acct, self.contract)
-            if not self._wait_flat():
-                raise RuntimeError("could not flatten the existing position; check TopstepX")
-        self.stop_order = None
+        """Start (or end) from a clean slate."""
+        if self._positions() or self._orders():
+            self.flatten_everything("found MNQ orders or positions left over")
+        self.stop_order, self.n = None, 0
+
+    def ensure_flat(self) -> bool:
+        """While the bot has no trade: True if the account really is flat.
+        Anything found is flattened."""
+        if self._positions() or self._orders():
+            self.flatten_everything("the account was not flat although the bot had no trade")
+            return False
+        return True
 
     def open(self, side: int, n: int, stop_pts: float, ref_price: float) -> Tuple[float, float]:
         self.side = side
         self.opened_at = datetime.now(timezone.utc) - timedelta(seconds=5)
         tag = f"shortbot-{int(time.time() * 1000)}"
-        order = self.c.place_order(self.acct, self.contract, OrderType.MARKET,
-                                   Side.BUY if side > 0 else Side.SELL, n, tag=tag)
-        size, avg = 0, 0.0
-        for _ in range(20):
-            size, avg = self._position()
-            if side * size >= n:
-                break
-            self.sleep(0.5)
-        if side * size < n:
-            self.log(f"entry order {order} not filled after 10 s; cancelling")
-            try:
-                self.c.cancel_order(self.acct, order)
-            except ApiError:
-                pass
-            if size:
-                self.c.close_position(self.acct, self.contract)
-            raise RuntimeError("entry not filled")
-        stop = _stop_price(avg, side, stop_pts, self.r.tick_size)
         try:
+            order = self.c.place_order(self.acct, self.contract, OrderType.MARKET,
+                                       Side.BUY if side > 0 else Side.SELL, n, tag=tag)
+            size, avg = 0, 0.0
+            for _ in range(20):
+                size, avg = self._position()
+                if side * size >= n:
+                    break
+                self.sleep(0.5)
+            if side * size < n:
+                raise RuntimeError(f"entry order {order} not filled after 10 s")
+            if abs(size) != n:
+                raise RuntimeError(f"ordered {n} contracts but the account shows {size}")
+            stop = stop_price(avg, side, stop_pts, self.r.tick_size)
             self.stop_order = self.c.place_order(self.acct, self.contract, OrderType.STOP,
-                                                 Side.SELL if side > 0 else Side.BUY, abs(size),
+                                                 Side.SELL if side > 0 else Side.BUY, n,
                                                  stop_price=stop, tag=tag + "-SL")
-        except ApiError as e:
-            self.log(f"could not place the protective stop ({e}); closing the position")
-            self.c.close_position(self.acct, self.contract)
-            self._wait_flat()
+            self.n, self.stop = n, stop
+            return avg, stop
+        except BaseException as exc:
+            self.log(f"entry did not complete ({exc!r})")
+            try:
+                self.flatten_everything("entry did not complete")
+            except Exception as e2:                      # noqa: BLE001 -- report both
+                self.log(f"{e2}")
             raise
-        return avg, stop
 
-    def stopped_out(self, high: float, low: float) -> Optional[float]:
+    def check_flat(self, high: float, low: float) -> Tuple[bool, Optional[float]]:
+        """(position gone?, exit price if known).  One empty read is not
+        trusted: the position must be gone on two reads a second apart."""
         if self._position()[0] != 0:
-            return None
-        # position is gone: the stop filled (or someone closed it by hand)
-        self._cancel_all()
-        self.stop_order = None
-        return self._last_exit_fill()
+            return False, None
+        self.sleep(1.0)
+        if self._position()[0] != 0:
+            return False, None
+        self._cancel_orders()                             # the stop filled; tidy up
+        self.stop_order, self.n = None, 0
+        return True, self._last_exit_fill()
 
     def close(self, ref_price: float) -> float:
         if self.stop_order is not None:
@@ -236,43 +282,60 @@ class TopstepBroker:
                 self.c.cancel_order(self.acct, self.stop_order)
             except ApiError as e:
                 self.log(f"cancelling the stop failed ({e}); closing anyway")
-        self.c.close_position(self.acct, self.contract)
-        flat = self._wait_flat()
-        self._cancel_all()
-        self.stop_order = None
-        if not flat:
-            raise RuntimeError("position did not close; flatten it in TopstepX NOW")
+        try:
+            self.c.close_position(self.acct, self.contract)
+        except ApiError as e:
+            self.log(f"close request failed ({e}); checking the account")
+        if not self._wait_flat():
+            size, _ = self._position()
+            if size:
+                try:
+                    self.stop_order = self.c.place_order(
+                        self.acct, self.contract, OrderType.STOP,
+                        Side.BUY if size < 0 else Side.SELL, abs(size), stop_price=self.stop,
+                        tag=f"shortbot-{int(time.time() * 1000)}-SL")
+                    self.log("the close did not go through; the protective stop is back in place")
+                except ApiError as e:
+                    self.log(f"COULD NOT PUT THE STOP BACK ({e}); close the position in TopstepX NOW")
+            raise RuntimeError("position did not close")
+        self._cancel_orders()
+        self.stop_order, self.n = None, 0
         return self._last_exit_fill() or ref_price
 
 
 # ------------------------------------------------------------------------ bot
 
 class LiveBot:
-    """Calls the shared strategy on live bars and manages at most one short."""
+    """Calls the shared strategy on live bars and manages at most one position."""
 
     def __init__(self, cfg: BotConfig, feed, broker, log: Log, kill_file: str = "STOP",
-                 trade_log: str = "runs/shortbot-trades.csv"):
+                 trade_log: str = "runs/shortbot-trades.csv",
+                 sleep: Callable[[float], None] = time.sleep):
         self.cfg, self.feed, self.broker, self.log = cfg, feed, broker, log
         self.strat = ShortStrategy(cfg.strategy)
         self.r = cfg.risk
-        self.kill_file, self.trade_log = kill_file, trade_log
+        self.kill_file, self.trade_log, self.sleep = kill_file, trade_log, sleep
         self.date: Optional[str] = None
         self.day = DayState()
         self.prof = None
         self.allowed = False
         self.pos: Optional[Dict] = None
         self.last_bar_end: Optional[int] = None
+        self.last_px: Optional[float] = None
+        self._load_failures = 0
 
     # -------------------------------------------------------------- lifecycle
 
     def _new_day(self, now: datetime, date: str) -> None:
-        self.date, self.day, self.pos, self.last_bar_end = date, DayState(), None, None
+        """Load history for a new session.  ``self.date`` only changes once
+        the loading worked, so a failure is retried on the next pass."""
         if hasattr(self.feed, "new_day"):
             self.feed.new_day()
         prior = self.feed.history(now, self.strat.warmup_days() + 3)
+        self.date, self.day, self.last_bar_end = date, DayState(), None
         need = self.cfg.strategy.profile_days
         if len(prior) < self.strat.warmup_days():
-            self.allowed = False
+            self.allowed, self.prof = False, None
             self.log(f"{date}: only {len(prior)} earlier sessions available, need "
                      f"{self.strat.warmup_days()}; not trading today")
             return
@@ -283,31 +346,51 @@ class LiveBot:
                  f"trading {'allowed' if self.allowed else 'skipped by the trend filter'}")
 
     def shutdown(self, why: str) -> None:
-        now_min = _minute(datetime.now(timezone.utc).astimezone(NY))
-        if self.pos is not None:
-            px = self.feed.last_price(datetime.now(timezone.utc))
-            self._close(px[0] if px else self.pos["entry"], now_min, why)
-        if self.broker.live:
-            self.broker.reconcile()
-        self.log(f"stopped: {why}")
+        """Close any position and clean the account, retrying; never raises."""
+        for attempt in range(1, 4):
+            try:
+                now = datetime.now(timezone.utc)
+                if self.pos is not None:
+                    self._close(self._ref_price(now) or self.pos["entry"],
+                                _minute(now.astimezone(NY)), why)
+                if self.broker.live:
+                    self.broker.reconcile()
+                self.log(f"stopped: {why}")
+                return
+            except Exception as exc:                      # noqa: BLE001 -- retry, then shout
+                self.log(f"shutdown attempt {attempt} failed: {exc}")
+                self.sleep(2.0)
+        self.log("COULD NOT CONFIRM THE ACCOUNT IS FLAT. CHECK TOPSTEPX NOW.")
 
     # ------------------------------------------------------------------- step
 
     def step(self, now: datetime) -> bool:
-        """One pass: manage the open short, then act on a newly closed bar.
+        """One pass: manage the open trade, then act on a newly closed bar.
         Returns False when the bot should stop."""
         ny = now.astimezone(NY)
         minute, date = _minute(ny), ny.strftime("%Y-%m-%d")
         if os.path.exists(self.kill_file):
             self.shutdown(f"kill switch file '{self.kill_file}' found")
             return False
+
+        if self.pos is not None:                     # at any hour: a trade is never forgotten
+            if date != self.date:
+                self._close(self._ref_price(now) or self.pos["entry"], minute,
+                            "left over from an earlier day")
+            else:
+                self._manage(now, minute)
+
         if ny.weekday() >= 5 or not (RTH_OPEN - 5 <= minute <= RTH_CLOSE + 5):
             return True
         if date != self.date:
-            self._new_day(now, date)
-
-        if self.pos is not None:
-            self._manage(now, minute)
+            try:
+                self._new_day(now, date)
+                self._load_failures = 0
+            except Exception as exc:                  # noqa: BLE001 -- retried next pass
+                self._load_failures += 1
+                if self._load_failures == 1 or self._load_failures % 60 == 0:
+                    self.log(f"could not load history for {date} ({exc}); retrying")
+                return True
 
         bar_minutes = getattr(self.feed, "bar_minutes", 5)
         if self.last_bar_end is not None and minute < self.last_bar_end + bar_minutes:
@@ -320,56 +403,80 @@ class LiveBot:
         if bar_end == self.last_bar_end:
             return True
         self.last_bar_end = bar_end
-        if minute - bar_end > 1:                      # stale bar (e.g. just restarted): never act late
+        closed_at = ny.replace(hour=bar_end // 60, minute=bar_end % 60, second=0, microsecond=0)
+        if (ny - closed_at).total_seconds() > 60:     # stale bar (e.g. just restarted): never act late
             return True
-        if self.pos is not None or not self.allowed or self.prof is None:
+        if self.pos is not None or not self.allowed or self.prof is None or self.day.done:
             return True
         e = self.strat.decide(s, i, self.day, self.prof)
         if e is None:
+            return True
+        if not self.broker.ensure_flat():
+            self.log("the account was not flat; flattened it and stopping for today")
+            self.day.done = True
             return True
         n = min(size_trade(e, self.r), self.cfg.account.max_contracts)
         if n == 0:
             self.log(f"skip {e.setup}: a 1-lot stop of {e.stop_pts:.0f} pts is wider than "
                      f"${self.r.max_stop_risk_usd:.0f}")
             return True
-        px = self.feed.last_price(now)
-        ref = px[0] if px else float(s.close[i])
+        ref = self._ref_price(now) or float(s.close[i])
         try:
             entry, stop = self.broker.open(e.side, n, e.stop_pts, ref)
-        except Exception as exc:                     # noqa: BLE001 -- log and keep running flat
-            self.log(f"entry failed: {exc}")
+        except Exception as exc:                     # noqa: BLE001 -- the broker flattened
+            self.log(f"entry failed ({exc}); the account was flattened; no more entries today")
+            self.day.done = True
             return True
         self.pos = {"side": e.side, "entry": entry, "stop": stop,
-                    "target": entry + e.side * e.target_pts, "n": n,
-                    "minute": minute, "setup": e.setup, "reason": e.reason}
+                    "target": target_price(entry, e.side, e.target_pts, self.r.tick_size),
+                    "n": n, "minute": minute, "deadline": self.strat.deadline(date, minute),
+                    "opened_ts": now.timestamp(), "setup": e.setup, "reason": e.reason}
         self.day.in_position = True
         self.day.setups_used[e.setup] = self.day.setups_used.get(e.setup, 0) + 1
         self.log(f"{'LONG' if e.side > 0 else 'SHORT'} {n} MNQ @ {entry:.2f} [{e.setup}] "
                  f"stop {stop:.2f} target {self.pos['target']:.2f} -- {e.reason}")
         return True
 
+    def _ref_price(self, now: datetime) -> Optional[float]:
+        try:
+            px = self.feed.last_price(now)
+        except Exception:                             # noqa: BLE001 -- fall back to the last one
+            px = None
+        if px:
+            self.last_px = px[0]
+        return self.last_px
+
+    def _bar_end(self, minute: int) -> int:
+        """End of the bar a minute falls in -- how the backtest times exits."""
+        b = getattr(self.feed, "bar_minutes", 5)
+        return (minute // b + 1) * b
+
     def _manage(self, now: datetime, minute: int) -> None:
         pos = self.pos
-        px = self.feed.last_price(now)
-        if px is None:
-            return
-        last, high, low = px
-        filled = self.broker.stopped_out(high, low)
-        if filled is not None:
-            self._record(filled, minute, "stop")
-        elif minute >= self.strat.flatten_minute(self.date or ""):
+        try:
+            px = self.feed.last_price(now, since=pos["opened_ts"])
+        except Exception as exc:                      # noqa: BLE001 -- exits below still run
+            self.log(f"no price ({exc})")
+            px = None
+        if px:
+            self.last_px = px[0]
+        last = px[0] if px else (self.last_px if self.last_px is not None else pos["entry"])
+        high, low = (px[1], px[2]) if px else (last, last)
+        gone, fill = self.broker.check_flat(high, low)
+        if gone:
+            self._record(fill if fill is not None else pos["stop"], self._bar_end(minute), "stop")
+        elif minute >= pos["deadline"]:
             self._close(last, minute, "flatten")
-        elif pos["side"] * (last - pos["target"]) >= self.r.tick_size:
-            self._close(last, minute, "target")
+        elif px and pos["side"] * (last - pos["target"]) >= self.r.tick_size:
+            self._close(last, self._bar_end(minute), "target")
         elif minute - pos["minute"] >= self.cfg.strategy.max_hold_minutes:
-            self._close(last, minute, "time")
+            self._close(last, self._bar_end(minute), "time")
 
     def _close(self, ref: float, minute: int, why: str) -> None:
         self._record(self.broker.close(ref), minute, why)
 
-    def _record(self, exit_px: Optional[float], minute: int, why: str) -> None:
+    def _record(self, exit_px: float, minute: int, why: str) -> None:
         pos = self.pos
-        exit_px = exit_px if exit_px is not None else pos["stop"]
         pnl = (pos["side"] * (exit_px - pos["entry"]) * self.r.point_value * pos["n"]
                - self.r.commission_rt * pos["n"])
         self.day.record_exit(pnl, minute)
@@ -455,7 +562,7 @@ def run_live(cfg: BotConfig, live: bool = False, account_id: Optional[int] = Non
             raise SystemExit("--live needs --account-id set to one of the accounts listed above")
         if not acct.get("canTrade"):
             raise SystemExit(f"account {account_id} cannot trade right now")
-        if acct.get("simulated") is False:
+        if acct.get("simulated") is not True:
             raise SystemExit("refusing: this is not a simulated account, and Topstep does not "
                              "allow the API on Live Funded accounts")
         broker = TopstepBroker(client, account_id, feed, cfg.risk, log)

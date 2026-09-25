@@ -129,9 +129,13 @@ class ShortStrategy:
     def is_fomc(self, date: str) -> bool:
         return self.p.skip_fomc and date in self._fomc
 
-    def flatten_minute(self, date: str) -> int:
-        """Minute by which any position must be closed today."""
-        return self.p.fomc_flat_minute if self.is_fomc(date) else self.p.flatten_minute
+    def deadline(self, date: str, entry_minute: int) -> int:
+        """Minute by which a position opened at ``entry_minute`` must be closed:
+        before a Fed statement if it was opened ahead of it, otherwise the
+        end-of-day flatten time."""
+        if self.is_fomc(date) and entry_minute < self.p.fomc_flat_minute:
+            return self.p.fomc_flat_minute
+        return self.p.flatten_minute
 
     def entry_unit(self, s: Session, i: int, day: DayState, prof: Profile) -> float:
         """The size of one unit if a new trade may be opened after bar ``i``
@@ -146,10 +150,12 @@ class ShortStrategy:
             return 0.0
         if not (p.first_entry_minute <= now <= p.last_entry_minute):
             return 0.0
-        if now >= self.flatten_minute(s.date):
+        if now >= p.flatten_minute:
             return 0.0
         if self.is_fomc(s.date) and p.fomc_flat_minute - 30 <= now < p.fomc_resume_minute:
             return 0.0
+        if int(s.minute[i]) < RTH_OPEN:
+            return 0.0                      # a bar that began before the 09:30 open (hourly data)
         unit = prof.normal(p.unit_minutes, int(s.minute[i]))
         return unit if unit > 0 else 0.0
 
@@ -221,15 +227,16 @@ class RandomStrategy(ShortStrategy):
     setups.  A strategy that cannot beat this has no edge -- whatever its
     backtest says."""
 
-    def __init__(self, params: StrategyParams, rate: float, seed: int):
+    def __init__(self, params: StrategyParams, rate: float, seed: int, long_share: float = 0.5):
         super().__init__(params)
         self.rate = rate
+        self.long_share = long_share        # match the strategy: 0 for a short-only one
         self.rng = np.random.default_rng(seed)
 
     def decide(self, s: Session, i: int, day: DayState, prof: Profile) -> Optional[Entry]:
         unit = self.entry_unit(s, i, day, prof)
         if not unit or self.rng.random() > self.rate:
             return None
-        side = int(self.rng.choice([-1, 1]))
+        side = 1 if self.rng.random() < self.long_share else -1
         return Entry("random", self.p.stop_units * unit, self.p.target_units * unit,
                      "coin flip", side)
