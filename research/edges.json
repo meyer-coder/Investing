@@ -1,0 +1,450 @@
+[
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1578,
+   "mean_bp": 3.330552611346974,
+   "t": 3.2403836562027024,
+   "flip_pct": 100.0
+  },
+  "confirm": {
+   "n": 695,
+   "mean_bp": 7.278638774005779,
+   "t": 3.14904366088736,
+   "flip_pct": 100.0
+  },
+  "final": {
+   "n": 812,
+   "mean_bp": 4.749076745609061,
+   "t": 2.338159560923568,
+   "flip_pct": 99.55000000000001
+  },
+  "passed_search": true,
+  "confirmed": true
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1442,
+   "mean_bp": 3.293155133230791,
+   "t": 2.8475078429580787,
+   "flip_pct": 99.85000000000001
+  },
+  "confirm": {
+   "n": 660,
+   "mean_bp": 6.181370729256655,
+   "t": 2.4410788021982412,
+   "flip_pct": 99.5
+  },
+  "final": {
+   "n": 758,
+   "mean_bp": 4.854180104626179,
+   "t": 2.1811288693856237,
+   "flip_pct": 99.4
+  },
+  "passed_search": true,
+  "confirmed": true
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1189,
+   "mean_bp": 3.211367371804446,
+   "t": 2.6277567169156,
+   "flip_pct": 99.95
+  },
+  "confirm": {
+   "n": 517,
+   "mean_bp": 8.083851173672793,
+   "t": 2.9846447060558865,
+   "flip_pct": 99.9
+  },
+  "final": {
+   "n": 618,
+   "mean_bp": 5.147665861964338,
+   "t": 2.1063386369809725,
+   "flip_pct": 99.05000000000001
+  },
+  "passed_search": true,
+  "confirmed": true
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1062,
+   "mean_bp": 3.093920024177738,
+   "t": 2.1760868348726796,
+   "flip_pct": 99.05000000000001
+  },
+  "confirm": {
+   "n": 477,
+   "mean_bp": 8.069913455578837,
+   "t": 2.6118676970045116,
+   "flip_pct": 99.5
+  },
+  "final": {
+   "n": 555,
+   "mean_bp": 5.144020907095029,
+   "t": 2.2841534096904477,
+   "flip_pct": 99.25
+  },
+  "passed_search": true,
+  "confirmed": true
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1661,
+   "mean_bp": -1.087657584059593,
+   "t": -0.7540266453897723,
+   "flip_pct": 30.25
+  },
+  "confirm": {
+   "n": 744,
+   "mean_bp": 3.091242913882613,
+   "t": 0.8416839160698931,
+   "flip_pct": 81.85
+  },
+  "final": {
+   "n": 919,
+   "mean_bp": 2.992990279351961,
+   "t": 1.2395040044138959,
+   "flip_pct": 91.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1590,
+   "mean_bp": -2.560746567469024,
+   "t": -1.7234204825618387,
+   "flip_pct": 6.2
+  },
+  "confirm": {
+   "n": 712,
+   "mean_bp": 2.999125200782658,
+   "t": 0.7941213491180585,
+   "flip_pct": 81.2
+  },
+  "final": {
+   "n": 890,
+   "mean_bp": 3.672026857878204,
+   "t": 1.4677144333681407,
+   "flip_pct": 93.60000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1590,
+   "mean_bp": -2.2253549415075353,
+   "t": -1.8670518663265838,
+   "flip_pct": 5.45
+  },
+  "confirm": {
+   "n": 712,
+   "mean_bp": 3.87819775640185,
+   "t": 1.251323388104783,
+   "flip_pct": 91.14999999999999
+  },
+  "final": {
+   "n": 890,
+   "mean_bp": 0.5312030044521872,
+   "t": 0.2861897293213017,
+   "flip_pct": 67.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1325,
+   "mean_bp": -1.3806219378173794,
+   "t": -0.8504791372802021,
+   "flip_pct": 26.05
+  },
+  "confirm": {
+   "n": 591,
+   "mean_bp": 4.584930630549154,
+   "t": 1.1617795820878296,
+   "flip_pct": 88.2
+  },
+  "final": {
+   "n": 743,
+   "mean_bp": 1.3646096563751624,
+   "t": 0.5696132256302071,
+   "flip_pct": 74.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1325,
+   "mean_bp": -0.029686601638082115,
+   "t": -0.021169966576165884,
+   "flip_pct": 59.150000000000006
+  },
+  "confirm": {
+   "n": 591,
+   "mean_bp": 5.864453896296274,
+   "t": 1.7572778584372675,
+   "flip_pct": 96.7
+  },
+  "final": {
+   "n": 743,
+   "mean_bp": -1.160186730198238,
+   "t": -0.551981467862196,
+   "flip_pct": 33.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "momentum close->30m",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1700,
+   "mean_bp": -0.07653479302551723,
+   "t": -0.15743649517789432,
+   "flip_pct": 70.3
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": 0.17565211823737217,
+   "t": 0.11908370568718804,
+   "flip_pct": 63.349999999999994
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -0.5035952171044661,
+   "t": -0.669167153011606,
+   "flip_pct": 41.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "momentum open->30m",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1684,
+   "mean_bp": -0.19373648085513348,
+   "t": -0.3953452479763718,
+   "flip_pct": 61.199999999999996
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": 0.9819943427387019,
+   "t": 0.6660550000998704,
+   "flip_pct": 81.15
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -0.5588194188222227,
+   "t": -0.7425614681098842,
+   "flip_pct": 38.550000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "momentum close->noon",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1700,
+   "mean_bp": -0.34378937638394735,
+   "t": -0.7071245912629731,
+   "flip_pct": 49.0
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": 2.2747244947518617,
+   "t": 1.5453189792263908,
+   "flip_pct": 95.85000000000001
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": 0.2463962338950451,
+   "t": 0.3275146047272386,
+   "flip_pct": 78.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "gap follow, 60m",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 439,
+   "mean_bp": -2.659885000888589,
+   "t": -1.2929633478639888,
+   "flip_pct": 11.75
+  },
+  "confirm": {
+   "n": 200,
+   "mean_bp": 0.8215278547576444,
+   "t": 0.15922984051415526,
+   "flip_pct": 59.199999999999996
+  },
+  "final": {
+   "n": 284,
+   "mean_bp": -1.9688528033754202,
+   "t": -0.6309396175444583,
+   "flip_pct": 29.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "gap follow, to close",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 439,
+   "mean_bp": -4.191394590042708,
+   "t": -1.3752789669121777,
+   "flip_pct": 10.05
+  },
+  "confirm": {
+   "n": 200,
+   "mean_bp": 5.500141937243693,
+   "t": 0.6575992686505823,
+   "flip_pct": 76.14999999999999
+  },
+  "final": {
+   "n": 284,
+   "mean_bp": -5.961667238011293,
+   "t": -1.2253883186061998,
+   "flip_pct": 11.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "gap fade, 60m",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 439,
+   "mean_bp": 2.9778778973780287,
+   "t": 1.3482405922958693,
+   "flip_pct": 91.9
+  },
+  "confirm": {
+   "n": 200,
+   "mean_bp": -2.3945858394516706,
+   "t": -0.4550526869226996,
+   "flip_pct": 34.4
+  },
+  "final": {
+   "n": 284,
+   "mean_bp": 4.529963600613355,
+   "t": 1.3171092073408996,
+   "flip_pct": 91.35
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USATECH.IDX/USD",
+  "contract": "MNQ",
+  "variant": "gap fade, to close",
+  "cost_bp": 0.3589706274709549,
+  "sessions": 3387,
+  "first": "2013-01-01",
+  "search": {
+   "n": 439,
+   "mean_bp": 5.407859360712989,
+   "t": 1.371671474993064,
+   "flip_pct": 92.05
+  },
+  "confirm": {
+   "n": 200,
+   "mean_bp": -4.375790658614658,
+   "t": -0.48446711212994376,
+   "flip_pct": 33.300000000000004
+  },
+  "final": {
+   "n": 284,
+   "mean_bp": 9.780123454473793,
+   "t": 1.7642583627054353,
+   "flip_pct": 96.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ }
+]
