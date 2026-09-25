@@ -147,6 +147,52 @@ The Nasdaq-100 breakout's 708 trades in the window made +2.8 bp each (t =
     mostly the Micron run.
   - 2011-2024 ran from -$13 to +$133 a day a year.
 
+## Year by year, 2020 to 2026
+
+Dollars a day on $25,000 in each calendar year, each strategy on its own
+funds at its list's size (`strategies/top5/years.py`; 2026 runs to September
+22).
+
+| Strategy | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **FBB5, MUU / SOXL Uptrend Dip** (beats random entries) | $56 | $53 | $7 | $27 | $14 | $160 | $370 |
+| D609, MUU Trend Breakout (paper bot #2) | $60 | -$9 | $6 | $7 | $108 | $285 | $549 |
+| CB51, MUU / SOXL Uptrend Dip | $181 | $69 | -$50 | $113 | $29 | $271 | $318 |
+| CBE3, MUU / SOXL Uptrend Dip | $111 | $18 | -$25 | $103 | -$1 | $301 | $263 |
+| MUU / SOXL Quick Dip, 2/2/6/4 | $82 | $68 | -$12 | $36 | $95 | $50 | $417 |
+| MUU Quick Dip (paper split bot 1) | $36 | $84 | -$36 | $25 | $118 | -$5 | $436 |
+| 852D, AMDL Uptrend Dip | $43 | -$6 | -$31 | $102 | -$7 | $207 | $274 |
+| NVDL / AMDL Short-Trend Rider (paper split bot 2) | $127 | $133 | -$24 | $88 | $73 | $2 | $174 |
+| NQ at 2x: Calm Trend Champion | $65 | $33 | $44 | $61 | $16 | $96 | $88 |
+| NQ at 2x: Managed Long | $114 | $43 | $12 | $60 | $43 | $50 | $83 |
+| **Nasdaq-100 breakout, TQQQ at 2x** (beats random sides) | $26 | $54 | $113 | $99 | $70 | $44 | $9 |
+| MSTR sleeve, 1x | -$20 | -$15 | $13 | $107 | $48 | -$25 | $15 |
+| Today's book: TQQQ 2x + MSTR 1x | $21 | $38 | $134 | $195 | $126 | $22 | $22 |
+| **TQQQ 2x + FBB5** | $79 | $114 | $119 | $124 | $84 | $200 | $356 |
+| TQQQ 2x + MSTR 1x + FBB5 | $74 | $99 | $141 | $221 | $140 | $178 | $369 |
+| Holding Micron at 2x (MUU) | $95 | $55 | -$106 | $112 | $15 | $276 | $428 |
+| Holding SOXL | $141 | $118 | -$110 | $153 | $39 | $112 | $286 |
+| Holding NQ at 2x | $90 | $51 | -$72 | $80 | $37 | $34 | $51 |
+
+- **2025-2026 is the Micron and chip rally.** Every leveraged-fund rule's
+  best years are there. In 2022 most of them lost.
+- **FBB5** made money in every year but was thin in 2022-2024 ($7 to $27 a
+  day).
+- **The breakout runs the other way.** Its best years were 2022-2023, when
+  the funds fell or chopped. It has faded since ($44 in 2025, $9 so far in
+  2026).
+- **That is why the two go together.** TQQQ 2x + FBB5 made at least $79 a
+  day in every year, and $100+ in five of the seven.
+  - Its worst losing stretch inside a year ranged from -$5,336 (2024) to
+    -$15,069 (2022).
+  - About a third of days reach $100. The average comes from lumpy days,
+    not from $100 every day.
+- **Today's book was carried by 2022-2024.** It made $21-38 a day in
+  2020-2021 and $22 in each of 2025 and 2026.
+- **The NQ calm-trend strategies were positive every year.** Managed Long
+  failed the random-entry test (it is long the index most of the time).
+  Calm Trend Champion, its sibling, was not tested.
+
 ## The five, trade by trade
 
 Each rule was run unchanged through evotrader's engine, one fund at a time
@@ -326,4 +372,5 @@ python strategies/top5/rigor.py L09 L08 L42 L14   # the other three-year leaders
 python strategies/top5/rigor_ndx.py   # the Nasdaq-100 breakout on four indexes
 python strategies/top5/tune_ndx.py    # 162 settings of the breakout
 python strategies/top5/book.py        # the books toward $100 a day
+python strategies/top5/years.py       # year by year, 2020-2026
 ```

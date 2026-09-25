@@ -1,0 +1,992 @@
+[
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred FBB5)",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 56.0,
+    "worst_day": -3245.0,
+    "worst_stretch": -6983.0,
+    "days_100": 0.15,
+    "days": 253
+   },
+   "2021": {
+    "usd": 52.6,
+    "worst_day": -3791.0,
+    "worst_stretch": -6609.0,
+    "days_100": 0.194,
+    "days": 252
+   },
+   "2022": {
+    "usd": 6.6,
+    "worst_day": -2914.0,
+    "worst_stretch": -8548.0,
+    "days_100": 0.064,
+    "days": 251
+   },
+   "2023": {
+    "usd": 27.0,
+    "worst_day": -1803.0,
+    "worst_stretch": -9280.0,
+    "days_100": 0.14,
+    "days": 250
+   },
+   "2024": {
+    "usd": 13.6,
+    "worst_day": -2243.0,
+    "worst_stretch": -6449.0,
+    "days_100": 0.095,
+    "days": 252
+   },
+   "2025": {
+    "usd": 159.6,
+    "worst_day": -4053.0,
+    "worst_stretch": -5168.0,
+    "days_100": 0.196,
+    "days": 250
+   },
+   "2026": {
+    "usd": 370.5,
+    "worst_day": -4527.0,
+    "worst_stretch": -5534.0,
+    "days_100": 0.25,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MUU Trend Breakout (bred D609)",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 60.4,
+    "worst_day": -2767.0,
+    "worst_stretch": -9128.0,
+    "days_100": 0.17,
+    "days": 253
+   },
+   "2021": {
+    "usd": -9.1,
+    "worst_day": -3225.0,
+    "worst_stretch": -22446.0,
+    "days_100": 0.298,
+    "days": 252
+   },
+   "2022": {
+    "usd": 6.0,
+    "worst_day": -4082.0,
+    "worst_stretch": -12910.0,
+    "days_100": 0.127,
+    "days": 251
+   },
+   "2023": {
+    "usd": 7.4,
+    "worst_day": -2443.0,
+    "worst_stretch": -11080.0,
+    "days_100": 0.24,
+    "days": 250
+   },
+   "2024": {
+    "usd": 107.6,
+    "worst_day": -3567.0,
+    "worst_stretch": -12109.0,
+    "days_100": 0.266,
+    "days": 252
+   },
+   "2025": {
+    "usd": 284.6,
+    "worst_day": -2788.0,
+    "worst_stretch": -5343.0,
+    "days_100": 0.304,
+    "days": 250
+   },
+   "2026": {
+    "usd": 549.3,
+    "worst_day": -6596.0,
+    "worst_stretch": -14744.0,
+    "days_100": 0.428,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred CB51)",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 181.0,
+    "worst_day": -6334.0,
+    "worst_stretch": -13807.0,
+    "days_100": 0.419,
+    "days": 253
+   },
+   "2021": {
+    "usd": 68.6,
+    "worst_day": -3660.0,
+    "worst_stretch": -9859.0,
+    "days_100": 0.46,
+    "days": 252
+   },
+   "2022": {
+    "usd": -50.2,
+    "worst_day": -3736.0,
+    "worst_stretch": -17279.0,
+    "days_100": 0.096,
+    "days": 251
+   },
+   "2023": {
+    "usd": 113.0,
+    "worst_day": -2444.0,
+    "worst_stretch": -7105.0,
+    "days_100": 0.372,
+    "days": 250
+   },
+   "2024": {
+    "usd": 28.7,
+    "worst_day": -5264.0,
+    "worst_stretch": -21734.0,
+    "days_100": 0.341,
+    "days": 252
+   },
+   "2025": {
+    "usd": 270.6,
+    "worst_day": -3359.0,
+    "worst_stretch": -5148.0,
+    "days_100": 0.4,
+    "days": 250
+   },
+   "2026": {
+    "usd": 318.5,
+    "worst_day": -7628.0,
+    "worst_stretch": -14329.0,
+    "days_100": 0.533,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MUU / SOXL Uptrend Dip (bred CBE3)",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 111.1,
+    "worst_day": -4267.0,
+    "worst_stretch": -11925.0,
+    "days_100": 0.332,
+    "days": 253
+   },
+   "2021": {
+    "usd": 17.7,
+    "worst_day": -3560.0,
+    "worst_stretch": -13960.0,
+    "days_100": 0.417,
+    "days": 252
+   },
+   "2022": {
+    "usd": -25.4,
+    "worst_day": -3469.0,
+    "worst_stretch": -9811.0,
+    "days_100": 0.06,
+    "days": 251
+   },
+   "2023": {
+    "usd": 102.9,
+    "worst_day": -2423.0,
+    "worst_stretch": -4882.0,
+    "days_100": 0.324,
+    "days": 250
+   },
+   "2024": {
+    "usd": -1.1,
+    "worst_day": -5264.0,
+    "worst_stretch": -24622.0,
+    "days_100": 0.321,
+    "days": 252
+   },
+   "2025": {
+    "usd": 301.2,
+    "worst_day": -3359.0,
+    "worst_stretch": -5126.0,
+    "days_100": 0.388,
+    "days": 250
+   },
+   "2026": {
+    "usd": 263.3,
+    "worst_day": -7628.0,
+    "worst_stretch": -15606.0,
+    "days_100": 0.389,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MUU / SOXL Quick Dip: 2% dip above the 200-day, 2% target, 6% stop, 4 days max",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 82.1,
+    "worst_day": -5347.0,
+    "worst_stretch": -15848.0,
+    "days_100": 0.217,
+    "days": 253
+   },
+   "2021": {
+    "usd": 67.9,
+    "worst_day": -3791.0,
+    "worst_stretch": -11478.0,
+    "days_100": 0.341,
+    "days": 252
+   },
+   "2022": {
+    "usd": -12.4,
+    "worst_day": -3240.0,
+    "worst_stretch": -8760.0,
+    "days_100": 0.044,
+    "days": 251
+   },
+   "2023": {
+    "usd": 36.0,
+    "worst_day": -2444.0,
+    "worst_stretch": -10261.0,
+    "days_100": 0.26,
+    "days": 250
+   },
+   "2024": {
+    "usd": 94.7,
+    "worst_day": -3143.0,
+    "worst_stretch": -11796.0,
+    "days_100": 0.23,
+    "days": 252
+   },
+   "2025": {
+    "usd": 50.2,
+    "worst_day": -4231.0,
+    "worst_stretch": -7780.0,
+    "days_100": 0.176,
+    "days": 250
+   },
+   "2026": {
+    "usd": 417.2,
+    "worst_day": -4527.0,
+    "worst_stretch": -13891.0,
+    "days_100": 0.406,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 36.2,
+    "worst_day": -5347.0,
+    "worst_stretch": -7774.0,
+    "days_100": 0.099,
+    "days": 253
+   },
+   "2021": {
+    "usd": 83.5,
+    "worst_day": -3225.0,
+    "worst_stretch": -5602.0,
+    "days_100": 0.23,
+    "days": 252
+   },
+   "2022": {
+    "usd": -36.5,
+    "worst_day": -3240.0,
+    "worst_stretch": -11114.0,
+    "days_100": 0.028,
+    "days": 251
+   },
+   "2023": {
+    "usd": 25.3,
+    "worst_day": -1972.0,
+    "worst_stretch": -9616.0,
+    "days_100": 0.16,
+    "days": 250
+   },
+   "2024": {
+    "usd": 118.3,
+    "worst_day": -3143.0,
+    "worst_stretch": -8338.0,
+    "days_100": 0.218,
+    "days": 252
+   },
+   "2025": {
+    "usd": -4.8,
+    "worst_day": -6177.0,
+    "worst_stretch": -10694.0,
+    "days_100": 0.124,
+    "days": 250
+   },
+   "2026": {
+    "usd": 435.6,
+    "worst_day": -4527.0,
+    "worst_stretch": -8724.0,
+    "days_100": 0.372,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "AMDL Uptrend Dip (bred 852D)",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 43.4,
+    "worst_day": -5505.0,
+    "worst_stretch": -18033.0,
+    "days_100": 0.253,
+    "days": 253
+   },
+   "2021": {
+    "usd": -6.3,
+    "worst_day": -2928.0,
+    "worst_stretch": -10846.0,
+    "days_100": 0.21,
+    "days": 252
+   },
+   "2022": {
+    "usd": -31.1,
+    "worst_day": -2915.0,
+    "worst_stretch": -14710.0,
+    "days_100": 0.064,
+    "days": 251
+   },
+   "2023": {
+    "usd": 101.6,
+    "worst_day": -2876.0,
+    "worst_stretch": -7326.0,
+    "days_100": 0.232,
+    "days": 250
+   },
+   "2024": {
+    "usd": -6.7,
+    "worst_day": -2269.0,
+    "worst_stretch": -9783.0,
+    "days_100": 0.183,
+    "days": 252
+   },
+   "2025": {
+    "usd": 206.7,
+    "worst_day": -3866.0,
+    "worst_stretch": -4835.0,
+    "days_100": 0.236,
+    "days": 250
+   },
+   "2026": {
+    "usd": 274.3,
+    "worst_day": -3509.0,
+    "worst_stretch": -6086.0,
+    "days_100": 0.244,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day",
+  "kind": "leveraged-fund swing",
+  "years": {
+   "2020": {
+    "usd": 126.8,
+    "worst_day": -4643.0,
+    "worst_stretch": -10620.0,
+    "days_100": 0.296,
+    "days": 253
+   },
+   "2021": {
+    "usd": 132.9,
+    "worst_day": -3043.0,
+    "worst_stretch": -7127.0,
+    "days_100": 0.266,
+    "days": 252
+   },
+   "2022": {
+    "usd": -23.8,
+    "worst_day": -3861.0,
+    "worst_stretch": -10507.0,
+    "days_100": 0.135,
+    "days": 251
+   },
+   "2023": {
+    "usd": 87.6,
+    "worst_day": -2963.0,
+    "worst_stretch": -14834.0,
+    "days_100": 0.312,
+    "days": 250
+   },
+   "2024": {
+    "usd": 73.4,
+    "worst_day": -5044.0,
+    "worst_stretch": -15031.0,
+    "days_100": 0.29,
+    "days": 252
+   },
+   "2025": {
+    "usd": 2.5,
+    "worst_day": -8492.0,
+    "worst_stretch": -14349.0,
+    "days_100": 0.228,
+    "days": 250
+   },
+   "2026": {
+    "usd": 173.6,
+    "worst_day": -5438.0,
+    "worst_stretch": -14178.0,
+    "days_100": 0.361,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "NQ at 2x: Calm Trend Champion",
+  "kind": "NQ swing",
+  "years": {
+   "2020": {
+    "usd": 65.4,
+    "worst_day": -2403.0,
+    "worst_stretch": -3399.0,
+    "days_100": 0.34,
+    "days": 253
+   },
+   "2021": {
+    "usd": 33.1,
+    "worst_day": -1406.0,
+    "worst_stretch": -3665.0,
+    "days_100": 0.31,
+    "days": 252
+   },
+   "2022": {
+    "usd": 44.5,
+    "worst_day": -2877.0,
+    "worst_stretch": -4656.0,
+    "days_100": 0.191,
+    "days": 251
+   },
+   "2023": {
+    "usd": 60.6,
+    "worst_day": -1097.0,
+    "worst_stretch": -3257.0,
+    "days_100": 0.299,
+    "days": 251
+   },
+   "2024": {
+    "usd": 15.7,
+    "worst_day": -1791.0,
+    "worst_stretch": -3651.0,
+    "days_100": 0.25,
+    "days": 252
+   },
+   "2025": {
+    "usd": 95.8,
+    "worst_day": -1519.0,
+    "worst_stretch": -4068.0,
+    "days_100": 0.299,
+    "days": 251
+   },
+   "2026": {
+    "usd": 87.5,
+    "worst_day": -1096.0,
+    "worst_stretch": -2106.0,
+    "days_100": 0.253,
+    "days": 182
+   }
+  }
+ },
+ {
+  "name": "NQ at 2x: Managed Long",
+  "kind": "NQ swing",
+  "years": {
+   "2020": {
+    "usd": 113.8,
+    "worst_day": -1999.0,
+    "worst_stretch": -3553.0,
+    "days_100": 0.427,
+    "days": 253
+   },
+   "2021": {
+    "usd": 42.6,
+    "worst_day": -1650.0,
+    "worst_stretch": -5540.0,
+    "days_100": 0.357,
+    "days": 252
+   },
+   "2022": {
+    "usd": 12.3,
+    "worst_day": -2220.0,
+    "worst_stretch": -7915.0,
+    "days_100": 0.255,
+    "days": 251
+   },
+   "2023": {
+    "usd": 60.1,
+    "worst_day": -1219.0,
+    "worst_stretch": -4046.0,
+    "days_100": 0.327,
+    "days": 251
+   },
+   "2024": {
+    "usd": 42.8,
+    "worst_day": -1820.0,
+    "worst_stretch": -3655.0,
+    "days_100": 0.349,
+    "days": 252
+   },
+   "2025": {
+    "usd": 50.5,
+    "worst_day": -1859.0,
+    "worst_stretch": -6973.0,
+    "days_100": 0.351,
+    "days": 251
+   },
+   "2026": {
+    "usd": 83.1,
+    "worst_day": -1564.0,
+    "worst_stretch": -2629.0,
+    "days_100": 0.346,
+    "days": 182
+   }
+  }
+ },
+ {
+  "name": "Nasdaq-100 breakout, TQQQ at 2x",
+  "kind": "quick trade",
+  "years": {
+   "2020": {
+    "usd": 26.4,
+    "worst_day": -2790.0,
+    "worst_stretch": -9728.0,
+    "days_100": 0.194,
+    "days": 232
+   },
+   "2021": {
+    "usd": 53.5,
+    "worst_day": -1860.0,
+    "worst_stretch": -7753.0,
+    "days_100": 0.251,
+    "days": 251
+   },
+   "2022": {
+    "usd": 112.8,
+    "worst_day": -2325.0,
+    "worst_stretch": -7440.0,
+    "days_100": 0.28,
+    "days": 250
+   },
+   "2023": {
+    "usd": 99.2,
+    "worst_day": -1380.0,
+    "worst_stretch": -2729.0,
+    "days_100": 0.255,
+    "days": 247
+   },
+   "2024": {
+    "usd": 69.6,
+    "worst_day": -1395.0,
+    "worst_stretch": -5172.0,
+    "days_100": 0.219,
+    "days": 247
+   },
+   "2025": {
+    "usd": 43.6,
+    "worst_day": -1860.0,
+    "worst_stretch": -7191.0,
+    "days_100": 0.187,
+    "days": 246
+   },
+   "2026": {
+    "usd": 8.9,
+    "worst_day": -1395.0,
+    "worst_stretch": -7294.0,
+    "days_100": 0.206,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "MSTR sleeve (Bitcoin's breakout x1.8), 1x",
+  "kind": "quick trade",
+  "years": {
+   "2020": {
+    "usd": -19.8,
+    "worst_day": -1325.0,
+    "worst_stretch": -10166.0,
+    "days_100": 0.162,
+    "days": 259
+   },
+   "2021": {
+    "usd": -15.3,
+    "worst_day": -2823.0,
+    "worst_stretch": -14000.0,
+    "days_100": 0.189,
+    "days": 259
+   },
+   "2022": {
+    "usd": 12.6,
+    "worst_day": -2212.0,
+    "worst_stretch": -10826.0,
+    "days_100": 0.173,
+    "days": 237
+   },
+   "2023": {
+    "usd": 107.1,
+    "worst_day": -1101.0,
+    "worst_stretch": -2107.0,
+    "days_100": 0.206,
+    "days": 218
+   },
+   "2024": {
+    "usd": 48.2,
+    "worst_day": -1106.0,
+    "worst_stretch": -3706.0,
+    "days_100": 0.22,
+    "days": 259
+   },
+   "2025": {
+    "usd": -24.9,
+    "worst_day": -1622.0,
+    "worst_stretch": -13658.0,
+    "days_100": 0.158,
+    "days": 260
+   },
+   "2026": {
+    "usd": 15.4,
+    "worst_day": -1198.0,
+    "worst_stretch": -5904.0,
+    "days_100": 0.157,
+    "days": 191
+   }
+  }
+ },
+ {
+  "name": "Today's book: TQQQ 2x + MSTR 1x",
+  "kind": "book",
+  "years": {
+   "2020": {
+    "usd": 20.7,
+    "worst_day": -3874.0,
+    "worst_stretch": -12921.0,
+    "days_100": 0.306,
+    "days": 232
+   },
+   "2021": {
+    "usd": 37.8,
+    "worst_day": -3451.0,
+    "worst_stretch": -11188.0,
+    "days_100": 0.339,
+    "days": 251
+   },
+   "2022": {
+    "usd": 134.2,
+    "worst_day": -2625.0,
+    "worst_stretch": -11341.0,
+    "days_100": 0.324,
+    "days": 250
+   },
+   "2023": {
+    "usd": 195.4,
+    "worst_day": -1548.0,
+    "worst_stretch": -3270.0,
+    "days_100": 0.368,
+    "days": 247
+   },
+   "2024": {
+    "usd": 126.1,
+    "worst_day": -1533.0,
+    "worst_stretch": -5290.0,
+    "days_100": 0.324,
+    "days": 247
+   },
+   "2025": {
+    "usd": 21.5,
+    "worst_day": -1794.0,
+    "worst_stretch": -14269.0,
+    "days_100": 0.24,
+    "days": 246
+   },
+   "2026": {
+    "usd": 22.1,
+    "worst_day": -1663.0,
+    "worst_stretch": -8041.0,
+    "days_100": 0.283,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "TQQQ 2x + FBB5",
+  "kind": "book",
+  "years": {
+   "2020": {
+    "usd": 79.4,
+    "worst_day": -2790.0,
+    "worst_stretch": -10301.0,
+    "days_100": 0.263,
+    "days": 232
+   },
+   "2021": {
+    "usd": 114.4,
+    "worst_day": -4081.0,
+    "worst_stretch": -6709.0,
+    "days_100": 0.331,
+    "days": 251
+   },
+   "2022": {
+    "usd": 119.4,
+    "worst_day": -3676.0,
+    "worst_stretch": -15069.0,
+    "days_100": 0.308,
+    "days": 250
+   },
+   "2023": {
+    "usd": 124.5,
+    "worst_day": -1914.0,
+    "worst_stretch": -8004.0,
+    "days_100": 0.324,
+    "days": 247
+   },
+   "2024": {
+    "usd": 83.5,
+    "worst_day": -2435.0,
+    "worst_stretch": -5336.0,
+    "days_100": 0.275,
+    "days": 247
+   },
+   "2025": {
+    "usd": 199.8,
+    "worst_day": -4053.0,
+    "worst_stretch": -7335.0,
+    "days_100": 0.305,
+    "days": 246
+   },
+   "2026": {
+    "usd": 355.7,
+    "worst_day": -3776.0,
+    "worst_stretch": -7495.0,
+    "days_100": 0.339,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "TQQQ 2x + MSTR 1x + FBB5",
+  "kind": "book",
+  "years": {
+   "2020": {
+    "usd": 73.7,
+    "worst_day": -3874.0,
+    "worst_stretch": -13825.0,
+    "days_100": 0.336,
+    "days": 232
+   },
+   "2021": {
+    "usd": 98.8,
+    "worst_day": -4028.0,
+    "worst_stretch": -11572.0,
+    "days_100": 0.375,
+    "days": 251
+   },
+   "2022": {
+    "usd": 140.8,
+    "worst_day": -4016.0,
+    "worst_stretch": -16725.0,
+    "days_100": 0.356,
+    "days": 250
+   },
+   "2023": {
+    "usd": 220.7,
+    "worst_day": -2345.0,
+    "worst_stretch": -5854.0,
+    "days_100": 0.413,
+    "days": 247
+   },
+   "2024": {
+    "usd": 140.0,
+    "worst_day": -1983.0,
+    "worst_stretch": -5290.0,
+    "days_100": 0.36,
+    "days": 247
+   },
+   "2025": {
+    "usd": 177.6,
+    "worst_day": -4315.0,
+    "worst_stretch": -13927.0,
+    "days_100": 0.329,
+    "days": 246
+   },
+   "2026": {
+    "usd": 368.8,
+    "worst_day": -3927.0,
+    "worst_stretch": -7927.0,
+    "days_100": 0.406,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "Holding Micron at 2x (MUU)",
+  "kind": "holding",
+  "years": {
+   "2020": {
+    "usd": 95.0,
+    "worst_day": -9914.0,
+    "worst_stretch": -25002.0,
+    "days_100": 0.494,
+    "days": 253
+   },
+   "2021": {
+    "usd": 54.6,
+    "worst_day": -3225.0,
+    "worst_stretch": -17297.0,
+    "days_100": 0.5,
+    "days": 252
+   },
+   "2022": {
+    "usd": -106.1,
+    "worst_day": -4082.0,
+    "worst_stretch": -31023.0,
+    "days_100": 0.446,
+    "days": 251
+   },
+   "2023": {
+    "usd": 112.3,
+    "worst_day": -2443.0,
+    "worst_stretch": -9779.0,
+    "days_100": 0.44,
+    "days": 250
+   },
+   "2024": {
+    "usd": 15.4,
+    "worst_day": -8099.0,
+    "worst_stretch": -27527.0,
+    "days_100": 0.492,
+    "days": 252
+   },
+   "2025": {
+    "usd": 276.1,
+    "worst_day": -8056.0,
+    "worst_stretch": -23535.0,
+    "days_100": 0.532,
+    "days": 250
+   },
+   "2026": {
+    "usd": 428.3,
+    "worst_day": -6634.0,
+    "worst_stretch": -23001.0,
+    "days_100": 0.511,
+    "days": 180
+   }
+  }
+ },
+ {
+  "name": "Holding SOXL",
+  "kind": "holding",
+  "years": {
+   "2020": {
+    "usd": 141.2,
+    "worst_day": -9648.0,
+    "worst_stretch": -31324.0,
+    "days_100": 0.502,
+    "days": 253
+   },
+   "2021": {
+    "usd": 117.8,
+    "worst_day": -4301.0,
+    "worst_stretch": -11207.0,
+    "days_100": 0.504,
+    "days": 252
+   },
+   "2022": {
+    "usd": -109.6,
+    "worst_day": -4576.0,
+    "worst_stretch": -41446.0,
+    "days_100": 0.458,
+    "days": 251
+   },
+   "2023": {
+    "usd": 152.9,
+    "worst_day": -3037.0,
+    "worst_stretch": -15003.0,
+    "days_100": 0.504,
+    "days": 250
+   },
+   "2024": {
+    "usd": 39.2,
+    "worst_day": -5620.0,
+    "worst_stretch": -20793.0,
+    "days_100": 0.476,
+    "days": 252
+   },
+   "2025": {
+    "usd": 112.0,
+    "worst_day": -7457.0,
+    "worst_stretch": -30637.0,
+    "days_100": 0.512,
+    "days": 250
+   },
+   "2026": {
+    "usd": 286.5,
+    "worst_day": -7628.0,
+    "worst_stretch": -24788.0,
+    "days_100": 0.597,
+    "days": 181
+   }
+  }
+ },
+ {
+  "name": "Holding NQ at 2x",
+  "kind": "holding",
+  "years": {
+   "2020": {
+    "usd": 89.5,
+    "worst_day": -5421.0,
+    "worst_stretch": -15204.0,
+    "days_100": 0.561,
+    "days": 253
+   },
+   "2021": {
+    "usd": 50.6,
+    "worst_day": -1768.0,
+    "worst_stretch": -5644.0,
+    "days_100": 0.464,
+    "days": 252
+   },
+   "2022": {
+    "usd": -71.7,
+    "worst_day": -2760.0,
+    "worst_stretch": -19774.0,
+    "days_100": 0.394,
+    "days": 251
+   },
+   "2023": {
+    "usd": 80.2,
+    "worst_day": -1240.0,
+    "worst_stretch": -6334.0,
+    "days_100": 0.462,
+    "days": 251
+   },
+   "2024": {
+    "usd": 36.7,
+    "worst_day": -1821.0,
+    "worst_stretch": -7394.0,
+    "days_100": 0.437,
+    "days": 252
+   },
+   "2025": {
+    "usd": 33.6,
+    "worst_day": -3043.0,
+    "worst_stretch": -12880.0,
+    "days_100": 0.47,
+    "days": 251
+   },
+   "2026": {
+    "usd": 50.7,
+    "worst_day": -2397.0,
+    "worst_stretch": -6416.0,
+    "days_100": 0.456,
+    "days": 182
+   }
+  }
+ }
+]
