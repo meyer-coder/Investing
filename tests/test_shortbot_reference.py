@@ -257,7 +257,7 @@ def ref_funded(trades_by_day, dates, rules):
             highest_eod = max(highest_eod, balance)
         if (winning_days >= rules.winning_days and profit_since_payout >= rules.min_cycle_profit
                 and (payouts == 0 or profit_since_payout > 0)):
-            amount = min(balance / 2, rules.payout_cap)
+            amount = min(balance / 2, rules.payout_cap, balance - rules.payout_keep)
             if amount >= rules.min_payout:
                 balance -= amount
                 paid += amount * rules.payout_split

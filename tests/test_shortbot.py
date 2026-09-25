@@ -403,3 +403,11 @@ def test_fundednext_payouts_need_500_since_the_last_one():
     assert four.payouts == 0                                                    # only 4 benchmark days
     tiny = bt.funded_attempt({d: [T(d, 95)] for d in days}, days, rules)        # no benchmark days
     assert tiny.payouts == 0
+
+
+def test_payout_keep_leaves_a_cushion():
+    rules = AccountRules(daily_loss=0, payout_keep=1_500.0)
+    days = [f"d{k:02d}" for k in range(5)]
+    f = bt.funded_attempt({d: [T(d, 400)] for d in days}, days, rules)
+    # balance $2,000: half would be $1,000, but only $500 can go while keeping $1,500
+    assert f.payouts == 1 and f.paid_to_trader == pytest.approx(0.9 * 500)

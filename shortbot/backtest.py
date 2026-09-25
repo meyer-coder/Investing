@@ -254,7 +254,7 @@ def funded_attempt(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
             mll = min(eod_high - rules.max_loss, 0.0)
         if wins >= rules.winning_days and since_last >= rules.min_cycle_profit and \
                 (payouts == 0 or since_last > 0):
-            amount = min(0.5 * bal, rules.payout_cap)
+            amount = min(0.5 * bal, rules.payout_cap, bal - rules.payout_keep)
             if amount >= rules.min_payout:
                 bal -= amount
                 paid += amount * rules.payout_split

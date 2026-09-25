@@ -113,6 +113,10 @@ class AccountRules:
     payout_split: float = 0.90
     min_payout: float = 125.0
     min_cycle_profit: float = 0.0      # profit needed since the last payout (FundedNext: $500)
+    # the trader's choice, not a firm rule: balance to leave in the funded
+    # account after a payout (after the first payout the balance is the only
+    # cushion), e.g. one or two max losses; 0 takes the most allowed
+    payout_keep: float = 0.0
 
     # "monthly": Topstep's subscription (rebills, reset credits, activation fee);
     # "one_time": a fee per challenge and a reset fee per failure (FundedNext)

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import os
 import sys
+from dataclasses import replace
 from typing import Dict, List
 
 import numpy as np
@@ -45,29 +46,30 @@ def main() -> None:
           f"and live {HORIZON} sessions (two years)\n")
     halves = (("2013-2019 starts", lambda d: d <= "2019-12-31"), ("2020-2024 starts", lambda d: "2020" <= d <= "2024-09-30"))
     for key in ("fn-legacy-25k", "100k"):
-        rules = ACCOUNTS[key]
-        print(f"== {rules.name}: ${rules.max_loss:,.0f} max loss, ${rules.profit_target:,.0f} target, "
-              f"{'no daily limit' if not rules.daily_loss else f'${rules.daily_loss:,.0f} daily limit'}, "
-              f"{int(rules.payout_split * 100)}% split, payouts up to ${rules.payout_cap:,.0f}")
-        for n in (1, 2, 3, 4):
-            by_day = as_trades(trades, n)
-            cells = []
-            for label, keep in halves:
-                starts = [k for k in range(0, len(dates) - HORIZON, EVERY) if keep(dates[k])]
-                att = [bt.combine_attempt(by_day, dates[k:k + HORIZON], rules) for k in starts]
-                done = [a for a in att if a.outcome != "unfinished"]
-                passed = sum(a.outcome == "passed" for a in done)
-                fund = [bt.funded_attempt(by_day, dates[k:k + HORIZON], rules) for k in starts]
-                lost3 = np.mean([f.outcome == "blown" and f.days <= 63 for f in fund])
-                lost12 = np.mean([f.outcome == "blown" and f.days <= 252 for f in fund])
-                nets = np.array([bt.cycle(by_day, dates[k:k + HORIZON], rules).net / 2 for k in starts])
-                cells.append(f"pass {passed / max(len(done), 1) * 100:3.0f}% | funded lost <3mo "
-                             f"{lost3 * 100:3.0f}% <1y {lost12 * 100:3.0f}% | net/yr median "
-                             f"${np.median(nets):+6,.0f} (below 0: {np.mean(nets < 0) * 100:3.0f}%)")
-            print(f"   {n} MNQ   {cells[0]}")
-            print(f"           {cells[1]}")
-        print()
-
+        for keep in (0.0, 1.0, 2.0):
+            rules = replace(ACCOUNTS[key], payout_keep=keep * ACCOUNTS[key].max_loss)
+            print(f"== {rules.name}: ${rules.max_loss:,.0f} max loss, ${rules.profit_target:,.0f} target, "
+                  f"{'no daily limit' if not rules.daily_loss else f'${rules.daily_loss:,.0f} daily limit'}, "
+                  f"{int(rules.payout_split * 100)}% split, payouts up to ${rules.payout_cap:,.0f}; "
+                  f"after a payout keep {keep:g} max loss(es) = ${rules.payout_keep:,.0f}")
+            for n in (1, 2, 3, 4):
+                by_day = as_trades(trades, n)
+                cells = []
+                for _, in_half in halves:
+                    starts = [k for k in range(0, len(dates) - HORIZON, EVERY) if in_half(dates[k])]
+                    att = [bt.combine_attempt(by_day, dates[k:k + HORIZON], rules) for k in starts]
+                    done = [a for a in att if a.outcome != "unfinished"]
+                    passed = sum(a.outcome == "passed" for a in done)
+                    fund = [bt.funded_attempt(by_day, dates[k:k + HORIZON], rules) for k in starts]
+                    lost3 = np.mean([f.outcome == "blown" and f.days <= 63 for f in fund])
+                    lost12 = np.mean([f.outcome == "blown" and f.days <= 252 for f in fund])
+                    nets = np.array([bt.cycle(by_day, dates[k:k + HORIZON], rules).net / 2 for k in starts])
+                    cells.append(f"pass {passed / max(len(done), 1) * 100:3.0f}% | funded lost <3mo "
+                                 f"{lost3 * 100:3.0f}% <1y {lost12 * 100:3.0f}% | net/yr median "
+                                 f"${np.median(nets):+6,.0f} (below 0: {np.mean(nets < 0) * 100:3.0f}%)")
+                print(f"   {n} MNQ   {cells[0]}")
+                print(f"           {cells[1]}")
+            print()
 
 if __name__ == "__main__":
     main()

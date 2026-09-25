@@ -143,16 +143,22 @@ def price_jump(s: Session) -> float:
 
 
 def clean_sessions(sessions: Sequence[Session], drop_expiry_weeks: bool,
-                   dropped: Optional[List[Tuple[str, str]]] = None) -> List[Session]:
-    """Remove sessions that would corrupt a backtest, recording why."""
+                   dropped: Optional[List[Tuple[str, str]]] = None,
+                   max_jump_pct: Optional[float] = 0.008) -> List[Session]:
+    """Remove sessions that would corrupt a backtest, recording why.
+
+    ``max_jump_pct``: a gap between one bar's close and the next bar's open
+    bigger than this share of the price marks a contract switch in a
+    continuous futures series (NQ's roll is about 1%).  Real one-minute
+    jumps on crash days reach about 0.7%, so this must stay above that, and
+    it should be None for data without contract rolls (an index or a CFD)."""
     kept: List[Session] = []
     for s in sessions:
-        typical = float(np.median(s.high - s.low))
         jump = price_jump(s)
         why = ""
         if drop_expiry_weeks and expiry_week(s.date):
             why = "quarterly expiry week (contract switch)"
-        elif jump > max(50.0, 1.5 * typical):
+        elif max_jump_pct is not None and jump > max_jump_pct * float(np.median(s.close)):
             why = f"{jump:.0f}-point jump between two bars (broken data)"
         if why:
             if dropped is not None:

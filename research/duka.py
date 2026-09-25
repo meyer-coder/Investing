@@ -121,7 +121,9 @@ def sessions(bar_minutes: int = 5, start: str = "", end: str = "",
         out = [s for s in out if s.date >= start]
     if end:
         out = [s for s in out if s.date <= end]
-    return clean_sessions(out, False, dropped)            # a CFD has no contract rolls
+    # a CFD has no contract rolls: no expiry weeks to drop and no jump filter
+    # (a jump filter here removed real crash days such as 2025-04-09)
+    return clean_sessions(out, False, dropped, max_jump_pct=None)
 
 
 def main(argv=None) -> None:
