@@ -2,22 +2,31 @@
 
 Two accounts: a FundedNext Futures Legacy 25K and a Topstep 100K.  A
 FundedNext Legacy 50K is kept beside them as the smallest FundedNext account
-with a $2,000 limit.  Every replay of a bot on these accounts
+with a $2,000 limit, and a FundedNext Bolt 50K, the evaluation Lil Fish's
+10,000-strategy study simulated (video-breakdowns branch): $3,000 target,
+$2,000 trailing limit, $1,000 daily limit.  His study assumed a 30%
+consistency rule and an intraday-trailing limit; FundedNext's page says 40%
+in the challenge and end-of-day trailing, and those are used here.  Every replay of a bot on these accounts
 (strategies/sweeps/funded.py, strategies/sweeps/sweetspot.py) and the Pine
 script (profitable-strategies/futures/breakout-bot/
 noise_area_breakout_funded.pine) take their numbers from here.
 
-What all three share, checked on the firms' own pages on 2026-09-25:
+What they share, checked on the firms' own pages on 2026-09-25:
 
 * the maximum loss limit trails the highest end-of-day balance, never moves
-  down, and locks once it reaches the starting balance;
+  down, and locks once it reaches the starting balance (Bolt: $100 above
+  it);
 * it is watched in real time: an open loss that touches it ends the account;
 * after the first payout it locks at the starting balance for good;
 * positions must be flat by 15:10 Chicago time (the bot is flat by 14:59).
 
 Sources: fundednext.com/futures/legacy and fundednext.com/futures-challenge-terms
 (fees, targets, limits, 40% consistency in the challenge only, contract caps,
-80% split); helpfutures.fundednext.com (the limit locks at the starting
+80% split); fundednext.com/futures/bolt and the challenge terms, sections
+1.2.9-1.2.13 (Bolt: $99.99, the $1,000 soft daily limit, the limit from
+$48,000 locking at $50,100, 3 minis or 9 micros, withdrawals of $250 to
+$1,200 a day of the profit above $52,100, 80%, no consistency rule once
+funded); helpfutures.fundednext.com (the limit locks at the starting
 balance after the first withdrawal); help.topstep.com articles on the Maximum
 Loss Limit, the Daily Loss Limit, consistency (55%), the payout policy and
 the Express Funded Account; topstep.com/no-activation-fee (prices).  Two
@@ -53,6 +62,8 @@ class Account:
     payout_day_min: float           # a winning day is at least this much
     payout_share: float             # the most of the profit one payout may take
     payout_cap: float               # dollar cap per payout (0 = none)
+    lock_at: float = 0.0            # the limit locks this far above the starting balance
+    payout_min: float = 0.0         # the smallest payout the firm pays
 
 
 FUNDEDNEXT_25K = Account(
@@ -73,8 +84,15 @@ TOPSTEP_100K = Account(
     challenge_fee=99.0, monthly=True, activation_fee=149.0,
     split=0.90, split_first=10_000.0, payout_days=5, payout_day_min=150.0, payout_share=0.50, payout_cap=5_000.0)
 
-#: the owner's two accounts, and the comparison
+FUNDEDNEXT_BOLT_50K = Account(
+    name="FundedNext Bolt 50K", firm="FundedNext", balance=50_000.0,
+    max_loss=2_000.0, target=3_000.0, consistency=0.40, daily_loss=1_000.0, max_micros=9,
+    challenge_fee=99.99, monthly=False, activation_fee=0.0,
+    split=0.80, split_first=0.0, payout_days=1, payout_day_min=0.0, payout_share=1.0, payout_cap=1_200.0,
+    lock_at=100.0, payout_min=250.0)
+
+#: the owner's two accounts, and the comparisons
 OWNER: Dict[str, Account] = {a.name: a for a in (FUNDEDNEXT_25K, TOPSTEP_100K)}
-ALL: Dict[str, Account] = {a.name: a for a in (FUNDEDNEXT_25K, FUNDEDNEXT_50K, TOPSTEP_100K)}
+ALL: Dict[str, Account] = {a.name: a for a in (FUNDEDNEXT_25K, FUNDEDNEXT_50K, FUNDEDNEXT_BOLT_50K, TOPSTEP_100K)}
 
 SESSIONS_A_MONTH = 21

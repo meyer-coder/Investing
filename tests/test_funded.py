@@ -117,3 +117,14 @@ def test_an_account_without_room_for_one_small_stop_is_lost():
     rung = [("1 MYM", np.full(10, -1e9), np.full(10, -1e9), 100.0)]
     res = sweetspot.simulate(rung, accounts.FUNDEDNEXT_25K, [0], "funded", fixed=0, guard=0.5, min_room=80.0, horizon=10)
     assert (res["event"][0], res["when"][0]) == (0, 5)                   # 1000 -> 500 -> 250 -> 125 -> 62.5: lost
+
+
+def test_bolt_locks_a_hundred_above_the_start_and_pays_from_its_minimum():
+    # +$500 a day on the Bolt 50K: the limit trails from -$2,000 and locks at +$100; a payout is the profit above
+    # $2,100 ($100 lock + one limit of room), at least $250 and at most $1,200
+    bolt = accounts.FUNDEDNEXT_BOLT_50K
+    res = sweetspot.simulate(_rung(500.0, 0.0), bolt, [0], "funded", fixed=0, horizon=5)
+    # day 5: $2,500, pays $400 (80% = $320), leaving $2,100
+    assert res["take"][0] == 0.8 * 400 and res["left"][0] == 2100.0
+    lose = sweetspot.simulate(_rung(-250.0, -250.0), bolt, [0], "funded", fixed=0, horizon=10)
+    assert (lose["event"][0], lose["when"][0]) == (0, 8)          # -$2,000 reached on the eighth day

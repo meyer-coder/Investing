@@ -142,17 +142,19 @@ def simulate(rungs: list, acc: Account, starts, mode: str, share_c: float = 0.0,
         passed = ch & (bal >= np.maximum(acc.target, best / acc.consistency))
         wins = np.where(fu & (p >= acc.payout_day_min), wins + 1, wins)
         peak = np.where(ok, np.maximum(peak, bal), peak)
-        floor = np.where(ok, np.minimum(0.0, np.maximum(floor, peak - ml)), floor)
-        # a payout: the profit above `cushion` limits of room, up to the firm's share and cap; the floor locks at
-        # the start
-        keep = cushion * ml
+        floor = np.where(ok, np.minimum(acc.lock_at, np.maximum(floor, peak - ml)), floor)
+        # a payout: the profit above `cushion` limits of room over the lock level, up to the firm's share and cap
+        # and at least its minimum; the floor locks for good
+        keep = acc.lock_at + cushion * ml
         due = fu & (wins >= acc.payout_days) & (bal > keep)
         w = np.where(due, np.minimum(np.minimum(acc.payout_share * bal, bal - keep), cap), 0.0)
+        due &= w >= max(acc.payout_min, 1e-9)
+        w = np.where(due, w, 0.0)
         free = np.clip(acc.split_first - paid, 0.0, w) if acc.split_first else 0.0
         take += np.where(due, free + acc.split * (w - free), 0.0)
         paid += w
         bal -= w
-        floor = np.where(due, 0.0, floor)
+        floor = np.where(due, acc.lock_at, floor)
         wins = np.where(due, 0, wins)
         in_ch = np.where(ch & ~passed, in_ch + 1, in_ch)
         if acc.monthly:                                                       # the challenge is billed monthly
