@@ -17,6 +17,15 @@ many generations as you can afford.
 Nothing here trades real money, and nothing here connects to a broker. Every
 fill is simulated.
 
+> **Also in this repo:**
+> - [`shortbot/`](shortbot/README.md) is a short-only MNQ day-trading bot built
+>   for Topstep's 50K Combine rules. It includes a backtester and a TopstepX
+>   connection that runs as a dry run by default.
+> - [`research/`](research/candle-moves-findings.md) holds the candle-move study
+>   the bot's setups came from.
+> - [`docs/prop-firm-accounts.md`](docs/prop-firm-accounts.md) compares the
+>   Topstep and FundedNext accounts.
+
 ---
 
 ## The one design decision worth knowing

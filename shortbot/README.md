@@ -1,0 +1,160 @@
+# shortbot: a short-only MNQ day-trading bot for Topstep
+
+The bot only sells MNQ short and takes at most 3 trades a day. It follows the
+Topstep 50K Trading Combine rules (see `docs/prop-firm-accounts.md`).
+
+> **Status: not ready for money.** The backtests below show no reliable edge
+> yet. Use it in dry run or on the free Topstep Practice account until a
+> longer test says otherwise.
+
+## What it looks for
+
+The bot checks three short setups at the close of every 5-minute bar,
+between 09:45 and 15:00 New York time:
+
+| Setup | Fires when | Why |
+|---|---|---|
+| `momentum` | The last 60 minutes fell 1.5× the normal range for that hour, and price is under VWAP | Research found big hourly drops in NQ tended to keep falling |
+| `orb` | The first close below the 15-minute opening range, before 11:00, while under VWAP | Most of the day's sharpest selloff candles come in the first hour |
+| `vwap_reject` | On a day trading below its open, a bar rallies up to VWAP, fails, and closes red below it | A classic short on down days |
+
+**Exits.** Stops and targets are measured in *units*: one unit is the normal
+30-minute range at that time of day.
+- Stop: 1 unit above the entry.
+- Target: 1.5 units below the entry.
+- Time limit: 90 minutes.
+- Everything is flat by 15:50, and flat before 2 PM on Fed announcement days.
+
+**Sizing.** About $250 of risk per trade, 1–3 MNQ.
+
+**Daily limits.**
+- At most 3 trades, or 2 losing trades.
+- Stop for the day at −$600, before Topstep's $1,000 daily loss limit.
+- Stop for the day at +$1,200, which keeps days inside Topstep's 55% best-day
+  rule.
+
+Every number is a setting. `python -m shortbot init-config bot.json` writes
+them all to a file you can edit.
+
+## Results so far (2026-09-25)
+
+Fills were modelled one tick worse than the quoted price, with $1.22
+commission per round trip. Within a bar, the stop is assumed to fill before
+the target.
+
+| Data | Trades | Net | Topstep 50K Combine |
+|---|---|---|---|
+| 5-minute NQ, 39 sessions (Jul–Sep 2026) | 45 (1.2/day) | **−$1,507** | 0 passed, 15 failed |
+| Hourly NQ, 577 sessions (May 2024 – Sep 2026) | 272 (0.5/day) | +$234 (about break-even) | 33% passed; median 178 days to pass |
+
+- On the two hourly years, `momentum` was the only setup with a positive
+  total (+$1,112). It lost $1,030 in the first 17 months and made $2,141 in
+  the last 11.
+- On the 5-minute sample, every setup lost money or roughly broke even.
+- The settings sweep does not prove anything: even the untuned defaults made
+  money in the period it tested on, because that period happened to suit
+  shorts.
+- A "only short in a downtrend" filter made results worse, so it is off by
+  default.
+
+**Why the results are weak:**
+- MNQ rose about 13% during the 5-minute sample, which is hard for a
+  short-only bot.
+- 39 sessions is far too few to judge anything.
+- The hourly test is coarse: entries only on the hour, and no `orb` setup.
+
+The next real step is several years of 5-minute MNQ data. Pass any CSV with
+`--data`.
+
+## Commands
+
+```bash
+python -m shortbot backtest                      # 60 days of 5-minute NQ from Yahoo
+python -m shortbot backtest --trades             # ...and list every trade
+python -m shortbot backtest --data yahoo-hourly  # two years, hourly (coarse)
+python -m shortbot backtest --data mnq_5m.csv    # your own timestamp,open,high,low,close,volume file
+python -m shortbot backtest --setups momentum    # test one setup alone
+python -m shortbot sweep --data yahoo-hourly     # tune on the first 60%, judge on the last 40%
+python -m shortbot init-config bot.json          # then: --config bot.json on any command
+```
+
+## Running it against TopstepX
+
+**Before you start:**
+- Run it on your own computer. Topstep prohibits a VPS, a VPN or a remote
+  server for order flow.
+- The API is allowed on the Practice, Combine and Express Funded accounts.
+  It is not allowed on a Live Funded account.
+
+**Steps:**
+
+1. **Get API access.**
+   - Subscribe at dashboard.projectx.com. It costs $29/mo, or $14.50/mo with
+     code `topstep`.
+   - In TopstepX, go to **Settings > API**: link ProjectX, then create an API
+     key.
+2. **Set your credentials.**
+   ```bash
+   export TOPSTEPX_USERNAME=your_topstepx_username   # not your email
+   export TOPSTEPX_API_KEY=your_key
+   ```
+3. **Dry run first.** It uses real prices and places no orders:
+   ```bash
+   python -m shortbot live
+   ```
+   It lists your accounts, then logs every `SHORT` and `COVER` it *would* do.
+   Logs go to `runs/shortbot-live.log`, and each trade is written to
+   `runs/shortbot-trades.csv`. Let it run for a few weeks, then compare its
+   trades with `backtest` over the same days.
+4. **Then the Practice account.**
+   ```bash
+   python -m shortbot live --live --account-id <practice account id>
+   ```
+   - The bot refuses any account that is not simulated.
+   - Watch the first trades in TopstepX. Check that the stop order sits
+     *above* your short entry and that position sizes are right.
+
+### Safety features
+
+- **One protective stop.** A buy-stop is placed as soon as a short fills. If
+  it can't be placed, the short is closed immediately.
+- **Crash-safe.** Only the stop rests at the exchange. The target, time exit
+  and flatten are done by the bot, so a crash leaves you protected, not
+  exposed.
+- **Clean start.** On start-up, any MNQ position or order left on the
+  account is closed or cancelled.
+- **Stopping it.** Create a file named `STOP` in the working folder, or
+  press Ctrl-C. Either one flattens and exits.
+- **Error guard.** After 5 errors in a row while holding a position, the bot
+  flattens.
+- **No late entries.** It never acts on a bar that closed more than a minute
+  ago, for example after a restart.
+
+### Check during the dry run (not confirmed from the docs)
+
+- **Bar timestamps.** They are assumed to be bar *start* times. Compare a
+  few against the TopstepX chart.
+- **Contract rolls.** After a roll, the first days of the new contract may
+  have thin history, so the "normal range" can be off for a few days.
+
+## Layout
+
+```
+shortbot/
+  config.py     every setting, plus Fed announcement dates
+  data.py       bars -> New York sessions (Yahoo, CSV, or TopstepX)
+  strategy.py   the three setups; decide() is shared by backtest and live
+  backtest.py   fills, trade records, Topstep Combine replay, stats
+  topstepx.py   TopstepX / ProjectX REST client (standard library only)
+  live.py       paper and real brokers, the live loop, safety switches
+  cli.py        command line
+```
+
+Tests: `python -m pytest tests/test_shortbot.py tests/test_shortbot_live.py`.
+They cover:
+- short profit and loss, fills, and the stop-before-target rule;
+- that no decision uses a future bar;
+- the Topstep loss limits and consistency rule;
+- the API client and order flow against a fake exchange;
+- that a day replayed through the live loop takes the same entries, at the
+  same prices, as the backtest.
