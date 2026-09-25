@@ -2,19 +2,23 @@
 
     python strategies/sweeps/funded.py
 
-The owner's accounts may lose no more than $2,000 (the 25K) and $3,000 (the
-100K).  The rules follow evotrader/prop.py (FundedNext Futures Legacy,
-September 2026):
+The owner's accounts are a FundedNext 25K and a Topstep 100K.  Every firm's
+limit trails the best end-of-day balance, locks at the starting balance, and
+ends the account the moment a floating loss touches it.  Beyond that:
 
-* the limit trails the best end-of-day balance and locks at the starting
-  balance;
-* a floating loss that touches it ends the account at once;
-* the challenge targets are $1,250 (25K) and $6,000 (100K), with no day more
-  than 40% of the profit, and a year to get there;
-* the funded account has no target, and the question is how often it is lost
-  within three, six and twelve months.
+* FundedNext Futures Legacy 25K (evotrader/prop.py, fundednext.com, September
+  2026): a $1,000 limit, a $1,250 challenge target with no day more than 40%
+  of the profit, no daily loss limit;
+* Topstep 100K (strategies/mnq/account.py, help.topstep.com, September 2026):
+  a $3,000 limit, a $6,000 Combine target with the best day under half the
+  profit, and a $2,000 daily loss limit that ends the day there (it is
+  optional; the replay keeps it on);
+* the challenge gets a year; the funded account has no target, and the
+  question is how often it is lost within three, six and twelve months.
 
-FundedNext publishes a $1,000 limit for its 25K, so that is run as well.
+For comparison, two accounts from the first run: a 25K with a $2,000 limit
+(what the owner first gave) and a FundedNext Legacy 100K ($3,000, 40%
+consistency, no daily limit).
 
 At one MNQ the noise-area breakout's ordinary losing stretches reach $5,678,
 so the limit is hit often.  What is tried:
@@ -63,9 +67,11 @@ OPEN, T = data.OPEN, data.T
 SPLIT = "2020-01-01"
 CONTRACTS = {"MNQ": ("NQ", 2.0, 0.25), "MES": ("ES", 5.0, 0.25), "MYM": ("YM", 0.5, 1.0)}
 COMMISSION = 0.75
-ACCOUNTS = {"25K, $2,000 limit": (2000.0, 1250.0), "25K, $1,000 limit": (1000.0, 1250.0),
-            "100K, $3,000 limit": (3000.0, 6000.0)}
-CONSISTENCY = 0.40
+#: name: (maximum loss, challenge target, best day's largest share of the profit, daily loss limit or 0)
+ACCOUNTS = {"FundedNext 25K, $1,000 limit": (1000.0, 1250.0, 0.40, 0.0),
+            "Topstep 100K, $3,000 limit, $2,000 a day": (3000.0, 6000.0, 0.50, 2000.0),
+            "25K with a $2,000 limit": (2000.0, 1250.0, 0.40, 0.0),
+            "FundedNext 100K, $3,000 limit": (3000.0, 6000.0, 0.40, 0.0)}
 HORIZON = 252
 EVERY = 5
 STOPS = (0.001, 0.0015, 0.002, 0.003)
@@ -150,25 +156,19 @@ def by_day(rows: list, nd: int, rule: str):
     return pnl, low
 
 
-def replay(pnl, low, s: int, max_loss: float, target: float, horizon: int = HORIZON):
+def replay(pnl, low, s: int, max_loss: float, target: float, consistency: float, daily_loss: float,
+           horizon: int = HORIZON):
     """One account from session s: (0 breach / 1 pass / 2 still going, sessions, dollars)."""
-    bal = peak = best = 0.0
-    floor = -max_loss
-    for n in range(horizon):
-        k = s + n
-        if bal + low[k] <= floor:
-            return 0, n + 1, floor
-        bal += pnl[k]
-        best = max(best, pnl[k])
-        if target and bal >= max(target, best / CONSISTENCY):
-            return 1, n + 1, bal
-        peak = max(peak, bal)
-        floor = min(0.0, max(floor, peak - max_loss))
-    return 2, horizon, bal
+    return replay_ladder([(pnl, low, 0.0)], s, max_loss, target, consistency, daily_loss, 0.0, horizon)
 
 
-def replay_ladder(rungs: list, s: int, max_loss: float, target: float, share: float, horizon: int = HORIZON):
-    """As replay, the size chosen each morning from the room above the limit."""
+def replay_ladder(rungs: list, s: int, max_loss: float, target: float, consistency: float, daily_loss: float,
+                  share: float, horizon: int = HORIZON):
+    """As replay, the size chosen each morning from the room above the limit.
+
+    A daily loss limit closes the day where the day's P&L first reaches it, so the day's low and its close
+    are both the limit (the bars say how low a day went, not in what order, so a day that dipped through the
+    limit and recovered is booked at the limit)."""
     bal = peak = best = 0.0
     floor = -max_loss
     for n in range(horizon):
@@ -178,11 +178,13 @@ def replay_ladder(rungs: list, s: int, max_loss: float, target: float, share: fl
         while r + 1 < len(rungs) and rungs[r + 1][2] <= share * room:
             r += 1
         p, lo = rungs[r][0][k], rungs[r][1][k]
+        if daily_loss and lo <= -daily_loss:
+            p = lo = -daily_loss
         if bal + lo <= floor:
             return 0, n + 1, floor
         bal += p
         best = max(best, p)
-        if target and bal >= max(target, best / CONSISTENCY):
+        if target and bal >= max(target, best / consistency):
             return 1, n + 1, bal
         peak = max(peak, bal)
         floor = min(0.0, max(floor, peak - max_loss))
@@ -204,13 +206,14 @@ def odds(results: list) -> dict:
 
 
 def account_odds(run, starts: dict) -> dict:
-    """run(s, max_loss, target) for every account, challenge and funded, on dev and test starts."""
+    """run(s, max_loss, target, consistency, daily_loss) for every account, challenge and funded, on dev and
+    test starts."""
     out = {}
-    for name, (max_loss, target) in ACCOUNTS.items():
+    for name, (max_loss, target, consistency, daily_loss) in ACCOUNTS.items():
         out[name] = {}
         for part, ss in starts.items():
-            out[name][part] = {"challenge": odds([run(s, max_loss, target) for s in ss]),
-                               "funded": odds([run(s, max_loss, 0.0) for s in ss])}
+            out[name][part] = {"challenge": odds([run(s, max_loss, target, consistency, daily_loss) for s in ss]),
+                               "funded": odds([run(s, max_loss, 0.0, consistency, daily_loss) for s in ss])}
     return out
 
 
@@ -237,7 +240,8 @@ def main() -> int:
     print(f"{nd} NQ sessions; accounts started every {EVERY}th: {len(starts['dev'])} in 2013-2019, "
           f"{len(starts['test'])} in 2020-{dates[ok[-1]][:4]}; today's MNQ ${level['NQ'] * 2:,.0f}, "
           f"MES ${level['ES'] * 5:,.0f}, MYM ${level['YM'] * 0.5:,.0f} of index")
-    out = {"accounts": {k: {"max_loss": v[0], "target": v[1]} for k, v in ACCOUNTS.items()}, "fixed": {}, "ladder": {}}
+    out = {"accounts": {k: dict(zip(("max_loss", "target", "consistency", "daily_loss"), v))
+                        for k, v in ACCOUNTS.items()}, "fixed": {}, "ladder": {}}
     days = {}
     configs = [("A", stop, c, rule) for stop, c, rule in itertools.product(STOPS, CONTRACTS, DAY_RULES)]
     configs += [("B", None, c, rule) for c, rule in itertools.product(CONTRACTS, DAY_RULES)]
@@ -262,7 +266,7 @@ def main() -> int:
         pnl, low = days[cfg]
         st = day_stats(dates, pnl, low)
         pl, ll = pnl.tolist(), low.tolist()                                    # lists index faster in the loop
-        o = account_odds(lambda s, m, t: replay(pl, ll, s, m, t), starts)
+        o = account_odds(lambda s, m, t, c, dl: replay(pl, ll, s, m, t, c, dl), starts)
         out["fixed"][name(cfg)] = {"days": st, "odds": o}
     ranked = {}
     for acc in ACCOUNTS:
@@ -291,7 +295,7 @@ def main() -> int:
         rungs.sort(key=lambda x: x[2])
         for share in SHARES:
             key = f"bot A, stop {stop:.2%}, day rule: {rule}, bad day <= {share:.0%} of the room"
-            o = account_odds(lambda s, m, t: replay_ladder(rungs, s, m, t, share), starts)
+            o = account_odds(lambda s, m, t, c, dl: replay_ladder(rungs, s, m, t, c, dl, share), starts)
             out["ladder"][key] = {"odds": o, "bad_days": [round(r[2]) for r in rungs]}
     for acc in ACCOUNTS:
         best = sorted(out["ladder"], key=lambda k: -score(out["ladder"][k]["odds"], acc))[:6]
