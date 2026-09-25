@@ -103,6 +103,47 @@ No:
 - **Four times the size (4 MNQ) made +$6,868,** only a little more than 2
   MNQ, while losing 78% of funded accounts within three months.
 
+## 4. Does sizing by the day's volatility help?
+
+No. `research/size_bot_a.py` tried six sizing rules, all fixed before any
+result was seen:
+- fixed 1 or 2 MNQ;
+- volatility-scaled with a base of 1, 2 or 3. Contracts = base × (median
+  daily range of the prior year ÷ average daily range of the prior 14
+  sessions), from 0 to 4. That means fewer contracts on wild days and more
+  on calm ones;
+- volatility-scaled base 2, with no more trades that day after a losing
+  trade.
+
+The account is the Topstep 100K funded account, keeping $3,000 after each
+payout. A rule was chosen on 2013-2022 starts (most paid, with at least 80%
+of one-year funded runs surviving) and judged on 2023-2026 starts.
+
+Each cell shows three numbers:
+- the share of one-year funded runs that survive;
+- what is paid to you a day;
+- the two-year plan's median a day, after fees.
+
+| Rule | Avg MNQ | 2013-2022 (choose) | 2023-2026 (judge) |
+|---|---|---|---|
+| Fixed 1 MNQ | 1.0 | 68% · $9.4 · −$2.6 | 74% · $11.3 · +$1.8 |
+| Fixed 2 MNQ | 2.0 | 18% · $16.0 · +$5.5 | 52% · $20.2 · +$2.4 |
+| Vol-scaled, base 1 | 1.0 | 81% · $7.3 · −$4.2 | 57% · $9.1 · −$4.4 |
+| Vol-scaled, base 2 | 1.9 | 16% · $11.3 · +$2.1 | 28% · $22.8 · +$11.7 |
+| Vol-scaled, base 3 | 2.8 | 3% · $11.3 · +$8.6 | 13% · $22.4 · +$28.0 |
+| Vol-scaled base 2 + stop after a loss | 1.9 | 14% · $8.2 · −$2.0 | 22% · $13.6 · +$3.8 |
+
+**What it says:**
+- **The chosen rule, vol-scaled base 1, did worse on the unseen years than
+  plain 1 MNQ.** It kept 57% of accounts against 74%, and paid $9.1 a day
+  against $11.3. Scaling by volatility is not worth the complexity.
+- **Bigger sizes pay more a day, but they lose most funded accounts.** The
+  two-year plan's median can still be positive, because each lost account
+  is bought again. That is a lottery, not an income.
+- **On one Topstep 100K, Bot A pays about $10-20 a day before fees**
+  (1-2 MNQ). After fees, the two-year plan's median is only a few dollars
+  a day.
+
 ## Differences from the branch's own table
 
 The branch reports more for the Topstep 100K, e.g. +$3,485 | +$8,680 a year
