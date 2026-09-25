@@ -118,6 +118,39 @@ account as throwaway: 1 MNQ from day one, about four $80 challenges a year.
     shown only in an image on its page and is not modelled. Check that
     2 MNQ fits its first step.
 
+**FundedNext Bolt 50K: the eval in Lil Fish's 10,000-strategy study.**
+
+Its rules, from FundedNext's page (`evotrader/accounts.py`):
+
+- $99.99 once;
+- a $3,000 target, with no day over 40% of the profit in the challenge;
+- a $2,000 limit trailing the end-of-day balance from $48,000 and locking
+  at $50,100;
+- a $1,000 daily limit that pauses the day;
+- 3 minis or 9 micros;
+- 80% to you, paid daily as $250 to $1,200 of the profit above $52,100.
+
+His study assumed a 30% rule and an intraday-trailing limit, a little
+stricter than the real account.
+
+Two years lived, net a year after every fee. Each cell is 2013-2019 starts
+| 2020-2024 starts.
+
+| Setting | Challenge passed / lost | Funded lost within 3 months | Funded lost within a year | Net a year (median; runs below zero) |
+| --- | --- | --- | --- | --- |
+| Picked by the rule: half the room in the challenge, 35% funded | 50% / 37% \| 46% / 38% | 0% \| 0% | 20% \| 38% | +$1,303 (-$100; 61%) \| +$1,732 (+$320; 37%) |
+| 1 MNQ from day one | 56% / 40% \| 56% / 35% | 14% \| 24% | 73% \| 77% | +$1,367 (+$644; 36%) \| +$3,098 (+$2,762; 0%) |
+| 2 MNQ from day one | 36% / 63% \| 35% / 61% | 70% \| 78% | 100% \| 100% | +$2,996 (+$897; 38%) \| +$4,156 (+$3,489; 0%) |
+
+**The Bolt pays about half what the Topstep 100K does:**
+
+- the room is $2,000, not $3,000;
+- the size tops out at 9 micros;
+- each payout is capped at $1,200.
+
+Across both halves, 1 MNQ from day one was the steadiest. It passed more
+than half its challenges and was positive on median.
+
 **Running it:**
 
 1. **Script:** [noise_area_breakout_funded.pine](noise_area_breakout_funded.pine)

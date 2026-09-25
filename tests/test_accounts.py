@@ -49,7 +49,8 @@ def test_the_pine_sizing_is_the_one_the_study_picked():
     src = PINE.read_text()
     bad = [float(x) for x in re.search(r"var sizeBad\s*=\s*array\.from\(([^)]*)\)", src).group(1).split(",")]
     for name, o in study.items():
-        assert bad == [float(s["bad_day"]) for s in o["sizes"]], name
+        sizes = [float(s["bad_day"]) for s in o["sizes"]]            # an account may allow fewer micros
+        assert bad[:len(sizes)] == sizes, name
         if o["sweet_spot"]:
             m = re.search(r'"' + re.escape(name) + r'"\s*=>\s*array\.from\(([^)]*)\)', src)
             share_c, share_f, guard = (float(x) for x in m.group(1).split(",")[3:6])
