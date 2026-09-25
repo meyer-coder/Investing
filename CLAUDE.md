@@ -52,7 +52,7 @@ trading research and paper bots built for the owner (Meyer), 2026-09-22 to
 
 - `.claude/hooks/session-start.sh` installs the packages
   (`requirements-research.txt`) when a cloud session starts.
-- Tests: `python -m pytest tests -q`. 408 pass, in about 100 seconds.
+- Tests: `python -m pytest tests -q`. 414 pass, in about 100 seconds.
 - The paper runs need no local data. The breakout bot's studies
   (`strategies/sweeps/`) need `bash scripts/rebuild-bot-data.sh` first. It
   takes about an hour and resumes if interrupted.
