@@ -124,6 +124,11 @@ to four times the capital.
 - **Adding NQ Managed Long at 2x** lifts the book to $99-113 a day over
   2013-2026. But that leg shows no timing skill over 142,787 trades, and lost
   $38,145 on $25,000 through 2001-2002 and 2008.
+- **Adding FBB5 instead** (the MUU / SOXL Uptrend Dip, the one leveraged-fund
+  rule that beat random entries) made $111 a day at TQQQ 2x over 2013-2026.
+  Its worst losing stretch was -$15,069, about the $70-80 book's.
+  - Holding $25,000 of MUU or SOXL overnight can squeeze the TQQQ leg's
+    day-trading buying power.
 
 ## 1. Nasdaq-100 noise-area breakout
 

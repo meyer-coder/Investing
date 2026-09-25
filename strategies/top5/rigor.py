@@ -3,6 +3,7 @@ over 10,000 trades, every one of them simulated bar by bar.
 
     python strategies/top5/rigor.py              # the five, the two paper split bots and the extra leg
     python strategies/top5/rigor.py cb51 d609    # some
+    python strategies/top5/rigor.py L09 L42      # any of the leveraged-fund list, by its number
 
 For each strategy (rank.py's top five by dollars a day, 2012-2026, and "ml",
 NQ at 2x Managed Long, the leg book.py adds):
@@ -71,8 +72,8 @@ def _plain(o):
 
 def spec(key: str) -> dict:
     """What to run: the genome, its own funds and costs, and the wide set with its costs."""
-    if key in TOP5 or key in PAPER:
-        f = TOP5.get(key) or PAPER[key]
+    if key in TOP5 or key in PAPER or re.fullmatch(r"L\d\d", key):
+        f = TOP5.get(key) or PAPER.get(key) or next((PS / "leveraged-etfs").glob(f"{key[1:]}_*.json")).name
         d = json.loads((PS / "leveraged-etfs" / f).read_text())
         return {"key": key, "name": d["genome"]["name"], "source": f"leveraged-etfs/{f}", "genome": d["genome"],
                 "native": d["symbols"], "start": START, "native_kw": {"slippage": SLIP}, "wide_kw": {"slippage": SLIP},

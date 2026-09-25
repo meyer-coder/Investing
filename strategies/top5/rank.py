@@ -1,6 +1,7 @@
 """Every strategy on the lists, on one footing: dollars a day on $25,000, 2012 to September 2026.
 
-    python strategies/top5/rank.py
+    python strategies/top5/rank.py            # ranked over 2012-2026
+    python strategies/top5/rank.py --by 3y    # ranked over the last three years
 
 The lists quote different windows and sizes: the leveraged-fund top 50 leads
 with the last six months (a semiconductor rally), the NQ set with compounding
@@ -38,7 +39,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "quick"))
 import common as C                                                           # noqa: E402
 
 PS = C.ROOT / "profitable-strategies"
-START, SPLIT = "2012-01-03", "2019-01-01"
+START, SPLIT, LAST3 = "2012-01-03", "2019-01-01", "2023-09-22"
+WINDOWS = {"all": (START, C.END), "2012-18": (START, "2018-12-31"), "2019-26": (SPLIT, C.END), "3y": (LAST3, C.END)}
 OUT = C.ROOT / "strategies" / "top5" / "rank.json"
 
 
@@ -58,12 +60,14 @@ def hold_usd(symbols, a: str, b: str) -> float:
 
 def row(name: str, family: str, source: str, result, symbols) -> dict:
     out = {"name": name, "list": source, "family": family, "symbols": list(symbols)}
-    for tag, (a, b) in {"all": (START, C.END), "2012-18": (START, "2018-12-31"), "2019-26": (SPLIT, C.END)}.items():
+    for tag, (a, b) in WINDOWS.items():
         _, r = C.daily_returns(result, a, b)
         out[tag] = C.day_stats(r)
     t = [x for x in result.journal.trades if x.exit_date >= START]
     out["trades"] = len(t)
+    out["trades_3y"] = len([x for x in t if x.exit_date >= LAST3])
     out["hold_usd_per_day"] = hold_usd(symbols, START, C.END)
+    out["hold_usd_per_day_3y"] = hold_usd(symbols, LAST3, C.END)
     return out
 
 
@@ -76,7 +80,9 @@ def family_of(name: str) -> str:
     return n
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    args = sys.argv[1:] if argv is None else argv
+    by = args[args.index("--by") + 1] if "--by" in args else "all"
     rows = []
     # the leveraged-fund top 50
     for p in sorted((PS / "leveraged-etfs").glob("[0-9][0-9]_*.json")):
@@ -102,20 +108,28 @@ def main() -> int:
     s = books.ndx_series(0.003)
     ds = np.array(sorted(s))
     r = np.array([s[d][0] for d in ds])
-    for units, label in ((4, "QQQ at 4x buying power"), (6, "TQQQ at 2x buying power")):
-        q = {"name": f"Nasdaq-100 noise-area breakout, 0.30% stop, {label}", "list": "quick trades", "family": "intraday breakout",
-             "symbols": ["NQ (USATECH)"], "trades": None}
-        for tag, (a, b) in {"all": (START, C.END), "2012-18": (START, "2018-12-31"), "2019-26": (SPLIT, C.END)}.items():
-            m = (ds >= a) & (ds <= b)
-            q[tag] = C.day_stats(r[m] * units)
+    b = books.btc_series()
+    bds = np.array(sorted(b))
+    br = np.array([b[d][0] for d in bds])
+    legs = [(ds, r, 4, "Nasdaq-100 noise-area breakout, 0.30% stop, QQQ at 4x buying power", "intraday breakout"),
+            (ds, r, 6, "Nasdaq-100 noise-area breakout, 0.30% stop, TQQQ at 2x buying power", "intraday breakout"),
+            (bds, br, 1, "MSTR sleeve: Bitcoin's breakout in US hours x1.8, MSTR at 1x buying power", "intraday breakout")]
+    for dd, rr, units, name, fam in legs:
+        q = {"name": name, "list": "quick trades", "family": fam, "symbols": ["NQ (USATECH)" if units > 1 else "BTC/USD"], "trades": None}
+        for tag, (a, z) in WINDOWS.items():
+            m = (dd >= a) & (dd <= z)
+            q[tag] = C.day_stats(rr[m] * units)
         rows.append(q)
-    rows.sort(key=lambda x: -(x["all"].get("usd_per_day") or -1e9))
-    print(f"\n{len(rows)} strategies, ranked by dollars a day on $25,000, {START} to {C.END}")
-    print(f"{'#':>3} {'strategy':62s} {'list':20s} {'$/day':>7} {'12-18':>7} {'19-26':>7} {'Sharpe':>6} {'worst stretch':>13} {'hold':>6}")
+    rows.sort(key=lambda x: -(x[by].get("usd_per_day") or -1e9))
+    a0, z0 = WINDOWS[by]
+    print(f"\n{len(rows)} strategies, ranked by dollars a day on $25,000, {a0} to {z0}")
+    print(f"{'#':>3} {'strategy':62s} {'list':20s} {'$/day':>7} {'12-18':>7} {'19-26':>7} {'3 yrs':>7} {'Sharpe':>6} "
+          f"{'worst stretch':>13} {'hold':>6}")
     for k, x in enumerate(rows, 1):
-        a, o, n = x["all"], x["2012-18"], x["2019-26"]
-        print(f"{k:3d} {x['name'][:62]:62s} {x['list'][:20]:20s} {a['usd_per_day']:+7.1f} {o.get('usd_per_day', 0):+7.1f} "
-              f"{n.get('usd_per_day', 0):+7.1f} {a['sharpe']:+6.2f} {a['worst_stretch']:+13,.0f} {x.get('hold_usd_per_day') or 0:+6.1f}")
+        a, o, n, t = x[by], x["2012-18"], x["2019-26"], x["3y"]
+        hold = x.get("hold_usd_per_day_3y" if by == "3y" else "hold_usd_per_day") or 0
+        print(f"{k:3d} {x['name'][:62]:62s} {x['list'][:20]:20s} {x['all'].get('usd_per_day', 0):+7.1f} {o.get('usd_per_day', 0):+7.1f} "
+              f"{n.get('usd_per_day', 0):+7.1f} {t.get('usd_per_day', 0):+7.1f} {a['sharpe']:+6.2f} {a['worst_stretch']:+13,.0f} {hold:+6.1f}")
     OUT.write_text(json.dumps(rows, indent=1))
     return 0
 

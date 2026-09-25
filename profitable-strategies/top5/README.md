@@ -1,7 +1,7 @@
 # The top five, tested over 10,000+ trades each
 
-As of 2026-09-24. Backtests on daily and one-minute bars, not advice. Paper
-only.
+As of 2026-09-25 (the last three years and FBB5 added that morning).
+Backtests on daily and one-minute bars, not advice. Paper only.
 
 **The answer.**
 
@@ -40,8 +40,24 @@ only.
     timing skill). It is long the index most of the time. On NQ back to
     2000 its own worst losing stretch was -$38,145 on $25,000, through
     2001-2002 and 2008.
-  - Nothing that passed the tests gets $25,000 to $100 a day at the $70-80
-    book's risk. $100 a day at that risk takes about $32,000 to $50,000.
+  - One leg did pass: FBB5, the MUU / SOXL Uptrend Dip (below). The
+    breakout at TQQQ 2x plus FBB5 made $111 a day over 2013-2026 with a
+    worst losing stretch of -$15,069, the $70-80 book's -$14,863 give or
+    take.
+    - Both legs beat random entries.
+    - Holding $25,000 of MUU or SOXL overnight can leave too little
+      day-trading buying power for the TQQQ leg in a $25,000 account.
+- **The last three years** (September 2023 to September 2026) were led by
+  the Micron and chip funds.
+  - The top four:
+    - D609 made $275 a day;
+    - CB51 $188;
+    - CBE3 $182;
+    - FBB5 $156.
+  - Holding Micron at 2x made $215 a day.
+  - Only FBB5's trades beat random entries in those three years across the
+    173 funds (+16 bp a trade, p = 0.05). It did the same over the whole
+    history (+14.7 bp over 41,791 trades, p = 0.002).
 
 ## The ranking
 
@@ -67,6 +83,69 @@ there). "Holding" is the same funds held for the whole window.
   larger than $25,000 would have emptied it.
 - The funded day trades ($2 to $15 a session in their report) and the
   scalpers (none held up on real quotes) are not rerun.
+
+## The last three years
+
+September 22, 2023 to September 22, 2026 (`strategies/top5/rank.py --by 3y`,
+`strategies/top5/last3.py`). Own funds, each at its list's size:
+
+| # (3 years) | Strategy | $ a day, 3 years | Sharpe | Worst losing stretch | Holding the funds | $ a day, 2012-2026 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | MUU Trend Breakout, bred D609 (paper bot #2) | $275 | 3.15 | -$14,744 | $215 | $81 |
+| 2 | MUU / SOXL Uptrend Dip, bred CB51 | $188 | 1.98 | -$21,734 | $177 | $92 |
+| 3 | MUU / SOXL Uptrend Dip, bred CBE3 | $182 | 1.98 | -$24,622 | $177 | $74 |
+| 4 | MUU / SOXL Uptrend Dip, bred FBB5 | $156 | 2.74 | -$8,806 | $177 | $57 |
+| 5 | MUU / SOXL Quick Dip, 2%/2%/6%/4 days | $156 | 1.93 | -$13,891 | $177 | $58 |
+| 6 | AMDL / MUU Volume Momentum | $150 | 1.71 | -$16,320 | $182 | $45 |
+| 7 | MUU Quick Dip, 2%/2%/10%/4 days (paper split bot 1) | $146 | 1.96 | -$15,364 | $215 | $56 |
+| 8 | AMDL Uptrend Dip, bred 852D | $144 | 2.08 | -$12,451 | $149 | $66 |
+| 31 | NQ at 2x, Calm Trend Champion | $65 | 2.24 | -$4,521 | $22 at 1x | $34 |
+| 35 | NQ at 2x, Managed Long | $55 | 1.67 | -$6,973 | $22 at 1x | $44 |
+| 43 | Nasdaq-100 breakout, TQQQ at 2x | $40 | 0.81 | -$13,931 | - | $51 |
+| 57 | MSTR sleeve, Bitcoin's breakout x1.8 | $14 | 0.51 | -$13,658 | - | $14 |
+
+**The same three years across the 173 funds.** These are the trades that
+opened in the window, against random entries on the same funds with the same
+holding times (500 draws):
+
+| Strategy | Trades | Mean trade | Random entries | Edge, p | $ a day, median fund | Holding it |
+| --- | --- | --- | --- | --- | --- | --- |
+| D609 | 6,002 | +128 bp | +123 bp | +5.2 bp, 0.35 | $9 | $28 |
+| CB51 | 8,671 | +128 bp | +135 bp | -7.3 bp, 0.71 | $13 | $28 |
+| CBE3 | 7,141 | +114 bp | +138 bp | -23.8 bp, 0.96 | $9 | $28 |
+| **FBB5** | 6,351 | +68 bp | +52 bp | **+16.1 bp, 0.05** | $7 | $28 |
+| MUU / SOXL Quick Dip 2/2/6/4 | 9,299 | +30 bp | +36 bp | -5.6 bp, 0.78 | $2 | $28 |
+| AMDL / MUU Volume Momentum | 2,551 | +187 bp | +338 bp | -151 bp, 1.00 | $4 | $28 |
+| MUU Quick Dip (split bot 1) | 9,004 | +39 bp | +41 bp | -2.7 bp, 0.62 | $3 | $28 |
+| 852D | 30,049 | +13 bp | +14 bp | -0.5 bp, 0.55 | $7 | $28 |
+| 01D4 | 32,571 | +13 bp | +10 bp | +3.0 bp, 0.15 | $5 | $28 |
+| Short-Trend Rider (split bot 2) | 6,602 | +52 bp | +97 bp | -45 bp, 1.00 | $5 | $28 |
+| NQ Managed Long | 15,598 | +35 bp | +40 bp | -5.1 bp, 0.95 | $20 | $35 |
+
+The Nasdaq-100 breakout's 708 trades in the window made +2.8 bp each (t =
+1.3). That is ahead of random sides (p = 0.03), but thinner than its
+2013-2026 record. On all four indexes it lost 1.0 bp a trade.
+
+**FBB5, the MUU / SOXL Uptrend Dip** (leveraged-etfs #9,
+`L09/summary.json`):
+
+- **Buy** on any of:
+  - a 2% down day after a 24%+ run over 20 days, still above the 20-day mean;
+  - a close at the bottom of the Bollinger band within 10% of the 200-day;
+  - a MACD histogram under -0.26 with 20-day volatility under 55% and the
+    market's 20-day return under 3.5%.
+- **Sell** when the close reaches the upper quarter of the band, on a 9%
+  five-day drop, or at a 10% stop.
+- **Wide set, 2005-2026.** Over 41,791 trades it beat random entries by
+  14.7 bp a trade (p = 0.002), still +19 bp a trade at three times the
+  slippage.
+  - Positive in 17 of 22 years.
+  - 2008 was -1.7% a trade; the three leaders above lost 3.4% to 4.0%.
+- **Its own funds.** $53 a day over 2011-2026, Sharpe 1.28, worst losing
+  stretch -$11,691; holding them had -$50,718.
+  - 2025 made $160 a day and 2026 so far $370, so the three-year number is
+    mostly the Micron run.
+  - 2011-2024 ran from -$13 to +$133 a day a year.
 
 ## The five, trade by trade
 
@@ -137,6 +216,9 @@ How to read it:
 | TQQQ 2x + MSTR 1x + NQ Managed Long | $113 | $85 | $141 | 1.76 | -$4,104 | -$13,737 | 38% |
 | TQQQ 2x + NQ Managed Long x1.5 | $123 | $96 | $150 | 1.85 | -$4,370 | -$12,856 | 40% |
 | TQQQ 3x + MSTR 1x + NQ Managed Long | $140 | $107 | $173 | 1.70 | -$5,269 | -$16,409 | 39% |
+| FBB5 alone, the whole $25,000 | $58 | $35 | $81 | 1.34 | -$4,527 | -$10,181 | 15% |
+| **TQQQ 2x + FBB5** | **$111** | $78 | $144 | 1.83 | -$4,081 | **-$15,069** | 29% |
+| TQQQ 2x + MSTR 1x + FBB5 | $125 | $85 | $165 | 1.82 | -$4,315 | -$16,725 | 33% |
 
 (MSTR is Bitcoin's breakout from mid-2017; before that the MSTR sleeve is
 flat, so the first row is $79 over 2017-2026.)
@@ -162,14 +244,26 @@ flat, so the first row is $79 over 2017-2026.)
 - **Funded accounts.** Prop accounts that allow no overnight holds cannot run
   Managed Long.
 
-**What would get $100 a day at the $70-80 book's risk:**
+**What gets $100 a day at the $70-80 book's risk: TQQQ 2x + FBB5.**
 
-- **The breakout book on more capital:**
-  - $32,000 with MSTR;
-  - $49,000 for the breakout alone at TQQQ 2x.
-- **Or more size on the breakout**, with the risk that comes with it.
-  - At TQQQ 4x it made $102 a day over 2013-2026, but its worst losing
-    stretch was $27,863, more than the account.
+- **The numbers.** $111 a day over 2013-2026, a worst losing stretch of
+  -$15,069 against the $70-80 book's -$14,863, $144 a day over 2020-2026.
+- **Both legs passed the random-entry test.** The two barely move together
+  (correlation -0.03).
+- **The caveats:**
+  - FBB5's own-fund record starts in 2011, so there is no 2008 on MU and
+    SOXL. On the other funds, 2008 cost it 1.7% a trade.
+  - It was bred on 2019 to March 2026 on those two funds.
+  - Its dollars there are also Micron's and the chip index's rise.
+- **Buying power.** FBB5 holds the whole $25,000 in MUU or SOXL overnight. A
+  broker's margin on a leveraged fund can then leave less than the $50,000 of
+  day-trading buying power the TQQQ leg uses. Running them in two accounts,
+  or on more capital, avoids that.
+- **Without FBB5:**
+  - the breakout book on more capital ($32,000 with MSTR, $49,000 for the
+    breakout alone at TQQQ 2x);
+  - or more size, with its risk: TQQQ 4x made $102 a day but its worst
+    losing stretch was $27,863, more than the account.
 
 ## The Nasdaq-100 breakout over 11,801 trades
 
@@ -224,9 +318,11 @@ trip (`strategies/top5/rigor_ndx.py`; every trade in `ndx/trades.csv.gz`):
 ## Reproduce
 
 ```
-python strategies/top5/rank.py        # the ranking
+python strategies/top5/rank.py        # the ranking (--by 3y for the last three years)
+python strategies/top5/last3.py       # the last three years across the 173 funds
 python strategies/top5/universe.py    # the synthetic 2x and 3x funds
 python strategies/top5/rigor.py       # the five, the two split bots and Managed Long
+python strategies/top5/rigor.py L09 L08 L42 L14   # the other three-year leaders
 python strategies/top5/rigor_ndx.py   # the Nasdaq-100 breakout on four indexes
 python strategies/top5/tune_ndx.py    # 162 settings of the breakout
 python strategies/top5/book.py        # the books toward $100 a day

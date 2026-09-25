@@ -12,6 +12,11 @@ As of 2026-09-23. Backtests on daily bars, not advice.
 > just as long, and none beat simply holding the funds. The best gap over
 > random entries, 3.8 to 5.6 bp a trade, goes negative at three times the
 > slippage.
+>
+> The exception, tested the next morning, is #9, MUU / SOXL Uptrend Dip (bred
+> FBB5). It beat random entries by 14.7 bp a trade over 41,791 trades (p =
+> 0.002), still ahead at three times the slippage. Holding the funds still
+> made more dollars.
 
 The 50 most profitable different strategies found in a seven-hour grind over 2x and 3x funds on semiconductors, graphics-card and AI names and big tech. Every one made at least $80 a session over the last six months (never used for breeding), made money over 2019 to March 2026 and over 2012 to 2018, still made money at 3x slippage, and never fell more than 70%.
 

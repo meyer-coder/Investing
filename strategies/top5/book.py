@@ -11,7 +11,9 @@ Legs (daily P&L per unit, net of costs):
 * nq    - NQ E-mini at 2x, Managed Long (profitable-strategies/nq-2x #15), the
           list's best Sharpe, held for days; one unit is the strategy at 2x on
           $25,000 (1 MNQ is about 2.5x);
-* plus any of the top five that rigor.py found to time its entries.
+* fbb5  - MUU / SOXL Uptrend Dip, bred FBB5 (leveraged-etfs #9), the one
+          leveraged-fund rule whose trades beat random entries in rigor.py; one
+          unit is the whole $25,000 in MUU or SOXL, held for days.
 
 Sizes are fixed in advance or set on 2013-2019 alone (each leg scaled to the
 same risk there, then the whole book scaled so its worst losing stretch on
@@ -31,9 +33,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "quick"))
 import common as C                                                           # noqa: E402
 
-SPLIT = "2020-01-01"
+SPLIT, LAST3 = "2020-01-01", "2023-09-22"
 BUDGET = 16_000.0
 NQ_FILE = C.ROOT / "profitable-strategies" / "nq-2x" / "all.json"
+FBB5_FILE = C.ROOT / "profitable-strategies" / "leveraged-etfs" / "09_muu_soxl_uptrend_dip_bred_fbb5.json"
 
 
 def legs(extra=()):
@@ -44,7 +47,10 @@ def legs(extra=()):
     res = C.backtest(g, ["NQ1!"], start="2012-01-03", slippage=1.0, commission=0.2, leverage=2.0)
     dts, r = C.daily_returns(res, "2012-01-03", C.END)
     nq = dict(zip(dts, r))
-    cols = {"ndx": ndx, "mstr": btc, "nq": nq}
+    d = json.loads(FBB5_FILE.read_text())
+    res = C.backtest(d["genome"], d["symbols"], start="2012-01-03", slippage=8.0)
+    dts, r = C.daily_returns(res, "2012-01-03", C.END)
+    cols = {"ndx": ndx, "mstr": btc, "nq": nq, "fbb5": dict(zip(dts, r))}
     for name, series in extra:
         cols[name] = series
     days = sorted(set(ndx) & set(nq))
@@ -56,7 +62,7 @@ def evaluate(days, X, w, label):
     usd = X @ np.asarray(w) * C.ACCOUNT
     ds = np.array(days)
     out = {"label": label, "weights": [round(float(x), 3) for x in w]}
-    for tag, m in (("all", np.ones(len(ds), bool)), ("2013-19", ds < SPLIT), ("2020-26", ds >= SPLIT)):
+    for tag, m in (("all", np.ones(len(ds), bool)), ("2013-19", ds < SPLIT), ("2020-26", ds >= SPLIT), ("3y", ds >= LAST3)):
         v = usd[m]
         eq = np.cumsum(v)
         dd = float((eq - np.maximum.accumulate(np.concatenate([[0.0], eq]))[1:]).min())
@@ -79,13 +85,16 @@ def main() -> int:
         print(f"  {n:5s} one unit: ${v.mean():+6.1f} a day, Sharpe {v.mean() / v.std() * np.sqrt(252):+.2f}; "
               f"2013-19 ${v[dev].mean():+6.1f}, 2020-26 ${v[~dev].mean():+6.1f}")
     books_ = []
-    fixed = [((6, 1, 0), "the $70-80 book: TQQQ 2x + MSTR 1x"), ((6, 0, 1), "TQQQ 2x + NQ Managed Long"),
-             ((6, 1, 1), "TQQQ 2x + MSTR 1x + NQ Managed Long"), ((9, 1, 1), "TQQQ 3x + MSTR 1x + NQ Managed Long"),
-             ((6, 0, 1.5), "TQQQ 2x + NQ Managed Long x1.5"), ((9, 0, 1), "TQQQ 3x + NQ Managed Long")]
+    fixed = [((6, 1, 0, 0), "the $70-80 book: TQQQ 2x + MSTR 1x"), ((6, 0, 1, 0), "TQQQ 2x + NQ Managed Long"),
+             ((6, 1, 1, 0), "TQQQ 2x + MSTR 1x + NQ Managed Long"), ((9, 1, 1, 0), "TQQQ 3x + MSTR 1x + NQ Managed Long"),
+             ((6, 0, 1.5, 0), "TQQQ 2x + NQ Managed Long x1.5"), ((9, 0, 1, 0), "TQQQ 3x + NQ Managed Long"),
+             ((0, 0, 0, 1), "FBB5 alone, the whole $25,000"), ((6, 0, 0, 1), "TQQQ 2x + FBB5"),
+             ((6, 1, 0, 1), "TQQQ 2x + MSTR 1x + FBB5")]
     for w, label in fixed:
         books_.append(evaluate(days, X, w, label))
     # equal risk on 2013-2019, the whole book scaled to the budget on 2013-2019
-    for sub, label in (((0, 2), "ndx + nq, equal risk, sized on 2013-19"), ((0, 1, 2), "ndx + mstr + nq, equal risk, sized on 2013-19")):
+    for sub, label in (((0, 2), "ndx + nq, equal risk, sized on 2013-19"), ((0, 1, 2), "ndx + mstr + nq, equal risk, sized on 2013-19"),
+                       ((0, 3), "ndx + fbb5, equal risk, sized on 2013-19")):
         w = np.zeros(len(names))
         live = dev & (X[:, 1] != 0) if 1 in sub else dev
         for j in sub:
@@ -95,12 +104,12 @@ def main() -> int:
         dd = -(eq - np.maximum.accumulate(np.concatenate([[0.0], eq]))[1:]).min()
         w *= BUDGET / dd
         books_.append(evaluate(days, X, w, label))
-    print(f"\n{'book':48s} {'weights (ndx, mstr, nq)':26s} {'$/day':>7} {'13-19':>7} {'20-26':>7} {'Sharpe':>6} {'worst day':>9} "
-          f"{'worst stretch':>13} {'$100+ days':>10}")
+    print(f"\n{'book':48s} {'weights ' + str(tuple(names)):34s} {'$/day':>7} {'13-19':>7} {'20-26':>7} {'3 yrs':>7} {'Sharpe':>6} "
+          f"{'worst day':>9} {'worst stretch':>13} {'$100+ days':>10}")
     for b in books_:
-        a, o, n = b["all"], b["2013-19"], b["2020-26"]
-        print(f"{b['label'][:48]:48s} {str(b['weights']):26s} {a['usd']:+7.1f} {o['usd']:+7.1f} {n['usd']:+7.1f} {a['sharpe']:+6.2f} "
-              f"{a['worst_day']:+9,.0f} {a['worst_stretch']:+13,.0f} {a['days_100']:10.0%}")
+        a, o, n, t = b["all"], b["2013-19"], b["2020-26"], b["3y"]
+        print(f"{b['label'][:48]:48s} {str(b['weights']):34s} {a['usd']:+7.1f} {o['usd']:+7.1f} {n['usd']:+7.1f} {t['usd']:+7.1f} "
+              f"{a['sharpe']:+6.2f} {a['worst_day']:+9,.0f} {a['worst_stretch']:+13,.0f} {a['days_100']:10.0%}")
     (C.ROOT / "strategies" / "top5" / "book.json").write_text(json.dumps({"legs": names, "books": books_}, indent=1))
     return 0
 

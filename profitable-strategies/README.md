@@ -13,9 +13,16 @@ trades on leveraged funds from the top-50 list.
 - **The one edge that held.** The Nasdaq-100 breakout: 3,176 trades, t =
   4.2, every year from 2013 positive. On the S&P 500, the Dow and the
   Russell 2000 the same rule is flat or losing.
-- **$100 a day.** Adding NQ Managed Long lifts the quick-trade book to about
-  $100 a day over 2013-2026. That leg failed the same test and lost $38,000
-  on $25,000 through 2001-2002 and 2008.
+- **The one leveraged-fund rule that passed.** FBB5, the MUU / SOXL Uptrend
+  Dip (#9), beat random entries by 14.7 bp a trade over 41,791 trades (p =
+  0.002).
+- **$100 a day.** The breakout at TQQQ 2x plus FBB5 made $111 a day over
+  2013-2026 with about the same worst losing stretch as the $70-80 book.
+  Adding NQ Managed Long instead also reaches $100. That leg failed the test
+  and lost $38,000 on $25,000 through 2001-2002 and 2008.
+- **The last three years** were led by the Micron funds: D609 $275 a day,
+  CB51 $188, CBE3 $182, FBB5 $156; holding Micron at 2x made $215. Only
+  FBB5's trades beat random entries in that window.
 
 **New: [quick trades, in and out the same day](quick-trades/README.md).** With
 the three-minute cap relaxed, two same-day trades held up in every period and
