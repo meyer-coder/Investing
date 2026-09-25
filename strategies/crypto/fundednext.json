@@ -1,0 +1,3363 @@
+{
+ "trend 20, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -548.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 2.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 20, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -424.0,
+   "net_median": -550.0,
+   "below_zero": 0.954,
+   "challenges_bought": 1.23,
+   "reached_funded": 0.11,
+   "paid": 251.0
+  },
+  "test": {
+   "net_a_year": 211.0,
+   "net_median": -550.0,
+   "below_zero": 0.654,
+   "challenges_bought": 1.3,
+   "reached_funded": 0.504,
+   "paid": 925.0
+  }
+ },
+ "trend 20, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -1216.0,
+   "net_median": -1100.0,
+   "below_zero": 0.995,
+   "challenges_bought": 2.26,
+   "reached_funded": 0.196,
+   "paid": 30.0
+  },
+  "test": {
+   "net_a_year": -888.0,
+   "net_median": -1650.0,
+   "below_zero": 0.945,
+   "challenges_bought": 2.76,
+   "reached_funded": 0.559,
+   "paid": 628.0
+  }
+ },
+ "trend 20, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -1136.0,
+   "net_median": -1100.0,
+   "below_zero": 0.936,
+   "challenges_bought": 2.94,
+   "reached_funded": 0.425,
+   "paid": 478.0
+  },
+  "test": {
+   "net_a_year": 2566.0,
+   "net_median": -1650.0,
+   "below_zero": 0.74,
+   "challenges_bought": 3.03,
+   "reached_funded": 0.63,
+   "paid": 4233.0
+  }
+ },
+ "trend 20, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -1009.0,
+   "net_median": -1100.0,
+   "below_zero": 0.9,
+   "challenges_bought": 3.32,
+   "reached_funded": 0.534,
+   "paid": 817.0
+  },
+  "test": {
+   "net_a_year": 5837.0,
+   "net_median": -1650.0,
+   "below_zero": 0.598,
+   "challenges_bought": 3.09,
+   "reached_funded": 0.85,
+   "paid": 7534.0
+  }
+ },
+ "trend 20, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -5327.0,
+   "net_median": -4950.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.68,
+   "reached_funded": 0.854,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -4378.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.96,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 20, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.2,
+   "2024-2026": 59.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -52.5,
+  "dev": {
+   "net_a_year": -4246.0,
+   "net_median": -5500.0,
+   "below_zero": 0.721,
+   "challenges_bought": 13.88,
+   "reached_funded": 0.918,
+   "paid": 3388.0
+  },
+  "test": {
+   "net_a_year": -10103.0,
+   "net_median": -11550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 18.37,
+   "reached_funded": 0.748,
+   "paid": 0.0
+  }
+ },
+ "trend 20, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -548.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 2.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 20, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -488.0,
+   "net_median": -550.0,
+   "below_zero": 0.959,
+   "challenges_bought": 1.23,
+   "reached_funded": 0.11,
+   "paid": 188.0
+  },
+  "test": {
+   "net_a_year": -8.0,
+   "net_median": -550.0,
+   "below_zero": 0.717,
+   "challenges_bought": 1.28,
+   "reached_funded": 0.496,
+   "paid": 698.0
+  }
+ },
+ "trend 20, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -1096.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.32,
+   "reached_funded": 0.178,
+   "paid": 179.0
+  },
+  "test": {
+   "net_a_year": -1073.0,
+   "net_median": -1650.0,
+   "below_zero": 0.961,
+   "challenges_bought": 2.76,
+   "reached_funded": 0.52,
+   "paid": 443.0
+  }
+ },
+ "trend 20, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -1279.0,
+   "net_median": -1100.0,
+   "below_zero": 0.963,
+   "challenges_bought": 3.05,
+   "reached_funded": 0.365,
+   "paid": 398.0
+  },
+  "test": {
+   "net_a_year": 2294.0,
+   "net_median": -1650.0,
+   "below_zero": 0.756,
+   "challenges_bought": 3.06,
+   "reached_funded": 0.598,
+   "paid": 3974.0
+  }
+ },
+ "trend 20, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -804.0,
+   "net_median": -1100.0,
+   "below_zero": 0.886,
+   "challenges_bought": 3.39,
+   "reached_funded": 0.498,
+   "paid": 1062.0
+  },
+  "test": {
+   "net_a_year": 8476.0,
+   "net_median": 3358.0,
+   "below_zero": 0.488,
+   "challenges_bought": 3.23,
+   "reached_funded": 0.693,
+   "paid": 10251.0
+  }
+ },
+ "trend 20, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -5482.0,
+   "net_median": -4950.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.97,
+   "reached_funded": 0.831,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -4417.0,
+   "net_median": -4950.0,
+   "below_zero": 1.0,
+   "challenges_bought": 8.03,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 20, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 106.5,
+   "2024-2026": 46.6
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -55.6,
+  "dev": {
+   "net_a_year": -6909.0,
+   "net_median": -5500.0,
+   "below_zero": 0.932,
+   "challenges_bought": 14.0,
+   "reached_funded": 0.918,
+   "paid": 791.0
+  },
+  "test": {
+   "net_a_year": -10601.0,
+   "net_median": -11550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 19.28,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -548.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 2.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -484.0,
+   "net_median": -550.0,
+   "below_zero": 0.954,
+   "challenges_bought": 1.23,
+   "reached_funded": 0.078,
+   "paid": 192.0
+  },
+  "test": {
+   "net_a_year": 179.0,
+   "net_median": -550.0,
+   "below_zero": 0.661,
+   "challenges_bought": 1.29,
+   "reached_funded": 0.504,
+   "paid": 890.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -927.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.68,
+   "reached_funded": 0.123,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1067.0,
+   "net_median": -1650.0,
+   "below_zero": 0.961,
+   "challenges_bought": 2.76,
+   "reached_funded": 0.52,
+   "paid": 449.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -1183.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.15,
+   "reached_funded": 0.292,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 2665.0,
+   "net_median": -1100.0,
+   "below_zero": 0.74,
+   "challenges_bought": 2.78,
+   "reached_funded": 0.598,
+   "paid": 4194.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -1349.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.45,
+   "reached_funded": 0.393,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 5666.0,
+   "net_median": -1100.0,
+   "below_zero": 0.614,
+   "challenges_bought": 2.8,
+   "reached_funded": 0.701,
+   "paid": 7208.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -3875.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.05,
+   "reached_funded": 0.416,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -4045.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.35,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 105.8,
+   "2024-2026": 68.7
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -45.9,
+  "dev": {
+   "net_a_year": -2360.0,
+   "net_median": -2750.0,
+   "below_zero": 0.721,
+   "challenges_bought": 10.42,
+   "reached_funded": 0.589,
+   "paid": 3373.0
+  },
+  "test": {
+   "net_a_year": -9185.0,
+   "net_median": -10450.0,
+   "below_zero": 1.0,
+   "challenges_bought": 16.7,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -548.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 2.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -526.0,
+   "net_median": -550.0,
+   "below_zero": 0.959,
+   "challenges_bought": 1.23,
+   "reached_funded": 0.078,
+   "paid": 150.0
+  },
+  "test": {
+   "net_a_year": 50.0,
+   "net_median": -550.0,
+   "below_zero": 0.701,
+   "challenges_bought": 1.26,
+   "reached_funded": 0.496,
+   "paid": 743.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -927.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.68,
+   "reached_funded": 0.114,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1073.0,
+   "net_median": -1650.0,
+   "below_zero": 0.961,
+   "challenges_bought": 2.76,
+   "reached_funded": 0.52,
+   "paid": 443.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -1231.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.24,
+   "reached_funded": 0.26,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 2357.0,
+   "net_median": -1100.0,
+   "below_zero": 0.756,
+   "challenges_bought": 2.79,
+   "reached_funded": 0.591,
+   "paid": 3890.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -963.0,
+   "net_median": -1100.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.5,
+   "reached_funded": 0.347,
+   "paid": 413.0
+  },
+  "test": {
+   "net_a_year": 8229.0,
+   "net_median": -1100.0,
+   "below_zero": 0.52,
+   "challenges_bought": 3.43,
+   "reached_funded": 0.843,
+   "paid": 10117.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -3880.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.05,
+   "reached_funded": 0.397,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -4062.0,
+   "net_median": -4950.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.39,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 20, BTC above its 200-day, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 97.8,
+   "2024-2026": 60.0
+  },
+  "worst_day_pct": -26.9,
+  "deepest_fall_pct": -46.7,
+  "dev": {
+   "net_a_year": -2590.0,
+   "net_median": -2750.0,
+   "below_zero": 0.721,
+   "challenges_bought": 10.54,
+   "reached_funded": 0.571,
+   "paid": 3208.0
+  },
+  "test": {
+   "net_a_year": -9190.0,
+   "net_median": -10450.0,
+   "below_zero": 1.0,
+   "challenges_bought": 16.71,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -428.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.037,
+   "paid": 122.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -751.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.43,
+   "reached_funded": 0.123,
+   "paid": 37.0
+  },
+  "test": {
+   "net_a_year": 164.0,
+   "net_median": -550.0,
+   "below_zero": 0.74,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.472,
+   "paid": 714.0
+  }
+ },
+ "trend 50, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -1165.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.12,
+   "reached_funded": 0.333,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -712.0,
+   "net_median": -1100.0,
+   "below_zero": 0.976,
+   "challenges_bought": 1.79,
+   "reached_funded": 0.52,
+   "paid": 271.0
+  }
+ },
+ "trend 50, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -1444.0,
+   "net_median": -1100.0,
+   "below_zero": 0.95,
+   "challenges_bought": 3.01,
+   "reached_funded": 0.479,
+   "paid": 211.0
+  },
+  "test": {
+   "net_a_year": 1518.0,
+   "net_median": -1100.0,
+   "below_zero": 0.811,
+   "challenges_bought": 2.71,
+   "reached_funded": 0.669,
+   "paid": 3007.0
+  }
+ },
+ "trend 50, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -1239.0,
+   "net_median": -1650.0,
+   "below_zero": 0.84,
+   "challenges_bought": 4.31,
+   "reached_funded": 0.534,
+   "paid": 1130.0
+  },
+  "test": {
+   "net_a_year": 7332.0,
+   "net_median": 481.0,
+   "below_zero": 0.488,
+   "challenges_bought": 4.25,
+   "reached_funded": 0.835,
+   "paid": 9671.0
+  }
+ },
+ "trend 50, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -5017.0,
+   "net_median": -4400.0,
+   "below_zero": 0.945,
+   "challenges_bought": 10.37,
+   "reached_funded": 0.589,
+   "paid": 689.0
+  },
+  "test": {
+   "net_a_year": -5591.0,
+   "net_median": -6600.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.17,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 187.4,
+   "2024-2026": 77.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -56.1,
+  "dev": {
+   "net_a_year": -9109.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 16.56,
+   "reached_funded": 0.973,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -11455.0,
+   "net_median": -13200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 20.83,
+   "reached_funded": 0.709,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -435.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.032,
+   "paid": 115.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -784.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.49,
+   "reached_funded": 0.11,
+   "paid": 37.0
+  },
+  "test": {
+   "net_a_year": -5.0,
+   "net_median": -550.0,
+   "below_zero": 0.795,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.457,
+   "paid": 545.0
+  }
+ },
+ "trend 50, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -1188.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.16,
+   "reached_funded": 0.283,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -745.0,
+   "net_median": -1100.0,
+   "below_zero": 0.976,
+   "challenges_bought": 1.84,
+   "reached_funded": 0.52,
+   "paid": 268.0
+  }
+ },
+ "trend 50, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -1444.0,
+   "net_median": -1100.0,
+   "below_zero": 0.982,
+   "challenges_bought": 3.13,
+   "reached_funded": 0.466,
+   "paid": 278.0
+  },
+  "test": {
+   "net_a_year": 3447.0,
+   "net_median": -1100.0,
+   "below_zero": 0.677,
+   "challenges_bought": 2.85,
+   "reached_funded": 0.63,
+   "paid": 5014.0
+  }
+ },
+ "trend 50, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -1403.0,
+   "net_median": -1650.0,
+   "below_zero": 0.872,
+   "challenges_bought": 4.31,
+   "reached_funded": 0.461,
+   "paid": 966.0
+  },
+  "test": {
+   "net_a_year": 7385.0,
+   "net_median": -396.0,
+   "below_zero": 0.512,
+   "challenges_bought": 4.35,
+   "reached_funded": 0.858,
+   "paid": 9780.0
+  }
+ },
+ "trend 50, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -5216.0,
+   "net_median": -4950.0,
+   "below_zero": 0.945,
+   "challenges_bought": 10.68,
+   "reached_funded": 0.589,
+   "paid": 658.0
+  },
+  "test": {
+   "net_a_year": -5604.0,
+   "net_median": -6600.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.19,
+   "reached_funded": 0.866,
+   "paid": 0.0
+  }
+ },
+ "trend 50, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 174.2,
+   "2024-2026": 65.3
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -59.5,
+  "dev": {
+   "net_a_year": -9239.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 16.8,
+   "reached_funded": 0.968,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -11455.0,
+   "net_median": -13200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 20.83,
+   "reached_funded": 0.709,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -446.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.027,
+   "paid": 104.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -736.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.123,
+   "paid": 37.0
+  },
+  "test": {
+   "net_a_year": 145.0,
+   "net_median": -550.0,
+   "below_zero": 0.764,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.472,
+   "paid": 695.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -1025.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.86,
+   "reached_funded": 0.242,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -728.0,
+   "net_median": -1100.0,
+   "below_zero": 0.984,
+   "challenges_bought": 1.65,
+   "reached_funded": 0.52,
+   "paid": 181.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -1252.0,
+   "net_median": -806.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.28,
+   "reached_funded": 0.361,
+   "paid": 1.0
+  },
+  "test": {
+   "net_a_year": 1587.0,
+   "net_median": -1100.0,
+   "below_zero": 0.803,
+   "challenges_bought": 2.72,
+   "reached_funded": 0.646,
+   "paid": 3085.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -1032.0,
+   "net_median": -550.0,
+   "below_zero": 0.886,
+   "challenges_bought": 3.22,
+   "reached_funded": 0.425,
+   "paid": 739.0
+  },
+  "test": {
+   "net_a_year": 7770.0,
+   "net_median": 481.0,
+   "below_zero": 0.472,
+   "challenges_bought": 4.1,
+   "reached_funded": 0.858,
+   "paid": 10026.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -3683.0,
+   "net_median": -2750.0,
+   "below_zero": 0.936,
+   "challenges_bought": 8.15,
+   "reached_funded": 0.594,
+   "paid": 798.0
+  },
+  "test": {
+   "net_a_year": -5431.0,
+   "net_median": -6600.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.87,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 178.7,
+   "2024-2026": 88.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -55.9,
+  "dev": {
+   "net_a_year": -7323.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 13.32,
+   "reached_funded": 0.635,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -10913.0,
+   "net_median": -12650.0,
+   "below_zero": 1.0,
+   "challenges_bought": 19.84,
+   "reached_funded": 0.661,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -448.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.027,
+   "paid": 102.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -737.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.11,
+   "paid": 37.0
+  },
+  "test": {
+   "net_a_year": -37.0,
+   "net_median": -550.0,
+   "below_zero": 0.795,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.457,
+   "paid": 513.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -1025.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.86,
+   "reached_funded": 0.187,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -735.0,
+   "net_median": -1100.0,
+   "below_zero": 0.984,
+   "challenges_bought": 1.66,
+   "reached_funded": 0.52,
+   "paid": 179.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -1009.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.34,
+   "reached_funded": 0.347,
+   "paid": 276.0
+  },
+  "test": {
+   "net_a_year": 3383.0,
+   "net_median": -1100.0,
+   "below_zero": 0.677,
+   "challenges_bought": 2.85,
+   "reached_funded": 0.63,
+   "paid": 4951.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -1204.0,
+   "net_median": -1100.0,
+   "below_zero": 0.9,
+   "challenges_bought": 3.36,
+   "reached_funded": 0.393,
+   "paid": 644.0
+  },
+  "test": {
+   "net_a_year": 7122.0,
+   "net_median": 154.0,
+   "below_zero": 0.48,
+   "challenges_bought": 4.1,
+   "reached_funded": 0.827,
+   "paid": 9378.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -4057.0,
+   "net_median": -3300.0,
+   "below_zero": 0.941,
+   "challenges_bought": 8.66,
+   "reached_funded": 0.589,
+   "paid": 707.0
+  },
+  "test": {
+   "net_a_year": -5444.0,
+   "net_median": -6600.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.9,
+   "reached_funded": 0.866,
+   "paid": 0.0
+  }
+ },
+ "trend 50, BTC above its 200-day, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 169.1,
+   "2024-2026": 79.0
+  },
+  "worst_day_pct": -38.1,
+  "deepest_fall_pct": -58.3,
+  "dev": {
+   "net_a_year": -7484.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 13.61,
+   "reached_funded": 0.63,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -11052.0,
+   "net_median": -13200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 20.09,
+   "reached_funded": 0.661,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -397.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.032,
+   "paid": 153.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -476.0,
+   "net_median": -550.0,
+   "below_zero": 0.936,
+   "challenges_bought": 1.44,
+   "reached_funded": 0.114,
+   "paid": 318.0
+  },
+  "test": {
+   "net_a_year": -68.0,
+   "net_median": -550.0,
+   "below_zero": 0.756,
+   "challenges_bought": 1.55,
+   "reached_funded": 0.472,
+   "paid": 785.0
+  }
+ },
+ "trend 100, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -1150.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.09,
+   "reached_funded": 0.215,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1047.0,
+   "net_median": -1100.0,
+   "below_zero": 0.984,
+   "challenges_bought": 2.23,
+   "reached_funded": 0.52,
+   "paid": 178.0
+  }
+ },
+ "trend 100, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -1585.0,
+   "net_median": -1100.0,
+   "below_zero": 0.982,
+   "challenges_bought": 3.38,
+   "reached_funded": 0.361,
+   "paid": 276.0
+  },
+  "test": {
+   "net_a_year": 2943.0,
+   "net_median": -1100.0,
+   "below_zero": 0.724,
+   "challenges_bought": 2.43,
+   "reached_funded": 0.535,
+   "paid": 4282.0
+  }
+ },
+ "trend 100, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -2149.0,
+   "net_median": -1650.0,
+   "below_zero": 0.913,
+   "challenges_bought": 5.24,
+   "reached_funded": 0.329,
+   "paid": 731.0
+  },
+  "test": {
+   "net_a_year": 6083.0,
+   "net_median": -946.0,
+   "below_zero": 0.528,
+   "challenges_bought": 5.17,
+   "reached_funded": 0.827,
+   "paid": 8924.0
+  }
+ },
+ "trend 100, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -6605.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.01,
+   "reached_funded": 0.598,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6994.0,
+   "net_median": -8800.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.72,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 144.6,
+   "2024-2026": 81.4
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -76.4,
+  "dev": {
+   "net_a_year": -10292.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 18.71,
+   "reached_funded": 0.9,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -13200.0,
+   "net_median": -15400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 24.0,
+   "reached_funded": 0.764,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -407.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.032,
+   "paid": 142.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -495.0,
+   "net_median": -550.0,
+   "below_zero": 0.936,
+   "challenges_bought": 1.47,
+   "reached_funded": 0.1,
+   "paid": 312.0
+  },
+  "test": {
+   "net_a_year": -323.0,
+   "net_median": -550.0,
+   "below_zero": 0.819,
+   "challenges_bought": 1.55,
+   "reached_funded": 0.449,
+   "paid": 530.0
+  }
+ },
+ "trend 100, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -1188.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.16,
+   "reached_funded": 0.187,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -974.0,
+   "net_median": -1100.0,
+   "below_zero": 0.976,
+   "challenges_bought": 2.25,
+   "reached_funded": 0.52,
+   "paid": 264.0
+  }
+ },
+ "trend 100, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -1659.0,
+   "net_median": -1650.0,
+   "below_zero": 0.982,
+   "challenges_bought": 3.58,
+   "reached_funded": 0.283,
+   "paid": 307.0
+  },
+  "test": {
+   "net_a_year": 3409.0,
+   "net_median": -1100.0,
+   "below_zero": 0.709,
+   "challenges_bought": 2.46,
+   "reached_funded": 0.52,
+   "paid": 4764.0
+  }
+ },
+ "trend 100, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -2438.0,
+   "net_median": -2200.0,
+   "below_zero": 0.973,
+   "challenges_bought": 5.32,
+   "reached_funded": 0.315,
+   "paid": 487.0
+  },
+  "test": {
+   "net_a_year": 6776.0,
+   "net_median": 353.0,
+   "below_zero": 0.48,
+   "challenges_bought": 5.22,
+   "reached_funded": 0.819,
+   "paid": 9647.0
+  }
+ },
+ "trend 100, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -6786.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.34,
+   "reached_funded": 0.626,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -7011.0,
+   "net_median": -8800.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.75,
+   "reached_funded": 0.724,
+   "paid": 0.0
+  }
+ },
+ "trend 100, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 131.4,
+   "2024-2026": 69.3
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -78.5,
+  "dev": {
+   "net_a_year": -10189.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 18.53,
+   "reached_funded": 0.895,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -13234.0,
+   "net_median": -15400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 24.06,
+   "reached_funded": 0.764,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -397.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.032,
+   "paid": 153.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -456.0,
+   "net_median": -550.0,
+   "below_zero": 0.936,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.123,
+   "paid": 318.0
+  },
+  "test": {
+   "net_a_year": 193.0,
+   "net_median": -550.0,
+   "below_zero": 0.638,
+   "challenges_bought": 1.55,
+   "reached_funded": 0.488,
+   "paid": 1046.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -957.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.74,
+   "reached_funded": 0.196,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -949.0,
+   "net_median": -1100.0,
+   "below_zero": 0.976,
+   "challenges_bought": 2.21,
+   "reached_funded": 0.52,
+   "paid": 268.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -1276.0,
+   "net_median": -1100.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.82,
+   "reached_funded": 0.374,
+   "paid": 276.0
+  },
+  "test": {
+   "net_a_year": 3606.0,
+   "net_median": -1100.0,
+   "below_zero": 0.677,
+   "challenges_bought": 2.42,
+   "reached_funded": 0.528,
+   "paid": 4935.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -2040.0,
+   "net_median": -1100.0,
+   "below_zero": 0.995,
+   "challenges_bought": 4.1,
+   "reached_funded": 0.32,
+   "paid": 215.0
+  },
+  "test": {
+   "net_a_year": 2935.0,
+   "net_median": -1100.0,
+   "below_zero": 0.717,
+   "challenges_bought": 4.6,
+   "reached_funded": 0.717,
+   "paid": 5464.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -5613.0,
+   "net_median": -3850.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.21,
+   "reached_funded": 0.562,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6873.0,
+   "net_median": -8800.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.5,
+   "reached_funded": 0.89,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 153.0,
+   "2024-2026": 90.6
+  },
+  "worst_day_pct": -44.1,
+  "deepest_fall_pct": -72.4,
+  "dev": {
+   "net_a_year": -8491.0,
+   "net_median": -6600.0,
+   "below_zero": 1.0,
+   "challenges_bought": 15.44,
+   "reached_funded": 0.603,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -12979.0,
+   "net_median": -15400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 23.6,
+   "reached_funded": 0.685,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -407.0,
+   "net_median": -550.0,
+   "below_zero": 0.973,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.032,
+   "paid": 142.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -462.0,
+   "net_median": -550.0,
+   "below_zero": 0.936,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.11,
+   "paid": 312.0
+  },
+  "test": {
+   "net_a_year": -96.0,
+   "net_median": -550.0,
+   "below_zero": 0.709,
+   "challenges_bought": 1.55,
+   "reached_funded": 0.472,
+   "paid": 757.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -962.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.75,
+   "reached_funded": 0.187,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1133.0,
+   "net_median": -1100.0,
+   "below_zero": 0.992,
+   "challenges_bought": 2.22,
+   "reached_funded": 0.52,
+   "paid": 88.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -1284.0,
+   "net_median": -1100.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.83,
+   "reached_funded": 0.237,
+   "paid": 273.0
+  },
+  "test": {
+   "net_a_year": 3158.0,
+   "net_median": -1100.0,
+   "below_zero": 0.701,
+   "challenges_bought": 2.43,
+   "reached_funded": 0.535,
+   "paid": 4496.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -2280.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 4.15,
+   "reached_funded": 0.265,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 3165.0,
+   "net_median": -1100.0,
+   "below_zero": 0.661,
+   "challenges_bought": 4.98,
+   "reached_funded": 0.795,
+   "paid": 5907.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -5786.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.52,
+   "reached_funded": 0.594,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6890.0,
+   "net_median": -8800.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.53,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "trend 100, BTC above its 200-day, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 142.6,
+   "2024-2026": 80.2
+  },
+  "worst_day_pct": -44.2,
+  "deepest_fall_pct": -74.1,
+  "dev": {
+   "net_a_year": -8388.0,
+   "net_median": -6050.0,
+   "below_zero": 1.0,
+   "challenges_bought": 15.25,
+   "reached_funded": 0.603,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -12979.0,
+   "net_median": -15400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 23.6,
+   "reached_funded": 0.685,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -543.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 7.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -159.0,
+   "net_median": -550.0,
+   "below_zero": 0.904,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.123,
+   "paid": 394.0
+  },
+  "test": {
+   "net_a_year": 656.0,
+   "net_median": -550.0,
+   "below_zero": 0.717,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.512,
+   "paid": 1206.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -1243.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.26,
+   "reached_funded": 0.078,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1208.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -1464.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.66,
+   "reached_funded": 0.466,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 414.0,
+   "net_median": -1100.0,
+   "below_zero": 0.89,
+   "challenges_bought": 2.49,
+   "reached_funded": 0.622,
+   "paid": 1782.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -1640.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 3.03,
+   "reached_funded": 0.521,
+   "paid": 28.0
+  },
+  "test": {
+   "net_a_year": 1553.0,
+   "net_median": -1100.0,
+   "below_zero": 0.787,
+   "challenges_bought": 2.54,
+   "reached_funded": 0.866,
+   "paid": 2948.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -4267.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.76,
+   "reached_funded": 0.575,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -2581.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 4.69,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 119.5,
+   "2024-2026": 78.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.1,
+  "dev": {
+   "net_a_year": -6693.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.17,
+   "reached_funded": 0.89,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -7973.0,
+   "net_median": -9350.0,
+   "below_zero": 1.0,
+   "challenges_bought": 14.5,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -544.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 6.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -215.0,
+   "net_median": -550.0,
+   "below_zero": 0.918,
+   "challenges_bought": 1.01,
+   "reached_funded": 0.11,
+   "paid": 340.0
+  },
+  "test": {
+   "net_a_year": 449.0,
+   "net_median": -550.0,
+   "below_zero": 0.724,
+   "challenges_bought": 1.02,
+   "reached_funded": 0.504,
+   "paid": 1012.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -1261.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.29,
+   "reached_funded": 0.064,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1208.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -1482.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.69,
+   "reached_funded": 0.42,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 126.0,
+   "net_median": -1100.0,
+   "below_zero": 0.906,
+   "challenges_bought": 2.49,
+   "reached_funded": 0.622,
+   "paid": 1495.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -1664.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 3.04,
+   "reached_funded": 0.484,
+   "paid": 9.0
+  },
+  "test": {
+   "net_a_year": 1221.0,
+   "net_median": -1100.0,
+   "below_zero": 0.866,
+   "challenges_bought": 2.54,
+   "reached_funded": 0.85,
+   "paid": 2615.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -4267.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.76,
+   "reached_funded": 0.562,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -2832.0,
+   "net_median": -2750.0,
+   "below_zero": 1.0,
+   "challenges_bought": 5.15,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 109.3,
+   "2024-2026": 70.0
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -50.1,
+  "dev": {
+   "net_a_year": -6698.0,
+   "net_median": -5500.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.18,
+   "reached_funded": 0.854,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -7986.0,
+   "net_median": -9350.0,
+   "below_zero": 1.0,
+   "challenges_bought": 14.52,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -548.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 2.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -320.0,
+   "net_median": -550.0,
+   "below_zero": 0.95,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.073,
+   "paid": 230.0
+  },
+  "test": {
+   "net_a_year": 720.0,
+   "net_median": -550.0,
+   "below_zero": 0.717,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.512,
+   "paid": 1270.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -997.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.81,
+   "reached_funded": 0.128,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1208.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -1118.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.03,
+   "reached_funded": 0.338,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 695.0,
+   "net_median": -1100.0,
+   "below_zero": 0.882,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.622,
+   "paid": 1903.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -940.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.35,
+   "reached_funded": 0.356,
+   "paid": 351.0
+  },
+  "test": {
+   "net_a_year": 7864.0,
+   "net_median": 632.0,
+   "below_zero": 0.488,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.85,
+   "paid": 9077.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -3328.0,
+   "net_median": -2750.0,
+   "below_zero": 1.0,
+   "challenges_bought": 6.05,
+   "reached_funded": 0.475,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -2261.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 4.11,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 102.0,
+   "2024-2026": 105.6
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -46.3,
+  "dev": {
+   "net_a_year": -5138.0,
+   "net_median": -3850.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.34,
+   "reached_funded": 0.662,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -7029.0,
+   "net_median": -8250.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.78,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.005,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -344.0,
+   "net_median": -550.0,
+   "below_zero": 0.95,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.073,
+   "paid": 206.0
+  },
+  "test": {
+   "net_a_year": 614.0,
+   "net_median": -550.0,
+   "below_zero": 0.717,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.512,
+   "paid": 1164.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -997.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.81,
+   "reached_funded": 0.096,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -1208.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -1118.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.03,
+   "reached_funded": 0.333,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 675.0,
+   "net_median": -1100.0,
+   "below_zero": 0.882,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.614,
+   "paid": 1883.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -901.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.35,
+   "reached_funded": 0.356,
+   "paid": 390.0
+  },
+  "test": {
+   "net_a_year": 6498.0,
+   "net_median": -1100.0,
+   "below_zero": 0.567,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.787,
+   "paid": 7711.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -3328.0,
+   "net_median": -2750.0,
+   "below_zero": 1.0,
+   "challenges_bought": 6.05,
+   "reached_funded": 0.47,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -2295.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 4.17,
+   "reached_funded": 0.882,
+   "paid": 0.0
+  }
+ },
+ "breakout 20/10, BTC above its 200-day, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 95.3,
+   "2024-2026": 99.3
+  },
+  "worst_day_pct": -23.6,
+  "deepest_fall_pct": -48.2,
+  "dev": {
+   "net_a_year": -5141.0,
+   "net_median": -3850.0,
+   "below_zero": 1.0,
+   "challenges_bought": 9.35,
+   "reached_funded": 0.443,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -7037.0,
+   "net_median": -8250.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.8,
+   "reached_funded": 0.646,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -733.0,
+   "net_median": -550.0,
+   "below_zero": 0.986,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.119,
+   "paid": 40.0
+  },
+  "test": {
+   "net_a_year": -33.0,
+   "net_median": -550.0,
+   "below_zero": 0.85,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.504,
+   "paid": 517.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -825.0,
+   "net_median": -550.0,
+   "below_zero": 0.995,
+   "challenges_bought": 1.59,
+   "reached_funded": 0.233,
+   "paid": 52.0
+  },
+  "test": {
+   "net_a_year": -45.0,
+   "net_median": -550.0,
+   "below_zero": 0.929,
+   "challenges_bought": 1.54,
+   "reached_funded": 0.52,
+   "paid": 804.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -1241.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.26,
+   "reached_funded": 0.361,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -241.0,
+   "net_median": -1100.0,
+   "below_zero": 0.937,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 968.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -1463.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.68,
+   "reached_funded": 0.466,
+   "paid": 8.0
+  },
+  "test": {
+   "net_a_year": 5013.0,
+   "net_median": -1100.0,
+   "below_zero": 0.693,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.528,
+   "paid": 6225.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -4081.0,
+   "net_median": -2750.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.42,
+   "reached_funded": 0.589,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -3088.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 5.61,
+   "reached_funded": 0.528,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 89.1,
+   "2024-2026": 85.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -50.5,
+  "dev": {
+   "net_a_year": -6401.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 11.64,
+   "reached_funded": 0.858,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6773.0,
+   "net_median": -7700.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.31,
+   "reached_funded": 0.898,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -735.0,
+   "net_median": -550.0,
+   "below_zero": 0.986,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.119,
+   "paid": 39.0
+  },
+  "test": {
+   "net_a_year": -101.0,
+   "net_median": -550.0,
+   "below_zero": 0.85,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.504,
+   "paid": 449.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -879.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.6,
+   "reached_funded": 0.21,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -231.0,
+   "net_median": -550.0,
+   "below_zero": 0.945,
+   "challenges_bought": 1.54,
+   "reached_funded": 0.52,
+   "paid": 618.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -1308.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.38,
+   "reached_funded": 0.342,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -251.0,
+   "net_median": -1100.0,
+   "below_zero": 0.937,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 957.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -1488.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.71,
+   "reached_funded": 0.466,
+   "paid": 3.0
+  },
+  "test": {
+   "net_a_year": 2026.0,
+   "net_median": -1100.0,
+   "below_zero": 0.835,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.528,
+   "paid": 3238.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -4086.0,
+   "net_median": -2750.0,
+   "below_zero": 1.0,
+   "challenges_bought": 7.43,
+   "reached_funded": 0.589,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -3287.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 5.98,
+   "reached_funded": 0.528,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 80.7,
+   "2024-2026": 78.2
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -52.7,
+  "dev": {
+   "net_a_year": -6401.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 11.64,
+   "reached_funded": 0.858,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6795.0,
+   "net_median": -7700.0,
+   "below_zero": 1.0,
+   "challenges_bought": 12.35,
+   "reached_funded": 0.906,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -733.0,
+   "net_median": -550.0,
+   "below_zero": 0.986,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.119,
+   "paid": 40.0
+  },
+  "test": {
+   "net_a_year": 146.0,
+   "net_median": -550.0,
+   "below_zero": 0.756,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.504,
+   "paid": 696.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -667.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 1.59,
+   "reached_funded": 0.242,
+   "paid": 207.0
+  },
+  "test": {
+   "net_a_year": 223.0,
+   "net_median": -550.0,
+   "below_zero": 0.906,
+   "challenges_bought": 1.54,
+   "reached_funded": 0.52,
+   "paid": 1072.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -1188.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.16,
+   "reached_funded": 0.361,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 3079.0,
+   "net_median": -1100.0,
+   "below_zero": 0.732,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 4287.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -1045.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.54,
+   "reached_funded": 0.374,
+   "paid": 354.0
+  },
+  "test": {
+   "net_a_year": 7711.0,
+   "net_median": -1100.0,
+   "below_zero": 0.535,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.528,
+   "paid": 8923.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -3669.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 6.67,
+   "reached_funded": 0.594,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -3001.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 5.46,
+   "reached_funded": 0.528,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 0%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 74.1,
+   "2024-2026": 91.6
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -57.1,
+  "dev": {
+   "net_a_year": -5744.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.44,
+   "reached_funded": 0.603,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6453.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 11.73,
+   "reached_funded": 0.614,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 10%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -550.0,
+   "net_median": -550.0,
+   "below_zero": 1.0,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.0,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 20%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -735.0,
+   "net_median": -550.0,
+   "below_zero": 0.986,
+   "challenges_bought": 1.41,
+   "reached_funded": 0.119,
+   "paid": 39.0
+  },
+  "test": {
+   "net_a_year": 23.0,
+   "net_median": -550.0,
+   "below_zero": 0.756,
+   "challenges_bought": 1.0,
+   "reached_funded": 0.504,
+   "paid": 573.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 30%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -669.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 1.59,
+   "reached_funded": 0.21,
+   "paid": 205.0
+  },
+  "test": {
+   "net_a_year": 211.0,
+   "net_median": -550.0,
+   "below_zero": 0.906,
+   "challenges_bought": 1.54,
+   "reached_funded": 0.52,
+   "paid": 1060.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 40%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -1188.0,
+   "net_median": -1100.0,
+   "below_zero": 1.0,
+   "challenges_bought": 2.16,
+   "reached_funded": 0.342,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": 1309.0,
+   "net_median": -1100.0,
+   "below_zero": 0.835,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.52,
+   "paid": 2518.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 50%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -1054.0,
+   "net_median": -550.0,
+   "below_zero": 0.982,
+   "challenges_bought": 2.54,
+   "reached_funded": 0.374,
+   "paid": 345.0
+  },
+  "test": {
+   "net_a_year": 7465.0,
+   "net_median": -1100.0,
+   "below_zero": 0.543,
+   "challenges_bought": 2.2,
+   "reached_funded": 0.528,
+   "paid": 8678.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 75%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -3712.0,
+   "net_median": -2200.0,
+   "below_zero": 1.0,
+   "challenges_bought": 6.75,
+   "reached_funded": 0.589,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -3270.0,
+   "net_median": -3300.0,
+   "below_zero": 1.0,
+   "challenges_bought": 5.94,
+   "reached_funded": 0.528,
+   "paid": 0.0
+  }
+ },
+ "breakout 55/20, BTC above its 200-day, swap 10%, exposure 100%": {
+  "book_usd_per_day_100k_full": {
+   "2021-2023": 67.0,
+   "2024-2026": 85.9
+  },
+  "worst_day_pct": -38.0,
+  "deepest_fall_pct": -58.4,
+  "dev": {
+   "net_a_year": -5744.0,
+   "net_median": -4400.0,
+   "below_zero": 1.0,
+   "challenges_bought": 10.44,
+   "reached_funded": 0.603,
+   "paid": 0.0
+  },
+  "test": {
+   "net_a_year": -6457.0,
+   "net_median": -7150.0,
+   "below_zero": 1.0,
+   "challenges_bought": 11.74,
+   "reached_funded": 0.606,
+   "paid": 0.0
+  }
+ },
+ "_picked_on_2021_2023": "trend 20, swap 10%, exposure 10%"
+}
