@@ -1,0 +1,138 @@
+//@version=6
+// Noise-Area Breakout for funded accounts: NQ's signal, traded on this chart's contract (MNQ, MES or MYM),
+// as tested in strategies/sweeps/funded.py.  Put it on a 1-minute MES1!, MYM1! or MNQ1! chart.
+// The bot runs a virtual NQ position:
+// * every half hour (10:00 ... 15:30) NQ's close is compared with the band NQ usually moves within by that
+//   time of day: the average absolute move from the open at that time over the last `lookback` sessions,
+//   around the larger (smaller) of today's open and yesterday's close;
+// * above the upper band it goes long, below the lower band short, at the next minute's open;
+// * it is out when a check finds NQ back inside the band or through its session average price, when NQ
+//   touches a stop `stopPct` from its entry, or at the end of the day;
+// * after a stop it skips the next check before it can enter again.
+// This chart's contract copies the virtual NQ position. It also has its own resting stop `stopPct` from its
+// fill, and once that stop is hit it stays out until NQ's next new entry.
+// Size it from the table in README.md ("Your accounts"): start small, and add only as the room above the
+// loss limit grows.  Paper-test before any money.
+strategy("Noise-Area Breakout, funded (NQ signal)", overlay = true, default_qty_type = strategy.fixed, default_qty_value = 1,
+         commission_type = strategy.commission.cash_per_contract, commission_value = 0.75, slippage = 1,
+         process_orders_on_close = false, calc_on_every_tick = false)
+
+sigSym     = input.symbol("CME_MINI:NQ1!", "Signal from")
+qty        = input.int(1, "Contracts on this chart", minval = 1, maxval = 50)
+stopPct    = input.float(0.30, "Stop, % from the entry", minval = 0.05, step = 0.05)
+dayRule    = input.string("none", "Day rule", options = ["none", "stop after the first loss", "one trade a day"])
+lookback   = input.int(14, "Lookback sessions", minval = 5, maxval = 60)
+every      = input.int(30, "Check every (minutes)", options = [15, 30, 60])
+allowShort = input.bool(true, "Allow shorts")
+tz         = "America/New_York"
+
+[sO, sH, sL, sC] = request.security(sigSym, timeframe.period, [open, high, low, close], lookahead = barmerge.lookahead_off)
+
+inSession = not na(time(timeframe.period, "0930-1600", tz))
+newDay    = inSession and not inSession[1]
+minuteOfSession = inSession ? (hour(time, tz) * 60 + minute(time, tz)) - (9 * 60 + 30) : na
+
+var float dayOpen   = na
+var float prevClose = na
+var float lastClose = na
+var int nqPos       = 0          // the virtual NQ position: 1 long, -1 short
+var int pendSide    = 0          // an NQ entry ordered at the last check, filled at this bar's open
+var float nqEntry   = na
+var bool skipCheck  = false      // a stop since the last check: no entry at the next one
+var int tradesToday = 0
+var bool lostToday  = false
+if newDay
+    prevClose := lastClose
+    dayOpen := sO
+    nqPos := 0
+    pendSide := 0
+    skipCheck := false
+    tradesToday := 0
+    lostToday := false
+if inSession
+    lastClose := sC
+
+// this chart's trades that closed at a loss today (for the day rule)
+if strategy.closedtrades > strategy.closedtrades[1]
+    if strategy.closedtrades.profit(strategy.closedtrades - 1) < 0
+        lostToday := true
+
+// NQ's move from the open at each check time over the last `lookback` sessions, written round-robin
+nChecks = int(390 / every)
+var matrix<float> moves = matrix.new<float>(lookback, 26, na)
+var array<int> filled = array.new<int>(26, 0)
+isCheck = inSession and not na(minuteOfSession) and (minuteOfSession + 1) % every == 0 and minuteOfSession + 1 < 390
+checkIdx = isCheck ? int((minuteOfSession + 1) / every) - 1 : na
+
+float upper = na
+float lower = na
+if isCheck and not na(dayOpen) and not na(prevClose) and checkIdx < nChecks
+    n = filled.get(checkIdx)
+    if n >= lookback
+        sigma = moves.col(checkIdx).avg()
+        upper := math.max(dayOpen, prevClose) * (1 + sigma)
+        lower := math.min(dayOpen, prevClose) * (1 - sigma)
+    moves.set(n % lookback, checkIdx, math.abs(sC / dayOpen - 1))
+    filled.set(checkIdx, n + 1)
+
+// NQ's session average price since 09:30 (hlc3, equal weights, as in the backtest)
+var float sumTP = 0.0
+var int nTP = 0
+if newDay
+    sumTP := 0.0
+    nTP := 0
+if inSession
+    sumTP += (sH + sL + sC) / 3
+    nTP += 1
+vw = nTP > 0 ? sumTP / nTP : na
+
+flatten(reason) =>
+    if strategy.position_size != 0
+        strategy.close_all(comment = reason)
+        alert('{"action":"flatten","reason":"' + reason + '","symbol":"' + syminfo.ticker + '"}', alert.freq_once_per_bar_close)
+
+// 1. the NQ entry ordered at the last check is filled at this bar's open
+if pendSide != 0
+    nqPos := pendSide
+    nqEntry := sO
+    pendSide := 0
+
+// 2. NQ's stop, watched on every bar
+if nqPos != 0
+    nqStop = nqPos > 0 ? nqEntry * (1 - stopPct / 100) : nqEntry * (1 + stopPct / 100)
+    if (nqPos > 0 and sL <= nqStop) or (nqPos < 0 and sH >= nqStop)
+        nqPos := 0
+        skipCheck := true
+        flatten("NQ stop")
+
+// 3. the half-hour check: exits first, and an entry only when flat, not just stopped, and allowed today
+canEnter = dayRule == "none" or (dayRule == "stop after the first loss" and not lostToday) or (dayRule == "one trade a day" and tradesToday == 0)
+if isCheck and not na(upper)
+    if nqPos > 0 and sC < math.max(upper, vw)
+        nqPos := 0
+        flatten("back in the band")
+    else if nqPos < 0 and sC > math.min(lower, vw)
+        nqPos := 0
+        flatten("back in the band")
+    else if nqPos == 0 and not skipCheck
+        side = sC > upper ? 1 : (sC < lower and allowShort ? -1 : 0)
+        if side != 0
+            pendSide := side
+            if canEnter
+                ticks = math.max(1, math.round(stopPct / 100 * close / syminfo.mintick))
+                id = side > 0 ? "Long" : "Short"
+                strategy.entry(id, side > 0 ? strategy.long : strategy.short, qty = qty)
+                strategy.exit(id + " stop", id, loss = ticks)
+                tradesToday += 1
+                alert('{"action":"' + (side > 0 ? "buy" : "sell_short") + '","symbol":"' + syminfo.ticker + '","qty":' +
+                      str.tostring(qty) + ',"stop_pct":' + str.tostring(stopPct) + '}', alert.freq_once_per_bar_close)
+    skipCheck := false
+
+// flat for the close: the 15:58 bar's order fills at the 15:59 open
+if inSession and minuteOfSession == 388
+    nqPos := 0
+    pendSide := 0
+    flatten("end of day")
+
+plot(upper, "NQ upper band", color.new(color.teal, 0), display = display.data_window)
+plot(lower, "NQ lower band", color.new(color.red, 0), display = display.data_window)

@@ -15,6 +15,15 @@ checked on 2020-2026.
 - **Leverage cuts both ways.** Account growth peaks at about 5 MNQ a bot per
   $25,000, with an 88% fall along the way. On a 50K evaluation, 1 MNQ
   passes most often (about half the time); more contracts lower the odds.
+- **Sized for the owner's loss limits.** The accounts are a 25K with a
+  $2,000 limit and a 100K with a $3,000 limit. The fix is to start small and
+  size up only as the room above the limit grows: NQ's signal traded in
+  1 MES on the 25K, 1 MNQ on the 100K.
+  - No account was lost in its first three months from any start since
+    2013.
+  - Within a year, 4-15% of the 25K accounts and 2-5% of the 100K accounts
+    were lost.
+  - A $1,000 limit isn't workable.
 
 **New: [crypto: AAVE, BNB, BTC, INJ and MSTR](crypto/README.md).**
 
