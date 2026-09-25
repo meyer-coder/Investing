@@ -23,20 +23,30 @@ single day can take the account.  It is tried off, at half the room and at
 price) says whether it was reached, and the day is booked at the guard, as a
 resting stop would fill.
 
+An account whose room has fallen below one MYM stop (0.30% of an MYM plus a
+round trip's costs, about $80) is counted as lost: it cannot take a normal
+trade any more.  Without this a guarded account never dies; it shrinks by
+halves toward nothing.
+
 The rules are evotrader/accounts.py.  Payouts: once the funded account has
-the firm's winning days since its last payout, the profit above one limit's
-worth of room is withdrawn, up to the firm's share of the profit and its cap.
-The room left is what a fresh account starts with, and the limit locks at the
-start after the first payout, as both firms do.  Money left in the account at
-the end of the year is not counted.
+the firm's winning days since its last payout, the profit above a cushion of
+room is withdrawn, up to the firm's share of the profit and its cap; the
+limit locks at the start after the first payout, as both firms do.  The
+cushion is one loss limit (the room a fresh account has) or two (the size
+can grow, but more is at stake).  Money left in the account at the end is
+not counted.
 
-Three replays from every fifth session, each for a year (252 sessions):
+Three replays from every fifth session:
 
-* the challenge alone: passed, lost, or still going;
-* a funded account alone: lost within three months or a year, and paid out;
-* the year as it would be lived: a challenge, the funded account once it
+* the challenge alone, for a year: passed, lost, or still going;
+* a funded account alone, for a year: lost within three months or a year,
+  and paid out;
+* two years as they would be lived: a challenge, the funded account once it
   passes, and a new challenge (and its fee) after every loss.  Net is the
-  owner's share of the payouts minus every fee.
+  owner's share of the payouts minus every fee, shown a year.  Two years,
+  because a slow challenge leaves a one-year window almost no funded time.
+  Starts need two years of data after them: 2013-2019 and 2020 to
+  September 2024 (the last 2018-2019 starts run into 2020-2021).
 
 The sweet spot, set before looking at 2020-2025: of the settings whose
 funded account was lost within three months at most 5% of the time and
@@ -63,9 +73,11 @@ from evotrader.accounts import Account                                       # n
 
 STOP = 0.003
 HORIZON = 252
+CAREER = 504                                                                  # two years
 EVERY = 5
 SHARES = (0.15, 0.25, 0.35, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0)
 GUARDS = (0.0, 0.5, 0.8)                                                      # 0 = no room guard
+CUSHIONS = (1.0, 2.0)                                                         # room kept after a payout, in limits
 MAX_MNQ = 10
 RISK_3M, RISK_1Y = 0.05, 0.20
 FIXED = ("1 MES", "1 MNQ", "2 MNQ")                                           # sizes held from the first day
@@ -84,10 +96,12 @@ def ladder(days: dict, dev: np.ndarray, max_micros: int) -> list:
 
 
 def simulate(rungs: list, acc: Account, starts, mode: str, share_c: float = 0.0, share_f: float = 0.0,
-             fixed: Optional[int] = None, guard: float = 0.0, horizon: int = HORIZON) -> dict:
+             fixed: Optional[int] = None, guard: float = 0.0, min_room: float = 0.0, cushion: float = 1.0,
+             horizon: int = HORIZON) -> dict:
     """One account from every start, all at once.  mode: "challenge" (until passed or lost), "funded" (until
-    lost) or "career" (a year of challenges and funded accounts, a new challenge after every loss).  guard: the
-    day stops once its loss reaches this share of the morning's room (0 = never)."""
+    lost) or "career" (challenges and funded accounts, a new challenge after every loss).  guard: the day stops
+    once its loss reaches this share of the morning's room (0 = never).  min_room: an account with less room
+    than this in the morning is lost.  cushion: a payout leaves this many loss limits of room."""
     P = np.array([r[1] for r in rungs])
     L = np.array([r[2] for r in rungs])
     bad = np.array([r[3] for r in rungs])
@@ -120,7 +134,7 @@ def simulate(rungs: list, acc: Account, starts, mode: str, share_c: float = 0.0,
         hit = lo <= -stop_at
         p = np.where(hit, -stop_at, p)
         lo = np.where(hit, -stop_at, lo)
-        gone = alive & (bal + lo <= floor)
+        gone = alive & ((bal + lo <= floor) | (bal - floor < min_room))
         ok = alive & ~gone
         bal = np.where(ok, bal + p, bal)
         ch, fu = ok & (phase == 0), ok & (phase == 1)
@@ -129,9 +143,11 @@ def simulate(rungs: list, acc: Account, starts, mode: str, share_c: float = 0.0,
         wins = np.where(fu & (p >= acc.payout_day_min), wins + 1, wins)
         peak = np.where(ok, np.maximum(peak, bal), peak)
         floor = np.where(ok, np.minimum(0.0, np.maximum(floor, peak - ml)), floor)
-        # a payout: the profit above one limit of room, up to the firm's share and cap; the floor locks at the start
-        due = fu & (wins >= acc.payout_days) & (bal > ml)
-        w = np.where(due, np.minimum(np.minimum(acc.payout_share * bal, bal - ml), cap), 0.0)
+        # a payout: the profit above `cushion` limits of room, up to the firm's share and cap; the floor locks at
+        # the start
+        keep = cushion * ml
+        due = fu & (wins >= acc.payout_days) & (bal > keep)
+        w = np.where(due, np.minimum(np.minimum(acc.payout_share * bal, bal - keep), cap), 0.0)
         free = np.clip(acc.split_first - paid, 0.0, w) if acc.split_first else 0.0
         take += np.where(due, free + acc.split * (w - free), 0.0)
         paid += w
@@ -176,86 +192,106 @@ def funded_stats(res: dict) -> dict:
             "paid_a_year": round(float(res["take"].mean()), 0)}
 
 
-def career_stats(res: dict) -> dict:
+def career_stats(res: dict, years: float = CAREER / 252) -> dict:
+    """Two years lived, a year at a time: net, paid and fees a year; below zero is the two years' net."""
     net = res["net"]
-    return {"net_a_year": round(float(net.mean()), 0), "net_median": round(float(np.median(net)), 0),
-            "net_worst": round(float(net.min()), 0), "net_below_zero": round(float((net < 0).mean()), 3),
-            "paid": round(float(res["take"].mean()), 0), "fees": round(float(res["fees"].mean()), 0),
-            "challenges_bought": round(float(res["bought"].mean()), 2),
-            "funded_lost": round(float(res["lost_funded"].mean()), 2)}
+    return {"net_a_year": round(float(net.mean() / years), 0), "net_median": round(float(np.median(net) / years), 0),
+            "net_worst": round(float(net.min() / years), 0), "net_below_zero": round(float((net < 0).mean()), 3),
+            "paid": round(float(res["take"].mean() / years), 0), "fees": round(float(res["fees"].mean() / years), 0),
+            "challenges_bought": round(float(res["bought"].mean() / years), 2),
+            "funded_lost": round(float(res["lost_funded"].mean() / years), 2)}
 
 
-def study(acc: Account, days: dict, dates: np.ndarray, starts: dict) -> dict:
+def study(acc: Account, days: dict, dates: np.ndarray, starts: dict, careers: dict, min_room: float) -> dict:
     dev_days = dates < funded.SPLIT
     rungs = ladder(days, dev_days, acc.max_micros)
     names = [r[0] for r in rungs]
+    kw = {"min_room": min_room}
     out = {"rules": dataclasses.asdict(acc), "sizes": [{"size": r[0], "bad_day": round(r[3])} for r in rungs],
            "challenge": {}, "funded": {}, "career": {}, "fixed": {}}
     for part, ss in starts.items():
+        cs = careers[part]
         for g in GUARDS:
             for s in SHARES:
-                key = f"{s}|{g}"
-                out["challenge"].setdefault(key, {})[part] = challenge_stats(
-                    simulate(rungs, acc, ss, "challenge", s, s, guard=g))
-                out["funded"].setdefault(key, {})[part] = funded_stats(simulate(rungs, acc, ss, "funded", s, s, guard=g))
-                for sf in SHARES:
-                    out["career"].setdefault(f"{s}/{sf}|{g}", {})[part] = career_stats(
-                        simulate(rungs, acc, ss, "career", s, sf, guard=g))
+                out["challenge"].setdefault(f"{s}|{g}", {})[part] = challenge_stats(
+                    simulate(rungs, acc, ss, "challenge", s, s, guard=g, **kw))
+                for c in CUSHIONS:
+                    out["funded"].setdefault(f"{s}|{g}|{c}", {})[part] = funded_stats(
+                        simulate(rungs, acc, ss, "funded", s, s, guard=g, cushion=c, **kw))
+                    for sf in SHARES:
+                        out["career"].setdefault(f"{s}/{sf}|{g}|{c}", {})[part] = career_stats(
+                            simulate(rungs, acc, cs, "career", s, sf, guard=g, cushion=c, horizon=CAREER, **kw))
         for f in FIXED:
             if f not in names:
                 continue
             i = names.index(f)
             out["fixed"].setdefault(f, {})[part] = {
-                "challenge": challenge_stats(simulate(rungs, acc, ss, "challenge", fixed=i)),
-                "funded": funded_stats(simulate(rungs, acc, ss, "funded", fixed=i)),
-                "career": career_stats(simulate(rungs, acc, ss, "career", fixed=i))}
-    safe = [(sf, g) for g in GUARDS for sf in SHARES if out["funded"][f"{sf}|{g}"]["dev"]["lost_3m"] <= RISK_3M
-            and out["funded"][f"{sf}|{g}"]["dev"]["lost_1y"] <= RISK_1Y]
-    cands = [(sc, sf, g) for sc in SHARES for sf, g in safe]
-    net = lambda sc, sf, g: out["career"][f"{sc}/{sf}|{g}"]["dev"]["net_a_year"]  # noqa: E731
+                "challenge": challenge_stats(simulate(rungs, acc, ss, "challenge", fixed=i, **kw)),
+                "funded": funded_stats(simulate(rungs, acc, ss, "funded", fixed=i, **kw)),
+                "career": career_stats(simulate(rungs, acc, cs, "career", fixed=i, horizon=CAREER, **kw))}
+    fund = lambda sf, g, c: out["funded"][f"{sf}|{g}|{c}"]["dev"]                   # noqa: E731
+    safe = [(sf, g, c) for g in GUARDS for c in CUSHIONS for sf in SHARES
+            if fund(sf, g, c)["lost_3m"] <= RISK_3M and fund(sf, g, c)["lost_1y"] <= RISK_1Y]
+    net = lambda sc, sf, g, c: out["career"][f"{sc}/{sf}|{g}|{c}"]["dev"]["net_a_year"]  # noqa: E731
+    cands = [(sc,) + x for sc in SHARES for x in safe]
     out["sweet_spot"] = list(max(cands, key=lambda x: net(*x))) if cands else None
-    out["most_net"] = list(max(((sc, sf, g) for sc in SHARES for sf in SHARES for g in GUARDS), key=lambda x: net(*x)))
+    out["most_net"] = list(max(((sc, sf, g, c) for sc in SHARES for sf in SHARES for g in GUARDS for c in CUSHIONS),
+                               key=lambda x: net(*x)))
+    # the funded account's own frontier: for each share, the best guard and cushion by payouts on 2013-2019
+    out["frontier"] = []
+    for sf in SHARES:
+        g, c = max(((g, c) for g in GUARDS for c in CUSHIONS), key=lambda x: fund(sf, *x)["paid_a_year"]
+                   - 1e6 * (fund(sf, *x)["lost_1y"] > RISK_1Y))
+        out["frontier"].append({"share": sf, "guard": g, "cushion": c,
+                                "dev": out["funded"][f"{sf}|{g}|{c}"]["dev"], "test": out["funded"][f"{sf}|{g}|{c}"]["test"]})
     if out["sweet_spot"]:
-        sc, sf, _ = out["sweet_spot"]
+        sc, sf, _, _ = out["sweet_spot"]
         out["table"] = [{"size": r[0], "bad_day": round(r[3]), "room_in_challenge": round(r[3] / sc),
                          "room_funded": round(r[3] / sf)} for r in rungs]
     return out
+
+
+def _pct(x: float) -> str:
+    return f"{x:4.0%}"
 
 
 def report(acc: Account, o: dict) -> None:
     print(f"\n==== {acc.name}: ${acc.max_loss:,.0f} limit, ${acc.target:,.0f} target, "
           f"{'$%0.0f daily limit, ' % acc.daily_loss if acc.daily_loss else ''}{acc.max_micros} micros at most")
     print("  sizes and their bad days: " + ", ".join(f"{s['size']} ${s['bad_day']:,}" for s in o["sizes"]))
-    print("  share, guard | challenge: pass/lost (sessions)  13-19 | 20-25   | funded lost 3m/1y, owner's payouts a year  13-19 | 20-25")
+    print("  CHALLENGE  share|guard: passed/lost (median sessions to pass)   13-19 | 20-25")
     for key in (f"{s}|{g}" for g in GUARDS for s in SHARES):
-        c, f = o["challenge"][key], o["funded"][key]
-        print(f"  {key:12s} | {c['dev']['pass']:4.0%}/{c['dev']['lost']:4.0%} ({c['dev']['median_sessions_to_pass'] or 0:4.0f}) | "
-              f"{c['test']['pass']:4.0%}/{c['test']['lost']:4.0%} ({c['test']['median_sessions_to_pass'] or 0:4.0f}) | "
-              f"{f['dev']['lost_3m']:4.0%}/{f['dev']['lost_1y']:4.0%} ${f['dev']['paid_a_year']:7,.0f} | "
-              f"{f['test']['lost_3m']:4.0%}/{f['test']['lost_1y']:4.0%} ${f['test']['paid_a_year']:7,.0f}")
+        d, t = o["challenge"][key]["dev"], o["challenge"][key]["test"]
+        print(f"    {key:9s} {_pct(d['pass'])}/{_pct(d['lost'])} ({d['median_sessions_to_pass'] or 0:4.0f}) | "
+              f"{_pct(t['pass'])}/{_pct(t['lost'])} ({t['median_sessions_to_pass'] or 0:4.0f})")
+    print("  FUNDED  share (best guard, cushion): lost within 3 months / a year, owner's payouts a year   13-19 | 20-25")
+    for row in o["frontier"]:
+        d, t = row["dev"], row["test"]
+        print(f"    {row['share']:4.2f} (guard {row['guard']}, keep {row['cushion']:.0f} limit): {_pct(d['lost_3m'])}/"
+              f"{_pct(d['lost_1y'])} ${d['paid_a_year']:6,.0f} | {_pct(t['lost_3m'])}/{_pct(t['lost_1y'])} "
+              f"${t['paid_a_year']:6,.0f}")
     for name, x in o["fixed"].items():
-        c, f = x["dev"]["challenge"], x["dev"]["funded"]
-        ct, ft = x["test"]["challenge"], x["test"]["funded"]
-        print(f"  {name:12s} | {c['pass']:4.0%}/{c['lost']:4.0%} ({c['median_sessions_to_pass'] or 0:4.0f}) | "
-              f"{ct['pass']:4.0%}/{ct['lost']:4.0%} ({ct['median_sessions_to_pass'] or 0:4.0f}) | "
-              f"{f['lost_3m']:4.0%}/{f['lost_1y']:4.0%} ${f['paid_a_year']:7,.0f} | "
-              f"{ft['lost_3m']:4.0%}/{ft['lost_1y']:4.0%} ${ft['paid_a_year']:7,.0f}   (held from day one)")
-    print("  a year lived (challenge share / funded share, guard): net after fees, 13-19 | 20-25")
-    rows = [("sweet spot", o["sweet_spot"]), ("most net", o["most_net"])]
-    for label, pair in rows:
-        if not pair:
-            print(f"  {label}: none within the risk limits")
+        d, t = x["dev"]["funded"], x["test"]["funded"]
+        print(f"    {name} held:                  {_pct(d['lost_3m'])}/{_pct(d['lost_1y'])} ${d['paid_a_year']:6,.0f} | "
+              f"{_pct(t['lost_3m'])}/{_pct(t['lost_1y'])} ${t['paid_a_year']:6,.0f}")
+    print("  TWO YEARS LIVED, a year at a time: net after fees (median, share of starts below zero, challenges a year)"
+          "   13-19 | 20-24")
+    for label, key in (("sweet spot", o["sweet_spot"]), ("most net", o["most_net"])):
+        if not key:
+            print(f"    {label}: nothing within the risk limits")
             continue
-        x = o["career"][f"{pair[0]}/{pair[1]}|{pair[2]}"]
+        sc, sf, g, c = key
+        x = o["career"][f"{sc}/{sf}|{g}|{c}"]
         d, t = x["dev"], x["test"]
-        print(f"  {label:10s} {pair[0]}/{pair[1]}, guard {pair[2]}: ${d['net_a_year']:+7,.0f} (median {d['net_median']:+,.0f}, below zero "
-              f"{d['net_below_zero']:.0%}, {d['challenges_bought']:.1f} challenges) | ${t['net_a_year']:+7,.0f} (median "
-              f"{t['net_median']:+,.0f}, below zero {t['net_below_zero']:.0%}, {t['challenges_bought']:.1f} challenges, "
-              f"worst {t['net_worst']:+,.0f})")
+        print(f"    {label:10s} challenge {sc}, funded {sf}, guard {g}, keep {c:.0f} limit: ${d['net_a_year']:+7,.0f} "
+              f"(median {d['net_median']:+,.0f}, {d['net_below_zero']:.0%}, {d['challenges_bought']:.1f}) | "
+              f"${t['net_a_year']:+7,.0f} (median {t['net_median']:+,.0f}, {t['net_below_zero']:.0%}, "
+              f"{t['challenges_bought']:.1f}; worst {t['net_worst']:+,.0f})")
     for name, x in o["fixed"].items():
         d, t = x["dev"]["career"], x["test"]["career"]
-        print(f"  {name:10s} held: ${d['net_a_year']:+7,.0f} (below zero {d['net_below_zero']:.0%}, {d['challenges_bought']:.1f} "
-              f"challenges) | ${t['net_a_year']:+7,.0f} (below zero {t['net_below_zero']:.0%}, {t['challenges_bought']:.1f})")
+        print(f"    {name} held: ${d['net_a_year']:+7,.0f} (median {d['net_median']:+,.0f}, {d['net_below_zero']:.0%}, "
+              f"{d['challenges_bought']:.1f}) | ${t['net_a_year']:+7,.0f} (median {t['net_median']:+,.0f}, "
+              f"{t['net_below_zero']:.0%}, {t['challenges_bought']:.1f})")
 
 
 def main() -> int:
@@ -267,12 +303,18 @@ def main() -> int:
     days = {c: funded.by_day(funded.priced(trades, Ds, c, level), nd, "none") for c in funded.CONTRACTS}
     ok = np.arange(0, nd - HORIZON, EVERY)
     starts = {"dev": ok[dates[ok] < funded.SPLIT], "test": ok[dates[ok] >= funded.SPLIT]}
+    ok2 = np.arange(0, nd - CAREER, EVERY)
+    careers = {"dev": ok2[dates[ok2] < funded.SPLIT], "test": ok2[dates[ok2] >= funded.SPLIT]}
+    # one MYM stop: 0.30% of an MYM plus commission both ways, a tick in and two out
+    min_room = STOP * level["YM"] * 0.5 + 2 * funded.COMMISSION + 3 * 1.0 * 0.5
     print(f"{nd} NQ sessions to {dates[-1]}; {len(starts['dev'])} starts in 2013-2019, {len(starts['test'])} in "
-          f"2020-{dates[ok[-1]][:4]}; bot A, 0.30% stop; MNQ ${level['NQ'] * 2:,.0f}, MES ${level['ES'] * 5:,.0f}, "
-          f"MYM ${level['YM'] * 0.5:,.0f} of index")
-    out = {"data_to": str(dates[-1]), "risk_limits": {"lost_3m": RISK_3M, "lost_1y": RISK_1Y}, "accounts": {}}
+          f"2020-{dates[ok[-1]][:4]} ({len(careers['test'])} with two years after them, to {dates[ok2[-1]]}); "
+          f"bot A, 0.30% stop; MNQ ${level['NQ'] * 2:,.0f}, MES ${level['ES'] * 5:,.0f}, MYM ${level['YM'] * 0.5:,.0f} "
+          f"of index; an account with less than ${min_room:.0f} of room is lost")
+    out = {"data_to": str(dates[-1]), "risk_limits": {"lost_3m": RISK_3M, "lost_1y": RISK_1Y}, "min_room": min_room,
+           "accounts": {}}
     for acc in accounts.ALL.values():
-        o = study(acc, days, dates, starts)
+        o = study(acc, days, dates, starts, careers, min_room)
         report(acc, o)
         out["accounts"][acc.name] = o
     (HERE / "sweetspot.json").write_text(json.dumps(out, indent=1, default=float))

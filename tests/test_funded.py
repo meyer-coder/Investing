@@ -110,3 +110,10 @@ def test_the_room_guard_stops_the_day_before_the_limit():
     kept = sweetspot.simulate(rung, accounts.FUNDEDNEXT_25K, [0], "funded", fixed=0, guard=0.5, horizon=2)
     assert (lost["event"][0], lost["when"][0]) == (0, 1)
     assert kept["event"][0] == 2 and kept["left"][0] == -500.0
+
+
+def test_an_account_without_room_for_one_small_stop_is_lost():
+    # the guard halves the room each bad day; below $80 the account cannot trade and counts as lost
+    rung = [("1 MYM", np.full(10, -1e9), np.full(10, -1e9), 100.0)]
+    res = sweetspot.simulate(rung, accounts.FUNDEDNEXT_25K, [0], "funded", fixed=0, guard=0.5, min_room=80.0, horizon=10)
+    assert (res["event"][0], res["when"][0]) == (0, 5)                   # 1000 -> 500 -> 250 -> 125 -> 62.5: lost
