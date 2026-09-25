@@ -446,5 +446,1349 @@
   },
   "passed_search": false,
   "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1388,
+   "mean_bp": 0.2840727260878473,
+   "t": 0.3219822530278047,
+   "flip_pct": 90.85
+  },
+  "confirm": {
+   "n": 685,
+   "mean_bp": 5.00275317837698,
+   "t": 2.581505824457555,
+   "flip_pct": 99.85000000000001
+  },
+  "final": {
+   "n": 898,
+   "mean_bp": 0.0891219265891901,
+   "t": 0.07913018535526964,
+   "flip_pct": 80.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1285,
+   "mean_bp": 0.028363653934222445,
+   "t": 0.029431228619707577,
+   "flip_pct": 84.35000000000001
+  },
+  "confirm": {
+   "n": 631,
+   "mean_bp": 5.5727518757980095,
+   "t": 2.4912851979800243,
+   "flip_pct": 99.85000000000001
+  },
+  "final": {
+   "n": 826,
+   "mean_bp": 0.36321085287299215,
+   "t": 0.28748032067281515,
+   "flip_pct": 84.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1018,
+   "mean_bp": 1.512803971359951,
+   "t": 1.3490855120544958,
+   "flip_pct": 98.6
+  },
+  "confirm": {
+   "n": 517,
+   "mean_bp": 6.111913301215827,
+   "t": 2.657077197535841,
+   "flip_pct": 99.85000000000001
+  },
+  "final": {
+   "n": 674,
+   "mean_bp": -0.7927540229073111,
+   "t": -0.625217393530276,
+   "flip_pct": 54.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 916,
+   "mean_bp": 0.8484652345325909,
+   "t": 0.6411650151207428,
+   "flip_pct": 90.4
+  },
+  "confirm": {
+   "n": 468,
+   "mean_bp": 5.936530962896977,
+   "t": 2.2095446740063163,
+   "flip_pct": 99.5
+  },
+  "final": {
+   "n": 600,
+   "mean_bp": -0.03725123713841626,
+   "t": -0.023186888664695128,
+   "flip_pct": 70.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1410,
+   "mean_bp": -2.111734537658632,
+   "t": -1.6834867054948042,
+   "flip_pct": 16.950000000000003
+  },
+  "confirm": {
+   "n": 738,
+   "mean_bp": 2.9726793630632886,
+   "t": 1.0395689797494838,
+   "flip_pct": 91.3
+  },
+  "final": {
+   "n": 917,
+   "mean_bp": 0.5473177585710343,
+   "t": 0.35720112196491827,
+   "flip_pct": 83.39999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1360,
+   "mean_bp": -2.3190231682310656,
+   "t": -1.756107729944292,
+   "flip_pct": 15.7
+  },
+  "confirm": {
+   "n": 715,
+   "mean_bp": 0.9160891693979712,
+   "t": 0.3063852779765859,
+   "flip_pct": 73.05
+  },
+  "final": {
+   "n": 900,
+   "mean_bp": 0.5281843167604751,
+   "t": 0.3270925973972652,
+   "flip_pct": 80.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1360,
+   "mean_bp": -1.5309341850190745,
+   "t": -1.4099954349872739,
+   "flip_pct": 29.849999999999998
+  },
+  "confirm": {
+   "n": 715,
+   "mean_bp": 1.4980369988585713,
+   "t": 0.620956369190818,
+   "flip_pct": 83.89999999999999
+  },
+  "final": {
+   "n": 900,
+   "mean_bp": 0.30567277323680475,
+   "t": 0.230447179743499,
+   "flip_pct": 83.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1167,
+   "mean_bp": -1.6297451067897966,
+   "t": -1.132406860535859,
+   "flip_pct": 30.8
+  },
+  "confirm": {
+   "n": 599,
+   "mean_bp": 3.3342182532827414,
+   "t": 1.0457559975881447,
+   "flip_pct": 91.8
+  },
+  "final": {
+   "n": 770,
+   "mean_bp": 0.7761454750241136,
+   "t": 0.42802601418265757,
+   "flip_pct": 83.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1167,
+   "mean_bp": -0.7440593466204691,
+   "t": -0.6067816447606548,
+   "flip_pct": 55.35
+  },
+  "confirm": {
+   "n": 599,
+   "mean_bp": 4.9240589046312575,
+   "t": 1.8190310734420145,
+   "flip_pct": 98.8
+  },
+  "final": {
+   "n": 770,
+   "mean_bp": 0.5998652140504352,
+   "t": 0.3879249698351302,
+   "flip_pct": 84.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "momentum close->30m",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1426,
+   "mean_bp": -1.3630906809234475,
+   "t": -2.701294548731156,
+   "flip_pct": 20.45
+  },
+  "confirm": {
+   "n": 745,
+   "mean_bp": -1.5078410056492604,
+   "t": -1.126204312781125,
+   "flip_pct": 33.95
+  },
+  "final": {
+   "n": 921,
+   "mean_bp": 0.14949106476402754,
+   "t": 0.246500196891436,
+   "flip_pct": 95.85000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "momentum open->30m",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1416,
+   "mean_bp": -1.4005744031669198,
+   "t": -2.7580239440442655,
+   "flip_pct": 18.85
+  },
+  "confirm": {
+   "n": 744,
+   "mean_bp": -0.8559478673557447,
+   "t": -0.6384557419824171,
+   "flip_pct": 52.05
+  },
+  "final": {
+   "n": 921,
+   "mean_bp": -0.2934155908409202,
+   "t": -0.48326447124780536,
+   "flip_pct": 84.65
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "momentum close->noon",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1426,
+   "mean_bp": -1.0218297902633142,
+   "t": -2.02407747362352,
+   "flip_pct": 43.5
+  },
+  "confirm": {
+   "n": 744,
+   "mean_bp": -0.6692670366956183,
+   "t": -0.4991821238962764,
+   "flip_pct": 57.599999999999994
+  },
+  "final": {
+   "n": 921,
+   "mean_bp": -0.3547151512223643,
+   "t": -0.5841603081606547,
+   "flip_pct": 82.69999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "gap follow, 60m",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 430,
+   "mean_bp": -2.00043495095988,
+   "t": -1.2922551587845148,
+   "flip_pct": 24.7
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": 5.750570479953681,
+   "t": 1.538198775484453,
+   "flip_pct": 96.25
+  },
+  "final": {
+   "n": 273,
+   "mean_bp": -2.2119855231827157,
+   "t": -0.9978661390342966,
+   "flip_pct": 28.199999999999996
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "gap follow, to close",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 430,
+   "mean_bp": -2.787736631083998,
+   "t": -1.1095359491164218,
+   "flip_pct": 23.150000000000002
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": 6.537535034556027,
+   "t": 1.0112321347589275,
+   "flip_pct": 87.7
+  },
+  "final": {
+   "n": 273,
+   "mean_bp": -2.1323029829165825,
+   "t": -0.5833242820633936,
+   "flip_pct": 37.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "gap fade, 60m",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 430,
+   "mean_bp": -0.41598852863803104,
+   "t": -0.25049153051319145,
+   "flip_pct": 61.5
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": -10.610350692480234,
+   "t": -2.8516270110749575,
+   "flip_pct": 0.6
+  },
+  "final": {
+   "n": 273,
+   "mean_bp": -0.9423466532988852,
+   "t": -0.42342389540695324,
+   "flip_pct": 48.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA500.IDX/USD",
+  "contract": "MES",
+  "variant": "gap fade, to close",
+  "cost_bp": 0.9531435159978221,
+  "sessions": 3108,
+  "first": "2013-01-01",
+  "search": {
+   "n": 430,
+   "mean_bp": 0.8652540066429085,
+   "t": 0.2767897383002205,
+   "flip_pct": 72.3
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": -8.127583270538816,
+   "t": -1.2314633777675357,
+   "flip_pct": 14.299999999999999
+  },
+  "final": {
+   "n": 273,
+   "mean_bp": 3.5992517341281376,
+   "t": 0.8699733277547265,
+   "flip_pct": 85.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1652,
+   "mean_bp": -0.01830832776576098,
+   "t": -0.02587374624109394,
+   "flip_pct": 87.85
+  },
+  "confirm": {
+   "n": 745,
+   "mean_bp": 1.341734291649458,
+   "t": 0.7711292067417332,
+   "flip_pct": 89.14999999999999
+  },
+  "final": {
+   "n": 930,
+   "mean_bp": -1.170263523267456,
+   "t": -1.236035098281366,
+   "flip_pct": 37.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1533,
+   "mean_bp": -0.4908277130250015,
+   "t": -0.6201644078052141,
+   "flip_pct": 66.14999999999999
+  },
+  "confirm": {
+   "n": 698,
+   "mean_bp": 0.2598012296386285,
+   "t": 0.13305289814240778,
+   "flip_pct": 69.69999999999999
+  },
+  "final": {
+   "n": 860,
+   "mean_bp": -1.1475567754588323,
+   "t": -1.061101502680829,
+   "flip_pct": 38.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1221,
+   "mean_bp": 0.6101320691716029,
+   "t": 0.6960303232408257,
+   "flip_pct": 94.45
+  },
+  "confirm": {
+   "n": 558,
+   "mean_bp": 0.6222081179825631,
+   "t": 0.3105699754314213,
+   "flip_pct": 79.35
+  },
+  "final": {
+   "n": 696,
+   "mean_bp": -1.7341913730632672,
+   "t": -1.5463312017698936,
+   "flip_pct": 21.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1103,
+   "mean_bp": -0.25290270348570715,
+   "t": -0.2452252723608534,
+   "flip_pct": 71.1
+  },
+  "confirm": {
+   "n": 501,
+   "mean_bp": 0.7528507695317341,
+   "t": 0.30881844716935936,
+   "flip_pct": 75.14999999999999
+  },
+  "final": {
+   "n": 625,
+   "mean_bp": -2.079720520757566,
+   "t": -1.523000972514962,
+   "flip_pct": 17.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1652,
+   "mean_bp": -2.0309818699505477,
+   "t": -1.947114341978303,
+   "flip_pct": 12.3
+  },
+  "confirm": {
+   "n": 733,
+   "mean_bp": -0.6374478801120179,
+   "t": -0.22998965789640033,
+   "flip_pct": 52.55
+  },
+  "final": {
+   "n": 910,
+   "mean_bp": -1.2941320933437608,
+   "t": -0.7663500212730909,
+   "flip_pct": 39.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1573,
+   "mean_bp": -2.7822195703923334,
+   "t": -2.5594265562625735,
+   "flip_pct": 3.4000000000000004
+  },
+  "confirm": {
+   "n": 692,
+   "mean_bp": 0.4163619551660795,
+   "t": 0.13808932846484337,
+   "flip_pct": 65.3
+  },
+  "final": {
+   "n": 855,
+   "mean_bp": -0.30871503033082265,
+   "t": -0.17347797282597838,
+   "flip_pct": 61.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1573,
+   "mean_bp": -1.4418340948892607,
+   "t": -1.5755061235272019,
+   "flip_pct": 25.05
+  },
+  "confirm": {
+   "n": 692,
+   "mean_bp": 0.9401935442900642,
+   "t": 0.3929604438186889,
+   "flip_pct": 76.05
+  },
+  "final": {
+   "n": 855,
+   "mean_bp": -1.8303616975713015,
+   "t": -1.4319667011632797,
+   "flip_pct": 22.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1315,
+   "mean_bp": -1.7638021779916233,
+   "t": -1.427185966678385,
+   "flip_pct": 23.45
+  },
+  "confirm": {
+   "n": 570,
+   "mean_bp": 1.2850024392472188,
+   "t": 0.4104190932832728,
+   "flip_pct": 73.45
+  },
+  "final": {
+   "n": 710,
+   "mean_bp": -1.756929827351745,
+   "t": -0.9847847473263243,
+   "flip_pct": 29.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1315,
+   "mean_bp": -0.1718960709099035,
+   "t": -0.16368435781875648,
+   "flip_pct": 74.3
+  },
+  "confirm": {
+   "n": 570,
+   "mean_bp": 1.135521837379162,
+   "t": 0.4276476358550813,
+   "flip_pct": 75.55
+  },
+  "final": {
+   "n": 710,
+   "mean_bp": -2.3883169243810785,
+   "t": -1.556788433022217,
+   "flip_pct": 15.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "momentum close->30m",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1699,
+   "mean_bp": -1.6299766940688807,
+   "t": -3.9033974837088756,
+   "flip_pct": 2.9000000000000004
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": -2.940924892450417,
+   "t": -2.275140406951474,
+   "flip_pct": 4.8
+  },
+  "final": {
+   "n": 922,
+   "mean_bp": -0.5955477768834617,
+   "t": -1.1022975957299854,
+   "flip_pct": 66.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "momentum open->30m",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1681,
+   "mean_bp": -1.2405178638882572,
+   "t": -2.9405499955953234,
+   "flip_pct": 17.8
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": -0.2145534962166872,
+   "t": -0.1657186768839925,
+   "flip_pct": 69.75
+  },
+  "final": {
+   "n": 922,
+   "mean_bp": -1.1905105230855333,
+   "t": -2.203211527910808,
+   "flip_pct": 25.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "momentum close->noon",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1698,
+   "mean_bp": -1.5007270257695908,
+   "t": -3.590749277355313,
+   "flip_pct": 4.75
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": -1.8860884745471278,
+   "t": -1.4571812348270097,
+   "flip_pct": 21.2
+  },
+  "final": {
+   "n": 923,
+   "mean_bp": -0.6592435405854957,
+   "t": -1.2211701280509808,
+   "flip_pct": 62.849999999999994
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "gap follow, 60m",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 500,
+   "mean_bp": -0.5310022041346112,
+   "t": -0.39485011175389306,
+   "flip_pct": 57.25
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": 4.035681790306811,
+   "t": 1.1692812179811973,
+   "flip_pct": 91.45
+  },
+  "final": {
+   "n": 221,
+   "mean_bp": -0.9128141322304514,
+   "t": -0.35319720309880737,
+   "flip_pct": 49.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "gap follow, to close",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 500,
+   "mean_bp": -0.39068238716096215,
+   "t": -0.18013151930596868,
+   "flip_pct": 57.25
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": 0.11014396049939955,
+   "t": 0.018843359693893454,
+   "flip_pct": 55.00000000000001
+  },
+  "final": {
+   "n": 221,
+   "mean_bp": -1.1838955462664806,
+   "t": -0.2957380933078233,
+   "flip_pct": 46.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "gap fade, 60m",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 500,
+   "mean_bp": -1.1179942662783027,
+   "t": -0.7551817706141797,
+   "flip_pct": 43.05
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": -7.314947901034915,
+   "t": -2.0915282320749307,
+   "flip_pct": 3.8
+  },
+  "final": {
+   "n": 221,
+   "mean_bp": -1.5223996273636697,
+   "t": -0.6207717268185544,
+   "flip_pct": 39.35
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USA30.IDX/USD",
+  "contract": "MYM",
+  "variant": "gap fade, to close",
+  "cost_bp": 0.8509007282483709,
+  "sessions": 3385,
+  "first": "2013-01-01",
+  "search": {
+   "n": 500,
+   "mean_bp": -2.7490956881416233,
+   "t": -1.0252672515618129,
+   "flip_pct": 23.95
+  },
+  "confirm": {
+   "n": 229,
+   "mean_bp": -2.180721775164457,
+   "t": -0.3535608049667342,
+   "flip_pct": 41.349999999999994
+  },
+  "final": {
+   "n": 221,
+   "mean_bp": 4.423850310476092,
+   "t": 0.7544328607737165,
+   "flip_pct": 79.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1809,
+   "mean_bp": -2.6534788131323004,
+   "t": -7.353171182177687,
+   "flip_pct": 44.800000000000004
+  },
+  "confirm": {
+   "n": 785,
+   "mean_bp": -2.4493899797437932,
+   "t": -4.374415936307253,
+   "flip_pct": 59.95
+  },
+  "final": {
+   "n": 954,
+   "mean_bp": -2.6814959393041744,
+   "t": -5.744692889704051,
+   "flip_pct": 42.35
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1667,
+   "mean_bp": -2.606247706624528,
+   "t": -6.521465986595037,
+   "flip_pct": 48.65
+  },
+  "confirm": {
+   "n": 727,
+   "mean_bp": -2.6797710682104485,
+   "t": -4.316312442953276,
+   "flip_pct": 45.0
+  },
+  "final": {
+   "n": 875,
+   "mean_bp": -2.7059130562954454,
+   "t": -5.184154701651714,
+   "flip_pct": 41.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1306,
+   "mean_bp": -2.6412170553287204,
+   "t": -6.103450687798346,
+   "flip_pct": 46.550000000000004
+  },
+  "confirm": {
+   "n": 576,
+   "mean_bp": -1.9415130721246563,
+   "t": -2.748662767866389,
+   "flip_pct": 82.85
+  },
+  "final": {
+   "n": 699,
+   "mean_bp": -2.620824774233078,
+   "t": -4.651566684219314,
+   "flip_pct": 48.699999999999996
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1155,
+   "mean_bp": -2.2774456688570988,
+   "t": -4.41911599629444,
+   "flip_pct": 73.9
+  },
+  "confirm": {
+   "n": 524,
+   "mean_bp": -1.6904797622294432,
+   "t": -2.0598348270558837,
+   "flip_pct": 84.75
+  },
+  "final": {
+   "n": 617,
+   "mean_bp": -2.6867397753800515,
+   "t": -3.930530396318263,
+   "flip_pct": 44.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1773,
+   "mean_bp": -2.016882835922169,
+   "t": -3.6676286853021565,
+   "flip_pct": 84.95
+  },
+  "confirm": {
+   "n": 772,
+   "mean_bp": -2.7464514066595873,
+   "t": -3.218118457664886,
+   "flip_pct": 42.25
+  },
+  "final": {
+   "n": 938,
+   "mean_bp": -2.5713048021634064,
+   "t": -3.983986391520809,
+   "flip_pct": 51.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1739,
+   "mean_bp": -1.9580372409929578,
+   "t": -3.5315673273975245,
+   "flip_pct": 85.85000000000001
+  },
+  "confirm": {
+   "n": 761,
+   "mean_bp": -2.3527218944193855,
+   "t": -2.6442998206082007,
+   "flip_pct": 61.150000000000006
+  },
+  "final": {
+   "n": 929,
+   "mean_bp": -2.4432925326552586,
+   "t": -3.631739036690389,
+   "flip_pct": 57.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1739,
+   "mean_bp": -2.3906295023992503,
+   "t": -5.0937074648971965,
+   "flip_pct": 66.45
+  },
+  "confirm": {
+   "n": 761,
+   "mean_bp": -2.069550755922352,
+   "t": -2.725742288579894,
+   "flip_pct": 75.14999999999999
+  },
+  "final": {
+   "n": 929,
+   "mean_bp": -2.6641590912344952,
+   "t": -4.788770356124601,
+   "flip_pct": 45.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1650,
+   "mean_bp": -2.668695436139992,
+   "t": -4.858211728293506,
+   "flip_pct": 45.300000000000004
+  },
+  "confirm": {
+   "n": 732,
+   "mean_bp": -1.9619410547967464,
+   "t": -2.184691804268853,
+   "flip_pct": 75.64999999999999
+  },
+  "final": {
+   "n": 895,
+   "mean_bp": -2.4976420599853326,
+   "t": -3.63349967555538,
+   "flip_pct": 55.00000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1650,
+   "mean_bp": -2.7843844695422244,
+   "t": -5.849384566306063,
+   "flip_pct": 36.55
+  },
+  "confirm": {
+   "n": 732,
+   "mean_bp": -1.7407926959159823,
+   "t": -2.2792032643381486,
+   "flip_pct": 86.6
+  },
+  "final": {
+   "n": 895,
+   "mean_bp": -2.547938362546896,
+   "t": -4.18901478300425,
+   "flip_pct": 52.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "momentum close->30m",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1786,
+   "mean_bp": -2.506957644946891,
+   "t": -25.30775069941413,
+   "flip_pct": 83.15
+  },
+  "confirm": {
+   "n": 777,
+   "mean_bp": -2.484080295996188,
+   "t": -16.19676880531446,
+   "flip_pct": 78.3
+  },
+  "final": {
+   "n": 957,
+   "mean_bp": -2.694219299423618,
+   "t": -19.095927626384626,
+   "flip_pct": 26.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "momentum open->30m",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1775,
+   "mean_bp": -2.537064108638137,
+   "t": -25.453381878604546,
+   "flip_pct": 74.7
+  },
+  "confirm": {
+   "n": 777,
+   "mean_bp": -2.5813281609159175,
+   "t": -16.819406647051576,
+   "flip_pct": 54.15
+  },
+  "final": {
+   "n": 955,
+   "mean_bp": -2.670111785690345,
+   "t": -18.885726291386447,
+   "flip_pct": 31.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "momentum close->noon",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1787,
+   "mean_bp": -2.5426620555706005,
+   "t": -25.664755882780245,
+   "flip_pct": 72.8
+  },
+  "confirm": {
+   "n": 778,
+   "mean_bp": -2.3409854530766907,
+   "t": -15.301820509766022,
+   "flip_pct": 94.85
+  },
+  "final": {
+   "n": 953,
+   "mean_bp": -2.7021176287026463,
+   "t": -19.421836473866797,
+   "flip_pct": 22.650000000000002
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "gap follow, 60m",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 686,
+   "mean_bp": -3.0976200204761972,
+   "t": -4.726861267184914,
+   "flip_pct": 22.900000000000002
+  },
+  "confirm": {
+   "n": 333,
+   "mean_bp": -3.7237785729472797,
+   "t": -4.7335875286754865,
+   "flip_pct": 6.8500000000000005
+  },
+  "final": {
+   "n": 334,
+   "mean_bp": -2.4991701697247484,
+   "t": -3.356586153122719,
+   "flip_pct": 54.300000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "gap follow, to close",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 686,
+   "mean_bp": -3.2841786498826706,
+   "t": -2.904653024499388,
+   "flip_pct": 27.05
+  },
+  "confirm": {
+   "n": 333,
+   "mean_bp": -5.4782491700708995,
+   "t": -3.7115173334291796,
+   "flip_pct": 2.55
+  },
+  "final": {
+   "n": 334,
+   "mean_bp": -5.095371330874524,
+   "t": -4.0628690005980985,
+   "flip_pct": 2.1999999999999997
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "gap fade, 60m",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 686,
+   "mean_bp": -1.5321085989106409,
+   "t": -2.3010000000676603,
+   "flip_pct": 94.15
+  },
+  "confirm": {
+   "n": 333,
+   "mean_bp": -1.5485431645834173,
+   "t": -1.7579045922291106,
+   "flip_pct": 87.05000000000001
+  },
+  "final": {
+   "n": 334,
+   "mean_bp": -2.5744564462873463,
+   "t": -3.4519561696928824,
+   "flip_pct": 49.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "EUR/USD",
+  "contract": "M6E",
+  "variant": "gap fade, to close",
+  "cost_bp": 2.6040162751017197,
+  "sessions": 3539,
+  "first": "2013-01-01",
+  "search": {
+   "n": 686,
+   "mean_bp": -2.0292642650024133,
+   "t": -1.761317196306163,
+   "flip_pct": 68.45
+  },
+  "confirm": {
+   "n": 333,
+   "mean_bp": -0.989498225934083,
+   "t": -0.5916033090219376,
+   "flip_pct": 82.69999999999999
+  },
+  "final": {
+   "n": 334,
+   "mean_bp": -0.8079755123976097,
+   "t": -0.5676834835375892,
+   "flip_pct": 89.05
+  },
+  "passed_search": false,
+  "confirmed": false
  }
 ]
