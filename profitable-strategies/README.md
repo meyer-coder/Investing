@@ -1,5 +1,18 @@
 # Profitable strategies
 
+**New: [D609, CB51 and CBE3 from 2018, 20,000+ trades each](top5/since-2018/README.md).**
+
+- **All three made money since 2018, but random entry days on the same
+  funds made more a trade.**
+  - D609: 25,053 trades, -7.5 bp a trade against random.
+  - CB51: 37,606 trades, -3.1 bp.
+  - CBE3: 30,354 trades, -22.5 bp.
+- **Holding beat them.** Holding the fund beat the rule on 92-95% of the
+  funds.
+- **Most of the money is Micron's 2025-2026 rally.**
+- **They can't run on the funded accounts.** They trade ETFs held for days,
+  and Topstep and FundedNext allow only CME futures, flat by the close.
+
 **New: [the NQ and ES breakout and liquidity-sweep bot](futures/breakout-bot/README.md).**
 Tested on 13 years of one-minute bars, the rules chosen on 2013-2019 and
 checked on 2020-2026.
@@ -15,15 +28,19 @@ checked on 2020-2026.
 - **Leverage cuts both ways.** Account growth peaks at about 5 MNQ a bot per
   $25,000, with an 88% fall along the way. On a 50K evaluation, 1 MNQ
   passes most often (about half the time); more contracts lower the odds.
-- **Sized for the owner's loss limits.** The accounts are a 25K with a
-  $2,000 limit and a 100K with a $3,000 limit. The fix is to start small and
-  size up only as the room above the limit grows: NQ's signal traded in
-  1 MES on the 25K, 1 MNQ on the 100K.
-  - No account was lost in its first three months from any start since
-    2013.
-  - Within a year, 4-15% of the 25K accounts and 2-5% of the 100K accounts
-    were lost.
-  - A $1,000 limit isn't workable.
+- **Sized for the owner's accounts.** The accounts are a FundedNext Legacy
+  25K ($1,000 limit) and a Topstep 100K ($3,000 limit, $2,000 a day). Each
+  firm's rules are written into `evotrader/accounts.py`, checked on the
+  firms' pages on 2026-09-25.
+  - **The 25K doesn't fit the bot.** No sizing kept its funded account.
+  - **On the Topstep 100K, money grows with size, because a lost account
+    costs only a new $99 Combine.** Two years lived, net a year after
+    every fee (2013-2019 starts | 2020-2024 starts):
+    - safe sizing kept funded accounts but made +$515 | +$2,301;
+    - 2 MNQ from day one made +$3,485 | +$8,680, positive on median in
+      both, but lost a third of its funded accounts within three months;
+    - the setting picked by the rule set in advance made +$3,403 | +$6,389
+      and kept its funded accounts.
 
 **New: [crypto: AAVE, BNB, BTC, INJ and MSTR](crypto/README.md).**
 

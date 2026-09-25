@@ -11884,6 +11884,98 @@
        "funded_lost": 2.08
       }
      }
+    },
+    "3 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.207,
+       "lost": 0.793,
+       "median_sessions_to_pass": 41.0
+      },
+      "funded": {
+       "lost_3m": 0.883,
+       "lost_1y": 1.0,
+       "paid_a_year": 1479.0
+      },
+      "career": {
+       "net_a_year": 2283.0,
+       "net_median": -860.0,
+       "net_worst": -2080.0,
+       "net_below_zero": 0.527,
+       "paid": 3476.0,
+       "fees": 1192.0,
+       "challenges_bought": 14.9,
+       "funded_lost": 2.47
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.197,
+       "lost": 0.778,
+       "median_sessions_to_pass": 26.0
+      },
+      "funded": {
+       "lost_3m": 0.88,
+       "lost_1y": 1.0,
+       "paid_a_year": 1759.0
+      },
+      "career": {
+       "net_a_year": 4357.0,
+       "net_median": 3263.0,
+       "net_worst": -920.0,
+       "net_below_zero": 0.172,
+       "paid": 5046.0,
+       "fees": 690.0,
+       "challenges_bought": 8.62,
+       "funded_lost": 2.24
+      }
+     }
+    },
+    "5 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.156,
+       "lost": 0.844,
+       "median_sessions_to_pass": 45.5
+      },
+      "funded": {
+       "lost_3m": 0.922,
+       "lost_1y": 1.0,
+       "paid_a_year": 1487.0
+      },
+      "career": {
+       "net_a_year": 2951.0,
+       "net_median": -1303.0,
+       "net_worst": -3240.0,
+       "net_below_zero": 0.74,
+       "paid": 4798.0,
+       "fees": 1847.0,
+       "challenges_bought": 23.09,
+       "funded_lost": 2.38
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.13,
+       "lost": 0.859,
+       "median_sessions_to_pass": 25.0
+      },
+      "funded": {
+       "lost_3m": 0.951,
+       "lost_1y": 1.0,
+       "paid_a_year": 1657.0
+      },
+      "career": {
+       "net_a_year": 1807.0,
+       "net_median": 1065.0,
+       "net_worst": -1480.0,
+       "net_below_zero": 0.403,
+       "paid": 2982.0,
+       "fees": 1176.0,
+       "challenges_bought": 14.7,
+       "funded_lost": 3.19
+      }
+     }
     }
    },
    "sweet_spot": null,
@@ -23907,6 +23999,98 @@
        "fees": 833.0,
        "challenges_bought": 4.17,
        "funded_lost": 1.78
+      }
+     }
+    },
+    "3 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.317,
+       "lost": 0.683,
+       "median_sessions_to_pass": 43.0
+      },
+      "funded": {
+       "lost_3m": 0.787,
+       "lost_1y": 1.0,
+       "paid_a_year": 2205.0
+      },
+      "career": {
+       "net_a_year": 1485.0,
+       "net_median": 28.0,
+       "net_worst": -1900.0,
+       "net_below_zero": 0.488,
+       "paid": 2675.0,
+       "fees": 1190.0,
+       "challenges_bought": 5.95,
+       "funded_lost": 1.78
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.299,
+       "lost": 0.658,
+       "median_sessions_to_pass": 30.0
+      },
+      "funded": {
+       "lost_3m": 0.813,
+       "lost_1y": 0.996,
+       "paid_a_year": 2587.0
+      },
+      "career": {
+       "net_a_year": 6184.0,
+       "net_median": 7366.0,
+       "net_worst": -1169.0,
+       "net_below_zero": 0.086,
+       "paid": 7389.0,
+       "fees": 1205.0,
+       "challenges_bought": 6.03,
+       "funded_lost": 2.18
+      }
+     }
+    },
+    "5 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.234,
+       "lost": 0.766,
+       "median_sessions_to_pass": 42.0
+      },
+      "funded": {
+       "lost_3m": 0.859,
+       "lost_1y": 1.0,
+       "paid_a_year": 3013.0
+      },
+      "career": {
+       "net_a_year": 1037.0,
+       "net_median": -1828.0,
+       "net_worst": -4200.0,
+       "net_below_zero": 0.632,
+       "paid": 3675.0,
+       "fees": 2638.0,
+       "challenges_bought": 13.19,
+       "funded_lost": 2.42
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.225,
+       "lost": 0.75,
+       "median_sessions_to_pass": 26.0
+      },
+      "funded": {
+       "lost_3m": 0.901,
+       "lost_1y": 1.0,
+       "paid_a_year": 2706.0
+      },
+      "career": {
+       "net_a_year": 4700.0,
+       "net_median": 803.0,
+       "net_worst": -2161.0,
+       "net_below_zero": 0.395,
+       "paid": 6503.0,
+       "fees": 1802.0,
+       "challenges_bought": 9.01,
+       "funded_lost": 2.6
       }
      }
     }
@@ -36011,6 +36195,98 @@
        "fees": 621.0,
        "challenges_bought": 1.82,
        "funded_lost": 0.7
+      }
+     }
+    },
+    "3 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.443,
+       "lost": 0.557,
+       "median_sessions_to_pass": 45.0
+      },
+      "funded": {
+       "lost_3m": 0.572,
+       "lost_1y": 0.943,
+       "paid_a_year": 5402.0
+      },
+      "career": {
+       "net_a_year": 5562.0,
+       "net_median": 1263.0,
+       "net_worst": -1660.0,
+       "net_below_zero": 0.189,
+       "paid": 6678.0,
+       "fees": 1116.0,
+       "challenges_bought": 3.67,
+       "funded_lost": 1.25
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.412,
+       "lost": 0.577,
+       "median_sessions_to_pass": 44.0
+      },
+      "funded": {
+       "lost_3m": 0.673,
+       "lost_1y": 0.951,
+       "paid_a_year": 4030.0
+      },
+      "career": {
+       "net_a_year": 8197.0,
+       "net_median": 6527.0,
+       "net_worst": 574.0,
+       "net_below_zero": 0.0,
+       "paid": 9262.0,
+       "fees": 1064.0,
+       "challenges_bought": 3.63,
+       "funded_lost": 1.73
+      }
+     }
+    },
+    "5 MNQ": {
+     "dev": {
+      "challenge": {
+       "pass": 0.257,
+       "lost": 0.743,
+       "median_sessions_to_pass": 23.0
+      },
+      "funded": {
+       "lost_3m": 0.841,
+       "lost_1y": 0.967,
+       "paid_a_year": 4256.0
+      },
+      "career": {
+       "net_a_year": 5407.0,
+       "net_median": 2217.0,
+       "net_worst": -2304.0,
+       "net_below_zero": 0.428,
+       "paid": 7129.0,
+       "fees": 1721.0,
+       "challenges_bought": 9.49,
+       "funded_lost": 2.81
+      }
+     },
+     "test": {
+      "challenge": {
+       "pass": 0.32,
+       "lost": 0.68,
+       "median_sessions_to_pass": 24.0
+      },
+      "funded": {
+       "lost_3m": 0.824,
+       "lost_1y": 0.986,
+       "paid_a_year": 4282.0
+      },
+      "career": {
+       "net_a_year": 12310.0,
+       "net_median": 11581.0,
+       "net_worst": -1906.0,
+       "net_below_zero": 0.004,
+       "paid": 13807.0,
+       "fees": 1497.0,
+       "challenges_bought": 7.65,
+       "funded_lost": 2.45
       }
      }
     }

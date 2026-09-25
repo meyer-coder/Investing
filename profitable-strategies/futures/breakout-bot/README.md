@@ -15,116 +15,130 @@ As of 2026-09-25. Backtests on one-minute bars from January 2013 to September
   day, but deeper losing stretches and lower odds of passing a funded
   evaluation. Past about 5 MNQ a bot per $25,000, the account actually grows
   more slowly.
-- **Your accounts need their own sizing.** On a $2,000 or $3,000 loss limit,
-  one MNQ from the first day is too much. Start small and size up only as
-  the room above the limit grows. See [your accounts](#your-accounts-a-2000-and-a-3000-loss-limit).
+- **Your accounts: the Topstep 100K works; the FundedNext 25K doesn't.**
+  Each firm's rules are now written into the code. On the 25K's $1,000
+  limit no sizing kept the funded account. On the Topstep 100K the choice
+  is between keeping funded accounts and making the most money: see
+  [your accounts](#your-accounts-the-fundednext-25k-and-the-topstep-100k).
 
-## Your accounts: a $2,000 and a $3,000 loss limit
+## Your accounts: the FundedNext 25K and the Topstep 100K
 
-The owner's 25K may lose no more than $2,000, and the 100K no more than
-$3,000. The replay (`strategies/sweeps/funded.py`) uses the FundedNext Legacy
-rules from `evotrader/prop.py`:
+**The rules, written into the code** (`evotrader/accounts.py`, checked on
+the firms' own pages on 2026-09-25):
 
-- the limit trails the best end-of-day balance and stops rising at the
-  starting balance;
-- touching it at any moment, even with an open trade, ends the account;
-- the challenge targets are $1,250 (25K) and $6,000 (100K), with no day
-  over 40% of the profit;
-- a funded account has no target; what matters is whether it survives.
-
-Accounts start every fifth session. The settings were chosen on accounts
-started in 2013-2019 and checked on accounts started in 2020-2025, each run
-for a year.
-
-**The bot as built loses the account too often.** At one MNQ its ordinary
-losing stretches reach $5,000.
-
-| One MNQ from day one | Challenge: passed / lost | Funded: lost within 3 months | within a year |
-| --- | --- | --- | --- |
-| 25K, $2,000 limit | 72% / 27% (2013-19 starts), 62% / 29% (2020-25 starts) | 13%, 20% | 41%, 34% |
-| 100K, $3,000 limit | 44% / 18%, 53% / 22% | 1%, 8% | 18%, 22% |
-
-**The fix is sizing off the room.** Room means how far the balance is above
-the point where the account is lost.
-
-- **Each morning, pick the size from the table.** It is the largest size
-  whose bad day fits the account's share of the room: a quarter on the 25K,
-  a third on the 100K. A bad day is the 1-in-100 daily loss of 2013-2019.
-- **MES and MYM follow NQ's signal.** They go in and out on the same minutes
-  as the NQ trade, with their own resting stop 0.30% from their fill.
-- **MES works as half an MNQ; MYM as a small fallback.** On MES the signal
-  keeps about three-quarters of its quality (+$9.86 a trade vs +$25.45 on an
-  MNQ). On MYM it keeps much less (+$3.38), so MYM is only the fallback near
-  the limit.
-- **Keep the bot's 0.30% stop and no day rule.** With this sizing, both
-  lost more accounts on 2020-2025 starts:
-  - tighter stops (0.15-0.20%);
-  - the day rules (done after the first loss, or one trade a day). They
-    shrink the bad day, so the table hands out more contracts than the
-    losing streaks can bear.
-- **Leave Bot B off these accounts.** It wins one trade in five, and its long
-  runs of small losses don't fit a trailing limit.
-
-| Room above the limit | 25K ($2,000 limit) | 100K ($3,000 limit) |
+| | FundedNext Legacy 25K | Topstep 100K |
 | --- | --- | --- |
-| Under $950 | 1 MYM | 1 MYM |
-| $950 to $1,328 | 1 MYM | 1 MES |
-| $1,328 to $1,609 | 1 MES | 1 MES |
-| $1,609 to $2,252 | 1 MES | 1 MNQ |
-| $2,252 to $3,220 | 1 MNQ | 1 MNQ |
-| $3,220 to $4,508 | 1 MNQ | 2 MNQ |
-| $4,508 to $4,829 | 2 MNQ | 2 MNQ |
-| $4,829 to $6,437 | 2 MNQ | 3 MNQ |
-| $6,437 to $6,760 | 2 MNQ | 4 MNQ |
-| $6,760 to $8,049 | 3 MNQ | 4 MNQ |
-| $8,049 to $9,012 | 3 MNQ | 5 MNQ |
-| $9,012 to $11,268 | 4 MNQ | 5 MNQ |
-| $11,268 and up | 5 MNQ | 5 MNQ |
+| Loss limit | $1,000 | $3,000 |
+| How it moves | Trails the best end-of-day balance, stops at the start | The same |
+| Touching it | Ends the account, open trades included | The same |
+| Daily limit | None | $2,000, optional; it ends the day, not the account |
+| Challenge target | $1,250, no day over 40% of the profit | $6,000, best day at most 55% of the profit |
+| Most contracts | 20 micros | 100 micros |
+| Cost | $79.99 a challenge | $99 a month in the Combine, $149 on passing |
+| Payouts | 80% to you, after 5 benchmark days, up to half the profit | 100% of the first $10,000, then 90%; after 5 winning days of $150+; up to half the balance, $5,000 at most |
+| Flat by | 15:10 Chicago (the bot is flat by 14:59) | The same |
 
-**How the two accounts start and grow:**
+Two numbers come from third-party guides because the firms show them only
+in images: Topstep's $6,000 target and FundedNext's $100 benchmark day.
+Check both against the plan you buy. The Pine script and every replay read
+these rules from the one file, and a test fails if they ever disagree.
 
-- **The 25K starts on 1 MES** (room $2,000).
-- **The 100K starts on 1 MNQ** (room $3,000).
-- **Before the limit locks, the room stays at or below the limit.** It keeps
-  trailing the best balance until that balance is a full limit above the
-  start. From then on, every dollar of profit adds a dollar of room.
+**How it was tested** (`strategies/sweeps/sweetspot.py`):
 
-**Results with this sizing:**
+- **The bot:** Bot A with its 0.30% stop. NQ's signal is traded in 1 MYM,
+  1 MES or 1-10 MNQ.
+- **Sizing:** each morning, the largest size whose bad day (its 1-in-100
+  daily loss in 2013-2019) fits a share of the room above the limit. The
+  challenge and the funded account get their own share.
+- **Two further levers:**
+  - a room guard that stops the day at a share of the room;
+  - how much room to leave after each payout: one loss limit or two.
+- **The replay:**
+  - a fresh account from every fifth session;
+  - two years lived: challenge, funded account, and a new challenge after
+    every loss;
+  - net is your share of the payouts minus every fee.
+- **Dead accounts:** one with less room than a single MYM stop (about $80)
+  counts as lost.
+- **Choosing:** the setting was chosen on accounts started in 2013-2019 and
+  checked on those started in 2020-2024.
 
-| | Challenge: passed / lost within a year | Median sessions to pass | Funded: lost within 3 months | within 6 months | within a year | Funded $ a session |
-| --- | --- | --- | --- | --- | --- | --- |
-| 25K, 2013-19 starts | 51% / 4% | 93 | 0% | 1% | 4% | $13 |
-| 25K, 2020-25 starts | 59% / 15% | 119 | 0% | 3% | 15% | $9 |
-| 100K, 2013-19 starts | 32% / 2% | 123 | 0% | 1% | 2% | $31 |
-| 100K, 2020-25 starts | 44% / 5% | 147 | 0% | 0% | 5% | $38 |
+**FundedNext 25K: don't run the bot on it.** No setting kept funded-account
+losses inside the limits (at most 5% within three months, 20% within a
+year). Even the smallest sizes lost 28-63% of funded accounts within a
+year, and challenges passed only 22-24% of the time on 2020-2025 starts.
+It nets a few hundred to about $2,000 a year only by treating every
+account as throwaway: 1 MNQ from day one, about four $80 challenges a year.
 
-**What these results say:**
+**Topstep 100K: two years lived, net a year after every fee.** Each cell is
+2013-2019 starts | 2020-2024 starts.
 
-- **No account was lost in its first three months** from any start since
-  2013, on either account.
-- **The cost is speed.**
-  - Challenges take about 4-7 months.
-  - On the 100K, more than half were still going after a year: not lost,
-    just not yet at $6,000.
-- **The 25K is the harder account.** Its lost-within-a-year rate rose to
-  15% on 2020-2025 starts (42 of 284 accounts).
-  - Two-thirds of those started in 2025 and were lost in December 2025 or
-    January 2026, during Bot A's slump.
-  - The rest started in 2020 and were lost in 2021.
-- **A $1,000 limit doesn't work.** That is what FundedNext publishes for
-  its Legacy 25K. On it, no version of the bot was safe: the best lost 27%
-  of funded accounts within a year on 2013-2019 starts and 56% on 2020-2025
-  starts, even at 1 MYM.
+| Setting | Challenge passed / lost | Funded lost within 3 months | Funded lost within a year | Net a year (median; runs below zero) |
+| --- | --- | --- | --- | --- |
+| Safe: 35% of the room | 35% / 2% \| 62% / 5% | 0% \| 0% | 2% \| 5% | +$515 (-$1,064; 81%) \| +$2,301 (-$112; 56%) |
+| Picked by the rule | 20% / 80% \| 22% / 77% | 0% \| 0% | 2% \| 9% | +$3,403 (-$86; 52%) \| +$6,389 (+$4,893; 12%) |
+| 2 MNQ from day one | 52% / 48% \| 54% / 40% | 30% \| 34% | 78% \| 66% | +$3,485 (+$984; 22%) \| +$8,680 (+$8,556; 1%) |
+| 3 MNQ from day one | 44% / 56% \| 41% / 58% | 57% \| 67% | 94% \| 95% | +$5,562 (+$1,263; 19%) \| +$8,197 (+$6,527; 0%) |
+| 5 MNQ from day one | 26% / 74% \| 32% / 68% | 84% \| 82% | 97% \| 99% | +$5,407 (+$2,217; 43%) \| +$12,310 (+$11,581; 0%) |
+
+"Picked by the rule" means:
+
+- the rule, set before looking at 2020-2024: the most net on 2013-2019
+  starts among settings whose funded accounts were lost within three
+  months at most 5% of the time, and within a year at most 20%;
+- an all-in challenge: the largest size up to 10 MNQ, which passes about
+  1 time in 5 within three weeks;
+- then 35% of the room in the funded account, with the day stopping at 80%
+  of the room;
+- two limits of room left after each payout.
+
+**What it says:**
+
+- **Safe keeps accounts but barely earns.** The Combine takes 5-7 months at
+  $99 a month. The funded account then trades about 1 MNQ and pays about
+  $3,000-3,800 a year.
+- **On Topstep a lost account is cheap: $99, plus $149 on the next pass.**
+  So the money grows with size:
+  - 2 MNQ from day one was positive on median in both halves;
+  - it ended below zero in 22% and 1% of two-year runs;
+  - but 30-34% of its funded accounts were lost within three months.
+- **Bigger sizes made more on 2020-2024 but churned hard.** At 3-5 MNQ, most
+  funded accounts were gone within three months, and a run bought 4-10
+  Combines a year.
+- **The choice is yours:**
+  - if a lost funded account is just a $250 restart to you, 2 MNQ from day
+    one was the best on both halves;
+  - if you want funded accounts to last, use the picked setting. Half of
+    its 2013-2019 runs ended below zero, though.
+- **Caveats:**
+  - 2020-2024 starts caught Bot A's best years. Its April 2025 to February
+    2026 slump appears only in the last runs.
+  - Money left in the account at the end is not counted.
+  - Topstep's funded-account scaling plan (contracts allowed by balance) is
+    shown only in an image on its page and is not modelled. Check that
+    2 MNQ fits its first step.
 
 **Running it:**
 
 1. **Script:** [noise_area_breakout_funded.pine](noise_area_breakout_funded.pine)
-   runs NQ's signal on whichever 1-minute chart you put it on: MES1!, MYM1!
-   or MNQ1!.
-2. **Size:** each morning, set "Contracts on this chart" (and the chart) from
-   the table.
-3. **Alerts:** they carry the symbol, the quantity and the 0.30% stop for a
-   webhook to the account.
+   on a 1-minute MNQ1! chart. Use MES1! or MYM1! when the panel says so.
+2. **Inputs:** Account, Phase (Challenge or Funded), and the room this
+   morning. The room is the balance minus the loss limit's level, as the
+   firm shows it.
+3. **Size:**
+   - with "Size from the room" on, the script picks the size from the table
+     above and shows it on the chart;
+   - for 2 MNQ from day one, turn it off and set the contracts to 2.
+4. **The day's stop:**
+   - the day stops at the room guard (80% of the room on the Topstep
+     preset) or at Topstep's $2,000 daily limit, whichever comes first;
+   - a stop is never tighter than 20 round trips of cost, and a trade that
+     would need one is skipped.
+5. **Alerts:** they carry the symbol, the quantity and the stop in ticks for
+   a webhook.
+
+**Paper-test first.** The script has not been compiled on TradingView in
+this session.
 
 ## The bot: two NQ breakouts
 
@@ -311,7 +325,13 @@ figures differ slightly from those above.
   It fell $5,678 per MNQ from 2025-04-24 to 2026-02-02, and has made back
   $3,882 since.
 - **Funded rules vary.** Some firms trail the drawdown intraday, which is
-  stricter than the end-of-day trailing used here.
+  stricter than the end-of-day trailing used here. The owner's two accounts
+  are written into `evotrader/accounts.py`.
+- **Not CME data.** The backtest's minutes are the CFD, not CME NQ. They
+  move together minute for minute, and costs are charged at MNQ's own
+  commission and ticks. The paper run uses real NQ and MNQ futures minutes.
+  A check on CME minute bars needs a data key, such as Databento's, in the
+  environment settings.
 
 ## Running it
 

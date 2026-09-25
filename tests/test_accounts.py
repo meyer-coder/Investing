@@ -41,3 +41,16 @@ def test_the_pine_script_carries_the_same_limits():
         assert m, acc.name
         max_loss, daily_loss = (float(x) for x in m.group(1).split(",")[:2])
         assert (max_loss, daily_loss) == (acc.max_loss, acc.daily_loss), acc.name
+
+
+def test_the_pine_sizing_is_the_one_the_study_picked():
+    import json
+    study = json.loads((ROOT / "strategies" / "sweeps" / "sweetspot.json").read_text())["accounts"]
+    src = PINE.read_text()
+    bad = [float(x) for x in re.search(r"var sizeBad\s*=\s*array\.from\(([^)]*)\)", src).group(1).split(",")]
+    for name, o in study.items():
+        assert bad == [float(s["bad_day"]) for s in o["sizes"]], name
+        if o["sweet_spot"]:
+            m = re.search(r'"' + re.escape(name) + r'"\s*=>\s*array\.from\(([^)]*)\)', src)
+            share_c, share_f, guard = (float(x) for x in m.group(1).split(",")[3:6])
+            assert [share_c, share_f, guard] == o["sweet_spot"][:3], name

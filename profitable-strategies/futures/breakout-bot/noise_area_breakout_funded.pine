@@ -23,7 +23,8 @@
 //   says which chart to use and nothing is traded here;
 // * the room guard: the day stops once its loss, open trades included, reaches the account's share of the
 //   room (and Topstep's $2,000 daily limit); every stop rests at the tighter of `stopPct` and what is left of
-//   that day's allowance.
+//   that day's allowance, but never tighter than 20 round trips of cost: a trade that would need a tighter stop
+//   is skipped, since there the costs would decide it.
 // The Strategy Tester applies today's room to every past day: it shows the signal, not the account's path.
 // Paper-test before any money.
 strategy("Noise-Area Breakout, funded (NQ signal)", overlay = true, default_qty_type = strategy.fixed, default_qty_value = 1,
@@ -43,13 +44,17 @@ every      = input.int(30, "Check every (minutes)", options = [15, 30, 60], grou
 allowShort = input.bool(true, "Allow shorts", group = "Signal")
 tz         = "America/New_York"
 
-// Each account's rules (evotrader/accounts.py) and sizing (strategies/sweeps/sweetspot.json): loss limit, daily
-// loss limit (0 = none), most micros, the share of the room a bad day may take in the challenge and in the funded
-// account, and the room guard (0 = off).
+// Each account's rules (evotrader/accounts.py) and sizing (strategies/sweeps/sweetspot.json, the setting picked on
+// 2013-2019 starts): loss limit, daily loss limit (0 = none), most micros, the share of the room a bad day may take
+// in the challenge and in the funded account, and the room guard (0 = off).  The challenge share of 3 means the
+// largest size the firm allows up to 10 MNQ: a lost challenge costs only its fee.  The FundedNext 25K has no
+// setting inside the risk limits; its row is the least bad, and README.md says not to run the bot there.  To
+// hold a fixed size instead (2 MNQ from day one earned more on both halves but loses most funded accounts),
+// turn off "Size from the room" and set the contracts.
 rules = switch account
     "FundedNext Legacy 25K" => array.from(1000.0, 0.0, 20.0, 0.25, 0.25, 0.0)
-    "Topstep 100K" => array.from(3000.0, 2000.0, 100.0, 0.35, 0.35, 0.0)
-    "FundedNext Legacy 50K" => array.from(2000.0, 0.0, 30.0, 0.25, 0.25, 0.0)
+    "Topstep 100K" => array.from(3000.0, 2000.0, 100.0, 3.0, 0.35, 0.8)
+    "FundedNext Legacy 50K" => array.from(2000.0, 0.0, 30.0, 3.0, 0.35, 0.0)
 maxLoss   = rules.get(0)
 dailyLoss = rules.get(1)
 maxMicros = rules.get(2)
@@ -60,7 +65,7 @@ guard     = rules.get(5)
 // September 2026 prices (sweetspot.json, "sizes").
 var sizeRoot = array.from("MYM", "MES", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ")
 var sizeQty  = array.from(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-var sizeBad  = array.from(195.0, 332.0, 563.0, 1127.0, 1690.0, 2253.0, 2817.0, 3380.0, 3943.0, 4507.0, 5070.0, 5633.0)
+var sizeBad  = array.from(194.0, 332.0, 563.0, 1126.0, 1689.0, 2252.0, 2815.0, 3378.0, 3942.0, 4505.0, 5068.0, 5631.0)
 
 int pick = 0
 for i = 0 to sizeBad.size() - 1
@@ -169,7 +174,11 @@ if isCheck and not na(upper)
             pctTicks = math.max(1, math.round(stopPct / 100 * close / syminfo.mintick))
             guardTicks = qty > 0 ? math.floor(left / (qty * syminfo.pointvalue * syminfo.mintick)) : 0
             ticks = math.min(pctTicks, guardTicks)
-            if qty > 0 and not doneToday and ticks >= 1
+            // never a stop under 20 round trips of cost (commission both ways, a tick in, two out): tighter than
+            // that the costs decide the trade, so the day's allowance skips it instead
+            costRT = 2 * 0.75 + 3 * syminfo.mintick * syminfo.pointvalue
+            minTicks = math.ceil(20 * costRT / (syminfo.pointvalue * syminfo.mintick))
+            if qty > 0 and not doneToday and ticks >= minTicks
                 id = side > 0 ? "Long" : "Short"
                 strategy.entry(id, side > 0 ? strategy.long : strategy.short, qty = qty)
                 strategy.exit(id + " stop", id, loss = ticks)
