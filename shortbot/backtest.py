@@ -160,7 +160,8 @@ def combine_attempt(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
                     balance = floor_dll            # DLL flattens you: day over, account alive
                     day_pnl = balance - day_start
                     break
-                return Attempt(dates[0], "failed", n, balance + t.mae_usd - start, best_day)
+                # Topstep liquidates at the limit; report that, not the trade's worst tick
+                return Attempt(dates[0], "failed", n, floor_mll - start, best_day)
             balance += t.pnl_usd
             day_pnl += t.pnl_usd
         best_day = max(best_day, day_pnl)
@@ -180,6 +181,122 @@ def combine_attempts(trades: Sequence[Trade], dates: Sequence[str],
     for t in trades:
         by_day.setdefault(t.date, []).append(t)
     return [combine_attempt(by_day, dates[k:], rules) for k in range(len(dates))]
+
+
+# ------------------------------------------------- Express Funded + the whole cycle
+
+@dataclass
+class Funded:
+    start: str
+    outcome: str                  # blown / running (data ended)
+    days: int
+    payouts: int
+    paid_to_trader: float         # after the profit split
+    first_payout_day: Optional[int]
+
+
+def funded_attempt(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
+                   rules: AccountRules) -> Funded:
+    """An Express Funded Account from ``dates[0]``: balance starts at $0, the max
+    loss starts at -max_loss, trails the end-of-day high and locks at $0; after
+    the first payout it sits at $0 for good.  A payout (half the balance, up to
+    the cap) is requested as soon as there are enough winning days."""
+    bal = eod_high = 0.0
+    mll = -rules.max_loss
+    wins = payouts = 0
+    paid = since_last = 0.0
+    first: Optional[int] = None
+    for n, d in enumerate(dates, 1):
+        day_start, day_pnl = bal, 0.0
+        for t in trades_by_day.get(d, []):
+            floor_dll = day_start - rules.daily_loss if rules.daily_loss > 0 else -math.inf
+            if bal + t.mae_usd <= max(mll, floor_dll):
+                if floor_dll > mll:
+                    bal = floor_dll
+                    day_pnl = bal - day_start
+                    break
+                return Funded(dates[0], "blown", n, payouts, paid, first)
+            bal += t.pnl_usd
+            day_pnl += t.pnl_usd
+        since_last += day_pnl
+        wins += 1 if day_pnl >= rules.winning_day else 0
+        if payouts == 0:
+            eod_high = max(eod_high, bal)
+            mll = min(eod_high - rules.max_loss, 0.0)
+        if wins >= rules.winning_days and (payouts == 0 or since_last > 0):
+            amount = min(0.5 * bal, rules.payout_cap)
+            if amount >= 125.0:
+                bal -= amount
+                paid += amount * rules.payout_split
+                payouts += 1
+                wins, since_last, mll = 0, 0.0, 0.0
+                first = first or n
+    return Funded(dates[0], "running", len(dates), payouts, paid, first)
+
+
+@dataclass
+class Cycle:
+    """Following the plan from one start date to the end of the data: buy a
+    Combine, reset until it passes, trade the funded account until it is
+    blown, buy again."""
+    start: str
+    days: int
+    combines_passed: int
+    combine_fails: int
+    payouts: int
+    paid_to_trader: float
+    fees: float
+    story: List[str] = field(default_factory=list)
+
+    @property
+    def net(self) -> float:
+        return self.paid_to_trader - self.fees
+
+
+def cycle(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
+          rules: AccountRules) -> Cycle:
+    k = passed = fails = payouts = 0
+    paid = fees = 0.0
+    trading_days_per_month = 21
+    story: List[str] = []
+    while k < len(dates):
+        phase_start, phase_fails = k, 0
+        while k < len(dates):                               # Combine phase
+            a = combine_attempt(trades_by_day, dates[k:], rules)
+            story.append(f"{dates[k]}  Combine {a.outcome} after {a.days} trading days "
+                         f"({a.profit:+,.0f})")
+            k += a.days
+            if a.outcome != "failed":
+                break
+            phase_fails += 1
+        months = max(1, math.ceil((k - phase_start) / trading_days_per_month))
+        fees += rules.monthly_fee * months + rules.reset_fee * max(0, phase_fails - months)
+        fails += phase_fails
+        if a.outcome != "passed":
+            break
+        passed += 1
+        fees += rules.activation_fee
+        if k >= len(dates):
+            break
+        f = funded_attempt(trades_by_day, dates[k:], rules)   # funded phase
+        story.append(f"{dates[k]}  Express Funded {f.outcome} after {f.days} trading days: "
+                     f"{f.payouts} payout(s), ${f.paid_to_trader:,.0f} to you")
+        k += f.days
+        payouts += f.payouts
+        paid += f.paid_to_trader
+    fees += rules.api_fee * math.ceil(len(dates) / trading_days_per_month)
+    return Cycle(dates[0], len(dates), passed, fails, payouts, paid, fees, story)
+
+
+def cycles(trades: Sequence[Trade], dates: Sequence[str], rules: AccountRules,
+           starts: Optional[int] = None) -> List[Cycle]:
+    """The whole plan started on each of the first ``starts`` dates (default:
+    the first half, so every run has at least half the data ahead of it)."""
+    by_day: Dict[str, List[Trade]] = {}
+    for t in trades:
+        by_day.setdefault(t.date, []).append(t)
+    n = starts if starts is not None else len(dates) // 2
+    return [cycle(by_day, dates[k:], rules) for k in range(n)]
 
 
 # ------------------------------------------------------------------ summary

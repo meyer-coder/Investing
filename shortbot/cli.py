@@ -17,12 +17,15 @@ from dataclasses import replace
 from typing import List, Optional, Sequence
 
 from . import backtest as bt
-from .config import BotConfig
+from .config import TOPSTEP_ACCOUNTS, BotConfig
 from .data import Session, load_sessions
 
 
-def _config(path: Optional[str]) -> BotConfig:
-    return BotConfig.load(path) if path else BotConfig()
+def _config(path: Optional[str], account: Optional[str] = None) -> BotConfig:
+    cfg = BotConfig.load(path) if path else BotConfig()
+    if account:
+        cfg.account = replace(TOPSTEP_ACCOUNTS[account])
+    return cfg
 
 
 def _only_setups(cfg: BotConfig, setups: Optional[str]) -> BotConfig:
@@ -52,14 +55,38 @@ def _report(trades, dates, cfg, title) -> str:
                        cfg.account.name)
 
 
+def _cycle_report(trades, dates, cfg) -> str:
+    """The whole plan -- Combine, resets, funded account, payouts, fees -- from
+    the first tradable day to the end of the data, plus the spread of results
+    from other start days.  Those runs share most of their trades, so they
+    are one history seen from different doors, not independent trials."""
+    runs = bt.cycles(trades, dates, cfg.account)
+    if not runs:
+        return ""
+    import numpy as np
+    first = runs[0]
+    lines = [f"   whole plan on {cfg.account.name} (buy, reset until it passes, trade the funded "
+             f"account until it is blown, repeat):"]
+    lines += [f"      {line}" for line in first.story]
+    lines.append(f"      => {first.payouts} payout(s), ${first.paid_to_trader:,.0f} to you, "
+                 f"${first.fees:,.0f} in fees (subscriptions, resets, activations, API): "
+                 f"net ${first.net:+,.0f}")
+    net = np.asarray([c.net for c in runs])
+    lines.append(f"      starting on any of the first {len(runs)} days instead: net between "
+                 f"${net.min():+,.0f} and ${net.max():+,.0f} (median ${np.median(net):+,.0f}); "
+                 f"these runs overlap, so treat it as one history, not {len(runs)} trials")
+    return "\n".join(lines)
+
+
 def cmd_backtest(a) -> None:
-    cfg = _only_setups(_config(a.config), a.setups)
+    cfg = _only_setups(_config(a.config, a.account), a.setups)
     sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
     trades = bt.run(sessions, cfg)
     dates, first, last = _split(sessions, cfg, 0.6)
     print(f"data: {a.data}  {sessions[0].date} .. {sessions[-1].date}  "
           f"({len(sessions)} sessions, the first {len(sessions) - len(dates)} only used as history)")
     print(_report(trades, dates, cfg, "all tradable sessions"))
+    print(_cycle_report(trades, dates, cfg))
     print(_report(trades, first, cfg, f"first 60% ({first[0]} .. {first[-1]})"))
     print(_report(trades, last, cfg, f"last 40% ({last[0]} .. {last[-1]})"))
     if a.trades:
@@ -81,7 +108,7 @@ def cmd_backtest(a) -> None:
 def cmd_sweep(a) -> None:
     """Small grid search.  Settings are chosen on the first 60% of sessions
     only; the last 40% shows whether the choice held up."""
-    base = _only_setups(_config(a.config), a.setups)
+    base = _only_setups(_config(a.config, a.account), a.setups)
     sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
     dates, first, last = _split(sessions, base, 0.6)
     fs, ls = set(first), set(last)
@@ -116,7 +143,7 @@ def cmd_init_config(a) -> None:
 
 def cmd_live(a) -> None:
     from .live import run_live
-    run_live(_config(a.config), live=a.live, account_id=a.account_id, log_path=a.log,
+    run_live(_config(a.config, a.account), live=a.live, account_id=a.account_id, log_path=a.log,
              allow_account_risk=a.allow_account_risk)
 
 
@@ -130,6 +157,8 @@ def main(argv: Optional[List[str]] = None) -> None:
         p.add_argument("--bar-minutes", type=int, default=5, help="bar size of a CSV file")
         p.add_argument("--config", help="JSON settings file (see init-config)")
         p.add_argument("--setups", help="comma list: momentum,orb,vwap_reject")
+        p.add_argument("--account", choices=sorted(TOPSTEP_ACCOUNTS),
+                       help="Topstep account size (overrides the config file's account)")
         p.add_argument("--refresh", action="store_true", help="re-download data")
 
     b = sub.add_parser("backtest", help="replay the bot over history")
@@ -150,6 +179,8 @@ def main(argv: Optional[List[str]] = None) -> None:
 
     lv = sub.add_parser("live", help="run against TopstepX (dry run unless --live)")
     lv.add_argument("--config", help="JSON settings file")
+    lv.add_argument("--account", choices=sorted(TOPSTEP_ACCOUNTS),
+                    help="Topstep account size the risk checks use")
     lv.add_argument("--live", action="store_true",
                     help="actually place orders (default: log what it would do)")
     lv.add_argument("--account-id", type=int, help="TopstepX account id to trade")

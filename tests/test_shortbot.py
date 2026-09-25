@@ -202,3 +202,41 @@ def test_profile_uses_the_same_time_of_day():
     prof = Profile([a], [5])
     assert prof.normal(5, 575) == pytest.approx(10.0)
     assert np.isnan(prof.normal(5, 900))
+
+
+# ------------------------------------------------ Express Funded + whole plan
+
+def test_funded_account_pays_half_after_five_winning_days():
+    rules = AccountRules(daily_loss=0)
+    days = [f"d{k:02d}" for k in range(5)]
+    f = bt.funded_attempt({d: [T(d, 400)] for d in days}, days, rules)
+    # $2,000 balance -> request half ($1,000, under the $2,000 cap) -> 90% to the trader
+    assert (f.outcome, f.payouts) == ("running", 1)
+    assert f.paid_to_trader == pytest.approx(900.0) and f.first_payout_day == 5
+
+
+def test_after_the_first_payout_the_balance_is_the_only_cushion():
+    rules = AccountRules(daily_loss=0)
+    days = [f"d{k:02d}" for k in range(6)]
+    trades = {d: [T(d, 400)] for d in days[:5]}
+    trades[days[5]] = [T(days[5], -1100)]         # balance after payout is $1,000
+    f = bt.funded_attempt(trades, days, rules)
+    assert f.outcome == "blown" and f.payouts == 1
+
+
+def test_whole_plan_charges_fees_and_counts_payouts():
+    rules = AccountRules(daily_loss=0)
+    days = [f"d{k:02d}" for k in range(20)]
+    trades = {d: [T(d, 700)] for d in days}       # passes in 5 days, then pays out
+    c = bt.cycle(trades, days, rules)
+    assert c.combines_passed == 1 and c.payouts >= 1
+    assert c.fees == pytest.approx(rules.monthly_fee + rules.activation_fee + rules.api_fee)
+    assert c.net == pytest.approx(c.paid_to_trader - c.fees)
+    assert c.story[0].startswith("d00  Combine passed")
+
+
+def test_failed_combine_reports_the_loss_at_the_limit():
+    days = ["d1"]
+    rules = AccountRules(daily_loss=0)
+    a = bt.combine_attempt({"d1": [T("d1", -2500, mae=-2600)]}, days, rules)
+    assert a.outcome == "failed" and a.profit == pytest.approx(-2000)

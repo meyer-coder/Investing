@@ -79,7 +79,9 @@ class RiskParams:
 
 @dataclass
 class AccountRules:
-    """Topstep 50K Trading Combine with the optional Daily Loss Limit."""
+    """Topstep 50K Trading Combine with the optional Daily Loss Limit, and the
+    Express Funded Account (XFA) that follows it.  Prices are the Standard
+    path as of 2026-09-25."""
 
     name: str = "Topstep 50K Combine"
     start_balance: float = 50_000.0
@@ -89,6 +91,29 @@ class AccountRules:
     consistency: float = 0.55          # best day must be <= 55% of total profit
     max_contracts: int = 50            # MNQ
     flat_by_minute: int = 16 * 60 + 10  # 3:10 PM Chicago
+
+    # costs
+    monthly_fee: float = 49.0          # Combine subscription; each rebill includes one reset
+    reset_fee: float = 49.0
+    activation_fee: float = 149.0      # per Express Funded Account
+    api_fee: float = 14.50             # TopstepX API, per month
+
+    # Express Funded Account payouts (Standard path)
+    payout_cap: float = 2_000.0        # per request; doubled while the DLL-at-purchase offer lasts
+    winning_day: float = 150.0         # a day counts toward a payout at +$150 net
+    winning_days: int = 5
+    payout_split: float = 0.90
+
+
+TOPSTEP_ACCOUNTS = {
+    "50k": AccountRules(),
+    "100k": AccountRules(name="Topstep 100K Combine", start_balance=100_000.0,
+                         profit_target=6_000.0, max_loss=3_000.0, daily_loss=2_000.0,
+                         max_contracts=100, monthly_fee=99.0, reset_fee=99.0, payout_cap=3_000.0),
+    "150k": AccountRules(name="Topstep 150K Combine", start_balance=150_000.0,
+                         profit_target=9_000.0, max_loss=4_500.0, daily_loss=3_000.0,
+                         max_contracts=150, monthly_fee=199.0, reset_fee=199.0, payout_cap=5_000.0),
+}
 
 
 @dataclass

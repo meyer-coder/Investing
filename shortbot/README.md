@@ -103,6 +103,35 @@ only, one trade a day at most:
 stop-out could use up the account's whole max loss, unless you pass
 `--allow-account-risk`.
 
+### 50K or 100K? Follow the whole plan, fees and payouts included
+
+Every backtest now also replays the whole plan:
+1. Buy a Combine and reset until it passes.
+2. Trade the Express Funded account until it is blown, taking each payout
+   as soon as it is allowed.
+3. Buy again.
+
+Fees count subscriptions, resets, the $149 activation and the $14.50/mo API.
+`--account 50k|100k|150k` switches the rules and prices.
+
+| Two years of hourly NQ, May 2024 – Sep 2026 | 50K, ~$1,000 a trade | 100K, ~$1,500 a trade |
+|---|---|---|
+| Straight losses that end a Combine | 2 | 2 |
+| Combines passed | 26% | 26% |
+| First funded account | blown, no payout | blown, no payout |
+| Second funded account | one payout: $1,800 to you | one payout: $2,692 to you |
+| Fees over the whole period | $1,684 | $2,684 |
+| **Net** | **+$116** | **+$8** |
+
+Both are about break-even: the one payout roughly covers the fees.
+Starting on a different day gives +$8 to +$1,519. Those runs share most of
+their trades, so they are one history seen from different doors, not
+hundreds of independent trials.
+
+```bash
+python -m shortbot backtest --data yahoo-hourly --config configs/shortbot-bigdrop-100k.json
+```
+
 ## Commands
 
 ```bash
