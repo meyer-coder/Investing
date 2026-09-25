@@ -105,6 +105,54 @@ Both servers, side by side, and that is fine:
 Keep both. Use the hosted one for screening and live quotes; use the local one
 for pulling bars.
 
+## Which machine serves what, and what has to be powered on
+
+The two servers have opposite reachability, and confusing them wastes time:
+
+| | Hosted `claude.ai TradingView` | `tradingview-local` |
+|---|---|---|
+| Runs on | Anthropic's side | the Mac it is installed on |
+| Mac mini sees it | yes, automatically | only if installed there |
+| MacBook sees it | yes, automatically | only if installed there |
+| claude.ai web and cloud sessions | yes | **never** |
+| Needs a Mac powered on | **no** | yes — that Mac, with Claude Code running |
+| Survives the other Mac being closed | yes | irrelevant, they are independent |
+
+Two consequences worth internalising:
+
+1. **The hosted connector is already on every machine.** It follows the account,
+   not the hardware. Nothing to install on a second Mac, and closing the first
+   one changes nothing. It is also the only reason a cloud session can use it.
+2. **A local server is a child process of Claude Code on one machine.** It
+   starts when Claude Code starts there and stops when it quits. It does not
+   serve the other Mac, and it cannot be seen by claude.ai in the browser or by
+   a cloud session, because those do not run on your hardware at all.
+
+So installing the local server on the MacBook does nothing for the Mac mini, and
+vice versa. Run the five steps on each machine you want it on.
+
+### If you want ONE always-on server both machines and the cloud can reach
+
+That is a hosted server, and the Mac mini is a reasonable host since it stays
+powered on. It is a larger project than the five steps above:
+
+- run the server over HTTP rather than stdio
+- keep it alive across reboots with a `launchd` agent
+- expose it with an authenticated tunnel — Tailscale or Cloudflare Tunnel, not
+  an open port
+- register it as a custom connector at https://claude.ai/customize/connectors
+
+Do not skip the authentication. An MCP server reachable from the internet with
+your TradingView credentials in its environment is a credential-disclosure risk,
+and an open port on a home network is worth avoiding on its own terms.
+
+Worth asking first whether you need it. Bar pulls happen while you are working,
+which means Claude Code is already running on that machine — so a stdio server
+covers the actual use case, and deep history comes from Databento files either
+way.
+
+---
+
 ## Limits worth stating plainly
 
 Fixing the cap does not make this a deep-history source. TradingView limits bars
