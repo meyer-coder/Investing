@@ -1,5 +1,14 @@
 # Profitable strategies
 
+**New: [crypto: AAVE, BNB, BTC, INJ and MSTR](crypto/README.md).**
+
+- **Trend and breakout rules work on crypto.** Across 29 coins since 2017
+  they beat random entries by 1.5-6% a trade (p < 0.005) and made money on
+  93-100% of the coins. Our Micron rules do not carry over.
+- **The five together** (50-day trend, $5,000 each) made $38 a day since
+  2021, with a deepest fall of -56%. They move with the Micron bots only
+  +0.16.
+
 **New: [the top five, tested over 10,000+ trades each](top5/README.md).**
 Every strategy below was ranked on one footing: dollars a day on $25,000,
 2012 to 2026. The five that make the most, $66 to $92 a day, are all swing
