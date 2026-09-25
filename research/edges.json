@@ -1790,5 +1790,1349 @@
   },
   "passed_search": false,
   "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1631,
+   "mean_bp": 0.8894078166769815,
+   "t": 1.1347778184182695,
+   "flip_pct": 98.35000000000001
+  },
+  "confirm": {
+   "n": 758,
+   "mean_bp": -1.194737375729981,
+   "t": -0.9871169634297502,
+   "flip_pct": 34.5
+  },
+  "final": {
+   "n": 974,
+   "mean_bp": 0.9937039636527422,
+   "t": 0.7793538699270601,
+   "flip_pct": 92.30000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1506,
+   "mean_bp": 1.1297352947581407,
+   "t": 1.3115116417238497,
+   "flip_pct": 98.2
+  },
+  "confirm": {
+   "n": 698,
+   "mean_bp": -1.0184734982286217,
+   "t": -0.7482629661729725,
+   "flip_pct": 41.55
+  },
+  "final": {
+   "n": 878,
+   "mean_bp": 1.718859137734004,
+   "t": 1.1884906426465531,
+   "flip_pct": 95.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1229,
+   "mean_bp": 0.5794198394408846,
+   "t": 0.6332058590149727,
+   "flip_pct": 91.55
+  },
+  "confirm": {
+   "n": 550,
+   "mean_bp": -0.1141514995309962,
+   "t": -0.07837672919143213,
+   "flip_pct": 67.25
+  },
+  "final": {
+   "n": 737,
+   "mean_bp": -0.599578217138413,
+   "t": -0.4192037335140783,
+   "flip_pct": 54.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1097,
+   "mean_bp": 0.9240213491959127,
+   "t": 0.857680423197316,
+   "flip_pct": 94.45
+  },
+  "confirm": {
+   "n": 498,
+   "mean_bp": 0.12200993614115184,
+   "t": 0.07072254139422315,
+   "flip_pct": 69.55
+  },
+  "final": {
+   "n": 639,
+   "mean_bp": 0.783081754707773,
+   "t": 0.43571631269948596,
+   "flip_pct": 79.10000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1707,
+   "mean_bp": -0.5891211693721508,
+   "t": -0.6115638660914413,
+   "flip_pct": 53.900000000000006
+  },
+  "confirm": {
+   "n": 746,
+   "mean_bp": -1.700617268452913,
+   "t": -0.9355072102169635,
+   "flip_pct": 30.15
+  },
+  "final": {
+   "n": 916,
+   "mean_bp": -0.3104958036890365,
+   "t": -0.1812408162200576,
+   "flip_pct": 59.199999999999996
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1669,
+   "mean_bp": -0.8608723801131285,
+   "t": -0.8195942563062317,
+   "flip_pct": 44.25
+  },
+  "confirm": {
+   "n": 735,
+   "mean_bp": 0.9176787616845872,
+   "t": 0.4466726745830619,
+   "flip_pct": 78.75
+  },
+  "final": {
+   "n": 911,
+   "mean_bp": -0.00457094675505202,
+   "t": -0.0025050618331013143,
+   "flip_pct": 63.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1669,
+   "mean_bp": -0.5106967068528342,
+   "t": -0.5678927935247461,
+   "flip_pct": 60.699999999999996
+  },
+  "confirm": {
+   "n": 735,
+   "mean_bp": 1.2132118370365086,
+   "t": 0.6923512394845265,
+   "flip_pct": 86.3
+  },
+  "final": {
+   "n": 911,
+   "mean_bp": 0.19233510026203834,
+   "t": 0.13053727252406055,
+   "flip_pct": 72.89999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1545,
+   "mean_bp": 0.14964861365349913,
+   "t": 0.13093241580153403,
+   "flip_pct": 76.55
+  },
+  "confirm": {
+   "n": 692,
+   "mean_bp": 1.959580583084077,
+   "t": 0.942756891775459,
+   "flip_pct": 90.8
+  },
+  "final": {
+   "n": 881,
+   "mean_bp": -0.26813510067203755,
+   "t": -0.14171250020586648,
+   "flip_pct": 58.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1545,
+   "mean_bp": 0.5330294528957553,
+   "t": 0.5375770054523813,
+   "flip_pct": 89.8
+  },
+  "confirm": {
+   "n": 692,
+   "mean_bp": 1.6987491206729841,
+   "t": 0.9168030175993173,
+   "flip_pct": 90.45
+  },
+  "final": {
+   "n": 881,
+   "mean_bp": 0.5759600803935389,
+   "t": 0.3686861903378421,
+   "flip_pct": 80.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "momentum close->30m",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1729,
+   "mean_bp": -0.9146430334250261,
+   "t": -4.04019946251769,
+   "flip_pct": 22.3
+  },
+  "confirm": {
+   "n": 752,
+   "mean_bp": -0.6112017548460612,
+   "t": -1.4195488912445908,
+   "flip_pct": 61.550000000000004
+  },
+  "final": {
+   "n": 930,
+   "mean_bp": 0.604923493280005,
+   "t": 1.4671936873918616,
+   "flip_pct": 99.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "momentum open->30m",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1727,
+   "mean_bp": -0.6685573618417596,
+   "t": -2.9496178479076947,
+   "flip_pct": 61.9
+  },
+  "confirm": {
+   "n": 752,
+   "mean_bp": -0.4278740891609586,
+   "t": -0.9940560842304472,
+   "flip_pct": 76.3
+  },
+  "final": {
+   "n": 929,
+   "mean_bp": -0.35190168719022313,
+   "t": -0.8481292050574257,
+   "flip_pct": 80.80000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "momentum close->noon",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1729,
+   "mean_bp": -0.6522781675701147,
+   "t": -2.880944588890261,
+   "flip_pct": 64.3
+  },
+  "confirm": {
+   "n": 752,
+   "mean_bp": 0.03472911653551294,
+   "t": 0.08083182415391181,
+   "flip_pct": 95.89999999999999
+  },
+  "final": {
+   "n": 929,
+   "mean_bp": -0.12208843038281184,
+   "t": -0.29513318403108696,
+   "flip_pct": 92.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "gap follow, 60m",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 611,
+   "mean_bp": -3.0951127922568973,
+   "t": -2.8856743122198414,
+   "flip_pct": 1.15
+  },
+  "confirm": {
+   "n": 258,
+   "mean_bp": 0.4668259040557244,
+   "t": 0.22119246977083168,
+   "flip_pct": 70.5
+  },
+  "final": {
+   "n": 330,
+   "mean_bp": 0.7137273873613625,
+   "t": 0.36177442286104156,
+   "flip_pct": 76.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "gap follow, to close",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 611,
+   "mean_bp": -1.2194836573015948,
+   "t": -0.5621580193483133,
+   "flip_pct": 39.85
+  },
+  "confirm": {
+   "n": 258,
+   "mean_bp": 2.302246807553047,
+   "t": 0.5458212713064885,
+   "flip_pct": 75.0
+  },
+  "final": {
+   "n": 330,
+   "mean_bp": 3.337084174783276,
+   "t": 0.8710541390053066,
+   "flip_pct": 86.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "gap fade, 60m",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 611,
+   "mean_bp": 1.452843768157864,
+   "t": 1.3531615606960332,
+   "flip_pct": 98.0
+  },
+  "confirm": {
+   "n": 258,
+   "mean_bp": -2.104962840523341,
+   "t": -1.0407405682787394,
+   "flip_pct": 24.099999999999998
+  },
+  "final": {
+   "n": 330,
+   "mean_bp": -2.110651719722068,
+   "t": -1.0833751660958266,
+   "flip_pct": 24.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "XAU/USD",
+  "contract": "MGC",
+  "variant": "gap fade, to close",
+  "cost_bp": 0.7452841106353431,
+  "sessions": 3425,
+  "first": "2013-01-02",
+  "search": {
+   "n": 611,
+   "mean_bp": 1.583512628060799,
+   "t": 0.729029898346242,
+   "flip_pct": 85.65
+  },
+  "confirm": {
+   "n": 258,
+   "mean_bp": -1.2909786546384838,
+   "t": -0.3169142059105932,
+   "flip_pct": 44.1
+  },
+  "final": {
+   "n": 330,
+   "mean_bp": -5.064587735339963,
+   "t": -1.3956334645727402,
+   "flip_pct": 11.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1442,
+   "mean_bp": 2.193474103590865,
+   "t": 1.0741028269577557,
+   "flip_pct": 99.75
+  },
+  "confirm": {
+   "n": 726,
+   "mean_bp": -7.0494774525908275,
+   "t": -1.8142138787664976,
+   "flip_pct": 17.7
+  },
+  "final": {
+   "n": 930,
+   "mean_bp": -6.742544059652642,
+   "t": -2.9360078670504755,
+   "flip_pct": 7.000000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1363,
+   "mean_bp": 1.8677986605901884,
+   "t": 0.8374347640348767,
+   "flip_pct": 99.25
+  },
+  "confirm": {
+   "n": 678,
+   "mean_bp": -8.917465723782584,
+   "t": -2.002379118154116,
+   "flip_pct": 11.85
+  },
+  "final": {
+   "n": 859,
+   "mean_bp": -7.3160272491009914,
+   "t": -2.7810014184787644,
+   "flip_pct": 6.950000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1067,
+   "mean_bp": 2.8919966399916586,
+   "t": 1.138761781013567,
+   "flip_pct": 99.45
+  },
+  "confirm": {
+   "n": 520,
+   "mean_bp": -7.891682182890277,
+   "t": -1.5957303653340675,
+   "flip_pct": 18.75
+  },
+  "final": {
+   "n": 676,
+   "mean_bp": -5.67831416814715,
+   "t": -2.0022385683022037,
+   "flip_pct": 22.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 975,
+   "mean_bp": 3.2930906249994956,
+   "t": 1.1129277733546872,
+   "flip_pct": 98.4
+  },
+  "confirm": {
+   "n": 453,
+   "mean_bp": -5.005684431466841,
+   "t": -0.8328861317438476,
+   "flip_pct": 40.5
+  },
+  "final": {
+   "n": 609,
+   "mean_bp": -6.545920459627863,
+   "t": -1.952318124536475,
+   "flip_pct": 17.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1444,
+   "mean_bp": -1.7142148404440305,
+   "t": -0.5836193901245427,
+   "flip_pct": 71.05
+  },
+  "confirm": {
+   "n": 736,
+   "mean_bp": -5.44573816259001,
+   "t": -0.9160297246758351,
+   "flip_pct": 36.6
+  },
+  "final": {
+   "n": 922,
+   "mean_bp": -6.371372787617044,
+   "t": -1.8190306469264768,
+   "flip_pct": 20.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1425,
+   "mean_bp": 0.23468153533234407,
+   "t": 0.07477512204734885,
+   "flip_pct": 87.0
+  },
+  "confirm": {
+   "n": 729,
+   "mean_bp": -8.027056085269463,
+   "t": -1.3133869834141023,
+   "flip_pct": 23.0
+  },
+  "final": {
+   "n": 916,
+   "mean_bp": -8.837875075718362,
+   "t": -2.427177301400767,
+   "flip_pct": 6.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1425,
+   "mean_bp": -0.19256763765525045,
+   "t": -0.07419360391240272,
+   "flip_pct": 88.85
+  },
+  "confirm": {
+   "n": 729,
+   "mean_bp": -1.4701345271362645,
+   "t": -0.2923050570591238,
+   "flip_pct": 65.85
+  },
+  "final": {
+   "n": 916,
+   "mean_bp": -6.961615630040554,
+   "t": -2.493832972345486,
+   "flip_pct": 9.700000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1341,
+   "mean_bp": 0.595855327613054,
+   "t": 0.18221629502683415,
+   "flip_pct": 88.1
+  },
+  "confirm": {
+   "n": 670,
+   "mean_bp": -11.638309638484039,
+   "t": -1.6594567287052557,
+   "flip_pct": 11.899999999999999
+  },
+  "final": {
+   "n": 861,
+   "mean_bp": -11.934924553399895,
+   "t": -3.0943095409842214,
+   "flip_pct": 1.35
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1341,
+   "mean_bp": 0.5894121187811401,
+   "t": 0.2109198762011306,
+   "flip_pct": 92.30000000000001
+  },
+  "confirm": {
+   "n": 670,
+   "mean_bp": -8.346266955974107,
+   "t": -1.455573629645731,
+   "flip_pct": 19.0
+  },
+  "final": {
+   "n": 861,
+   "mean_bp": -10.433265775469524,
+   "t": -3.4103198807041895,
+   "flip_pct": 1.0999999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "momentum close->30m",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1447,
+   "mean_bp": -3.2282867327660343,
+   "t": -6.873970184905974,
+   "flip_pct": 71.05
+  },
+  "confirm": {
+   "n": 736,
+   "mean_bp": -2.7916666701958226,
+   "t": -2.036847375324394,
+   "flip_pct": 69.0
+  },
+  "final": {
+   "n": 916,
+   "mean_bp": -3.119923737715187,
+   "t": -3.880933863114156,
+   "flip_pct": 65.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "momentum open->30m",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1441,
+   "mean_bp": -2.693702737983176,
+   "t": -5.721748949017293,
+   "flip_pct": 94.95
+  },
+  "confirm": {
+   "n": 737,
+   "mean_bp": -2.8472527979924718,
+   "t": -2.0797900886503404,
+   "flip_pct": 66.64999999999999
+  },
+  "final": {
+   "n": 917,
+   "mean_bp": -4.371133233689246,
+   "t": -5.488703624092668,
+   "flip_pct": 13.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "momentum close->noon",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 1447,
+   "mean_bp": -3.3752886372135076,
+   "t": -7.183725764036368,
+   "flip_pct": 58.699999999999996
+  },
+  "confirm": {
+   "n": 736,
+   "mean_bp": -3.0463568097250455,
+   "t": -2.2230831710428025,
+   "flip_pct": 62.1
+  },
+  "final": {
+   "n": 920,
+   "mean_bp": -3.5715794217715278,
+   "t": -4.457775947439906,
+   "flip_pct": 45.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "gap follow, 60m",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 489,
+   "mean_bp": -6.737651620987962,
+   "t": -2.336787087572269,
+   "flip_pct": 12.7
+  },
+  "confirm": {
+   "n": 262,
+   "mean_bp": -4.309717226943713,
+   "t": -0.5413492370127667,
+   "flip_pct": 46.1
+  },
+  "final": {
+   "n": 367,
+   "mean_bp": -2.967054534849113,
+   "t": -0.7183992965723074,
+   "flip_pct": 53.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "gap follow, to close",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 489,
+   "mean_bp": -3.0228586890290545,
+   "t": -0.49392606184461496,
+   "flip_pct": 53.400000000000006
+  },
+  "confirm": {
+   "n": 262,
+   "mean_bp": -14.594266951612424,
+   "t": -1.1038895150970247,
+   "flip_pct": 20.75
+  },
+  "final": {
+   "n": 367,
+   "mean_bp": -5.052002933906138,
+   "t": -0.7382096121461997,
+   "flip_pct": 39.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "gap fade, 60m",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 489,
+   "mean_bp": -1.4411792704911375,
+   "t": -0.5051765066051631,
+   "flip_pct": 76.75
+  },
+  "confirm": {
+   "n": 262,
+   "mean_bp": -4.238291342252818,
+   "t": -0.4318916550074767,
+   "flip_pct": 47.25
+  },
+  "final": {
+   "n": 367,
+   "mean_bp": -2.3271900496044915,
+   "t": -0.5351434882277399,
+   "flip_pct": 60.099999999999994
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "LIGHT.CMD/USD",
+  "contract": "MCL",
+  "variant": "gap fade, to close",
+  "cost_bp": 3.4833405452185198,
+  "sessions": 3126,
+  "first": "2013-01-02",
+  "search": {
+   "n": 489,
+   "mean_bp": 2.0061701656830953,
+   "t": 0.29630180983653337,
+   "flip_pct": 79.80000000000001
+  },
+  "confirm": {
+   "n": 262,
+   "mean_bp": -8.607811002710585,
+   "t": -0.6071552745333593,
+   "flip_pct": 34.699999999999996
+  },
+  "final": {
+   "n": 367,
+   "mean_bp": -7.133974908155612,
+   "t": -0.99159769804179,
+   "flip_pct": 30.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1719,
+   "mean_bp": -5.0074664321287745,
+   "t": -12.791658289463328,
+   "flip_pct": 14.399999999999999
+  },
+  "confirm": {
+   "n": 801,
+   "mean_bp": -4.395723044699628,
+   "t": -5.893109366486734,
+   "flip_pct": 60.050000000000004
+  },
+  "final": {
+   "n": 911,
+   "mean_bp": -5.124960715743422,
+   "t": -8.386227320701353,
+   "flip_pct": 19.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1588,
+   "mean_bp": -5.010414204080468,
+   "t": -11.406536143373462,
+   "flip_pct": 16.5
+  },
+  "confirm": {
+   "n": 736,
+   "mean_bp": -4.7471743776564,
+   "t": -5.77925136198243,
+   "flip_pct": 41.05
+  },
+  "final": {
+   "n": 822,
+   "mean_bp": -4.8851506382944265,
+   "t": -6.968917396314158,
+   "flip_pct": 33.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1255,
+   "mean_bp": -4.672343541163671,
+   "t": -9.456437452177067,
+   "flip_pct": 41.55
+  },
+  "confirm": {
+   "n": 587,
+   "mean_bp": -3.976004126343034,
+   "t": -4.082366655648543,
+   "flip_pct": 72.05
+  },
+  "final": {
+   "n": 699,
+   "mean_bp": -5.4221621377063345,
+   "t": -7.39577965567555,
+   "flip_pct": 12.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1128,
+   "mean_bp": -4.867728140667307,
+   "t": -8.236325423665617,
+   "flip_pct": 31.0
+  },
+  "confirm": {
+   "n": 524,
+   "mean_bp": -4.2575809898337535,
+   "t": -3.6619350740219634,
+   "flip_pct": 59.9
+  },
+  "final": {
+   "n": 617,
+   "mean_bp": -5.719733751313223,
+   "t": -6.2243620903437735,
+   "flip_pct": 11.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1767,
+   "mean_bp": -4.732252806190726,
+   "t": -8.096144259056508,
+   "flip_pct": 39.6
+  },
+  "confirm": {
+   "n": 773,
+   "mean_bp": -5.309267348148719,
+   "t": -4.637943281298256,
+   "flip_pct": 26.5
+  },
+  "final": {
+   "n": 930,
+   "mean_bp": -5.577228948405589,
+   "t": -6.310261324112789,
+   "flip_pct": 12.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1749,
+   "mean_bp": -4.204092712211091,
+   "t": -6.698203335155886,
+   "flip_pct": 72.25
+  },
+  "confirm": {
+   "n": 771,
+   "mean_bp": -4.331357395458183,
+   "t": -3.4520442627260826,
+   "flip_pct": 57.3
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -5.396951425809833,
+   "t": -5.7981558869942,
+   "flip_pct": 18.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1749,
+   "mean_bp": -4.159773488091344,
+   "t": -8.075398876426938,
+   "flip_pct": 78.45
+  },
+  "confirm": {
+   "n": 771,
+   "mean_bp": -3.8640824918400685,
+   "t": -3.7727287500196005,
+   "flip_pct": 74.3
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -5.314135238738101,
+   "t": -7.030939600895106,
+   "flip_pct": 15.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1681,
+   "mean_bp": -4.698638947780549,
+   "t": -7.552879842948295,
+   "flip_pct": 42.0
+  },
+  "confirm": {
+   "n": 750,
+   "mean_bp": -3.3371892770970493,
+   "t": -2.6120179998475694,
+   "flip_pct": 82.55
+  },
+  "final": {
+   "n": 889,
+   "mean_bp": -4.627239289799067,
+   "t": -4.749828306778981,
+   "flip_pct": 47.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1681,
+   "mean_bp": -4.837724132172268,
+   "t": -9.454581566569829,
+   "flip_pct": 29.599999999999998
+  },
+  "confirm": {
+   "n": 750,
+   "mean_bp": -3.854394175533874,
+   "t": -3.57422637790911,
+   "flip_pct": 75.05
+  },
+  "final": {
+   "n": 889,
+   "mean_bp": -4.360114961492216,
+   "t": -5.281754145043359,
+   "flip_pct": 59.550000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "momentum close->30m",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1791,
+   "mean_bp": -4.503133077910387,
+   "t": -35.83966196494679,
+   "flip_pct": 74.45
+  },
+  "confirm": {
+   "n": 774,
+   "mean_bp": -4.87333686571771,
+   "t": -18.573848484734494,
+   "flip_pct": 14.099999999999998
+  },
+  "final": {
+   "n": 943,
+   "mean_bp": -4.569996151594249,
+   "t": -22.806901951594046,
+   "flip_pct": 51.849999999999994
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "momentum open->30m",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1774,
+   "mean_bp": -4.583096609660962,
+   "t": -36.21467777562657,
+   "flip_pct": 51.349999999999994
+  },
+  "confirm": {
+   "n": 770,
+   "mean_bp": -4.74284271444204,
+   "t": -17.9960946173006,
+   "flip_pct": 27.55
+  },
+  "final": {
+   "n": 936,
+   "mean_bp": -4.475750096291598,
+   "t": -22.20540850119934,
+   "flip_pct": 71.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "momentum close->noon",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1787,
+   "mean_bp": -4.503613038497223,
+   "t": -35.77192013662995,
+   "flip_pct": 75.14999999999999
+  },
+  "confirm": {
+   "n": 775,
+   "mean_bp": -4.829519344882624,
+   "t": -18.422645158947848,
+   "flip_pct": 16.650000000000002
+  },
+  "final": {
+   "n": 943,
+   "mean_bp": -4.813344152357606,
+   "t": -24.038859843246314,
+   "flip_pct": 13.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "gap follow, 60m",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 928,
+   "mean_bp": -5.434345534418124,
+   "t": -10.632987380450935,
+   "flip_pct": 5.25
+  },
+  "confirm": {
+   "n": 375,
+   "mean_bp": -4.497044311924946,
+   "t": -4.299781263722551,
+   "flip_pct": 51.5
+  },
+  "final": {
+   "n": 405,
+   "mean_bp": -4.135701872953733,
+   "t": -5.193633538410153,
+   "flip_pct": 70.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "gap follow, to close",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 928,
+   "mean_bp": -6.056302070530906,
+   "t": -6.300691442625911,
+   "flip_pct": 6.7
+  },
+  "confirm": {
+   "n": 375,
+   "mean_bp": -4.334633987485755,
+   "t": -1.9774081330642188,
+   "flip_pct": 54.25
+  },
+  "final": {
+   "n": 405,
+   "mean_bp": -7.078538538852052,
+   "t": -4.505175650566712,
+   "flip_pct": 4.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "gap fade, 60m",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 928,
+   "mean_bp": -4.0246832503714485,
+   "t": -7.672793316025811,
+   "flip_pct": 85.7
+  },
+  "confirm": {
+   "n": 375,
+   "mean_bp": -4.548691302188155,
+   "t": -4.31156822494504,
+   "flip_pct": 49.9
+  },
+  "final": {
+   "n": 405,
+   "mean_bp": -5.296978140892282,
+   "t": -6.269640083711153,
+   "flip_pct": 19.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "AUD/USD",
+  "contract": "M6A",
+  "variant": "gap fade, to close",
+  "cost_bp": 4.589182640917836,
+  "sessions": 3525,
+  "first": "2013-01-01",
+  "search": {
+   "n": 928,
+   "mean_bp": -3.072717891577701,
+   "t": -2.965652494994104,
+   "flip_pct": 91.55
+  },
+  "confirm": {
+   "n": 375,
+   "mean_bp": -2.934997866425352,
+   "t": -1.3264190304283354,
+   "flip_pct": 75.8
+  },
+  "final": {
+   "n": 405,
+   "mean_bp": -3.0994663035077026,
+   "t": -1.8412445535709105,
+   "flip_pct": 79.85
+  },
+  "passed_search": false,
+  "confirmed": false
  }
 ]
