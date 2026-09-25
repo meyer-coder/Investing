@@ -54,18 +54,24 @@
      "exit_reason": "target",
      "usd": 177.0,
      "why": "Failed breakdown: 11:45 and 11:50 swept below the morning lows (30,731-30,735) with long lower wicks, then 11:55 ripped 84 pts off the low to close on its high (30,857) above VWAP on the heaviest volume in 20 min (31.3k). Shorts from the sweep are trapped; third test of the 30,862-30,871 ceiling should break. Target 45 toward ~30,900 (09:55 high 30,926 above); stop 30."
+    },
+    {
+     "side": "short",
+     "size": 2,
+     "entry_time": "12:20",
+     "entry": 30901.75,
+     "stop": 30931.75,
+     "target": 30856.75,
+     "exit_time": "12:23",
+     "exit": 30856.75,
+     "exit_reason": "target",
+     "usd": 177.0,
+     "why": "Failed breakout at the day high: 12:10 and 12:15 both pushed to 30,950-30,952 (double top) and got sold, 12:15 closing at 30,901 back under the old 30,926 high, near its low. Momentum had faded (bodies 84 -> 57 -> 16 -> red). Late breakout buyers trapped above. Target 45 toward the 12:00 breakout base (~30,855); stop 30."
     }
    ],
    "position": null,
-   "pending": {
-    "action": "short",
-    "after": 1790353200,
-    "stop": 30.0,
-    "target": 45.0,
-    "size": 2,
-    "why": "Failed breakout at the day high: 12:10 and 12:15 both pushed to 30,950-30,952 (double top) and got sold, 12:15 closing at 30,901 back under the old 30,926 high, near its low. Momentum had faded (bodies 84 -> 57 -> 16 -> red). Late breakout buyers trapped above. Target 45 toward the 12:00 breakout base (~30,855); stop 30."
-   },
-   "realized": 354.0,
+   "pending": null,
+   "realized": 531.0,
    "done": null
   }
  }
