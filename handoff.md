@@ -3,6 +3,7 @@
 Written 2026-09-25, about 06:00 UTC, at the end of a four-day working
 session (2026-09-22 16:38 UTC to now). It covers:
 
+- how to pick it up in a fresh container;
 - what we're doing at the moment;
 - the rules to follow;
 - everything that was built and found;
@@ -11,11 +12,57 @@ session (2026-09-22 16:38 UTC to now). It covers:
 
 Backtests and paper trading only; nothing here is advice.
 
-- Repo: `meyer-coder/Investing`.
+- Repo: `meyer-coder/Investing` (public).
 - Work branch: `claude/robinhood-trades-breakdown-1d7ev0`.
 - Mirror branch: `profitable-strategies`.
-- Last commit when this was written: `19e952d`.
+- Last research commit: `19e952d`. This file, `CLAUDE.md` and the
+  fresh-container setup came after.
 - The session: https://claude.ai/code/session_016VSdEquxejKXcwEiNQPzaX
+
+---
+
+## 0. Picking this up in a fresh container
+
+A new cloud session gets the repo and nothing else. The old container's
+packages, data caches, scratch files and conversation don't come with it.
+
+**Checked on 2026-09-25** with a clean checkout, no data and a freshly
+installed Python:
+
+- all the tests passed (408 then; 414 with the funded-rule tests added since);
+- all six scripts of the after-close routine ran cleanly with no local data;
+- the bot's minute data re-downloaded from nothing matched the original
+  files exactly (91 months of the Nasdaq, 2013 to mid-2020; see section 8).
+
+**What to do:**
+
+1. **Start the session on this branch.** The repo's default branch
+   (`claude/investing-ai-trading-omun18`) has none of this work, and
+   `CLAUDE.md` only loads when it is in the checkout.
+2. **Packages install themselves.** `.claude/hooks/session-start.sh` runs
+   `pip install -r requirements-research.txt` when a cloud session starts.
+   By hand, run the same command.
+3. **Tests:** `python -m pytest tests -q` (414 pass).
+4. **Data:**
+   - The paper runs need none. They read `data/intraday/` and
+     `data/levels/`, which are in git, and fetch the rest live.
+   - The breakout bot's studies need `bash scripts/rebuild-bot-data.sh`:
+     about an hour and 85 MB, resumable.
+   - Other studies' caches are rebuilt, when needed, by the commands in
+     each script's docstring.
+5. **Routines** fire into one named session. Section 6 says how to move
+   them.
+
+**What doesn't carry over, and doesn't need to:**
+
+- the conversation itself (this file and the READMEs are the record);
+- the old container's scratch files (logs and one-off checks);
+- its task list. The one open task is the options-level forward test, and
+  the routines keep it running;
+- `runs/evotrader.sqlite`, the breeding-run database behind the evotrader
+  MCP tools. It is git-ignored; the published strategies are all in
+  `profitable-strategies/`;
+- 2.6 GB of research caches (above).
 
 ---
 
@@ -89,7 +136,7 @@ survives the owner's funded-account loss limits.
 
 **Nothing heavy is running in the background.** Only the local MCP servers
 (`evotrader mcp`, `evotrader tv-mcp`) are up. The full test suite result is
-in section 8 (408 passed).
+in section 8 (414 passed).
 
 ---
 
@@ -322,17 +369,28 @@ Use this to steer new work.
 
 ## 6. What runs on its own
 
-**Routines** (Claude Code remote triggers). Both fire into **this session**
-(`session_016VSdEquxejKXcwEiNQPzaX`). If work moves to a new session:
+**Routines** (Claude Code remote triggers). Both fire into one named session,
+the one that has this work; `list_triggers` shows it as
+`persistent_session_id`.
 
-1. read their prompts with `get_trigger`;
-2. create equivalent routines there;
-3. disable these two.
+- **Since 2026-09-25** they fire into `session_01FUrenVPRS1PvGzMh1bieWj`,
+  the fresh container. It made its own copies of both at 06:07 UTC.
+- The first session's two (`trig_01TpuTXooCwvybHwDVinqUrJ`,
+  `trig_01GYcmGp55fXd6oGeHtHDvK5`) are disabled, not deleted.
+
+To move them to another session:
+
+1. read their prompts with `get_trigger` (they are also copied verbatim in
+   the appendix);
+2. create the same routines bound to the new session;
+3. disable the old two. Don't delete them; disabling is reversible.
+   Check `list_triggers` afterwards: exactly one of each should be enabled,
+   or the paper run happens twice.
 
 | Routine | Id | When (UTC, weekdays) | What it does |
 | --- | --- | --- | --- |
-| Paper trading: after-close run | `trig_01TpuTXooCwvybHwDVinqUrJ` | 21:30 | See the list below. |
-| MNQ options levels: morning snapshot | `trig_01GYcmGp55fXd6oGeHtHDvK5` | 12:50 | `strategies/mnq/levels.py --save`; commits `data/levels/`; replies with the levels |
+| Paper trading: after-close run | `trig_01SjzjqTBRXNvSqAGHuxMBpf` | 21:30 | See the list below. |
+| MNQ options levels: morning snapshot | `trig_018GNJEegHjY6ZNP6cZ9kC33` | 12:50 | `strategies/mnq/levels.py --save`; commits `data/levels/`; replies with the levels |
 
 What the after-close run does, in order:
 
@@ -430,21 +488,31 @@ The top-level README lists each with its headline numbers.
 
 **`tests/`**: pytest, run with `python -m pytest tests -q`.
 
+**Setup:**
+
+- `CLAUDE.md`, the rules every session here loads;
+- `.claude/hooks/session-start.sh`, which installs `requirements-research.txt`;
+- `scripts/rebuild-bot-data.sh`, the breakout bot's data.
+
 ---
 
 ## 8. Data (mostly not in git) and how to rebuild it
 
-About 2.7 GB of caches sit under `data/cache/` and are git-ignored. A fresh
-container has none of them. What the current work needs:
+About 2.6 GB of caches sit under `data/cache/` and are git-ignored. A fresh
+container has none of them.
 
-- **The Nasdaq-100 CFD, one-minute, Sep 2020 on:**
-  `python strategies/mnq/duka.py 2020-09-01 <today>`, into
-  `data/cache/duka/months_wide/`.
-- **The index CFDs, one-minute, 2013 on:**
-  `python strategies/quick/indexes.py 2013-01-01 <today> USATECH USA500 USA30 USSC2000`,
-  into `data/cache/duka/idx/`.
-- **The breakout bot's arrays:** `python strategies/sweeps/data.py` builds
-  `data/cache/quick/sweep_<NQ|ES|YM>.npz` from those.
+What the current work needs is rebuilt by `bash scripts/rebuild-bot-data.sh`:
+
+- **The Nasdaq-100 CFD, one-minute:**
+  - to August 2020, `python strategies/quick/indexes.py 2013-01-01 2020-08-31 USATECH`,
+    into `data/cache/duka/idx/`;
+  - from September 2020, `python strategies/mnq/duka.py 2020-09-01 <today>`,
+    into `data/cache/duka/months_wide/`.
+- **The S&P 500 and Dow CFDs, one-minute, 2013 on:**
+  `python strategies/quick/indexes.py 2013-01-01 <today> USA500 USA30`, into
+  `data/cache/duka/idx/`.
+- **The breakout bot's arrays:** `strategies/sweeps/data.py`'s `load()`
+  builds `data/cache/quick/sweep_<NQ|ES|YM>.npz` from those.
 
 Sources and their quirks:
 
@@ -468,7 +536,11 @@ In git:
 - `data/intraday/` (Yahoo 1-minute archive, 47 names plus NQ/MNQ);
 - `data/levels/` (daily options levels).
 
-**Tests at handoff:** `python -m pytest tests -q`: 408 passed (2026-09-25, about 100 seconds).
+**Rebuilt from nothing on 2026-09-25:** the Nasdaq's first 91 months came
+back identical to the files the published results used, at about 7
+seconds a month. The whole rebuild is about 500 months, so about an hour.
+
+**Tests at handoff:** `python -m pytest tests -q`: 414 passed (2026-09-25, about 100 seconds), with or without the data caches.
 
 ---
 
@@ -507,6 +579,13 @@ In git:
     it.
 - **Docs:** replacing whole blocks is refused with `missing_guard` unless
   the payload carries `ifRev` (the current revision).
+- **A new container's first session:**
+  - The evotrader MCP servers (`.mcp.json`) need numpy. They can start
+    before the startup hook has installed it, and then stay down until the
+    next start.
+  - Optional fix: put `pip install -r requirements-research.txt` in the
+    environment's setup script (environment menu, then Edit, then Setup
+    script).
 
 ---
 
@@ -530,3 +609,32 @@ In git:
    It has one session so far.
 6. **Revisit the paper roster** (#2, #25, #18) after four to eight weeks,
    not days.
+
+---
+
+## Appendix: the routine prompts, verbatim
+
+Copied from `get_trigger` on 2026-09-25 (the fresh container's copies), in case the routines are ever lost.
+
+**Paper trading: after-close run** (cron `30 21 * * 1-5`, UTC):
+
+~~~text
+After-close paper trading run for the leveraged-fund bots (the owner's top three, from 2026-09-25: #2 MUU Trend Breakout D609, #25 MUU / SOXL Uptrend Dip CB51 and #18 MUU / SOXL Uptrend Dip CBE3, each on its own $25,000), the quick trades (the Nasdaq-100 breakout and the gap breakout), the Own-Drop Scalper (kept as a record; see its caveat) and the MNQ options-level test. Paper only: never place real orders or touch any broker account.
+
+1. In /home/user/Investing, be on branch claude/robinhood-trades-breakdown-1d7ev0 with the latest commits (git fetch origin claude/robinhood-trades-breakdown-1d7ev0; check it out and pull if needed). If `python -c "import numpy"` fails (a fresh container), run `pip install -q -e ".[dev]"` first.
+2. Run `python strategies/soxl/minute.py` (adds the day's one-minute bars for the scalper's 47 names to data/intraday/; Yahoo keeps them 30 days only), then `python strategies/scalp/replay.py` (the Own-Drop Scalper's paper record in profitable-strategies/scalping/own-drop/), then `python strategies/mnq/levelbot.py` (archives MNQ=F and NQ=F minutes and replays each finished session with saved levels into profitable-strategies/futures/options-levels/), then `python strategies/mnq/levels.py --save` (after the close this writes the next session's levels to data/levels/ from the closing option chain; the morning routine keeps it if its own pre-market pull is thin), then `python strategies/quick/paper.py` (the quick trades: the Nasdaq-100 noise-area breakout on NQ=F with its 0.30% stop, booked as 2 MNQ, QQQ at 4x and TQQQ at 2x; and the gap breakout on the three large caps that opened 2% or more away whose first five minutes were widest against their own recent first five minutes, the tested rule; ledger profitable-strategies/quick-trades/paper.json, notes in profitable-strategies/quick-trades/paper/<date>.md), then `python strategies/etf/paper.py` (the three leveraged-fund bots; the split bots are retired and stay only in the ledger's "retired" list). If the ledger's updated_after_close did not move to a new session (a market holiday, or the session was still trading), commit data/intraday and data/levels if they changed and stop without messaging anyone.
+3. Update the doc "Paper Trading Journal: Leveraged Tech Bots" (Claude Docs, container project 4f857690-324a-4367-8cef-b8f4863ab3ec; load the docs skill and read the doc first): replace the Accounts table and its "As of" line with `python strategies/etf/paper.py --print accounts`; replace the list under "Orders for the next open" (and its date) with `--print orders`, in plain English; replace the table under "Quick trades (paper)" with one row per recorded session from profitable-strategies/quick-trades/paper.json (session; Nasdaq trades; 2 MNQ $; TQQQ at 2x $ (tqqq_2x_usd, $0 on a day with no Nasdaq trade); gap trades as name and side; gap book $; TQQQ 2x + gap $; running total of that column); replace the table under "Own-Drop Scalper (four-minute trades)" with one row per recorded session from profitable-strategies/scalping/own-drop/paper.json (session, trades, P&L, running total); replace the table under "Options levels on MNQ (paper)" the same way from profitable-strategies/futures/options-levels/paper.json; insert a new entry at the top of the Daily log, right after its intro paragraph: "### <Day Mon D> close", then an **AI summary** of 3 to 5 sentences (what each of the three bots, the quick trades, the scalper and the level test did and why, the day's P&L, the funds' moves, what to watch at the next close), then each bot's fills and where it stands from the "Where each bot stands" part of profitable-strategies/leveraged-etfs/paper/<date>.md, the quick trades from profitable-strategies/quick-trades/paper/<date>.md, the scalper's trades from profitable-strategies/scalping/own-drop/paper/<date>.md and the level trades from profitable-strategies/futures/options-levels/paper/<date>.md; replace the Trade log body with `--print trades` once there are closed trades. Keep every other section as the user left it.
+4. Commit profitable-strategies/leveraged-etfs/paper/, profitable-strategies/quick-trades/, profitable-strategies/scalping/own-drop/, profitable-strategies/futures/options-levels/, data/levels/ and data/intraday/ and push to claude/robinhood-trades-breakdown-1d7ev0, then `git branch -f profitable-strategies HEAD` and push profitable-strategies. Verify both pushes with `git ls-remote origin`.
+5. Reply to the user in two or three lines: the day's paper P&L for the three bots (#2, #25, #18), the quick trades (Nasdaq breakout at TQQQ 2x and gap breakout), the scalper and the level test, and the orders for the next open.
+~~~
+
+**MNQ options levels: morning snapshot** (cron `50 12 * * 1-5`, UTC):
+
+~~~text
+Morning levels for the MNQ options-level paper test. Paper only: never place real orders or touch any broker account.
+
+1. In /home/user/Investing, be on branch claude/robinhood-trades-breakdown-1d7ev0 with the latest commits (git fetch origin claude/robinhood-trades-breakdown-1d7ev0; check it out and pull if needed). If `python -c "import numpy"` fails (a fresh container), run `pip install -q -e ".[dev]"` first.
+2. Run `python strategies/mnq/levels.py --save` (today's call wall, put wall, gamma flip and max pain from nasdaq.com's delayed QQQ option chain, in NQ points; writes data/levels/<today>.json). If it fails, retry once after a minute; if the market is closed today (a holiday or weekend), stop without messaging anyone.
+3. Commit data/levels/ and push to claude/robinhood-trades-breakdown-1d7ev0, then `git branch -f profitable-strategies HEAD` and push profitable-strategies. Verify both pushes with `git ls-remote origin`.
+4. Reply to the user in one or two lines: today's levels in NQ points (call wall, put wall, gamma flip, max pain) and NQ's last close, for the Pine script's inputs.
+~~~

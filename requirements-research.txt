@@ -1,0 +1,13 @@
+# Everything the research and the paper runs on this branch import, pinned to
+# the versions that produced the published results (checked 2026-09-25: a clean
+# install of exactly these passes the full test suite).
+#
+#   pip install -r requirements-research.txt
+#
+# .claude/hooks/session-start.sh installs them in every new cloud container.
+numpy==2.4.6
+scipy==1.17.1
+lightgbm==4.7.0
+anthropic==1.8.0
+pytest==9.1.1
+pyflakes==4.0.0

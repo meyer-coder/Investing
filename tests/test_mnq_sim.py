@@ -8,6 +8,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "strategies" / "mnq"))
+# tests/test_funded.py imports strategies/sweeps/data.py as `data`; drop it so sim and this file get strategies/mnq/data.py
+sys.modules.pop("data", None)
 
 import sim  # noqa: E402
 from data import Day  # noqa: E402
