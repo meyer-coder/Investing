@@ -1,6 +1,6 @@
-"""The short-only MNQ strategy.
+"""The MNQ strategy.
 
-Three setups, checked at the close of every bar, in this order:
+Three short-only setups, checked at the close of every bar, in this order:
 
 ``momentum``     The last hour fell ``mom_k`` times its normal range for that
                  time of day, and price is under VWAP.  Research showed big
@@ -10,6 +10,10 @@ Three setups, checked at the close of every bar, in this order:
                  day's sharpest selloff candles come in the first hour.
 ``vwap_reject``  On a day trading below its open, a bar rallies up to VWAP,
                  fails, and closes red below it.
+
+and one ``basic`` setup that trades both ways: after a run of green (or red)
+candles that is big for that time of day, go with it (``follow``: buy
+green, short red) or against it (``fade``: short green, buy red).
 
 ``decide`` sees only bars that have already closed; the entry fills at the
 next bar's open.  The backtester and the live bot both call it, so what is
@@ -83,9 +87,10 @@ class DayState:
 @dataclass
 class Entry:
     setup: str
-    stop_pts: float        # distance above the entry
-    target_pts: float      # distance below the entry
+    stop_pts: float        # distance from the entry to the stop (against the trade)
+    target_pts: float      # distance from the entry to the target (with the trade)
     reason: str
+    side: int = -1         # +1 buy (long), -1 sell short
 
 
 def session_vwap(s: Session, i: int) -> float:
@@ -102,7 +107,7 @@ class ShortStrategy:
         self._fomc = set(FOMC_DATES)
 
     def windows(self) -> List[int]:
-        return [self.p.unit_minutes, self.p.mom_minutes]
+        return [self.p.unit_minutes, self.p.mom_minutes, self.p.basic_minutes]
 
     def profile(self, prior: Sequence[Session]) -> Profile:
         return Profile(prior, self.windows())
@@ -128,37 +133,43 @@ class ShortStrategy:
         """Minute by which any position must be closed today."""
         return self.p.fomc_flat_minute if self.is_fomc(date) else self.p.flatten_minute
 
-    def decide(self, s: Session, i: int, day: DayState, prof: Profile) -> Optional[Entry]:
-        """Called after bar ``i`` closes.  Returns a short entry for the next bar, or None."""
+    def entry_unit(self, s: Session, i: int, day: DayState, prof: Profile) -> float:
+        """The size of one unit if a new trade may be opened after bar ``i``
+        (time window, day limits, cooldown, Fed days), else 0."""
         p = self.p
         now = int(s.minute[i]) + s.bar_minutes           # the moment bar i closed
         if day.in_position or day.done:
-            return None
+            return 0.0
         if day.trades >= p.max_trades_per_day or day.losses >= p.max_losses_per_day:
-            return None
+            return 0.0
         if now - day.last_exit_minute < p.cooldown_minutes:
-            return None
+            return 0.0
         if not (p.first_entry_minute <= now <= p.last_entry_minute):
-            return None
+            return 0.0
         if now >= self.flatten_minute(s.date):
-            return None
+            return 0.0
         if self.is_fomc(s.date) and p.fomc_flat_minute - 30 <= now < p.fomc_resume_minute:
-            return None
-
+            return 0.0
         unit = prof.normal(p.unit_minutes, int(s.minute[i]))
-        if not unit > 0:
+        return unit if unit > 0 else 0.0
+
+    def decide(self, s: Session, i: int, day: DayState, prof: Profile) -> Optional[Entry]:
+        """Called after bar ``i`` closes.  Returns an entry for the next bar, or None."""
+        p = self.p
+        now = int(s.minute[i]) + s.bar_minutes
+        unit = self.entry_unit(s, i, day, prof)
+        if not unit:
             return None
         close = float(s.close[i])
         vwap = session_vwap(s, i)
         below_vwap = close < vwap
-        if p.require_below_vwap and not below_vwap:
-            return None
+        shorts_ok = below_vwap or not p.require_below_vwap
 
-        def entry(name: str, why: str) -> Entry:
-            return Entry(name, p.stop_units * unit, p.target_units * unit, why)
+        def entry(name: str, why: str, side: int = -1) -> Entry:
+            return Entry(name, p.stop_units * unit, p.target_units * unit, why, side)
 
         # 1) big drop keeps going
-        if p.momentum:
+        if p.momentum and shorts_ok:
             n = prof.bars_for(p.mom_minutes)
             if i >= n - 1:
                 move = close - float(s.open[i - n + 1])
@@ -169,7 +180,7 @@ class ShortStrategy:
 
         # 2) break below the opening range
         or_end = RTH_OPEN + p.or_minutes
-        if (p.orb and s.bar_minutes <= p.or_minutes and not day.setups_used.get("orb")
+        if (p.orb and shorts_ok and s.bar_minutes <= p.or_minutes and not day.setups_used.get("orb")
                 and or_end <= now <= p.orb_last_minute and int(s.minute[0]) <= RTH_OPEN):
             in_or = s.minute[:i + 1] < or_end
             if in_or.any() and i > 0 and not in_or[i]:
@@ -187,4 +198,38 @@ class ShortStrategy:
             if down_day and prev_below and touched and red and below_vwap:
                 return entry("vwap_reject", f"high {s.high[i]:.2f} tagged VWAP {vwap:.2f} "
                                             f"and closed red below it")
+
+        # 4) basic, both ways: a big run of same-coloured candles
+        if p.basic:
+            n = prof.bars_for(p.basic_minutes)
+            if i >= n - 1:
+                o_run, c_run = s.open[i - n + 1:i + 1], s.close[i - n + 1:i + 1]
+                move = close - float(o_run[0])
+                normal = prof.normal(p.basic_minutes, int(s.minute[i]))
+                colour = 1 if bool((c_run > o_run).all()) else -1 if bool((c_run < o_run).all()) else 0
+                if colour and normal > 0 and colour * move >= p.basic_k * normal:
+                    side = colour if p.basic_mode == "follow" else -colour
+                    word = "green" if colour > 0 else "red"
+                    return entry("basic", f"{n} {word} candle(s), {move:+.0f} pts in "
+                                          f"{p.basic_minutes}m (normal {normal:.0f})", side)
         return None
+
+
+class RandomStrategy(ShortStrategy):
+    """The benchmark: enters at random moments in a random direction, with
+    the same stops, targets, sizing, time windows and day limits as the real
+    setups.  A strategy that cannot beat this has no edge -- whatever its
+    backtest says."""
+
+    def __init__(self, params: StrategyParams, rate: float, seed: int):
+        super().__init__(params)
+        self.rate = rate
+        self.rng = np.random.default_rng(seed)
+
+    def decide(self, s: Session, i: int, day: DayState, prof: Profile) -> Optional[Entry]:
+        unit = self.entry_unit(s, i, day, prof)
+        if not unit or self.rng.random() > self.rate:
+            return None
+        side = int(self.rng.choice([-1, 1]))
+        return Entry("random", self.p.stop_units * unit, self.p.target_units * unit,
+                     "coin flip", side)

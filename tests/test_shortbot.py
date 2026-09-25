@@ -240,3 +240,37 @@ def test_failed_combine_reports_the_loss_at_the_limit():
     rules = AccountRules(daily_loss=0)
     a = bt.combine_attempt({"d1": [T("d1", -2500, mae=-2600)]}, days, rules)
     assert a.outcome == "failed" and a.profit == pytest.approx(-2000)
+
+
+
+def test_long_profits_when_price_rises():
+    closes = [20000.0] * 5 + [20000.0 + 5 * k for k in range(1, 40)]
+    s = make_session("2026-01-05", closes)
+
+    class Long(EnterAt):
+        def decide(self, s, i, day, prof):
+            e = super().decide(s, i, day, prof)
+            return Entry(e.setup, e.stop_pts, e.target_pts, e.reason, +1) if e else None
+
+    (t,) = bt.run_session(s, Long(at=3, stop=50, target=30), None, RISK)
+    assert t.side == 1 and t.exit_reason == "target"
+    assert t.entry == pytest.approx(s.open[4] + 0.25)          # a buy pays a tick up
+    assert t.pnl_usd == pytest.approx(30 * 2.0 - 1.22) and t.points == pytest.approx(30)
+
+
+def test_basic_follow_buys_green_runs_and_fade_sells_them():
+    prior = [make_session(f"2026-01-{d:02d}", [20000.0 + (k % 2) * 4 for k in range(78)])
+             for d in range(5, 17)]
+    closes = [20000.0] * 20 + [20000.0 + 12 * k for k in range(1, 10)] + [20108.0] * 49
+    s = make_session("2026-01-19", closes)
+    for mode, side in (("follow", 1), ("fade", -1)):
+        strat = ShortStrategy(StrategyParams(skip_fomc=False, orb=False, momentum=False,
+                                             vwap_reject=False, basic=True, basic_mode=mode))
+        prof = strat.profile(prior)
+        fired = [e for e in (strat.decide(s, i, DayState(), prof) for i in range(len(s) - 1)) if e]
+        assert fired and fired[0].setup == "basic" and fired[0].side == side
+
+
+def test_config_rejects_an_unknown_basic_mode():
+    with pytest.raises(ValueError):
+        BotConfig.from_dict({"strategy": {"basic_mode": "sideways"}})

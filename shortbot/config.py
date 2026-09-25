@@ -16,10 +16,18 @@ from typing import Any, Dict, List
 class StrategyParams:
     """What the bot looks for.  It only ever sells short."""
 
-    # which setups may fire
+    # which setups may fire (the first three only sell short)
     orb: bool = True                  # break below the opening range
     momentum: bool = True             # big drop keeps going
     vwap_reject: bool = True          # rally up to VWAP fails on a down day
+    basic: bool = False               # react to a run of same-coloured candles, long or short
+
+    # basic: a run of green or red candles over the last ``basic_minutes`` that
+    # covers ``basic_k`` x the normal range for that stretch of the day.
+    # follow = buy green runs and short red runs; fade = short green, buy red.
+    basic_mode: str = "follow"
+    basic_minutes: int = 15
+    basic_k: float = 1.0
 
     # opening-range breakdown
     or_minutes: int = 15              # opening range = first 15 minutes after 09:30
@@ -126,6 +134,11 @@ class BotConfig:
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
+    def validate(self) -> "BotConfig":
+        if self.strategy.basic_mode not in ("follow", "fade"):
+            raise ValueError(f"basic_mode must be 'follow' or 'fade', not {self.strategy.basic_mode!r}")
+        return self
+
     @classmethod
     def from_dict(cls, d: Dict[str, Any]) -> "BotConfig":
         def build(kind, raw):
@@ -137,7 +150,7 @@ class BotConfig:
         return cls(strategy=build(StrategyParams, d.get("strategy", {})),
                    risk=build(RiskParams, d.get("risk", {})),
                    account=build(AccountRules, d.get("account", {})),
-                   symbol=d.get("symbol", "MNQ"))
+                   symbol=d.get("symbol", "MNQ")).validate()
 
     @classmethod
     def load(cls, path: str) -> "BotConfig":

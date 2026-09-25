@@ -1,11 +1,12 @@
-# shortbot: a short-only MNQ day-trading bot for Topstep
+# shortbot: an MNQ day-trading bot for Topstep
 
-The bot only sells MNQ short and takes at most 3 trades a day. It follows the
-Topstep 50K Trading Combine rules (see `docs/prop-firm-accounts.md`).
+The bot trades MNQ within the Topstep Combine rules (see
+`docs/prop-firm-accounts.md`), taking at most a few trades a day. Three of
+its setups only sell short. A fourth, `basic`, trades both ways.
 
-> **Status: not ready for money.** The backtests below show no reliable edge
-> yet. Use it in dry run or on the free Topstep Practice account until a
-> longer test says otherwise.
+> **Status: not ready for money.** Nothing here has beaten random trading
+> clearly enough to call it an edge (see *Is it better than luck?* below).
+> Use it in dry run or on the free Topstep Practice account.
 
 ## What it looks for
 
@@ -132,6 +133,43 @@ hundreds of independent trials.
 python -m shortbot backtest --data yahoo-hourly --config configs/shortbot-bigdrop-100k.json
 ```
 
+## Basic mode: react to the candles, both ways
+
+`configs/shortbot-basic.json` turns off the short setups and uses only
+`basic`. The rule: when the last 15 minutes are all green candles, or all
+red, and the move is at least the normal size for that time of day, trade
+it. It takes at most 3 trades a day, with about $1,000 of risk each.
+
+- `basic_mode: "follow"`: buy after green, short after red. This is the
+  preset.
+- `basic_mode: "fade"`: buy the red dip, short the green rip.
+
+## Is it better than luck?
+
+Topstep's structure can make pure luck look good: a blown account only
+costs the fee, while lucky upswings get paid out. So every idea should be
+ranked against coin-flip bots. These take the same number of trades, with
+the same stops, targets, sizing and limits, but enter at random times in a
+random direction.
+
+```bash
+python -m shortbot vs-random --data yahoo-hourly --config configs/shortbot-basic.json
+```
+
+| Two years of hourly NQ, ~$1,000 a trade | Trading P&L | Beats this % of 200 coin-flip bots |
+|---|---|---|
+| Big-drop short (`shortbot-bigdrop.json`) | +$4,058 | **80%**, the best so far |
+| Basic follow (buy green, short red) | −$873 | 62%, about random |
+| Basic fade (buy dips, short rips) | −$13,736 | 16%, worse than random |
+| Basic follow, 5-minute data, last 49 days | −$4,135 | 21% |
+
+**How to read it:**
+- Only the trading P&L ranking says anything about skill.
+- The whole-plan result is mostly luck. Fade did worse than most coin
+  flips on its trades, yet its whole-plan result beat 96% of them.
+- **The bar for calling something an edge is beating about 95% of coin
+  flips, in more than one period.** Nothing here does yet.
+
 ## Commands
 
 ```bash
@@ -141,6 +179,7 @@ python -m shortbot backtest --data yahoo-hourly  # two years, hourly (coarse)
 python -m shortbot backtest --data mnq_5m.csv    # your own timestamp,open,high,low,close,volume file
 python -m shortbot backtest --setups momentum    # test one setup alone
 python -m shortbot sweep --data yahoo-hourly     # tune on the first 60%, judge on the last 40%
+python -m shortbot vs-random --data yahoo-hourly  # rank the strategy against coin-flip bots
 python -m shortbot init-config bot.json          # then: --config bot.json on any command
 ```
 
@@ -209,7 +248,7 @@ python -m shortbot init-config bot.json          # then: --config bot.json on an
 shortbot/
   config.py     every setting, plus Fed announcement dates
   data.py       bars -> New York sessions (Yahoo, CSV, or TopstepX)
-  strategy.py   the three setups; decide() is shared by backtest and live
+  strategy.py   the setups (+ the coin-flip benchmark); decide() is shared by backtest and live
   backtest.py   fills, trade records, Topstep Combine replay, stats
   topstepx.py   TopstepX / ProjectX REST client (standard library only)
   live.py       paper and real brokers, the live loop, safety switches

@@ -40,10 +40,11 @@ class Trade:
     mae_usd: float           # worst open loss while in the trade (<= 0), after commission
     exit_reason: str
     reason: str
+    side: int = -1           # +1 long, -1 short
 
     @property
     def points(self) -> float:
-        return self.entry - self.exit
+        return self.side * (self.exit - self.entry)
 
 
 def size_trade(e: Entry, r: RiskParams) -> int:
@@ -72,33 +73,35 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
         o, h, lo, c = (float(s.open[i]), float(s.high[i]), float(s.low[i]), float(s.close[i]))
 
         if pos is not None and i >= pos["i"]:
+            sd, stop, target = pos["side"], pos["stop"], pos["target"]   # sd: +1 long, -1 short
+            adverse, favour = (lo, h) if sd > 0 else (h, lo)
             exit_px, why = None, ""
             if m >= flat_at:
-                exit_px, why = o + slip, "flatten"
-            elif i > pos["i"] and o >= pos["stop"]:
-                exit_px, why = o + slip, "stop (gap)"
-            elif h >= pos["stop"]:
-                exit_px, why = pos["stop"] + slip, "stop"
-            elif lo <= pos["target"] - r.tick_size:
-                exit_px, why = pos["target"], "target"
+                exit_px, why = o - sd * slip, "flatten"
+            elif i > pos["i"] and sd * (o - stop) <= 0:
+                exit_px, why = o - sd * slip, "stop (gap)"
+            elif sd * (adverse - stop) <= 0:
+                exit_px, why = stop - sd * slip, "stop"
+            elif sd * (favour - target) >= r.tick_size:
+                exit_px, why = target, "target"
             elif m + s.bar_minutes - pos["minute"] >= p.max_hold_minutes:
-                exit_px, why = c + slip, "time"
+                exit_px, why = c - sd * slip, "time"
             elif i == len(s) - 1:
-                exit_px, why = c + slip, "session end"
-            # Worst price seen while short.  Exits at the open or at the stop
+                exit_px, why = c - sd * slip, "session end"
+            # Worst price seen in the trade.  Exits at the open or at the stop
             # end the trade before the rest of the bar; otherwise assume the
-            # bar's high came before its low.
-            bar_worst = exit_px if why in ("flatten", "stop (gap)", "stop") else h
-            worst = max(pos["worst"], bar_worst)
-            pos["worst"] = worst
+            # bar went against the position before it went for it.
+            bar_worst = exit_px if why in ("flatten", "stop (gap)", "stop") else adverse
+            if sd * (bar_worst - pos["worst"]) < 0:
+                pos["worst"] = bar_worst
             if exit_px is not None:
-                n = pos["n"]
-                pnl = (pos["entry"] - exit_px) * r.point_value * n - r.commission_rt * n
-                mae = min(0.0, (pos["entry"] - worst) * r.point_value * n) - r.commission_rt * n
+                n, entry = pos["n"], pos["entry"]
+                pnl = sd * (exit_px - entry) * r.point_value * n - r.commission_rt * n
+                mae = min(0.0, sd * (pos["worst"] - entry) * r.point_value * n) - r.commission_rt * n
                 exit_min = m if why in ("flatten", "stop (gap)") else m + s.bar_minutes
-                trades.append(Trade(s.date, pos["setup"], pos["minute"], exit_min, pos["entry"],
-                                    exit_px, n, pos["stop"], pos["target"], round(pnl, 2),
-                                    round(min(mae, pnl), 2), why, pos["reason"]))
+                trades.append(Trade(s.date, pos["setup"], pos["minute"], exit_min, entry,
+                                    exit_px, n, stop, target, round(pnl, 2),
+                                    round(min(mae, pnl), 2), why, pos["reason"], sd))
                 day.record_exit(pnl, exit_min)
                 if day.pnl_usd <= -r.daily_loss_stop_usd or day.pnl_usd >= r.daily_profit_stop_usd:
                     day.done = True
@@ -109,17 +112,20 @@ def run_session(s: Session, strat: ShortStrategy, prof, r: RiskParams) -> List[T
             if e is not None:
                 n = size_trade(e, r)
                 if n > 0:
-                    entry = float(s.open[i + 1]) - slip
+                    sd = e.side
+                    entry = float(s.open[i + 1]) + sd * slip
                     pos = {"i": i + 1, "minute": int(s.minute[i + 1]), "entry": entry, "n": n,
-                           "stop": entry + e.stop_pts, "target": entry - e.target_pts,
-                           "worst": entry, "setup": e.setup, "reason": e.reason}
+                           "side": sd, "stop": entry - sd * e.stop_pts,
+                           "target": entry + sd * e.target_pts, "worst": entry,
+                           "setup": e.setup, "reason": e.reason}
                     day.in_position = True
                     day.setups_used[e.setup] = day.setups_used.get(e.setup, 0) + 1
     return trades
 
 
-def run(sessions: Sequence[Session], cfg: BotConfig) -> List[Trade]:
-    strat = ShortStrategy(cfg.strategy)
+def run(sessions: Sequence[Session], cfg: BotConfig,
+        strat: Optional[ShortStrategy] = None) -> List[Trade]:
+    strat = strat or ShortStrategy(cfg.strategy)
     need = strat.warmup_days()
     trades: List[Trade] = []
     for d in range(need, len(sessions)):

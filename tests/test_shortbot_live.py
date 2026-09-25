@@ -121,7 +121,8 @@ class FakeExchange:
 
     def trigger_stops(self):
         for o in self.open_orders(1):
-            if o["type"] == OrderType.STOP and self.price >= o["stopPrice"]:
+            hit = (self.price >= o["stopPrice"]) if o["side"] == Side.BUY else (self.price <= o["stopPrice"])
+            if o["type"] == OrderType.STOP and hit:
                 o["status"] = 2
                 self.close_position(1, o["contractId"])
 
@@ -136,7 +137,7 @@ def broker(ex):
 
 def test_entry_is_a_market_sell_followed_by_a_protective_buy_stop():
     ex = FakeExchange(price=20000.0)
-    entry, stop = broker(ex).open_short(2, 40.1, ref_price=20000.0)
+    entry, stop = broker(ex).open(-1, 2, 40.1, ref_price=20000.0)
     assert entry == 20000.0 and ex.pos == 2
     (stop_order,) = ex.open_orders(1)
     assert stop_order["side"] == Side.BUY and stop_order["type"] == OrderType.STOP
@@ -147,14 +148,14 @@ def test_a_short_that_cannot_get_its_stop_is_closed_at_once():
     ex = FakeExchange()
     ex.fail_stop = True
     with pytest.raises(ApiError):
-        broker(ex).open_short(1, 40, ref_price=20000.0)
+        broker(ex).open(-1, 1, 40, ref_price=20000.0)
     assert ex.pos == 0
 
 
 def test_closing_cancels_the_stop_first_and_leaves_nothing_behind():
     ex = FakeExchange(price=20000.0)
     b = broker(ex)
-    b.open_short(1, 40, ref_price=20000.0)
+    b.open(-1, 1, 40, ref_price=20000.0)
     ex.price = 19950.0
     assert b.close(19950.0) == 19950.0
     assert ex.pos == 0 and ex.open_orders(1) == []
@@ -163,11 +164,11 @@ def test_closing_cancels_the_stop_first_and_leaves_nothing_behind():
 def test_stop_fill_is_detected_and_reported():
     ex = FakeExchange(price=20000.0)
     b = broker(ex)
-    b.open_short(1, 40, ref_price=20000.0)
-    assert b.stopped_out(high=20010.0) is None
+    b.open(-1, 1, 40, ref_price=20000.0)
+    assert b.stopped_out(20010.0, 19990.0) is None
     ex.price = 20041.0
     ex.trigger_stops()
-    assert b.stopped_out(high=20041.0) == 20041.0
+    assert b.stopped_out(20041.0, 20000.0) == 20041.0
     assert ex.open_orders(1) == []
 
 
@@ -215,8 +216,9 @@ class ReplayFeed:
         if j < 0:
             return None
         if self.full.minute[j] == m:          # a bar just opened
-            return float(self.full.open[j]), float(self.full.open[j])
-        return float(self.full.close[j]), float(self.full.high[j])
+            o = float(self.full.open[j])
+            return o, o, o
+        return float(self.full.close[j]), float(self.full.high[j]), float(self.full.low[j])
 
 
 def replay_day(tmp_path, cfg):
@@ -261,7 +263,7 @@ def test_kill_switch_flattens_and_stops(tmp_path):
     logs = []
     bot = LiveBot(cfg, feed, PaperBroker(cfg.risk, logs.append), logs.append,
                   kill_file=str(tmp_path / "STOP"), trade_log=str(tmp_path / "t.csv"))
-    bot.pos = {"entry": 20010.0, "stop": 20050.0, "target": 19950.0, "n": 1, "minute": 600,
+    bot.pos = {"side": -1, "entry": 20010.0, "stop": 20050.0, "target": 19950.0, "n": 1, "minute": 600,
                "setup": "test", "reason": ""}
     bot.date = "2026-03-18"
     (tmp_path / "STOP").write_text("")
@@ -301,3 +303,40 @@ def test_big_drop_preset_is_one_trade_a_day_and_survives_a_stop():
     s = cfg.strategy
     assert (s.momentum, s.orb, s.vwap_reject, s.max_trades_per_day) == (True, False, False, 1)
     assert account_risk_problem(cfg) is None
+
+
+
+def test_a_long_gets_a_sell_stop_below_and_is_closed_by_selling():
+    ex = FakeExchange(price=20000.0)
+    b = broker(ex)
+    entry, stop = b.open(+1, 2, 40.1, ref_price=20000.0)
+    assert ex.pos == -2                                   # the fake counts shorts as positive
+    (stop_order,) = ex.open_orders(1)
+    assert stop_order["side"] == Side.SELL and stop_order["stopPrice"] == stop == 19959.75
+    ex.price = 20050.0
+    assert b.close(20050.0) == 20050.0
+    assert ex.pos == 0 and ex.open_orders(1) == []
+
+
+def test_live_long_entries_match_the_backtest(tmp_path):
+    cfg = BotConfig()
+    cfg.strategy = replace(cfg.strategy, skip_fomc=False, orb=False, momentum=False,
+                           vwap_reject=False, basic=True, basic_mode="follow", basic_k=1.0)
+    rng = np.random.default_rng(5)
+    prior = [make_session(f"2026-03-{d:02d}", 20000 + np.cumsum(rng.normal(0, 8, 78)))
+             for d in (2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 16, 17)]
+    closes = np.concatenate([np.full(20, 20000.0), 20000 + 15 * np.arange(1, 10),
+                             20135 + 4 * np.sin(np.arange(49))])
+    today = make_session("2026-03-18", closes)
+    logs = []
+    bot = LiveBot(cfg, ReplayFeed(prior, today), PaperBroker(cfg.risk, logs.append), logs.append,
+                  kill_file=str(tmp_path / "STOP"), trade_log=str(tmp_path / "t.csv"))
+    t = datetime(2026, 3, 18, 9, 20, tzinfo=NY)
+    while t <= datetime(2026, 3, 18, 16, 5, tzinfo=NY):
+        bot.step((t + timedelta(seconds=5)).astimezone(timezone.utc))
+        t += timedelta(minutes=1)
+    tested = [x for x in bt.run(prior + [today], cfg) if x.date == today.date]
+    longs = [l for l in logs if l.startswith("LONG")]
+    assert tested and all(x.side == 1 for x in tested[:1])
+    assert len([l for l in logs if l.startswith(("LONG", "SHORT"))]) == len(tested)
+    assert f"@ {tested[0].entry:.2f}" in longs[0]

@@ -18,8 +18,8 @@ Nothing here trades real money, and nothing here connects to a broker. Every
 fill is simulated.
 
 > **Also in this repo:**
-> - [`shortbot/`](shortbot/README.md) is a short-only MNQ day-trading bot built
->   for Topstep's 50K Combine rules. It includes a backtester and a TopstepX
+> - [`shortbot/`](shortbot/README.md) is an MNQ day-trading bot built for
+>   Topstep's Combine rules. It has short setups plus a basic two-way setup. It includes a backtester and a TopstepX
 >   connection that runs as a dry run by default.
 > - [`research/`](research/candle-moves-findings.md) holds the candle-move study
 >   the bot's setups came from.

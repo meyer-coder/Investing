@@ -4,6 +4,7 @@
     python -m shortbot backtest --data yahoo-hourly   # two years, hourly (coarse)
     python -m shortbot backtest --data my_mnq_5m.csv --bar-minutes 5
     python -m shortbot sweep                          # tune on the first 60%, judge on the rest
+    python -m shortbot vs-random --data yahoo-hourly  # is it better than coin flips?
     python -m shortbot init-config bot.json           # write the default settings to edit
     python -m shortbot live --config bot.json         # dry run: watch TopstepX, place nothing
 """
@@ -136,6 +137,41 @@ def cmd_sweep(a) -> None:
     print(f"\n   {positive_unseen} of {len(rows)} settings made money on the unseen part")
 
 
+def cmd_vs_random(a) -> None:
+    """Is the strategy better than luck?  Runs many coin-flip bots with the
+    same stops, targets, sizing and limits, and ranks the strategy among them
+    -- on trading P&L, and on the whole Topstep plan."""
+    import numpy as np
+    from .strategy import RandomStrategy, ShortStrategy
+    cfg = _only_setups(_config(a.config, a.account), a.setups)
+    sessions = load_sessions(a.data, a.bar_minutes, a.refresh)
+    dates, _, _ = _split(sessions, cfg, 0.6)
+    real = bt.run(sessions, cfg)
+    real_pnl = sum(t.pnl_usd for t in real)
+    real_net = bt.cycles(real, dates, cfg.account, starts=1)[0].net
+    # match the trade count: tune the coin's per-bar rate until it trades about as often
+    need = ShortStrategy(cfg.strategy).warmup_days()
+    rate = max(len(real), 1) / max(1, sum(len(s) for s in sessions[need:]))
+    for _ in range(5):
+        n = len(bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, 10_000)))
+        rate = min(1.0, rate * max(len(real), 1) / max(n, 1))
+    pnls, nets, counts = [], [], []
+    for seed in range(a.runs):
+        tr = bt.run(sessions, cfg, RandomStrategy(cfg.strategy, rate, seed))
+        pnls.append(sum(t.pnl_usd for t in tr))
+        nets.append(bt.cycles(tr, dates, cfg.account, starts=1)[0].net)
+        counts.append(len(tr))
+    pnls, nets = np.asarray(pnls), np.asarray(nets)
+    print(f"{a.data}: {dates[0]} .. {dates[-1]}; strategy took {len(real)} trades, "
+          f"the {a.runs} coin-flip bots took {np.median(counts):.0f} each (median)")
+    for label, mine, dist in (("trading P&L", real_pnl, pnls),
+                              (f"whole plan on {cfg.account.name}", real_net, nets)):
+        print(f"   {label:<34} strategy ${mine:+9,.0f} | coin flips: median ${np.median(dist):+,.0f}, "
+              f"10th-90th ${np.percentile(dist, 10):+,.0f} .. ${np.percentile(dist, 90):+,.0f}"
+              f" | strategy beats {float(np.mean(dist < mine)) * 100:.0f}% of them")
+    print("   Beating ~95% on trading P&L, in more than one period, is the bar for calling it an edge.")
+
+
 def cmd_init_config(a) -> None:
     BotConfig().save(a.path)
     print(f"wrote {a.path}")
@@ -148,7 +184,7 @@ def cmd_live(a) -> None:
 
 
 def main(argv: Optional[List[str]] = None) -> None:
-    ap = argparse.ArgumentParser(prog="shortbot", description="short-only MNQ day-trading bot")
+    ap = argparse.ArgumentParser(prog="shortbot", description="MNQ day-trading bot for Topstep")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     def data_args(p):
@@ -172,6 +208,11 @@ def main(argv: Optional[List[str]] = None) -> None:
     s.add_argument("--top", type=int, default=10)
     s.add_argument("--min-trades", type=int, default=10)
     s.set_defaults(fn=cmd_sweep)
+
+    v = sub.add_parser("vs-random", help="rank the strategy against coin-flip bots")
+    data_args(v)
+    v.add_argument("--runs", type=int, default=200)
+    v.set_defaults(fn=cmd_vs_random)
 
     i = sub.add_parser("init-config", help="write the default settings file")
     i.add_argument("path")
