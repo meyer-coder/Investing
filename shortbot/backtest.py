@@ -232,7 +232,8 @@ def stats(trades: Sequence[Trade], days: int) -> Stats:
     return st
 
 
-def describe(trades: Sequence[Trade], days: int, attempts: Sequence[Attempt], title: str) -> str:
+def describe(trades: Sequence[Trade], days: int, attempts: Sequence[Attempt], title: str,
+             account: str = "Topstep 50K Combine") -> str:
     st = stats(trades, days)
     lines = [f"== {title}",
              f"   {st.trades} trades over {days} sessions ({st.trades_per_day:.2f}/day)   "
@@ -251,11 +252,11 @@ def describe(trades: Sequence[Trade], days: int, attempts: Sequence[Attempt], ti
         failed = [a for a in done if a.outcome == "failed"]
         if done:
             med = float(np.median([a.days for a in passed])) if passed else float("nan")
-            lines.append(f"   Topstep 50K Combine started on each day: {len(passed)} passed, "
+            lines.append(f"   {account} started on each day: {len(passed)} passed, "
                          f"{len(failed)} failed, {len(attempts) - len(done)} ran out of data"
                          f"  -> pass rate {len(passed) / len(done) * 100:.0f}% of finished attempts"
                          + (f", median {med:.0f} days to pass" if passed else ""))
         else:
-            lines.append(f"   Topstep 50K Combine: none of {len(attempts)} attempts finished "
+            lines.append(f"   {account}: none of {len(attempts)} attempts finished "
                          f"inside the data")
     return "\n".join(lines)

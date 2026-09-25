@@ -1,0 +1,52 @@
+{
+  "strategy": {
+    "orb": false,
+    "momentum": true,
+    "vwap_reject": false,
+    "or_minutes": 15,
+    "orb_last_minute": 660,
+    "mom_minutes": 60,
+    "mom_k": 1.5,
+    "vr_first_minute": 600,
+    "vr_tolerance": 0.1,
+    "unit_minutes": 30,
+    "stop_units": 1.0,
+    "target_units": 2.5,
+    "max_hold_minutes": 90,
+    "first_entry_minute": 585,
+    "last_entry_minute": 900,
+    "flatten_minute": 950,
+    "max_trades_per_day": 1,
+    "max_losses_per_day": 1,
+    "cooldown_minutes": 10,
+    "require_below_vwap": true,
+    "profile_days": 10,
+    "trend_filter": false,
+    "trend_days": 20,
+    "skip_fomc": true,
+    "fomc_flat_minute": 835,
+    "fomc_resume_minute": 885
+  },
+  "risk": {
+    "risk_per_trade_usd": 1000.0,
+    "max_contracts": 20,
+    "max_stop_risk_usd": 1000.0,
+    "daily_loss_stop_usd": 1000.0,
+    "daily_profit_stop_usd": 100000.0,
+    "point_value": 2.0,
+    "tick_size": 0.25,
+    "commission_rt": 1.22,
+    "slippage_ticks": 1
+  },
+  "account": {
+    "name": "Topstep 50K Combine",
+    "start_balance": 50000.0,
+    "profit_target": 3000.0,
+    "max_loss": 2000.0,
+    "daily_loss": 1000.0,
+    "consistency": 0.55,
+    "max_contracts": 50,
+    "flat_by_minute": 970
+  },
+  "symbol": "MNQ"
+}

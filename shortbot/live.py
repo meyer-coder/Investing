@@ -399,8 +399,27 @@ def _logger(path: str) -> Log:
     return log
 
 
+def account_risk_problem(cfg: BotConfig) -> Optional[str]:
+    """Why these settings could lose the whole account on one trade, or None.
+    Checked before placing real orders."""
+    r, a = cfg.risk, cfg.account
+    # size_trade fills the budget, but always takes at least one contract whose
+    # stop can be as wide as max_stop_risk_usd
+    worst = min(max(r.risk_per_trade_usd, r.max_stop_risk_usd),
+                r.max_stop_risk_usd * r.max_contracts)
+    if worst >= a.max_loss:
+        return (f"one losing trade can risk up to ${worst:,.0f}, but {a.name} fails at "
+                f"-${a.max_loss:,.0f}: a single stop-out would end the account. Lower "
+                f"risk.risk_per_trade_usd (or risk.max_contracts), or pass --allow-account-risk.")
+    return None
+
+
 def run_live(cfg: BotConfig, live: bool = False, account_id: Optional[int] = None,
-             log_path: str = "runs/shortbot-live.log", poll_seconds: float = 5.0) -> None:
+             log_path: str = "runs/shortbot-live.log", poll_seconds: float = 5.0,
+             allow_account_risk: bool = False) -> None:
+    problem = account_risk_problem(cfg)
+    if live and problem and not allow_account_risk:
+        raise SystemExit("refusing: " + problem)
     user, key = os.environ.get("TOPSTEPX_USERNAME"), os.environ.get("TOPSTEPX_API_KEY")
     if not user or not key:
         raise SystemExit(

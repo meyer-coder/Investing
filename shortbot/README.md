@@ -66,6 +66,43 @@ the target.
 The next real step is several years of 5-minute MNQ data. Pass any CSV with
 `--data`.
 
+## Big-drop mode: one big short, only when the drop comes
+
+`configs/shortbot-bigdrop.json` switches the bot to one setup and one trade a
+day:
+- only the `momentum` setup ("the last hour fell 1.5× its normal range");
+- at most one trade a day;
+- about $1,000 of risk, around half the Combine's $2,000 max loss;
+- target 2.5 units below the entry, exit within 90 minutes.
+
+```bash
+python -m shortbot backtest --data yahoo-hourly --config configs/shortbot-bigdrop.json
+python -m shortbot live --config configs/shortbot-bigdrop.json     # dry run
+```
+
+**How big should the one trade be?** Two years of hourly NQ, big-drop setup
+only, one trade a day at most:
+
+| Risk per trade | Topstep 50K Combines passed | Notes |
+|---|---|---|
+| ~$250 (normal) | 0% | Too slow: the trailing $2,000 limit catches it first |
+| **~$1,000 (this preset)** | **26%, median 50 days** | Total +$4,058 over 77 trades, all of it in the last 11 months |
+| ~$2,000 | 16% | Blows up in about 21 days |
+| All-in, 50 MNQ | 0% (495 of 495 failed) | +$30,958 on paper, but one trade lost $26,161; the account dies at −$2,000 |
+
+**What to expect:**
+- **Frequency:** the setup fires about once every 7–8 trading days, not
+  every day.
+- **Swings:** in an account with no loss limit, the preset's worst drawdown
+  over the two years was −$9,650.
+- **Recent 5-minute sample:** its last 6 trades lost $1,979.
+- **Bigger account:** the 150K Combine passes at the same rate (26%) and
+  costs $199/month instead of $49.
+
+**Safety check:** the live bot refuses to trade settings where a single
+stop-out could use up the account's whole max loss, unless you pass
+`--allow-account-risk`.
+
 ## Commands
 
 ```bash

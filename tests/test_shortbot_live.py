@@ -281,3 +281,23 @@ def test_never_acts_on_a_stale_bar_after_a_restart(tmp_path):
     # start at 11:03:30 -- the last closed bar ended at 11:00, more than a minute ago
     bot.step(datetime(2026, 3, 18, 11, 3, 30, tzinfo=NY).astimezone(timezone.utc))
     assert not any(l.startswith("SHORT") for l in logs)
+
+
+def test_live_refuses_settings_that_can_lose_the_account_on_one_trade():
+    from shortbot.live import account_risk_problem, run_live
+    cfg = BotConfig()
+    assert account_risk_problem(cfg) is None                       # default: ~$250 a trade
+    cfg.risk = replace(cfg.risk, risk_per_trade_usd=1e9, max_contracts=50, max_stop_risk_usd=1e9)
+    assert "single stop-out" in account_risk_problem(cfg)         # all-in: 50 MNQ
+    cfg.risk = replace(BotConfig().risk, risk_per_trade_usd=250, max_stop_risk_usd=2500)
+    assert account_risk_problem(cfg) is not None                   # one wide 1-lot stop
+    with pytest.raises(SystemExit, match="refusing"):
+        run_live(cfg, live=True, account_id=1)                     # stops before any network call
+
+
+def test_big_drop_preset_is_one_trade_a_day_and_survives_a_stop():
+    from shortbot.live import account_risk_problem
+    cfg = BotConfig.load("configs/shortbot-bigdrop.json")
+    s = cfg.strategy
+    assert (s.momentum, s.orb, s.vwap_reject, s.max_trades_per_day) == (True, False, False, 1)
+    assert account_risk_problem(cfg) is None

@@ -48,7 +48,8 @@ def _split(sessions: Sequence[Session], cfg: BotConfig, frac: float):
 
 def _report(trades, dates, cfg, title) -> str:
     sub = [t for t in trades if t.date in set(dates)]
-    return bt.describe(sub, len(dates), bt.combine_attempts(sub, dates, cfg.account), title)
+    return bt.describe(sub, len(dates), bt.combine_attempts(sub, dates, cfg.account), title,
+                       cfg.account.name)
 
 
 def cmd_backtest(a) -> None:
@@ -115,7 +116,8 @@ def cmd_init_config(a) -> None:
 
 def cmd_live(a) -> None:
     from .live import run_live
-    run_live(_config(a.config), live=a.live, account_id=a.account_id, log_path=a.log)
+    run_live(_config(a.config), live=a.live, account_id=a.account_id, log_path=a.log,
+             allow_account_risk=a.allow_account_risk)
 
 
 def main(argv: Optional[List[str]] = None) -> None:
@@ -152,6 +154,8 @@ def main(argv: Optional[List[str]] = None) -> None:
                     help="actually place orders (default: log what it would do)")
     lv.add_argument("--account-id", type=int, help="TopstepX account id to trade")
     lv.add_argument("--log", default="runs/shortbot-live.log")
+    lv.add_argument("--allow-account-risk", action="store_true",
+                    help="trade even if one losing trade could use up the account's whole max loss")
     lv.set_defaults(fn=cmd_live)
 
     a = ap.parse_args(argv)
