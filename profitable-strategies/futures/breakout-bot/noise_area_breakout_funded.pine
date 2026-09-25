@@ -1,6 +1,8 @@
 //@version=6
 // Noise-Area Breakout for funded accounts: NQ's signal, traded on this chart's contract (MNQ, MES or MYM),
-// as tested in strategies/sweeps/funded.py.  Put it on a 1-minute MES1!, MYM1! or MNQ1! chart.
+// sized each morning from the room above the account's loss limit, with each account's rules written in.
+// Tested in strategies/sweeps/sweetspot.py; the rules are evotrader/accounts.py.
+//
 // The bot runs a virtual NQ position:
 // * every half hour (10:00 ... 15:30) NQ's close is compared with the band NQ usually moves within by that
 //   time of day: the average absolute move from the open at that time over the last `lookback` sessions,
@@ -9,22 +11,67 @@
 // * it is out when a check finds NQ back inside the band or through its session average price, when NQ
 //   touches a stop `stopPct` from its entry, or at the end of the day;
 // * after a stop it skips the next check before it can enter again.
-// This chart's contract copies the virtual NQ position. It also has its own resting stop `stopPct` from its
-// fill, and once that stop is hit it stays out until NQ's next new entry.
-// Size it from the table in README.md ("Your accounts"): start small, and add only as the room above the
-// loss limit grows.  Paper-test before any money.
+// This chart's contract copies the virtual NQ position with its own resting stop, and once that stop is hit it
+// stays out until NQ's next new entry.
+//
+// The account (inputs "Account", "Phase", "Room"):
+// * each morning, type the room: the balance minus the loss limit's level, as the firm shows it (a new account
+//   starts with its whole limit as room);
+// * the size is the largest in the table below whose bad day (its 1-in-100 daily loss in 2013-2019) is at
+//   most the account's share of the room, and never more micros than the firm allows;
+// * the bot trades only when this chart is that size's contract (MYM1!, MES1! or MNQ1!); otherwise the panel
+//   says which chart to use and nothing is traded here;
+// * the room guard: the day stops once its loss, open trades included, reaches the account's share of the
+//   room (and Topstep's $2,000 daily limit); every stop rests at the tighter of `stopPct` and what is left of
+//   that day's allowance.
+// The Strategy Tester applies today's room to every past day: it shows the signal, not the account's path.
+// Paper-test before any money.
 strategy("Noise-Area Breakout, funded (NQ signal)", overlay = true, default_qty_type = strategy.fixed, default_qty_value = 1,
          commission_type = strategy.commission.cash_per_contract, commission_value = 0.75, slippage = 1,
          process_orders_on_close = false, calc_on_every_tick = false)
 
-sigSym     = input.symbol("CME_MINI:NQ1!", "Signal from")
-qty        = input.int(1, "Contracts on this chart", minval = 1, maxval = 50)
-stopPct    = input.float(0.30, "Stop, % from the entry", minval = 0.05, step = 0.05)
-dayRule    = input.string("none", "Day rule", options = ["none", "stop after the first loss", "one trade a day"])
-lookback   = input.int(14, "Lookback sessions", minval = 5, maxval = 60)
-every      = input.int(30, "Check every (minutes)", options = [15, 30, 60])
-allowShort = input.bool(true, "Allow shorts")
+account   = input.string("Topstep 100K", "Account", options = ["FundedNext Legacy 25K", "Topstep 100K", "FundedNext Legacy 50K"], group = "Account")
+phase     = input.string("Challenge", "Phase", options = ["Challenge", "Funded"], group = "Account")
+room      = input.float(3000, "Room above the loss limit this morning ($)", minval = 0, step = 50, group = "Account",
+              tooltip = "The balance minus the loss limit's level, as the firm shows it. A new account starts with its whole limit.")
+autoSize  = input.bool(true, "Size from the room", group = "Account")
+qtyManual = input.int(1, "Contracts when not sizing from the room", minval = 1, maxval = 50, group = "Account")
+sigSym     = input.symbol("CME_MINI:NQ1!", "Signal from", group = "Signal")
+stopPct    = input.float(0.30, "Stop, % from the entry", minval = 0.05, step = 0.05, group = "Signal")
+lookback   = input.int(14, "Lookback sessions", minval = 5, maxval = 60, group = "Signal")
+every      = input.int(30, "Check every (minutes)", options = [15, 30, 60], group = "Signal")
+allowShort = input.bool(true, "Allow shorts", group = "Signal")
 tz         = "America/New_York"
+
+// Each account's rules (evotrader/accounts.py) and sizing (strategies/sweeps/sweetspot.json): loss limit, daily
+// loss limit (0 = none), most micros, the share of the room a bad day may take in the challenge and in the funded
+// account, and the room guard (0 = off).
+rules = switch account
+    "FundedNext Legacy 25K" => array.from(1000.0, 0.0, 20.0, 0.25, 0.25, 0.0)
+    "Topstep 100K" => array.from(3000.0, 2000.0, 100.0, 0.35, 0.35, 0.0)
+    "FundedNext Legacy 50K" => array.from(2000.0, 0.0, 30.0, 0.25, 0.25, 0.0)
+maxLoss   = rules.get(0)
+dailyLoss = rules.get(1)
+maxMicros = rules.get(2)
+share     = phase == "Challenge" ? rules.get(3) : rules.get(4)
+guard     = rules.get(5)
+
+// The sizes, smallest bad day first; a bad day is the 1-in-100 daily loss of 2013-2019, in dollars at
+// September 2026 prices (sweetspot.json, "sizes").
+var sizeRoot = array.from("MYM", "MES", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ", "MNQ")
+var sizeQty  = array.from(1, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+var sizeBad  = array.from(195.0, 332.0, 563.0, 1127.0, 1690.0, 2253.0, 2817.0, 3380.0, 3943.0, 4507.0, 5070.0, 5633.0)
+
+int pick = 0
+for i = 0 to sizeBad.size() - 1
+    if sizeBad.get(i) <= share * room and sizeQty.get(i) <= maxMicros
+        pick := i
+todayRoot = sizeRoot.get(pick)
+todayQty  = sizeQty.get(pick)
+chartOk   = syminfo.root == todayRoot
+qty       = autoSize ? (chartOk ? todayQty : 0) : qtyManual
+// the day's allowance: the room guard and the firm's daily limit, whichever is tighter
+dayBudget = math.min(guard > 0 ? guard * room : 1e12, dailyLoss > 0 ? dailyLoss : 1e12)
 
 [sO, sH, sL, sC] = request.security(sigSym, timeframe.period, [open, high, low, close], lookahead = barmerge.lookahead_off)
 
@@ -39,23 +86,18 @@ var int nqPos       = 0          // the virtual NQ position: 1 long, -1 short
 var int pendSide    = 0          // an NQ entry ordered at the last check, filled at this bar's open
 var float nqEntry   = na
 var bool skipCheck  = false      // a stop since the last check: no entry at the next one
-var int tradesToday = 0
-var bool lostToday  = false
+var float dayStart  = 0.0        // closed profit at the day's start
+var bool doneToday  = false      // the day's allowance is used up
 if newDay
     prevClose := lastClose
     dayOpen := sO
     nqPos := 0
     pendSide := 0
     skipCheck := false
-    tradesToday := 0
-    lostToday := false
+    dayStart := strategy.netprofit
+    doneToday := false
 if inSession
     lastClose := sC
-
-// this chart's trades that closed at a loss today (for the day rule)
-if strategy.closedtrades > strategy.closedtrades[1]
-    if strategy.closedtrades.profit(strategy.closedtrades - 1) < 0
-        lostToday := true
 
 // NQ's move from the open at each check time over the last `lookback` sessions, written round-robin
 nChecks = int(390 / every)
@@ -91,6 +133,12 @@ flatten(reason) =>
         strategy.close_all(comment = reason)
         alert('{"action":"flatten","reason":"' + reason + '","symbol":"' + syminfo.ticker + '"}', alert.freq_once_per_bar_close)
 
+// the room guard, checked on every bar (the resting stop below normally gets there first)
+dayPnl = strategy.netprofit - dayStart + strategy.openprofit
+if inSession and not doneToday and dayPnl <= -dayBudget
+    doneToday := true
+    flatten("room guard")
+
 // 1. the NQ entry ordered at the last check is filled at this bar's open
 if pendSide != 0
     nqPos := pendSide
@@ -105,8 +153,7 @@ if nqPos != 0
         skipCheck := true
         flatten("NQ stop")
 
-// 3. the half-hour check: exits first, and an entry only when flat, not just stopped, and allowed today
-canEnter = dayRule == "none" or (dayRule == "stop after the first loss" and not lostToday) or (dayRule == "one trade a day" and tradesToday == 0)
+// 3. the half-hour check: exits first, and an entry only when flat, not just stopped, and the day not done
 if isCheck and not na(upper)
     if nqPos > 0 and sC < math.max(upper, vw)
         nqPos := 0
@@ -118,14 +165,17 @@ if isCheck and not na(upper)
         side = sC > upper ? 1 : (sC < lower and allowShort ? -1 : 0)
         if side != 0
             pendSide := side
-            if canEnter
-                ticks = math.max(1, math.round(stopPct / 100 * close / syminfo.mintick))
+            left = dayBudget + (strategy.netprofit - dayStart)                  // what is left of today's allowance
+            pctTicks = math.max(1, math.round(stopPct / 100 * close / syminfo.mintick))
+            guardTicks = qty > 0 ? math.floor(left / (qty * syminfo.pointvalue * syminfo.mintick)) : 0
+            ticks = math.min(pctTicks, guardTicks)
+            if qty > 0 and not doneToday and ticks >= 1
                 id = side > 0 ? "Long" : "Short"
                 strategy.entry(id, side > 0 ? strategy.long : strategy.short, qty = qty)
                 strategy.exit(id + " stop", id, loss = ticks)
-                tradesToday += 1
                 alert('{"action":"' + (side > 0 ? "buy" : "sell_short") + '","symbol":"' + syminfo.ticker + '","qty":' +
-                      str.tostring(qty) + ',"stop_pct":' + str.tostring(stopPct) + '}', alert.freq_once_per_bar_close)
+                      str.tostring(qty) + ',"stop_ticks":' + str.tostring(ticks) + ',"account":"' + account + '"}',
+                      alert.freq_once_per_bar_close)
     skipCheck := false
 
 // flat for the close: the 15:58 bar's order fills at the 15:59 open
@@ -136,3 +186,20 @@ if inSession and minuteOfSession == 388
 
 plot(upper, "NQ upper band", color.new(color.teal, 0), display = display.data_window)
 plot(lower, "NQ lower band", color.new(color.red, 0), display = display.data_window)
+
+// the morning's plan
+var table panel = table.new(position.top_right, 2, 6, bgcolor = color.new(color.gray, 85), border_width = 1)
+if barstate.islast
+    table.cell(panel, 0, 0, "Account")
+    table.cell(panel, 1, 0, account + ", " + phase)
+    table.cell(panel, 0, 1, "Loss limit")
+    table.cell(panel, 1, 1, "$" + str.tostring(maxLoss, "#,###") + (dailyLoss > 0 ? ", $" + str.tostring(dailyLoss, "#,###") + " a day" : ", no daily limit"))
+    table.cell(panel, 0, 2, "Room this morning")
+    table.cell(panel, 1, 2, "$" + str.tostring(room, "#,###"))
+    table.cell(panel, 0, 3, "Today's size")
+    table.cell(panel, 1, 3, autoSize ? str.tostring(todayQty) + " " + todayRoot : str.tostring(qtyManual) + " (typed)")
+    table.cell(panel, 0, 4, "Day stops at")
+    table.cell(panel, 1, 4, dayBudget < 1e11 ? "-$" + str.tostring(dayBudget, "#,###") : "no stop for the day")
+    table.cell(panel, 0, 5, "This chart")
+    table.cell(panel, 1, 5, not autoSize or chartOk ? "trades it" : "not traded here: use " + todayRoot + "1!",
+               text_color = not autoSize or chartOk ? color.green : color.red)

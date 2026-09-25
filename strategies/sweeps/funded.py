@@ -2,23 +2,23 @@
 
     python strategies/sweeps/funded.py
 
-The owner's accounts are a FundedNext 25K and a Topstep 100K.  Every firm's
-limit trails the best end-of-day balance, locks at the starting balance, and
-ends the account the moment a floating loss touches it.  Beyond that:
+The owner's accounts are a FundedNext 25K and a Topstep 100K; their rules are
+written down once, in evotrader/accounts.py.  Every firm's limit trails the
+best end-of-day balance, locks at the starting balance, and ends the account
+the moment a floating loss touches it.  Beyond that:
 
-* FundedNext Futures Legacy 25K (evotrader/prop.py, fundednext.com, September
-  2026): a $1,000 limit, a $1,250 challenge target with no day more than 40%
-  of the profit, no daily loss limit;
-* Topstep 100K (strategies/mnq/account.py, help.topstep.com, September 2026):
-  a $3,000 limit, a $6,000 Combine target with the best day under half the
-  profit, and a $2,000 daily loss limit that ends the day there (it is
-  optional; the replay keeps it on);
+* FundedNext Legacy 25K: a $1,000 limit, a $1,250 challenge target with no
+  day more than 40% of the profit, no daily loss limit;
+* Topstep 100K: a $3,000 limit, a $6,000 Combine target with the best day at
+  most 55% of the profit, and a $2,000 daily loss limit that ends the day
+  there (it is optional; the replay keeps it on);
+* FundedNext Legacy 50K, for comparison: the smallest FundedNext account
+  with a $2,000 limit ($3,000 target, 40%);
 * the challenge gets a year; the funded account has no target, and the
   question is how often it is lost within three, six and twelve months.
 
-For comparison, two accounts from the first run: a 25K with a $2,000 limit
-(what the owner first gave) and a FundedNext Legacy 100K ($3,000, 40%
-consistency, no daily limit).
+What each account earns after fees and payouts, and the sizing that earns
+the most without losing the account too often, is sweetspot.py.
 
 At one MNQ the noise-area breakout's ordinary losing stretches reach $5,678,
 so the limit is hit often.  What is tried:
@@ -57,21 +57,20 @@ import numpy as np
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "strategies" / "quick"))
 import data                                                                  # noqa: E402
 import sweeps                                                                # noqa: E402
 import trend                                                                 # noqa: E402
+from evotrader import accounts                                               # noqa: E402
 
 OPEN, T = data.OPEN, data.T
 SPLIT = "2020-01-01"
 CONTRACTS = {"MNQ": ("NQ", 2.0, 0.25), "MES": ("ES", 5.0, 0.25), "MYM": ("YM", 0.5, 1.0)}
 COMMISSION = 0.75
 #: name: (maximum loss, challenge target, best day's largest share of the profit, daily loss limit or 0)
-ACCOUNTS = {"FundedNext 25K, $1,000 limit": (1000.0, 1250.0, 0.40, 0.0),
-            "Topstep 100K, $3,000 limit, $2,000 a day": (3000.0, 6000.0, 0.50, 2000.0),
-            "25K with a $2,000 limit": (2000.0, 1250.0, 0.40, 0.0),
-            "FundedNext 100K, $3,000 limit": (3000.0, 6000.0, 0.40, 0.0)}
+ACCOUNTS = {a.name: (a.max_loss, a.target, a.consistency, a.daily_loss) for a in accounts.ALL.values()}
 HORIZON = 252
 EVERY = 5
 STOPS = (0.001, 0.0015, 0.002, 0.003)

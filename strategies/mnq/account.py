@@ -9,7 +9,11 @@ help.topstep.com (September 2026):
 * Daily Loss Limit $2,000, optional: hitting it only ends that day.
 * At most 10 NQ or 100 MNQ contracts.
 * Combine: pass at the profit target (taken here as $6,000, the usual 100K
-  target; check the plan bought) with the best day under half the profit.
+  target; check the plan bought) with the best day at most 55% of the profit
+  (it was half until 2026; help.topstep.com, checked 2026-09-25).
+
+The numbers come from evotrader/accounts.py, where the owner's accounts are
+written down once.
 * Express Funded, standard path: a payout needs five winning days of $150
   or more.
 
@@ -25,18 +29,19 @@ from typing import Dict, List, Sequence
 import numpy as np
 
 import sim
+from evotrader.accounts import TOPSTEP_100K as _T
 
 
 @dataclass(frozen=True)
 class Plan:
     name: str = "Topstep 100K"
-    max_loss: float = 3_000.0
-    daily_loss: float = 2_000.0
-    target: float = 6_000.0
-    consistency: float = 0.5
-    win_day: float = 150.0          # a winning day for the payout rule
-    win_days: int = 5               # needed for a payout
-    max_micros: int = 100
+    max_loss: float = _T.max_loss
+    daily_loss: float = _T.daily_loss
+    target: float = _T.target
+    consistency: float = _T.consistency
+    win_day: float = _T.payout_day_min  # a winning day for the payout rule
+    win_days: int = _T.payout_days      # needed for a payout
+    max_micros: int = _T.max_micros
 
 
 TOPSTEP_100K = Plan()

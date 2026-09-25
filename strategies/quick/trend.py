@@ -30,8 +30,10 @@ from typing import Dict, Optional
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "strategies" / "quick"))
 import index                                                                 # noqa: E402
+from evotrader.accounts import TOPSTEP_100K                                  # noqa: E402
 
 SPLIT = index.SPLIT
 ACCOUNT = 25_000.0
@@ -156,7 +158,8 @@ def account_stats(dates, usd, low_usd, account=ACCOUNT, label=""):
     return row
 
 
-def topstep(dates, pnl_usd, low_usd, max_loss=3000.0, daily_loss=2000.0, target=6000.0, every=5):
+def topstep(dates, pnl_usd, low_usd, max_loss=TOPSTEP_100K.max_loss, daily_loss=TOPSTEP_100K.daily_loss,
+            target=TOPSTEP_100K.target, every=5, consistency=TOPSTEP_100K.consistency):
     """Fresh combines from every fifth session: share passed, breached, still open after the data ends."""
     ds = list(dates)
     ok = [i for i in range(len(ds)) if not np.isnan(pnl_usd[i])]
@@ -175,7 +178,7 @@ def topstep(dates, pnl_usd, low_usd, max_loss=3000.0, daily_loss=2000.0, target=
             best = max(best, day)
             peak = max(peak, bal)
             floor = min(0.0, max(floor, peak - max_loss))
-            if bal >= target and best <= 0.5 * bal:
+            if bal >= target and best <= consistency * bal:
                 res = "pass"
                 out["days_to_pass"].append(n)
                 break
