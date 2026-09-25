@@ -44,3 +44,6 @@ data/cache/duka/
 # Stock panel cache built by strategies/scalp/panel.py
 data/cache/duka/panel*/
 data/cache/quick/
+
+# the candle-reading paper trader's working files (its ledger is profitable-strategies/instinct/)
+data/cache/instinct/
