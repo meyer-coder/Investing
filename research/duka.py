@@ -17,6 +17,7 @@ data/cache/duka/USATECH_1m/ (git-ignored).
 from __future__ import annotations
 
 import datetime as dt
+import http.client
 import json
 import os
 import sys
@@ -89,7 +90,7 @@ def fetch(start: str, end: str, instrument: str = NASDAQ) -> None:
                 raise SystemExit("too many failures; run again later to resume")
             time.sleep(wait)
             continue
-        except (urllib.error.URLError, OSError, ValueError) as e:
+        except (urllib.error.URLError, OSError, ValueError, http.client.HTTPException) as e:
             failures += 1
             print(f"{dt.datetime.utcfromtimestamp(t):%Y-%m-%d}: {type(e).__name__}; retrying", flush=True)
             if failures > 20:
