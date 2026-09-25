@@ -1,0 +1,14 @@
+{
+ "account": "Topstep 100K, paper",
+ "days": {
+  "2026-09-25": {
+   "decisions": [],
+   "trades": [],
+   "position": null,
+   "pending": null,
+   "realized": 0.0,
+   "done": null,
+   "processed": 1790350020
+  }
+ }
+}
