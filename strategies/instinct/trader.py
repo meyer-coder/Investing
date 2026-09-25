@@ -131,13 +131,26 @@ def context(bars: List[Bar], day: dt.date) -> dict:
 
 # ------------------------------------------------------------------ the ledger
 
+PROGRESS = WORK / "progress.json"                                            # how far each day's bars were read
+
+
 def load() -> dict:
-    return json.loads(LEDGER.read_text()) if LEDGER.exists() else {"account": "Topstep 100K, paper", "days": {}}
+    led = json.loads(LEDGER.read_text()) if LEDGER.exists() else {"account": "Topstep 100K, paper", "days": {}}
+    done = json.loads(PROGRESS.read_text()) if PROGRESS.exists() else {}
+    for day, d in led["days"].items():
+        d["processed"] = done.get(day, d.get("processed", 0))
+    return led
 
 
 def save(led: dict) -> None:
+    """The ledger changes only when a decision, fill or exit does; the reading position lives in the cache."""
     OUT.mkdir(parents=True, exist_ok=True)
-    LEDGER.write_text(json.dumps(led, indent=1))
+    WORK.mkdir(parents=True, exist_ok=True)
+    PROGRESS.write_text(json.dumps({day: d.get("processed", 0) for day, d in led["days"].items()}))
+    text = json.dumps({**led, "days": {day: {k: v for k, v in d.items() if k != "processed"}
+                                       for day, d in led["days"].items()}}, indent=1)
+    if not LEDGER.exists() or LEDGER.read_text() != text:
+        LEDGER.write_text(text)
 
 
 def today(led: dict, day: dt.date) -> dict:
