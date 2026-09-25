@@ -69,3 +69,39 @@ win about 41% of trades. Outside the rules day they won 36%.
   +7.5%), and two of the three setups are shorts. A fair verdict needs a
   year or more of 1-minute data, with the setups fixed *before* looking at
   it.
+
+## 13 years of minute data: can the setups be refined?
+
+**No.** `research/refine_setups.py` searched variants on Dukascopy's
+one-minute Nasdaq-100 data (see `research/bot-a-accounts-findings.md` for
+the data check). The protocol was fixed before any result was seen:
+- **Search** on 2013-2019 (1,715 sessions).
+- **Confirm** on 2020-2022 against random entries.
+- **Final look** at 2023-2026, once.
+
+**The variants tried (384 in all):**
+- **Setups:** each setup alone, their mirror images, and A+B+C together.
+- **Volume:** the volume conditions on or off.
+- **Time of day:** all day or mornings only.
+- **Exits (16):** the document's bracket scaled to today's price; stops of
+  1-2 ATR with targets of 1-3x the stop; or no target, held to the close.
+
+**What the search found (2013-2019):**
+- **Nothing cleared the bar.** No variant had 100+ trades, a positive mean
+  and t ≥ 2. About 9 would by luck alone.
+- **Almost nothing was even positive.** Only 3 of 384 had a positive mean
+  after costs. The best, B' (the mirror of B) with a 2 ATR stop and a 1.5R
+  target, made +0.54 bp a trade with t = 0.3, which is no different from
+  zero.
+- **The document's own rules** made 1,269 trades, −1.13 bp a trade after
+  costs (about −$14 a trade on 2 MNQ), t = −3.3. Before costs they made
+  −0.13 bp.
+
+Nothing reached the confirm stage.
+
+**What it means.** These setups have no edge on 13 years of NQ minutes, not
+even before costs, and no nearby version does. They are reversal trades:
+fading a failed break or a rejection. The branch's liquidity-sweep study
+(`futures/breakout-bot` on profitable-strategies) found the same for sweeps.
+What does hold up on the same data is the opposite style, Bot A's breakout
+(see `research/bot-a-accounts-findings.md`).

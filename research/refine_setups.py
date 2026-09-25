@@ -242,7 +242,15 @@ def main() -> None:
     orig = [x for x in scored if x[0][0] == ("A", "B", "C") and x[0][1] and x[0][3] == "all day"
             and x[0][4][0].startswith("doc")][0]
     print(f"   the document's own rules (A+B+C, volume, all day, its bracket): n={orig[1]}, "
-          f"{orig[2]:+.2f} bp a trade (${orig[2] * USD_PER_BP_2MNQ:+.0f} on 2 MNQ), t={orig[3]:+.1f}")
+          f"{orig[2]:+.2f} bp a trade (${orig[2] * USD_PER_BP_2MNQ:+.0f} on 2 MNQ), t={orig[3]:+.1f}; "
+          f"gross of costs {orig[2] + 1:+.2f} bp")
+    positive = sum(1 for x in scored if x[1] >= 100 and x[2] > 0)
+    print(f"   {positive} of {len(scored)} variants with 100+ trades had a positive mean after costs; "
+          f"the ten strongest, pass or not (costs are 1 bp; add it back for the gross):")
+    for v, n, mean, t in sorted([x for x in scored if x[1] >= 100], key=lambda x: -x[3])[:10]:
+        print(f"   {'+'.join(v[0]):<6} vol={'on ' if v[1] else 'off'} {v[3]:<8} {v[4][0]:<26} "
+              f"n={n:>5} {mean:+6.2f} bp (gross {mean + 1:+.2f}) t={t:+.1f}")
+    print("   passing variants:")
     for v, n, mean, t in sorted(passed, key=lambda x: -x[3])[:15]:
         print(f"   {'+'.join(v[0]):<6} vol={'on ' if v[1] else 'off'} {v[3]:<8} {v[4][0]:<26} "
               f"n={n:>5} {mean:+6.2f} bp (${mean * USD_PER_BP_2MNQ:+5.0f}) t={t:+.1f}")
