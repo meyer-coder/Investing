@@ -10,6 +10,14 @@
      "stop": 30.0,
      "target": 45.0,
      "size": 2
+    },
+    {
+     "at": "12:00",
+     "action": "long",
+     "why": "Failed breakdown: 11:45 and 11:50 swept below the morning lows (30,731-30,735) with long lower wicks, then 11:55 ripped 84 pts off the low to close on its high (30,857) above VWAP on the heaviest volume in 20 min (31.3k). Shorts from the sweep are trapped; third test of the 30,862-30,871 ceiling should break. Target 45 toward ~30,900 (09:55 high 30,926 above); stop 30.",
+     "stop": 30.0,
+     "target": 45.0,
+     "size": 2
     }
    ],
    "trades": [
@@ -28,7 +36,14 @@
     }
    ],
    "position": null,
-   "pending": null,
+   "pending": {
+    "action": "long",
+    "after": 1790352000,
+    "stop": 30.0,
+    "target": 45.0,
+    "size": 2,
+    "why": "Failed breakdown: 11:45 and 11:50 swept below the morning lows (30,731-30,735) with long lower wicks, then 11:55 ripped 84 pts off the low to close on its high (30,857) above VWAP on the heaviest volume in 20 min (31.3k). Shorts from the sweep are trapped; third test of the 30,862-30,871 ceiling should break. Target 45 toward ~30,900 (09:55 high 30,926 above); stop 30."
+   },
    "realized": 177.0,
    "done": null
   }
