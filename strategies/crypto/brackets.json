@@ -1,0 +1,1406 @@
+{
+ "trend 50, 1x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 837,
+   "win_rate": 0.55,
+   "mean_pct": 2.74,
+   "median_pct": 29.8,
+   "avg_days": 40.8
+  },
+  "2017-2020": {
+   "trades": 246,
+   "win_rate": 0.63,
+   "mean_pct": 7.6,
+   "median_pct": 29.8,
+   "avg_days": 28.9
+  },
+  "2021-2026": {
+   "trades": 591,
+   "win_rate": 0.516,
+   "mean_pct": 0.72,
+   "median_pct": 29.8,
+   "avg_days": 45.7
+  },
+  "coins_profitable": 0.621,
+  "random_mean_pct": 3.17,
+  "edge_vs_random_pct": -0.43,
+  "p_value_vs_random": 0.725,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 9835.0,
+    "deepest_fall_pct": -79.2,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 9563.0,
+     "deepest_fall_pct": -51.3,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 15013.0,
+    "deepest_fall_pct": -63.8,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 6675.0,
+     "deepest_fall_pct": -51.3,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 4341.0,
+    "deepest_fall_pct": -70.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3345.0,
+     "deepest_fall_pct": -70.3,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 12766.0,
+    "deepest_fall_pct": -76.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 9835.0,
+     "deepest_fall_pct": -76.3,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 2895.0,
+    "deepest_fall_pct": -76.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 4336.0,
+     "deepest_fall_pct": -69.9,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "trend 50, 1x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 741,
+   "win_rate": 0.468,
+   "mean_pct": 4.89,
+   "median_pct": -30.2,
+   "avg_days": 50.6
+  },
+  "2017-2020": {
+   "trades": 223,
+   "win_rate": 0.543,
+   "mean_pct": 10.5,
+   "median_pct": 44.8,
+   "avg_days": 38.0
+  },
+  "2021-2026": {
+   "trades": 518,
+   "win_rate": 0.436,
+   "mean_pct": 2.48,
+   "median_pct": -30.2,
+   "avg_days": 56.0
+  },
+  "coins_profitable": 0.69,
+  "random_mean_pct": 5.03,
+  "edge_vs_random_pct": -0.13,
+  "p_value_vs_random": 0.6,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 16707.0,
+    "deepest_fall_pct": -76.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 10940.0,
+     "deepest_fall_pct": -51.3,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 30017.0,
+    "deepest_fall_pct": -51.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 9374.0,
+     "deepest_fall_pct": -51.3,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 3966.0,
+    "deepest_fall_pct": -83.1,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 2739.0,
+     "deepest_fall_pct": -83.1,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 24450.0,
+    "deepest_fall_pct": -76.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 16886.0,
+     "deepest_fall_pct": -76.3,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 3743.0,
+    "deepest_fall_pct": -75.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 5026.0,
+     "deepest_fall_pct": -67.3,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "trend 50, 1x, the rule's own exit": {
+  "all": {
+   "trades": 2428,
+   "win_rate": 0.195,
+   "mean_pct": 90.11,
+   "median_pct": -3.2,
+   "avg_days": 13.8
+  },
+  "2017-2020": {
+   "trades": 573,
+   "win_rate": 0.237,
+   "mean_pct": 19.76,
+   "median_pct": -3.24,
+   "avg_days": 17.5
+  },
+  "2021-2026": {
+   "trades": 1855,
+   "win_rate": 0.182,
+   "mean_pct": 111.85,
+   "median_pct": -3.19,
+   "avg_days": 12.6
+  },
+  "coins_profitable": 0.931,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 966886.0,
+    "deepest_fall_pct": -49.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 11858.0,
+     "deepest_fall_pct": -49.3,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 1251955.0,
+    "deepest_fall_pct": -37.5,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 13386.0,
+     "deepest_fall_pct": -24.9,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 19319.0,
+    "deepest_fall_pct": -69.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3631.0,
+     "deepest_fall_pct": -69.9,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 14183.0,
+    "deepest_fall_pct": -88.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 2537.0,
+     "deepest_fall_pct": -88.9,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 16859.0,
+    "deepest_fall_pct": -63.6,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 6834.0,
+     "deepest_fall_pct": -63.6,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "trend 50, 2x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 1370,
+   "win_rate": 0.528,
+   "mean_pct": 1.31,
+   "median_pct": 29.6,
+   "avg_days": 13.2
+  },
+  "2017-2020": {
+   "trades": 359,
+   "win_rate": 0.56,
+   "mean_pct": 3.19,
+   "median_pct": 29.6,
+   "avg_days": 9.8
+  },
+  "2021-2026": {
+   "trades": 1011,
+   "win_rate": 0.517,
+   "mean_pct": 0.64,
+   "median_pct": 29.6,
+   "avg_days": 14.5
+  },
+  "coins_profitable": 0.621,
+  "random_mean_pct": 1.2,
+  "edge_vs_random_pct": 0.11,
+  "p_value_vs_random": 0.435,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 824.0,
+    "deepest_fall_pct": -93.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 601.0,
+     "deepest_fall_pct": -92.1,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 707.0,
+    "deepest_fall_pct": -95.9,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 441.0,
+     "deepest_fall_pct": -95.9,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 1016.0,
+    "deepest_fall_pct": -88.6,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 1459.0,
+     "deepest_fall_pct": -88.6,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 7269.0,
+    "deepest_fall_pct": -78.8,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 10444.0,
+     "deepest_fall_pct": -78.8,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 908.0,
+    "deepest_fall_pct": -94.7,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 933.0,
+     "deepest_fall_pct": -94.7,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "trend 50, 2x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 1259,
+   "win_rate": 0.452,
+   "mean_pct": 3.5,
+   "median_pct": -30.4,
+   "avg_days": 17.4
+  },
+  "2017-2020": {
+   "trades": 340,
+   "win_rate": 0.494,
+   "mean_pct": 6.66,
+   "median_pct": -30.4,
+   "avg_days": 12.9
+  },
+  "2021-2026": {
+   "trades": 919,
+   "win_rate": 0.436,
+   "mean_pct": 2.33,
+   "median_pct": -30.4,
+   "avg_days": 19.1
+  },
+  "coins_profitable": 0.793,
+  "random_mean_pct": 2.65,
+  "edge_vs_random_pct": 0.85,
+  "p_value_vs_random": 0.135,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 1891.0,
+    "deepest_fall_pct": -91.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1243.0,
+     "deepest_fall_pct": -88.2,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 646.0,
+    "deepest_fall_pct": -94.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 610.0,
+     "deepest_fall_pct": -94.4,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 215.0,
+    "deepest_fall_pct": -97.9,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 309.0,
+     "deepest_fall_pct": -97.0,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 8269.0,
+    "deepest_fall_pct": -76.5,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 11881.0,
+     "deepest_fall_pct": -76.5,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 47.0,
+    "deepest_fall_pct": -99.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 86.0,
+     "deepest_fall_pct": -98.8,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "trend 50, 2x, the rule's own exit": {
+  "all": {
+   "trades": 2428,
+   "win_rate": 0.195,
+   "mean_pct": 179.97,
+   "median_pct": -6.4,
+   "avg_days": 13.8
+  },
+  "2017-2020": {
+   "trades": 573,
+   "win_rate": 0.237,
+   "mean_pct": 39.53,
+   "median_pct": -6.47,
+   "avg_days": 17.5
+  },
+  "2021-2026": {
+   "trades": 1855,
+   "win_rate": 0.182,
+   "mean_pct": 223.35,
+   "median_pct": -6.4,
+   "avg_days": 12.6
+  },
+  "coins_profitable": 0.931,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 6368773.0,
+    "deepest_fall_pct": -75.7,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 14710.0,
+     "deepest_fall_pct": -75.7,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 6158745.0,
+    "deepest_fall_pct": -63.2,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 17817.0,
+     "deepest_fall_pct": -45.2,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 9829.0,
+    "deepest_fall_pct": -93.2,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1020.0,
+     "deepest_fall_pct": -93.2,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 5580.0,
+    "deepest_fall_pct": -89.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3279.0,
+     "deepest_fall_pct": -89.3,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "trend 50, 3x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 1676,
+   "win_rate": 0.524,
+   "mean_pct": 0.83,
+   "median_pct": 29.4,
+   "avg_days": 6.8
+  },
+  "2017-2020": {
+   "trades": 425,
+   "win_rate": 0.546,
+   "mean_pct": 2.15,
+   "median_pct": 29.4,
+   "avg_days": 5.2
+  },
+  "2021-2026": {
+   "trades": 1251,
+   "win_rate": 0.516,
+   "mean_pct": 0.38,
+   "median_pct": 29.4,
+   "avg_days": 7.3
+  },
+  "coins_profitable": 0.621,
+  "random_mean_pct": -0.07,
+  "edge_vs_random_pct": 0.9,
+  "p_value_vs_random": 0.055,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 16.0,
+    "deepest_fall_pct": -99.8,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 60.0,
+     "deepest_fall_pct": -99.1,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 124.0,
+    "deepest_fall_pct": -98.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 648.0,
+     "deepest_fall_pct": -94.0,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 1233.0,
+    "deepest_fall_pct": -92.2,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1777.0,
+     "deepest_fall_pct": -92.2,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 257.0,
+    "deepest_fall_pct": -96.9,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 370.0,
+     "deepest_fall_pct": -95.6,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 664.0,
+    "deepest_fall_pct": -91.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 880.0,
+     "deepest_fall_pct": -86.5,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "trend 50, 3x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 1579,
+   "win_rate": 0.447,
+   "mean_pct": 2.93,
+   "median_pct": -30.6,
+   "avg_days": 9.3
+  },
+  "2017-2020": {
+   "trades": 402,
+   "win_rate": 0.473,
+   "mean_pct": 4.85,
+   "median_pct": -30.6,
+   "avg_days": 7.5
+  },
+  "2021-2026": {
+   "trades": 1177,
+   "win_rate": 0.438,
+   "mean_pct": 2.28,
+   "median_pct": -30.6,
+   "avg_days": 9.9
+  },
+  "coins_profitable": 0.897,
+  "random_mean_pct": 1.29,
+  "edge_vs_random_pct": 1.64,
+  "p_value_vs_random": 0.03,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 45.0,
+    "deepest_fall_pct": -99.6,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 133.0,
+     "deepest_fall_pct": -98.2,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 591.0,
+    "deepest_fall_pct": -94.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 829.0,
+     "deepest_fall_pct": -94.5,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 1759.0,
+    "deepest_fall_pct": -92.2,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 2535.0,
+     "deepest_fall_pct": -92.2,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 1229.0,
+    "deepest_fall_pct": -92.1,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1770.0,
+     "deepest_fall_pct": -92.1,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 1543.0,
+    "deepest_fall_pct": -93.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 2228.0,
+     "deepest_fall_pct": -93.5,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "trend 50, 3x, the rule's own exit": {
+  "all": {
+   "trades": 2428,
+   "win_rate": 0.194,
+   "mean_pct": 269.88,
+   "median_pct": -9.61,
+   "avg_days": 13.8
+  },
+  "2017-2020": {
+   "trades": 573,
+   "win_rate": 0.236,
+   "mean_pct": 58.37,
+   "median_pct": -9.77,
+   "avg_days": 17.5
+  },
+  "2021-2026": {
+   "trades": 1855,
+   "win_rate": 0.182,
+   "mean_pct": 335.22,
+   "median_pct": -9.59,
+   "avg_days": 12.6
+  },
+  "coins_profitable": 0.931,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 11064938.0,
+    "deepest_fall_pct": -89.1,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 11719.0,
+     "deepest_fall_pct": -89.1,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 9708817.0,
+    "deepest_fall_pct": -80.2,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 16625.0,
+     "deepest_fall_pct": -61.4,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 494.0,
+    "deepest_fall_pct": -98.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 751.0,
+     "deepest_fall_pct": -97.7,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "breakout 20/10, 1x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 887,
+   "win_rate": 0.561,
+   "mean_pct": 3.52,
+   "median_pct": 29.8,
+   "avg_days": 39.8
+  },
+  "2017-2020": {
+   "trades": 255,
+   "win_rate": 0.643,
+   "mean_pct": 8.39,
+   "median_pct": 29.8,
+   "avg_days": 29.7
+  },
+  "2021-2026": {
+   "trades": 632,
+   "win_rate": 0.528,
+   "mean_pct": 1.55,
+   "median_pct": 29.8,
+   "avg_days": 43.9
+  },
+  "coins_profitable": 0.621,
+  "random_mean_pct": 3.27,
+  "edge_vs_random_pct": 0.25,
+  "p_value_vs_random": 0.355,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 7314.0,
+    "deepest_fall_pct": -77.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 2505.0,
+     "deepest_fall_pct": -76.3,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 47037.0,
+    "deepest_fall_pct": -60.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 18947.0,
+     "deepest_fall_pct": -36.8,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 4341.0,
+    "deepest_fall_pct": -79.2,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 2577.0,
+     "deepest_fall_pct": -79.2,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 19487.0,
+    "deepest_fall_pct": -74.7,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 11566.0,
+     "deepest_fall_pct": -74.7,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 6269.0,
+    "deepest_fall_pct": -59.5,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 5089.0,
+     "deepest_fall_pct": -59.5,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 1x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 784,
+   "win_rate": 0.486,
+   "mean_pct": 6.1,
+   "median_pct": -30.2,
+   "avg_days": 50.1
+  },
+  "2017-2020": {
+   "trades": 235,
+   "win_rate": 0.583,
+   "mean_pct": 13.52,
+   "median_pct": 44.8,
+   "avg_days": 38.4
+  },
+  "2021-2026": {
+   "trades": 549,
+   "win_rate": 0.444,
+   "mean_pct": 2.92,
+   "median_pct": -30.2,
+   "avg_days": 55.1
+  },
+  "coins_profitable": 0.759,
+  "random_mean_pct": 5.02,
+  "edge_vs_random_pct": 1.07,
+  "p_value_vs_random": 0.105,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 17249.0,
+    "deepest_fall_pct": -76.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3720.0,
+     "deepest_fall_pct": -76.3,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 123389.0,
+    "deepest_fall_pct": -51.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 26897.0,
+     "deepest_fall_pct": -30.2,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 11661.0,
+    "deepest_fall_pct": -76.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 5562.0,
+     "deepest_fall_pct": -76.0,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 17249.0,
+    "deepest_fall_pct": -83.1,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 8227.0,
+     "deepest_fall_pct": -83.1,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 6338.0,
+    "deepest_fall_pct": -77.2,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3707.0,
+     "deepest_fall_pct": -77.2,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 1x, the rule's own exit": {
+  "all": {
+   "trades": 1542,
+   "win_rate": 0.379,
+   "mean_pct": 11.46,
+   "median_pct": -4.01,
+   "avg_days": 16.9
+  },
+  "2017-2020": {
+   "trades": 399,
+   "win_rate": 0.456,
+   "mean_pct": 25.0,
+   "median_pct": -2.4,
+   "avg_days": 18.2
+  },
+  "2021-2026": {
+   "trades": 1143,
+   "win_rate": 0.353,
+   "mean_pct": 6.73,
+   "median_pct": -4.5,
+   "avg_days": 16.4
+  },
+  "coins_profitable": 0.897,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 419486.0,
+    "deepest_fall_pct": -51.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 11120.0,
+     "deepest_fall_pct": -51.0,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 1704339.0,
+    "deepest_fall_pct": -55.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 98997.0,
+     "deepest_fall_pct": -55.9,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 5501.0,
+    "deepest_fall_pct": -84.9,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 4608.0,
+     "deepest_fall_pct": -84.9,
+     "wiped_out": false
+    }
+   },
+   "INJ-USD": {
+    "end": 36814.0,
+    "deepest_fall_pct": -75.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 14123.0,
+     "deepest_fall_pct": -75.0,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 20641.0,
+    "deepest_fall_pct": -59.1,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 13818.0,
+     "deepest_fall_pct": -59.1,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 2x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 1313,
+   "win_rate": 0.561,
+   "mean_pct": 3.23,
+   "median_pct": 29.6,
+   "avg_days": 12.8
+  },
+  "2017-2020": {
+   "trades": 349,
+   "win_rate": 0.633,
+   "mean_pct": 7.59,
+   "median_pct": 29.6,
+   "avg_days": 10.0
+  },
+  "2021-2026": {
+   "trades": 964,
+   "win_rate": 0.534,
+   "mean_pct": 1.65,
+   "median_pct": 29.6,
+   "avg_days": 13.9
+  },
+  "coins_profitable": 0.759,
+  "random_mean_pct": 1.34,
+  "edge_vs_random_pct": 1.9,
+  "p_value_vs_random": 0.0,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 1706.0,
+    "deepest_fall_pct": -98.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 165.0,
+     "deepest_fall_pct": -98.0,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 22735.0,
+    "deepest_fall_pct": -85.3,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 5880.0,
+     "deepest_fall_pct": -85.3,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 869.0,
+    "deepest_fall_pct": -95.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 963.0,
+     "deepest_fall_pct": -94.5,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 1793.0,
+    "deepest_fall_pct": -90.7,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1068.0,
+     "deepest_fall_pct": -90.7,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 1817.0,
+    "deepest_fall_pct": -93.9,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 793.0,
+     "deepest_fall_pct": -93.9,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "breakout 20/10, 2x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 1234,
+   "win_rate": 0.472,
+   "mean_pct": 5.03,
+   "median_pct": -30.4,
+   "avg_days": 17.6
+  },
+  "2017-2020": {
+   "trades": 325,
+   "win_rate": 0.551,
+   "mean_pct": 10.91,
+   "median_pct": 44.6,
+   "avg_days": 14.3
+  },
+  "2021-2026": {
+   "trades": 909,
+   "win_rate": 0.444,
+   "mean_pct": 2.93,
+   "median_pct": -30.4,
+   "avg_days": 18.7
+  },
+  "coins_profitable": 0.828,
+  "random_mean_pct": 2.93,
+  "edge_vs_random_pct": 2.11,
+  "p_value_vs_random": 0.005,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 2806.0,
+    "deepest_fall_pct": -98.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 204.0,
+     "deepest_fall_pct": -98.0,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 35922.0,
+    "deepest_fall_pct": -88.6,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 5433.0,
+     "deepest_fall_pct": -88.6,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 444.0,
+    "deepest_fall_pct": -95.8,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 441.0,
+     "deepest_fall_pct": -95.8,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 5719.0,
+    "deepest_fall_pct": -96.1,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 2735.0,
+     "deepest_fall_pct": -96.1,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 467.0,
+    "deepest_fall_pct": -96.6,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 356.0,
+     "deepest_fall_pct": -96.6,
+     "wiped_out": true
+    }
+   }
+  }
+ },
+ "breakout 20/10, 2x, the rule's own exit": {
+  "all": {
+   "trades": 1542,
+   "win_rate": 0.379,
+   "mean_pct": 22.73,
+   "median_pct": -8.01,
+   "avg_days": 16.9
+  },
+  "2017-2020": {
+   "trades": 399,
+   "win_rate": 0.456,
+   "mean_pct": 49.8,
+   "median_pct": -4.8,
+   "avg_days": 18.2
+  },
+  "2021-2026": {
+   "trades": 1143,
+   "win_rate": 0.353,
+   "mean_pct": 13.28,
+   "median_pct": -9.01,
+   "avg_days": 16.4
+  },
+  "coins_profitable": 0.897,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 3472201.0,
+    "deepest_fall_pct": -82.1,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 10659.0,
+     "deepest_fall_pct": -82.1,
+     "wiped_out": false
+    }
+   },
+   "BNB-USD": {
+    "end": 10440090.0,
+    "deepest_fall_pct": -82.0,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 284579.0,
+     "deepest_fall_pct": -82.0,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 497.0,
+    "deepest_fall_pct": -99.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 387.0,
+     "deepest_fall_pct": -99.4,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 12968.0,
+    "deepest_fall_pct": -95.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 2836.0,
+     "deepest_fall_pct": -95.4,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 7765.0,
+    "deepest_fall_pct": -89.7,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 6543.0,
+     "deepest_fall_pct": -89.7,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 3x, risk 30% / reward 30%": {
+  "all": {
+   "trades": 1469,
+   "win_rate": 0.563,
+   "mean_pct": 3.18,
+   "median_pct": 29.4,
+   "avg_days": 6.3
+  },
+  "2017-2020": {
+   "trades": 382,
+   "win_rate": 0.626,
+   "mean_pct": 6.94,
+   "median_pct": 29.4,
+   "avg_days": 5.1
+  },
+  "2021-2026": {
+   "trades": 1087,
+   "win_rate": 0.541,
+   "mean_pct": 1.86,
+   "median_pct": 29.4,
+   "avg_days": 6.7
+  },
+  "coins_profitable": 0.793,
+  "random_mean_pct": 0.24,
+  "edge_vs_random_pct": 2.94,
+  "p_value_vs_random": 0.0,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 386.0,
+    "deepest_fall_pct": -99.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 54.0,
+     "deepest_fall_pct": -99.5,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 893.0,
+    "deepest_fall_pct": -96.2,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1040.0,
+     "deepest_fall_pct": -90.8,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 490.0,
+    "deepest_fall_pct": -95.3,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 545.0,
+     "deepest_fall_pct": -94.7,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 7339.0,
+    "deepest_fall_pct": -75.8,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 4383.0,
+     "deepest_fall_pct": -75.8,
+     "wiped_out": false
+    }
+   },
+   "MSTR": {
+    "end": 1033.0,
+    "deepest_fall_pct": -90.7,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 3076.0,
+     "deepest_fall_pct": -72.9,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 3x, risk 30% / reward 45%": {
+  "all": {
+   "trades": 1413,
+   "win_rate": 0.476,
+   "mean_pct": 5.12,
+   "median_pct": -30.6,
+   "avg_days": 8.7
+  },
+  "2017-2020": {
+   "trades": 370,
+   "win_rate": 0.565,
+   "mean_pct": 11.76,
+   "median_pct": 44.4,
+   "avg_days": 7.0
+  },
+  "2021-2026": {
+   "trades": 1043,
+   "win_rate": 0.445,
+   "mean_pct": 2.77,
+   "median_pct": -30.6,
+   "avg_days": 9.3
+  },
+  "coins_profitable": 0.793,
+  "random_mean_pct": 1.54,
+  "edge_vs_random_pct": 3.58,
+  "p_value_vs_random": 0.0,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 592.0,
+    "deepest_fall_pct": -99.4,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 92.0,
+     "deepest_fall_pct": -99.4,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 7648.0,
+    "deepest_fall_pct": -88.8,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 2481.0,
+     "deepest_fall_pct": -83.9,
+     "wiped_out": false
+    }
+   },
+   "AAVE-USD": {
+    "end": 94.0,
+    "deepest_fall_pct": -99.1,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 93.0,
+     "deepest_fall_pct": -99.1,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 2519.0,
+    "deepest_fall_pct": -92.2,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 1208.0,
+     "deepest_fall_pct": -92.2,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 2656.0,
+    "deepest_fall_pct": -83.7,
+    "wiped_out": false,
+    "2021-2026": {
+     "end": 3687.0,
+     "deepest_fall_pct": -77.0,
+     "wiped_out": false
+    }
+   }
+  }
+ },
+ "breakout 20/10, 3x, the rule's own exit": {
+  "all": {
+   "trades": 1542,
+   "win_rate": 0.378,
+   "mean_pct": 33.82,
+   "median_pct": -12.17,
+   "avg_days": 16.9
+  },
+  "2017-2020": {
+   "trades": 399,
+   "win_rate": 0.454,
+   "mean_pct": 74.54,
+   "median_pct": -7.22,
+   "avg_days": 18.2
+  },
+  "2021-2026": {
+   "trades": 1143,
+   "win_rate": 0.352,
+   "mean_pct": 19.61,
+   "median_pct": -13.54,
+   "avg_days": 16.4
+  },
+  "coins_profitable": 0.862,
+  "five_sleeves": {
+   "BTC-USD": {
+    "end": 5950913.0,
+    "deepest_fall_pct": -95.6,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 4809.0,
+     "deepest_fall_pct": -95.6,
+     "wiped_out": true
+    }
+   },
+   "BNB-USD": {
+    "end": 14573175.0,
+    "deepest_fall_pct": -93.5,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 379437.0,
+     "deepest_fall_pct": -93.5,
+     "wiped_out": true
+    }
+   },
+   "AAVE-USD": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   },
+   "INJ-USD": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   },
+   "MSTR": {
+    "end": 0.0,
+    "deepest_fall_pct": -100.0,
+    "wiped_out": true,
+    "2021-2026": {
+     "end": 0.0,
+     "deepest_fall_pct": -100.0,
+     "wiped_out": true
+    }
+   }
+  }
+ }
+}
