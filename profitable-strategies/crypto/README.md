@@ -25,6 +25,67 @@ Micron rules.**
   - a daily correlation of only +0.16 with the three Micron bots;
   - 15% of its dollars made on weekends.
 
+## A book for Robinhood, and what $150 a day takes
+
+`strategies/crypto/book.py`, results in `book.json`.
+
+**The answer:**
+
+- **The book:** 24 coins Robinhood lists as tradable, each on the 50-day
+  trend, equal weight, and only while Bitcoin is above its own 200-day
+  average.
+- **What it makes on $25,000:** $70 a day in 2017-2020 and $42 a day in
+  2021-2026.
+- **What $150 a day takes:** about $90,000 at the 2021-2026 rate, with no
+  leverage.
+- **The worst of it:** a deepest fall of -41% in 2021-2026 (-52% in
+  2017-2020), and a worst losing stretch of -$12,548 on $25,000, which is
+  about -$45,000 on $90,000.
+- **It can't lose the whole account.** There's no leverage, so the most at
+  stake is what's in it.
+- **The Bitcoin brake took it out of the 2022 crash.** That year was flat,
+  against -$29 a day without the brake.
+- **2025 was slightly down.**
+
+**How it was built:**
+
+- **The coins:** study.py's 29 coins that Robinhood lists as tradable
+  (get_currency_pairs, 2026-09-25). That leaves 24; FIL, TRX, XMR, ICP and
+  APT drop out. A coin joins once it has a year of prices.
+- **The rules:** the 20, 50 and 100-day trends and the 20/10 and 55/20
+  breakouts. Signals on the close, fills at the next open, 10 bp a side.
+- **Weights:** equal, or by inverse 60-day volatility. Never more than the
+  account.
+- **Brakes, each tried on and off:**
+  - hold nothing while Bitcoin is below its 200-day average;
+  - half size while the account is 25% below its best.
+- **Choosing:**
+  - The setting set in advance (the best 2017-2020 Sharpe) was the 20-day
+    trend, weighted by volatility, no brakes. It made $96 a day in
+    2017-2020 but $30 a day in 2021-2026, with a -60% fall and a losing
+    2025 (-$34 a day).
+  - The book above was picked by looking at 2021-2026 as well, so its
+    2021-2026 figures are in-sample.
+  - Two reasons it is still the one to use:
+    - the 50-day trend is study.py's reference rule, fixed before this
+      test;
+    - the Bitcoin brake cut the deepest fall of every one of the 20 rule
+      and weighting pairs, in both periods.
+
+| Book, $25,000 | 2017-2020 $ a day | deepest fall | 2021-2026 $ a day | deepest fall | worst losing stretch 2021-2026 | Account for $150 a day |
+| --- | --- | --- | --- | --- | --- | --- |
+| **50-day trend, equal, Bitcoin brake** | **$70** | **-52%** | **$42** | **-41%** | **-$12,548** | **$90,000** |
+| 20/10 breakout, equal, Bitcoin brake | $59 | -36% | $31 | -34% | -$10,196 | $120,000 |
+| 50-day trend, equal, no brake | $76 | -71% | $42 | -48% | -$14,829 | $90,000 |
+| Picked in advance: 20-day trend, by volatility | $96 | -36% | $30 | -60% | -$20,371 | $123,000 |
+
+**What doesn't work** (`strategies/crypto/brackets.py`):
+
+- **Leverage with a fixed 1:1 to 1:1.5 target.** At 2x or 3x, risking 30%
+  of the account a trade, 3 to 5 of the five coin sleeves were wiped out.
+- **The same bracket without leverage.** Random entry days did as well,
+  and the few trades that run +200% to +1,000% were cut short.
+
 ## Each of the five
 
 The whole $25,000 in the one asset, no leverage. Signals are taken on the

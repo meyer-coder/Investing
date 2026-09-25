@@ -12,17 +12,24 @@
      "size": 2
     }
    ],
-   "trades": [],
+   "trades": [
+    {
+     "side": "short",
+     "size": 2,
+     "entry_time": "11:35",
+     "entry": 30817.5,
+     "stop": 30847.5,
+     "target": 30772.5,
+     "exit_time": "11:38",
+     "exit": 30772.5,
+     "exit_reason": "target",
+     "usd": 177.0,
+     "why": "Second upper-wick rejection under the 11:05 high (30,871): 11:20 wicked to 30,844, 11:30 spiked to 30,862 and closed at 30,818 near its low on the heaviest volume in an hour (35.8k vs 14-25k) - a shooting star with trapped buyers above. Target 45 pts toward the 10:40-10:50 lows (~30,750-30,775); stop 30 pts."
+    }
+   ],
    "position": null,
-   "pending": {
-    "action": "short",
-    "after": 1790350500,
-    "stop": 30.0,
-    "target": 45.0,
-    "size": 2,
-    "why": "Second upper-wick rejection under the 11:05 high (30,871): 11:20 wicked to 30,844, 11:30 spiked to 30,862 and closed at 30,818 near its low on the heaviest volume in an hour (35.8k vs 14-25k) - a shooting star with trapped buyers above. Target 45 pts toward the 10:40-10:50 lows (~30,750-30,775); stop 30 pts."
-   },
-   "realized": 0.0,
+   "pending": null,
+   "realized": 177.0,
    "done": null
   }
  }
