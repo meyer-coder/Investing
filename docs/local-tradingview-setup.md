@@ -10,6 +10,48 @@ returned a 502.
 
 ---
 
+## Step 0 — make sure Claude Code is installed on this machine
+
+Every step below assumes `claude` exists. A second machine usually does not have
+it yet, and `claude mcp list` fails with `command not found`.
+
+First check whether it is installed but simply not on PATH — the native
+installer puts it at `~/.local/bin/claude`:
+
+```bash
+ls -la ~/.local/bin/claude
+```
+
+If that file exists, it is a PATH problem, not a missing install:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+If it does not exist, install it:
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Then open a new terminal and confirm:
+
+```bash
+claude --version     # prints e.g. 2.1.211 (Claude Code)
+claude doctor        # read-only diagnostics if anything looks wrong
+```
+
+Log in by running `claude` and following the browser prompt. Claude Code needs a
+Pro, Max, Team, Enterprise or Console account; the free claude.ai plan does not
+include it.
+
+Once you are logged in, `claude mcp list` will already show
+`claude.ai TradingView` — the hosted connector follows your account, so it needs
+no installation on this or any other machine.
+
+---
+
 ## Step 1 — install the dependencies
 
 ```bash
