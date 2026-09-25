@@ -33,19 +33,24 @@
      "exit_reason": "target",
      "usd": 177.0,
      "why": "Second upper-wick rejection under the 11:05 high (30,871): 11:20 wicked to 30,844, 11:30 spiked to 30,862 and closed at 30,818 near its low on the heaviest volume in an hour (35.8k vs 14-25k) - a shooting star with trapped buyers above. Target 45 pts toward the 10:40-10:50 lows (~30,750-30,775); stop 30 pts."
+    },
+    {
+     "side": "long",
+     "size": 2,
+     "entry_time": "12:00",
+     "entry": 30856.75,
+     "stop": 30826.75,
+     "target": 30901.75,
+     "exit_time": "12:02",
+     "exit": 30901.75,
+     "exit_reason": "target",
+     "usd": 177.0,
+     "why": "Failed breakdown: 11:45 and 11:50 swept below the morning lows (30,731-30,735) with long lower wicks, then 11:55 ripped 84 pts off the low to close on its high (30,857) above VWAP on the heaviest volume in 20 min (31.3k). Shorts from the sweep are trapped; third test of the 30,862-30,871 ceiling should break. Target 45 toward ~30,900 (09:55 high 30,926 above); stop 30."
     }
    ],
-   "position": {
-    "side": 1,
-    "size": 2,
-    "entry": 30856.75,
-    "entry_time": "12:00",
-    "stop": 30826.75,
-    "target": 30901.75,
-    "why": "Failed breakdown: 11:45 and 11:50 swept below the morning lows (30,731-30,735) with long lower wicks, then 11:55 ripped 84 pts off the low to close on its high (30,857) above VWAP on the heaviest volume in 20 min (31.3k). Shorts from the sweep are trapped; third test of the 30,862-30,871 ceiling should break. Target 45 toward ~30,900 (09:55 high 30,926 above); stop 30."
-   },
+   "position": null,
    "pending": null,
-   "realized": 177.0,
+   "realized": 354.0,
    "done": null
   }
  }
