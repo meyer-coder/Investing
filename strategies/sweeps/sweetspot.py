@@ -80,7 +80,7 @@ GUARDS = (0.0, 0.5, 0.8)                                                      # 
 CUSHIONS = (1.0, 2.0)                                                         # room kept after a payout, in limits
 MAX_MNQ = 10
 RISK_3M, RISK_1Y = 0.05, 0.20
-FIXED = ("1 MES", "1 MNQ", "2 MNQ")                                           # sizes held from the first day
+FIXED = ("1 MES", "1 MNQ", "2 MNQ", "3 MNQ", "5 MNQ")                         # sizes held from the first day
 
 
 def ladder(days: dict, dev: np.ndarray, max_micros: int) -> list:
