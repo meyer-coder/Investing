@@ -1,0 +1,204 @@
+"""shortbot: fills, short P&L, no look-ahead, and the Topstep account rules."""
+from dataclasses import replace
+
+import numpy as np
+import pytest
+
+from shortbot import backtest as bt
+from shortbot.config import AccountRules, BotConfig, RiskParams, StrategyParams
+from shortbot.data import Session, session_from_bars, to_sessions
+from shortbot.strategy import DayState, Entry, Profile, ShortStrategy
+
+RISK = RiskParams(risk_per_trade_usd=250, max_contracts=1, max_stop_risk_usd=10_000,
+                  commission_rt=1.22, slippage_ticks=1)
+
+
+def make_session(date, closes, start=570, bar=5, wick=2.0, volume=100.0):
+    closes = np.asarray(closes, dtype=float)
+    opens = np.concatenate([[closes[0]], closes[:-1]])
+    rows = [(start + bar * k, o, max(o, c) + wick, min(o, c) - wick, c, volume)
+            for k, (o, c) in enumerate(zip(opens, closes))]
+    return session_from_bars(date, bar, rows)
+
+
+class EnterAt(ShortStrategy):
+    """Signals a short with fixed stop/target once, after bar ``at`` closes."""
+
+    def __init__(self, at, stop=20.0, target=30.0, params=None):
+        super().__init__(params or StrategyParams(skip_fomc=False))
+        self.at, self.stop, self.target = at, stop, target
+
+    def decide(self, s, i, day, prof):
+        if i == self.at and day.trades == 0 and not day.in_position:
+            return Entry("test", self.stop, self.target, "test")
+        return None
+
+
+# ------------------------------------------------------------------- fills
+
+def test_short_profits_when_price_falls_and_pays_costs():
+    closes = [100.0] * 5 + [100.0 - 5 * k for k in range(1, 40)]
+    s = make_session("2026-01-05", [x + 20000 for x in closes])
+    (t,) = bt.run_session(s, EnterAt(at=3, stop=50, target=30), None, RISK)
+    assert t.exit_reason == "target"
+    assert t.entry == pytest.approx(s.open[4] - 0.25)            # one tick of slippage
+    assert t.pnl_usd == pytest.approx(30 * 2.0 - 1.22)            # $2/pt, minus commission
+    assert t.pnl_usd > 0
+
+
+def test_short_loses_when_price_rises_and_stop_fills_worse():
+    closes = [100.0] * 5 + [100.0 + 5 * k for k in range(1, 40)]
+    s = make_session("2026-01-05", [x + 20000 for x in closes])
+    (t,) = bt.run_session(s, EnterAt(at=3, stop=20, target=30), None, RISK)
+    assert t.exit_reason == "stop"
+    assert t.exit == pytest.approx(t.entry + 20 + 0.25)
+    assert t.pnl_usd == pytest.approx(-(20.25 * 2.0) - 1.22)
+    assert t.mae_usd <= t.pnl_usd
+
+
+def test_stop_assumed_first_when_one_bar_hits_both():
+    closes = [20000.0] * 60
+    s = make_session("2026-01-05", closes)
+    s.high[5] = s.open[5] + 100      # the bar after entry spikes both ways
+    s.low[5] = s.open[5] - 100
+    (t,) = bt.run_session(s, EnterAt(at=3, stop=20, target=30), None, RISK)
+    assert t.exit_reason == "stop"
+
+
+def test_target_needs_a_tick_of_trade_through():
+    s = make_session("2026-01-05", [20000.0] * 60, wick=0.0)
+    entry = s.open[4] - 0.25
+    s.low[6] = entry - 30             # touches the target exactly, no trade-through
+    (t,) = bt.run_session(s, EnterAt(at=3, stop=500, target=30), None, RISK)
+    assert t.exit_reason != "target"
+
+
+def test_positions_are_flat_by_the_flatten_time():
+    closes = [20000.0] * 78            # 09:30 .. 15:55
+    s = make_session("2026-01-05", closes)
+    p = StrategyParams(skip_fomc=False, max_hold_minutes=10_000)
+    at = int((15 * 60 + 30 - 570) / 5)  # enter around 15:35
+    (t,) = bt.run_session(s, EnterAt(at=at, stop=500, target=500, params=p), None, RISK)
+    assert t.exit_reason == "flatten"
+    assert t.exit_minute <= p.flatten_minute
+    assert t.exit_minute < AccountRules().flat_by_minute
+
+
+def test_decisions_never_use_future_bars():
+    rng = np.random.default_rng(3)
+    prior = [make_session(f"2026-01-{d:02d}", 20000 + np.cumsum(rng.normal(0, 8, 78)))
+             for d in range(5, 17)]
+    today_closes = 20000 + np.cumsum(rng.normal(-3, 12, 78))
+    full = make_session("2026-01-19", today_closes)
+    strat = ShortStrategy(StrategyParams(skip_fomc=False))
+    prof = strat.profile(prior)
+    for i in range(len(full) - 1):
+        cut = Session(full.date, 5, full.minute[:i + 1], full.open[:i + 1], full.high[:i + 1],
+                      full.low[:i + 1], full.close[:i + 1], full.volume[:i + 1])
+        a = strat.decide(full, i, DayState(), prof)
+        b = strat.decide(cut, i, DayState(), prof)
+        assert (a is None) == (b is None)
+        if a is not None:
+            assert (a.setup, a.stop_pts, a.target_pts) == (b.setup, b.stop_pts, b.target_pts)
+
+
+def test_momentum_fires_on_a_big_drop_below_vwap():
+    prior = [make_session(f"2026-01-{d:02d}", [20000.0 + (k % 2) * 4 for k in range(78)])
+             for d in range(5, 17)]
+    closes = [20000.0] * 20 + [20000.0 - 10 * k for k in range(1, 20)] + [19810.0] * 39
+    s = make_session("2026-01-19", closes)
+    strat = ShortStrategy(StrategyParams(skip_fomc=False, orb=False, vwap_reject=False))
+    prof = strat.profile(prior)
+    hits = [strat.decide(s, i, DayState(), prof) for i in range(len(s) - 1)]
+    fired = [e for e in hits if e is not None]
+    assert fired and fired[0].setup == "momentum"
+
+
+def test_day_limits_cap_trades():
+    rng = np.random.default_rng(0)
+    sessions = [make_session(f"2026-02-{d:02d}", 20000 + np.cumsum(rng.normal(-2, 15, 78)))
+                for d in range(2, 28) if d % 7 not in (0, 1)]
+    cfg = BotConfig()
+    cfg.strategy = replace(cfg.strategy, max_trades_per_day=2, skip_fomc=False)
+    trades = bt.run(sessions, cfg)
+    per_day = {}
+    for t in trades:
+        per_day[t.date] = per_day.get(t.date, 0) + 1
+    assert trades and max(per_day.values()) <= 2
+    assert all(t.contracts <= cfg.risk.max_contracts for t in trades)
+
+
+def test_size_trade_skips_stops_that_are_too_wide():
+    r = RiskParams(risk_per_trade_usd=250, max_contracts=3, max_stop_risk_usd=400)
+    assert bt.size_trade(Entry("x", 300, 300, ""), r) == 0      # $600 a lot: skip
+    assert bt.size_trade(Entry("x", 40, 60, ""), r) == 3        # $81 a lot: capped at 3
+    assert bt.size_trade(Entry("x", 150, 200, ""), r) == 1
+
+
+# --------------------------------------------------------- Topstep account
+
+def T(date, pnl, mae=None):
+    return bt.Trade(date, "t", 600, 610, 0, 0, 1, 0, 0, pnl, pnl if mae is None else mae, "x", "")
+
+
+def test_combine_passes_at_target():
+    days = [f"d{k:02d}" for k in range(10)]
+    trades = {d: [T(d, 700)] for d in days}
+    a = bt.combine_attempt(trades, days, AccountRules())
+    assert a.outcome == "passed" and a.days == 5          # 5 x $700 = $3,500 >= $3,000
+
+
+def test_consistency_rule_raises_the_target():
+    days = [f"d{k:02d}" for k in range(10)]
+    trades = {days[0]: [T(days[0], 2500)], **{d: [T(d, 100)] for d in days[1:]}}
+    a = bt.combine_attempt(trades, days, AccountRules())
+    # best day $2,500 -> target becomes $2,500 / 0.55 = $4,545, not reached in 10 days
+    assert a.outcome == "unfinished"
+
+
+def test_trailing_max_loss_fails_the_account():
+    days = ["d1", "d2", "d3"]
+    rules = AccountRules(daily_loss=0)                      # no DLL: only the MLL protects
+    trades = {"d1": [T("d1", 1000)], "d2": [T("d2", -500)], "d3": [T("d3", -600, mae=-1600)]}
+    # EOD high 51,000 -> MLL 49,000; d3 starts at 50,500 and dips to 48,900
+    a = bt.combine_attempt(trades, days, rules)
+    assert a.outcome == "failed" and a.days == 3
+
+
+def test_max_loss_stops_trailing_at_the_start_balance():
+    days = ["d1", "d2", "d3"]
+    rules = AccountRules(daily_loss=0, profit_target=10_000, consistency=0)
+    trades = {"d1": [T("d1", 2900)], "d2": [T("d2", -2800)], "d3": [T("d3", 0)]}
+    # after d1 the MLL would be 50,900 but locks at 50,000; d2 ends at 50,100 -> alive
+    a = bt.combine_attempt(trades, days, rules)
+    assert a.outcome == "unfinished"
+
+
+def test_daily_loss_limit_pauses_instead_of_failing():
+    days = ["d1", "d2"]
+    trades = {"d1": [T("d1", -300, mae=-1200), T("d1", -300)], "d2": []}
+    a = bt.combine_attempt(trades, days, AccountRules())
+    assert a.outcome == "unfinished"
+    assert a.profit == pytest.approx(-1000)                # flattened at the DLL, day over
+
+
+def test_config_round_trip_and_rejects_typos():
+    cfg = BotConfig()
+    assert BotConfig.from_dict(cfg.to_dict()) == cfg
+    with pytest.raises(ValueError):
+        BotConfig.from_dict({"strategy": {"mom_kk": 2}})
+
+
+def test_sessions_group_rth_in_new_york_time():
+    # 2026-01-05 14:30 UTC = 09:30 New York (EST)
+    rows = [(1767623400 + 300 * k, 1, 2, 0.5, 1.5, 10) for k in range(3)]
+    rows.append((1767623400 - 3600, 1, 2, 0.5, 1.5, 10))    # 08:30: pre-market, dropped
+    (s,) = to_sessions(rows, 5)
+    assert s.date == "2026-01-05" and list(s.minute) == [570, 575, 580]
+
+
+def test_profile_uses_the_same_time_of_day():
+    a = make_session("2026-01-05", [100.0, 110.0, 100.0, 100.0], wick=0.0)
+    prof = Profile([a], [5])
+    assert prof.normal(5, 575) == pytest.approx(10.0)
+    assert np.isnan(prof.normal(5, 900))

@@ -1,0 +1,136 @@
+"""Every knob the bot has, in one place.
+
+Times are minutes since midnight, New York time (570 = 09:30).  Stops and
+targets are measured in *units*: one unit is the normal price range of a
+``unit_minutes`` window at that time of day, taken from earlier sessions, so
+the same settings size themselves to a quiet lunch hour or a wild open.
+"""
+from __future__ import annotations
+
+import json
+from dataclasses import asdict, dataclass, field, fields
+from typing import Any, Dict, List
+
+
+@dataclass
+class StrategyParams:
+    """What the bot looks for.  It only ever sells short."""
+
+    # which setups may fire
+    orb: bool = True                  # break below the opening range
+    momentum: bool = True             # big drop keeps going
+    vwap_reject: bool = True          # rally up to VWAP fails on a down day
+
+    # opening-range breakdown
+    or_minutes: int = 15              # opening range = first 15 minutes after 09:30
+    orb_last_minute: int = 11 * 60    # no breakdown entries after 11:00
+
+    # big-drop continuation
+    mom_minutes: int = 60             # look at the move over the last hour...
+    mom_k: float = 1.5                # ...short when it fell k x the normal range for that hour
+
+    # VWAP rejection
+    vr_first_minute: int = 10 * 60
+    vr_tolerance: float = 0.1         # how close (in units) the high must get to VWAP
+
+    # exits
+    unit_minutes: int = 30
+    stop_units: float = 1.0
+    target_units: float = 1.5
+    max_hold_minutes: int = 90
+
+    # schedule
+    first_entry_minute: int = 9 * 60 + 45
+    last_entry_minute: int = 15 * 60
+    flatten_minute: int = 15 * 60 + 50   # Topstep's hard cutoff is 3:10 PM CT = 16:10 New York
+
+    # day limits
+    max_trades_per_day: int = 3
+    max_losses_per_day: int = 2
+    cooldown_minutes: int = 10
+    require_below_vwap: bool = True
+    profile_days: int = 10            # sessions used to learn the "normal" range
+
+    # only short on days that open in a downtrend: yesterday's close below the
+    # average close of the ``trend_days`` sessions before it
+    trend_filter: bool = False
+    trend_days: int = 20
+
+    # Fed announcement days: flat before 2 PM, no entries until the dust settles
+    skip_fomc: bool = True
+    fomc_flat_minute: int = 13 * 60 + 55
+    fomc_resume_minute: int = 14 * 60 + 45
+
+
+@dataclass
+class RiskParams:
+    """How much the bot risks, and what a contract costs to trade."""
+
+    risk_per_trade_usd: float = 250.0
+    max_contracts: int = 3
+    max_stop_risk_usd: float = 400.0      # skip a trade whose 1-lot stop is wider than this
+    daily_loss_stop_usd: float = 600.0    # stop for the day well before Topstep's $1,000 DLL
+    daily_profit_stop_usd: float = 1200.0  # keep days small for the 55% consistency rule
+    point_value: float = 2.0              # MNQ
+    tick_size: float = 0.25
+    commission_rt: float = 1.22           # TopstepX MNQ round turn, per contract
+    slippage_ticks: int = 1               # on market entries, stops and time exits
+
+
+@dataclass
+class AccountRules:
+    """Topstep 50K Trading Combine with the optional Daily Loss Limit."""
+
+    name: str = "Topstep 50K Combine"
+    start_balance: float = 50_000.0
+    profit_target: float = 3_000.0
+    max_loss: float = 2_000.0          # trails the end-of-day high, locks at the start balance
+    daily_loss: float = 1_000.0        # soft: flattens you for the day; 0 disables
+    consistency: float = 0.55          # best day must be <= 55% of total profit
+    max_contracts: int = 50            # MNQ
+    flat_by_minute: int = 16 * 60 + 10  # 3:10 PM Chicago
+
+
+@dataclass
+class BotConfig:
+    strategy: StrategyParams = field(default_factory=StrategyParams)
+    risk: RiskParams = field(default_factory=RiskParams)
+    account: AccountRules = field(default_factory=AccountRules)
+    symbol: str = "MNQ"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, d: Dict[str, Any]) -> "BotConfig":
+        def build(kind, raw):
+            known = {f.name for f in fields(kind)}
+            unknown = set(raw) - known
+            if unknown:
+                raise ValueError(f"unknown {kind.__name__} settings: {sorted(unknown)}")
+            return kind(**raw)
+        return cls(strategy=build(StrategyParams, d.get("strategy", {})),
+                   risk=build(RiskParams, d.get("risk", {})),
+                   account=build(AccountRules, d.get("account", {})),
+                   symbol=d.get("symbol", "MNQ"))
+
+    @classmethod
+    def load(cls, path: str) -> "BotConfig":
+        with open(path) as f:
+            return cls.from_dict(json.load(f))
+
+    def save(self, path: str) -> None:
+        with open(path, "w") as f:
+            json.dump(self.to_dict(), f, indent=2)
+
+
+# FOMC statement days (2 PM New York).  Source: federalreserve.gov meeting
+# calendars; add each year's dates as the Fed publishes them.
+FOMC_DATES: List[str] = [
+    "2024-01-31", "2024-03-20", "2024-05-01", "2024-06-12", "2024-07-31",
+    "2024-09-18", "2024-11-07", "2024-12-18",
+    "2025-01-29", "2025-03-19", "2025-05-07", "2025-06-18", "2025-07-30",
+    "2025-09-17", "2025-10-29", "2025-12-10",
+    "2026-01-28", "2026-03-18", "2026-04-29", "2026-06-17", "2026-07-29",
+    "2026-09-16", "2026-10-28", "2026-12-09",
+]
