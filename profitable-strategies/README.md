@@ -1,5 +1,21 @@
 # Profitable strategies
 
+**New: [the NQ and ES breakout and liquidity-sweep bot](futures/breakout-bot/README.md).**
+Tested on 13 years of one-minute bars, the rules chosen on 2013-2019 and
+checked on 2020-2026.
+
+- **The bot is two NQ breakouts, one MNQ each.** The noise-area breakout and
+  a break of the pre-market range, held to the close. Together they made:
+  - $32 a day, a Sharpe of 1.16 and only one losing year (2013);
+  - $26 a day over the last three years.
+  - Pine Scripts are included.
+- **Liquidity sweeps and ES are out.** About 190 sweep versions an index,
+  including ICT-style confirmation, all lost money in 2013-2019 on average.
+  ES lost money over the last three years.
+- **Leverage cuts both ways.** Account growth peaks at about 5 MNQ a bot per
+  $25,000, with an 88% fall along the way. On a 50K evaluation, 1 MNQ
+  passes most often (about half the time); more contracts lower the odds.
+
 **New: [crypto: AAVE, BNB, BTC, INJ and MSTR](crypto/README.md).**
 
 - **Trend and breakout rules work on crypto.** Across 29 coins since 2017

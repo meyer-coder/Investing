@@ -1,0 +1,78 @@
+//@version=6
+// Pre-market range break on NQ / MNQ, as tested in strategies/sweeps/sweeps.py and bot.py
+// ("break PM to 11:30 hold 5m target close").  For a 1-minute chart of NQ1! or MNQ1! that shows the
+// pre-market (CME futures do by default): the range is the high and low of 07:00-09:29 New York.
+// From 09:30 to 11:30, the first one-minute close above the pre-market high starts a count: if it and
+// the next five closes all stay above, buy at the next bar's open, the stop 0.02% under the old high,
+// and hold to the close.  The same under the pre-market low, short.  Each side once a day, first
+// attempt only: a close back inside during the count ends that side for the day.  Everything is
+// closed before 16:00.  2013-2026 on one MNQ: +$10 a session, 1,862 trades, worst stretch -$8,879
+// (2014-2016).  Paper-test before any money.
+strategy("Pre-Market Range Break", overlay = true, default_qty_type = strategy.fixed, default_qty_value = 1,
+         commission_type = strategy.commission.cash_per_contract, commission_value = 0.62, slippage = 1,
+         process_orders_on_close = false, calc_on_every_tick = false)
+
+hold       = input.int(5, "Closes that must stay beyond the level after the first", minval = 0, maxval = 30)
+preSess    = input.session("0700-0930", "Pre-market range (New York)")
+entrySess  = input.session("0930-1130", "Entry window (New York)")
+bufPct     = input.float(0.02, "Stop past the level, %", minval = 0.0, step = 0.01)
+allowShort = input.bool(true, "Allow shorts")
+tz         = "America/New_York"
+
+inPre = not na(time(timeframe.period, preSess, tz))
+inWin = not na(time(timeframe.period, entrySess, tz))
+mod   = hour(time, tz) * 60 + minute(time, tz)
+
+var float pmHi = na
+var float pmLo = na
+var bool hiDone = false
+var bool loDone = false
+var int hiRun = 0
+var int loRun = 0
+
+// a new day's range starts with the first pre-market bar
+if inPre and not inPre[1]
+    pmHi := high
+    pmLo := low
+    hiDone := false
+    loDone := false
+    hiRun := 0
+    loRun := 0
+else if inPre
+    pmHi := math.max(pmHi, high)
+    pmLo := math.min(pmLo, low)
+
+if inWin and not na(pmHi)
+    // the high side: the first close above, then `hold` more closes above
+    if not hiDone
+        if close > pmHi
+            hiRun += 1
+        else if hiRun > 0
+            hiDone := true
+        if hiRun == hold + 1
+            hiDone := true
+            strategy.entry("Long", strategy.long)
+            strategy.exit("Long stop", "Long", stop = pmHi * (1 - bufPct / 100))
+            alert('{"action":"buy","reason":"pre-market high broken and held","price":' + str.tostring(close) +
+                  ',"stop":' + str.tostring(pmHi * (1 - bufPct / 100)) + '}', alert.freq_once_per_bar_close)
+    // the low side
+    if not loDone and allowShort
+        if close < pmLo
+            loRun += 1
+        else if loRun > 0
+            loDone := true
+        if loRun == hold + 1
+            loDone := true
+            strategy.entry("Short", strategy.short)
+            strategy.exit("Short stop", "Short", stop = pmLo * (1 + bufPct / 100))
+            alert('{"action":"sell_short","reason":"pre-market low broken and held","price":' + str.tostring(close) +
+                  ',"stop":' + str.tostring(pmLo * (1 + bufPct / 100)) + '}', alert.freq_once_per_bar_close)
+
+// flat for the close: the 15:58 bar's order fills at the 15:59 open
+if mod == 15 * 60 + 58 and strategy.position_size != 0
+    strategy.close_all(comment = "end of day")
+    alert('{"action":"flatten","reason":"end of day"}', alert.freq_once_per_bar_close)
+
+showLevels = mod >= 9 * 60 + 30 and mod < 16 * 60
+plot(showLevels ? pmHi : na, "Pre-market high", color.new(color.teal, 0), style = plot.style_linebr, linewidth = 2)
+plot(showLevels ? pmLo : na, "Pre-market low", color.new(color.red, 0), style = plot.style_linebr, linewidth = 2)
