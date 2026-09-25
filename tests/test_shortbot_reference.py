@@ -255,9 +255,10 @@ def ref_funded(trades_by_day, dates, rules):
             winning_days += 1
         if not payouts:
             highest_eod = max(highest_eod, balance)
-        if winning_days >= rules.winning_days and (payouts == 0 or profit_since_payout > 0):
+        if (winning_days >= rules.winning_days and profit_since_payout >= rules.min_cycle_profit
+                and (payouts == 0 or profit_since_payout > 0)):
             amount = min(balance / 2, rules.payout_cap)
-            if amount >= 125:
+            if amount >= rules.min_payout:
                 balance -= amount
                 paid += amount * rules.payout_split
                 payouts += 1

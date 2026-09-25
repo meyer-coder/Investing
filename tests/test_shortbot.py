@@ -379,3 +379,27 @@ def test_fees_follow_topstep_billing():
     # failing on the last day of data buys no reset
     c = bt.cycle({"d02": [T("d02", -2100, mae=-2100)]}, days[:3], rules)
     assert c.fees == pytest.approx(rules.monthly_fee)
+
+
+def test_fundednext_billing_is_per_challenge():
+    from shortbot.config import FUNDEDNEXT_ACCOUNTS
+    rules = FUNDEDNEXT_ACCOUNTS["fn-legacy-25k"]
+    days = [f"d{k:02d}" for k in range(80)]
+    # a 30-day attempt that fails, then a pass: no rebill, one reset, no activation
+    trades = {"d29": [T("d29", -1100, mae=-1100)], **{d: [T(d, 300)] for d in days[30:36]}}
+    c = bt.cycle(trades, days[:40], rules)
+    assert c.combine_fails == 1 and c.combines_passed == 1
+    assert c.fees == pytest.approx(79.99 + 73.99)
+
+
+def test_fundednext_payouts_need_500_since_the_last_one():
+    from shortbot.config import FUNDEDNEXT_ACCOUNTS
+    rules = FUNDEDNEXT_ACCOUNTS["fn-legacy-25k"]
+    days = [f"d{k:02d}" for k in range(6)]
+    small = bt.funded_attempt({d: [T(d, 99 + 2)] for d in days}, days, rules)
+    # day 5: five $101 benchmark days and $505 profit -> half of it, 80% to the trader
+    assert small.payouts == 1 and small.paid_to_trader == pytest.approx(0.8 * 252.5)
+    four = bt.funded_attempt({d: [T(d, 101)] for d in days[:4]}, days[:4], rules)
+    assert four.payouts == 0                                                    # only 4 benchmark days
+    tiny = bt.funded_attempt({d: [T(d, 95)] for d in days}, days, rules)        # no benchmark days
+    assert tiny.payouts == 0

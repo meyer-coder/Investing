@@ -15,3 +15,6 @@ data/cache/*.csv
 *.sqlite-journal
 *.db
 reports/
+
+# Dukascopy minute history (large)
+data/cache/duka/

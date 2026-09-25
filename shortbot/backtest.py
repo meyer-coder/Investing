@@ -252,9 +252,10 @@ def funded_attempt(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
         if payouts == 0:
             eod_high = max(eod_high, bal)
             mll = min(eod_high - rules.max_loss, 0.0)
-        if wins >= rules.winning_days and (payouts == 0 or since_last > 0):
+        if wins >= rules.winning_days and since_last >= rules.min_cycle_profit and \
+                (payouts == 0 or since_last > 0):
             amount = min(0.5 * bal, rules.payout_cap)
-            if amount >= 125.0:
+            if amount >= rules.min_payout:
                 bal -= amount
                 paid += amount * rules.payout_split
                 payouts += 1
@@ -293,14 +294,15 @@ def cycle(trades_by_day: Dict[str, List[Trade]], dates: Sequence[str],
     paid = fees = 0.0
     days_per_month = 21
     story: List[str] = []
+    monthly = rules.billing == "monthly"
     while k < len(dates):
-        fees += rules.monthly_fee                            # buy a Combine
+        fees += rules.monthly_fee                            # buy a Combine (or a challenge)
         credits = 0
         while k < len(dates):                               # attempts until it passes
             a = combine_attempt(trades_by_day, dates[k:], rules)
             story.append(f"{dates[k]}  Combine {a.outcome} after {a.days} trading days "
                          f"({a.profit:+,.0f})")
-            rebills = (a.days - 1) // days_per_month        # still running at day 22, 43, ...
+            rebills = (a.days - 1) // days_per_month if monthly else 0   # running at day 22, 43, ...
             fees += rebills * rules.monthly_fee
             credits += rebills
             k += a.days

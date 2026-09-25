@@ -111,6 +111,12 @@ class AccountRules:
     winning_day: float = 150.0         # a day counts toward a payout at +$150 net
     winning_days: int = 5
     payout_split: float = 0.90
+    min_payout: float = 125.0
+    min_cycle_profit: float = 0.0      # profit needed since the last payout (FundedNext: $500)
+
+    # "monthly": Topstep's subscription (rebills, reset credits, activation fee);
+    # "one_time": a fee per challenge and a reset fee per failure (FundedNext)
+    billing: str = "monthly"
 
 
 TOPSTEP_ACCOUNTS = {
@@ -122,6 +128,23 @@ TOPSTEP_ACCOUNTS = {
                          profit_target=9_000.0, max_loss=4_500.0, daily_loss=3_000.0,
                          max_contracts=150, monthly_fee=199.0, reset_fee=199.0, payout_cap=5_000.0),
 }
+
+# FundedNext Futures Legacy 25K (fundednext.com/futures and its help center,
+# 2026-09-25): $79.99 a challenge, $73.99 a reset, a $1,250 target with no day
+# over 40% of the profit, a $1,000 max loss trailing the end-of-day balance and
+# locking at the start, no daily limit, 20 micros; funded: 80% to you after 5
+# benchmark days of $100+ and $500+ profit since the last payout, at most half
+# the profit and $3,000 a payout, $250 minimum.
+FUNDEDNEXT_ACCOUNTS = {
+    "fn-legacy-25k": AccountRules(
+        name="FundedNext Legacy 25K", start_balance=25_000.0, profit_target=1_250.0,
+        max_loss=1_000.0, daily_loss=0.0, consistency=0.40, max_contracts=20,
+        monthly_fee=79.99, reset_fee=73.99, activation_fee=0.0, api_fee=0.0,
+        payout_cap=3_000.0, winning_day=100.0, winning_days=5, payout_split=0.80,
+        min_payout=250.0, min_cycle_profit=500.0, billing="one_time"),
+}
+
+ACCOUNTS = {**TOPSTEP_ACCOUNTS, **FUNDEDNEXT_ACCOUNTS}
 
 
 @dataclass
@@ -135,6 +158,8 @@ class BotConfig:
         return asdict(self)
 
     def validate(self) -> "BotConfig":
+        if self.account.billing not in ("monthly", "one_time"):
+            raise ValueError(f"account billing must be 'monthly' or 'one_time', not {self.account.billing!r}")
         if self.strategy.basic_mode not in ("follow", "fade"):
             raise ValueError(f"basic_mode must be 'follow' or 'fade', not {self.strategy.basic_mode!r}")
         return self
