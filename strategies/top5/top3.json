@@ -1,0 +1,182 @@
+[
+ {
+  "name": "Nasdaq-100 breakout, TQQQ 2x",
+  "from": "2013-01-24",
+  "all": {
+   "usd": 50.8,
+   "sharpe": 1.17,
+   "worst_day": -2790.0,
+   "worst_stretch": -13931.0,
+   "days_100": 0.212,
+   "days_down": 0.342,
+   "days": 3328
+  },
+  "3y": {
+   "usd": 40.1,
+   "sharpe": 0.8,
+   "worst_day": -1860.0,
+   "worst_stretch": -13931.0,
+   "days_100": 0.204,
+   "days_down": 0.336,
+   "days": 739
+  },
+  "years": {
+   "2020": 26.0,
+   "2021": 53.0,
+   "2022": 113.0,
+   "2023": 99.0,
+   "2024": 70.0,
+   "2025": 44.0,
+   "2026": 8.0
+  }
+ },
+ {
+  "name": "FBB5 on SOXL / TQQQ / TECL",
+  "from": "2013-01-24",
+  "all": {
+   "usd": 36.9,
+   "sharpe": 0.94,
+   "worst_day": -6547.0,
+   "worst_stretch": -16273.0,
+   "days_100": 0.172,
+   "days_down": 0.133,
+   "days": 3328
+  },
+  "3y": {
+   "usd": 58.3,
+   "sharpe": 1.23,
+   "worst_day": -6547.0,
+   "worst_stretch": -16273.0,
+   "days_100": 0.212,
+   "days_down": 0.157,
+   "days": 739
+  },
+  "years": {
+   "2020": 60.0,
+   "2021": 57.0,
+   "2022": -9.0,
+   "2023": 73.0,
+   "2024": -9.0,
+   "2025": 94.0,
+   "2026": 86.0
+  }
+ },
+ {
+  "name": "Nasdaq-100 breakout, TQQQ 2x + FBB5 on SOXL / TQQQ / TECL",
+  "from": "2013-01-24",
+  "all": {
+   "usd": 87.6,
+   "sharpe": 1.5,
+   "worst_day": -4913.0,
+   "worst_stretch": -13803.0,
+   "days_100": 0.285,
+   "days_down": 0.383,
+   "days": 3328
+  },
+  "3y": {
+   "usd": 98.3,
+   "sharpe": 1.45,
+   "worst_day": -4834.0,
+   "worst_stretch": -12482.0,
+   "days_100": 0.304,
+   "days_down": 0.386,
+   "days": 739
+  },
+  "years": {
+   "2020": 86.0,
+   "2021": 110.0,
+   "2022": 104.0,
+   "2023": 172.0,
+   "2024": 60.0,
+   "2025": 137.0,
+   "2026": 94.0
+  }
+ },
+ {
+  "name": "Gap breakout, 2% risk (from Sep 2022)",
+  "from": "2022-09-23",
+  "all": {
+   "usd": 24.3,
+   "sharpe": 0.63,
+   "worst_day": -1537.0,
+   "worst_stretch": -11760.0,
+   "days_100": 0.365,
+   "days_down": 0.473,
+   "days": 983
+  },
+  "3y": {
+   "usd": 13.7,
+   "sharpe": 0.35,
+   "worst_day": -1537.0,
+   "worst_stretch": -11760.0,
+   "days_100": 0.353,
+   "days_down": 0.486,
+   "days": 736
+  },
+  "years": {
+   "2022": 37.0,
+   "2023": 45.0,
+   "2024": -22.0,
+   "2025": 14.0,
+   "2026": 70.0
+  }
+ },
+ {
+  "name": "All three (from Sep 2022)",
+  "from": "2022-09-23",
+  "all": {
+   "usd": 144.8,
+   "sharpe": 1.76,
+   "worst_day": -4668.0,
+   "worst_stretch": -15503.0,
+   "days_100": 0.409,
+   "days_down": 0.508,
+   "days": 983
+  },
+  "3y": {
+   "usd": 113.1,
+   "sharpe": 1.37,
+   "worst_day": -4668.0,
+   "worst_stretch": -15503.0,
+   "days_100": 0.394,
+   "days_down": 0.519,
+   "days": 736
+  },
+  "years": {
+   "2022": 183.0,
+   "2023": 217.0,
+   "2024": 43.0,
+   "2025": 152.0,
+   "2026": 161.0
+  }
+ },
+ {
+  "name": "Breakout + FBB5, same window (from Sep 2022)",
+  "from": "2022-09-23",
+  "all": {
+   "usd": 120.4,
+   "sharpe": 1.76,
+   "worst_day": -4834.0,
+   "worst_stretch": -12082.0,
+   "days_100": 0.305,
+   "days_down": 0.387,
+   "days": 983
+  },
+  "3y": {
+   "usd": 99.4,
+   "sharpe": 1.46,
+   "worst_day": -4834.0,
+   "worst_stretch": -12082.0,
+   "days_100": 0.304,
+   "days_down": 0.386,
+   "days": 736
+  },
+  "years": {
+   "2022": 146.0,
+   "2023": 172.0,
+   "2024": 66.0,
+   "2025": 138.0,
+   "2026": 91.0
+  }
+ }
+]

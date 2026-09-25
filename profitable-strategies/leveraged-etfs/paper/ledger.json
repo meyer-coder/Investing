@@ -2,500 +2,85 @@
  "go_live": "2026-09-23",
  "accounts": [
   {
-   "id": "top2",
-   "label": "#2",
-   "rank": 2,
-   "name": "MUU Trend Breakout (bred D609)",
+   "id": "fbb5",
+   "label": "FBB5 dip buyer",
+   "rank": 9,
+   "name": "Uptrend Dip (bred FBB5) on SOXL / TQQQ / TECL",
    "symbols": [
-    "MU.2X"
+    "SOXL",
+    "TQQQ",
+    "TECL"
    ],
    "funds": [
-    "MUU"
+    "SOXL",
+    "TQQQ",
+    "TECL"
    ],
    "size": 1.0,
    "genome": {
-    "id": "138ace4efe6c",
-    "name": "MUU Trend Breakout (bred D609)",
-    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
+    "id": "78fb887f75a8",
+    "name": "MUU / SOXL Uptrend Dip (bred FBB5)",
+    "thesis": "A strong month, a shallow pause. Combined with: Price stretched below the band snaps back to the mean.",
     "entry_rules": [
      {
-      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "when": "ret20 > 0.24 and ret1 < -0.02 and dist_sma20 > 0",
       "weight": 1.0,
       "note": "archetype"
      },
      {
-      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
+      "when": "bb_pct < 0.05 and dist_sma200 > -0.1",
       "weight": 1.0,
       "note": "archetype"
      },
      {
-      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
+      "when": "vol20 < 0.547 and macd_hist < -0.26 and mkt_ret20 < 0.035",
       "weight": 1.0,
       "note": "mutation: new entry"
      }
     ],
     "exit_rules": [
      {
-      "when": "bars_held > 10",
+      "when": "bb_pct > 0.75",
       "note": "archetype"
      },
      {
-      "when": "zscore20 <= -1.05",
+      "when": "ret5 < -0.09",
+      "note": "archetype"
+     },
+     {
+      "when": "portfolio_drawdown > -0.13 and pct_of_52w_high < 0.56",
       "note": "mutation: new exit"
      }
     ],
     "risk": {
      "max_position_pct": 1.0,
-     "max_positions": 7,
+     "max_positions": 3,
      "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.086,
+     "stop_loss_pct": 0.1,
      "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0.142,
+     "trailing_stop_pct": 0,
      "max_hold_bars": 0,
      "min_hold_bars": 0,
-     "cooldown_bars": 3
+     "cooldown_bars": 0
     },
-    "generation": 25,
+    "generation": 20,
     "parents": [
-     "ed0e4f5b34b8"
+     "2cfce0a4b22c"
     ],
     "origin": "mutation",
     "rationale": "random mutation",
-    "created_at": 1790150341.4596326
+    "created_at": 1790137963.1669068
    },
-   "start": "2026-09-23",
+   "start": "2026-09-25",
    "start_cash": 25000.0,
-   "cash": 0.0,
-   "position": {
-    "fund": "MUU",
-    "shares": 637.3266024163,
-    "entry_date": "2026-09-23",
-    "entry_price": 39.22635569458007,
-    "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
-    "synced": true
-   },
-   "fills": [
-    {
-     "date": "2026-09-23",
-     "side": "buy",
-     "fund": "MUU",
-     "price": 39.2264,
-     "shares": 637.3266,
-     "value": 25000.0,
-     "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
-     "synced": true
-    }
-   ],
-   "closed": [],
-   "marks": [
-    {
-     "date": "2026-09-23",
-     "equity": 23702.18,
-     "day_pnl": -1297.82,
-     "cash": 0.0,
-     "fund": "MUU",
-     "close": 37.19
-    },
-    {
-     "date": "2026-09-24",
-     "equity": 24033.59,
-     "day_pnl": 331.41,
-     "cash": 0.0,
-     "fund": "MUU",
-     "close": 37.71
-    }
-   ],
-   "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
-    "sells": [],
-    "buys": []
-   },
-   "levels": {
-    "after_close": "2026-09-24",
-    "funds": {
-     "MUU": [
-      {
-       "action": "sell MUU",
-       "from": -0.25,
-       "to": -0.11453125,
-       "price_from": 28.28,
-       "price_to": 33.39
-      },
-      {
-       "action": "hold MUU",
-       "from": -0.114453125,
-       "to": 0.25,
-       "price_from": 33.39,
-       "price_to": 47.14
-      }
-     ]
-    }
-   },
-   "last_date": "2026-09-24"
-  },
-  {
-   "id": "split1",
-   "label": "Split bot 1/3",
-   "rank": null,
-   "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
-   "symbols": [
-    "MU.2X"
-   ],
-   "funds": [
-    "MUU"
-   ],
-   "size": 1.0,
-   "genome": {
-    "id": "bce763b94030",
-    "name": "Quick Dip 0.02/0.02/0.1/200/4",
-    "thesis": "Quick Dip 0.02/0.02/0.1/200/4",
-    "entry_rules": [
-     {
-      "when": "ret1 < -0.02 and close > sma200",
-      "weight": 1.0,
-      "note": ""
-     }
-    ],
-    "exit_rules": [
-     {
-      "when": "bars_held >= 4",
-      "note": ""
-     }
-    ],
-    "risk": {
-     "max_position_pct": 1.0,
-     "max_positions": 1,
-     "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.1,
-     "take_profit_pct": 0.02,
-     "trailing_stop_pct": 0.0,
-     "max_hold_bars": 0,
-     "min_hold_bars": 0,
-     "cooldown_bars": 0
-    },
-    "generation": 0,
-    "parents": [],
-    "origin": "seed",
-    "rationale": "",
-    "created_at": 1790145370.0400827
-   },
-   "start": "2026-09-23",
-   "start_cash": 8333.33,
-   "cash": 0.0,
-   "position": {
-    "fund": "MUU",
-    "shares": 233.73105024752132,
-    "entry_date": "2026-09-24",
-    "entry_price": 35.653499999999994,
-    "why": "entry rule: ret1 < -0.02 and close > sma200",
-    "synced": false
-   },
-   "fills": [
-    {
-     "date": "2026-09-24",
-     "side": "buy",
-     "fund": "MUU",
-     "price": 35.6535,
-     "shares": 233.7311,
-     "value": 8333.33,
-     "why": "entry rule: ret1 < -0.02 and close > sma200",
-     "synced": false
-    }
-   ],
-   "closed": [],
-   "marks": [
-    {
-     "date": "2026-09-23",
-     "equity": 8333.33,
-     "day_pnl": 0.0,
-     "cash": 8333.33,
-     "fund": null,
-     "close": null
-    },
-    {
-     "date": "2026-09-24",
-     "equity": 8814.0,
-     "day_pnl": 480.67,
-     "cash": 0.0,
-     "fund": "MUU",
-     "close": 37.71
-    }
-   ],
-   "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
-    "sells": [
-     {
-      "fund": "MUU",
-      "why": "take profit hit (5.8% >= 2.0%)"
-     }
-    ],
-    "buys": []
-   },
-   "levels": {
-    "after_close": "2026-09-24",
-    "funds": {
-     "MUU": [
-      {
-       "action": "buy MUU",
-       "from": -0.25,
-       "to": -0.020078125000000002,
-       "price_from": 28.28,
-       "price_to": 36.95
-      },
-      {
-       "action": "stay in cash",
-       "from": -0.02,
-       "to": 0.25,
-       "price_from": 36.96,
-       "price_to": 47.14
-      }
-     ]
-    }
-   },
-   "last_date": "2026-09-24",
-   "group": "Three-bot split account",
-   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
-  },
-  {
-   "id": "split2",
-   "label": "Split bot 2/3",
-   "rank": null,
-   "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day, 20% trailing stop",
-   "symbols": [
-    "NVDA.2X",
-    "AMD.2X"
-   ],
-   "funds": [
-    "NVDL",
-    "AMDL"
-   ],
-   "size": 1.0,
-   "genome": {
-    "id": "c4449406e592",
-    "name": "Short-Trend Rider 10/0.2",
-    "thesis": "Short-Trend Rider 10/0.2",
-    "entry_rules": [
-     {
-      "when": "close > sma10 and sma20_slope > 0 and ret5 > 0",
-      "weight": 1.0,
-      "note": ""
-     }
-    ],
-    "exit_rules": [
-     {
-      "when": "close < sma10",
-      "note": ""
-     }
-    ],
-    "risk": {
-     "max_position_pct": 1.0,
-     "max_positions": 1,
-     "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.1,
-     "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0.2,
-     "max_hold_bars": 0,
-     "min_hold_bars": 0,
-     "cooldown_bars": 0
-    },
-    "generation": 0,
-    "parents": [],
-    "origin": "seed",
-    "rationale": "",
-    "created_at": 1790139429.1748483
-   },
-   "start": "2026-09-23",
-   "start_cash": 8333.33,
-   "cash": 0.0,
-   "position": {
-    "fund": "AMDL",
-    "shares": 101.54473981790179,
-    "entry_date": "2026-09-23",
-    "entry_price": 82.06559999999999,
-    "why": "synced at go-live: the strategy has held AMDL since 2026-09-11 (entry rule: close > sma10 and sma20_slope > 0 and ret5 > 0)",
-    "synced": true
-   },
-   "fills": [
-    {
-     "date": "2026-09-23",
-     "side": "buy",
-     "fund": "AMDL",
-     "price": 82.0656,
-     "shares": 101.5447,
-     "value": 8333.33,
-     "why": "synced at go-live: the strategy has held AMDL since 2026-09-11 (entry rule: close > sma10 and sma20_slope > 0 and ret5 > 0)",
-     "synced": true
-    }
-   ],
-   "closed": [],
-   "marks": [
-    {
-     "date": "2026-09-23",
-     "equity": 8154.04,
-     "day_pnl": -179.29,
-     "cash": 0.0,
-     "fund": "AMDL",
-     "close": 80.3
-    },
-    {
-     "date": "2026-09-24",
-     "equity": 8519.6,
-     "day_pnl": 365.56,
-     "cash": 0.0,
-     "fund": "AMDL",
-     "close": 83.9
-    }
-   ],
-   "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
-    "sells": [],
-    "buys": []
-   },
-   "levels": {
-    "after_close": "2026-09-24",
-    "funds": {
-     "AMDL": [
-      {
-       "action": "sell AMDL + buy NVDL",
-       "from": -0.25,
-       "to": -0.17628906249999998,
-       "price_from": 62.93,
-       "price_to": 69.11
-      },
-      {
-       "action": "hold AMDL",
-       "from": -0.17625,
-       "to": 0.25,
-       "price_from": 69.11,
-       "price_to": 104.88
-      }
-     ],
-     "NVDL": [
-      {
-       "action": "hold AMDL",
-       "from": -0.25,
-       "to": 0.25,
-       "price_from": 26.67,
-       "price_to": 44.45
-      }
-     ]
-    }
-   },
-   "last_date": "2026-09-24",
-   "group": "Three-bot split account",
-   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
-  },
-  {
-   "id": "split3",
-   "label": "Split bot 3/3",
-   "rank": null,
-   "name": "NVDL / AMDL Pullback in Uptrend: 12% five-day pullback above the 200-day",
-   "symbols": [
-    "NVDA.2X",
-    "AMD.2X"
-   ],
-   "funds": [
-    "NVDL",
-    "AMDL"
-   ],
-   "size": 1.0,
-   "genome": {
-    "id": "39cfb317b7f1",
-    "name": "Pullback in Uptrend 0.12/200",
-    "thesis": "Pullback in Uptrend 0.12/200",
-    "entry_rules": [
-     {
-      "when": "ret5 < -0.12 and close > sma200",
-      "weight": 1.0,
-      "note": ""
-     }
-    ],
-    "exit_rules": [
-     {
-      "when": "ret1 > 0.04",
-      "note": ""
-     },
-     {
-      "when": "bars_held >= 4",
-      "note": ""
-     }
-    ],
-    "risk": {
-     "max_position_pct": 1.0,
-     "max_positions": 1,
-     "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.15,
-     "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0.0,
-     "max_hold_bars": 0,
-     "min_hold_bars": 0,
-     "cooldown_bars": 0
-    },
-    "generation": 0,
-    "parents": [],
-    "origin": "seed",
-    "rationale": "",
-    "created_at": 1790139483.7378557
-   },
-   "start": "2026-09-23",
-   "start_cash": 8333.33,
-   "cash": 8333.33,
+   "cash": 25000.0,
    "position": null,
    "fills": [],
    "closed": [],
-   "marks": [
-    {
-     "date": "2026-09-23",
-     "equity": 8333.33,
-     "day_pnl": 0.0,
-     "cash": 8333.33,
-     "fund": null,
-     "close": null
-    },
-    {
-     "date": "2026-09-24",
-     "equity": 8333.33,
-     "day_pnl": 0.0,
-     "cash": 8333.33,
-     "fund": null,
-     "close": null
-    }
-   ],
-   "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
-    "sells": [],
-    "buys": []
-   },
-   "levels": {
-    "after_close": "2026-09-24",
-    "funds": {
-     "AMDL": [
-      {
-       "action": "stay in cash",
-       "from": -0.25,
-       "to": 0.25,
-       "price_from": 62.93,
-       "price_to": 104.88
-      }
-     ],
-     "NVDL": [
-      {
-       "action": "stay in cash",
-       "from": -0.25,
-       "to": 0.25,
-       "price_from": 26.67,
-       "price_to": 44.45
-      }
-     ]
-    }
-   },
-   "last_date": "2026-09-24",
-   "group": "Three-bot split account",
-   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close"
+   "marks": [],
+   "orders": {},
+   "levels": {},
+   "last_date": null
   }
  ],
  "updated_after_close": "2026-09-24",
@@ -998,6 +583,510 @@
    "last_date": null,
    "retired": "2026-09-23",
    "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
+  },
+  {
+   "id": "top2",
+   "label": "#2",
+   "rank": 2,
+   "name": "MUU Trend Breakout (bred D609)",
+   "symbols": [
+    "MU.2X"
+   ],
+   "funds": [
+    "MUU"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "138ace4efe6c",
+    "name": "MUU Trend Breakout (bred D609)",
+    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
+    "entry_rules": [
+     {
+      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held > 10",
+      "note": "archetype"
+     },
+     {
+      "when": "zscore20 <= -1.05",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 7,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.086,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.142,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 3
+    },
+    "generation": 25,
+    "parents": [
+     "ed0e4f5b34b8"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790150341.4596326
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 637.3266024163,
+    "entry_date": "2026-09-23",
+    "entry_price": 39.22635569458007,
+    "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
+    "synced": true
+   },
+   "fills": [
+    {
+     "date": "2026-09-23",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 39.2264,
+     "shares": 637.3266,
+     "value": 25000.0,
+     "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
+     "synced": true
+    }
+   ],
+   "closed": [],
+   "marks": [
+    {
+     "date": "2026-09-23",
+     "equity": 23702.18,
+     "day_pnl": -1297.82,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.19
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 24033.59,
+     "day_pnl": 331.41,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.71
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-24",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": -0.11453125,
+       "price_from": 28.28,
+       "price_to": 33.39
+      },
+      {
+       "action": "hold MUU",
+       "from": -0.114453125,
+       "to": 0.25,
+       "price_from": 33.39,
+       "price_to": 47.14
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-24",
+   "retired": "2026-09-25",
+   "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
+  },
+  {
+   "id": "split1",
+   "label": "Split bot 1/3",
+   "rank": null,
+   "name": "MUU Quick Dip: 2% dip above the 200-day, 2% target, 10% stop, 4 days max",
+   "symbols": [
+    "MU.2X"
+   ],
+   "funds": [
+    "MUU"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "bce763b94030",
+    "name": "Quick Dip 0.02/0.02/0.1/200/4",
+    "thesis": "Quick Dip 0.02/0.02/0.1/200/4",
+    "entry_rules": [
+     {
+      "when": "ret1 < -0.02 and close > sma200",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bars_held >= 4",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.02,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790145370.0400827
+   },
+   "start": "2026-09-23",
+   "start_cash": 8333.33,
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 233.73105024752132,
+    "entry_date": "2026-09-24",
+    "entry_price": 35.653499999999994,
+    "why": "entry rule: ret1 < -0.02 and close > sma200",
+    "synced": false
+   },
+   "fills": [
+    {
+     "date": "2026-09-24",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 35.6535,
+     "shares": 233.7311,
+     "value": 8333.33,
+     "why": "entry rule: ret1 < -0.02 and close > sma200",
+     "synced": false
+    }
+   ],
+   "closed": [],
+   "marks": [
+    {
+     "date": "2026-09-23",
+     "equity": 8333.33,
+     "day_pnl": 0.0,
+     "cash": 8333.33,
+     "fund": null,
+     "close": null
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8814.0,
+     "day_pnl": 480.67,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.71
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [
+     {
+      "fund": "MUU",
+      "why": "take profit hit (5.8% >= 2.0%)"
+     }
+    ],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-24",
+    "funds": {
+     "MUU": [
+      {
+       "action": "buy MUU",
+       "from": -0.25,
+       "to": -0.020078125000000002,
+       "price_from": 28.28,
+       "price_to": 36.95
+      },
+      {
+       "action": "stay in cash",
+       "from": -0.02,
+       "to": 0.25,
+       "price_from": 36.96,
+       "price_to": 47.14
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-24",
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close",
+   "retired": "2026-09-25",
+   "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
+  },
+  {
+   "id": "split2",
+   "label": "Split bot 2/3",
+   "rank": null,
+   "name": "NVDL / AMDL Short-Trend Rider: above a rising 10-day, 20% trailing stop",
+   "symbols": [
+    "NVDA.2X",
+    "AMD.2X"
+   ],
+   "funds": [
+    "NVDL",
+    "AMDL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "c4449406e592",
+    "name": "Short-Trend Rider 10/0.2",
+    "thesis": "Short-Trend Rider 10/0.2",
+    "entry_rules": [
+     {
+      "when": "close > sma10 and sma20_slope > 0 and ret5 > 0",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "close < sma10",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.2,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790139429.1748483
+   },
+   "start": "2026-09-23",
+   "start_cash": 8333.33,
+   "cash": 0.0,
+   "position": {
+    "fund": "AMDL",
+    "shares": 101.54473981790179,
+    "entry_date": "2026-09-23",
+    "entry_price": 82.06559999999999,
+    "why": "synced at go-live: the strategy has held AMDL since 2026-09-11 (entry rule: close > sma10 and sma20_slope > 0 and ret5 > 0)",
+    "synced": true
+   },
+   "fills": [
+    {
+     "date": "2026-09-23",
+     "side": "buy",
+     "fund": "AMDL",
+     "price": 82.0656,
+     "shares": 101.5447,
+     "value": 8333.33,
+     "why": "synced at go-live: the strategy has held AMDL since 2026-09-11 (entry rule: close > sma10 and sma20_slope > 0 and ret5 > 0)",
+     "synced": true
+    }
+   ],
+   "closed": [],
+   "marks": [
+    {
+     "date": "2026-09-23",
+     "equity": 8154.04,
+     "day_pnl": -179.29,
+     "cash": 0.0,
+     "fund": "AMDL",
+     "close": 80.3
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8519.6,
+     "day_pnl": 365.56,
+     "cash": 0.0,
+     "fund": "AMDL",
+     "close": 83.9
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-24",
+    "funds": {
+     "AMDL": [
+      {
+       "action": "sell AMDL + buy NVDL",
+       "from": -0.25,
+       "to": -0.17628906249999998,
+       "price_from": 62.93,
+       "price_to": 69.11
+      },
+      {
+       "action": "hold AMDL",
+       "from": -0.17625,
+       "to": 0.25,
+       "price_from": 69.11,
+       "price_to": 104.88
+      }
+     ],
+     "NVDL": [
+      {
+       "action": "hold AMDL",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 26.67,
+       "price_to": 44.45
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-24",
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close",
+   "retired": "2026-09-25",
+   "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
+  },
+  {
+   "id": "split3",
+   "label": "Split bot 3/3",
+   "rank": null,
+   "name": "NVDL / AMDL Pullback in Uptrend: 12% five-day pullback above the 200-day",
+   "symbols": [
+    "NVDA.2X",
+    "AMD.2X"
+   ],
+   "funds": [
+    "NVDL",
+    "AMDL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "39cfb317b7f1",
+    "name": "Pullback in Uptrend 0.12/200",
+    "thesis": "Pullback in Uptrend 0.12/200",
+    "entry_rules": [
+     {
+      "when": "ret5 < -0.12 and close > sma200",
+      "weight": 1.0,
+      "note": ""
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "ret1 > 0.04",
+      "note": ""
+     },
+     {
+      "when": "bars_held >= 4",
+      "note": ""
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 1,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.15,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 0,
+    "parents": [],
+    "origin": "seed",
+    "rationale": "",
+    "created_at": 1790139483.7378557
+   },
+   "start": "2026-09-23",
+   "start_cash": 8333.33,
+   "cash": 8333.33,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [
+    {
+     "date": "2026-09-23",
+     "equity": 8333.33,
+     "day_pnl": 0.0,
+     "cash": 8333.33,
+     "fund": null,
+     "close": null
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 8333.33,
+     "day_pnl": 0.0,
+     "cash": 8333.33,
+     "fund": null,
+     "close": null
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-24",
+    "funds": {
+     "AMDL": [
+      {
+       "action": "stay in cash",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 62.93,
+       "price_to": 104.88
+      }
+     ],
+     "NVDL": [
+      {
+       "action": "stay in cash",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 26.67,
+       "price_to": 44.45
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-24",
+   "group": "Three-bot split account",
+   "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close",
+   "retired": "2026-09-25",
+   "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
   }
  ]
 }

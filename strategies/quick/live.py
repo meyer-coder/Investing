@@ -63,7 +63,12 @@ def gaps(day=None, top=3, gap_min=0.02, stop_atr=1.0, risk=0.02, lev=4.0):
             continue
         g = op / dly["c"][i - 1] - 1.0
         if abs(g) >= gap_min:
-            cands.append((abs(g), n, sym, g, atr))
+            # ranked as the backtest ranks them: the widest first five minutes against their own norm, once
+            # those five minutes are in (paper.open_range_ratio); the flat ones are left out
+            ratio = paper.open_range_ratio(sym, day)
+            if ratio is not None and ratio[1] == 0:
+                continue
+            cands.append((ratio[0] if ratio and ratio[0] else 0.0, n, sym, g, atr))
     cands.sort(reverse=True)
     out = []
     for _, n, sym, g, atr in cands[:top]:
@@ -87,7 +92,7 @@ def gaps(day=None, top=3, gap_min=0.02, stop_atr=1.0, risk=0.02, lev=4.0):
                     "level": round(lvl, 2), "protective_stop": round(lvl - side * stop_atr * atr, 2), "shares": shares,
                     "risk_usd": round(shares * stop_atr * atr, 0), "last": round(bars[-1][4], 2),
                     "triggered_at": trig[0].strftime("%H:%M") if trig else None})
-    return {"day": day, "gappers": [(n, round(g * 100, 2)) for _, n, _, g, _ in cands[:8]], "orders": out}
+    return {"day": day, "gappers": [(n, round(g * 100, 2), round(r, 2)) for r, n, _, g, _ in cands[:8]], "orders": out}
 
 
 def nasdaq(symbol="QQQ", lookback=14, every=30):

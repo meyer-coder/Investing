@@ -3,6 +3,9 @@ ledger, every account marked at every close, the orders for the next open.
 
     python strategies/etf/paper.py                 # bring every account up to the latest close
     python strategies/etf/paper.py --print accounts|orders|trades
+    python strategies/etf/paper.py --retire top2 --why "..."                    # take a bot off the roster
+    python strategies/etf/paper.py --add fbb5 --rank 9 --funds SOXL,TQQQ,TECL --label "FBB5 dip buyer" \
+        --name "Uptrend Dip (bred FBB5) on SOXL / TQQQ / TECL" --start 2026-09-25   # list #9 on other funds
 
 Each bot has its own $25,000 paper account and trades one fund at a time with
 its share of the account.  Its orders are the engine's, as in live.py: decided
@@ -68,6 +71,21 @@ def retire(ledger: dict, ids: List[str], why: str, day: str) -> None:
             continue
         ledger.setdefault("retired", []).append({**a, "retired": day, "why_retired": why})
     ledger["accounts"] = keep
+
+
+def add_bot(ledger: dict, bot_id: str, rank: int, funds: List[str], label: str, start: str, name: str = "") -> None:
+    """Open a $25,000 account for the published strategy ranked `rank`, on `funds` instead of its own when
+    given (the rule unchanged), under `name` when given."""
+    if any(a["id"] == bot_id for a in ledger["accounts"]):
+        return
+    item = load_items([rank])[0]
+    if funds:
+        item = {**item, "symbols": list(funds)}
+    if name:
+        item = {**item, "name": name}
+    acct = open_account({"id": bot_id, "label": label, "size": 1.0}, item)
+    acct["start"] = start
+    ledger["accounts"].append(acct)
 
 
 def add_split(ledger: dict, start: str) -> None:
@@ -261,6 +279,10 @@ def orders_md(ledger: dict) -> str:
     lines = []
     for a in ledger["accounts"]:
         o, lv = a["orders"], (a.get("levels") or {}).get("funds", {})
+        if not o:
+            lines.append(f"- **{bot_title(a)}.** Starts at the {day_name(a['start'])} open; its orders are set by "
+                         f"the first run after a close.")
+            continue
         acts = [f"**sell {x['fund']}** ({_why(x['why'])})" for x in o.get("sells", [])]
         share = f"its third ({money(a['start_cash'])})" if a.get("group") else f"{a['size']:.0%} of the account"
         acts += [f"**buy {x['fund']}**{' (synced)' if x.get('synced') else ''} with {share}"
@@ -315,7 +337,7 @@ def day_md(ledger: dict, fills: Dict[str, List[dict]]) -> str:
             where = (f"holding {p['fund']} at the ${m['close']:,.2f} close, {(m['close'] / p['entry_price'] - 1) * 100:+.1f}% "
                      f"on the position" if p else "in cash")
             bits.append(f"{where}; equity {money(m['equity'])} ({money(m['day_pnl'], True)} on the day, "
-                        f"{money(m['equity'] - a['start_cash'], True)} since Sep 23)")
+                        f"{money(m['equity'] - a['start_cash'], True)} since {day_name(a['start'])[4:]})")
         lines.append(f"- **{bot_title(a)}:** " + ("; ".join(bits) if bits else "not started") + ".")
     return "\n".join(lines)
 
@@ -327,6 +349,11 @@ def main(argv=None) -> int:
     ap.add_argument("--retire", default="", help="bot ids to take off the roster, comma separated")
     ap.add_argument("--why", default="")
     ap.add_argument("--add-split", action="store_true", help="open the three-bot split account")
+    ap.add_argument("--add", default="", help="id of a bot to open for the published strategy --rank")
+    ap.add_argument("--rank", type=int, default=0)
+    ap.add_argument("--funds", default="", help="funds to run it on instead of its own, comma separated")
+    ap.add_argument("--label", default="")
+    ap.add_argument("--name", default="", help="the added bot's name, when its funds are not the strategy's own")
     ap.add_argument("--start", default="", help="first session for bots added now")
     ap.add_argument("--snapshot", action="store_true",
                     help="mark every account at the latest prices, the session still trading included; "
@@ -338,6 +365,12 @@ def main(argv=None) -> int:
         retire(ledger, args.retire.split(","), args.why, today)
     if args.add_split:
         add_split(ledger, args.start or today)
+    if args.add:
+        add_bot(ledger, args.add, args.rank, [f for f in args.funds.split(",") if f], args.label or args.add,
+                args.start or today, args.name)
+    if args.retire or args.add_split or args.add:
+        PAPER.mkdir(parents=True, exist_ok=True)
+        LEDGER.write_text(json.dumps(ledger, indent=1))        # a roster change stands on its own
     if args.show:
         print({"accounts": accounts_md, "orders": orders_md, "trades": trades_md}[args.show](ledger))
         return 0

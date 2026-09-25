@@ -193,6 +193,82 @@ funds at its list's size (`strategies/top5/years.py`; 2026 runs to September
   failed the random-entry test (it is long the index most of the time).
   Calm Trend Champion, its sibling, was not tested.
 
+## The top three that actually trade
+
+Asked on 2026-09-25: the top three that trade in and out, not ones that
+mostly sit in a fund, and nothing riding Micron (`strategies/top5/active.py`,
+`strategies/top5/top3.py`).
+
+**Which ones just hold.** Over 2012-2026:
+
+- *Nights held* is the share of sessions that end with a position on.
+- *Follows the fund* is the correlation of the strategy's daily P&L with its
+  funds' own daily move.
+
+| Strategy | Micron | Nights held | Average hold | Trades a year | Follows the fund | $ a day | Last 3 years |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| CB51 | yes | 89% | 7.6 days | 29 | 0.72 | $92 | $188 |
+| CBE3 | yes | 73% | 7.9 days | 23 | 0.62 | $74 | $182 |
+| 01D4 | no | 70% | 1.8 days | 98 | 0.80 | $66 | $130 |
+| NQ Managed Long | no | 70% | 7.1 days | 25 | 0.74 | $44 | $55 |
+| Short-Trend Rider (split bot 2) | no | 52% | 7.2 days | 18 | 0.55 | $59 | $75 |
+| D609 (paper bot #2) | yes | 44% | 7.7 days | 14 | 0.62 | $81 | $275 |
+| 852D | no | 28% | 1.9 days | 37 | 0.52 | $66 | $144 |
+| MUU Quick Dip (split bot 1) | yes | 23% | 2.4 days | 24 | 0.50 | $56 | $146 |
+| FBB5 | yes | 19% | 2.1 days | 23 | 0.42 | $57 | $156 |
+| FBB5 on SOXL / TQQQ / TECL | no | 29% | 3.3 days | 22 | 0.47 | $35 | $64 |
+| **Nasdaq-100 breakout, TQQQ 2x** | no | **0%** | **99 minutes** | **240** | **-0.01** | $51 | $40 |
+
+**The three.**
+
+1. **The Nasdaq-100 breakout.** Intraday only, about one trade a day, long or
+   short. It has the one edge that held on its own index (3,176 trades, t =
+   4.2).
+2. **FBB5's dip rule on SOXL, TQQQ and TECL.** It buys sharp drops and sells
+   the bounce, holding about 3 days; it has a position on under a third of
+   the nights.
+   - Its rule beat random entries over 41,791 trades.
+   - Off Micron it makes less: $37 a day over 2013-2026 against $57 on MUU
+     and SOXL, with a Sharpe of 0.94 against 1.35.
+3. **The gap breakout, the rule as it was tested.** Intraday, on the large
+   caps that open 2% or more from their last close. It takes the three whose
+   first five minutes are widest against their own last 14 sessions' first
+   five minutes.
+   - Until 2026-09-24 the paper bot took the three biggest gaps instead. That
+     is not the rule that was tested, and at real spreads it lost $5 a day
+     since September 2022; the tested rule made $24.
+   - The paper bot now ranks them the tested way.
+   - It is the weakest of the three and depends on the spread: at the full
+     measured spread it made $10 a day.
+
+| Book | From | $ a day | Last 3 years | Sharpe | Worst day | Worst losing stretch | Days of $100+ |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Nasdaq-100 breakout, TQQQ 2x | Jan 2013 | $51 | $40 | 1.17 | -$2,790 | -$13,931 | 21% |
+| FBB5 on SOXL / TQQQ / TECL | Jan 2013 | $37 | $58 | 0.94 | -$6,547 | -$16,273 | 17% |
+| **Breakout + FBB5** | Jan 2013 | **$88** | $98 | 1.50 | -$4,913 | **-$13,803** | 28% |
+| Gap breakout, 2% risk, half the spread | Sep 2022 | $24 | $14 | 0.63 | -$1,537 | -$11,760 | 36% |
+| **All three** | Sep 2022 | **$145** | $113 | 1.76 | -$4,668 | **-$15,503** | 41% |
+| Breakout + FBB5, same window | Sep 2022 | $120 | $99 | 1.76 | -$4,834 | -$12,082 | 30% |
+
+- **The three barely move together.** Daily correlations are -0.01 to 0.16.
+- **Breakout + FBB5, by year:** $86 a day in 2020, $110, $104, $172, $60,
+  $137 and $94 in 2026 so far.
+- **All three, by year:** $183 in 2022 (from September), $217, $43, $152 and
+  $161 in 2026 so far.
+- **Each is booked on its own $25,000.** Run in one $25,000 account at these
+  sizes they need more buying power than it has: $50,000 of TQQQ intraday,
+  $25,000 of a 3x fund overnight, and the gap trades on top.
+
+**On paper from 2026-09-25**
+(`profitable-strategies/leveraged-etfs/paper/ledger.json`):
+
+- **Retired.** Bot #2 (D609) and the three split bots, with their records
+  and the reason kept.
+- **New bot.** "FBB5 dip buyer" runs the FBB5 rule unchanged on SOXL, TQQQ
+  and TECL (`strategies/etf/paper.py --add`).
+- **Unchanged.** The quick trades (the breakout and the gap breakout) stay
+  in `profitable-strategies/quick-trades/`.
+
 ## The five, trade by trade
 
 Each rule was run unchanged through evotrader's engine, one fund at a time
@@ -373,4 +449,6 @@ python strategies/top5/rigor_ndx.py   # the Nasdaq-100 breakout on four indexes
 python strategies/top5/tune_ndx.py    # 162 settings of the breakout
 python strategies/top5/book.py        # the books toward $100 a day
 python strategies/top5/years.py       # year by year, 2020-2026
+python strategies/top5/active.py      # which strategies trade and which mostly hold; FBB5 off Micron
+python strategies/top5/top3.py        # the top three that trade, alone and together
 ```

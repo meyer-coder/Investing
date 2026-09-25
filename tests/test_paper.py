@@ -90,3 +90,16 @@ def test_each_symbol_pays_its_own_slippage():
     assert b.buy("DEAR", 1_000.0, 10.0, "d", 0, "t")
     assert abs(b.positions["CHEAP"].entry_price - 10.0 * 1.003) < 1e-9
     assert abs(b.positions["DEAR"].entry_price - 10.0 * 1.0002) < 1e-9
+
+
+def test_a_bot_added_for_a_listed_strategy_runs_its_rule_on_the_funds_given(monkeypatch):
+    item = {"rank": 9, "name": "Uptrend Dip", "symbols": ["MU.2X", "SOXL"], "genome": {"name": "Uptrend Dip"}}
+    monkeypatch.setattr(paper, "load_items", lambda ranks: [item] if ranks == [9] else [])
+    ledger = {"accounts": []}
+    paper.add_bot(ledger, "fbb5", 9, ["SOXL", "TQQQ", "TECL"], "FBB5 dip buyer", "2026-09-25")
+    paper.add_bot(ledger, "fbb5", 9, ["SOXL"], "again", "2026-09-28")            # an id already open is left alone
+    (a,) = ledger["accounts"]
+    assert (a["symbols"], a["funds"], a["start"], a["label"]) == (["SOXL", "TQQQ", "TECL"], ["SOXL", "TQQQ", "TECL"],
+                                                                   "2026-09-25", "FBB5 dip buyer")
+    assert a["genome"] == item["genome"] and a["cash"] == paper.START_CASH and item["symbols"] == ["MU.2X", "SOXL"]
+    assert "Starts at the Fri Sep 25 open" in paper.orders_md(ledger)

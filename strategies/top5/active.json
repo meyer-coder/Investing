@@ -1,0 +1,642 @@
+[
+ {
+  "label": "D609",
+  "funds": [
+   "MU.2X"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.436,
+  "avg_hold": "7.7 days",
+  "trades_a_year": 14.3,
+  "follows_the_fund": 0.62,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 81.4,
+   "sharpe": 1.33,
+   "worst_day": -6596.0,
+   "worst_stretch": -25851.0,
+   "days_in_market": 0.493
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 274.9,
+   "sharpe": 3.15,
+   "worst_day": -6596.0,
+   "worst_stretch": -14744.0,
+   "days_in_market": 0.577
+  },
+  "years": {
+   "2020": 60.0,
+   "2021": -9.0,
+   "2022": 6.0,
+   "2023": 7.0,
+   "2024": 108.0,
+   "2025": 285.0,
+   "2026": 549.0
+  }
+ },
+ {
+  "label": "CB51",
+  "funds": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.887,
+  "avg_hold": "7.6 days",
+  "trades_a_year": 29.2,
+  "follows_the_fund": 0.72,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 91.8,
+   "sharpe": 1.27,
+   "worst_day": -7628.0,
+   "worst_stretch": -29427.0,
+   "days_in_market": 0.762
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 187.9,
+   "sharpe": 1.98,
+   "worst_day": -7628.0,
+   "worst_stretch": -21734.0,
+   "days_in_market": 0.774
+  },
+  "years": {
+   "2020": 181.0,
+   "2021": 69.0,
+   "2022": -50.0,
+   "2023": 113.0,
+   "2024": 29.0,
+   "2025": 271.0,
+   "2026": 318.0
+  }
+ },
+ {
+  "label": "CBE3",
+  "funds": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.732,
+  "avg_hold": "7.9 days",
+  "trades_a_year": 23.4,
+  "follows_the_fund": 0.62,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 74.3,
+   "sharpe": 1.14,
+   "worst_day": -7628.0,
+   "worst_stretch": -30328.0,
+   "days_in_market": 0.656
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 182.4,
+   "sharpe": 1.98,
+   "worst_day": -7628.0,
+   "worst_stretch": -24622.0,
+   "days_in_market": 0.678
+  },
+  "years": {
+   "2020": 111.0,
+   "2021": 18.0,
+   "2022": -25.0,
+   "2023": 103.0,
+   "2024": -1.0,
+   "2025": 301.0,
+   "2026": 263.0
+  }
+ },
+ {
+  "label": "FBB5",
+  "funds": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.192,
+  "avg_hold": "2.1 days",
+  "trades_a_year": 23.0,
+  "follows_the_fund": 0.42,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 56.6,
+   "sharpe": 1.35,
+   "worst_day": -4527.0,
+   "worst_stretch": -11073.0,
+   "days_in_market": 0.27
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 156.3,
+   "sharpe": 2.74,
+   "worst_day": -4527.0,
+   "worst_stretch": -8806.0,
+   "days_in_market": 0.302
+  },
+  "years": {
+   "2020": 56.0,
+   "2021": 53.0,
+   "2022": 7.0,
+   "2023": 27.0,
+   "2024": 14.0,
+   "2025": 160.0,
+   "2026": 371.0
+  }
+ },
+ {
+  "label": "MUU/SOXL Quick Dip 2/2/6/4",
+  "funds": [
+   "MU.2X",
+   "SOXL"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.339,
+  "avg_hold": "2.2 days",
+  "trades_a_year": 39.3,
+  "follows_the_fund": 0.54,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 58.2,
+   "sharpe": 1.05,
+   "worst_day": -5347.0,
+   "worst_stretch": -18754.0,
+   "days_in_market": 0.459
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 155.6,
+   "sharpe": 1.93,
+   "worst_day": -4527.0,
+   "worst_stretch": -13891.0,
+   "days_in_market": 0.491
+  },
+  "years": {
+   "2020": 82.0,
+   "2021": 68.0,
+   "2022": -12.0,
+   "2023": 36.0,
+   "2024": 95.0,
+   "2025": 50.0,
+   "2026": 417.0
+  }
+ },
+ {
+  "label": "MUU Quick Dip (split bot 1)",
+  "funds": [
+   "MU.2X"
+  ],
+  "micron": true,
+  "from": "2012-01-04",
+  "nights_held": 0.23,
+  "avg_hold": "2.4 days",
+  "trades_a_year": 23.8,
+  "follows_the_fund": 0.5,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 56.4,
+   "sharpe": 1.15,
+   "worst_day": -6177.0,
+   "worst_stretch": -15364.0,
+   "days_in_market": 0.325
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 146.0,
+   "sharpe": 1.96,
+   "worst_day": -6177.0,
+   "worst_stretch": -15364.0,
+   "days_in_market": 0.422
+  },
+  "years": {
+   "2020": 36.0,
+   "2021": 84.0,
+   "2022": -36.0,
+   "2023": 25.0,
+   "2024": 118.0,
+   "2025": -5.0,
+   "2026": 436.0
+  }
+ },
+ {
+  "label": "852D",
+  "funds": [
+   "AMD.2X"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.282,
+  "avg_hold": "1.9 days",
+  "trades_a_year": 37.3,
+  "follows_the_fund": 0.52,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 66.0,
+   "sharpe": 1.1,
+   "worst_day": -5505.0,
+   "worst_stretch": -23123.0,
+   "days_in_market": 0.43
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 144.4,
+   "sharpe": 2.08,
+   "worst_day": -3866.0,
+   "worst_stretch": -12451.0,
+   "days_in_market": 0.418
+  },
+  "years": {
+   "2020": 43.0,
+   "2021": -6.0,
+   "2022": -31.0,
+   "2023": 102.0,
+   "2024": -7.0,
+   "2025": 207.0,
+   "2026": 274.0
+  }
+ },
+ {
+  "label": "01D4",
+  "funds": [
+   "SOXL",
+   "TQQQ",
+   "TECL"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.698,
+  "avg_hold": "1.8 days",
+  "trades_a_year": 97.9,
+  "follows_the_fund": 0.8,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 65.7,
+   "sharpe": 1.0,
+   "worst_day": -7387.0,
+   "worst_stretch": -22086.0,
+   "days_in_market": 0.808
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 130.1,
+   "sharpe": 1.59,
+   "worst_day": -5145.0,
+   "worst_stretch": -20181.0,
+   "days_in_market": 0.823
+  },
+  "years": {
+   "2020": 198.0,
+   "2021": 40.0,
+   "2022": -7.0,
+   "2023": 85.0,
+   "2024": 14.0,
+   "2025": 161.0,
+   "2026": 275.0
+  }
+ },
+ {
+  "label": "Short-Trend Rider (split bot 2)",
+  "funds": [
+   "NVDA.2X",
+   "AMD.2X"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.515,
+  "avg_hold": "7.2 days",
+  "trades_a_year": 18.1,
+  "follows_the_fund": 0.55,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 59.4,
+   "sharpe": 0.9,
+   "worst_day": -8492.0,
+   "worst_stretch": -23651.0,
+   "days_in_market": 0.573
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 74.8,
+   "sharpe": 1.01,
+   "worst_day": -8492.0,
+   "worst_stretch": -23651.0,
+   "days_in_market": 0.563
+  },
+  "years": {
+   "2020": 127.0,
+   "2021": 133.0,
+   "2022": -24.0,
+   "2023": 88.0,
+   "2024": 73.0,
+   "2025": 2.0,
+   "2026": 174.0
+  }
+ },
+ {
+  "label": "NQ Calm Trend Champion",
+  "funds": [
+   "NQ1!"
+  ],
+  "micron": false,
+  "from": "2012-01-05",
+  "nights_held": 0.553,
+  "avg_hold": "7.8 days",
+  "trades_a_year": 17.9,
+  "follows_the_fund": 0.66,
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 34.2,
+   "sharpe": 1.27,
+   "worst_day": -2877.0,
+   "worst_stretch": -8925.0,
+   "days_in_market": 0.621
+  },
+  "3y": {
+   "sessions": 754,
+   "usd_per_day": 65.2,
+   "sharpe": 2.24,
+   "worst_day": -1791.0,
+   "worst_stretch": -4521.0,
+   "days_in_market": 0.629
+  },
+  "years": {
+   "2020": 65.0,
+   "2021": 33.0,
+   "2022": 44.0,
+   "2023": 61.0,
+   "2024": 16.0,
+   "2025": 96.0,
+   "2026": 87.0
+  }
+ },
+ {
+  "label": "NQ Managed Long",
+  "funds": [
+   "NQ1!"
+  ],
+  "micron": false,
+  "from": "2012-01-05",
+  "nights_held": 0.704,
+  "avg_hold": "7.1 days",
+  "trades_a_year": 24.9,
+  "follows_the_fund": 0.74,
+  "all": {
+   "sessions": 3707,
+   "usd_per_day": 44.0,
+   "sharpe": 1.44,
+   "worst_day": -2481.0,
+   "worst_stretch": -7915.0,
+   "days_in_market": 0.8
+  },
+  "3y": {
+   "sessions": 754,
+   "usd_per_day": 54.7,
+   "sharpe": 1.67,
+   "worst_day": -1859.0,
+   "worst_stretch": -6973.0,
+   "days_in_market": 0.792
+  },
+  "years": {
+   "2020": 114.0,
+   "2021": 43.0,
+   "2022": 12.0,
+   "2023": 60.0,
+   "2024": 43.0,
+   "2025": 50.0,
+   "2026": 83.0
+  }
+ },
+ {
+  "label": "Nasdaq-100 breakout, TQQQ at 2x",
+  "funds": [
+   "TQQQ (or MNQ)"
+  ],
+  "micron": false,
+  "from": "2013-01-24",
+  "nights_held": 0.0,
+  "avg_hold": "99 minutes",
+  "trades_a_year": 240.3,
+  "follows_the_fund": -0.01,
+  "all": {
+   "sessions": 3330,
+   "usd_per_day": 50.8,
+   "sharpe": 1.17,
+   "worst_day": -2790.0,
+   "worst_stretch": -13931.0,
+   "days_in_market": 0.587
+  },
+  "3y": {
+   "sessions": 741,
+   "usd_per_day": 40.3,
+   "sharpe": 0.81,
+   "worst_day": -1860.0,
+   "worst_stretch": -13931.0,
+   "days_in_market": 0.578
+  },
+  "years": {
+   "2020": 26.0,
+   "2021": 53.0,
+   "2022": 113.0,
+   "2023": 99.0,
+   "2024": 70.0,
+   "2025": 44.0,
+   "2026": 9.0
+  }
+ },
+ {
+  "label": "FBB5 on SOXL + TQQQ",
+  "funds": [
+   "SOXL",
+   "TQQQ"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.213,
+  "avg_hold": "3.0 days",
+  "trades_a_year": 17.8,
+  "follows_the_fund": 0.42,
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 27.7,
+   "sharpe": 0.8,
+   "worst_day": -5248.0,
+   "worst_stretch": -12922.0,
+   "days_in_market": 0.266
+  },
+  "3y": {
+   "sessions": 752,
+   "usd_per_day": 53.0,
+   "sharpe": 1.28,
+   "worst_day": -5248.0,
+   "worst_stretch": -12922.0,
+   "days_in_market": 0.319
+  },
+  "years": {
+   "2020": 45.0,
+   "2021": 44.0,
+   "2022": -11.0,
+   "2023": 83.0,
+   "2024": -6.0,
+   "2025": 70.0,
+   "2026": 88.0
+  }
+ },
+ {
+  "label": "FBB5 on SOXL",
+  "funds": [
+   "SOXL"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.116,
+  "avg_hold": "2.3 days",
+  "trades_a_year": 12.5,
+  "follows_the_fund": 0.34,
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 19.2,
+   "sharpe": 0.63,
+   "worst_day": -5248.0,
+   "worst_stretch": -10645.0,
+   "days_in_market": 0.165
+  },
+  "3y": {
+   "sessions": 752,
+   "usd_per_day": 45.9,
+   "sharpe": 1.23,
+   "worst_day": -5248.0,
+   "worst_stretch": -8911.0,
+   "days_in_market": 0.149
+  },
+  "years": {
+   "2020": 24.0,
+   "2021": 35.0,
+   "2022": -3.0,
+   "2023": 32.0,
+   "2024": -20.0,
+   "2025": 56.0,
+   "2026": 116.0
+  }
+ },
+ {
+  "label": "FBB5 on TQQQ",
+  "funds": [
+   "TQQQ"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.15,
+  "avg_hold": "4.4 days",
+  "trades_a_year": 8.6,
+  "follows_the_fund": 0.35,
+  "all": {
+   "sessions": 3700,
+   "usd_per_day": 19.2,
+   "sharpe": 0.87,
+   "worst_day": -4605.0,
+   "worst_stretch": -11759.0,
+   "days_in_market": 0.184
+  },
+  "3y": {
+   "sessions": 752,
+   "usd_per_day": 42.3,
+   "sharpe": 1.78,
+   "worst_day": -1527.0,
+   "worst_stretch": -4593.0,
+   "days_in_market": 0.267
+  },
+  "years": {
+   "2020": 34.0,
+   "2021": 36.0,
+   "2022": -31.0,
+   "2023": 36.0,
+   "2024": 18.0,
+   "2025": 51.0,
+   "2026": 41.0
+  }
+ },
+ {
+  "label": "FBB5 on SOXL + TQQQ + TECL",
+  "funds": [
+   "SOXL",
+   "TQQQ",
+   "TECL"
+  ],
+  "micron": false,
+  "from": "2012-01-04",
+  "nights_held": 0.288,
+  "avg_hold": "3.3 days",
+  "trades_a_year": 21.9,
+  "follows_the_fund": 0.47,
+  "all": {
+   "sessions": 3699,
+   "usd_per_day": 35.2,
+   "sharpe": 0.92,
+   "worst_day": -6547.0,
+   "worst_stretch": -16273.0,
+   "days_in_market": 0.324
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 63.7,
+   "sharpe": 1.33,
+   "worst_day": -6547.0,
+   "worst_stretch": -16273.0,
+   "days_in_market": 0.398
+  },
+  "years": {
+   "2020": 59.0,
+   "2021": 48.0,
+   "2022": -8.0,
+   "2023": 74.0,
+   "2024": -9.0,
+   "2025": 97.0,
+   "2026": 106.0
+  }
+ },
+ {
+  "label": "FBB5 on synthetic 3x semis + Nasdaq-100, from 2005",
+  "funds": [
+   "SMH.3X",
+   "QQQ.3X"
+  ],
+  "micron": false,
+  "from": "2006-01-03",
+  "nights_held": 0.21,
+  "avg_hold": "3.2 days",
+  "trades_a_year": 16.7,
+  "follows_the_fund": 0.39,
+  "all": {
+   "sessions": 5211,
+   "usd_per_day": 24.9,
+   "sharpe": 0.78,
+   "worst_day": -5999.0,
+   "worst_stretch": -17962.0,
+   "days_in_market": 0.261
+  },
+  "3y": {
+   "sessions": 751,
+   "usd_per_day": 67.4,
+   "sharpe": 1.8,
+   "worst_day": -4772.0,
+   "worst_stretch": -10867.0,
+   "days_in_market": 0.361
+  },
+  "years": {
+   "2020": 85.0,
+   "2021": 11.0,
+   "2022": -14.0,
+   "2023": 118.0,
+   "2024": 21.0,
+   "2025": 101.0,
+   "2026": 58.0
+  }
+ }
+]

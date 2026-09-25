@@ -155,8 +155,31 @@ def _yahoo(sym: str, interval: str, rng: str) -> Optional[dict]:
     return None
 
 
+def open_range_ratio(sym: str, day: str, lookback: int = 14):
+    """The day's first five minutes as the backtest ranks gappers (stock_orb.run): their range over the open,
+    divided by the average of the same over the last `lookback` sessions; and the direction of those five
+    minutes.  From Yahoo's five-minute bars; None when they are not in yet."""
+    m = _yahoo(sym, "5m", "1mo")
+    if not m:
+        return None
+    first = {}
+    for t, o, h, l, c in zip(m["t"], m["o"], m["h"], m["l"], m["c"]):
+        x = dt.datetime.fromtimestamp(t, tz=NY)
+        if (x.hour, x.minute) == (9, 30) and None not in (o, h, l, c) and o > 0:
+            first[x.strftime("%Y-%m-%d")] = ((h - l) / o, float(np.sign(c - o)))
+    days = sorted(d for d in first if d <= day)
+    if not days or days[-1] != day or len(days) < lookback + 1:
+        return None
+    past = float(np.mean([first[d][0] for d in days[-lookback - 1:-1]]))
+    return (first[day][0] / past if past > 0 else None), first[day][1]
+
+
 def gap_breakout_day(day: str, names=None, top: int = 3, gap_min: float = 0.02, stop_atr: float = 1.0,
                      risk: float = 0.02, lev: float = 4.0) -> dict:
+    """The names that opened gap_min or more from their last close, ranked as the backtest ranks them: by how
+    wide their first five minutes were against their own recent first five minutes (open_range_ratio), the
+    flat ones left out; the top three are traded.  Until 2026-09-24 this took the three biggest gaps
+    instead, which is not the rule that was tested (and loses at real spreads)."""
     import panel
     names = names or panel.NAMES
     cands = []
@@ -175,7 +198,10 @@ def gap_breakout_day(day: str, names=None, top: int = 3, gap_min: float = 0.02, 
         pc, op = dly["c"][i - 1], dly["o"][i]
         g = op / pc - 1.0
         if abs(g) >= gap_min:
-            cands.append((abs(g), n, sym, g, atr, pc))
+            ratio = open_range_ratio(sym, day)
+            if ratio is None or ratio[0] is None or ratio[1] == 0:
+                continue
+            cands.append((ratio[0], n, sym, g, atr, pc))
     cands.sort(reverse=True)
     trades, total = [], 0.0
     per_cap = lev * ACCOUNT / top
@@ -217,7 +243,8 @@ def gap_breakout_day(day: str, names=None, top: int = 3, gap_min: float = 0.02, 
         trades.append({"name": n, "gap": round(g * 100, 2), "side": "long" if side > 0 else "short", "in": bars[k0][0].strftime("%H:%M"),
                        "entry": round(px, 2), "stop": round(stop, 2), "out": out_t, "exit": round(exit_px, 2), "why": why,
                        "shares": int(shares), "usd": round(usd, 2)})
-    return {"gappers": [(n, round(g * 100, 2)) for _, n, _, g, _, _ in cands[:10]], "trades": trades, "usd": round(total, 2)}
+    return {"gappers": [(n, round(g * 100, 2)) for _, n, _, g, _, _ in cands[:10]],
+            "open_range_ratio": [(n, round(r, 2)) for r, n, _, _, _, _ in cands[:10]], "trades": trades, "usd": round(total, 2)}
 
 
 # ---------------------------------------------------------------- ledger

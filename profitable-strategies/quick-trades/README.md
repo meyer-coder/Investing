@@ -173,8 +173,14 @@ Pine Script: [noise_area_breakout.pine](noise_area_breakout.pine). Research:
 A version of Zarattini, Barbon and Aziz (2024), *A Profitable Day Trading
 Strategy for the U.S. Equity Market*, limited to what the data here covers.
 
-1. **Pick the names.** Each morning, take the three of 72 large caps that
-   opened 2% or more away from yesterday's close.
+1. **Pick the names.** Each morning, of the 72 large caps that opened 2% or
+   more away from yesterday's close, take the three whose first five minutes
+   were widest against their own first five minutes over the last 14
+   sessions.
+   - The paper bot took the three biggest gaps until 2026-09-24. That is not
+     the rule tested here, and at real spreads it lost money
+     (`strategies/top5/top3.py`).
+   - It ranks them this way from 2026-09-25.
 2. **Set the direction.** The first five minutes set a range and a direction.
    If that bar closed up, buy a break of its high; if down, sell a break of
    its low.

@@ -74,7 +74,8 @@
       "usd": -98.98
      }
     ],
-    "usd": -339.04
+    "usd": -339.04,
+    "note": "This session's paper bot took the three biggest gaps (ORCL, MRVL, DELL), which is not the rule that was backtested. The tested rule ranks the 2%+ gappers by how wide their first five minutes were against their own recent first five minutes: AMAT (no break), ORCL (short, -$240.43), MU (no break), -$240.43 in all. From 2026-09-25 the paper bot uses the tested rule; this entry stays as it was booked."
    }
   }
  }
