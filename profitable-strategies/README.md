@@ -23,13 +23,10 @@ trades on leveraged funds from the top-50 list.
 - **The last three years** were led by the Micron funds: D609 $275 a day,
   CB51 $188, CBE3 $182, FBB5 $156; holding Micron at 2x made $215. Only
   FBB5's trades beat random entries in that window.
-- **The top three that actually trade, with no Micron** (2026-09-25):
-  - the Nasdaq-100 breakout;
-  - FBB5's dip rule on SOXL, TQQQ and TECL;
-  - the gap breakout, ranked the way it was tested.
-
-  Together they made $145 a day since September 2022, with a worst losing
-  stretch of -$15,503. The paper roster was switched to them the same day.
+- **The owner's top three** (2026-09-25) are the three-year leaders: D609
+  (#2), CB51 (#25) and CBE3 (#18). Trading Micron is fine; only holding it
+  is out. They run on paper from that day, $25,000 each, and the split bots
+  were retired.
 
 **New: [quick trades, in and out the same day](quick-trades/README.md).** With
 the three-minute cap relaxed, two same-day trades held up in every period and

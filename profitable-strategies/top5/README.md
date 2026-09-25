@@ -195,8 +195,14 @@ funds at its list's size (`strategies/top5/years.py`; 2026 runs to September
 
 ## The top three that actually trade
 
-Asked on 2026-09-25: the top three that trade in and out, not ones that
-mostly sit in a fund, and nothing riding Micron (`strategies/top5/active.py`,
+> **Correction, the same morning.** The owner's top three are the three-year
+> leaders: D609 (#2), CB51 and CBE3. Trading Micron is fine; only buying and
+> holding it is out. Those three are the paper bots from 2026-09-25 (below).
+> This section read the request as "nothing in Micron" and stays as a
+> comparison.
+
+Read at first as: the top three that trade in and out, not ones that mostly
+sit in a fund, and nothing riding Micron (`strategies/top5/active.py`,
 `strategies/top5/top3.py`).
 
 **Which ones just hold.** Over 2012-2026:
@@ -262,12 +268,16 @@ mostly sit in a fund, and nothing riding Micron (`strategies/top5/active.py`,
 **On paper from 2026-09-25**
 (`profitable-strategies/leveraged-etfs/paper/ledger.json`):
 
-- **Retired.** Bot #2 (D609) and the three split bots, with their records
-  and the reason kept.
-- **New bot.** "FBB5 dip buyer" runs the FBB5 rule unchanged on SOXL, TQQQ
-  and TECL (`strategies/etf/paper.py --add`).
-- **Unchanged.** The quick trades (the breakout and the gap breakout) stay
-  in `profitable-strategies/quick-trades/`.
+- **#2, MUU Trend Breakout (D609).** Kept, where it left off (`--restore`).
+- **#25, MUU / SOXL Uptrend Dip (CB51)** and **#18, MUU / SOXL Uptrend Dip
+  (CBE3).** New, $25,000 each (`--add`). Both join their strategies' MUU
+  positions at the Sep 25 open, so all three start long MUU together.
+- **Retired.** The three split bots, with their records and the reason kept.
+  An FBB5 bot on SOXL, TQQQ and TECL was opened and closed that morning
+  before it traded.
+- **Unchanged.** The quick trades (the breakout and the gap breakout, the
+  latter now ranked the tested way) stay in
+  `profitable-strategies/quick-trades/`.
 
 ## The five, trade by trade
 

@@ -103,3 +103,12 @@ def test_a_bot_added_for_a_listed_strategy_runs_its_rule_on_the_funds_given(monk
                                                                    "2026-09-25", "FBB5 dip buyer")
     assert a["genome"] == item["genome"] and a["cash"] == paper.START_CASH and item["symbols"] == ["MU.2X", "SOXL"]
     assert "Starts at the Fri Sep 25 open" in paper.orders_md(ledger)
+
+
+def test_a_restored_bot_comes_back_where_it_left_off():
+    ledger = {"accounts": [_account("2026-01-05")]}
+    ledger["accounts"][0]["fills"] = [{"date": "2026-01-06"}]
+    paper.retire(ledger, ["t"], "by mistake", "2026-01-20")
+    paper.restore(ledger, ["t"])
+    (a,) = ledger["accounts"]
+    assert ledger["retired"] == [] and a["fills"] == [{"date": "2026-01-06"}] and "retired" not in a and "why_retired" not in a

@@ -4,6 +4,7 @@ ledger, every account marked at every close, the orders for the next open.
     python strategies/etf/paper.py                 # bring every account up to the latest close
     python strategies/etf/paper.py --print accounts|orders|trades
     python strategies/etf/paper.py --retire top2 --why "..."                    # take a bot off the roster
+    python strategies/etf/paper.py --restore top2                               # and put it back where it left off
     python strategies/etf/paper.py --add fbb5 --rank 9 --funds SOXL,TQQQ,TECL --label "FBB5 dip buyer" \
         --name "Uptrend Dip (bred FBB5) on SOXL / TQQQ / TECL" --start 2026-09-25   # list #9 on other funds
 
@@ -71,6 +72,16 @@ def retire(ledger: dict, ids: List[str], why: str, day: str) -> None:
             continue
         ledger.setdefault("retired", []).append({**a, "retired": day, "why_retired": why})
     ledger["accounts"] = keep
+
+
+def restore(ledger: dict, ids: List[str]) -> None:
+    """Put retired bots back on the roster where they left off (their fills, marks and position unchanged)."""
+    back = [a for a in ledger.get("retired", []) if a["id"] in ids]
+    ledger["retired"] = [a for a in ledger.get("retired", []) if a["id"] not in ids]
+    for a in back:
+        a.pop("retired", None)
+        a.pop("why_retired", None)
+        ledger["accounts"].append(a)
 
 
 def add_bot(ledger: dict, bot_id: str, rank: int, funds: List[str], label: str, start: str, name: str = "") -> None:
@@ -348,6 +359,7 @@ def main(argv=None) -> int:
     ap.add_argument("--no-levels", action="store_true")
     ap.add_argument("--retire", default="", help="bot ids to take off the roster, comma separated")
     ap.add_argument("--why", default="")
+    ap.add_argument("--restore", default="", help="retired bot ids to put back on the roster, comma separated")
     ap.add_argument("--add-split", action="store_true", help="open the three-bot split account")
     ap.add_argument("--add", default="", help="id of a bot to open for the published strategy --rank")
     ap.add_argument("--rank", type=int, default=0)
@@ -363,12 +375,14 @@ def main(argv=None) -> int:
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     if args.retire:
         retire(ledger, args.retire.split(","), args.why, today)
+    if args.restore:
+        restore(ledger, args.restore.split(","))
     if args.add_split:
         add_split(ledger, args.start or today)
     if args.add:
         add_bot(ledger, args.add, args.rank, [f for f in args.funds.split(",") if f], args.label or args.add,
                 args.start or today, args.name)
-    if args.retire or args.add_split or args.add:
+    if args.retire or args.restore or args.add_split or args.add:
         PAPER.mkdir(parents=True, exist_ok=True)
         LEDGER.write_text(json.dumps(ledger, indent=1))        # a roster change stands on its own
     if args.show:

@@ -2,74 +2,276 @@
  "go_live": "2026-09-23",
  "accounts": [
   {
-   "id": "fbb5",
-   "label": "FBB5 dip buyer",
-   "rank": 9,
-   "name": "Uptrend Dip (bred FBB5) on SOXL / TQQQ / TECL",
+   "id": "top2",
+   "label": "#2",
+   "rank": 2,
+   "name": "MUU Trend Breakout (bred D609)",
    "symbols": [
-    "SOXL",
-    "TQQQ",
-    "TECL"
+    "MU.2X"
    ],
    "funds": [
-    "SOXL",
-    "TQQQ",
-    "TECL"
+    "MUU"
    ],
    "size": 1.0,
    "genome": {
-    "id": "78fb887f75a8",
-    "name": "MUU / SOXL Uptrend Dip (bred FBB5)",
-    "thesis": "A strong month, a shallow pause. Combined with: Price stretched below the band snaps back to the mean.",
+    "id": "138ace4efe6c",
+    "name": "MUU Trend Breakout (bred D609)",
+    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
     "entry_rules": [
      {
-      "when": "ret20 > 0.24 and ret1 < -0.02 and dist_sma20 > 0",
+      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
       "weight": 1.0,
       "note": "archetype"
      },
      {
-      "when": "bb_pct < 0.05 and dist_sma200 > -0.1",
+      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
       "weight": 1.0,
       "note": "archetype"
      },
      {
-      "when": "vol20 < 0.547 and macd_hist < -0.26 and mkt_ret20 < 0.035",
+      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
       "weight": 1.0,
       "note": "mutation: new entry"
      }
     ],
     "exit_rules": [
      {
-      "when": "bb_pct > 0.75",
+      "when": "bars_held > 10",
       "note": "archetype"
      },
      {
-      "when": "ret5 < -0.09",
-      "note": "archetype"
-     },
-     {
-      "when": "portfolio_drawdown > -0.13 and pct_of_52w_high < 0.56",
+      "when": "zscore20 <= -1.05",
       "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 7,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.086,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.142,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 3
+    },
+    "generation": 25,
+    "parents": [
+     "ed0e4f5b34b8"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790150341.4596326
+   },
+   "start": "2026-09-23",
+   "start_cash": 25000.0,
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 637.3266024163,
+    "entry_date": "2026-09-23",
+    "entry_price": 39.22635569458007,
+    "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
+    "synced": true
+   },
+   "fills": [
+    {
+     "date": "2026-09-23",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 39.2264,
+     "shares": 637.3266,
+     "value": 25000.0,
+     "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
+     "synced": true
+    }
+   ],
+   "closed": [],
+   "marks": [
+    {
+     "date": "2026-09-23",
+     "equity": 23702.18,
+     "day_pnl": -1297.82,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.19
+    },
+    {
+     "date": "2026-09-24",
+     "equity": 24033.59,
+     "day_pnl": 331.41,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.71
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-24",
+    "for_open": "2026-09-25",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-24",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": -0.11453125,
+       "price_from": 28.28,
+       "price_to": 33.39
+      },
+      {
+       "action": "hold MUU",
+       "from": -0.114453125,
+       "to": 0.25,
+       "price_from": 33.39,
+       "price_to": 47.14
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-24"
+  },
+  {
+   "id": "cb51",
+   "label": "#25",
+   "rank": 25,
+   "name": "MUU / SOXL Uptrend Dip (bred CB51)",
+   "symbols": [
+    "MU.2X",
+    "SOXL"
+   ],
+   "funds": [
+    "MUU",
+    "SOXL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "f25540ba4d07",
+    "name": "MUU / SOXL Uptrend Dip (bred CB51)",
+    "thesis": "Rarely trade; buy deep drawdowns and hold for months. Combined with: Quiet markets precede expansion; buy the squeeze.",
+    "entry_rules": [
+     {
+      "when": "vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855 or vol_ratio_20_60 < 0.71",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "dist_sma200 > -0.08 and rsi14 < 44",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "ret1 < -0.01 and vol_ratio_20_60 > 1.43",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "mkt_vol20 < 0.499",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "position_return > 0.25",
+      "note": "archetype"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 2,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0.08,
+     "max_hold_bars": 0,
+     "min_hold_bars": 10,
+     "cooldown_bars": 0
+    },
+    "generation": 17,
+    "parents": [
+     "c1962fda29d0"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790147593.3754427
+   },
+   "start": "2026-09-25",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {},
+   "levels": {},
+   "last_date": null
+  },
+  {
+   "id": "cbe3",
+   "label": "#18",
+   "rank": 18,
+   "name": "MUU / SOXL Uptrend Dip (bred CBE3)",
+   "symbols": [
+    "MU.2X",
+    "SOXL"
+   ],
+   "funds": [
+    "MUU",
+    "SOXL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "50c9f059d3b7",
+    "name": "MUU / SOXL Uptrend Dip (bred CBE3)",
+    "thesis": "Rarely trade; buy deep drawdowns and hold for months. Combined with: Quiet markets precede expansion; buy the squeeze.",
+    "entry_rules": [
+     {
+      "when": "dist_sma200 > -0.08 and rsi14 < 37",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "ret1 < -0.01 and vol_ratio_20_60 > 1.43 and bb_pct > 0.5",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     },
+     {
+      "when": "vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855",
+      "weight": 1.0,
+      "note": "archetype"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "mkt_vol20 < 0.499",
+      "note": "mutation: new exit"
+     },
+     {
+      "when": "position_return > 0.25",
+      "note": "archetype"
      }
     ],
     "risk": {
      "max_position_pct": 1.0,
      "max_positions": 3,
      "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.1,
+     "stop_loss_pct": 0,
      "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0,
+     "trailing_stop_pct": 0.08,
      "max_hold_bars": 0,
-     "min_hold_bars": 0,
+     "min_hold_bars": 10,
      "cooldown_bars": 0
     },
-    "generation": 20,
+    "generation": 22,
     "parents": [
-     "2cfce0a4b22c"
+     "15cbcd295cd1"
     ],
     "origin": "mutation",
     "rationale": "random mutation",
-    "created_at": 1790137963.1669068
+    "created_at": 1790147672.7673287
    },
    "start": "2026-09-25",
    "start_cash": 25000.0,
@@ -585,141 +787,6 @@
    "why_retired": "trades TSMX; dropped on Sep 23 because Taiwan Semiconductor rides Asian politics"
   },
   {
-   "id": "top2",
-   "label": "#2",
-   "rank": 2,
-   "name": "MUU Trend Breakout (bred D609)",
-   "symbols": [
-    "MU.2X"
-   ],
-   "funds": [
-    "MUU"
-   ],
-   "size": 1.0,
-   "genome": {
-    "id": "138ace4efe6c",
-    "name": "MUU Trend Breakout (bred D609)",
-    "thesis": "Buy fear inside an intact uptrend, sell into the bounce. Combined with: MACD histogram turns up above the 200-day. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: Fade one-day overreactions against the prevailing trend. Combined with: MACD histogram turns up above the 200-day.",
-    "entry_rules": [
-     {
-      "when": "(rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515",
-      "weight": 1.0,
-      "note": "archetype"
-     },
-     {
-      "when": "macd_hist > -0.05 and prev(macd_hist) <= -0.02 and close > sma200",
-      "weight": 1.0,
-      "note": "archetype"
-     },
-     {
-      "when": "cross_above(macd, macd_signal) and mkt_ret20 < -0.11 or cross_above(close, sma200)",
-      "weight": 1.0,
-      "note": "mutation: new entry"
-     }
-    ],
-    "exit_rules": [
-     {
-      "when": "bars_held > 10",
-      "note": "archetype"
-     },
-     {
-      "when": "zscore20 <= -1.05",
-      "note": "mutation: new exit"
-     }
-    ],
-    "risk": {
-     "max_position_pct": 1.0,
-     "max_positions": 7,
-     "max_gross_exposure": 1.0,
-     "stop_loss_pct": 0.086,
-     "take_profit_pct": 0.0,
-     "trailing_stop_pct": 0.142,
-     "max_hold_bars": 0,
-     "min_hold_bars": 0,
-     "cooldown_bars": 3
-    },
-    "generation": 25,
-    "parents": [
-     "ed0e4f5b34b8"
-    ],
-    "origin": "mutation",
-    "rationale": "random mutation",
-    "created_at": 1790150341.4596326
-   },
-   "start": "2026-09-23",
-   "start_cash": 25000.0,
-   "cash": 0.0,
-   "position": {
-    "fund": "MUU",
-    "shares": 637.3266024163,
-    "entry_date": "2026-09-23",
-    "entry_price": 39.22635569458007,
-    "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
-    "synced": true
-   },
-   "fills": [
-    {
-     "date": "2026-09-23",
-     "side": "buy",
-     "fund": "MUU",
-     "price": 39.2264,
-     "shares": 637.3266,
-     "value": 25000.0,
-     "why": "synced at go-live: the strategy has held MUU since 2026-09-18 (entry rule: (rsi14 >= 39 and close > sma200 or atr_pct < 0.045) and mkt_vol20 > 0.515)",
-     "synced": true
-    }
-   ],
-   "closed": [],
-   "marks": [
-    {
-     "date": "2026-09-23",
-     "equity": 23702.18,
-     "day_pnl": -1297.82,
-     "cash": 0.0,
-     "fund": "MUU",
-     "close": 37.19
-    },
-    {
-     "date": "2026-09-24",
-     "equity": 24033.59,
-     "day_pnl": 331.41,
-     "cash": 0.0,
-     "fund": "MUU",
-     "close": 37.71
-    }
-   ],
-   "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
-    "sells": [],
-    "buys": []
-   },
-   "levels": {
-    "after_close": "2026-09-24",
-    "funds": {
-     "MUU": [
-      {
-       "action": "sell MUU",
-       "from": -0.25,
-       "to": -0.11453125,
-       "price_from": 28.28,
-       "price_to": 33.39
-      },
-      {
-       "action": "hold MUU",
-       "from": -0.114453125,
-       "to": 0.25,
-       "price_from": 33.39,
-       "price_to": 47.14
-      }
-     ]
-    }
-   },
-   "last_date": "2026-09-24",
-   "retired": "2026-09-25",
-   "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
-  },
-  {
    "id": "split1",
    "label": "Split bot 1/3",
    "rank": null,
@@ -1087,6 +1154,89 @@
    "start_note": "moved from the Sep 24 to the Sep 23 open on Sep 23 at the user's request; its orders come from the Sep 22 close",
    "retired": "2026-09-25",
    "why_retired": "Retired 2026-09-25 at the owner's request: these mostly sit in a fund (Micron in three of them) and none beat random entries over 40,000+ trades (profitable-strategies/top5)."
+  },
+  {
+   "id": "fbb5",
+   "label": "FBB5 dip buyer",
+   "rank": 9,
+   "name": "Uptrend Dip (bred FBB5) on SOXL / TQQQ / TECL",
+   "symbols": [
+    "SOXL",
+    "TQQQ",
+    "TECL"
+   ],
+   "funds": [
+    "SOXL",
+    "TQQQ",
+    "TECL"
+   ],
+   "size": 1.0,
+   "genome": {
+    "id": "78fb887f75a8",
+    "name": "MUU / SOXL Uptrend Dip (bred FBB5)",
+    "thesis": "A strong month, a shallow pause. Combined with: Price stretched below the band snaps back to the mean.",
+    "entry_rules": [
+     {
+      "when": "ret20 > 0.24 and ret1 < -0.02 and dist_sma20 > 0",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "bb_pct < 0.05 and dist_sma200 > -0.1",
+      "weight": 1.0,
+      "note": "archetype"
+     },
+     {
+      "when": "vol20 < 0.547 and macd_hist < -0.26 and mkt_ret20 < 0.035",
+      "weight": 1.0,
+      "note": "mutation: new entry"
+     }
+    ],
+    "exit_rules": [
+     {
+      "when": "bb_pct > 0.75",
+      "note": "archetype"
+     },
+     {
+      "when": "ret5 < -0.09",
+      "note": "archetype"
+     },
+     {
+      "when": "portfolio_drawdown > -0.13 and pct_of_52w_high < 0.56",
+      "note": "mutation: new exit"
+     }
+    ],
+    "risk": {
+     "max_position_pct": 1.0,
+     "max_positions": 3,
+     "max_gross_exposure": 1.0,
+     "stop_loss_pct": 0.1,
+     "take_profit_pct": 0.0,
+     "trailing_stop_pct": 0,
+     "max_hold_bars": 0,
+     "min_hold_bars": 0,
+     "cooldown_bars": 0
+    },
+    "generation": 20,
+    "parents": [
+     "2cfce0a4b22c"
+    ],
+    "origin": "mutation",
+    "rationale": "random mutation",
+    "created_at": 1790137963.1669068
+   },
+   "start": "2026-09-25",
+   "start_cash": 25000.0,
+   "cash": 25000.0,
+   "position": null,
+   "fills": [],
+   "closed": [],
+   "marks": [],
+   "orders": {},
+   "levels": {},
+   "last_date": null,
+   "retired": "2026-09-25",
+   "why_retired": "Opened by mistake on 2026-09-25 before the open (the owner's top three are D609, CB51 and CBE3); never traded."
   }
  ]
 }
