@@ -103,36 +103,44 @@
      "cash": 0.0,
      "fund": "MUU",
      "close": 37.71
+    },
+    {
+     "date": "2026-09-25",
+     "equity": 24122.81,
+     "day_pnl": 89.22,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.85
     }
    ],
    "orders": {
-    "after_close": "2026-09-24",
-    "for_open": "2026-09-25",
+    "after_close": "2026-09-25",
+    "for_open": "2026-09-28",
     "sells": [],
     "buys": []
    },
    "levels": {
-    "after_close": "2026-09-24",
+    "after_close": "2026-09-25",
     "funds": {
      "MUU": [
       {
        "action": "sell MUU",
        "from": -0.25,
-       "to": -0.11453125,
-       "price_from": 28.28,
+       "to": -0.11781249999999999,
+       "price_from": 28.39,
        "price_to": 33.39
       },
       {
        "action": "hold MUU",
-       "from": -0.114453125,
+       "from": -0.11773437499999999,
        "to": 0.25,
        "price_from": 33.39,
-       "price_to": 47.14
+       "price_to": 47.31
       }
      ]
     }
    },
-   "last_date": "2026-09-24"
+   "last_date": "2026-09-25"
   },
   {
    "id": "cb51",
@@ -200,14 +208,68 @@
    },
    "start": "2026-09-25",
    "start_cash": 25000.0,
-   "cash": 25000.0,
-   "position": null,
-   "fills": [],
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 643.151799409708,
+    "entry_date": "2026-09-25",
+    "entry_price": 38.87107215270996,
+    "why": "synced at go-live: the strategy has held MUU since 2026-09-14 (entry rule: vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855 or vol_ratio_20_60 < 0.71)",
+    "synced": true
+   },
+   "fills": [
+    {
+     "date": "2026-09-25",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 38.8711,
+     "shares": 643.1518,
+     "value": 25000.0,
+     "why": "synced at go-live: the strategy has held MUU since 2026-09-14 (entry rule: vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855 or vol_ratio_20_60 < 0.71)",
+     "synced": true
+    }
+   ],
    "closed": [],
-   "marks": [],
-   "orders": {},
-   "levels": {},
-   "last_date": null
+   "marks": [
+    {
+     "date": "2026-09-25",
+     "equity": 24343.3,
+     "day_pnl": -656.7,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.85
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-25",
+    "for_open": "2026-09-28",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-25",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 28.39,
+       "price_to": 47.31
+      }
+     ],
+     "SOXL": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 113.59,
+       "price_to": 189.31
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-25"
   },
   {
    "id": "cbe3",
@@ -275,17 +337,71 @@
    },
    "start": "2026-09-25",
    "start_cash": 25000.0,
-   "cash": 25000.0,
-   "position": null,
-   "fills": [],
+   "cash": 0.0,
+   "position": {
+    "fund": "MUU",
+    "shares": 643.151799409708,
+    "entry_date": "2026-09-25",
+    "entry_price": 38.87107215270996,
+    "why": "synced at go-live: the strategy has held MUU since 2026-09-14 (entry rule: vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855)",
+    "synced": true
+   },
+   "fills": [
+    {
+     "date": "2026-09-25",
+     "side": "buy",
+     "fund": "MUU",
+     "price": 38.8711,
+     "shares": 643.1518,
+     "value": 25000.0,
+     "why": "synced at go-live: the strategy has held MUU since 2026-09-14 (entry rule: vol_ratio_20_60 < 0.75 and close > sma50 or pct_of_52w_high > 0.855)",
+     "synced": true
+    }
+   ],
    "closed": [],
-   "marks": [],
-   "orders": {},
-   "levels": {},
-   "last_date": null
+   "marks": [
+    {
+     "date": "2026-09-25",
+     "equity": 24343.3,
+     "day_pnl": -656.7,
+     "cash": 0.0,
+     "fund": "MUU",
+     "close": 37.85
+    }
+   ],
+   "orders": {
+    "after_close": "2026-09-25",
+    "for_open": "2026-09-28",
+    "sells": [],
+    "buys": []
+   },
+   "levels": {
+    "after_close": "2026-09-25",
+    "funds": {
+     "MUU": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 28.39,
+       "price_to": 47.31
+      }
+     ],
+     "SOXL": [
+      {
+       "action": "sell MUU",
+       "from": -0.25,
+       "to": 0.25,
+       "price_from": 113.59,
+       "price_to": 189.31
+      }
+     ]
+    }
+   },
+   "last_date": "2026-09-25"
   }
  ],
- "updated_after_close": "2026-09-24",
+ "updated_after_close": "2026-09-25",
  "retired": [
   {
    "id": "top1",

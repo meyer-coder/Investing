@@ -1,6 +1,6 @@
 {
  "start": "2026-09-24",
- "updated_after_close": "2026-09-24",
+ "updated_after_close": "2026-09-25",
  "sessions": {
   "2026-09-24": {
    "noise_area": {
@@ -76,6 +76,92 @@
     ],
     "usd": -339.04,
     "note": "This session's paper bot took the three biggest gaps (ORCL, MRVL, DELL), which is not the rule that was backtested. The tested rule ranks the 2%+ gappers by how wide their first five minutes were against their own recent first five minutes: AMAT (no break), ORCL (short, -$240.43), MU (no break), -$240.43 in all. From 2026-09-25 the paper bot uses the tested rule; this entry stays as it was booked."
+   }
+  },
+  "2026-09-25": {
+   "noise_area": {
+    "trades": [],
+    "band_at_10:00": [
+     30664.83,
+     30911.36
+    ],
+    "points": 0,
+    "mnq_usd": 0.0,
+    "qqq_4x_usd": 0.0,
+    "tqqq_2x_usd": 0.0,
+    "stop": 0.003
+   },
+   "gap_breakout": {
+    "gappers": [
+     [
+      "TWLO",
+      -4.33
+     ],
+     [
+      "ZS",
+      -4.26
+     ],
+     [
+      "NKE",
+      -2.06
+     ]
+    ],
+    "open_range_ratio": [
+     [
+      "TWLO",
+      2.13
+     ],
+     [
+      "ZS",
+      1.1
+     ],
+     [
+      "NKE",
+      0.95
+     ]
+    ],
+    "trades": [
+     {
+      "name": "TWLO",
+      "gap": -4.33,
+      "side": "long",
+      "in": "09:41",
+      "entry": 297.1,
+      "stop": 284.91,
+      "out": "09:59",
+      "exit": 284.91,
+      "why": "stop",
+      "shares": 41,
+      "usd": -500.7
+     },
+     {
+      "name": "ZS",
+      "gap": -4.26,
+      "side": "short",
+      "in": "09:35",
+      "entry": 203.28,
+      "stop": 212.68,
+      "out": "15:59",
+      "exit": 193.03,
+      "why": "close",
+      "shares": 53,
+      "usd": 544.16
+     },
+     {
+      "name": "NKE",
+      "gap": -2.06,
+      "side": "long",
+      "in": "09:57",
+      "entry": 35.58,
+      "stop": 34.73,
+      "out": "15:59",
+      "exit": 35.76,
+      "why": "close",
+      "shares": 590,
+      "usd": 96.28
+     }
+    ],
+    "usd": 139.74
    }
   }
  }

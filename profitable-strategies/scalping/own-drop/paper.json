@@ -139,12 +139,102 @@
      "minutes": 4
     }
    ]
+  },
+  "2026-09-25": {
+   "pnl": -68.61,
+   "names": 47,
+   "trades": [
+    {
+     "name": "AMD",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 634.4835,
+     "exit": 632.9637,
+     "shares": 26.27,
+     "size": 16667.0,
+     "pnl": -39.92,
+     "ret_bp": -24.0,
+     "minutes": 4
+    },
+    {
+     "name": "AMZN",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 249.3949,
+     "exit": 248.9051,
+     "shares": 66.83,
+     "size": 16667.0,
+     "pnl": -32.73,
+     "ret_bp": -19.6,
+     "minutes": 4
+    },
+    {
+     "name": "GOOGL",
+     "in": "09:36",
+     "out": "09:40",
+     "entry": 345.5646,
+     "exit": 345.1524,
+     "shares": 48.23,
+     "size": 16667.0,
+     "pnl": -19.88,
+     "ret_bp": -11.9,
+     "minutes": 4
+    },
+    {
+     "name": "ORCL",
+     "in": "09:40",
+     "out": "09:44",
+     "entry": 139.6841,
+     "exit": 139.6459,
+     "shares": 118.89,
+     "size": 16608.0,
+     "pnl": -4.53,
+     "ret_bp": -2.7,
+     "minutes": 4
+    },
+    {
+     "name": "APP",
+     "in": "09:45",
+     "out": "09:49",
+     "entry": 313.1813,
+     "exit": 313.3386,
+     "shares": 53.01,
+     "size": 16602.0,
+     "pnl": 8.34,
+     "ret_bp": 5.0,
+     "minutes": 4
+    },
+    {
+     "name": "CVNA",
+     "in": "09:45",
+     "out": "09:49",
+     "entry": 63.8713,
+     "exit": 63.9337,
+     "shares": 259.93,
+     "size": 16602.0,
+     "pnl": 16.22,
+     "ret_bp": 9.8,
+     "minutes": 4
+    },
+    {
+     "name": "UBER",
+     "in": "09:45",
+     "out": "09:49",
+     "entry": 69.1769,
+     "exit": 69.1931,
+     "shares": 239.99,
+     "size": 16602.0,
+     "pnl": 3.89,
+     "ret_bp": 2.3,
+     "minutes": 4
+    }
+   ]
   }
  },
  "summary": {
-  "sessions": 1,
-  "total": -245.26,
-  "per_day": -245.26,
+  "sessions": 2,
+  "total": -313.87,
+  "per_day": -156.94,
   "days_up": 0.0,
   "worst_day": -245.26
  }

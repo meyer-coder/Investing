@@ -30,14 +30,48 @@
     }
    ],
    "usd": 875.0
+  },
+  "2026-09-25": {
+   "levels": {
+    "spot": 30758.66,
+    "gamma_flip": 30700.55,
+    "call_wall": 30713.01,
+    "put_wall": 30297.97,
+    "max_pain": 30505.49
+   },
+   "trades": [
+    {
+     "level": "gamma flip",
+     "side": "long",
+     "in": "10:16",
+     "out": "10:16",
+     "entry": 30736.5,
+     "exit": 30721.5,
+     "why": "stop",
+     "points": -16.25,
+     "usd": -325.0
+    },
+    {
+     "level": "call wall",
+     "side": "short",
+     "in": "10:18",
+     "out": "10:18",
+     "entry": 30701.2,
+     "exit": 30716.2,
+     "why": "stop",
+     "points": -16.25,
+     "usd": -325.0
+    }
+   ],
+   "usd": -650.0
   }
  },
  "summary": {
-  "sessions": 1,
-  "total": 875.0,
-  "per_day": 875.0,
+  "sessions": 2,
+  "total": 225.0,
+  "per_day": 112.5,
   "days_150_plus": 1,
-  "days_down": 0,
-  "worst_day": 875.0
+  "days_down": 1,
+  "worst_day": -650.0
  }
 }
