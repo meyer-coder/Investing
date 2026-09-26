@@ -3,6 +3,10 @@
 This is the one page to check before trying an idea. It is updated after
 every test; each row links to the full write-up.
 
+"Fails" means it failed as tested. A new idea is always welcome, and so is
+a failed one with a meaningful change (new market, exit or session). Log it
+in the lab and test it the same way.
+
 Last updated 2026-09-26.
 
 **Verdicts:**
@@ -34,8 +38,9 @@ The edge is real but small.
 | **Big-drop short**: one large short on a sharp drop | Two years hourly: +$2,633, but all of it in the last 11 months. Beat 73% of coin flips. | [shortbot](../shortbot/README.md) |
 | **Buy a fast 15-minute drop**, hold 60 minutes | 44 sessions: +$47 a trade. But the market rose 7.5% in that time, and shorting fast rallies made nothing. | [candle moves](candle-moves-findings.md) |
 
-Fading moves has failed everywhere else on 13 years, so I expect basic fade
-to fail too. It is still worth a proper test.
+These are the next leads to put through the 13-year test. Fading has
+struggled on Nasdaq elsewhere, so this test decides whether basic fade is
+the exception.
 
 ## Fails
 
@@ -57,20 +62,50 @@ to fail too. It is still worth a proper test.
 | Fading big-move days into the close | 2 years hourly | Every variant lost | [candle moves](candle-moves-findings.md) |
 | Sizing Bot A by volatility | 13 years, 6 rules | The chosen rule did worse than plain 1 MNQ on 2023-26 | [bot-a](bot-a-accounts-findings.md) |
 
-## Accounts and money
+## The goal and the path to it
 
-- **$150 a day per account is out of reach.** It needs a strategy far
-  steadier than anything found here.
-- **$50-60 a day paid from one Topstep 100K** needs about 6-8 unrelated edges
-  as good as Bot A. We have one. ([edges](edges-findings.md))
-- **Bot A at 1 MNQ on the Topstep 100K,** on 2023-26:
-  - 93% of funded accounts survive a year;
-  - it pays about $14 a day;
-  - after fees, about $5 a day at the median.
-- **The FundedNext 25K can't hold Bot A,** even at 1 MNQ: 7% of funded
-  accounts last a year. ([edges](edges-findings.md))
-- **Moving a 25K strategy to the 100K** gives about 1.5x, not 4x.
-  ([bot-a](bot-a-accounts-findings.md))
+**The target is $150+ a day per account.** The stepping stone is a set of
+strategies that each add $50-60 a day, stacked on the Topstep 100K and the
+FundedNext 25K. Everything below is where we stand today, not a ceiling.
+
+**The foundation we have: Bot A.** At 1 MNQ on the Topstep 100K, on
+2023-2026 (years it wasn't chosen on):
+- 93% of funded accounts survive a year;
+- it pays about $14 a day, which is about $5 a day after fees at the median.
+
+It is one real, repeatable edge, confirmed three ways.
+
+**The path is stacking unrelated edges.** Each extra edge as good as Bot A
+adds to what one Topstep 100K pays, because the edges' bad days don't line
+up. From [edges_needed.py](edges_needed.py):
+
+| Edges like Bot A | Paid a day, one Topstep 100K |
+|---|---|
+| 1 | $12 |
+| 2 | $26 |
+| 4 | $45 |
+| 8 | $61 |
+| 12 | $72 |
+
+The $150 goal then comes from stronger edges, bigger accounts, or more
+accounts on top of that.
+
+**Levers still open:**
+- **More edges.** Ways to find them:
+  - "let it run" exits on other markets and timeframes;
+  - the overnight sessions;
+  - news-driven days;
+  - the unproven leads above.
+- **Better exits for Bot A.** Only two exit templates have been tried.
+- **Account setup:**
+  - size the Combine differently from the funded account;
+  - try the Topstep 150K;
+  - run several funded accounts at once.
+- **The FundedNext 25K needs a steadier edge before it can carry 1 MNQ.**
+  Its $1,000 limit is the constraint: Bot A alone keeps 7% of funded
+  accounts a year there. Stacking edges is also what unlocks this account.
+- **Moving a 25K strategy to the 100K** gives about 1.5x, not 4x. More edges
+  is the bigger multiplier. ([bot-a](bot-a-accounts-findings.md))
 
 ## Lessons (the rules every test now follows)
 
