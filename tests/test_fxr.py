@@ -77,6 +77,35 @@ def test_fxr_script_takes_the_engines_trades(sid, tmp_path):
     assert abs(total_js - total_py) <= 0.05 * abs(total_py) + 1.0
 
 
+BAD_EDITS = {
+    "new": ("  const now = time(0);", "  const now = time(0);\n  const junk = new Array(3);"),
+    "empty array": ("const S_BT = [0];", "const S_BT = [];"),
+    "negative literal": ("let S_FRESH = true;", "let S_FRESH = -1;"),
+    "const helper": ("  var resetState = function", "  const resetState = function"),
+    "top-level helper": ("onTick = (", "var helper = function () { return 1; };\n\nonTick = ("),
+    "clock": ("  const now = time(0);", "  const now = time(0);\n  const wall = Date.now();"),
+}
+
+
+@pytest.mark.skipif(NODE is None, reason="node is not installed")
+@pytest.mark.parametrize("what", sorted(BAD_EDITS))
+def test_harness_rejects_what_fx_replay_rejects(what, tmp_path):
+    """FX Replay refuses `new`, keeps only literal/object/non-empty-array top-level state, re-runs the
+    rest of the top level on every bar and moves const helpers out of onTick. The harness must catch
+    each of these, or the tests above would pass scripts that fail in FX Replay."""
+    old, new = BAD_EDITS[what]
+    js = render("21-155")
+    assert old in js
+    (tmp_path / "s.js").write_text(js.replace(old, new, 1))
+    bars = {"t": [1_700_000_000_000 + 3_600_000 * i for i in range(50)], "o": [1.0] * 50, "h": [1.5] * 50,
+            "l": [0.5] * 50, "c": [1.0] * 50}
+    (tmp_path / "bars.json").write_text(json.dumps(bars))
+    out = subprocess.run([NODE, "tests/fxr_harness.js", str(tmp_path / "s.js"), str(tmp_path / "bars.json"),
+                          str(tmp_path / "out.json")], capture_output=True, text=True, timeout=60)
+    assert out.returncode == 3, out.stdout + out.stderr
+    assert "FX Replay would reject" in out.stderr
+
+
 TSC = shutil.which("tsc")
 
 

@@ -28,6 +28,20 @@ results.
 * FRED and the BLS API are not reachable here; CPI comes from the OECD series
   on DBnomics, macro prices from Yahoo, FOMC dates from federalreserve.gov.
 
+## FX Replay scripts (FXR Script)
+
+* The Run button's "There are errors in the script" comes from FX Replay's own
+  compiler, not the editor's underlines: `new X(...)` is rejected outright.
+* Everything outside `init`/`onTick` runs again on every bar. Only top-level
+  variables that start as a literal, an object or a non-empty array persist, and
+  they are regex-renamed to `state.X` inside `onTick`. `[]` becomes a bar series.
+  `-1` does not persist.
+* A `const`/`let` helper in `onTick` that uses only globals, state and other
+  helpers is moved out of `onTick`, where it loses the state. Declare helpers
+  with `var`.
+* The live bar re-runs on every tick with a shallow snapshot/restore and its
+  drawings wiped. `tests/fxr_harness.js` models all of this.
+
 ## Tests
 
 `python -m pytest tests -q`

@@ -9,9 +9,16 @@ bar, and keeps a running tally, so the rules can be replayed, and traded by
 hand, on FX Replay's own NQ data.
 
 Only strategies whose setup has been ported to JavaScript are supported
-(``CONFIGS``).  ``tests/fxr_harness.js`` runs a script outside FX Replay with
-a mock of its API, and the tests check that it takes the same trades as the
-Python engine.
+(``CONFIGS``).  ``tests/fxr_harness.js`` runs a script outside FX Replay under a
+model of FX Replay's compiler and chart runtime, and the tests check that it
+takes the same trades as the Python engine.
+
+FX Replay does not run a script as written.  Its compiler rejects ``new X(...)``.
+Its runtime re-runs everything outside ``init`` and ``onTick`` on every bar and
+keeps only top-level variables that start as a literal, an object or a
+non-empty array (renamed ``state.X`` inside ``onTick``).  It moves ``const``
+helpers that touch only state out of ``onTick``, and it replays the live bar on
+every tick.  The template is written around all of that; see its header.
 """
 from __future__ import annotations
 
