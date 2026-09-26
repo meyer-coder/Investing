@@ -29,6 +29,9 @@ fill is simulated.
 >   - the 13-market edge search ([findings](research/edges-findings.md));
 >   - the Judas swing fade in all three sessions ([findings](research/judas-findings.md));
 >   - gold round numbers, crude z-score and euro EMA crossover ([findings](research/three-ideas-findings.md)).
+> - [`stratlab/`](research/lab/README.md) is a strategy lab: every strategy is a card (signal, settings,
+>   direction, entry, stop, target, trailing, partial, time stop, max trades a day, filters), logged before
+>   it is tested, ranked against random controls ([findings](research/lab/findings.md)).
 > - [`docs/prop-firm-accounts.md`](docs/prop-firm-accounts.md) compares the
 >   Topstep and FundedNext accounts.
 

@@ -1,0 +1,24 @@
+{
+  "name": "02-confluence-nas100",
+  "note": "Eight signal families x six confluence sets x two exit templates on NAS100 15-minute candles, New York session. Written before any result.",
+  "base": {"market": "NAS100", "tf": 15, "session": "ny", "direction": "both", "flat": "15:55"},
+  "variants": [
+    {"entry": {"type": "limit_pullback", "frac": 0.5, "cancel_bars": 10}, "stop": {"type": "atr", "mult": 1.0, "n": 14},
+     "target": {"type": "atr", "mult": 1.0, "n": 14}, "max_trades_day": 2},
+    {"entry": {"type": "market"}, "stop": {"type": "atr", "mult": 1.0, "n": 14}, "target": {"type": "r", "mult": 3.0},
+     "partial": {"type": "take", "frac": 0.5, "at_r": 1.0}, "trailing": {"type": "breakeven", "at_r": 1.0}, "max_trades_day": 2}
+  ],
+  "grid": {
+    "family": ["volume_spike_breakout", "donchian_break", "opening_range_breakout", "ema_cross",
+               "sweep_reclaim", "bollinger_reclaim", "zscore_reversion", "noise_breakout"],
+    "filters": [
+      [],
+      [{"type": "trend_ema", "n": 200}],
+      [{"type": "vwap_side"}],
+      [{"type": "rel_volume", "n": 50, "min": 1.5}],
+      [{"type": "atr_regime", "n": 14, "lookback": 500, "state": "high"}],
+      [{"type": "trend_ema", "n": 200}, {"type": "vwap_side"}, {"type": "rel_volume", "n": 50, "min": 1.5}]
+    ]
+  },
+  "controls": 30
+}

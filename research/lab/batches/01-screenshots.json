@@ -1,0 +1,34 @@
+{
+  "name": "01-screenshots",
+  "note": "The families, markets, timeframes and sessions from the owner's screenshots of a 10,500-strategy dashboard, all with the exit template from its one full card (50% pullback limit, 1 ATR stop, 1 ATR target, 2 trades a day). The first variant is that card exactly, including its Wed/Fri skip.",
+  "base": {
+    "direction": "both",
+    "entry": {"type": "limit_pullback", "frac": 0.5, "cancel_bars": 10},
+    "stop": {"type": "atr", "mult": 1.0, "n": 14},
+    "target": {"type": "atr", "mult": 1.0, "n": 14},
+    "max_trades_day": 2,
+    "flat": "15:55"
+  },
+  "variants": [
+    {"family": "volume_spike_breakout", "settings": {"vol_mult": 2.5, "vol_n": 50, "k": 10}, "market": "NAS100", "tf": 15, "session": "ny_pm", "filters": [{"type": "weekday", "skip": ["Wed", "Fri"]}]},
+    {"family": "volume_spike_breakout", "settings": {"vol_mult": 2.5, "vol_n": 50, "k": 10}, "market": "NAS100", "tf": 15, "session": "ny_pm"},
+    {"family": "volume_spike_breakout", "settings": {"vol_mult": 2.5, "vol_n": 50, "k": 10}, "market": "NAS100", "tf": 15, "session": "ny_am"},
+    {"family": "asian_range_break", "market": "NAS100", "tf": 15, "session": "london"},
+    {"family": "asian_range_break", "market": "NAS100", "tf": 5, "session": "all"},
+    {"family": "ema_ribbon", "market": "NAS100", "tf": 3, "session": "ny_am"},
+    {"family": "ema_ribbon", "market": "NAS100", "tf": 5, "session": "ny_am"},
+    {"family": "opening_range_breakout", "market": "NAS100", "tf": 5, "session": "all"},
+    {"family": "opening_range_breakout", "market": "NAS100", "tf": 15, "session": "ny_am"},
+    {"family": "sweep_reclaim", "market": "NAS100", "tf": 5, "session": "all"},
+    {"family": "sweep_reclaim", "market": "NAS100", "tf": 60, "session": "ldn_ny_am"},
+    {"family": "vwap_band_reversion", "market": "NAS100", "tf": 3, "session": "ny_am"},
+    {"family": "bollinger_reclaim", "market": "NAS100", "tf": 1, "session": "all"},
+    {"family": "round_number", "settings": {"grid": 100}, "market": "NAS100", "tf": 60, "session": "all"},
+    {"family": "gap_fade", "market": "NAS100", "tf": 15, "session": "all"},
+    {"family": "macd_cross", "market": "NAS100", "tf": 30, "session": "all"},
+    {"family": "donchian_break", "market": "US500", "tf": 15, "session": "ny_pm"},
+    {"family": "zscore_reversion", "market": "US30", "tf": 15, "session": "all"},
+    {"family": "noise_breakout", "market": "NAS100", "tf": 30, "session": "ny"}
+  ],
+  "controls": 20
+}
