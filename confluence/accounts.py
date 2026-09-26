@@ -31,11 +31,13 @@ daily P&L in 5-day blocks, sampling recent days more often (the same
 
 1. the evaluation, up to 120 trading days: end-of-day trailing max loss
    that locks at the start balance (+$100 at FundedNext), checked against
-   the day's worst point including each open trade's adverse excursion; the consistency rule that raises the
-   target (Topstep 55%, Legacy/Flex 40%); minimum trading days; the Rapid
-   Daily soft daily loss limit (stop trading for the day); and the
-   inactivity rule (about 21 trading days without a trade ends the
-   account);
+   the day's worst point including each open trade's adverse excursion;
+   the consistency rule that raises the target (Topstep 55%, Legacy/Flex
+   40%); minimum trading days; and the Rapid Daily soft daily loss limit
+   (flattened at the limit, done for the day).  The firms' 30-day
+   inactivity rules are assumed to be met with a token trade, so a
+   strategy that trades rarely simply takes longer (``INACTIVE_DAYS``
+   switches the rule back on);
 2. the funded account, another 120 trading days, requesting a payout as
    soon as the plan allows and withdrawing what it allows (Topstep: 5
    winning days of $150+, 50% of the balance up to $2K/$3K/$5K; Rapid Pro:
@@ -69,7 +71,7 @@ RISK_GRID = [100.0, 150.0, 200.0, 250.0, 300.0, 400.0, 500.0, 750.0, 1000.0, 150
 EVAL_DAYS = 120
 FUNDED_DAYS = 120
 BLOCK = 5
-INACTIVE_DAYS = 21            # ~30 calendar days without a trade
+INACTIVE_DAYS = 10 ** 6       # 21 (~30 calendar days) would enforce the inactivity rule; a token trade avoids it
 TRADING_DAYS_PER_MONTH = 21   # Topstep rebills every 30 calendar days
 SKIP_WIDE = 1.5               # skip a trade if one unit risks more than this x the target risk
 WEIGHTS = (0.25, 0.35, 0.40)  # 8y, 3y, 6m — as in metrics.WEIGHTS

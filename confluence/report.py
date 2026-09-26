@@ -262,7 +262,7 @@ def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
         "body": (f"The optimiser tries {len(plans)} plans x {len(RISK_LEVELS)} risk levels on every strategy and keeps the best, so even "
                  f"coin-flip strategies can look worth an attempt. Of {len(ctrl):,} random controls, "
                  f"{_pct([v > 0 for v in cev]):.0f}% show a positive expected value per attempt and the 95th percentile "
-                 f"is ${bar:,.0f}. {len(pos):,} of {len(real):,} confluence strategies have a positive expected value; "
+                 f"is {_usd_signed(bar)}. {len(pos):,} of {len(real):,} confluence strategies have a positive expected value; "
                  f"{len(above):,} ({100 * len(above) / max(len(real), 1):.1f}%) beat the controls' 95th percentile. "
                  f"Treat an account's EV as real only above that bar."),
     }]
@@ -270,7 +270,7 @@ def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
     for x in above or pos:
         by_plan[acc[x["s"].sid]["best"]["plan"]].append(x)
     items = sorted(by_plan.items(), key=lambda kv: -len(kv[1]))
-    txt = "; ".join(f"{plans.get(k, {}).get('label', k)}: {len(v):,} (median EV ${_median(ev(x) for x in v):,.0f})"
+    txt = "; ".join(f"{plans.get(k, {}).get('label', k)}: {len(v):,} (median EV {_usd_signed(_median(ev(x) for x in v))})"
                     for k, v in items[:8])
     out.append({"title": "Which account wins", "tone": "info",
                 "body": ("Best account among strategies above the luck bar" if above else
@@ -291,15 +291,17 @@ def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
             return (f"{_pct([bl(x)['outcome'] == 1 for x in xs]):.0f}% passed, "
                     f"{_pct([bl(x)['paid'] > 0 for x in xs]):.0f}% were paid, "
                     f"{_pct([bl(x)['outcome'] == -1 for x in xs]):.0f}% blew the evaluation, "
-                    f"average net ${np.mean([bl(x)['net'] for x in xs]):+,.0f} per account")
+                    f"average net {_usd_signed(np.mean([bl(x)['net'] for x in xs]))} per account")
         good = pick and np.mean([bl(x)["net"] for x in pick]) > np.mean([bl(x)["net"] for x in cb])
         out.append({"title": "Blind test: pick the account six months ago, trade the last six months",
                     "tone": "good" if good else "warn",
                     "body": (f"Using only data up to six months ago (same weights, measured from that date), the optimiser chose "
                              f"each strategy's plan and risk; the last six months were then traded once, in order, from a "
                              f"fresh evaluation. {len(pick):,} confluence strategies had a pre-cut-off EV above the random "
-                             f"controls' 95th percentile (${cbar:,.0f}): {summ(pick)}. All {len(rb):,} confluence strategies: "
-                             f"{summ(rb)}. Random controls: {summ(cb)}. This is the only account number here that the "
+                             f"controls' 95th percentile ({_usd_signed(cbar)}): {summ(pick)}. All {len(rb):,} confluence strategies: "
+                             f"{summ(rb)}. Random controls: {summ(cb)}. Split by the sign of the EV six months ago: "
+                             f"positive {summ([x for x in rb if bl(x)['ev'] > 0])}; zero or negative "
+                             f"{summ([x for x in rb if bl(x)['ev'] <= 0])}. This is the only account number here that the "
                              f"choice could not see.")})
     risks = defaultdict(int)
     for x in above or pos:
@@ -313,6 +315,10 @@ def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
                          "A prop attempt's loss is capped at its fee, so the expected value can rise with risk even as "
                          "most attempts fail. Size down if you cannot afford a string of resets.")})
     return out
+
+
+def _usd_signed(v: float) -> str:
+    return f"{'−' if v < 0 else '+'}${abs(v):,.0f}"
 
 
 def _fid(f) -> str:
@@ -372,15 +378,24 @@ def _profile_values(x: dict, u: Universe = RUN1) -> dict:
                 "f_bust", "contracts", "skipped")
         nd = {"risk": 0, "ev": 0, "cost": 0, "paid_if": 0, "pay_n": 2, "days_pass": 1}
         pk = lambda d: [d[k] if k in ("plan", "contracts") else _f(d[k], nd.get(k, 3)) for k in keys]
+        # the per-plan table: the six best plans, seven fields (keeps the page under the size limit)
+        prow = lambda d: [d["plan"], _f(d["risk"], 0), d["contracts"], _f(d["p_pass"], 2), _f(d["p_bust"], 2),
+                          _f(d["p_payout"], 2), _f(d["ev"], 0)]
+        plans = sorted(a["plans"], key=lambda d: -d["ev"])[:6]
         bl = a.get("blind")
         extra["acct"] = {"best": pk(a["best"]), "safe": pk(a["safe"]) if a.get("safe") else None,
                          "blind": [bl["plan"], _f(bl["risk"], 0), _f(bl["ev"], 0), bl["outcome"], _f(bl["days"], 0),
                                    _f(bl["paid"], 0), _f(bl["cost"], 0), _f(bl["net"], 0)] if bl else None,
-                         "plans": [pk(d) for d in a["plans"]],
-                         "curve": [[_f(v, 3 if i >= 2 else 0) for i, v in enumerate(c)] for c in a["curve"]]}
+                         "plans": [prow(d) for d in plans], "nplans": len(a["plans"]),
+                         "curve": [[_f(v, 2 if i >= 2 else 0) for i, v in enumerate(c)] for c in a["curve"]]}
     eq = [round(v, 1) for v in p.get("eq", [])]
+    if u.key != "run1":
+        # month-end equity as deltas in tenths of R: same chart, a third of the bytes; none under 30 trades
+        tenths = [int(round(v * 10)) for v in eq] if r["trades"] >= MIN_TRADES_FOR_STATS else []
+        eq = [t - (tenths[i - 1] if i else 0) for i, t in enumerate(tenths)]
     return {
-        "eq": eq, "yrs": p.get("years", {}), "ex": p.get("exits", []), "last": p.get("last", []),
+        "eq": eq, "yrs": p.get("years", {}), "ex": p.get("exits", []),
+        "last": p.get("last", [])[-3:] if u.key != "run1" else p.get("last", []),
         "side": p.get("side", []), "dq": [round(v) for v in r.get("d_q", [])],
         "dmin": _f(r.get("d_min"), 0), "dmax": _f(r.get("d_max"), 0),
         "lg": list(s.legs), "pd": _f(r.get("pass_days"), 1),
@@ -401,7 +416,7 @@ def payload(rows: List[dict], meta: dict, month_labels: List[str], u: Universe =
                    "yahoo": m.yahoo, "tv": m.tradingview} for k, m in u.markets.items()}
     return {
         "cols": COLS,
-        "run": u.key, "title": u.title,
+        "run": u.key, "title": u.title, "eqd": u.key != "run1",
         "rows": [_row_values(x, u) for x in rows],
         "prof": [_profile_values(x, u) for x in rows],
         "fams": fams, "legs": legs, "groups": u.groups, "markets": markets, "plans": u.plans,
@@ -545,7 +560,7 @@ def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: di
     if learned:
         per = learned["per"]
         for x, prof in zip(rows, pl["prof"]):
-            prof.update(per.get(x["s"].sid, {}))
+            prof.update(_compact_regimes(per.get(x["s"].sid, {}), x["r"]["trades"]))
         pl["learned"] = learned["page"]
         _append_learned_log(os.path.join(out_dir, "run_log.md"), learned["page"])
     from .explorer_html import render
@@ -554,6 +569,20 @@ def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: di
         fh.write(html)
     print(f"wrote {out_dir}/explorer.html ({len(html) / 1e6:.1f} MB), strategies_ranked.csv, "
           f"test_log.jsonl.gz, run_log.md", flush=True)
+
+
+INSPECTOR_REGIMES = ("vix", "fed", "spx", "cpi", "event")     # the regime blocks the inspector draws
+
+
+def _compact_regimes(per: dict, trades: int) -> dict:
+    """Only what the inspector shows, at 0.1R: keeps a 20k-strategy page under the artifact size limit."""
+    if not per:
+        return {}
+    out = {"hist": per.get("hist", [])}
+    if trades >= MIN_TRADES_FOR_STATS:
+        out["rg"] = {k: [[n, round(r, 1)] for n, r in v] for k, v in per.get("rg", {}).items() if k in INSPECTOR_REGIMES}
+        out["ep"] = [[n, round(r, 1)] for n, r in per.get("ep", [])]
+    return out
 
 
 def _learned(strategies, results, meta, start: dt.date, end: dt.date, out_dir: str, u: Universe = RUN1):

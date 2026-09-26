@@ -150,7 +150,7 @@ def _run(plan, daily, sims=4, days=40, low=None):
     return _simulate(daily, e_low, cnt, fp, fl, fc, np.array(plan.f_tiers, dtype=np.float64), starts, starts,
                      plan.target, plan.mll, plan.lock, plan.cons, plan.min_days, plan.price, plan.monthly,
                      plan.activation, plan.f_mll, plan.f_lock, plan.f_lock_paid, plan.pay_mode, plan.pay_thr,
-                     plan.pay_cap, plan.pay_min, plan.pay_frac, plan.split, plan.fee, plan.max_pay, days, days, 5, 21,
+                     plan.pay_cap, plan.pay_min, plan.pay_frac, plan.split, plan.fee, plan.max_pay, days, days, 5, 10 ** 6,
                      -1)
 
 
@@ -171,13 +171,13 @@ def test_consistency_rule_raises_the_target():
     assert outcome[0] == 1 and edays[0] == 19
 
 
-def test_trailing_max_loss_and_inactivity_end_the_evaluation():
+def test_trailing_max_loss_ends_the_evaluation_and_idle_days_only_run_the_clock():
     plan = PLAN_BY_KEY["FN-RP-50K"]
     outcome, edays, cost, paid, *_ = _run(plan, np.full(60, -500.0))
     assert outcome[0] == -1 and edays[0] == 4 and paid[0] == 0.0
     assert cost[0] == pytest.approx(plan.price)
     outcome, edays, *_ = _run(plan, np.zeros(60))
-    assert outcome[0] == -1 and edays[0] == 21           # ~30 calendar days without a trade
+    assert outcome[0] == 0 and edays[0] == 40            # no trades: the attempt just runs out of time
 
 
 def test_pivots_handle_a_swing_on_every_bar():

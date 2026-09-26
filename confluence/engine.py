@@ -21,7 +21,10 @@ the entry-to-stop distance.  Each trade also records its maximum adverse
 excursion (MAE, in R, <= 0): the worst price reached before the exit, which
 the prop-account simulation needs because firms check the max loss on open
 P&L.  Stops are floored at 0.3 ATR so a razor-thin
-"signal bar" stop cannot produce a tiny risk and an absurd R multiple.
+"signal bar" stop cannot produce a tiny risk and an absurd R multiple, and
+optionally at ``min_risk_cost`` x the round-trip cost (the futures run uses
+4: costs never exceed 0.25R), because on quiet 1-2 minute bars 0.3 ATR can be
+a stop of one or two ticks that no fill would respect.
 """
 from __future__ import annotations
 
@@ -41,7 +44,7 @@ def run(sig_l, sig_s,
         tf_h, tf_l, tf_hi, tf_tdm_close, tf_day, atr, swing_lo, swing_hi,
         m_t, m_o, m_h, m_l, m_c, m_tdm, m_day, m_bar,
         entry_type, stop_type, stop_k, target_r, trail,
-        win_start, win_end, exit_tdm, cost_rt, tick, start_bar, max_per_day, cap):
+        win_start, win_end, exit_tdm, cost_rt, tick, start_bar, max_per_day, cap, min_risk_cost=0.0):
     n = sig_l.size
     nm = m_t.size
     e_min = np.empty(cap, np.int64)
@@ -130,8 +133,11 @@ def run(sig_l, sig_s,
         else:
             stop = tf_l[i] - 0.1 * a if dirn > 0 else tf_h[i] + 0.1 * a
         risk = (entry - stop) * dirn
-        if not (risk >= MIN_RISK_ATR * a):
-            risk = MIN_RISK_ATR * a
+        floor = MIN_RISK_ATR * a
+        if min_risk_cost * cost_rt > floor:
+            floor = min_risk_cost * cost_rt
+        if not (risk >= floor):
+            risk = floor
             stop = entry - dirn * risk
         tgt = entry + dirn * target_r * risk if target_r > 0 else np.nan
         cur_stop = stop

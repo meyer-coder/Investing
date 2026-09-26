@@ -317,3 +317,20 @@ def test_nfp_rule_matches_known_release_days():
     got = set(nfp_dates(dt.date(2020, 1, 1), dt.date(2025, 3, 1)))
     for d in ("2024-10-04", "2025-02-07", "2020-08-07", "2020-07-02", "2021-04-02"):
         assert d in got
+
+
+def test_cost_floor_widens_a_stop_that_costs_would_swamp():
+    # 1-tick-wide signal bar: 0.3 ATR (ATR 0.1) allows a 0.03 stop; a 4x cost floor (cost 0.05) makes it 0.2
+    prices = [(100, 100.01, 99.99, 100)] * 3 + [(100, 100.5, 100, 100.4)] * 3
+    f = _frame_for_engine(prices)
+    sig = np.zeros(f.n, bool); sig[0] = True
+    m = f.clock.m
+    ws, we, ex = SESSIONS["all"]
+    args = (sig, np.zeros(f.n, bool), f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, np.full(f.n, 0.1),
+            f.l.copy(), f.h.copy(), m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64), f.clock.day,
+            f.m1_bar, ENTRY_CODE["market"], 2, 0.0, 0.0, 0, ws, we, ex, 0.05, 0.01, 0, 4, 100)
+    base = run(*args)
+    wide = run(*args, 4.0)
+    assert base[5][0] == pytest.approx(0.05 / 0.03)          # cost in R with the 0.3 ATR floor
+    assert wide[5][0] == pytest.approx(0.25)                 # costs capped at 0.25R
+    assert wide[4][0] == pytest.approx(base[4][0] * 0.03 / 0.2)

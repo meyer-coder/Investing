@@ -214,7 +214,7 @@ def cmd_futures_run(args) -> int:
     print(f"{len(strategies):,} strategies · test {start} .. {end} · {args.workers} workers", flush=True)
     t0 = time.time()
     results = run_all(strategies, start, end, workers=args.workers, trades_dir=u.trades_dir,
-                      markets=u.markets, sessions=u.sessions)
+                      markets=u.markets, sessions=u.sessions, min_risk_cost=args.min_risk_cost)
     elapsed = time.time() - t0
     if args.merge and os.path.exists(RUN2_PKL):
         # add these markets to an earlier partial run (feeds that finished downloading later)
@@ -228,7 +228,8 @@ def cmd_futures_run(args) -> int:
         elapsed += old["meta"].get("elapsed_s", 0.0)
     meta = {"start": start.isoformat(), "end": end.isoformat(), "elapsed_s": round(elapsed, 1),
             "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M"), "workers": args.workers,
-            "per_family": args.per_family, "controls_per_cell": args.controls_per_cell}
+            "per_family": args.per_family, "controls_per_cell": args.controls_per_cell,
+            "min_risk_cost": args.min_risk_cost}
     os.makedirs(RUN2_DIR, exist_ok=True)
     with gzip.open(RUN2_PKL, "wb") as fh:
         pickle.dump({"meta": meta, "strategies": strategies, "results": results}, fh)
@@ -329,6 +330,8 @@ def build_parser() -> argparse.ArgumentParser:
     fr.add_argument("--markets", help="comma separated underlyings, e.g. NQ,ES")
     fr.add_argument("--limit", type=int)
     fr.add_argument("--merge", action="store_true", help="add these markets to the saved run instead of replacing it")
+    fr.add_argument("--min-risk-cost", type=float, default=4.0,
+                    help="stops at least this many round-trip costs wide (costs <= 1/x R); 0 = only the 0.3 ATR floor")
     fr.set_defaults(func=cmd_futures_run)
     fa = sub.add_parser("futures-accounts", help="second run: best prop account / size / risk per strategy")
     fa.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2)))

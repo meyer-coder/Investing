@@ -351,6 +351,7 @@ function start(D){
 $("boot").remove();
 const C = {}; D.cols.forEach((c, i) => C[c] = i);
 const R = D.rows, P = D.prof, N = R.length, MIN_T = 30;
+if (D.eqd) P.forEach(p => { if (p.eq){ let c = 0; p.eq = p.eq.map(d => (c += d) / 10); } });   // month-end equity sent as deltas in tenths of R
 const CTRL = D.groups.indexOf("Control");
 const famName = n => D.fams[n].name;
 const RUN2 = !!D.plans;
@@ -752,11 +753,13 @@ function renderInspector(){
 // ------------------------------------------------------------------ prop account (second run)
 const AK = ["plan","risk","p_pass","p_bust","p_payout","ev","cost","paid_if","pay_n","days_pass","f_bust","contracts","skipped"];
 const aobj = arr => Object.fromEntries(AK.map((k, i) => [k, arr[i]]));
+const PKEYS = ["plan","risk","contracts","p_pass","p_bust","p_payout","ev"];
+const pobj = arr => Object.fromEntries(PKEYS.map((k, i) => [k, arr[i]]));
 function accountSection(r, p){
   const a = p.acct;
   if (!a) return `<div class="sec"><h3>Prop account</h3><p class="mut">Fewer than 20 trades over 8 years, so it was not sized for an account.</p></div>`;
   const b = aobj(a.best), pl = D.plans[b.plan], beat = b.ev > D.evbar;
-  const rows = a.plans.map(aobj).sort((x, y) => y.ev - x.ev);
+  const rows = a.plans.map(pobj).sort((x, y) => y.ev - x.ev);
   const rules = [`target $${pl.target.toLocaleString()}`, `max loss $${pl.mll.toLocaleString()} (end-of-day trailing)`,
     `${pl.cap} minis / ${pl.cap * 10} micros`, pl.dll ? `daily loss limit $${pl.dll.toLocaleString()}` : null,
     pl.cons ? `consistency ${Math.round(pl.cons * 100)}%` : null, `payouts up to $${pl.paycap.toLocaleString()} each, ${Math.round(pl.split * 100)}% to you`].filter(Boolean).join(" · ");
@@ -777,9 +780,9 @@ function accountSection(r, p){
     <h3 style="margin-top:10px">Odds by risk per trade</h3>
     <div class="legend"><span><i class="line" style="background:var(--gain)"></i>pass</span><span><i class="line" style="background:var(--loss)"></i>bust</span><span><i class="line" style="background:var(--accent)"></i>paid at least once</span></div>
     <div class="chart" id="odChart"></div>
-    <h3 style="margin-top:12px">Every plan at its best risk</h3>
-    <div class="tw"><table class="mini" style="white-space:nowrap"><tr><th class="l">plan</th><th>risk</th><th class="l">contracts</th><th>pass</th><th>bust</th><th>paid</th><th>EV</th></tr>
-    ${rows.map(x => `<tr${x.plan === b.plan ? ' style="font-weight:600"' : ""}><td class="l">${esc(planShort(x.plan))}</td><td>${usd(x.risk)}</td><td class="l">${esc(x.contracts)}</td><td>${pc(x.p_pass)}</td><td>${pc(x.p_bust)}</td><td>${pc(x.p_payout)}</td><td class="${tone(x.ev)}">${usdS(x.ev)}</td></tr>`).join("")}</table></div>
+    <h3 style="margin-top:12px">The best ${rows.length} of ${a.nplans || rows.length} plans, each at its best risk</h3>
+    <div class="tw"><table class="mini"><tr><th class="l">plan · contracts</th><th>risk</th><th>pass</th><th>bust</th><th>paid</th><th>EV</th></tr>
+    ${rows.map(x => `<tr${x.plan === b.plan ? ' style="font-weight:600"' : ""}><td class="l">${esc(planShort(x.plan))}<div class="mut" style="font-size:11px;font-weight:400">${esc(x.contracts)}</div></td><td>${usd(x.risk)}</td><td>${pc(x.p_pass)}</td><td>${pc(x.p_bust)}</td><td>${pc(x.p_payout)}</td><td class="${tone(x.ev)}">${usdS(x.ev)}</td></tr>`).join("")}</table></div>
   </div>`;
 }
 function safeLine(a, b){
@@ -806,7 +809,7 @@ function drawAccountCurves(p){
 
 // ------------------------------------------------------------------ charts
 function drawEquity(host, eq){
-  if (!eq.length){ host.innerHTML = `<p class="mut">No trades.</p>`; return; }
+  if (!eq.length){ host.innerHTML = `<p class="mut">${R[state.sel] && R[state.sel][C.trades] ? "Fewer than 30 trades: no equity curve." : "No trades."}</p>`; return; }
   const W = Math.max(280, host.clientWidth || 440), H = 200, pl = 46, pr = 50, pt = 18, pb = 22, n = eq.length;
   const ticks = niceTicks(Math.min(0, ...eq), Math.max(0, ...eq), 4), y0 = ticks[0], y1 = ticks[ticks.length - 1];
   const x = i => pl + (W - pl - pr) * i / Math.max(n - 1, 1), y = v => pt + (H - pt - pb) * (1 - (v - y0) / ((y1 - y0) || 1));
@@ -1248,7 +1251,7 @@ const lessonCards = list => list.map(l => { const t = TONE[l.tone] || TONE.info;
   <p>The random controls enter on a coin flip but use the same markets, sessions, stops, targets and costs. A strategy's edge is its gross R per trade minus the median of the controls with the same market and exit style. The luck bar, ${D.t95.toFixed(2)}, is the 95th percentile of the controls' own edge t-statistic. Below it, chance explains the result as well as skill does.</p>
   ${RUN2 ? `<h2>Prop account model</h2>
   <p>Each trade's stop distance is known, so every trade is re-priced for real contracts: the number of the smallest contract the firm allows (MNQ, MES, MCL, MGC …) that risks the chosen dollars, with ten micros bought as one mini. Commissions (Topstep's published table; FundedNext estimated from its one NQ example) and 2 ticks of slippage per contract are charged. Sizes are capped by the plan's contract limit, Topstep's product limits and, once funded at Topstep, its scaling plan; a trade whose stop is too wide for one contract at that risk is skipped.</p>
-  <p>Each plan is then simulated attempt by attempt, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score: an evaluation of up to 120 trading days (end-of-day trailing max loss checked against the day's worst point including each open trade's adverse excursion, the consistency rule that raises the target, minimum days, the Rapid Daily soft daily limit, and about 21 idle trading days ending the account), then 120 funded days that request each payout as soon as the plan allows. EV per attempt is what reaches you after the split (and a 3.5% processing fee at FundedNext) minus the fees; Topstep's monthly fee is charged every 21 trading days until the evaluation ends, plus $149 on passing. Not modelled: resets, the optional Topstep daily loss limit, live-account call-ups, slippage beyond 2 ticks at large size, and the 30% / 40% micro-scalping rules.</p>` : ""}
+  <p>Each plan is then simulated attempt by attempt, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score: an evaluation of up to 120 trading days (end-of-day trailing max loss checked against the day's worst point including each open trade's adverse excursion, the consistency rule that raises the target, minimum days, the Rapid Daily soft daily limit enforced on open P&amp;L; the firms' 30-day inactivity rules are assumed met with a token trade), then 120 funded days that request each payout as soon as the plan allows. EV per attempt is what reaches you after the split (and a 3.5% processing fee at FundedNext) minus the fees; Topstep's monthly fee is charged every 21 trading days until the evaluation ends, plus $149 on passing. Not modelled: resets, the optional Topstep daily loss limit, live-account call-ups, slippage beyond 2 ticks at large size, and the 30% / 40% micro-scalping rules.</p>` : ""}
   <h2${RUN2 ? " hidden" : ""}>Prop evaluation model</h2>
   <p${RUN2 ? " hidden" : ""}>2,000 Monte Carlo runs: reach +$${pr.target.toLocaleString()} before a $${pr.mll.toLocaleString()} end-of-day trailing drawdown within ${pr.days} trading days, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score. Payout: after passing, a fresh account with the same drawdown must reach ${pr.wins} winning days of $${pr.winusd}+ and $${pr.payout.toLocaleString()} profit within ${pr.fdays} days.</p>
   <h2>Markets, data and costs</h2>

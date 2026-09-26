@@ -50,7 +50,7 @@ def signals(ctx: Ctx, s: Strategy, sessions=None):
 
 
 def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int, markets=None,
-                   sessions=None) -> Dict[str, np.ndarray]:
+                   sessions=None, min_risk_cost: float = 0.0) -> Dict[str, np.ndarray]:
     f = ctx.f
     m = f.clock.m
     mk = (markets or MARKETS)[s.market]
@@ -66,13 +66,13 @@ def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int, markets=None,
         L, S, f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, ctx.atr, swing_lo, swing_hi,
         m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64), f.clock.day, f.m1_bar,
         ENTRY_CODE[s.entry], st, k, tr, trail, ws, we, ex, mk.cost_rt, mk.tick,
-        start_bar, MAX_PER_DAY, cap)
+        start_bar, MAX_PER_DAY, cap, min_risk_cost)
     return {"entry": e_min, "exit": x_min, "day": e_day, "dir": dirs, "gross": gross,
             "cost": cost, "reason": reason, "mae": mae}
 
 
 def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date,
-             trades_dir: Optional[str], markets=None, sessions=None) -> List[dict]:
+             trades_dir: Optional[str], markets=None, sessions=None, min_risk_cost: float = 0.0) -> List[dict]:
     t0 = time.time()
     mins = load_feed(feed)
     clock = minute_clock(mins)
@@ -92,7 +92,7 @@ def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date
         start_bar = int(np.searchsorted(frame.day, cal.start))
         packed = defaultdict(list)
         for s in by_tf[tf]:
-            tr = backtest_frame(ctx, s, start_bar, markets, sessions)
+            tr = backtest_frame(ctx, s, start_bar, markets, sessions, min_risk_cost)
             res = evaluate(tr, cal, seed=s.seed % (2 ** 31))
             res["profile"] = profile(tr, cal)
             res["sid"] = s.sid
@@ -114,7 +114,7 @@ def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date
 
 def run_all(strategies: Sequence[Strategy], start: dt.date, end: dt.date, *,
             workers: int = 4, trades_dir: Optional[str] = "runs/trades", markets=None,
-            sessions=None) -> Dict[str, dict]:
+            sessions=None, min_risk_cost: float = 0.0) -> Dict[str, dict]:
     """Backtest every strategy.  ``markets`` / ``sessions`` default to the first run's."""
     mk = markets or MARKETS
     by_feed: Dict[str, List[Strategy]] = defaultdict(list)
@@ -124,11 +124,11 @@ def run_all(strategies: Sequence[Strategy], start: dt.date, end: dt.date, *,
     results: Dict[str, dict] = {}
     if workers <= 1:
         for feed in order:
-            for r in run_feed(feed, by_feed[feed], start, end, trades_dir, markets, sessions):
+            for r in run_feed(feed, by_feed[feed], start, end, trades_dir, markets, sessions, min_risk_cost):
                 results[r["sid"]] = r
         return results
     with ProcessPoolExecutor(workers) as ex:
-        futs = {ex.submit(run_feed, feed, by_feed[feed], start, end, trades_dir, markets, sessions): feed
+        futs = {ex.submit(run_feed, feed, by_feed[feed], start, end, trades_dir, markets, sessions, min_risk_cost): feed
                 for feed in order}
         for fut in as_completed(futs):
             for r in fut.result():

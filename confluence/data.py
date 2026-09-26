@@ -576,24 +576,36 @@ def _duka_day_v(sym: str, day: dt.date, scale: float):
     """Like dukascopy_day but also returns tick volume."""
     os.makedirs(os.path.join(RAW, "dukascopy"), exist_ok=True)
     path = os.path.join(RAW, "dukascopy", f"{sym}_{day.isoformat()}.bi5")
-    try:
-        if os.path.exists(path):
-            with open(path, "rb") as fh:
-                raw = fh.read()
-        else:
-            raw = _duka_get(_DUKA.format(sym=sym, y=day.year, m=day.month - 1, d=day.day))
-            if day < dt.datetime.now(dt.timezone.utc).date():
-                with open(path, "wb") as fh:
-                    fh.write(raw)
-    except DataError as exc:
-        if "404" in str(exc):
-            return tuple(np.empty(0) for _ in range(6))
-        _log(f"dukascopy {sym} {day}: {exc}")
-        return None
-    empty = tuple(np.empty(0) for _ in range(6))
-    if not raw:
-        return empty
-    data = lzma.decompress(raw)
+    for attempt in range(2):
+        try:
+            if os.path.exists(path):
+                with open(path, "rb") as fh:
+                    raw = fh.read()
+            else:
+                raw = _duka_get(_DUKA.format(sym=sym, y=day.year, m=day.month - 1, d=day.day))
+                if day < dt.datetime.now(dt.timezone.utc).date():
+                    tmp = f"{path}.{os.getpid()}.{threading.get_ident()}.tmp"
+                    with open(tmp, "wb") as fh:          # atomic: parallel builds may share the cache
+                        fh.write(raw)
+                    os.replace(tmp, path)
+        except DataError as exc:
+            if "404" in str(exc):
+                return tuple(np.empty(0) for _ in range(6))
+            _log(f"dukascopy {sym} {day}: {exc}")
+            return None
+        empty = tuple(np.empty(0) for _ in range(6))
+        if not raw:
+            return empty
+        try:
+            data = lzma.decompress(raw)
+            break
+        except lzma.LZMAError:
+            # a cache file cut short (e.g. written by an older, non-atomic build): fetch it again
+            if os.path.exists(path):
+                os.remove(path)
+            if attempt:
+                _log(f"dukascopy {sym} {day}: corrupt data")
+                return None
     n = len(data) // 24
     if n == 0:
         return empty
