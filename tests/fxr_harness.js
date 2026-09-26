@@ -10,6 +10,12 @@ const drawings = { lines: 0, texts: 0, shapes: 0, deleted: 0 };
 const errors = [];
 const live = new Set();
 const seriesStyle = {};
+const COLOR_KEYS = ['linecolor', 'color', 'backgroundColor', 'borderColor'];
+const checkStyle = (st) => {
+  for (const key of COLOR_KEYS) {
+    if (st && key in st && typeof st[key] !== 'object') throw new Error(`drawing style ${key} must be a color value, got ${st[key]}`);
+  }
+};
 const ctx = {
   console: { log: console.log, error: (m) => errors.push(String(m)) }, Math, Date, isNaN, Array, Number, JSON, String,
   indicator: () => ({}),
@@ -20,7 +26,8 @@ const ctx = {
   },
   high: (n) => at(bars.h, n), low: (n) => at(bars.l, n), openC: (n) => at(bars.o, n), closeC: (n) => at(bars.c, n),
   time: (n) => at(bars.t, n),
-  color: { white: '#fff', rgba: (r, g, b, a) => `rgba(${r},${g},${b},${a})` },
+  // FX Replay colour values (objects here, so a plain string in a drawing style is caught)
+  color: { white: { base: 'white' }, rgba: (r, g, b, a) => ({ r, g, b, a }) },
   plot: {
     // a shapes series keeps one style: the same id must always come with the same text, colours and shape
     shapes: (title, value, text, col, textCol, type, loc, size, offset, transp, id) => {
@@ -30,8 +37,8 @@ const ctx = {
       drawings.shapes++;
     },
   },
-  trendLine: (p1, p2) => { if (!p1 || !p2 || isNaN(p1.time) || isNaN(p2.price)) throw new Error('bad point'); drawings.lines++; live.add('l' + drawings.lines); return 'l' + drawings.lines; },
-  text: (t, p, st, v) => { if (typeof v !== 'string') throw new Error('text value'); drawings.texts++; live.add('t' + drawings.texts); return 't' + drawings.texts; },
+  trendLine: (p1, p2, st) => { checkStyle(st); if (!p1 || !p2 || isNaN(p1.time) || isNaN(p2.price)) throw new Error('bad point'); drawings.lines++; live.add('l' + drawings.lines); return 'l' + drawings.lines; },
+  text: (t, p, st, v) => { checkStyle(st); if (typeof v !== 'string') throw new Error('text value'); drawings.texts++; live.add('t' + drawings.texts); return 't' + drawings.texts; },
   deleteDrawingById: (id) => { if (!live.delete(id)) throw new Error('unknown drawing ' + id); drawings.deleted++; },
   newPoint: (time, price) => ({ time, price }),
 };

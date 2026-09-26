@@ -182,7 +182,13 @@ var setupAt = function (k) {
 };
 
 // ------------------------------------------------------------------ drawing (never lets a drawing error stop the logic)
-var GREEN = 'rgba(38, 166, 91, 0.95)', RED = 'rgba(235, 64, 52, 0.95)', RED_SOFT = 'rgba(235, 64, 52, 0.6)';
+// Marker series (plot.shapes) take colour strings; drawing tools (trendLine, text) take FX Replay
+// colour values, so those are built with color.rgba(...) when drawing.
+var GREEN = 'rgba(38, 166, 91, 0.95)', RED = 'rgba(235, 64, 52, 0.95)';
+var winColor = function () { return color.rgba(38, 166, 91, 0.95); };
+var lossColor = function () { return color.rgba(235, 64, 52, 0.95); };
+var stopColor = function () { return color.rgba(235, 64, 52, 0.6); };
+var boxColor = function () { return color.rgba(20, 30, 48, 0.85); };
 var fmt = function (x, d) { return (x >= 0 ? '+' : '-') + Math.abs(x).toFixed(d); };
 var money = function (x) {
   var s = String(Math.round(Math.abs(x)));
@@ -199,7 +205,7 @@ var showError = function (msg) {
   try { console.error('[' + CFG.sid + '] ' + msg); } catch (e) { /* no console */ }
   try {
     var k = BT.length - 1;
-    if (k >= 0) text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: RED, fontsize: 12, bold: true },
+    if (k >= 0) text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: lossColor(), fontsize: 12, bold: true },
       CFG.sid + ' script error: ' + msg);
   } catch (e) { /* nothing else to do */ }
 };
@@ -208,11 +214,11 @@ var drawTrade = function (tr) {
   var ids = [];
   ids.push(tryDraw(function () {
     return trendLine(newPoint(tr.t0, tr.entry), newPoint(tr.t1, tr.exit),
-      { linecolor: tr.r > 0 ? GREEN : RED, linewidth: 2, showLabel: true },
+      { linecolor: tr.r > 0 ? winColor() : lossColor(), linewidth: 2, showLabel: true },
       CFG.sid + ' #' + trades.length + ' ' + (tr.dir > 0 ? 'long' : 'short') + ' ' + fmt(tr.r, 2) + 'R');
   }));
   ids.push(tryDraw(function () {
-    return trendLine(newPoint(tr.t0, tr.stop), newPoint(tr.t1, tr.stop), { linecolor: RED_SOFT, linewidth: 1, linestyle: 2 });
+    return trendLine(newPoint(tr.t0, tr.stop), newPoint(tr.t1, tr.stop), { linecolor: stopColor(), linewidth: 1, linestyle: 2 });
   }));
   drawn.push(ids);
   while (drawn.length > IN.keep) {
@@ -230,7 +236,7 @@ var drawSummary = function (k) {
     money(tot * IN.riskUsd) + ' at ' + money(IN.riskUsd) + ' a trade';
   if (summaryId) tryDraw(function () { return deleteDrawingById(summaryId); });
   summaryId = tryDraw(function () {
-    return text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: 'rgba(20, 30, 48, 0.85)',
+    return text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: boxColor(),
       fontsize: 12, bold: true }, msg);
   });
 };
