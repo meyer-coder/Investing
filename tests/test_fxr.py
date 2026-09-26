@@ -75,3 +75,20 @@ def test_fxr_script_takes_the_engines_trades(sid, tmp_path):
     assert np.mean([abs(js[k] - py[k]) < 0.05 for k in other]) >= 0.95
     total_py, total_js = sum(py.values()), sum(js.values())
     assert abs(total_js - total_py) <= 0.05 * abs(total_py) + 1.0
+
+
+TSC = shutil.which("tsc")
+
+
+@pytest.mark.skipif(TSC is None, reason="TypeScript (tsc) is not installed")
+@pytest.mark.parametrize("sid", sorted(CONFIGS))
+@pytest.mark.parametrize("ext", [".js", ".ts"])
+def test_fxr_script_type_checks_like_the_fx_replay_editor(sid, ext, tmp_path):
+    """FX Replay's editor flags type errors (not implicit any). tests/fxr_api.d.ts declares the
+    documented API; `text` is left out because the editor does not know it."""
+    src = tmp_path / f"s{ext}"
+    src.write_text(render(sid))
+    cmd = [TSC, "--noEmit", "--strict", "--noImplicitAny", "false", "--target", "es2020", "--lib", "es2020,dom",
+           "tests/fxr_api.d.ts", str(src)] + (["--allowJs", "--checkJs"] if ext == ".js" else [])
+    out = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    assert out.returncode == 0, out.stdout + out.stderr

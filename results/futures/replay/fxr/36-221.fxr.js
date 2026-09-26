@@ -8,7 +8,7 @@
 //
 // Backtest, Sep 2018 - Sep 2026 on the Nasdaq-100 CFD: 553 trades, 17% win rate, +0.27R per trade after costs.
 // The script sees bars, not the 1-minute path inside them, so a few exits can differ.
-// If anything fails, a red box on the chart shows the error message.
+// If anything fails, a red line labelled "SCRIPT ERROR" marks the bar where it happened.
 
 // ------------------------------------------------------------------ strategy constants
 var CFG = {
@@ -44,11 +44,13 @@ init = () => {
 var IN = { riskUsd: 500, pointValue: 2, costPts: 1.11, tick: 0.25, shorts: true, draw: true, keep: 100 };
 var readInputs = function (inputs) {
   if (!inputs) return;
-  var keys = ['riskUsd', 'pointValue', 'costPts', 'tick', 'shorts', 'draw', 'keep'];
-  for (var i = 0; i < keys.length; i++) {
-    var v = inputs[keys[i]];
-    if (v !== undefined && v !== null) IN[keys[i]] = v;
-  }
+  if (typeof inputs.riskUsd === 'number') IN.riskUsd = inputs.riskUsd;
+  if (typeof inputs.pointValue === 'number') IN.pointValue = inputs.pointValue;
+  if (typeof inputs.costPts === 'number') IN.costPts = inputs.costPts;
+  if (typeof inputs.tick === 'number') IN.tick = inputs.tick;
+  if (typeof inputs.shorts === 'boolean') IN.shorts = inputs.shorts;
+  if (typeof inputs.draw === 'boolean') IN.draw = inputs.draw;
+  if (typeof inputs.keep === 'number') IN.keep = inputs.keep;
 };
 
 // ------------------------------------------------------------------ New York clock
@@ -73,29 +75,31 @@ var tradingMinute = function (ms) {
 var tdmOf = function (minutesAfterMidnight) { return (((minutesAfterMidnight - 18 * 60) % 1440) + 1440) % 1440; };
 
 // ------------------------------------------------------------------ state
-var BT = [], BO = [], BH = [], BL = [], BC = [], BDAY = [], BTDMO = [], BTDMC = [];
-var TRUE_RANGE = [], ATR = [], ATR_SUM100 = [];
-var PIVOTS = [];                               // {p, type: 1 swing high / -1 swing low}
+var BT = new Array(0), BO = new Array(0), BH = new Array(0), BL = new Array(0), BC = new Array(0);
+var BDAY = new Array(0), BTDMO = new Array(0), BTDMC = new Array(0);
+var TRUE_RANGE = new Array(0), ATR = new Array(0), ATR_SUM100 = new Array(0);
+var PIVOTS = new Array(0);                     // {p, type: 1 swing high / -1 swing low}
 var zz = { d: 0, hi: -1e300, hiI: 0, lo: 1e300, loI: 0 };
 var bearGap = { ok: false, top: 0, bot: 0, j: -1 };
 var bullGap = { ok: false, top: 0, bot: 0, j: -1 };
 var order = { open: false, kind: '', dir: 0, px: 0, sig: -1, day: -1, atr: 0, alive: false, until: -1 };
 var pos = { open: false, dir: 0, entry: 0, stop: 0, stop0: 0, risk: 0, best: 0, fill: -1, sig: -1, day: -1, trailing: false, contracts: 0 };
 var curDay = -1, dayCount = 0, lastSeen = -1;
-var trades = [];
-var drawn = [];                                // drawing ids per trade, oldest first
-var summaryId = '';
+var trades = new Array(0);
+var drawn = new Array(0);                      // drawing ids per trade, oldest first
+var totalR = 0;
 var errorShown = false;
 
 var resetState = function () {
-  BT = []; BO = []; BH = []; BL = []; BC = []; BDAY = []; BTDMO = []; BTDMC = [];
-  TRUE_RANGE = []; ATR = []; ATR_SUM100 = []; PIVOTS = [];
+  BT = new Array(0); BO = new Array(0); BH = new Array(0); BL = new Array(0); BC = new Array(0);
+  BDAY = new Array(0); BTDMO = new Array(0); BTDMC = new Array(0);
+  TRUE_RANGE = new Array(0); ATR = new Array(0); ATR_SUM100 = new Array(0); PIVOTS = new Array(0);
   zz = { d: 0, hi: -1e300, hiI: 0, lo: 1e300, loI: 0 };
   bearGap = { ok: false, top: 0, bot: 0, j: -1 };
   bullGap = { ok: false, top: 0, bot: 0, j: -1 };
   order.open = false; pos.open = false;
   curDay = -1; dayCount = 0;
-  trades = [];
+  trades = new Array(0); totalR = 0;
 };
 
 // ------------------------------------------------------------------ indicators
@@ -188,7 +192,6 @@ var GREEN = 'rgba(38, 166, 91, 0.95)', RED = 'rgba(235, 64, 52, 0.95)';
 var winColor = function () { return color.rgba(38, 166, 91, 0.95); };
 var lossColor = function () { return color.rgba(235, 64, 52, 0.95); };
 var stopColor = function () { return color.rgba(235, 64, 52, 0.6); };
-var boxColor = function () { return color.rgba(20, 30, 48, 0.85); };
 var fmt = function (x, d) { return (x >= 0 ? '+' : '-') + Math.abs(x).toFixed(d); };
 var money = function (x) {
   var s = String(Math.round(Math.abs(x)));
@@ -197,25 +200,26 @@ var money = function (x) {
   return (x < 0 ? '-$' : '$') + s + out;
 };
 var tryDraw = function (fn) {
-  try { return fn(); } catch (e) { showError('drawing: ' + (e && e.message ? e.message : e)); return ''; }
+  try { return fn(); } catch (e) { showError('drawing: ' + String(e)); return ''; }
 };
+// Marks the bar where something failed with a red vertical line labelled with the message.
 var showError = function (msg) {
   if (errorShown) return;
   errorShown = true;
-  try { console.error('[' + CFG.sid + '] ' + msg); } catch (e) { /* no console */ }
   try {
     var k = BT.length - 1;
-    if (k >= 0) text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: lossColor(), fontsize: 12, bold: true },
-      CFG.sid + ' script error: ' + msg);
-  } catch (e) { /* nothing else to do */ }
+    if (k >= 0) trendLine(newPoint(BT[k], BH[k]), newPoint(BT[k], BL[k]),
+      { linecolor: lossColor(), linewidth: 3, showLabel: true }, CFG.sid + ' SCRIPT ERROR: ' + msg);
+  } catch (e2) { /* nothing else to do */ }
 };
 var drawTrade = function (tr) {
   if (!IN.draw) return;
-  var ids = [];
+  var ids = new Array(0);
   ids.push(tryDraw(function () {
     return trendLine(newPoint(tr.t0, tr.entry), newPoint(tr.t1, tr.exit),
       { linecolor: tr.r > 0 ? winColor() : lossColor(), linewidth: 2, showLabel: true },
-      CFG.sid + ' #' + trades.length + ' ' + (tr.dir > 0 ? 'long' : 'short') + ' ' + fmt(tr.r, 2) + 'R');
+      CFG.sid + ' #' + trades.length + ' ' + (tr.dir > 0 ? 'long' : 'short') + ' ' + fmt(tr.r, 2) + 'R | total ' +
+      fmt(totalR, 1) + 'R = ' + money(totalR * IN.riskUsd));
   }));
   ids.push(tryDraw(function () {
     return trendLine(newPoint(tr.t0, tr.stop), newPoint(tr.t1, tr.stop), { linecolor: stopColor(), linewidth: 1, linestyle: 2 });
@@ -223,22 +227,13 @@ var drawTrade = function (tr) {
   drawn.push(ids);
   while (drawn.length > IN.keep) {
     var old = drawn.shift();
-    for (var i = 0; i < old.length; i++) {
-      if (old[i]) tryDraw(function () { return deleteDrawingById(old[i]); });
-    }
+    if (!old) break;
+    for (var i = 0; i < old.length; i++) removeDrawing(old[i]);
   }
 };
-var drawSummary = function (k) {
-  if (!IN.draw) return;
-  var n = trades.length, w = 0, tot = 0;
-  for (var i = 0; i < n; i++) { tot += trades[i].r; if (trades[i].r > 0) w++; }
-  var msg = CFG.sid + ': ' + n + ' trades, ' + (n ? Math.round(100 * w / n) : 0) + '% win, ' + fmt(tot, 1) + 'R = ' +
-    money(tot * IN.riskUsd) + ' at ' + money(IN.riskUsd) + ' a trade';
-  if (summaryId) tryDraw(function () { return deleteDrawingById(summaryId); });
-  summaryId = tryDraw(function () {
-    return text(BT[k], BH[k], { color: color.white, fillBackground: true, backgroundColor: boxColor(),
-      fontsize: 12, bold: true }, msg);
-  });
+var removeDrawing = function (id) {
+  if (!id) return;
+  try { deleteDrawingById(id); } catch (e) { showError('delete: ' + String(e)); }
 };
 // Series markers: one fixed style per series (the text, colour and shape never change).
 var markSetup = function (dir, price) {
@@ -263,9 +258,9 @@ var closeTrade = function (xp, k, why) {
   var tr = { dir: pos.dir, t0: BT[pos.fill], entry: pos.entry, stop: pos.stop0, t1: BT[k], exit: xp, r: r, why: why,
              sig: BT[pos.sig], day: pos.day, contracts: pos.contracts };
   trades.push(tr);
+  totalR += r;
   pos.open = false;
   drawTrade(tr);
-  drawSummary(k);
 };
 var openTrade = function (k, entry) {
   var a = order.atr, dir = order.dir;
@@ -368,6 +363,6 @@ onTick = (length, _moment, _, ta, inputs) => {
     BDAY.push(tradingDay(t)); BTDMO.push(tdm); BTDMC.push(Math.min(tdm + CFG.tf, 1440));
     onBar(BT.length - 1);
   } catch (e) {
-    showError(e && e.message ? e.message : String(e));
+    showError(String(e));
   }
 };
