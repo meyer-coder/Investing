@@ -9,7 +9,8 @@
 
 Second run — the Topstep / FundedNext futures universe:
 
-    python -m confluence.cli futures-fetch          # 20 Dukascopy feeds with tick volume
+    python -m confluence.cli futures-fetch          # 22 Dukascopy feeds with tick volume
+    python -m confluence.cli futures-crosscheck     # each feed against the real future on Yahoo
     python -m confluence.cli futures-run            # ~20,000 strategies, 19 confluence categories
     python -m confluence.cli futures-accounts       # best prop account, size and risk for each
     python -m confluence.cli futures-explorer       # results/futures/explorer.html and logs
@@ -215,6 +216,16 @@ def cmd_futures_run(args) -> int:
     results = run_all(strategies, start, end, workers=args.workers, trades_dir=u.trades_dir,
                       markets=u.markets, sessions=u.sessions)
     elapsed = time.time() - t0
+    if args.merge and os.path.exists(RUN2_PKL):
+        # add these markets to an earlier partial run (feeds that finished downloading later)
+        with gzip.open(RUN2_PKL, "rb") as fh:
+            old = pickle.load(fh)
+        if old["meta"]["end"] != end.isoformat():
+            raise SystemExit(f"--merge: earlier run ends {old['meta']['end']}, this one {end}")
+        done = {s.sid for s in strategies}
+        strategies = [s for s in old["strategies"] if s.sid not in done] + strategies
+        results = {**{k: v for k, v in old["results"].items() if k not in done}, **results}
+        elapsed += old["meta"].get("elapsed_s", 0.0)
     meta = {"start": start.isoformat(), "end": end.isoformat(), "elapsed_s": round(elapsed, 1),
             "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M"), "workers": args.workers,
             "per_family": args.per_family, "controls_per_cell": args.controls_per_cell}
@@ -235,6 +246,24 @@ def cmd_futures_accounts(args) -> int:
     with gzip.open(ACCOUNTS_PKL, "wb") as fh:
         pickle.dump(acc, fh)
     print(f"accounts for {len(acc):,} strategies in {(time.time() - t0) / 60:.1f} min -> {ACCOUNTS_PKL}", flush=True)
+    return 0
+
+
+def cmd_futures_crosscheck(args) -> int:
+    from .data import crosscheck, load_feed
+    u = universe2()
+    out = {}
+    for code, m in u.markets.items():
+        try:
+            res = crosscheck(load_feed(m.feed), m.yahoo)
+        except Exception as exc:  # noqa: BLE001 - one missing feed should not stop the others
+            res = {"error": str(exc)[:200]}
+        res["feed"] = m.feed
+        out[code] = res
+        print(code, json.dumps(res), flush=True)
+    os.makedirs(args.out, exist_ok=True)
+    with open(os.path.join(args.out, "data_quality.json"), "w") as fh:
+        json.dump(out, fh, indent=2)
     return 0
 
 
@@ -299,10 +328,14 @@ def build_parser() -> argparse.ArgumentParser:
     fr.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2)))
     fr.add_argument("--markets", help="comma separated underlyings, e.g. NQ,ES")
     fr.add_argument("--limit", type=int)
+    fr.add_argument("--merge", action="store_true", help="add these markets to the saved run instead of replacing it")
     fr.set_defaults(func=cmd_futures_run)
     fa = sub.add_parser("futures-accounts", help="second run: best prop account / size / risk per strategy")
     fa.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2)))
     fa.set_defaults(func=cmd_futures_accounts)
+    fc = sub.add_parser("futures-crosscheck", help="second run: each feed against the real future on Yahoo")
+    fc.add_argument("--out", default=os.path.join("results", "futures"))
+    fc.set_defaults(func=cmd_futures_crosscheck)
     fe = sub.add_parser("futures-explorer", help="second run: explorer, CSV and logs")
     fe.add_argument("--out", default=os.path.join("results", "futures"))
     fe.set_defaults(func=cmd_futures_explorer)

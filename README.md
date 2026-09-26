@@ -107,6 +107,40 @@ Pages in this repo follow [`docs/presentation-standard.md`](docs/presentation-st
 the edge t-statistic, the "profitable 8y + 3y + 6m" filter and the blind test in Lessons before
 believing the leaderboard. Nothing here connects to a broker.
 
+### Second run: futures for Topstep and FundedNext
+
+```bash
+python -m confluence.cli futures-fetch        # 22 Dukascopy 1-minute feeds with tick volume (~1.5 h)
+python -m confluence.cli futures-crosscheck   # each feed against the real future on Yahoo
+python -m confluence.cli futures-run          # ~21,000 strategies (~30 min, 4 cores)
+python -m confluence.cli futures-accounts     # best prop account, risk and contracts per strategy
+python -m confluence.cli futures-explorer     # results/futures/explorer.html, CSV, logs
+```
+
+* **Universe** — every CME product Topstep or FundedNext allows that has a clean 1-minute history:
+  NQ, ES, YM, RTY, NKD, CL, NG, GC, SI, HG, 6E, 6B, 6J, 6A, 6C, 6S, 6N, 6M, ZB, ZS, ETH and BTC
+  (`confluence/futures.py`). Each is backtested on the Dukascopy instrument that tracks it
+  (USD/JPY, USD/CAD, USD/CHF and USD/MXN inverted to the CME quote); grains other than soybeans,
+  livestock, RB/HO, platinum and the 2/5/10-year notes have no usable minute history there.
+* **Confluences** — 83 families across the 19 requested categories: Fibonacci, Breakout, Reversal,
+  Elliott Wave, FVG, Candlestick, Harmonic, Support & Resistance, Dynamic S&R, Trend Lines, Gann,
+  Momentum, Oscillators, Divergence, Volume, Supply & Demand, Market Structure, BOS and CHoCH
+  (`confluence/structure.py`, `confluence/components2.py`, `confluence/families2.py`). Swing-based
+  patterns use pivots confirmed by a 3 ATR reversal (1.5 ATR for harmonics), and a test checks that no leg's value on a bar
+  changes when later data arrives. Timeframes 1m–4h, every session, flat by 4:05 PM New York (both
+  firms require flat by 3:10 PM Chicago).
+* **Accounts** — `confluence/accounts.py` re-prices every trade for real contracts at the firm (10
+  micros bought as one mini, commissions plus 2 ticks, plan and product contract limits, Topstep's
+  funded scaling plan) and simulates the evaluation and funded rules of all 15 plans on sale
+  (`data/propfirms.json`: Topstep Trading Combine 50/100/150K; FundedNext Rapid Pro, Rapid Daily,
+  Legacy, Flex) at 11 risk levels from $100 to $2,000 per trade. Each strategy gets the plan, risk and
+  contracts with the highest expected value per attempt, plus a lower-risk alternative that busts at
+  most 35% of evaluations. Random controls go through the same search, so their 95th-percentile EV
+  is the luck bar for account value.
+* **Explorer** — `results/futures/explorer.html` adds Best account, Risk / trade, Contracts, EV per
+  attempt and account pass / bust / payout columns, a win-rate range filter, a best-account filter, a
+  Prop accounts tab, and an account section per strategy with EV and odds plotted against risk.
+
 ---
 
 # evotrader

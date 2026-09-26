@@ -134,7 +134,21 @@ def _run(f, sig_l, sig_s, *, entry="market", stop_type=0, stop_k=1.0, target_r=1
     return run(sig_l, sig_s, f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, atr,
                f.l.copy(), f.h.copy(), m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64),
                f.clock.day, f.m1_bar, ENTRY_CODE[entry], stop_type, stop_k, target_r, trail,
-               ws, we, ex if exit_tdm is None else exit_tdm, cost, 0.01, 0, 4, 100)
+               ws, we, ex if exit_tdm is None else exit_tdm, cost, 0.01, 0, 4, 100)[:7]
+
+
+def test_mae_records_the_worst_open_loss():
+    # long at 100 (next open), dips to 99.4 (0.6R against a 1.0 ATR stop), then hits the 1R target at 101
+    prices = [(100, 100, 100, 100), (100, 100.1, 99.4, 99.6), (99.6, 101.2, 99.6, 101.0)] + [(101, 101, 101, 101)] * 5
+    f = _frame_for_engine(prices)
+    sig = np.zeros(f.n, bool); sig[0] = True
+    m = f.clock.m
+    ws, we, ex = SESSIONS["all"]
+    out = run(sig, np.zeros(f.n, bool), f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, np.full(f.n, 1.0),
+              f.l.copy(), f.h.copy(), m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64), f.clock.day,
+              f.m1_bar, ENTRY_CODE["market"], 0, 1.0, 1.0, 0, ws, we, ex, 0.0, 0.01, 0, 4, 100)
+    gross, mae = out[4], out[7]
+    assert gross[0] == pytest.approx(1.0) and mae[0] == pytest.approx(-0.6)
 
 
 def test_market_entry_fills_next_open_and_hits_target():

@@ -32,18 +32,19 @@ from __future__ import annotations
 import numpy as np
 from numba import njit
 
-PIVOT_ATR = 1.5
-MAXP = 200_000
+PIVOT_ATR = 3.0
+HARMONIC_PIVOT_ATR = 1.5
 
 
 @njit(cache=True)
 def pivots(h, l, atr, k):
     """Zigzag pivots.  Returns (price, bar, type(+1 high/-1 low), confirm_bar), count."""
     n = h.size
-    pp = np.empty(n // 2 + 8)
-    pi = np.empty(n // 2 + 8, np.int64)
-    pt = np.empty(n // 2 + 8, np.int8)
-    pc = np.empty(n // 2 + 8, np.int64)
+    # a pivot can be confirmed on every bar when ATR is tiny (flat holiday tape), so size for n
+    pp = np.empty(n + 8)
+    pi = np.empty(n + 8, np.int64)
+    pt = np.empty(n + 8, np.int8)
+    pc = np.empty(n + 8, np.int64)
     m = 0
     d = 0
     hi = -1e300
@@ -79,7 +80,7 @@ def pivots(h, l, atr, k):
             d = 1
             hi = h[i]
             hi_i = i
-    return pp[:m], pi[:m], pt[:m], pc[:m]
+    return pp[:m].copy(), pi[:m].copy(), pt[:m].copy(), pc[:m].copy()
 
 
 @njit(cache=True)
@@ -272,7 +273,7 @@ def harmonic(h, l, c, atr, pp, pt, known, kind):
             D = 0.886
         elif kind == 2 and 0.70 <= r1 <= 0.86 and 0.382 <= r2 <= 0.886:
             D = 1.272
-        elif kind == 3 and 0.35 <= r1 <= 0.65 and 0.382 <= r2 <= 0.886:
+        elif kind == 3 and (0.35 <= r1 <= 0.65 or 0.84 <= r1 <= 0.93) and 0.382 <= r2 <= 0.886:   # crab / deep crab
             D = 1.618
         elif kind == 4 and 0.618 <= r2 <= 0.786:
             D = -1.0
@@ -283,7 +284,7 @@ def harmonic(h, l, c, atr, pp, pt, known, kind):
                 if kind != 4 or not (C > B and C < A):
                     continue
             lvl = C - ab if kind == 4 else A - D * xa
-            if used_u != k and l[i] <= lvl + 0.25 * a and l[i] >= lvl - 1.5 * a and c[i] > lvl:
+            if used_u != k and l[i] <= lvl + 0.5 * a and l[i] >= lvl - 1.5 * a and c[i] > lvl:
                 up[i] = True
                 used_u = k
         else:
@@ -291,7 +292,7 @@ def harmonic(h, l, c, atr, pp, pt, known, kind):
                 if kind != 4 or not (C < B and C > A):
                     continue
             lvl = C + ab if kind == 4 else A + D * xa
-            if used_d != k and h[i] >= lvl - 0.25 * a and h[i] <= lvl + 1.5 * a and c[i] < lvl:
+            if used_d != k and h[i] >= lvl - 0.5 * a and h[i] <= lvl + 1.5 * a and c[i] < lvl:
                 dn[i] = True
                 used_d = k
     return up, dn

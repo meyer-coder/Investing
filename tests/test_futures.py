@@ -113,25 +113,29 @@ def test_price_trades_buys_minis_for_ten_micros_and_charges_costs(pf):
     sz = sizing_for(pf, "Topstep", UNDERLYINGS["NQ"])
     gross = np.array([1.0, -1.0])
     risk_pts = np.array([12.5, 12.5])              # 12.5 NQ points = $25 per MNQ
-    pnl, u = price_trades(gross, risk_pts, sz, 250.0, cap_minis=5, size=50_000)
+    pnl, u, worst = price_trades(gross, risk_pts, sz, 250.0, cap_minis=5, size=50_000, mae=np.array([-0.5, -1.0]))
     assert list(u) == [10, 10]                      # 10 MNQ = 1 NQ
     assert describe_units(sz, 10) == "1 NQ"
     cost = 3.78 + 2 * 0.25 * 20.0
     assert pnl[0] == pytest.approx(250.0 - cost) and pnl[1] == pytest.approx(-250.0 - cost)
+    assert worst[0] == pytest.approx(-125.0 - cost) and worst[1] == pytest.approx(pnl[1])
     # capped at 2 minis
-    pnl, u = price_trades(np.array([1.0]), np.array([12.5]), sz, 2000.0, cap_minis=2, size=50_000)
+    pnl, u, _ = price_trades(np.array([1.0]), np.array([12.5]), sz, 2000.0, cap_minis=2, size=50_000)
     assert list(u) == [20]
     # a stop so wide that one micro risks more than 1.5x the target is skipped
-    pnl, u = price_trades(np.array([1.0]), np.array([200.0]), sz, 250.0, cap_minis=5, size=50_000)
+    pnl, u, _ = price_trades(np.array([1.0]), np.array([200.0]), sz, 250.0, cap_minis=5, size=50_000)
     assert list(u) == [0] and pnl[0] == 0.0
 
 
-def test_daily_arrays_apply_a_soft_daily_loss_limit():
-    day = np.array([0, 0, 0, 1], dtype=np.int64)
-    pnl = np.array([-300.0, -300.0, 900.0, 100.0])
-    out, low, cnt = daily_arrays(day, pnl, 3, 500.0)
-    assert out[0] == -600.0 and low[0] == -600.0 and cnt[0] == 2   # stopped after the limit
-    assert out[1] == 100.0 and cnt[2] == 0
+def test_daily_arrays_apply_a_soft_daily_loss_limit_on_open_pnl():
+    day = np.array([0, 0, 0, 1, 1], dtype=np.int64)
+    pnl = np.array([-100.0, -300.0, 900.0, 100.0, 50.0])
+    worst = np.array([-100.0, -450.0, -50.0, -80.0, -20.0])
+    out, low, cnt = daily_arrays(day, pnl, worst, 3, 500.0)
+    # the second trade's open loss reaches -550: flattened at the -500 limit, the third trade never happens
+    assert out[0] == -500.0 and low[0] == -500.0 and cnt[0] == 2
+    # day 1: the first trade was 80 under water before winning
+    assert out[1] == 150.0 and low[1] == -80.0 and cnt[2] == 0
 
 
 def _run(plan, daily, sims=4, days=40, low=None):
@@ -173,3 +177,15 @@ def test_trailing_max_loss_and_inactivity_end_the_evaluation():
     assert cost[0] == pytest.approx(plan.price)
     outcome, edays, *_ = _run(plan, np.zeros(60))
     assert outcome[0] == -1 and edays[0] == 21           # ~30 calendar days without a trade
+
+
+def test_pivots_handle_a_swing_on_every_bar():
+    """Flat tape gives a tiny ATR, so every bar can confirm a pivot; the buffer must hold them all."""
+    from confluence import structure as st
+    n = 2000
+    h = np.where(np.arange(n) % 2 == 0, 101.0, 100.5)
+    l = h - 0.5
+    atr = np.full(n, 0.01)
+    pp, pi, pt, pc = st.pivots(h, l, atr, 1.0)
+    assert pp.size > n // 2
+    assert np.all(pc >= pi) and np.all(np.abs(np.diff(pt)) == 2)   # alternating, confirmed after they form

@@ -31,7 +31,7 @@ daily P&L in 5-day blocks, sampling recent days more often (the same
 
 1. the evaluation, up to 120 trading days: end-of-day trailing max loss
    that locks at the start balance (+$100 at FundedNext), checked against
-   the day's worst realised point; the consistency rule that raises the
+   the day's worst point including each open trade's adverse excursion; the consistency rule that raises the
    target (Topstep 55%, Legacy/Flex 40%); minimum trading days; the Rapid
    Daily soft daily loss limit (stop trading for the day); and the
    inactivity rule (about 21 trading days without a trade ends the
@@ -226,8 +226,9 @@ def sizing_for(pf: dict, firm: str, u: Underlying) -> Optional[Sizing]:
 
 
 def price_trades(gross: np.ndarray, risk_pts: np.ndarray, sz: Sizing, risk_usd: float,
-                 cap_minis: float, size: int) -> Tuple[np.ndarray, np.ndarray]:
-    """Dollar P&L and units of every trade at ``risk_usd`` per trade."""
+                 cap_minis: float, size: int, mae: Optional[np.ndarray] = None
+                 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Dollar P&L, units and worst open P&L (after costs) of every trade at ``risk_usd`` per trade."""
     rpu = risk_pts * sz.unit.point_value
     umax = math.floor(cap_minis / sz.unit_weight + 1e-9)
     if size in sz.product_cap:
@@ -242,13 +243,21 @@ def price_trades(gross: np.ndarray, risk_pts: np.ndarray, sz: Sizing, risk_usd: 
         n = np.floor(rem / k)
         rem -= n * k
         cost += n * c_rt
-    pnl = gross * risk_pts * sz.unit.point_value * u - cost
-    return np.where(u > 0, pnl, 0.0), u
+    per_r = risk_pts * sz.unit.point_value * u
+    pnl = gross * per_r - cost
+    worst = (np.minimum(mae, 0.0) if mae is not None else np.zeros_like(gross)) * per_r - cost
+    worst = np.minimum(worst, pnl)
+    return np.where(u > 0, pnl, 0.0), u, np.where(u > 0, worst, 0.0)
 
 
 @njit(cache=True)
-def daily_arrays(day_idx, pnl, n_days, dll):
-    """Per calendar day: P&L (after a soft daily loss limit), worst realised point, trades."""
+def daily_arrays(day_idx, pnl, worst, n_days, dll):
+    """Per calendar day: P&L (after a soft daily loss limit), worst point including open trades, trades.
+
+    ``worst`` is each trade's worst open P&L (its MAE in dollars, costs included).  A soft daily loss
+    limit is enforced on open P&L like the firms do: the position is flattened at the limit and the
+    day ends there.
+    """
     out = np.zeros(n_days)
     low = np.zeros(n_days)
     cnt = np.zeros(n_days, np.int32)
@@ -259,12 +268,18 @@ def daily_arrays(day_idx, pnl, n_days, dll):
             continue
         if d == stopped:
             continue
-        out[d] += pnl[i]
         cnt[d] += 1
+        if dll > 0 and out[d] + worst[i] <= -dll:
+            out[d] = min(out[d] + pnl[i], -dll)
+            if out[d] < low[d]:
+                low[d] = out[d]
+            stopped = d
+            continue
+        if out[d] + worst[i] < low[d]:
+            low[d] = out[d] + worst[i]
+        out[d] += pnl[i]
         if out[d] < low[d]:
             low[d] = out[d]
-        if dll > 0 and out[d] <= -dll:
-            stopped = d
     return out, low, cnt
 
 
@@ -481,8 +496,8 @@ class Optimiser:
 
     def run(self, underlying: str, gross: np.ndarray, risk_pts: np.ndarray, day_idx: np.ndarray,
             n_days: int, e_starts: np.ndarray, f_starts: np.ndarray,
-            plans: Optional[Sequence[Plan]] = None, risks: Optional[Sequence[float]] = None
-            ) -> List[Result]:
+            plans: Optional[Sequence[Plan]] = None, risks: Optional[Sequence[float]] = None,
+            mae: Optional[np.ndarray] = None) -> List[Result]:
         out: List[Result] = []
         cache: Dict[tuple, tuple] = {}
         risks = self.risks if risks is None else risks
@@ -494,9 +509,9 @@ class Optimiser:
                 def arrays(cap):
                     key = (plan.firm, cap, r, plan.dll, plan.size)
                     if key not in cache:
-                        pnl, u = price_trades(gross, risk_pts, sz, r, cap, plan.size)
+                        pnl, u, worst = price_trades(gross, risk_pts, sz, r, cap, plan.size, mae)
                         took = u > 0
-                        a = daily_arrays(np.where(took, day_idx, -1), pnl, n_days, plan.dll)
+                        a = daily_arrays(np.where(took, day_idx, -1), pnl, worst, n_days, plan.dll)
                         med = float(np.median(u[took])) if took.any() else 0.0
                         cache[key] = (a, med, float(1.0 - took.mean()) if u.size else 0.0)
                     return cache[key]
@@ -563,7 +578,8 @@ def optimise_feed(feed: str, items: Sequence[Tuple[str, str]], trades_dir: str, 
         rng = np.random.default_rng([seed, k, n])
         e1 = block_starts(n, days, d3y, d6m, STAGE1_SIMS, EVAL_DAYS // BLOCK, rng)
         f1 = block_starts(n, days, d3y, d6m, STAGE1_SIMS, FUNDED_DAYS // BLOCK, rng)
-        rs = opt.run(und, t["gross"], risk_pts, di, n, e1, f1)
+        mae = t.get("mae")
+        rs = opt.run(und, t["gross"], risk_pts, di, n, e1, f1, mae=mae)
         if not rs:
             continue
         top = sorted(rs, key=lambda r: -r.ev)[:STAGE2_TOP]
@@ -571,7 +587,8 @@ def optimise_feed(feed: str, items: Sequence[Tuple[str, str]], trades_dir: str, 
         f2 = block_starts(n, days, d3y, d6m, STAGE2_SIMS, FUNDED_DAYS // BLOCK, rng)
         fine = []
         for r in top:
-            fine += opt.run(und, t["gross"], risk_pts, di, n, e2, f2, plans=[PLAN_BY_KEY[r.plan]], risks=[r.risk])
+            fine += opt.run(und, t["gross"], risk_pts, di, n, e2, f2, plans=[PLAN_BY_KEY[r.plan]], risks=[r.risk],
+                            mae=mae)
         best = best_of(fine)
         # a lower-risk alternative: the best EV among combinations that bust at most SAFE_BUST of evaluations
         safe = None
@@ -579,7 +596,8 @@ def optimise_feed(feed: str, items: Sequence[Tuple[str, str]], trades_dir: str, 
         if cands and not (best.p_bust <= SAFE_BUST):
             sf = []
             for r in cands:
-                sf += opt.run(und, t["gross"], risk_pts, di, n, e2, f2, plans=[PLAN_BY_KEY[r.plan]], risks=[r.risk])
+                sf += opt.run(und, t["gross"], risk_pts, di, n, e2, f2, plans=[PLAN_BY_KEY[r.plan]], risks=[r.risk],
+                              mae=mae)
             safe = best_of(sf)
         per_plan = {}
         for r in rs:
@@ -602,7 +620,7 @@ def _load_one(path: str) -> Dict[str, Dict[str, np.ndarray]]:
     sid = sid[order]
     cut = np.flatnonzero(np.concatenate(([True], sid[1:] != sid[:-1]))) if sid.size else np.array([], int)
     ends = np.append(cut[1:], sid.size)
-    cols = {k: z[k][order] for k in ("day", "gross", "cost")}
+    cols = {k: z[k][order] for k in ("day", "gross", "cost", "mae") if k in z.files}
     return {str(sid[a]): {k: v[a:b] for k, v in cols.items()} for a, b in zip(cut, ends)}
 
 

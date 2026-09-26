@@ -78,8 +78,8 @@ fam("Candlestick", "Tweezer Bottom at VWAP", ["vwapv_retest", "tweezer"], TX, "T
 fam("Candlestick", "Doji at Extreme Follow-through", ["doji_ext", "prev_high"], RX, "A doji at a 10-bar low followed by a bar through its high.")
 # Harmonic
 fam("Harmonic", "Gartley PRZ Rejection", ["gartley"], RX, "Bullish Gartley completes and D is rejected on the first touch.")
-fam("Harmonic", "Bat PRZ Oversold", ["bat", "rsi_os_zone"], RX, "Bat pattern D at the 0.886 retracement with RSI oversold.")
-fam("Harmonic", "Butterfly PRZ Volume", ["butterfly", "vol_confirm"], RX, "Butterfly D at the 1.272 extension with a volume pickup.")
+fam("Harmonic", "Bat PRZ Rejection", ["bat"], RX, "Bat pattern D at the 0.886 retracement, first-touch rejection.")
+fam("Harmonic", "Butterfly PRZ Rejection", ["butterfly"], RX, "Butterfly D at the 1.272 extension, first-touch rejection.")
 fam("Harmonic", "Crab PRZ Rejection", ["crab"], RX, "Crab D at the 1.618 extension, first-touch rejection.")
 fam("Harmonic", "AB=CD above 200EMA", ["abcd", "ema200"], RX, "Equal-legs AB=CD pullback that completes above the 200 EMA.")
 # Support & resistance

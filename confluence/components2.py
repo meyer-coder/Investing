@@ -36,12 +36,12 @@ def leg(code: str, kind: str, cat: str, label: str, text: str):
 
 # ------------------------------------------------------------------ shared structure
 
-def piv(x: Ctx):
+def piv(x: Ctx, k: float = st.PIVOT_ATR):
     def make():
-        pp, pi, pt, pc = st.pivots(x.h, x.l, x.atr, st.PIVOT_ATR)
+        pp, pi, pt, pc = st.pivots(x.h, x.l, x.atr, k)
         lv = st.levels(x.f.n, pp, pi, pt, pc)
         return pp, pi, pt, pc, lv
-    return x.get("pivots", make)
+    return x.get("pivots" if k == st.PIVOT_ATR else f"pivots{k}", make)
 
 
 def vol(x: Ctx) -> np.ndarray:
@@ -143,7 +143,8 @@ def _ewabc(x):
 
 def _harm(x, kind):
     def make():
-        pp, pi, pt, pc, lv = piv(x)
+        # five-point patterns need more swings than the 3 ATR structure zigzag gives, so harmonics use 1.5 ATR
+        pp, pi, pt, pc, lv = piv(x, st.HARMONIC_PIVOT_ATR)
         return st.harmonic(x.h, x.l, x.c, x.atr, pp, pt, lv[8], kind)
     return x.get(f"harm{kind}", make)
 
@@ -152,7 +153,7 @@ for _k, (_code, _name, _txt) in enumerate([
         ("gartley", "Gartley", "bullish Gartley: AB = 0.618 XA, BC 0.382–0.886 AB, price reaches D at the 0.786 XA retracement and closes back above it"),
         ("bat", "Bat", "bullish Bat: AB 0.382–0.5 XA, D at the 0.886 XA retracement, rejected on the first touch"),
         ("butterfly", "Butterfly", "bullish Butterfly: AB = 0.786 XA, D at the 1.272 XA extension below X, rejected on the first touch"),
-        ("crab", "Crab", "bullish Crab: AB 0.382–0.618 XA, D at the 1.618 XA extension, rejected on the first touch"),
+        ("crab", "Crab", "bullish Crab or Deep Crab: AB 0.382–0.618 (or 0.886) of XA, D at the 1.618 XA extension, rejected on the first touch"),
         ("abcd", "AB=CD", "bullish AB=CD: BC retraces 61.8–78.6% of AB and CD equals AB; first touch of D rejected")]):
     def _mk(k=_k):
         return lambda x: _harm(x, k)

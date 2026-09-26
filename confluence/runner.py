@@ -62,13 +62,13 @@ def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int, markets=None,
     swing_hi = ctx.get("swing_hi", lambda: ind.rolling_max(f.h, 5))
     n_days = int(np.unique(f.day[start_bar:]).size)
     cap = MAX_PER_DAY * n_days + 16
-    e_min, x_min, e_day, dirs, gross, cost, reason = run(
+    e_min, x_min, e_day, dirs, gross, cost, reason, mae = run(
         L, S, f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, ctx.atr, swing_lo, swing_hi,
         m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64), f.clock.day, f.m1_bar,
         ENTRY_CODE[s.entry], st, k, tr, trail, ws, we, ex, mk.cost_rt, mk.tick,
         start_bar, MAX_PER_DAY, cap)
     return {"entry": e_min, "exit": x_min, "day": e_day, "dir": dirs, "gross": gross,
-            "cost": cost, "reason": reason}
+            "cost": cost, "reason": reason, "mae": mae}
 
 
 def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date,

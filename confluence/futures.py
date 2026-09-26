@@ -67,9 +67,11 @@ UNDERLYINGS: Dict[str, Underlying] = {u.code: u for u in [
     Underlying("6C", "Canadian dollar", "F_6C", "USDCAD", (C("6C", 100000.0, 0.00005, False),), "6C=F"),
     Underlying("6S", "Swiss franc", "F_6S", "USDCHF", (C("6S", 125000.0, 0.00005, False),), "6S=F"),
     Underlying("6N", "New Zealand dollar", "F_6N", "NZDUSD", (C("6N", 100000.0, 0.00005, False),), "6N=F"),
+    Underlying("6M", "Mexican peso", "F_6M", "USDMXN", (C("6M", 500000.0, 0.00001, False),), "6M=F"),
     Underlying("ZB", "30-year T-bond", "F_ZB", "USTBONDTRUSD", (C("ZB", 1000.0, 1.0 / 32.0, False),), "ZB=F"),
     Underlying("ZS", "Soybeans", "F_ZS", "SOYBEANCMDUSX", (C("ZS", 50.0, 0.25, False),), "ZS=F"),
     Underlying("ETH", "Ether (micro)", "F_ETH", "ETHUSD", (C("MET", 0.1, 0.5, True),), "ETH-USD"),
+    Underlying("BTC", "Bitcoin (micro)", "F_BTC", "BTCUSD", (C("MBT", 0.1, 5.0, True),), "BTC-USD"),
 ]}
 UNDERLYING_ORDER = list(UNDERLYINGS)
 
@@ -81,7 +83,8 @@ DUKA_SCALE: Dict[str, Tuple[float, bool]] = {
     "F_NKD": (1e3, False), "F_CL": (1e3, False), "F_NG": (1e4, False), "F_GC": (1e3, False),
     "F_SI": (1e3, False), "F_HG": (1e4, False), "F_6E": (1e5, False), "F_6B": (1e5, False),
     "F_6J": (1e3, True), "F_6A": (1e5, False), "F_6C": (1e5, True), "F_6S": (1e5, True),
-    "F_6N": (1e5, False), "F_ZB": (1e3, False), "F_ZS": (1e3, False), "F_ETH": (10.0, False),
+    "F_6N": (1e5, False), "F_6M": (1e5, True), "F_ZB": (1e3, False), "F_ZS": (1e3, False),
+    "F_ETH": (10.0, False), "F_BTC": (10.0, False),
 }
 
 

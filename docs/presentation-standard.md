@@ -50,6 +50,13 @@ and do not scroll; each view scrolls inside its own pane.
   left-aligned; names truncate with an ellipsis and show in full in a tooltip.
 * Default filters protect the reader: e.g. **Min trades = 30** so one lucky
   trade cannot top a ranking. Say so next to the control.
+* Rates get a **range filter** (two number inputs, "Win % ≥" and "Win % ≤"),
+  not a single threshold, so both "high win rate" and "low win rate, big
+  winners" styles can be isolated.
+* When a result depends on a choice the page made for the reader (the best
+  prop account, the risk per trade), show the choice as a column *and* the
+  numbers it trades off (pass, bust, payout odds next to expected value), and
+  offer the lower-risk alternative beside the headline pick.
 
 ## 3. Interaction
 
@@ -138,7 +145,9 @@ and results by macro regime as diverging bar rows with counts.
 
 * Always show a **baseline** next to results (here: random-entry controls
   through the same costs), and a **luck bar** (95th percentile of the
-  baseline's statistic).
+  baseline's statistic). An optimiser that picks the best of many options
+  (plans × risk levels) must run the controls through the same search, so
+  the bar reflects the selection too.
 * **Verdict pills** in the inspector encode the state at a glance: "Edge clears
   the luck bar" / "Edge within luck", "Profitable 8y · 3y · 6m", "Fewer than
   30 trades", "Random control".

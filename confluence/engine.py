@@ -17,7 +17,10 @@ Fill rules
            missing minutes) at the entry day's last close — never across a gap
 
 Costs are charged per round trip as ``cost_rt / risk`` in R, where risk is
-the entry-to-stop distance.  Stops are floored at 0.3 ATR so a razor-thin
+the entry-to-stop distance.  Each trade also records its maximum adverse
+excursion (MAE, in R, <= 0): the worst price reached before the exit, which
+the prop-account simulation needs because firms check the max loss on open
+P&L.  Stops are floored at 0.3 ATR so a razor-thin
 "signal bar" stop cannot produce a tiny risk and an absurd R multiple.
 """
 from __future__ import annotations
@@ -48,6 +51,7 @@ def run(sig_l, sig_s,
     gross = np.empty(cap, np.float64)
     cost = np.empty(cap, np.float64)
     reason = np.empty(cap, np.int8)
+    mae = np.empty(cap, np.float64)
     nt = 0
     cur_day = -1
     day_count = 0
@@ -132,6 +136,7 @@ def run(sig_l, sig_s,
         tgt = entry + dirn * target_r * risk if target_r > 0 else np.nan
         cur_stop = stop
         best = entry
+        worst = entry
         trailing = False
         why = 3
         k = fill
@@ -148,13 +153,19 @@ def run(sig_l, sig_s,
             if m_tdm[k] >= exit_tdm:
                 xp = m_o[k]
                 why = 3
+                if (xp - worst) * dirn < 0:
+                    worst = xp
                 break
             same = k == fill and entry_type != 0      # price path before the fill is unknown
             if dirn > 0:
                 if m_l[k] <= cur_stop:
                     xp = cur_stop if (same or m_o[k] > cur_stop) else m_o[k]
                     why = 2 if trailing else 0
+                    if xp < worst:
+                        worst = xp
                     break
+                if m_l[k] < worst:
+                    worst = m_l[k]
                 if target_r > 0 and not same and m_h[k] >= tgt:
                     xp = tgt if m_o[k] < tgt else m_o[k]
                     why = 1
@@ -165,7 +176,11 @@ def run(sig_l, sig_s,
                 if m_h[k] >= cur_stop:
                     xp = cur_stop if (same or m_o[k] < cur_stop) else m_o[k]
                     why = 2 if trailing else 0
+                    if xp > worst:
+                        worst = xp
                     break
+                if m_h[k] > worst:
+                    worst = m_h[k]
                 if target_r > 0 and not same and m_l[k] <= tgt:
                     xp = tgt if m_o[k] > tgt else m_o[k]
                     why = 1
@@ -189,6 +204,7 @@ def run(sig_l, sig_s,
         gross[nt] = (xp - entry) * dirn / risk
         cost[nt] = cost_rt / risk
         reason[nt] = why
+        mae[nt] = min((worst - entry) * dirn / risk, 0.0)
         nt += 1
         if d != cur_day:
             cur_day = d
@@ -196,4 +212,4 @@ def run(sig_l, sig_s,
         day_count += 1
         b = m_bar[k]
         i = b if b > i else i + 1
-    return (e_min[:nt], x_min[:nt], e_day[:nt], dirs[:nt], gross[:nt], cost[:nt], reason[:nt])
+    return (e_min[:nt], x_min[:nt], e_day[:nt], dirs[:nt], gross[:nt], cost[:nt], reason[:nt], mae[:nt])
