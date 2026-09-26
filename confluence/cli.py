@@ -268,6 +268,31 @@ def cmd_futures_crosscheck(args) -> int:
     return 0
 
 
+def cmd_futures_trades(args) -> int:
+    """Every trade of the given strategies as CSV (New York times, prices), for replay tools like FX Replay."""
+    import csv
+    from .runner import trade_list
+    with gzip.open(RUN2_PKL, "rb") as fh:
+        blob = pickle.load(fh)
+    meta, by_id = blob["meta"], {s.sid: s for s in blob["strategies"]}
+    u = universe2()
+    os.makedirs(args.out, exist_ok=True)
+    for sid in args.sids:
+        s = by_id.get(sid)
+        if s is None:
+            print(f"unknown strategy {sid}", file=sys.stderr)
+            return 1
+        rows = trade_list(s, dt.date.fromisoformat(meta["start"]), dt.date.fromisoformat(meta["end"]), u.markets,
+                          u.sessions, meta.get("min_risk_cost", 0.0), args.risk)
+        path = os.path.join(args.out, f"{sid}_trades.csv")
+        with open(path, "w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+            w.writeheader()
+            w.writerows(rows)
+        print(f"{sid}: {len(rows)} trades, {sum(r['net_r'] for r in rows):+.1f}R -> {path}")
+    return 0
+
+
 def cmd_futures_explorer(args) -> int:
     from .report import write_all
     with gzip.open(RUN2_PKL, "rb") as fh:
@@ -339,6 +364,11 @@ def build_parser() -> argparse.ArgumentParser:
     fc = sub.add_parser("futures-crosscheck", help="second run: each feed against the real future on Yahoo")
     fc.add_argument("--out", default=os.path.join("results", "futures"))
     fc.set_defaults(func=cmd_futures_crosscheck)
+    ft = sub.add_parser("futures-trades", help="second run: every trade of some strategies as CSV, for replay tools")
+    ft.add_argument("sids", nargs="+")
+    ft.add_argument("--risk", type=float, default=500.0, help="dollars risked per trade for the $ column")
+    ft.add_argument("--out", default=os.path.join("results", "futures", "replay"))
+    ft.set_defaults(func=cmd_futures_trades)
     fe = sub.add_parser("futures-explorer", help="second run: explorer, CSV and logs")
     fe.add_argument("--out", default=os.path.join("results", "futures"))
     fe.set_defaults(func=cmd_futures_explorer)

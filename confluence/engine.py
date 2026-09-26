@@ -55,6 +55,7 @@ def run(sig_l, sig_s,
     cost = np.empty(cap, np.float64)
     reason = np.empty(cap, np.int8)
     mae = np.empty(cap, np.float64)
+    prices = np.empty((cap, 4), np.float64)     # signal-bar close minute, entry, initial stop, exit price
     nt = 0
     cur_day = -1
     day_count = 0
@@ -211,6 +212,10 @@ def run(sig_l, sig_s,
         cost[nt] = cost_rt / risk
         reason[nt] = why
         mae[nt] = min((worst - entry) * dirn / risk, 0.0)
+        prices[nt, 0] = m_t[j0]
+        prices[nt, 1] = entry
+        prices[nt, 2] = stop
+        prices[nt, 3] = xp
         nt += 1
         if d != cur_day:
             cur_day = d
@@ -218,4 +223,5 @@ def run(sig_l, sig_s,
         day_count += 1
         b = m_bar[k]
         i = b if b > i else i + 1
-    return (e_min[:nt], x_min[:nt], e_day[:nt], dirs[:nt], gross[:nt], cost[:nt], reason[:nt], mae[:nt])
+    return (e_min[:nt], x_min[:nt], e_day[:nt], dirs[:nt], gross[:nt], cost[:nt], reason[:nt], mae[:nt],
+            prices[:nt])

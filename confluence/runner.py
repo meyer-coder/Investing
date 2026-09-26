@@ -62,13 +62,13 @@ def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int, markets=None,
     swing_hi = ctx.get("swing_hi", lambda: ind.rolling_max(f.h, 5))
     n_days = int(np.unique(f.day[start_bar:]).size)
     cap = MAX_PER_DAY * n_days + 16
-    e_min, x_min, e_day, dirs, gross, cost, reason, mae = run(
+    e_min, x_min, e_day, dirs, gross, cost, reason, mae, px = run(
         L, S, f.h, f.l, f.hi, f.tdm_close.astype(np.int64), f.day, ctx.atr, swing_lo, swing_hi,
         m.t, m.o, m.h, m.l, m.c, f.clock.tdm.astype(np.int64), f.clock.day, f.m1_bar,
         ENTRY_CODE[s.entry], st, k, tr, trail, ws, we, ex, mk.cost_rt, mk.tick,
         start_bar, MAX_PER_DAY, cap, min_risk_cost)
     return {"entry": e_min, "exit": x_min, "day": e_day, "dir": dirs, "gross": gross,
-            "cost": cost, "reason": reason, "mae": mae}
+            "cost": cost, "reason": reason, "mae": mae, "px": px}
 
 
 def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date,
@@ -100,7 +100,8 @@ def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date
             if trades_dir:
                 packed["sid"].append(np.full(tr["gross"].size, s.sid, dtype="U10"))
                 for key, v in tr.items():
-                    packed[key].append(v)
+                    if key != "px":
+                        packed[key].append(v)
         if trades_dir and packed:
             os.makedirs(trades_dir, exist_ok=True)
             np.savez_compressed(os.path.join(trades_dir, f"{feed}_{tf}m.npz"),
@@ -138,3 +139,33 @@ def run_all(strategies: Sequence[Strategy], start: dt.date, end: dt.date, *,
 
 def feed_calendar(feed: str, start: dt.date, end: dt.date) -> Calendar:
     return Calendar.build(minute_clock(load_feed(feed)).day, start, end)
+
+
+REASON_TEXT = ["stop", "target", "trailing stop", "session exit"]
+
+
+def trade_list(s: Strategy, start: dt.date, end: dt.date, markets=None, sessions=None,
+               min_risk_cost: float = 0.0, risk_usd: float = 500.0) -> List[dict]:
+    """Every trade of one strategy with New York times and prices, for replaying it by hand."""
+    from zoneinfo import ZoneInfo
+    mk = (markets or MARKETS)[s.market]
+    clock = minute_clock(load_feed(mk.feed))
+    cal = Calendar.build(clock.day, start, end)
+    frame = resample(clock, s.tf)
+    ctx = Ctx(frame)
+    tr = backtest_frame(ctx, s, int(np.searchsorted(frame.day, cal.start)), markets, sessions, min_risk_cost)
+    ny = ZoneInfo("America/New_York")
+    fmt = lambda m: dt.datetime.fromtimestamp(int(m) * 60, dt.timezone.utc).astimezone(ny)
+    out = []
+    for k in range(tr["gross"].size):
+        sig, entry, stop, exit_ = tr["px"][k]
+        net = float(tr["gross"][k] - tr["cost"][k])
+        e = fmt(tr["entry"][k])
+        out.append({"n": k + 1, "date": e.strftime("%Y-%m-%d %a"), "signal_bar_close": fmt(sig).strftime("%H:%M"),
+                    "side": "long" if tr["dir"][k] > 0 else "short", "entry_time": e.strftime("%H:%M"),
+                    "entry": round(float(entry), 4), "stop": round(float(stop), 4),
+                    "risk_points": round(abs(float(entry - stop)), 4), "exit_time": fmt(tr["exit"][k]).strftime("%H:%M"),
+                    "exit": round(float(exit_), 4), "exit_reason": REASON_TEXT[int(tr["reason"][k])],
+                    "net_r": round(net, 3), "worst_open_r": round(float(tr["mae"][k]), 3),
+                    "usd_at_risk": round(net * risk_usd, 2)})
+    return out
