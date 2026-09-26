@@ -22,7 +22,11 @@ fill is simulated.
 >   Topstep's Combine rules. It has short setups plus a basic two-way setup. It includes a backtester and a TopstepX
 >   connection that runs as a dry run by default.
 > - [`research/`](research/candle-moves-findings.md) holds the candle-move study
->   the bot's setups came from.
+>   the bot's setups came from. It also holds the 13-year minute-data studies:
+>   - the Three MNQ Setups ([findings](research/three-setups-findings.md));
+>   - Bot A on the FundedNext 25K and the Topstep 100K
+>     ([findings](research/bot-a-accounts-findings.md));
+>   - the 13-market edge search ([findings](research/edges-findings.md)).
 > - [`docs/prop-firm-accounts.md`](docs/prop-firm-accounts.md) compares the
 >   Topstep and FundedNext accounts.
 

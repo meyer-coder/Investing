@@ -3134,5 +3134,2693 @@
   },
   "passed_search": false,
   "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1707,
+   "mean_bp": -3.990581806538761,
+   "t": -9.946674196538597,
+   "flip_pct": 94.39999999999999
+  },
+  "confirm": {
+   "n": 749,
+   "mean_bp": -4.139385122361166,
+   "t": -7.295016518789966,
+   "flip_pct": 80.60000000000001
+  },
+  "final": {
+   "n": 932,
+   "mean_bp": -4.532792103804769,
+   "t": -7.636014509521179,
+   "flip_pct": 58.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1569,
+   "mean_bp": -3.9867315566496844,
+   "t": -8.922148426103858,
+   "flip_pct": 93.2
+  },
+  "confirm": {
+   "n": 683,
+   "mean_bp": -3.918026039130376,
+   "t": -6.084507712132428,
+   "flip_pct": 85.9
+  },
+  "final": {
+   "n": 838,
+   "mean_bp": -4.3793763058047,
+   "t": -6.494732952670009,
+   "flip_pct": 64.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1299,
+   "mean_bp": -4.395040632873928,
+   "t": -9.247380843541315,
+   "flip_pct": 70.35
+  },
+  "confirm": {
+   "n": 554,
+   "mean_bp": -3.847337457554209,
+   "t": -5.918721790776975,
+   "flip_pct": 89.3
+  },
+  "final": {
+   "n": 666,
+   "mean_bp": -3.5828145742699014,
+   "t": -4.678982506520198,
+   "flip_pct": 90.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1141,
+   "mean_bp": -4.03266331006182,
+   "t": -7.153934859791061,
+   "flip_pct": 86.85000000000001
+  },
+  "confirm": {
+   "n": 485,
+   "mean_bp": -3.346588162336664,
+   "t": -4.233065440530658,
+   "flip_pct": 94.65
+  },
+  "final": {
+   "n": 597,
+   "mean_bp": -3.85331675409606,
+   "t": -4.2549731538789,
+   "flip_pct": 81.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1769,
+   "mean_bp": -3.9766126067462784,
+   "t": -7.319459893032014,
+   "flip_pct": 88.75
+  },
+  "confirm": {
+   "n": 766,
+   "mean_bp": -3.9032077601548787,
+   "t": -4.505174212968171,
+   "flip_pct": 80.9
+  },
+  "final": {
+   "n": 942,
+   "mean_bp": -3.8279838548862988,
+   "t": -4.559286271354659,
+   "flip_pct": 82.69999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1743,
+   "mean_bp": -3.7261411948445176,
+   "t": -6.376303827800691,
+   "flip_pct": 94.5
+  },
+  "confirm": {
+   "n": 752,
+   "mean_bp": -4.100463067435488,
+   "t": -4.727821143200802,
+   "flip_pct": 72.6
+  },
+  "final": {
+   "n": 927,
+   "mean_bp": -3.8410696644835007,
+   "t": -4.331813048618017,
+   "flip_pct": 80.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1743,
+   "mean_bp": -3.9673321458335655,
+   "t": -8.195499085596893,
+   "flip_pct": 91.45
+  },
+  "confirm": {
+   "n": 752,
+   "mean_bp": -3.319706371797752,
+   "t": -4.3247391028289135,
+   "flip_pct": 95.8
+  },
+  "final": {
+   "n": 927,
+   "mean_bp": -4.032155657405531,
+   "t": -5.339961804620419,
+   "flip_pct": 78.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1668,
+   "mean_bp": -4.1493306974014725,
+   "t": -6.967629866670799,
+   "flip_pct": 79.80000000000001
+  },
+  "confirm": {
+   "n": 713,
+   "mean_bp": -3.1357162530926384,
+   "t": -3.596422286858297,
+   "flip_pct": 95.55
+  },
+  "final": {
+   "n": 887,
+   "mean_bp": -3.4237448523596714,
+   "t": -3.795008032507106,
+   "flip_pct": 91.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1668,
+   "mean_bp": -4.574700206907514,
+   "t": -9.194875680007792,
+   "flip_pct": 54.900000000000006
+  },
+  "confirm": {
+   "n": 713,
+   "mean_bp": -3.1705274761367805,
+   "t": -4.009086018776746,
+   "flip_pct": 96.6
+  },
+  "final": {
+   "n": 887,
+   "mean_bp": -3.4432554489484293,
+   "t": -4.282344489873617,
+   "flip_pct": 92.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "momentum close->30m",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1787,
+   "mean_bp": -4.637222312095117,
+   "t": -35.80785293563779,
+   "flip_pct": 54.75
+  },
+  "confirm": {
+   "n": 771,
+   "mean_bp": -4.785496898995051,
+   "t": -31.329921135415177,
+   "flip_pct": 18.099999999999998
+  },
+  "final": {
+   "n": 960,
+   "mean_bp": -4.592503883726779,
+   "t": -32.00363632510689,
+   "flip_pct": 65.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "momentum open->30m",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1773,
+   "mean_bp": -4.656163798572976,
+   "t": -35.78148754525751,
+   "flip_pct": 49.35
+  },
+  "confirm": {
+   "n": 766,
+   "mean_bp": -4.684377257101262,
+   "t": -30.487368504388222,
+   "flip_pct": 39.4
+  },
+  "final": {
+   "n": 960,
+   "mean_bp": -4.660270553154333,
+   "t": -32.473086623661096,
+   "flip_pct": 46.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "momentum close->noon",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1787,
+   "mean_bp": -4.716144000866964,
+   "t": -36.41845281681891,
+   "flip_pct": 31.35
+  },
+  "confirm": {
+   "n": 770,
+   "mean_bp": -4.756069071859255,
+   "t": -31.12061074498055,
+   "flip_pct": 24.65
+  },
+  "final": {
+   "n": 960,
+   "mean_bp": -4.728169204561932,
+   "t": -32.95105384792099,
+   "flip_pct": 28.000000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "gap follow, 60m",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 789,
+   "mean_bp": -4.014940992055515,
+   "t": -6.69578237113323,
+   "flip_pct": 85.1
+  },
+  "confirm": {
+   "n": 365,
+   "mean_bp": -3.8477337143419903,
+   "t": -4.884119229199222,
+   "flip_pct": 85.0
+  },
+  "final": {
+   "n": 438,
+   "mean_bp": -4.913667679597429,
+   "t": -6.285871593129106,
+   "flip_pct": 36.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "gap follow, to close",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 789,
+   "mean_bp": -3.737441327327593,
+   "t": -3.529889981633762,
+   "flip_pct": 80.30000000000001
+  },
+  "confirm": {
+   "n": 365,
+   "mean_bp": -2.8238639818700473,
+   "t": -1.9591825917163646,
+   "flip_pct": 90.4
+  },
+  "final": {
+   "n": 438,
+   "mean_bp": -3.6975245961096226,
+   "t": -2.45311945257235,
+   "flip_pct": 73.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "gap fade, 60m",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 789,
+   "mean_bp": -5.304128789117375,
+   "t": -10.441632338468434,
+   "flip_pct": 9.6
+  },
+  "confirm": {
+   "n": 365,
+   "mean_bp": -5.727772978456016,
+   "t": -7.401206393470611,
+   "flip_pct": 7.75
+  },
+  "final": {
+   "n": 438,
+   "mean_bp": -4.911785981573506,
+   "t": -6.143927198994341,
+   "flip_pct": 37.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/JPY",
+  "contract": "MJY",
+  "variant": "gap fade, to close",
+  "cost_bp": 4.651453579243514,
+  "sessions": 3534,
+  "first": "2013-01-01",
+  "search": {
+   "n": 789,
+   "mean_bp": -5.819753883147971,
+   "t": -5.713068701441575,
+   "flip_pct": 12.9
+  },
+  "confirm": {
+   "n": 365,
+   "mean_bp": -5.151845974794909,
+   "t": -2.96771905792177,
+   "flip_pct": 39.45
+  },
+  "final": {
+   "n": 438,
+   "mean_bp": -3.9646811618970323,
+   "t": -2.552197019725066,
+   "flip_pct": 67.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1723,
+   "mean_bp": -2.70740905318882,
+   "t": -7.272901770674428,
+   "flip_pct": 76.25
+  },
+  "confirm": {
+   "n": 808,
+   "mean_bp": -2.544106476220023,
+   "t": -3.563044992039272,
+   "flip_pct": 72.39999999999999
+  },
+  "final": {
+   "n": 948,
+   "mean_bp": -3.032445408889033,
+   "t": -6.211477499449388,
+   "flip_pct": 44.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1572,
+   "mean_bp": -2.6614444507627457,
+   "t": -6.31852396700059,
+   "flip_pct": 75.94999999999999
+  },
+  "confirm": {
+   "n": 745,
+   "mean_bp": -2.3250871763612326,
+   "t": -2.9645198228289518,
+   "flip_pct": 78.5
+  },
+  "final": {
+   "n": 868,
+   "mean_bp": -2.6040436675777636,
+   "t": -4.698723108014624,
+   "flip_pct": 74.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1270,
+   "mean_bp": -2.6085552126563307,
+   "t": -5.6411905238685565,
+   "flip_pct": 79.2
+  },
+  "confirm": {
+   "n": 578,
+   "mean_bp": -1.6277976718548801,
+   "t": -1.794211466932374,
+   "flip_pct": 93.2
+  },
+  "final": {
+   "n": 695,
+   "mean_bp": -2.8229836579159926,
+   "t": -4.800177492654528,
+   "flip_pct": 60.75000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1135,
+   "mean_bp": -2.5837983656307966,
+   "t": -4.6984309849472154,
+   "flip_pct": 75.4
+  },
+  "confirm": {
+   "n": 522,
+   "mean_bp": -1.8248530078086047,
+   "t": -1.7117954597179503,
+   "flip_pct": 86.3
+  },
+  "final": {
+   "n": 622,
+   "mean_bp": -2.6402342241473127,
+   "t": -3.597127709139695,
+   "flip_pct": 66.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1772,
+   "mean_bp": -2.5614327585001093,
+   "t": -5.018320756306971,
+   "flip_pct": 78.55
+  },
+  "confirm": {
+   "n": 776,
+   "mean_bp": -2.007707999468515,
+   "t": -1.9752064337771804,
+   "flip_pct": 81.35
+  },
+  "final": {
+   "n": 945,
+   "mean_bp": -3.165221267707667,
+   "t": -4.349492738060733,
+   "flip_pct": 38.65
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1754,
+   "mean_bp": -2.8146378160500265,
+   "t": -5.154009014359627,
+   "flip_pct": 60.699999999999996
+  },
+  "confirm": {
+   "n": 776,
+   "mean_bp": -2.140571994911145,
+   "t": -2.005571568964469,
+   "flip_pct": 77.60000000000001
+  },
+  "final": {
+   "n": 934,
+   "mean_bp": -3.085998680745431,
+   "t": -4.128414593635917,
+   "flip_pct": 44.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1754,
+   "mean_bp": -2.934501090234148,
+   "t": -6.468931197650404,
+   "flip_pct": 54.1
+  },
+  "confirm": {
+   "n": 776,
+   "mean_bp": -2.219864768777754,
+   "t": -2.4533361368180957,
+   "flip_pct": 79.2
+  },
+  "final": {
+   "n": 934,
+   "mean_bp": -3.5487463635815106,
+   "t": -5.882413489139002,
+   "flip_pct": 17.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1677,
+   "mean_bp": -2.720952640301733,
+   "t": -4.73530125558883,
+   "flip_pct": 66.85
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": -2.2948748738684195,
+   "t": -2.113294076979945,
+   "flip_pct": 72.8
+  },
+  "final": {
+   "n": 897,
+   "mean_bp": -2.4639681077148268,
+   "t": -3.1733181695598995,
+   "flip_pct": 72.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1677,
+   "mean_bp": -2.922521958786837,
+   "t": -5.989565765366522,
+   "flip_pct": 52.849999999999994
+  },
+  "confirm": {
+   "n": 748,
+   "mean_bp": -2.01981893827363,
+   "t": -2.132774558508195,
+   "flip_pct": 83.85000000000001
+  },
+  "final": {
+   "n": 897,
+   "mean_bp": -1.9527789416327,
+   "t": -2.821525608375396,
+   "flip_pct": 93.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "momentum close->30m",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1791,
+   "mean_bp": -2.931368151888553,
+   "t": -29.41838246573629,
+   "flip_pct": 68.05
+  },
+  "confirm": {
+   "n": 778,
+   "mean_bp": -3.5682223765492678,
+   "t": -19.041438684157093,
+   "flip_pct": 0.05
+  },
+  "final": {
+   "n": 956,
+   "mean_bp": -2.8186465086869332,
+   "t": -20.203641388874136,
+   "flip_pct": 87.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "momentum open->30m",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1785,
+   "mean_bp": -2.729131576011969,
+   "t": -27.37862020249854,
+   "flip_pct": 99.15
+  },
+  "confirm": {
+   "n": 777,
+   "mean_bp": -3.2325468727853464,
+   "t": -17.132380355968117,
+   "flip_pct": 10.0
+  },
+  "final": {
+   "n": 954,
+   "mean_bp": -3.096874354475438,
+   "t": -22.14522865319901,
+   "flip_pct": 20.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "momentum close->noon",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1792,
+   "mean_bp": -2.9708323094319553,
+   "t": -29.829010974594677,
+   "flip_pct": 53.449999999999996
+  },
+  "confirm": {
+   "n": 779,
+   "mean_bp": -3.3632924574138015,
+   "t": -17.897513995624724,
+   "flip_pct": 1.95
+  },
+  "final": {
+   "n": 955,
+   "mean_bp": -2.9075388757316833,
+   "t": -20.813232437662528,
+   "flip_pct": 70.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "gap follow, 60m",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 845,
+   "mean_bp": -4.142128991227378,
+   "t": -8.62252664666937,
+   "flip_pct": 0.8999999999999999
+  },
+  "confirm": {
+   "n": 350,
+   "mean_bp": -3.4370902871393767,
+   "t": -3.8151715615646116,
+   "flip_pct": 30.599999999999998
+  },
+  "final": {
+   "n": 361,
+   "mean_bp": -4.111364722853269,
+   "t": -6.044739618777216,
+   "flip_pct": 4.8500000000000005
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "gap follow, to close",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 845,
+   "mean_bp": -3.972291455067322,
+   "t": -4.16007721281787,
+   "flip_pct": 14.249999999999998
+  },
+  "confirm": {
+   "n": 350,
+   "mean_bp": -3.0014470812388243,
+   "t": -1.5472795941988655,
+   "flip_pct": 50.2
+  },
+  "final": {
+   "n": 361,
+   "mean_bp": -4.730877232467039,
+   "t": -3.40616379587169,
+   "flip_pct": 10.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "gap fade, 60m",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 845,
+   "mean_bp": -1.6699800720629288,
+   "t": -3.3389017011034254,
+   "flip_pct": 99.7
+  },
+  "confirm": {
+   "n": 350,
+   "mean_bp": -3.0351581321387378,
+   "t": -3.2463210448064164,
+   "flip_pct": 46.550000000000004
+  },
+  "final": {
+   "n": 361,
+   "mean_bp": -2.5757301050618056,
+   "t": -3.522331164437354,
+   "flip_pct": 71.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GBP/USD",
+  "contract": "M6B",
+  "variant": "gap fade, to close",
+  "cost_bp": 2.9824164214021582,
+  "sessions": 3541,
+  "first": "2013-01-01",
+  "search": {
+   "n": 845,
+   "mean_bp": -1.0192395169946429,
+   "t": -1.0099823609795389,
+   "flip_pct": 97.2
+  },
+  "confirm": {
+   "n": 350,
+   "mean_bp": -3.0459995233417794,
+   "t": -1.507753459536516,
+   "flip_pct": 48.449999999999996
+  },
+  "final": {
+   "n": 361,
+   "mean_bp": -1.50301582779766,
+   "t": -1.0006419984021053,
+   "flip_pct": 82.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1852,
+   "mean_bp": -4.6481842132886735,
+   "t": -13.023649184136039,
+   "flip_pct": 34.8
+  },
+  "confirm": {
+   "n": 832,
+   "mean_bp": -4.4283692639895476,
+   "t": -8.193748886454317,
+   "flip_pct": 57.8
+  },
+  "final": {
+   "n": 1001,
+   "mean_bp": -4.576219718650947,
+   "t": -11.881833114939807,
+   "flip_pct": 44.35
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1724,
+   "mean_bp": -4.635589870715603,
+   "t": -11.600651596702164,
+   "flip_pct": 39.75
+  },
+  "confirm": {
+   "n": 770,
+   "mean_bp": -4.332863052530125,
+   "t": -7.13469430790724,
+   "flip_pct": 61.85000000000001
+  },
+  "final": {
+   "n": 921,
+   "mean_bp": -4.553219260047215,
+   "t": -10.795788081519195,
+   "flip_pct": 46.800000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1373,
+   "mean_bp": -4.469757548713952,
+   "t": -10.267129225365927,
+   "flip_pct": 56.3
+  },
+  "confirm": {
+   "n": 621,
+   "mean_bp": -4.497099663610865,
+   "t": -6.830715115098481,
+   "flip_pct": 51.449999999999996
+  },
+  "final": {
+   "n": 723,
+   "mean_bp": -4.290121691158954,
+   "t": -8.690306318149226,
+   "flip_pct": 69.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1207,
+   "mean_bp": -4.381923566292582,
+   "t": -8.1628128457545,
+   "flip_pct": 61.550000000000004
+  },
+  "confirm": {
+   "n": 561,
+   "mean_bp": -5.0288012842787255,
+   "t": -6.5129552902078425,
+   "flip_pct": 25.4
+  },
+  "final": {
+   "n": 649,
+   "mean_bp": -4.542554856588781,
+   "t": -7.648507558011179,
+   "flip_pct": 48.1
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1743,
+   "mean_bp": -4.693309171303122,
+   "t": -8.33969201460151,
+   "flip_pct": 38.7
+  },
+  "confirm": {
+   "n": 773,
+   "mean_bp": -6.068040824869677,
+   "t": -7.745103848444897,
+   "flip_pct": 2.55
+  },
+  "final": {
+   "n": 936,
+   "mean_bp": -4.7854223653292145,
+   "t": -8.629314081156831,
+   "flip_pct": 30.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1715,
+   "mean_bp": -4.008228496552928,
+   "t": -6.807298617641451,
+   "flip_pct": 81.10000000000001
+  },
+  "confirm": {
+   "n": 768,
+   "mean_bp": -4.896927225040166,
+   "t": -5.819735755735111,
+   "flip_pct": 32.45
+  },
+  "final": {
+   "n": 933,
+   "mean_bp": -4.577357567553521,
+   "t": -7.694568383787914,
+   "flip_pct": 44.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1715,
+   "mean_bp": -4.038030595319148,
+   "t": -8.137635078586783,
+   "flip_pct": 83.7
+  },
+  "confirm": {
+   "n": 768,
+   "mean_bp": -4.3109863845001115,
+   "t": -6.34316351974085,
+   "flip_pct": 63.14999999999999
+  },
+  "final": {
+   "n": 933,
+   "mean_bp": -4.533394088909101,
+   "t": -9.291969165919785,
+   "flip_pct": 48.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1643,
+   "mean_bp": -3.2943507764411835,
+   "t": -5.478987223162031,
+   "flip_pct": 98.0
+  },
+  "confirm": {
+   "n": 761,
+   "mean_bp": -4.594044590530383,
+   "t": -5.173237829471216,
+   "flip_pct": 47.85
+  },
+  "final": {
+   "n": 912,
+   "mean_bp": -4.767714790129579,
+   "t": -7.701208162975212,
+   "flip_pct": 35.099999999999994
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1643,
+   "mean_bp": -3.805707607714858,
+   "t": -7.155012181304293,
+   "flip_pct": 90.7
+  },
+  "confirm": {
+   "n": 761,
+   "mean_bp": -4.785523001354329,
+   "t": -6.611548508819431,
+   "flip_pct": 36.25
+  },
+  "final": {
+   "n": 912,
+   "mean_bp": -4.381789645819378,
+   "t": -8.369640380112562,
+   "flip_pct": 60.050000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "momentum close->30m",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1790,
+   "mean_bp": -4.5978888597423255,
+   "t": -41.699031608262345,
+   "flip_pct": 28.199999999999996
+  },
+  "confirm": {
+   "n": 776,
+   "mean_bp": -4.639454627550875,
+   "t": -22.472926368337646,
+   "flip_pct": 31.15
+  },
+  "final": {
+   "n": 950,
+   "mean_bp": -4.393273758271622,
+   "t": -30.992350989114197,
+   "flip_pct": 84.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "momentum open->30m",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1785,
+   "mean_bp": -4.6648952331412685,
+   "t": -42.2174814189701,
+   "flip_pct": 11.600000000000001
+  },
+  "confirm": {
+   "n": 772,
+   "mean_bp": -4.376298221213847,
+   "t": -21.138969902506656,
+   "flip_pct": 77.60000000000001
+  },
+  "final": {
+   "n": 943,
+   "mean_bp": -4.493294607136583,
+   "t": -31.47563504418596,
+   "flip_pct": 61.550000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "momentum close->noon",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 1789,
+   "mean_bp": -4.568171247979713,
+   "t": -41.414691049996634,
+   "flip_pct": 37.6
+  },
+  "confirm": {
+   "n": 778,
+   "mean_bp": -4.452900738398543,
+   "t": -21.602125358944626,
+   "flip_pct": 64.75
+  },
+  "final": {
+   "n": 948,
+   "mean_bp": -4.523539133001843,
+   "t": -31.825950300323615,
+   "flip_pct": 53.949999999999996
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "gap follow, 60m",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 482,
+   "mean_bp": -6.061081145279128,
+   "t": -9.817200095826447,
+   "flip_pct": 0.8500000000000001
+  },
+  "confirm": {
+   "n": 272,
+   "mean_bp": -4.02776306419597,
+   "t": -4.293011723189257,
+   "flip_pct": 71.3
+  },
+  "final": {
+   "n": 253,
+   "mean_bp": -4.5892573554586304,
+   "t": -7.023124077138666,
+   "flip_pct": 45.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "gap follow, to close",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 482,
+   "mean_bp": -6.297363000878335,
+   "t": -4.722939510576892,
+   "flip_pct": 8.200000000000001
+  },
+  "confirm": {
+   "n": 272,
+   "mean_bp": -3.196033991943594,
+   "t": -1.7229104094172984,
+   "flip_pct": 75.75
+  },
+  "final": {
+   "n": 253,
+   "mean_bp": -3.614043964413017,
+   "t": -2.501056764285818,
+   "flip_pct": 73.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "gap fade, 60m",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 482,
+   "mean_bp": -3.548777530107135,
+   "t": -5.43237256627831,
+   "flip_pct": 93.15
+  },
+  "confirm": {
+   "n": 272,
+   "mean_bp": -4.642232720684692,
+   "t": -4.910175028447272,
+   "flip_pct": 45.550000000000004
+  },
+  "final": {
+   "n": 253,
+   "mean_bp": -4.701118115336812,
+   "t": -6.832524883125452,
+   "flip_pct": 40.150000000000006
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USD/CAD",
+  "contract": "MCD",
+  "variant": "gap fade, to close",
+  "cost_bp": 4.5368087354702356,
+  "sessions": 3535,
+  "first": "2013-01-01",
+  "search": {
+   "n": 482,
+   "mean_bp": -2.462195126205768,
+   "t": -1.6925632902122651,
+   "flip_pct": 92.45
+  },
+  "confirm": {
+   "n": 272,
+   "mean_bp": -4.305628850921196,
+   "t": -2.2236226013306664,
+   "flip_pct": 54.0
+  },
+  "final": {
+   "n": 253,
+   "mean_bp": -3.6723377922528266,
+   "t": -2.390411746427291,
+   "flip_pct": 71.39999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 383,
+   "mean_bp": -1.580278473758622,
+   "t": -0.2509358949298569,
+   "flip_pct": 90.35
+  },
+  "confirm": {
+   "n": 601,
+   "mean_bp": -4.2404155117129,
+   "t": -0.7411625465567024,
+   "flip_pct": 82.3
+  },
+  "final": {
+   "n": 668,
+   "mean_bp": -2.508168786057173,
+   "t": -0.528299028738274,
+   "flip_pct": 93.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 356,
+   "mean_bp": -0.4720680855329535,
+   "t": -0.06823710041629585,
+   "flip_pct": 91.05
+  },
+  "confirm": {
+   "n": 557,
+   "mean_bp": -3.8326493412080085,
+   "t": -0.603852749436068,
+   "flip_pct": 82.55
+  },
+  "final": {
+   "n": 630,
+   "mean_bp": -3.3524469119809317,
+   "t": -0.6413804545863233,
+   "flip_pct": 88.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 280,
+   "mean_bp": -1.064097717790286,
+   "t": -0.1407205824861765,
+   "flip_pct": 87.45
+  },
+  "confirm": {
+   "n": 436,
+   "mean_bp": -7.435347286674004,
+   "t": -1.0468281220965856,
+   "flip_pct": 62.0
+  },
+  "final": {
+   "n": 486,
+   "mean_bp": -9.768095167790051,
+   "t": -1.6694120230570637,
+   "flip_pct": 51.1
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 264,
+   "mean_bp": -7.022992964124939,
+   "t": -0.8188519409685083,
+   "flip_pct": 61.650000000000006
+  },
+  "confirm": {
+   "n": 390,
+   "mean_bp": -8.164122368583532,
+   "t": -1.0143887854168452,
+   "flip_pct": 58.199999999999996
+  },
+  "final": {
+   "n": 430,
+   "mean_bp": -6.946416665421417,
+   "t": -0.9832600826129664,
+   "flip_pct": 65.9
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 442,
+   "mean_bp": -10.554195416296766,
+   "t": -1.2852522876948038,
+   "flip_pct": 46.800000000000004
+  },
+  "confirm": {
+   "n": 593,
+   "mean_bp": 15.311430575947426,
+   "t": 1.6284682728735251,
+   "flip_pct": 99.75
+  },
+  "final": {
+   "n": 657,
+   "mean_bp": -4.710810252724616,
+   "t": -0.6121265513604577,
+   "flip_pct": 73.4
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 424,
+   "mean_bp": -6.0806734288846025,
+   "t": -0.7152710870048989,
+   "flip_pct": 65.2
+  },
+  "confirm": {
+   "n": 581,
+   "mean_bp": 6.912328183308807,
+   "t": 0.7584897087421362,
+   "flip_pct": 96.15
+  },
+  "final": {
+   "n": 643,
+   "mean_bp": -8.917401186831118,
+   "t": -1.1448066685220069,
+   "flip_pct": 54.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 424,
+   "mean_bp": -5.437773529809515,
+   "t": -0.7897432751257621,
+   "flip_pct": 72.35000000000001
+  },
+  "confirm": {
+   "n": 581,
+   "mean_bp": -1.5862461567999573,
+   "t": -0.21038954717940184,
+   "flip_pct": 85.35000000000001
+  },
+  "final": {
+   "n": 643,
+   "mean_bp": -9.820383403319438,
+   "t": -1.5562816083335405,
+   "flip_pct": 49.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 391,
+   "mean_bp": -4.483596229566772,
+   "t": -0.5012242746706463,
+   "flip_pct": 72.15
+  },
+  "confirm": {
+   "n": 527,
+   "mean_bp": 2.2683547859534428,
+   "t": 0.23502319474041433,
+   "flip_pct": 90.35
+  },
+  "final": {
+   "n": 594,
+   "mean_bp": -5.5210938991181555,
+   "t": -0.6366126415848389,
+   "flip_pct": 69.95
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 391,
+   "mean_bp": -11.750215377529585,
+   "t": -1.6568363870726872,
+   "flip_pct": 39.35
+  },
+  "confirm": {
+   "n": 527,
+   "mean_bp": -1.003220348338677,
+   "t": -0.11781599674830125,
+   "flip_pct": 86.4
+  },
+  "final": {
+   "n": 594,
+   "mean_bp": -5.2722245736904405,
+   "t": -0.7424479685774694,
+   "flip_pct": 74.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "momentum close->30m",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 446,
+   "mean_bp": -6.508472795874583,
+   "t": -4.296215529362533,
+   "flip_pct": 98.65
+  },
+  "confirm": {
+   "n": 596,
+   "mean_bp": -10.147673622022639,
+   "t": -5.947699930062494,
+   "flip_pct": 43.35
+  },
+  "final": {
+   "n": 661,
+   "mean_bp": -10.538437342268152,
+   "t": -8.598804330690072,
+   "flip_pct": 29.799999999999997
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "momentum open->30m",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 442,
+   "mean_bp": -9.405166842450235,
+   "t": -6.154244784413476,
+   "flip_pct": 63.1
+  },
+  "confirm": {
+   "n": 593,
+   "mean_bp": -9.789894515770843,
+   "t": -5.718520386228935,
+   "flip_pct": 51.5
+  },
+  "final": {
+   "n": 658,
+   "mean_bp": -11.128687244456117,
+   "t": -9.045430931119592,
+   "flip_pct": 16.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "momentum close->noon",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 446,
+   "mean_bp": -8.694801010889403,
+   "t": -5.711312739969458,
+   "flip_pct": 77.2
+  },
+  "confirm": {
+   "n": 596,
+   "mean_bp": -9.782714595046956,
+   "t": -5.733718952863581,
+   "flip_pct": 52.75
+  },
+  "final": {
+   "n": 660,
+   "mean_bp": -9.378324388818898,
+   "t": -7.645707101567469,
+   "flip_pct": 66.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "gap follow, 60m",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 234,
+   "mean_bp": -16.5802527703901,
+   "t": -2.36501561941377,
+   "flip_pct": 17.95
+  },
+  "confirm": {
+   "n": 251,
+   "mean_bp": -4.650081591377103,
+   "t": -0.48866586608412654,
+   "flip_pct": 71.2
+  },
+  "final": {
+   "n": 310,
+   "mean_bp": 2.657079771458117,
+   "t": 0.35815649124657856,
+   "flip_pct": 95.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "gap follow, to close",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 234,
+   "mean_bp": 14.983630948502064,
+   "t": 0.9807663386019345,
+   "flip_pct": 94.85
+  },
+  "confirm": {
+   "n": 251,
+   "mean_bp": -16.064792297378528,
+   "t": -0.9144518114560801,
+   "flip_pct": 36.05
+  },
+  "final": {
+   "n": 310,
+   "mean_bp": 21.642597482508364,
+   "t": 1.5860466721472068,
+   "flip_pct": 98.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "gap fade, 60m",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 234,
+   "mean_bp": 0.3957568828479321,
+   "t": 0.056319391813466665,
+   "flip_pct": 92.4
+  },
+  "confirm": {
+   "n": 251,
+   "mean_bp": -12.068105546761368,
+   "t": -1.2794769064096425,
+   "flip_pct": 39.15
+  },
+  "final": {
+   "n": 310,
+   "mean_bp": -19.19927610006051,
+   "t": -2.740605369118941,
+   "flip_pct": 8.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "GAS.CMD/USD",
+  "contract": "MNG",
+  "variant": "gap fade, to close",
+  "cost_bp": 9.904644724700093,
+  "sessions": 1717,
+  "first": "2013-02-05",
+  "search": {
+   "n": 234,
+   "mean_bp": -9.714057244892983,
+   "t": -0.6977482774230513,
+   "flip_pct": 50.1
+  },
+  "confirm": {
+   "n": 251,
+   "mean_bp": 3.8382088980899813,
+   "t": 0.22171951560086295,
+   "flip_pct": 79.75
+  },
+  "final": {
+   "n": 310,
+   "mean_bp": -27.454453550469957,
+   "t": -1.9585066160977562,
+   "flip_pct": 10.549999999999999
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 145,
+   "mean_bp": -7.190945599093894,
+   "t": -3.9092419652303905,
+   "flip_pct": 31.85
+  },
+  "confirm": {
+   "n": 198,
+   "mean_bp": -2.7708008896370924,
+   "t": -1.0592166083099708,
+   "flip_pct": 91.45
+  },
+  "final": {
+   "n": 15,
+   "mean_bp": 0.16113281912994112,
+   "t": 0.014180717179939581,
+   "flip_pct": 64.0
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 128,
+   "mean_bp": -4.542127049840018,
+   "t": -2.166587439786518,
+   "flip_pct": 80.30000000000001
+  },
+  "confirm": {
+   "n": 186,
+   "mean_bp": -3.697423402420336,
+   "t": -1.2394722760931467,
+   "flip_pct": 81.39999999999999
+  },
+  "final": {
+   "n": 15,
+   "mean_bp": 3.4241564570802208,
+   "t": 0.32461819592474506,
+   "flip_pct": 74.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 102,
+   "mean_bp": -5.410392472784741,
+   "t": -2.146197195359834,
+   "flip_pct": 63.949999999999996
+  },
+  "confirm": {
+   "n": 151,
+   "mean_bp": -3.860097277618374,
+   "t": -1.1513956583237017,
+   "flip_pct": 74.65
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": -4.829539772238352,
+   "t": -0.2814134942283293,
+   "flip_pct": 51.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 87,
+   "mean_bp": -4.039756958091899,
+   "t": -1.2940721556991888,
+   "flip_pct": 76.05
+  },
+  "confirm": {
+   "n": 137,
+   "mean_bp": -4.940757049476578,
+   "t": -1.2174848620232874,
+   "flip_pct": 62.45
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": -0.2972434896526939,
+   "t": -0.01844791333586588,
+   "flip_pct": 53.849999999999994
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 122,
+   "mean_bp": -4.9858991321829365,
+   "t": -1.7461585126515342,
+   "flip_pct": 66.45
+  },
+  "confirm": {
+   "n": 177,
+   "mean_bp": -7.873675674682814,
+   "t": -2.1964910139895983,
+   "flip_pct": 33.550000000000004
+  },
+  "final": {
+   "n": 20,
+   "mean_bp": -15.992720677891683,
+   "t": -1.2096843311399235,
+   "flip_pct": 23.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 115,
+   "mean_bp": -0.6605273786368456,
+   "t": -0.19869160028161362,
+   "flip_pct": 95.55
+  },
+  "confirm": {
+   "n": 175,
+   "mean_bp": -3.977436604071446,
+   "t": -0.9550563782599152,
+   "flip_pct": 71.15
+  },
+  "final": {
+   "n": 20,
+   "mean_bp": -8.328265270066062,
+   "t": -0.5382062318916166,
+   "flip_pct": 45.1
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 115,
+   "mean_bp": -3.528499586401643,
+   "t": -1.271330313178402,
+   "flip_pct": 83.2
+  },
+  "confirm": {
+   "n": 175,
+   "mean_bp": -1.093367819964884,
+   "t": -0.30210842966332074,
+   "flip_pct": 92.4
+  },
+  "final": {
+   "n": 20,
+   "mean_bp": -27.402575581973323,
+   "t": -4.921265746382355,
+   "flip_pct": 0.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 112,
+   "mean_bp": -0.13391124630890752,
+   "t": -0.040928375635754445,
+   "flip_pct": 97.0
+  },
+  "confirm": {
+   "n": 165,
+   "mean_bp": -1.853911656619864,
+   "t": -0.47299565944930905,
+   "flip_pct": 87.45
+  },
+  "final": {
+   "n": 20,
+   "mean_bp": 7.376056991459394,
+   "t": 0.4421198444886816,
+   "flip_pct": 77.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 112,
+   "mean_bp": -2.2926899761646373,
+   "t": -0.8000996697861795,
+   "flip_pct": 91.95
+  },
+  "confirm": {
+   "n": 165,
+   "mean_bp": -1.495440644943521,
+   "t": -0.4555062535394837,
+   "flip_pct": 92.55
+  },
+  "final": {
+   "n": 20,
+   "mean_bp": -8.112450989093892,
+   "t": -0.5774602978103646,
+   "flip_pct": 44.800000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "momentum close->30m",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 125,
+   "mean_bp": -6.187733111633488,
+   "t": -11.40973353421367,
+   "flip_pct": 59.9
+  },
+  "confirm": {
+   "n": 177,
+   "mean_bp": -7.005444772231541,
+   "t": -6.7669290599003045,
+   "flip_pct": 25.35
+  },
+  "final": {
+   "n": 21,
+   "mean_bp": -1.4161259559670827,
+   "t": -0.34886303898398013,
+   "flip_pct": 87.05000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "momentum open->30m",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 122,
+   "mean_bp": -5.912787918258274,
+   "t": -10.719241307153604,
+   "flip_pct": 77.9
+  },
+  "confirm": {
+   "n": 178,
+   "mean_bp": -5.666652035552302,
+   "t": -5.492591921332146,
+   "flip_pct": 73.0
+  },
+  "final": {
+   "n": 21,
+   "mean_bp": -2.20707022730274,
+   "t": -0.5379088003437941,
+   "flip_pct": 83.45
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "momentum close->noon",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 124,
+   "mean_bp": -5.360258713866315,
+   "t": -9.932689987800773,
+   "flip_pct": 96.7
+  },
+  "confirm": {
+   "n": 178,
+   "mean_bp": -7.028937624124389,
+   "t": -6.813849280875405,
+   "flip_pct": 25.15
+  },
+  "final": {
+   "n": 21,
+   "mean_bp": 0.25756496926584194,
+   "t": 0.06539014927670832,
+   "flip_pct": 94.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "gap follow, 60m",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 42,
+   "mean_bp": -6.476571710784729,
+   "t": -2.1504316838277298,
+   "flip_pct": 48.949999999999996
+  },
+  "confirm": {
+   "n": 85,
+   "mean_bp": -2.057153980839158,
+   "t": -0.5848312905664723,
+   "flip_pct": 89.05
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": -18.97778335166164,
+   "t": -2.058150649913116,
+   "flip_pct": 11.700000000000001
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "gap follow, to close",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 42,
+   "mean_bp": -5.85770555364112,
+   "t": -1.0027794600936815,
+   "flip_pct": 54.75
+  },
+  "confirm": {
+   "n": 85,
+   "mean_bp": 0.9380337073025375,
+   "t": 0.13207580848824588,
+   "flip_pct": 82.65
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": -24.60267258649209,
+   "t": -1.1076929794240227,
+   "flip_pct": 20.150000000000002
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "gap fade, 60m",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 42,
+   "mean_bp": -6.307256627222424,
+   "t": -1.7544690875320943,
+   "flip_pct": 49.8
+  },
+  "confirm": {
+   "n": 85,
+   "mean_bp": -9.396837180102972,
+   "t": -2.3098836035016235,
+   "flip_pct": 25.5
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": 7.206300353663463,
+   "t": 0.7315840563694954,
+   "flip_pct": 88.8
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USTBOND.TR/USD",
+  "contract": "ZB",
+  "variant": "gap fade, to close",
+  "cost_bp": 6.331223880597015,
+  "sessions": 338,
+  "first": "2019-01-22",
+  "search": {
+   "n": 42,
+   "mean_bp": -11.41031221792344,
+   "t": -1.9150534941170134,
+   "flip_pct": 19.650000000000002
+  },
+  "confirm": {
+   "n": 85,
+   "mean_bp": -9.558662786435347,
+   "t": -1.2833033850778286,
+   "flip_pct": 32.85
+  },
+  "final": {
+   "n": 11,
+   "mean_bp": 25.897816958958234,
+   "t": 0.8346927777825779,
+   "flip_pct": 83.2
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "noise 30m, stop 0.25 ADR",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 357,
+   "mean_bp": 2.593281488446182,
+   "t": 1.0163157659868964,
+   "flip_pct": 94.55
+  },
+  "confirm": {
+   "n": 818,
+   "mean_bp": -5.867865633445957,
+   "t": -2.9795048095810746,
+   "flip_pct": 1.6500000000000001
+  },
+  "final": {
+   "n": 930,
+   "mean_bp": -4.234679363423444,
+   "t": -2.872975023836458,
+   "flip_pct": 3.4000000000000004
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "noise 30m, stop 0.5 ADR",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 342,
+   "mean_bp": 1.4664533758155383,
+   "t": 0.5271233536809985,
+   "flip_pct": 85.8
+  },
+  "confirm": {
+   "n": 760,
+   "mean_bp": -7.257458566752118,
+   "t": -3.197157561549002,
+   "flip_pct": 0.6
+  },
+  "final": {
+   "n": 844,
+   "mean_bp": -4.107232407083861,
+   "t": -2.4136124306153723,
+   "flip_pct": 6.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "noise 60m, stop 0.25 ADR",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 266,
+   "mean_bp": 1.1787657181745543,
+   "t": 0.3707621791543079,
+   "flip_pct": 80.05
+  },
+  "confirm": {
+   "n": 576,
+   "mean_bp": -3.94787754404353,
+   "t": -1.6177282553214214,
+   "flip_pct": 15.7
+  },
+  "final": {
+   "n": 678,
+   "mean_bp": -4.017703378601808,
+   "t": -2.2630787397796372,
+   "flip_pct": 7.6
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "noise 60m, stop 0.5 ADR",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 235,
+   "mean_bp": 2.288991988518061,
+   "t": 0.6151860645780538,
+   "flip_pct": 85.1
+  },
+  "confirm": {
+   "n": 526,
+   "mean_bp": -3.7134099404701364,
+   "t": -1.3110575908006075,
+   "flip_pct": 21.4
+  },
+  "final": {
+   "n": 605,
+   "mean_bp": -4.1667279649928295,
+   "t": -1.9186229974944167,
+   "flip_pct": 10.15
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "orb 15m, far stop",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 320,
+   "mean_bp": 1.6905032446157142,
+   "t": 0.43324809999130576,
+   "flip_pct": 79.2
+  },
+  "confirm": {
+   "n": 737,
+   "mean_bp": 1.13920992129839,
+   "t": 0.288903233857927,
+   "flip_pct": 73.6
+  },
+  "final": {
+   "n": 899,
+   "mean_bp": 0.8951786162065837,
+   "t": 0.3500516297404625,
+   "flip_pct": 83.05
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "orb 30m, far stop",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 307,
+   "mean_bp": 2.1391433426911384,
+   "t": 0.5287075928069885,
+   "flip_pct": 80.4
+  },
+  "confirm": {
+   "n": 701,
+   "mean_bp": -1.1337004673129494,
+   "t": -0.28468961723263586,
+   "flip_pct": 53.7
+  },
+  "final": {
+   "n": 849,
+   "mean_bp": 1.2018440654600513,
+   "t": 0.46094139405482115,
+   "flip_pct": 85.25
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "orb 30m, mid stop",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 307,
+   "mean_bp": 2.0460508715927745,
+   "t": 0.5635936943666562,
+   "flip_pct": 82.15
+  },
+  "confirm": {
+   "n": 701,
+   "mean_bp": 0.7513396828074287,
+   "t": 0.2332580969359662,
+   "flip_pct": 74.85000000000001
+  },
+  "final": {
+   "n": 849,
+   "mean_bp": -0.3139563693013982,
+   "t": -0.1461426434132233,
+   "flip_pct": 69.85
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "orb 60m, far stop",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 263,
+   "mean_bp": 0.32350689729311805,
+   "t": 0.072777249885725,
+   "flip_pct": 64.7
+  },
+  "confirm": {
+   "n": 564,
+   "mean_bp": 1.1169615491117397,
+   "t": 0.26995805087339714,
+   "flip_pct": 72.7
+  },
+  "final": {
+   "n": 663,
+   "mean_bp": 0.422911563555904,
+   "t": 0.15144605326774438,
+   "flip_pct": 74.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "orb 60m, mid stop",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 263,
+   "mean_bp": 2.5431597238929453,
+   "t": 0.6489473873125724,
+   "flip_pct": 83.65
+  },
+  "confirm": {
+   "n": 564,
+   "mean_bp": -1.5771015829112178,
+   "t": -0.4442373520173063,
+   "flip_pct": 48.75
+  },
+  "final": {
+   "n": 663,
+   "mean_bp": -0.09683579093544378,
+   "t": -0.03933511085843787,
+   "flip_pct": 71.5
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "momentum close->30m",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 325,
+   "mean_bp": -1.3468526586596756,
+   "t": -1.229577834770775,
+   "flip_pct": 57.550000000000004
+  },
+  "confirm": {
+   "n": 747,
+   "mean_bp": -5.194203882658338,
+   "t": -3.5839748530482685,
+   "flip_pct": 0.4
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -0.9341483548347365,
+   "t": -1.2859092568354646,
+   "flip_pct": 80.55
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "momentum open->30m",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 325,
+   "mean_bp": -1.598033898246598,
+   "t": -1.4588124513404455,
+   "flip_pct": 49.1
+  },
+  "confirm": {
+   "n": 746,
+   "mean_bp": -1.20752747501791,
+   "t": -0.8286712923734221,
+   "flip_pct": 58.15
+  },
+  "final": {
+   "n": 924,
+   "mean_bp": -0.6167165115926199,
+   "t": -0.8493761960416094,
+   "flip_pct": 90.3
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "momentum close->noon",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 325,
+   "mean_bp": -1.9651442316221104,
+   "t": -1.7943281395603394,
+   "flip_pct": 35.05
+  },
+  "confirm": {
+   "n": 747,
+   "mean_bp": -2.3618224158852064,
+   "t": -1.6231291877127365,
+   "flip_pct": 29.4
+  },
+  "final": {
+   "n": 923,
+   "mean_bp": -0.9642757608037603,
+   "t": -1.325934554152399,
+   "flip_pct": 78.75
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "gap follow, 60m",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 46,
+   "mean_bp": 10.718962176781753,
+   "t": 1.3419671684513792,
+   "flip_pct": 92.60000000000001
+  },
+  "confirm": {
+   "n": 186,
+   "mean_bp": -7.36208310969995,
+   "t": -1.2135988883460502,
+   "flip_pct": 16.45
+  },
+  "final": {
+   "n": 230,
+   "mean_bp": -9.614419232589498,
+   "t": -2.530852485600781,
+   "flip_pct": 1.7000000000000002
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "gap follow, to close",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 46,
+   "mean_bp": 6.549621153766705,
+   "t": 0.5539938275626032,
+   "flip_pct": 73.65
+  },
+  "confirm": {
+   "n": 186,
+   "mean_bp": -13.356886932065887,
+   "t": -1.477206004684772,
+   "flip_pct": 9.25
+  },
+  "final": {
+   "n": 230,
+   "mean_bp": -12.938229168405028,
+   "t": -2.2530869852713034,
+   "flip_pct": 2.7
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "gap fade, 60m",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 46,
+   "mean_bp": -6.990561016600998,
+   "t": -0.9619336461225645,
+   "flip_pct": 22.45
+  },
+  "confirm": {
+   "n": 186,
+   "mean_bp": -2.09647946881451,
+   "t": -0.3140888698550878,
+   "flip_pct": 45.300000000000004
+  },
+  "final": {
+   "n": 230,
+   "mean_bp": 2.4949893037863613,
+   "t": 0.6179923190584508,
+   "flip_pct": 83.65
+  },
+  "passed_search": false,
+  "confirmed": false
+ },
+ {
+  "market": "USSC2000.IDX/USD",
+  "contract": "M2K",
+  "variant": "gap fade, to close",
+  "cost_bp": 1.5525018357285219,
+  "sessions": 2010,
+  "first": "2018-08-08",
+  "search": {
+   "n": 46,
+   "mean_bp": 3.837418975729904,
+   "t": 0.27572656117313477,
+   "flip_pct": 62.35000000000001
+  },
+  "confirm": {
+   "n": 186,
+   "mean_bp": 8.395242625815243,
+   "t": 0.7750441567057227,
+   "flip_pct": 82.5
+  },
+  "final": {
+   "n": 230,
+   "mean_bp": 7.571827123434503,
+   "t": 1.1399895008749155,
+   "flip_pct": 90.8
+  },
+  "passed_search": false,
+  "confirmed": false
  }
 ]

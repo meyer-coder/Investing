@@ -159,7 +159,7 @@ def clean_sessions(sessions: Sequence[Session], drop_expiry_weeks: bool,
         if drop_expiry_weeks and expiry_week(s.date):
             why = "quarterly expiry week (contract switch)"
         elif max_jump_pct is not None and jump > max_jump_pct * float(np.median(s.close)):
-            why = f"{jump:.0f}-point jump between two bars (broken data)"
+            why = f"{jump:.4g}-point jump between two bars (broken data)"
         if why:
             if dropped is not None:
                 dropped.append((s.date, why))
