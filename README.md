@@ -1,4 +1,108 @@
+# Investing
+
+Two research tools live here:
+
+* **`confluence/`** — a strategy factory that generates ~11,000 named, confluence-based intraday
+  strategies for MNQ, MES (ES), NAS100, USOIL, EURUSD, GBPUSD, USDJPY, XAUUSD and GER40, backtests
+  every one on 8 years of 1-minute data with realistic costs, logs the results, and builds a
+  sortable **explorer** (`results/explorer.html`).
+* **`evotrader/`** — evolving daily-bar paper-trading agents bred by Claude (below).
+
+---
+
+## confluence: strategy factory + explorer
+
+```bash
+pip install -r requirements.txt            # numpy, numba, pandas
+python -m confluence.cli fetch             # 8+ years of 1-minute bars for every market (~10 min)
+python -m confluence.cli crosscheck        # how closely each feed tracks the real contract
+python -m confluence.cli run               # generate, backtest, log, build the explorer (~3 min, 4 cores)
+open results/explorer.html                 # or double-click it; no server needed
+python -m confluence.cli show 22-091       # one strategy's rules and numbers in the terminal
+```
+
+### What gets produced
+
+| file | what it is |
+|---|---|
+| `results/explorer.html` | self-contained explorer: sort any column, filter by market / timeframe / group / family / session / entry / stop / target / min trades / max trades per week, click a row for the full profile (rules, equity curve, windows, $/day distribution, prop-eval odds, last trades). Tabs: All strategies, Families, Groups & dimensions, Lessons, How to read |
+| `results/strategies_ranked.csv` | the same table for Excel, ranked by the recency-weighted score, with each strategy's rules |
+| `results/test_log.jsonl.gz` | the test log: one JSON line per strategy — definition, rules, every metric, yearly results, equity curve |
+| `results/run_log.md` | what ran, on what data, how long it took, the top 25, and the lessons |
+| `results/data_quality.json` | proxy cross-checks against Yahoo futures and TradingView |
+| `runs/trades/*.npz` | every simulated trade (millions; not committed) |
+
+### How strategies are built
+
+Every strategy is a conjunction of **confluence legs** (`confluence/components.py`):
+
+* **bias** — HTF trend, EMA stack, 200 EMA, daily bias, VWAP side, Supertrend, ADX, midnight open…
+* **location** — VWAP / EMA pullbacks, VWAP bands, prior-day / prior-week / Asia / London / overnight
+  high-low sweeps and breaks, opening range, initial balance, fair-value gaps, order blocks,
+  Bollinger / Keltner tags, pivots, Fibonacci 50–61.8, round numbers, double bottoms, gaps, squeezes…
+* **trigger** — engulfing, pin bar, break of structure, EMA cross, RSI reset, MACD cross, inside-bar
+  break, displacement, Heikin-Ashi flip, Supertrend flip, RSI divergence, exhaustion…
+* **filter** (optional) — ATR expanding / calm, RSI room, ADX rising, strong close, range spike, not extended
+
+49 named **families** combine them into trading ideas (EMA Pullback Engulf, Asia Sweep London
+Reversal, ORB + VWAP + Trend, Silver Bullet FVG, Power of Three, VWAP 2σ Fade, …) across seven
+groups. The generator crosses each family with market × timeframe (1/3/5/15/30/60m) × session
+(Asia, London, NY am, NY pm, Ldn+NY, all) × entry (market / stop / limit) × stop (ATR 1.0, ATR 1.5,
+swing, signal bar) × target (1R, 1.5R, 2R, 3R, trailing, session close) × extra filter, and samples
+210 balanced variants per family. Each gets an ID (`07-031`) and a descriptive name, e.g.
+*"Hull-Slope VWAP Hold + RSI room · MNQ 5m NY am · stop entry, swing stop, 2R"*.
+
+Family 50 is **RANDOM control**: 1,080 coin-flip strategies on a grid of market × exit style, run
+through the same sessions, stops, targets and costs. They are the yardstick for luck: every
+strategy's *edge* is its gross R/trade minus the median of the controls with the same market and
+exit, and the *luck bar* is the 95th percentile of the controls' own edge t-statistic.
+
+### Recency weighting
+
+All 8 years are tested; the ranking leans on the recent past, with the last 6 months weighted a
+little more than the last 3 years:
+
+```
+score = 0.25 · E(8y) + 0.35 · E(3y) + 0.40 · E(6m)        E(w) = total net R in w / (trades in w + 30)
+```
+
+The shrinkage stops a strategy with a handful of lucky trades from topping the table. The prop-firm
+Monte Carlo samples days with the same weights. The Lessons tab also runs the honest version: rank
+using only data up to six months ago, then look at how the top 5% did in the six months after.
+
+### Data
+
+| source | used for |
+|---|---|
+| **histdata.com** | the 8-year 1-minute backbone (one zip per symbol-year). Timestamps are New York time *with* DST — verified against Dukascopy (correlation 1.0 at the right offset, ~0 at the wrong one) |
+| **Dukascopy** | fills every day histdata is missing or thin on (e.g. all of WTI 2024 – May 2026, most of 2023), and extends each feed to the last session. Splices are checked minute-by-minute |
+| **Yahoo Finance** | real futures (NQ=F, ES=F, CL=F, GC=F …) to cross-check each proxy: 5-minute return correlation 0.96–0.99 for indices, oil and gold |
+| **TradingView** (MCP) | spot check of CME_MINI:MNQ1! / MES1! against the proxy feeds (0.999 / 0.998) |
+| **massive.com** | `data.fetch_massive` pulls minute aggregates when `MASSIVE_API_KEY` (or `POLYGON_API_KEY`) is set |
+
+MNQ and MES are backtested on the index CFD feed that tracks the same underlying (continuous, no roll
+gaps) and charged futures costs; NAS100 uses the same prices with CFD costs. Costs per round trip
+are in `confluence/markets.py` (MNQ 1.2 pts, MES 0.78 pts, NAS100 1.8 pts, EURUSD 1.2 pips, …).
+
+### How trades are simulated
+
+Signals on bar close; orders from the next bar. Entries, stops, targets, trailing stops and session
+exits are walked through the 1-minute bars underneath, so a 60-minute strategy knows whether its
+stop or target was hit first; if both fall inside one minute the stop wins. Stops are never tighter
+than 0.3 ATR, one position at a time, at most four trades a day, always flat at the session exit and
+never across a data gap. The engine was checked on synthetic random walks: with a near-continuous
+price path, random entries average ~0R gross for every entry and exit type.
+
+### Read the results with care
+
+11,000 tests will always produce some that look spectacular by chance. Use the random controls,
+the edge t-statistic, the "profitable 8y + 3y + 6m" filter and the blind test in Lessons before
+believing the leaderboard. Nothing here connects to a broker.
+
+---
+
 # evotrader
+
 
 Evolving paper-trading agents, bred by Claude.
 

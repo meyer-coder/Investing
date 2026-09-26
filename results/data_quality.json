@@ -1,0 +1,110 @@
+{
+  "MNQ": {
+    "yahoo": "NQ=F",
+    "overlap_bars": 13144,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9872,
+    "median_abs_ret_gap_bp": 0.191,
+    "median_level_ratio": 1.0038,
+    "feed": "NSXUSD"
+  },
+  "MES": {
+    "yahoo": "ES=F",
+    "overlap_bars": 13138,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9768,
+    "median_abs_ret_gap_bp": 0.172,
+    "median_level_ratio": 1.00312,
+    "feed": "SPXUSD"
+  },
+  "NAS100": {
+    "yahoo": "NQ=F",
+    "overlap_bars": 13144,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9872,
+    "median_abs_ret_gap_bp": 0.191,
+    "median_level_ratio": 1.0038,
+    "feed": "NSXUSD"
+  },
+  "USOIL": {
+    "yahoo": "CL=F",
+    "overlap_bars": 13627,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9565,
+    "median_abs_ret_gap_bp": 0.994,
+    "median_level_ratio": 1.00025,
+    "feed": "WTIUSD"
+  },
+  "EURUSD": {
+    "yahoo": "EURUSD=X",
+    "overlap_bars": 16704,
+    "from": "2026-07-05 23:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.8545,
+    "median_abs_ret_gap_bp": 0.516,
+    "median_level_ratio": 1.00031,
+    "feed": "EURUSD"
+  },
+  "GBPUSD": {
+    "yahoo": "GBPUSD=X",
+    "overlap_bars": 16991,
+    "from": "2026-07-05 23:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.8767,
+    "median_abs_ret_gap_bp": 0.358,
+    "median_level_ratio": 1.00006,
+    "feed": "GBPUSD"
+  },
+  "USDJPY": {
+    "yahoo": "JPY=X",
+    "overlap_bars": 16992,
+    "from": "2026-07-05 23:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.99,
+    "median_abs_ret_gap_bp": 0.192,
+    "median_level_ratio": 0.99997,
+    "feed": "USDJPY"
+  },
+  "XAUUSD": {
+    "yahoo": "GC=F",
+    "overlap_bars": 13633,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9746,
+    "median_abs_ret_gap_bp": 0.449,
+    "median_level_ratio": 1.01093,
+    "feed": "XAUUSD"
+  },
+  "GER40": {
+    "yahoo": "^GDAXI",
+    "overlap_bars": 6115,
+    "from": "2026-07-06 07:00",
+    "to": "2026-09-25 15:30",
+    "ret_corr_5m": 0.9723,
+    "median_abs_ret_gap_bp": 0.851,
+    "median_level_ratio": 1.00002,
+    "feed": "GRXEUR"
+  },
+  "_tradingview_spotcheck": {
+    "MNQ": {
+      "tradingview": "CME_MINI:MNQ1!",
+      "feed": "NSXUSD",
+      "bars": 41,
+      "ret_corr_5m": 0.9992,
+      "level_ratio": 1.00915,
+      "window": "2026-09-25 16:50-20:10 UTC (last bars TradingView serves)"
+    },
+    "MES": {
+      "tradingview": "CME_MINI:MES1!",
+      "feed": "SPXUSD",
+      "bars": 41,
+      "ret_corr_5m": 0.998,
+      "level_ratio": 1.00794,
+      "window": "2026-09-25 16:50-20:10 UTC (last bars TradingView serves)"
+    }
+  }
+}
