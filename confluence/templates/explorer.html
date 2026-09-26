@@ -452,7 +452,7 @@ if (RUN2){
     pk.map(k => `<option value="${esc(k)}">${esc(planShort(k))}</option>`).join("");
   const o = $("fOnly"), prop = o.querySelector('option[value="prop"]');
   prop.textContent = "account pass at least 50%";
-  prop.insertAdjacentHTML("afterend", `<option value="ev">positive EV per prop attempt</option><option value="evbar">EV above the random-control bar</option>`);
+  prop.insertAdjacentHTML("afterend", `<option value="ev">positive EV per prop attempt</option><option value="evbar">EV above the random-control bar</option><option value="short">shortlist: edge + 8y/3y/6m + EV above bar, 100+ trades</option>`);
 }
 $("preset").innerHTML = Object.keys(PRESETS).map(p => `<button type="button" data-p="${p}" aria-pressed="${p === preset}">${p}</button>`).join("");
 
@@ -494,6 +494,8 @@ function apply(keepSel = true){
     if (only === "prop" && !((RUN2 ? r[C.apass] : r[C.pp]) >= 0.5)) continue;
     if (only === "ev" && !(r[C.ev] > 0)) continue;
     if (only === "evbar" && !(r[C.ev] > D.evbar && r[C.trades] >= MIN_T)) continue;
+    if (only === "short" && !(r[C.trades] >= 100 && r[C.edge] > 0 && r[C.et] > D.t95 && r[C.tot] > 0 && (r[C.e3y] || 0) > 0
+        && (r[C.e6] || 0) > 0 && r[C.ev] > D.evbar)) continue;
     if (only === "active" && !(r[C.pw] >= 1)) continue;
     out.push(i);
   }
