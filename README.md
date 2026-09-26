@@ -141,6 +141,23 @@ python -m confluence.cli futures-explorer     # results/futures/explorer.html, C
   attempt and account pass / bust / payout columns, a win-rate range filter, a best-account filter, a
   Prop accounts tab, and an account section per strategy with EV and odds plotted against risk.
 
+**What the run found** (20,976 strategies — 19,920 confluence + 1,056 random controls — 16.0M
+trades, 26 Sep 2018 → 25 Sep 2026; full numbers in `results/futures/run_log.md`):
+
+* 7.2% of confluence strategies with 30+ trades were net-profitable over 8 years, against 2.7% of
+  the random controls; 8.5% have an edge over the controls that clears the luck bar (5% expected by
+  chance); 472 were profitable over 8 years, 3 years and 6 months. Costs decide the low timeframes:
+  the median strategy loses more than 0.5R a trade at 1–3 minutes in most markets and is near zero at
+  1–4 hours.
+* Prop accounts reward variance: 17% of coin-flip controls show a positive expected value per
+  attempt, so the bar is their 95th percentile ($134). 3.8% of confluence strategies clear it. The
+  EV-maximising risk is usually $1,000–$2,000 a trade with a 60–75% chance of blowing the evaluation;
+  the explorer shows a lower-risk alternative (evaluation bust ≤ 35%) beside each pick.
+* Blind test: with the account chosen on data up to six months ago and the last six months traded
+  once, strategies whose earlier EV was positive passed 18% of the time and were paid 3.9% of the time
+  (random controls: 8% and 1.5%), but still averaged −$69 per attempt after fees (controls −$110).
+  Better than chance, not yet a money-maker — forward-test before paying for an account.
+
 ---
 
 # evotrader

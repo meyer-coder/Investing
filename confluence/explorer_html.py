@@ -44,6 +44,8 @@ def render(payload: dict, *, standalone: bool = True) -> str:
     with open(TEMPLATE_PATH, encoding="utf-8") as fh:
         template = fh.read()
     body = template.replace("__DATA__", blob)
+    if payload.get("run") == "run2":
+        body = body.replace("<title>Confluence Trade Explorer</title>", "<title>Futures Confluence Explorer</title>", 1)
     if not standalone:
         return body
     return ("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"

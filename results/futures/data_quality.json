@@ -1,0 +1,222 @@
+{
+  "NQ": {
+    "yahoo": "NQ=F",
+    "overlap_bars": 13144,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9896,
+    "median_abs_ret_gap_bp": 0.191,
+    "median_level_ratio": 1.0038,
+    "feed": "F_NQ"
+  },
+  "ES": {
+    "yahoo": "ES=F",
+    "overlap_bars": 13138,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9768,
+    "median_abs_ret_gap_bp": 0.172,
+    "median_level_ratio": 1.00312,
+    "feed": "F_ES"
+  },
+  "YM": {
+    "yahoo": "YM=F",
+    "overlap_bars": 13180,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9795,
+    "median_abs_ret_gap_bp": 0.272,
+    "median_level_ratio": 1.00209,
+    "feed": "F_YM"
+  },
+  "RTY": {
+    "yahoo": "RTY=F",
+    "overlap_bars": 13134,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:10",
+    "ret_corr_5m": 0.9855,
+    "median_abs_ret_gap_bp": 0.336,
+    "median_level_ratio": 1.00272,
+    "feed": "F_RTY"
+  },
+  "NKD": {
+    "yahoo": "NKD=F",
+    "overlap_bars": 12109,
+    "from": "2026-07-17 04:10",
+    "to": "2026-09-25 20:05",
+    "ret_corr_5m": 0.8947,
+    "median_abs_ret_gap_bp": 2.562,
+    "median_level_ratio": 1.00055,
+    "feed": "F_NKD"
+  },
+  "CL": {
+    "yahoo": "CL=F",
+    "overlap_bars": 13627,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9535,
+    "median_abs_ret_gap_bp": 0.995,
+    "median_level_ratio": 1.00025,
+    "feed": "F_CL"
+  },
+  "NG": {
+    "yahoo": "NG=F",
+    "overlap_bars": 13230,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9011,
+    "median_abs_ret_gap_bp": 2.499,
+    "median_level_ratio": 1.00167,
+    "feed": "F_NG"
+  },
+  "GC": {
+    "yahoo": "GC=F",
+    "overlap_bars": 13633,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9771,
+    "median_abs_ret_gap_bp": 0.446,
+    "median_level_ratio": 1.01093,
+    "feed": "F_GC"
+  },
+  "SI": {
+    "yahoo": "SI=F",
+    "overlap_bars": 13596,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9728,
+    "median_abs_ret_gap_bp": 1.437,
+    "median_level_ratio": 1.00506,
+    "feed": "F_SI"
+  },
+  "HG": {
+    "yahoo": "HG=F",
+    "overlap_bars": 13552,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9602,
+    "median_abs_ret_gap_bp": 0.901,
+    "median_level_ratio": 1.00028,
+    "feed": "F_HG"
+  },
+  "6E": {
+    "yahoo": "6E=F",
+    "overlap_bars": 13588,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9651,
+    "median_abs_ret_gap_bp": 0.188,
+    "median_level_ratio": 1.00151,
+    "feed": "F_6E"
+  },
+  "6B": {
+    "yahoo": "6B=F",
+    "overlap_bars": 13471,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9607,
+    "median_abs_ret_gap_bp": 0.37,
+    "median_level_ratio": 1.00002,
+    "feed": "F_6B"
+  },
+  "6J": {
+    "yahoo": "6J=F",
+    "overlap_bars": 13590,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9694,
+    "median_abs_ret_gap_bp": 0.361,
+    "median_level_ratio": 1.0029,
+    "feed": "F_6J"
+  },
+  "6A": {
+    "yahoo": "6A=F",
+    "overlap_bars": 13571,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9684,
+    "median_abs_ret_gap_bp": 0.287,
+    "median_level_ratio": 0.99939,
+    "feed": "F_6A"
+  },
+  "6C": {
+    "yahoo": "6C=F",
+    "overlap_bars": 13466,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9241,
+    "median_abs_ret_gap_bp": 0.337,
+    "median_level_ratio": 1.00165,
+    "feed": "F_6C"
+  },
+  "6S": {
+    "yahoo": "6S=F",
+    "overlap_bars": 13400,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9162,
+    "median_abs_ret_gap_bp": 0.317,
+    "median_level_ratio": 1.00394,
+    "feed": "F_6S"
+  },
+  "6N": {
+    "yahoo": "6N=F",
+    "overlap_bars": 13471,
+    "from": "2026-07-17 04:05",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9537,
+    "median_abs_ret_gap_bp": 0.509,
+    "median_level_ratio": 1.00121,
+    "feed": "F_6N"
+  },
+  "6M": {
+    "yahoo": "6M=F",
+    "overlap_bars": 12732,
+    "from": "2026-07-17 04:10",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.8629,
+    "median_abs_ret_gap_bp": 0.752,
+    "median_level_ratio": 0.99678,
+    "feed": "F_6M"
+  },
+  "ZB": {
+    "yahoo": "ZB=F",
+    "overlap_bars": 11277,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.867,
+    "median_abs_ret_gap_bp": 1.091,
+    "median_level_ratio": 1.00023,
+    "feed": "F_ZB"
+  },
+  "ZS": {
+    "yahoo": "ZS=F",
+    "overlap_bars": 9810,
+    "from": "2026-07-17 04:00",
+    "to": "2026-09-25 18:15",
+    "ret_corr_5m": 0.9574,
+    "median_abs_ret_gap_bp": 1.152,
+    "median_level_ratio": 1.00082,
+    "feed": "F_ZS"
+  },
+  "ETH": {
+    "yahoo": "ETH-USD",
+    "overlap_bars": 11844,
+    "from": "2026-07-29 00:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9934,
+    "median_abs_ret_gap_bp": 0.801,
+    "median_level_ratio": 1.0008,
+    "feed": "F_ETH"
+  },
+  "BTC": {
+    "yahoo": "BTC-USD",
+    "overlap_bars": 11844,
+    "from": "2026-07-29 00:00",
+    "to": "2026-09-25 20:55",
+    "ret_corr_5m": 0.9773,
+    "median_abs_ret_gap_bp": 1.264,
+    "median_level_ratio": 1.00009,
+    "feed": "F_BTC"
+  }
+}
