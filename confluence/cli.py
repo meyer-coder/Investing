@@ -293,6 +293,22 @@ def cmd_futures_trades(args) -> int:
     return 0
 
 
+def cmd_fxr_script(args) -> int:
+    """FX Replay (FXR Script) indicator for a strategy: marks setups, simulates its trades, tallies R."""
+    from .fxr import render
+    with gzip.open(RUN2_PKL, "rb") as fh:
+        results = pickle.load(fh)["results"]
+    os.makedirs(args.out, exist_ok=True)
+    for sid in args.sids:
+        r = results.get(sid)
+        js = render(sid, {"trades": r["trades"], "win": r["win"], "net_r": r["net_r"]} if r else None)
+        path = os.path.join(args.out, f"{sid}.fxr.js")
+        with open(path, "w") as fh:
+            fh.write(js)
+        print(f"{sid} -> {path}")
+    return 0
+
+
 def cmd_futures_explorer(args) -> int:
     from .report import write_all
     with gzip.open(RUN2_PKL, "rb") as fh:
@@ -369,6 +385,10 @@ def build_parser() -> argparse.ArgumentParser:
     ft.add_argument("--risk", type=float, default=500.0, help="dollars risked per trade for the $ column")
     ft.add_argument("--out", default=os.path.join("results", "futures", "replay"))
     ft.set_defaults(func=cmd_futures_trades)
+    fx = sub.add_parser("fxr-script", help="FX Replay (FXR Script) indicator for 36-221 / 21-155")
+    fx.add_argument("sids", nargs="+")
+    fx.add_argument("--out", default=os.path.join("results", "futures", "replay", "fxr"))
+    fx.set_defaults(func=cmd_fxr_script)
     fe = sub.add_parser("futures-explorer", help="second run: explorer, CSV and logs")
     fe.add_argument("--out", default=os.path.join("results", "futures"))
     fe.set_defaults(func=cmd_futures_explorer)

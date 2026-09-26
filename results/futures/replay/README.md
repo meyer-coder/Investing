@@ -1,4 +1,54 @@
-# Replaying 36-221 and 21-155 by hand (FX Replay, TradingView bar replay)
+# Replaying 36-221 and 21-155 (FX Replay, TradingView bar replay)
+
+## FX Replay: paste-in scripts
+
+`fxr/36-221.fxr.js` and `fxr/21-155.fxr.js` are FXR Script indicators. On an NQ
+chart they mark every setup, simulate the trade the backtest takes and keep a
+running tally in R and dollars. Regenerate them with
+`python -m confluence.cli fxr-script 36-221 21-155`.
+
+1. **Session.** Start a backtesting session on **NQ** futures. For the last six
+   months start around 18 Mar 2026 (36-221) or 1 Mar 2026 (21-155). The script
+   ignores its first 300 bars while ATR, swings and averages settle: about 4 days
+   of 15-minute bars, or 3 weeks of 60-minute bars. Use the balance of the
+   account you want to test (e.g. $100,000 for FundedNext Rapid Daily 100K).
+2. **Chart.** 15-minute for 36-221, 60-minute for 21-155.
+3. **Script.** Editor (top left) → New → name it `36-221` → replace the template
+   with the whole `.fxr.js` file → Run → Proceed anyway. Repeat for 21-155 on its
+   own chart.
+4. **Inputs.** Risk per trade ($): 300 for 36-221 and 500 for 21-155 are the
+   optimiser's picks. Point value: 2 for MNQ, 20 for NQ. Round-trip cost: 1.11
+   points is $1.22 commission plus 2 ticks on MNQ. Take shorts: on.
+5. **Reading the chart.**
+   * A small triangle marks a setup. For 36-221 it shows the buy-stop or
+     sell-stop price.
+   * An arrow marks the fill, with the contracts for your risk.
+   * A green or red line runs from entry to exit, labelled with the result in R.
+   * The dashed red line is the initial stop.
+   * The text box shows the running total.
+6. **Trading it yourself.** When a triangle prints, place the order in FX
+   Replay:
+   * 36-221: a stop order at the printed price, cancelled after 3 bars, with
+     the stop 1.5 ATR away. Flat at 16:00.
+   * 21-155: a market order at the next bar's open, stop 1 ATR away. After +1R,
+     trail 2 ATR behind the best price. Flat at 16:05.
+
+The scripts were run outside FX Replay against 8 years of the backtest's own NQ
+bars. They took exactly the same 553 and 2,890 trades. Over the last six months
+they made +30.0R vs +30.0R and +27.9R vs +27.1R.
+
+They can differ from the backtest because they see bars, not the 1-minute path
+inside them:
+
+* On the bar a stop order fills, the script assumes the usual path: a green bar
+  goes open, low, high, close.
+* On 60-minute bars the script exits at the 16:00 open; the backtest exits at
+  16:05.
+* FX Replay's NQ prices differ a little from the CFD used here, so a setup near
+  a threshold can appear on one and not the other.
+
+If the marks look 4–5 hours off, the platform's bar times are not UTC. Report it
+and the clock conversion can be adjusted.
 
 `36-221_trades.csv` and `21-155_trades.csv` list every trade the backtest took,
 26 Sep 2018 → 25 Sep 2026. Regenerate them, or export any other strategy, with
@@ -60,10 +110,10 @@ Long rules. Shorts mirror every rule, using a bullish gap that price closed belo
 
 1. **Bearish gap.** Within the last 20 bars a bearish fair-value gap formed: a
    bar's high sits below the low of the bar two before it by at least 0.1 × ATR.
-   The gap runs from that high (bottom) up to that low (top).
-2. **Inversion.** Within the last 10 bars, price closed above the gap's top.
-3. **Retest.** The signal bar trades down to the gap's top (low at or below it)
-   and closes above it.
+   The gap runs from that high (bottom) up to that low (top). Only the most
+   recent gap counts.
+2. **Inversion and retest in one bar.** The signal bar trades at or below the
+   gap's top and closes above it.
 4. **Trigger.** The signal bar is green and closes above the previous bar's high.
 5. **Filter.** The signal bar closes in the top 30% of its range.
 6. **Session.** The signal bar closes between 18:05 and 15:30 New York. At most

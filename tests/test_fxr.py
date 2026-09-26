@@ -1,0 +1,77 @@
+"""The FX Replay scripts must take the same trades as the Python engine."""
+from __future__ import annotations
+
+import datetime as dt
+import json
+import shutil
+import subprocess
+
+import numpy as np
+import pytest
+
+from confluence import components2  # noqa: F401  (registers the legs)
+from confluence.bars import PROP_SESSIONS, minute_clock, resample
+from confluence.components import Ctx
+from confluence.data import Minutes
+from confluence.families2 import generate2
+from confluence.futures import backtest_markets
+from confluence.fxr import CONFIGS, render
+from confluence.runner import backtest_frame
+
+NODE = shutil.which("node")
+
+
+def _market(days=260, seed=5):
+    """A trending, mean-reverting random walk on weekday minutes, NQ-like prices."""
+    rng = np.random.default_rng(seed)
+    t0 = int(dt.datetime(2024, 1, 2, 23, 0, tzinfo=dt.timezone.utc).timestamp()) // 60
+    t = np.arange(t0, t0 + days * 1440, dtype=np.int64)
+    wd = ((t * 60 // 86400) + 3) % 7                       # 1970-01-01 was a Thursday
+    t = t[wd < 5]
+    n = t.size
+    drift = np.repeat(rng.normal(0, 0.9, n // 180 + 1), 180)[:n]
+    c = 17000 + np.cumsum(drift + rng.normal(0, 4.0, n))
+    o = np.r_[c[0], c[:-1]]
+    h = np.maximum(o, c) + np.abs(rng.normal(0, 2.0, n))
+    l = np.minimum(o, c) - np.abs(rng.normal(0, 2.0, n))
+    return Minutes("TEST", t, o, h, l, c, {}, rng.integers(1, 50, n).astype(float))
+
+
+@pytest.mark.parametrize("sid", sorted(CONFIGS))
+def test_rendered_script_is_complete(sid):
+    js = render(sid, {"trades": 10, "win": 0.5, "net_r": 0.1})
+    assert "__" not in js.replace("__trades", "")
+    assert "init = () =>" in js and "onTick = (" in js
+
+
+@pytest.mark.skipif(NODE is None, reason="node is not installed")
+@pytest.mark.parametrize("sid", sorted(CONFIGS))
+def test_fxr_script_takes_the_engines_trades(sid, tmp_path):
+    s = next(x for x in generate2() if x.sid == sid)
+    tf = int(CONFIGS[sid]["TF"])
+    frame = resample(minute_clock(_market()), tf)
+    tr = backtest_frame(Ctx(frame), s, 0, backtest_markets(), PROP_SESSIONS, 4.0)
+    py, session = {}, set()
+    for k in range(tr["gross"].size):
+        fill_bar = int(frame.m1_bar[np.searchsorted(frame.clock.m.t, tr["entry"][k])])
+        key = (int(frame.t[fill_bar]) * 60000, int(tr["dir"][k]))
+        py[key] = float(tr["gross"][k] - tr["cost"][k])
+        if tr["reason"][k] == 3:
+            session.add(key)
+    assert len(py) >= 5, "the synthetic market should produce a few trades"
+
+    bars = {"t": (frame.t.astype(np.int64) * 60000).tolist(), "o": frame.o.tolist(), "h": frame.h.tolist(),
+            "l": frame.l.tolist(), "c": frame.c.tolist()}
+    (tmp_path / "bars.json").write_text(json.dumps(bars))
+    (tmp_path / "s.js").write_text(render(sid))
+    subprocess.run([NODE, "tests/fxr_harness.js", str(tmp_path / "s.js"), str(tmp_path / "bars.json"),
+                    str(tmp_path / "out.json")], check=True, capture_output=True, timeout=120)
+    js = {(int(x["t0"]), int(x["dir"])): x["r"] for x in json.loads((tmp_path / "out.json").read_text())}
+
+    assert set(js) == set(py)                                   # same setups, same fill bars, same side
+    # Stop and trailing exits agree; session exits can differ a little on 60m bars, where the script
+    # leaves at the 16:00 bar's open and the engine at 16:05.
+    other = [k for k in py if k not in session]
+    assert np.mean([abs(js[k] - py[k]) < 0.05 for k in other]) >= 0.95
+    total_py, total_js = sum(py.values()), sum(js.values())
+    assert abs(total_js - total_py) <= 0.05 * abs(total_py) + 1.0
