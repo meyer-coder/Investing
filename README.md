@@ -26,7 +26,8 @@ fill is simulated.
 >   - the Three MNQ Setups ([findings](research/three-setups-findings.md));
 >   - Bot A on the FundedNext 25K and the Topstep 100K
 >     ([findings](research/bot-a-accounts-findings.md));
->   - the 13-market edge search ([findings](research/edges-findings.md)).
+>   - the 13-market edge search ([findings](research/edges-findings.md));
+>   - the Judas swing fade in all three sessions ([findings](research/judas-findings.md)).
 > - [`docs/prop-firm-accounts.md`](docs/prop-firm-accounts.md) compares the
 >   Topstep and FundedNext accounts.
 
