@@ -52,6 +52,9 @@ const S_TRADES = [{ dir: 0, t0: 0, entry: 0, stop: 0, t1: 0, exit: 0, r: 0, why:
 // wipes that bar's drawings each time, so they are kept here and drawn again on every tick.
 const S_OUT = { t0: 0, longSetup: NaN, shortSetup: NaN, buy: NaN, sell: NaN };
 const S_DRAW = [{ kind: 0, t0: 0, p0: 0, t1: 0, p1: 0, txt: '' }];   // kind 0 win, 1 loss, 2 stop, 3 error
+// Trades already written to the log. The count sits one level down so the live-bar rollback,
+// which copies only the top level, does not undo it, and a trade is not logged twice.
+const S_LOGGED = { upTo: { n: 0 } };
 
 onTick = (length, _moment, _, ta, inputs) => {
   // Helpers are declared with "var": FX Replay moves a const/let function out of onTick when it
@@ -131,6 +134,14 @@ onTick = (length, _moment, _, ta, inputs) => {
   };
   var tdmOf = function (minutesAfterMidnight) { return (((minutesAfterMidnight - 18 * 60) % 1440) + 1440) % 1440; };
   var nyDate = function (ms) { return civil(Math.floor((ms + nyOffsetHours(ms) * 3600000) / DAY_MS)); };
+  var nyStamp = function (ms) {                // 'YYYY-MM-DD HH:MM' New York
+    const local = ms + nyOffsetHours(ms) * 3600000;
+    const ymd = civil(Math.floor(local / DAY_MS));
+    const mins = Math.floor((((local % DAY_MS) + DAY_MS) % DAY_MS) / 60000);
+    var two = function (x) { return (x < 10 ? '0' : '') + x; };
+    return Math.floor(ymd / 10000) + '-' + two(Math.floor(ymd / 100) % 100) + '-' + two(ymd % 100) + ' ' +
+      two(Math.floor(mins / 60)) + ':' + two(mins % 60);
+  };
 
   var resetState = function () {
     S_BT.length = 0; S_BO.length = 0; S_BH.length = 0; S_BL.length = 0; S_BC.length = 0;
@@ -140,7 +151,7 @@ onTick = (length, _moment, _, ta, inputs) => {
     S_GAP.bearOk = false; S_GAP.bullOk = false;
     S_ORD.open = false; S_POS.open = false;
     S_RUN.curDay = -1; S_RUN.dayCount = 0; S_RUN.totalR = 0; S_RUN.errorShown = false;
-    S_TRADES.length = 0; S_DRAW.length = 0; S_OUT.t0 = 0;
+    S_TRADES.length = 0; S_DRAW.length = 0; S_OUT.t0 = 0; S_LOGGED.upTo.n = 0;
   };
 
   // ---------------------------------------------------------------- indicators
@@ -242,12 +253,22 @@ onTick = (length, _moment, _, ta, inputs) => {
     const k = S_BT.length - 1;
     if (k >= 0) S_DRAW.push({ kind: 3, t0: S_BT[k], p0: S_BH[k], t1: S_BT[k], p1: S_BL[k], txt: CFG.sid + ' SCRIPT ERROR: ' + msg });
   };
+  // A green/red line from entry to exit, and the dashed initial stop, which carries the label: it is
+  // horizontal, so the text stays readable.
   var drawTrade = function (tr) {
     if (!IN.draw || nyDate(tr.t0) < IN.drawFrom) return;
-    S_DRAW.push({ kind: tr.r > 0 ? 0 : 1, t0: tr.t0, p0: tr.entry, t1: tr.t1, p1: tr.exit,
-      txt: CFG.sid + ' #' + S_TRADES.length + ' ' + (tr.dir > 0 ? 'long' : 'short') + ' ' + fmt(tr.r, 2) + 'R | total ' +
-        fmt(S_RUN.totalR, 1) + 'R = ' + money(S_RUN.totalR * IN.riskUsd) });
-    S_DRAW.push({ kind: 2, t0: tr.t0, p0: tr.stop, t1: tr.t1, p1: tr.stop, txt: '' });
+    S_DRAW.push({ kind: tr.r > 0 ? 0 : 1, t0: tr.t0, p0: tr.entry, t1: tr.t1, p1: tr.exit, txt: '' });
+    S_DRAW.push({ kind: 2, t0: tr.t0, p0: tr.stop, t1: tr.t1, p1: tr.stop,
+      txt: '#' + S_TRADES.length + ' ' + nyStamp(tr.t0).slice(0, 10) + ' ' + (tr.dir > 0 ? 'long' : 'short') + ' ' +
+        fmt(tr.r, 2) + 'R | total ' + fmt(S_RUN.totalR, 1) + 'R = ' + money(S_RUN.totalR * IN.riskUsd) });
+  };
+  // Every closed trade also goes to the editor's log as a CSV row, to copy out and check.
+  var logTrade = function (tr) {
+    if (S_TRADES.length <= S_LOGGED.upTo.n) return;
+    S_LOGGED.upTo.n = S_TRADES.length;
+    if (S_TRADES.length === 1) console.log('strategy,trade,entry_time_ny,side,entry,stop,exit_time_ny,exit,exit_reason,net_r,total_r');
+    console.log([CFG.sid, S_TRADES.length, nyStamp(tr.t0), tr.dir > 0 ? 'long' : 'short', tr.entry.toFixed(2), tr.stop.toFixed(2),
+      nyStamp(tr.t1), tr.exit.toFixed(2), tr.why, tr.r.toFixed(3), S_RUN.totalR.toFixed(2)].join(','));
   };
 
   // ---------------------------------------------------------------- the trade simulation
@@ -260,6 +281,7 @@ onTick = (length, _moment, _, ta, inputs) => {
     S_RUN.totalR += r;
     S_POS.open = false;
     drawTrade(tr);
+    logTrade(tr);
   };
   var openTrade = function (k, entry) {
     const a = S_ORD.atr, dir = S_ORD.dir;
@@ -374,11 +396,13 @@ onTick = (length, _moment, _, ta, inputs) => {
       const d = S_DRAW[i];
       try {
         if (d.kind === 2) {
-          trendLine(newPoint(d.t0, d.p0), newPoint(d.t1, d.p1), { linecolor: color.rgba(235, 64, 52, 0.6), linewidth: 1, linestyle: 2 });
+          trendLine(newPoint(d.t0, d.p0), newPoint(d.t1, d.p1),
+            { linecolor: color.rgba(235, 64, 52, 0.6), linewidth: 1, linestyle: 2, showLabel: true }, d.txt);
+        } else if (d.kind === 3) {
+          trendLine(newPoint(d.t0, d.p0), newPoint(d.t1, d.p1), { linecolor: color.rgba(235, 64, 52, 0.95), linewidth: 3, showLabel: true }, d.txt);
         } else {
           trendLine(newPoint(d.t0, d.p0), newPoint(d.t1, d.p1),
-            { linecolor: d.kind === 0 ? color.rgba(38, 166, 91, 0.95) : color.rgba(235, 64, 52, 0.95), linewidth: d.kind === 3 ? 3 : 2, showLabel: true },
-            d.txt);
+            { linecolor: d.kind === 0 ? color.rgba(38, 166, 91, 0.95) : color.rgba(235, 64, 52, 0.95), linewidth: 2 });
         }
       } catch (e) {
         // a drawing that fails must not stop the rest

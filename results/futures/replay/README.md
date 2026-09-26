@@ -30,9 +30,13 @@ running tally in R and dollars. Regenerate them with
 5. **Reading the chart.**
    * A small triangle marks the signal bar of a setup.
    * A BUY or SELL arrow marks the bar the order filled.
-   * A green (win) or red (loss) line runs from entry to exit. Its label gives
-     the trade number, the result in R and the running total in R and dollars.
-   * The dashed red line is the initial stop.
+   * A green (win) or red (loss) line runs from entry to exit.
+   * The dashed red line is the initial stop. Its label gives the trade number,
+     the entry date, the side, the result in R and the running total in R and
+     dollars, e.g. `#32 2018-07-30 short -1.05R | total +10.8R = $5,390`.
+   * Every closed trade is also written to the editor's log as a CSV row
+     (`strategy,trade,entry_time_ny,side,entry,stop,exit_time_ny,exit,exit_reason,net_r,total_r`).
+     Copy it out to check the results or to compare them with the backtest.
 6. **Trading it yourself.** When a triangle prints, place the order in FX
    Replay:
    * 36-221: a stop order 1 tick beyond the signal bar's high (long) or low
@@ -60,9 +64,9 @@ and the clock conversion can be adjusted.
 
 If something fails inside FX Replay, the script keeps running where it can. It
 marks the bar with a red vertical line labelled "SCRIPT ERROR: ..." and the
-message, and writes the same line to the editor's log. Each trade line's label
+message, and writes the same line to the editor's log. Each stop line's label
 carries the running total ("total +25.4R = $12,700"). Paste the whole file: it
-is 388 lines, and the editor's last line should be `};`.
+is 412 lines, and the editor's last line should be `};`.
 
 **"There are errors in the script" when you press Run.** FX Replay runs its own
 checks before it runs a script, not only the red underlines in the editor. The
