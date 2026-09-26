@@ -27,7 +27,8 @@ fill is simulated.
 >   - Bot A on the FundedNext 25K and the Topstep 100K
 >     ([findings](research/bot-a-accounts-findings.md));
 >   - the 13-market edge search ([findings](research/edges-findings.md));
->   - the Judas swing fade in all three sessions ([findings](research/judas-findings.md)).
+>   - the Judas swing fade in all three sessions ([findings](research/judas-findings.md));
+>   - gold round numbers, crude z-score and euro EMA crossover ([findings](research/three-ideas-findings.md)).
 > - [`docs/prop-firm-accounts.md`](docs/prop-firm-accounts.md) compares the
 >   Topstep and FundedNext accounts.
 
