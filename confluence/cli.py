@@ -187,7 +187,7 @@ def cmd_futures_fetch(args) -> int:
             continue
         scale, inv = DUKA_SCALE[u.feed]
         m = build_duka_feed(u.feed, u.duka, scale, dt.date.fromisoformat(args.start), end, invert=inv,
-                            threads=args.threads)
+                            threads=args.threads, cme_week=u.code in ("BTC", "ETH"))
         print(f"{u.code:4s} {u.feed:6s} {len(m):>10,} minutes  {m.sources}")
     return 0
 

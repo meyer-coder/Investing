@@ -531,13 +531,16 @@ def crosscheck(feed: Minutes, yahoo_symbol: str) -> Dict[str, object]:
 # ------------------------------------------------------------------ Dukascopy-only feeds (with tick volume)
 
 def build_duka_feed(name: str, duka: str, scale: float, start: dt.date, end: dt.date, *,
-                    invert: bool = False, threads: int = 6, weekends: bool = False) -> "Minutes":
+                    invert: bool = False, threads: int = 6, weekends: bool = False,
+                    cme_week: bool = False) -> "Minutes":
     """A full feed from Dukascopy 1-minute bid candles, keeping tick volume.
 
     Used for the futures universe: every CME product maps to the Dukascopy
     instrument that tracks its underlying (``futures.py``).  ``invert`` turns
     a USD/XXX pair into the XXX/USD quote the CME contract uses (6J, 6C, 6S).
-    Saved as ``m1/<name>.npz`` with a ``v`` array next to OHLC.
+    Saved as ``m1/<name>.npz`` with a ``v`` array next to OHLC.  ``cme_week``
+    keeps only CME Globex hours (Sunday 6 PM to Friday 5 PM New York, no
+    5-6 PM break) for instruments that trade around the clock, like crypto.
     """
     days = [start + dt.timedelta(days=i) for i in range((end - start).days + 1)]
     days = [d for d in days if weekends or d.weekday() != 5]
@@ -552,9 +555,17 @@ def build_duka_feed(name: str, duka: str, scale: float, start: dt.date, end: dt.
     t, o, h, l, c, v = (x[keep] for x in cols)
     if invert:
         o, h, l, c = 1.0 / o, 1.0 / l, 1.0 / h, 1.0 / c
+    if cme_week:
+        import pandas as pd
+        ny = pd.to_datetime(t * 60, unit="s", utc=True).tz_convert("America/New_York")
+        wd, hr = ny.weekday.values, ny.hour.values
+        keep = (wd <= 3) | ((wd == 4) & (hr < 17)) | ((wd == 6) & (hr >= 18))    # Mon-Thu, Fri < 5 PM, Sun >= 6 PM
+        keep &= hr != 17                                                          # the daily 5-6 PM break
+        t, o, h, l, c, v = (x[keep] for x in (t, o, h, l, c, v))
     missing = sum(1 for g in got if g is None)
     sources = {"dukascopy": f"{duka} {_fmt(t[0])} .. {_fmt(t[-1])}, {len(t):,} minutes"
-                            + (", inverted" if invert else "") + (f", {missing} days failed" if missing else "")}
+                            + (", inverted" if invert else "") + (", CME hours" if cme_week else "")
+                            + (f", {missing} days failed" if missing else "")}
     os.makedirs(M1, exist_ok=True)
     np.savez(os.path.join(M1, f"{name}.npz"), t=t, o=o, h=h, l=l, c=c, v=v, sources=json.dumps(sources))
     _log(f"{name}: {sources['dukascopy']}")

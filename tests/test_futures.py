@@ -150,7 +150,8 @@ def _run(plan, daily, sims=4, days=40, low=None):
     return _simulate(daily, e_low, cnt, fp, fl, fc, np.array(plan.f_tiers, dtype=np.float64), starts, starts,
                      plan.target, plan.mll, plan.lock, plan.cons, plan.min_days, plan.price, plan.monthly,
                      plan.activation, plan.f_mll, plan.f_lock, plan.f_lock_paid, plan.pay_mode, plan.pay_thr,
-                     plan.pay_cap, plan.pay_min, plan.pay_frac, plan.split, plan.fee, plan.max_pay, days, days, 5, 21)
+                     plan.pay_cap, plan.pay_min, plan.pay_frac, plan.split, plan.fee, plan.max_pay, days, days, 5, 21,
+                     -1)
 
 
 def test_topstep_combine_passes_pays_and_charges_fees():

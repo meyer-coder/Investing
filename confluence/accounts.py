@@ -300,14 +300,19 @@ def _simulate(e_pnl, e_low, e_cnt, f_pnl, f_low, f_cnt, f_tiers,
               e_starts, f_starts,
               target, mll, lock, cons, min_days, price, monthly, activation,
               f_mll, f_lock, f_lock_paid, pay_mode, pay_thr, pay_cap, pay_min, pay_frac,
-              split, fee, max_pay, eval_days, funded_days, block, inactive):
+              split, fee, max_pay, eval_days, funded_days, block, inactive, seq_start):
     """One plan at one size for every simulated attempt.
 
     Returns per attempt: outcome (1 pass, -1 breached, 0 ran out of time),
     days in the evaluation, cost, total paid to the trader, number of payouts,
     funded outcome (1 breached, 0 not).
+
+    With ``seq_start >= 0`` there is no resampling: one attempt starts on that
+    day and walks the real calendar forward, the funded account starting the
+    day after the evaluation ends (the blind replay).
     """
     sims = e_starts.shape[0]
+    nd = e_pnl.size
     outcome = np.zeros(sims, np.int8)
     edays = np.zeros(sims, np.int32)
     cost = np.zeros(sims)
@@ -324,7 +329,12 @@ def _simulate(e_pnl, e_low, e_cnt, f_pnl, f_low, f_cnt, f_tiers,
         res = 0
         t = 0
         while t < eval_days:
-            d = e_starts[s, t // block] + (t % block)
+            if seq_start >= 0:
+                d = seq_start + t
+                if d >= nd:
+                    break
+            else:
+                d = e_starts[s, t // block] + (t % block)
             t += 1
             floor = min(peak - mll, lock)
             if e_cnt[d] > 0:
@@ -370,7 +380,12 @@ def _simulate(e_pnl, e_low, e_cnt, f_pnl, f_low, f_cnt, f_tiers,
         tier = 0
         t = 0
         while t < funded_days:
-            d = f_starts[s, t // block] + (t % block)
+            if seq_start >= 0:
+                d = seq_start + edays[s] + t
+                if d >= nd:
+                    break
+            else:
+                d = f_starts[s, t // block] + (t % block)
             t += 1
             floor = min(peak - f_mll, f_lock)
             if paid_once and floor < f_lock_paid:
@@ -497,7 +512,8 @@ class Optimiser:
     def run(self, underlying: str, gross: np.ndarray, risk_pts: np.ndarray, day_idx: np.ndarray,
             n_days: int, e_starts: np.ndarray, f_starts: np.ndarray,
             plans: Optional[Sequence[Plan]] = None, risks: Optional[Sequence[float]] = None,
-            mae: Optional[np.ndarray] = None) -> List[Result]:
+            mae: Optional[np.ndarray] = None, seq_start: int = -1) -> List[Result]:
+        eval_days, funded_days = (EVAL_DAYS, FUNDED_DAYS) if seq_start < 0 else (n_days, n_days)
         out: List[Result] = []
         cache: Dict[tuple, tuple] = {}
         risks = self.risks if risks is None else risks
@@ -525,7 +541,7 @@ class Optimiser:
                                  plan.min_days, plan.price, plan.monthly, plan.activation,
                                  plan.f_mll, plan.f_lock, plan.f_lock_paid, plan.pay_mode, plan.pay_thr,
                                  plan.pay_cap, plan.pay_min, plan.pay_frac, plan.split, plan.fee,
-                                 plan.max_pay, EVAL_DAYS, FUNDED_DAYS, BLOCK, INACTIVE_DAYS)
+                                 plan.max_pay, eval_days, funded_days, BLOCK, INACTIVE_DAYS, seq_start)
                 res = _summary(plan, r, outs, med, skipped)
                 res.contracts = describe_units(sz, med)
                 out.append(res)
@@ -543,6 +559,7 @@ STAGE2_SIMS = 3000         # the best few combinations again, with fresh draws
 STAGE2_TOP = 4
 MIN_TRADES = 20
 SAFE_BUST = 0.35           # the lower-risk alternative keeps the evaluation bust rate at or under this
+BLIND_SIMS = 200           # the blind test's account search, on data up to six months ago
 
 
 def _day_index(days: np.ndarray, trade_days: np.ndarray) -> np.ndarray:
@@ -599,18 +616,45 @@ def optimise_feed(feed: str, items: Sequence[Tuple[str, str]], trades_dir: str, 
                 sf += opt.run(und, t["gross"], risk_pts, di, n, e2, f2, plans=[PLAN_BY_KEY[r.plan]], risks=[r.risk],
                               mae=mae)
             safe = best_of(sf)
+        blind = _blind(opt, und, t, risk_pts, di, days, d6m, mae, rng)
         per_plan = {}
         for r in rs:
             if r.plan not in per_plan or r.ev > per_plan[r.plan].ev:
                 per_plan[r.plan] = r
         curve = [r for r in rs if r.plan == best.plan]
-        out[sid] = {"best": best.__dict__, "safe": safe.__dict__ if safe else None,
+        out[sid] = {"best": best.__dict__, "safe": safe.__dict__ if safe else None, "blind": blind,
                     "plans": [per_plan[p].__dict__ for p in per_plan],
                     "curve": [[r.risk, r.ev, r.p_pass, r.p_bust, r.p_payout] for r in curve]}
         if k and k % 500 == 0:
             print(f"[accounts] {feed}: {k}/{len(items)} ({time.time() - t0:.0f}s)", flush=True)
     print(f"[accounts] {feed}: {len(out)} strategies in {time.time() - t0:.0f}s", flush=True)
     return out
+
+
+def _blind(opt: "Optimiser", und: str, t: dict, risk_pts: np.ndarray, di: np.ndarray, days: np.ndarray,
+           d6m: int, mae, rng) -> Optional[dict]:
+    """Blind test: choose plan and risk from data up to six months ago, then replay the last six months.
+
+    The search is the same as the main one (every plan x every risk, recency weights measured from the
+    cut-off) but sees only days before it.  The replay then starts an evaluation on the first day of
+    the last six months and walks the real calendar forward, one attempt, no resampling.
+    """
+    n = days.size
+    pos6 = int(np.searchsorted(days, d6m))
+    pre = (di >= 0) & (di < pos6)
+    if pos6 < 260 or n - pos6 < 20 or pre.sum() < MIN_TRADES:
+        return None
+    eb = block_starts(pos6, days[:pos6], d6m - 1096, d6m - 183, BLIND_SIMS, EVAL_DAYS // BLOCK, rng)
+    fb = block_starts(pos6, days[:pos6], d6m - 1096, d6m - 183, BLIND_SIMS, FUNDED_DAYS // BLOCK, rng)
+    rp = opt.run(und, t["gross"], risk_pts, np.where(pre, di, -1), n, eb, fb, mae=mae)
+    bp = best_of(rp)
+    if bp is None:
+        return None
+    r = opt.run(und, t["gross"], risk_pts, di, n, eb[:1], fb[:1], plans=[PLAN_BY_KEY[bp.plan]],
+                risks=[bp.risk], mae=mae, seq_start=pos6)[0]
+    outcome = 1 if r.p_pass > 0 else (-1 if r.p_bust > 0 else 0)
+    return {"plan": bp.plan, "risk": bp.risk, "ev": bp.ev, "outcome": outcome, "days": r.days_pass,
+            "paid": r.paid, "cost": r.cost, "net": r.paid - r.cost, "f_bust": r.f_bust}
 
 
 def _load_one(path: str) -> Dict[str, Dict[str, np.ndarray]]:

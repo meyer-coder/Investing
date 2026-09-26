@@ -277,6 +277,30 @@ def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
                          "Best account among strategies with a positive EV") + f": {txt}. "
                         "Plans with daily payouts and no consistency rule (FundedNext Rapid Daily) or large payout caps "
                         "(Topstep 150K) tend to win because an attempt can lose only its fee while payouts keep coming."})
+    # blind test: account chosen with data up to six months ago, last six months replayed once, in order
+    bl = lambda x: acc[x["s"].sid].get("blind")
+    rb = [x for x in real if bl(x)]
+    cb = [x for x in ctrl if bl(x)]
+    if rb and cb:
+        cbar = float(np.percentile([bl(x)["ev"] for x in cb], 95))
+        pick = [x for x in rb if bl(x)["ev"] > cbar]
+
+        def summ(xs):
+            if not xs:
+                return "none"
+            return (f"{_pct([bl(x)['outcome'] == 1 for x in xs]):.0f}% passed, "
+                    f"{_pct([bl(x)['paid'] > 0 for x in xs]):.0f}% were paid, "
+                    f"{_pct([bl(x)['outcome'] == -1 for x in xs]):.0f}% blew the evaluation, "
+                    f"average net ${np.mean([bl(x)['net'] for x in xs]):+,.0f} per account")
+        good = pick and np.mean([bl(x)["net"] for x in pick]) > np.mean([bl(x)["net"] for x in cb])
+        out.append({"title": "Blind test: pick the account six months ago, trade the last six months",
+                    "tone": "good" if good else "warn",
+                    "body": (f"Using only data up to six months ago (same weights, measured from that date), the optimiser chose "
+                             f"each strategy's plan and risk; the last six months were then traded once, in order, from a "
+                             f"fresh evaluation. {len(pick):,} confluence strategies had a pre-cut-off EV above the random "
+                             f"controls' 95th percentile (${cbar:,.0f}): {summ(pick)}. All {len(rb):,} confluence strategies: "
+                             f"{summ(rb)}. Random controls: {summ(cb)}. This is the only account number here that the "
+                             f"choice could not see.")})
     risks = defaultdict(int)
     for x in above or pos:
         risks[acc[x["s"].sid]["best"]["risk"]] += 1
@@ -303,17 +327,17 @@ COLS = ["id", "name", "fam", "grp", "mkt", "tf", "ses", "ent", "stp", "tgt", "xt
         "trades", "pw", "win", "rr", "net", "gross", "tot", "usd", "dd", "cost",
         "r12", "n12", "e3y", "n3y", "e6", "n6", "score", "uday", "dp10", "dp90",
         "edge", "t", "pf", "pp", "ppay", "green", "spre", "et", "yp", "yn",
-        "acc", "risk", "ctr", "ev", "apass", "abust", "apay", "aroi", "adays"]
+        "acc", "risk", "ctr", "ev", "apass", "abust", "apay", "aroi", "adays", "bout", "bnet"]
 
 
 def _acct_values(x: dict, u: Universe) -> list:
     a = (u.accounts or {}).get(x["s"].sid)
     if not a:
-        return [None] * 9
-    b = a["best"]
+        return [None] * 11
+    b, bl = a["best"], a.get("blind")
     return [b["plan"], _f(b["risk"], 0), b["contracts"], _f(b["ev"], 0), _f(b["p_pass"], 4),
             _f(b["p_bust"], 4), _f(b["p_payout"], 4), _f(b["ev"] / b["cost"], 3) if b["cost"] else None,
-            _f(b["days_pass"], 1)]
+            _f(b["days_pass"], 1), bl["outcome"] if bl else None, _f(bl["net"], 0) if bl else None]
 
 
 def _row_values(x: dict, u: Universe = RUN1) -> list:
@@ -348,7 +372,10 @@ def _profile_values(x: dict, u: Universe = RUN1) -> dict:
                 "f_bust", "contracts", "skipped")
         nd = {"risk": 0, "ev": 0, "cost": 0, "paid_if": 0, "pay_n": 2, "days_pass": 1}
         pk = lambda d: [d[k] if k in ("plan", "contracts") else _f(d[k], nd.get(k, 3)) for k in keys]
+        bl = a.get("blind")
         extra["acct"] = {"best": pk(a["best"]), "safe": pk(a["safe"]) if a.get("safe") else None,
+                         "blind": [bl["plan"], _f(bl["risk"], 0), _f(bl["ev"], 0), bl["outcome"], _f(bl["days"], 0),
+                                   _f(bl["paid"], 0), _f(bl["cost"], 0), _f(bl["net"], 0)] if bl else None,
                          "plans": [pk(d) for d in a["plans"]],
                          "curve": [[_f(v, 3 if i >= 2 else 0) for i, v in enumerate(c)] for c in a["curve"]]}
     eq = [round(v, 1) for v in p.get("eq", [])]
@@ -407,7 +434,8 @@ CSV_HEADER = ["rank", "id", "name", "family", "group", "market", "timeframe", "s
               "t_stat", "edge_t_stat", "profit_factor", "years_positive", "years_traded", "p_pass_eval",
               "p_payout", "rules"]
 ACCOUNT_HEADER = ["best_account", "risk_per_trade_usd", "contracts_median", "ev_per_attempt_usd", "account_p_pass",
-                  "account_p_bust", "account_p_payout", "ev_over_cost", "median_days_to_pass"]
+                  "account_p_bust", "account_p_payout", "ev_over_cost", "median_days_to_pass",
+                  "blind_replay_outcome", "blind_replay_net_usd"]
 
 
 def write_csv(rows: List[dict], path: str, u: Universe = RUN1) -> None:

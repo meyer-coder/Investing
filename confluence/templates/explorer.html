@@ -411,14 +411,16 @@ const COLS = {
   ev:{h:"EV / attempt", w:98, f:usdS, c:1, tip:"expected payouts to you minus the fees of one attempt"},
   aroi:{h:"EV ÷ cost", w:78, f:v => v == null ? "–" : num(v, 1) + "×", c:1, tip:"expected value per dollar of fees"},
   adays:{h:"Days to pass", w:90, f:v => v == null ? "–" : num(v, 0), tip:"median trading days to pass, when it passes"},
+  bout:{h:"Blind 6M", w:84, l:1, f:v => v == null ? "–" : v === 1 ? "passed" : v === -1 ? "blown" : "open", tip:"blind test: the account chosen with data up to six months ago, traded through the last six months once, in order"},
+  bnet:{h:"Blind $", w:86, f:usdS, c:1, tip:"what that blind attempt paid you minus its fees"},
 };
 const FROZEN = ["rank", "id", "name"];
 const PRESETS = RUN2 ? {
   Core:["rank","id","name","mkt","tf","ses","trades","win","net","e6","score","acc","risk","apass","ev"],
-  Account:["rank","id","name","mkt","tf","ses","win","net","e6","acc","risk","ctr","apass","abust","apay","ev","aroi","adays"],
+  Account:["rank","id","name","mkt","tf","ses","win","net","e6","acc","risk","ctr","apass","abust","apay","ev","aroi","adays","bout","bnet"],
   Costs:["rank","id","name","mkt","tf","ses","trades","win","rr","net","gross","cost","tot","usd","dd","pf","t","edge","et"],
   Recency:["rank","id","name","mkt","tf","ses","trades","net","r12","e3y","e6","score","spre","yp","uday","dp10"],
-  All:["rank","id","name","mkt","tf","ses","trades","pw","win","rr","net","gross","tot","usd","dd","cost","r12","e3y","e6","score","spre","uday","dp10","yp","edge","et","t","pf","acc","risk","ctr","apass","abust","apay","ev","aroi","adays"],
+  All:["rank","id","name","mkt","tf","ses","trades","pw","win","rr","net","gross","tot","usd","dd","cost","r12","e3y","e6","score","spre","uday","dp10","yp","edge","et","t","pf","acc","risk","ctr","apass","abust","apay","ev","aroi","adays","bout","bnet"],
 } : {
   Core:["rank","id","name","mkt","tf","ses","trades","win","net","e3y","e6","score","uday","pp"],
   Costs:["rank","id","name","mkt","tf","ses","trades","win","rr","net","gross","cost","tot","usd","dd","pf","t","edge","et"],
@@ -658,6 +660,7 @@ function renderInspector(){
   if (r[C.trades] < MIN_T) pills.push(["warn", "Fewer than 30 trades"]);
   if (r[C.edge] > 0 && r[C.et] > D.t95 && r[C.trades] >= MIN_T) pills.push(["good", "Edge clears the luck bar"]);
   else if (!isC) pills.push(["bad", "Edge within luck"]);
+  if (RUN2 && r[C.acc]) pills.push(r[C.ev] > D.evbar ? ["good", "Account EV above the luck bar"] : ["warn", "Account EV within luck"]);
   if (r[C.tot] > 0 && (r[C.e3y] || 0) > 0 && (r[C.e6] || 0) > 0) pills.push(["good", "Profitable 8y · 3y · 6m"]);
   else if (r[C.tot] > 0) pills.push(["warn", "Profitable over 8y, not in every window"]);
   else pills.push(["bad", "Net loser over 8 years"]);
@@ -768,6 +771,7 @@ function accountSection(r, p){
     </div>
     <p class="thesis" style="margin-top:8px;font-size:12px">${esc(pl.label)}: ${esc(rules)}. Headline odds from 3,000 simulated attempts; the curves and the table from 300 per point.</p>
     ${safeLine(a, b)}
+    ${blindLine(a)}
     <h3 style="margin-top:12px">Risk per trade on ${esc(planShort(b.plan))} <em>EV per attempt</em></h3>
     <div class="chart" id="evChart"></div>
     <h3 style="margin-top:10px">Odds by risk per trade</h3>
@@ -783,6 +787,13 @@ function safeLine(a, b){
   if (!a.safe) return `<p class="thesis" style="font-size:12px">No plan and risk keeps the evaluation bust rate at or under 35% with a positive EV.</p>`;
   const s = aobj(a.safe);
   return `<p class="thesis" style="font-size:12px"><b style="color:var(--ink)">Lower-risk alternative:</b> ${esc(planShort(s.plan))} at ${usd(s.risk)} a trade (${esc(s.contracts)}): pass ${pc(s.p_pass)}, bust ${pc(s.p_bust)}, paid ${pc(s.p_payout)}, EV <span class="${tone(s.ev)}">${usdS(s.ev)}</span>.</p>`;
+}
+function blindLine(a){
+  const bl = a.blind;
+  if (!bl) return `<p class="thesis" style="font-size:12px">Blind test: too few trades before the last six months.</p>`;
+  const [plan, risk, ev, out, days, paid, cost, net] = bl;
+  const what = out === 1 ? `passed on day ${num(days, 0)}${paid > 0 ? ` and paid ${usd(paid)}` : ", no payout yet"}` : out === -1 ? "blew the evaluation" : "was still in the evaluation";
+  return `<p class="thesis" style="font-size:12px"><b style="color:var(--ink)">Blind test:</b> six months ago the choice would have been ${esc(planShort(plan))} at ${usd(risk)} a trade (EV then ${usdS(ev)}). Traded through the last six months in order, it ${what}: net <span class="${tone(net)}">${usdS(net)}</span> after ${usd(cost)} of fees.</p>`;
 }
 function drawAccountCurves(p){
   const c = p.acct.curve, b = aobj(p.acct.best), labels = c.map(x => x[0]);
