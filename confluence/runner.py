@@ -33,10 +33,10 @@ def _log(msg: str) -> None:
     print(f"[run {time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def signals(ctx: Ctx, s: Strategy):
+def signals(ctx: Ctx, s: Strategy, sessions=None):
     n = ctx.f.n
     if s.fam.group == "Control":
-        ws, we, _ = SESSIONS[s.session]
+        ws, we, _ = (sessions or SESSIONS)[s.session]
         p = min(s.tf / (max(we - ws, s.tf) * 2.0), 0.5)
         u = np.random.default_rng(s.seed).random(n)
         return u < p / 2, (u >= p / 2) & (u < p)
@@ -49,12 +49,13 @@ def signals(ctx: Ctx, s: Strategy):
     return L, S
 
 
-def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int) -> Dict[str, np.ndarray]:
+def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int, markets=None,
+                   sessions=None) -> Dict[str, np.ndarray]:
     f = ctx.f
     m = f.clock.m
-    mk = MARKETS[s.market]
-    L, S = signals(ctx, s)
-    ws, we, ex = SESSIONS[s.session]
+    mk = (markets or MARKETS)[s.market]
+    L, S = signals(ctx, s, sessions)
+    ws, we, ex = (sessions or SESSIONS)[s.session]
     st, k = STOP_CODE[s.stop]
     tr, trail = TARGET_CODE[s.target]
     swing_lo = ctx.get("swing_lo", lambda: ind.rolling_min(f.l, 5))
@@ -71,11 +72,15 @@ def backtest_frame(ctx: Ctx, s: Strategy, start_bar: int) -> Dict[str, np.ndarra
 
 
 def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date,
-             trades_dir: Optional[str]) -> List[dict]:
+             trades_dir: Optional[str], markets=None, sessions=None) -> List[dict]:
     t0 = time.time()
     mins = load_feed(feed)
     clock = minute_clock(mins)
     cal = Calendar.build(clock.day, start, end)
+    if trades_dir:
+        os.makedirs(trades_dir, exist_ok=True)
+        np.savez(os.path.join(trades_dir, f"cal_{feed}.npz"), days=cal.days,
+                 bounds=np.array([cal.start, cal.d3y, cal.d12m, cal.d6m, cal.end]))
     by_tf: Dict[int, List[Strategy]] = defaultdict(list)
     for s in strategies:
         by_tf[s.tf].append(s)
@@ -87,7 +92,7 @@ def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date
         start_bar = int(np.searchsorted(frame.day, cal.start))
         packed = defaultdict(list)
         for s in by_tf[tf]:
-            tr = backtest_frame(ctx, s, start_bar)
+            tr = backtest_frame(ctx, s, start_bar, markets, sessions)
             res = evaluate(tr, cal, seed=s.seed % (2 ** 31))
             res["profile"] = profile(tr, cal)
             res["sid"] = s.sid
@@ -108,19 +113,23 @@ def run_feed(feed: str, strategies: List[Strategy], start: dt.date, end: dt.date
 
 
 def run_all(strategies: Sequence[Strategy], start: dt.date, end: dt.date, *,
-            workers: int = 4, trades_dir: Optional[str] = "runs/trades") -> Dict[str, dict]:
+            workers: int = 4, trades_dir: Optional[str] = "runs/trades", markets=None,
+            sessions=None) -> Dict[str, dict]:
+    """Backtest every strategy.  ``markets`` / ``sessions`` default to the first run's."""
+    mk = markets or MARKETS
     by_feed: Dict[str, List[Strategy]] = defaultdict(list)
     for s in strategies:
-        by_feed[MARKETS[s.market].feed].append(s)
+        by_feed[mk[s.market].feed].append(s)
     order = sorted(by_feed, key=lambda f: -len(by_feed[f]))   # biggest first
     results: Dict[str, dict] = {}
     if workers <= 1:
         for feed in order:
-            for r in run_feed(feed, by_feed[feed], start, end, trades_dir):
+            for r in run_feed(feed, by_feed[feed], start, end, trades_dir, markets, sessions):
                 results[r["sid"]] = r
         return results
     with ProcessPoolExecutor(workers) as ex:
-        futs = {ex.submit(run_feed, feed, by_feed[feed], start, end, trades_dir): feed for feed in order}
+        futs = {ex.submit(run_feed, feed, by_feed[feed], start, end, trades_dir, markets, sessions): feed
+                for feed in order}
         for fut in as_completed(futs):
             for r in fut.result():
                 results[r["sid"]] = r

@@ -41,6 +41,8 @@ def _median(x) -> Optional[float]:
 def load_trades(trades_dir: str) -> Dict[str, Dict[str, np.ndarray]]:
     out: Dict[str, Dict[str, np.ndarray]] = {}
     for path in sorted(glob.glob(os.path.join(trades_dir, "*.npz"))):
+        if os.path.basename(path).startswith("cal_"):     # the runner's calendars
+            continue
         z = np.load(path)
         sid = z["sid"]
         order = np.argsort(sid, kind="stable")
@@ -54,7 +56,8 @@ def load_trades(trades_dir: str) -> Dict[str, Dict[str, np.ndarray]]:
 
 
 def analyse(strategies: Sequence[Strategy], results: Dict[str, dict], macro: Dict[str, object],
-            trades_dir: str, start: dt.date, end: dt.date) -> Dict[str, object]:
+            trades_dir: str, start: dt.date, end: dt.date, groups: Sequence[str] = GROUPS,
+            market_order: Sequence[str] = MARKET_ORDER) -> Dict[str, object]:
     trades = load_trades(trades_dir)
     d0 = (start - EPOCH).days - 5
     d1 = (end - EPOCH).days + 5
@@ -121,7 +124,7 @@ def analyse(strategies: Sequence[Strategy], results: Dict[str, dict], macro: Dic
         # heatmaps: median edge over controls by group and by market
         cm_by_val = [r["ctrl"] for r in out_rows]
         by_group = []
-        for g in GROUPS:
+        for g in groups:
             if g == "Control":
                 continue
             xs = [x for x in real if x[0].group == g]
@@ -131,7 +134,7 @@ def analyse(strategies: Sequence[Strategy], results: Dict[str, dict], macro: Dic
                 vals.append(None if (m is None or cm_by_val[j] is None) else m - cm_by_val[j])
             by_group.append({"name": g, "vals": vals})
         by_market = []
-        for mk in MARKET_ORDER:
+        for mk in market_order:
             xs = [x for x in real if x[0].market == mk]
             cs = [x for x in ctrl if x[0].market == mk]
             vals = []
@@ -161,7 +164,7 @@ def analyse(strategies: Sequence[Strategy], results: Dict[str, dict], macro: Dic
         re = [x[3][j][1] / x[3][j][0] for x in real if x[3][j][0] >= 5]
         ce = [x[3][j][1] / x[3][j][0] for x in ctrl if x[3][j][0] >= 5]
         by_g = []
-        for g in GROUPS:
+        for g in groups:
             if g == "Control":
                 continue
             v = [x[3][j][1] / x[3][j][0] for x in real if x[0].group == g and x[3][j][0] >= 5]
@@ -221,8 +224,8 @@ def analyse(strategies: Sequence[Strategy], results: Dict[str, dict], macro: Dic
             "dims": [{"key": d.key, "title": d.title, "question": d.question, "order": list(d.order),
                       "note": d.note} for d in DIMENSIONS],
             "agg": agg, "episodes": ep_rows, "overall": overall, "timeline": timeline,
-            "hist_edges": HIST_EDGES, "findings": findings, "groups": [g for g in GROUPS if g != "Control"],
-            "markets": list(MARKET_ORDER),
+            "hist_edges": HIST_EDGES, "findings": findings, "groups": [g for g in groups if g != "Control"],
+            "markets": list(market_order),
             "sources": {"fomc_days": len(macro["fomc"]), "nfp_days": len(macro["nfp"]),
                         "cpi_last": max(macro["cpi"]) if macro["cpi"] else None},
         },

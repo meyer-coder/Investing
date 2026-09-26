@@ -16,7 +16,8 @@ import json
 import math
 import os
 from collections import defaultdict
-from typing import Dict, Iterable, List, Sequence
+from dataclasses import dataclass, field
+from typing import Dict, Iterable, List, Optional, Sequence
 
 import numpy as np
 
@@ -29,6 +30,24 @@ from .metrics import (EVAL_DAYS, EVAL_MLL, EVAL_TARGET, FUNDED_DAYS, PAYOUT_MIN_
                       PAYOUT_WIN_DAYS, PAYOUT_WIN_USD, RISK_USD, SHRINK, WEIGHTS, score_of)
 
 MIN_TRADES_FOR_STATS = 30
+
+
+@dataclass
+class Universe:
+    """What a run covers: strategy groups and families, markets, sessions, where the trades are."""
+    key: str = "run1"
+    title: str = "Confluence production run"
+    groups: List[str] = field(default_factory=lambda: list(GROUPS))
+    families: list = field(default_factory=lambda: list(FAMILIES))
+    markets: dict = field(default_factory=lambda: dict(MARKETS))
+    sessions: dict = field(default_factory=lambda: dict(SESSIONS))
+    trades_dir: str = os.path.join("runs", "trades")
+    accounts: Optional[Dict[str, dict]] = None      # sid -> best prop account (second run)
+    plans: Optional[dict] = None                    # plan key -> description
+    category: Optional[Dict[str, str]] = None       # leg code -> confluence category
+
+
+RUN1 = Universe()
 
 
 def _f(x, nd=4):
@@ -94,7 +113,7 @@ def control_t95(rows) -> float:
 
 # ------------------------------------------------------------------ lessons
 
-def lessons(rows: List[dict], meta: dict) -> List[dict]:
+def lessons(rows: List[dict], meta: dict, u: Universe = RUN1) -> List[dict]:
     """Findings computed from the results — numbers, not opinions."""
     out: List[dict] = []
     real = [x for x in rows if x["s"].group != "Control"]
@@ -147,7 +166,9 @@ def lessons(rows: List[dict], meta: dict) -> List[dict]:
     })
     # families
     fam_stats = []
-    for f in FAMILIES:
+    for f in u.families:
+        if f.group == "Control":
+            continue
         xs = [x for x in real_e if x["s"].family == f.num]
         if not xs:
             continue
@@ -203,6 +224,9 @@ def lessons(rows: List[dict], meta: dict) -> List[dict]:
                      f"{e6(cr):+.3f}R / {p6(cr):.0f}% for random controls. This is the only number here that was not "
                      f"visible when the ranking was made — weigh the leaderboard by it."),
         })
+    if u.accounts is not None:
+        out += account_lessons(rows, u)
+        return out
     # prop
     cp = [x["r"]["p_pass"] for x in ctrl_e]
     rp = [x for x in real_e if x["r"]["p_pass"] > (np.percentile(cp, 95) if cp else 1)]
@@ -218,18 +242,84 @@ def lessons(rows: List[dict], meta: dict) -> List[dict]:
     return out
 
 
+def account_lessons(rows: List[dict], u: Universe) -> List[dict]:
+    """What the prop-account optimiser found (second run)."""
+    acc = u.accounts or {}
+    plans = u.plans or {}
+    real = [x for x in rows if x["s"].group != "Control" and x["s"].sid in acc]
+    ctrl = [x for x in rows if x["s"].group == "Control" and x["s"].sid in acc]
+    if not real:
+        return []
+    from .accounts import RISK_GRID as RISK_LEVELS
+    ev = lambda x: acc[x["s"].sid]["best"]["ev"]
+    cev = sorted(ev(x) for x in ctrl)
+    bar = float(np.percentile(cev, 95)) if cev else 0.0
+    pos = [x for x in real if ev(x) > 0]
+    above = [x for x in real if ev(x) > bar]
+    out = [{
+        "title": "The luck bar for account value",
+        "tone": "warn",
+        "body": (f"The optimiser tries {len(plans)} plans x {len(RISK_LEVELS)} risk levels on every strategy and keeps the best, so even "
+                 f"coin-flip strategies can look worth an attempt. Of {len(ctrl):,} random controls, "
+                 f"{_pct([v > 0 for v in cev]):.0f}% show a positive expected value per attempt and the 95th percentile "
+                 f"is ${bar:,.0f}. {len(pos):,} of {len(real):,} confluence strategies have a positive expected value; "
+                 f"{len(above):,} ({100 * len(above) / max(len(real), 1):.1f}%) beat the controls' 95th percentile. "
+                 f"Treat an account's EV as real only above that bar."),
+    }]
+    by_plan = defaultdict(list)
+    for x in above or pos:
+        by_plan[acc[x["s"].sid]["best"]["plan"]].append(x)
+    items = sorted(by_plan.items(), key=lambda kv: -len(kv[1]))
+    txt = "; ".join(f"{plans.get(k, {}).get('label', k)}: {len(v):,} (median EV ${_median(ev(x) for x in v):,.0f})"
+                    for k, v in items[:8])
+    out.append({"title": "Which account wins", "tone": "info",
+                "body": ("Best account among strategies above the luck bar" if above else
+                         "Best account among strategies with a positive EV") + f": {txt}. "
+                        "Plans with daily payouts and no consistency rule (FundedNext Rapid Daily) or large payout caps "
+                        "(Topstep 150K) tend to win because an attempt can lose only its fee while payouts keep coming."})
+    risks = defaultdict(int)
+    for x in above or pos:
+        risks[acc[x["s"].sid]["best"]["risk"]] += 1
+    rtxt = ", ".join(f"${int(k):,}: {v:,}" for k, v in sorted(risks.items()))
+    hi = [x for x in (above or pos) if acc[x["s"].sid]["best"]["risk"] >= 500]
+    out.append({"title": "More risk per trade often pays — with more blown accounts", "tone": "warn",
+                "body": (f"Risk per trade chosen for the best account: {rtxt}. {len(hi):,} of those strategies do best at "
+                         f"$500 or more per trade; their median chance of blowing the evaluation is "
+                         f"{100 * _median(acc[x['s'].sid]['best']['p_bust'] for x in hi) if hi else 0:.0f}%. "
+                         "A prop attempt's loss is capped at its fee, so the expected value can rise with risk even as "
+                         "most attempts fail. Size down if you cannot afford a string of resets.")})
+    return out
+
+
+def _fid(f) -> str:
+    if f.group == "Control":
+        return "CTRL"
+    return f"{f.num - 100:02d}" if f.num >= 100 else f"{f.num:02d}"
+
+
 # ------------------------------------------------------------------ explorer payload
 
 COLS = ["id", "name", "fam", "grp", "mkt", "tf", "ses", "ent", "stp", "tgt", "xtra", "legs",
         "trades", "pw", "win", "rr", "net", "gross", "tot", "usd", "dd", "cost",
         "r12", "n12", "e3y", "n3y", "e6", "n6", "score", "uday", "dp10", "dp90",
-        "edge", "t", "pf", "pp", "ppay", "green", "spre", "et", "yp", "yn"]
+        "edge", "t", "pf", "pp", "ppay", "green", "spre", "et", "yp", "yn",
+        "acc", "risk", "ctr", "ev", "apass", "abust", "apay", "aroi", "adays"]
 
 
-def _row_values(x: dict) -> list:
+def _acct_values(x: dict, u: Universe) -> list:
+    a = (u.accounts or {}).get(x["s"].sid)
+    if not a:
+        return [None] * 9
+    b = a["best"]
+    return [b["plan"], _f(b["risk"], 0), b["contracts"], _f(b["ev"], 0), _f(b["p_pass"], 4),
+            _f(b["p_bust"], 4), _f(b["p_payout"], 4), _f(b["ev"] / b["cost"], 3) if b["cost"] else None,
+            _f(b["days_pass"], 1)]
+
+
+def _row_values(x: dict, u: Universe = RUN1) -> list:
     s, r = x["s"], x["r"]
     short = s.fam.name if s.extra is None else f"{s.fam.name} + {LEGS[s.extra].label}"
-    return [s.sid, short, s.family, GROUPS.index(s.group), s.market, s.tf,
+    return [s.sid, short, s.family, u.groups.index(s.group), s.market, s.tf,
             s.session, s.entry, s.stop, s.target, s.extra or "", s.confluences,
             r["trades"], _f(r["per_week"], 3), _f(r["win"], 4), _f(r["avg_rr"], 3),
             _f(r["net_r"], 4), _f(r["gross_r"], 4), _f(r["total_r"], 2), _f(r["usd"], 0),
@@ -237,7 +327,8 @@ def _row_values(x: dict) -> list:
             _f(r["e3y"], 4), r["n3y"], _f(r["e6"], 4), r["n6"], _f(r["score"], 4),
             _f(r["usd_day"], 2), _f(r["d_p10"], 0), _f(r["d_p90"], 0), _f(x["edge"], 4),
             _f(r["t"], 2), _f(r["pf"], 3), _f(r["p_pass"], 4), _f(r["p_payout"], 4),
-            _f(r.get("green_days"), 3), _f(x["score_pre"], 4), _f(x["edge_t"], 2)] + list(_years_pos(r))
+            _f(r.get("green_days"), 3), _f(x["score_pre"], 4), _f(x["edge_t"], 2)] + list(_years_pos(r)) + \
+        _acct_values(x, u)
 
 
 def _years_pos(r: dict):
@@ -247,9 +338,19 @@ def _years_pos(r: dict):
     return sum(1 for v in traded if v[1] > 0), len(traded)
 
 
-def _profile_values(x: dict) -> dict:
+def _profile_values(x: dict, u: Universe = RUN1) -> dict:
     s, r = x["s"], x["r"]
     p = r.get("profile", {})
+    extra = {}
+    a = (u.accounts or {}).get(s.sid)
+    if a:
+        keys = ("plan", "risk", "p_pass", "p_bust", "p_payout", "ev", "cost", "paid_if", "pay_n", "days_pass",
+                "f_bust", "contracts", "skipped")
+        nd = {"risk": 0, "ev": 0, "cost": 0, "paid_if": 0, "pay_n": 2, "days_pass": 1}
+        pk = lambda d: [d[k] if k in ("plan", "contracts") else _f(d[k], nd.get(k, 3)) for k in keys]
+        extra["acct"] = {"best": pk(a["best"]), "safe": pk(a["safe"]) if a.get("safe") else None,
+                         "plans": [pk(d) for d in a["plans"]],
+                         "curve": [[_f(v, 3 if i >= 2 else 0) for i, v in enumerate(c)] for c in a["curve"]]}
     eq = [round(v, 1) for v in p.get("eq", [])]
     return {
         "eq": eq, "yrs": p.get("years", {}), "ex": p.get("exits", []), "last": p.get("last", []),
@@ -259,29 +360,41 @@ def _profile_values(x: dict) -> dict:
         "u3": _f(r.get("usd_day_3y"), 2), "u6": _f(r.get("usd_day_6m"), 2),
         "best": _f(r.get("best"), 2), "worst": _f(r.get("worst"), 2), "stk": r.get("streak", 0),
         "ad": r.get("active_days", 0), "r3": _f(r.get("r3y"), 2), "r6": _f(r.get("r6"), 2),
+        **extra,
     }
 
 
-def payload(rows: List[dict], meta: dict, month_labels: List[str]) -> dict:
-    fams = {f.num: {"name": f.name, "grp": GROUPS.index(f.group), "thesis": f.thesis, "fid": f.fid,
-                    "legs": list(f.legs)} for f in FAMILIES}
-    legs = {c: {"kind": l.kind, "label": l.label, "text": l.text} for c, l in LEGS.items()}
+def payload(rows: List[dict], meta: dict, month_labels: List[str], u: Universe = RUN1) -> dict:
+    fams = {f.num: {"name": f.name, "grp": u.groups.index(f.group), "thesis": f.thesis, "fid": _fid(f),
+                    "legs": list(f.legs)} for f in u.families}
+    used = {c for f in u.families for c in f.legs} | {c for f in u.families for c in (f.extras or ())}
+    legs = {c: {"kind": l.kind, "label": l.label, "text": l.text, "cat": (u.category or {}).get(c)}
+            for c, l in LEGS.items() if c in used or u.key == "run1"}
     markets = {k: {"name": m.name, "kind": m.kind, "feed": m.feed, "cost": m.cost_note,
-                   "yahoo": m.yahoo, "tv": m.tradingview} for k, m in MARKETS.items()}
+                   "yahoo": m.yahoo, "tv": m.tradingview} for k, m in u.markets.items()}
     return {
         "cols": COLS,
-        "rows": [_row_values(x) for x in rows],
-        "prof": [_profile_values(x) for x in rows],
-        "fams": fams, "legs": legs, "groups": GROUPS, "markets": markets,
+        "run": u.key, "title": u.title,
+        "rows": [_row_values(x, u) for x in rows],
+        "prof": [_profile_values(x, u) for x in rows],
+        "fams": fams, "legs": legs, "groups": u.groups, "markets": markets, "plans": u.plans,
         "months": month_labels, "meta": meta,
         "text": {"entry": ENTRY_TEXT, "stop": STOP_TEXT, "target": TARGET_TEXT},
-        "sessions": {k: [v[0], v[1], v[2]] for k, v in SESSIONS.items()},
+        "sessions": {k: [v[0], v[1], v[2]] for k, v in u.sessions.items()},
         "weights": WEIGHTS, "shrink": SHRINK, "risk": RISK_USD,
         "prop": {"target": EVAL_TARGET, "mll": EVAL_MLL, "days": EVAL_DAYS, "fdays": FUNDED_DAYS,
                  "wins": PAYOUT_WIN_DAYS, "winusd": PAYOUT_WIN_USD, "payout": PAYOUT_MIN_PROFIT},
         "t95": control_t95(rows),
-        "lessons": lessons(rows, meta),
+        "lessons": lessons(rows, meta, u),
+        **(_account_meta(rows, u) if u.accounts is not None else {}),
     }
+
+
+def _account_meta(rows: List[dict], u: Universe) -> dict:
+    from .accounts import RISK_GRID
+    acc = u.accounts or {}
+    cev = [acc[x["s"].sid]["best"]["ev"] for x in rows if x["s"].group == "Control" and x["s"].sid in acc]
+    return {"evbar": float(np.percentile(cev, 95)) if cev else 0.0, "risks": list(RISK_GRID)}
 
 
 # ------------------------------------------------------------------ writers
@@ -293,12 +406,14 @@ CSV_HEADER = ["rank", "id", "name", "family", "group", "market", "timeframe", "s
               "trades_6m", "score", "usd_per_day_avg", "usd_per_day_p10", "usd_per_day_p90", "edge_vs_random_r",
               "t_stat", "edge_t_stat", "profit_factor", "years_positive", "years_traded", "p_pass_eval",
               "p_payout", "rules"]
+ACCOUNT_HEADER = ["best_account", "risk_per_trade_usd", "contracts_median", "ev_per_attempt_usd", "account_p_pass",
+                  "account_p_bust", "account_p_payout", "ev_over_cost", "median_days_to_pass"]
 
 
-def write_csv(rows: List[dict], path: str) -> None:
+def write_csv(rows: List[dict], path: str, u: Universe = RUN1) -> None:
     with open(path, "w", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(CSV_HEADER)
+        w.writerow(CSV_HEADER + (ACCOUNT_HEADER if u.accounts is not None else []))
         for i, x in enumerate(rows, 1):
             s, r = x["s"], x["r"]
             w.writerow([i, s.sid, s.name, s.fam.name, s.group, s.market, f"{s.tf}m", s.session, s.entry,
@@ -309,10 +424,11 @@ def write_csv(rows: List[dict], path: str) -> None:
                         _f(r["e6"], 4), r["n6"], _f(r["score"], 4), _f(r["usd_day"], 2), _f(r["d_p10"], 0),
                         _f(r["d_p90"], 0), _f(x["edge"], 4), _f(r["t"], 2), _f(x["edge_t"], 2), _f(r["pf"], 3),
                         *_years_pos(r),
-                        _f(100 * r["p_pass"], 1), _f(100 * r["p_payout"], 1), " | ".join(s.rules())])
+                        _f(100 * r["p_pass"], 1), _f(100 * r["p_payout"], 1), " | ".join(s.rules())] +
+                       (_acct_values(x, u) if u.accounts is not None else []))
 
 
-def write_jsonl(rows: List[dict], path: str) -> None:
+def write_jsonl(rows: List[dict], path: str, u: Universe = RUN1) -> None:
     with gzip.open(path, "wt") as fh:
         for x in rows:
             s, r = x["s"], x["r"]
@@ -323,12 +439,14 @@ def write_jsonl(rows: List[dict], path: str) -> None:
                               for k, v in r.items() if k not in ("profile", "d_q")}
             rec["metrics"]["daily_usd_quantiles_p5_p10_p25_p50_p75_p90_p95"] = r.get("d_q")
             rec["profile"] = r.get("profile")
+            if u.accounts is not None and s.sid in u.accounts:
+                rec["account"] = u.accounts[s.sid]
             fh.write(json.dumps(rec, default=float) + "\n")
 
 
-def write_run_log(rows: List[dict], meta: dict, path: str, quality: dict | None) -> None:
+def write_run_log(rows: List[dict], meta: dict, path: str, quality: dict | None, u: Universe = RUN1) -> None:
     real = [x for x in rows if x["s"].group != "Control"]
-    lines = [f"# Confluence production run — {meta.get('generated', '')}", "",
+    lines = [f"# {u.title} — {meta.get('generated', '')}", "",
              f"* strategies tested: **{len(rows):,}** ({len(real):,} confluence + {len(rows) - len(real):,} random controls)",
              f"* test window: **{meta['start']} → {meta['end']}** (8 years), intraday only, flat at each session's exit",
              f"* recency weights in the score: 8y {WEIGHTS['8y']:.2f} · 3y {WEIGHTS['3y']:.2f} · 6m {WEIGHTS['6m']:.2f} "
@@ -338,7 +456,7 @@ def write_run_log(rows: List[dict], meta: dict, path: str, quality: dict | None)
              "## Data", "",
              "| market | feed | cost model (round trip) | proxy check vs real contract (5-min returns, last 60 days) |",
              "|---|---|---|---|"]
-    for code, m in MARKETS.items():
+    for code, m in u.markets.items():
         q = (quality or {}).get(code, {})
         chk = (f"corr {q['ret_corr_5m']:.3f} vs {q['yahoo']} over {q['overlap_bars']:,} bars"
                if "ret_corr_5m" in q else q.get("error", "not run"))
@@ -357,8 +475,19 @@ def write_run_log(rows: List[dict], meta: dict, path: str, quality: dict | None)
                      f"{(r['e3y'] if r['n3y'] else float('nan')):+.3f} | "
                      f"{(r['e6'] if r['n6'] else float('nan')):+.3f} | {r['score']:+.3f} | {r['usd_day']:+.1f} | "
                      f"{100 * r['p_pass']:.0f}% |")
+    if u.accounts is not None:
+        lines += ["", "## Top 25 by expected value per prop attempt (min 30 trades)", "",
+                  "| # | id | strategy | best account | risk/trade | contracts | P(pass) | P(bust) | P(payout) | EV/attempt |",
+                  "|---|---|---|---|---|---|---|---|---|---|"]
+        acc = [x for x in rows if x["s"].sid in u.accounts and x["r"]["trades"] >= MIN_TRADES_FOR_STATS]
+        acc.sort(key=lambda x: -u.accounts[x["s"].sid]["best"]["ev"])
+        for i, x in enumerate(acc[:25], 1):
+            b = u.accounts[x["s"].sid]["best"]
+            lines.append(f"| {i} | {x['s'].sid} | {x['s'].name} | {(u.plans or {}).get(b['plan'], {}).get('label', b['plan'])} | "
+                         f"${b['risk']:,.0f} | {b['contracts']} | {100 * b['p_pass']:.0f}% | {100 * b['p_bust']:.0f}% | "
+                         f"{100 * b['p_payout']:.0f}% | ${b['ev']:,.0f} |")
     lines += ["", "## Lessons", ""]
-    for l in lessons(rows, meta):
+    for l in lessons(rows, meta, u):
         title = l["title"] if l["title"].endswith(("?", ".")) else l["title"] + "."
         lines += [f"**{title}** {l['body']}", ""]
     with open(path, "w") as fh:
@@ -366,7 +495,7 @@ def write_run_log(rows: List[dict], meta: dict, path: str, quality: dict | None)
 
 
 def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: dict,
-              out_dir: str = "results") -> None:
+              out_dir: str = "results", u: Universe = RUN1) -> None:
     from .metrics import Calendar
     os.makedirs(out_dir, exist_ok=True)
     rows = build_rows(strategies, results)
@@ -380,11 +509,11 @@ def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: di
             quality = json.load(fh)
     meta = dict(meta)
     meta["quality"] = quality
-    write_csv(rows, os.path.join(out_dir, "strategies_ranked.csv"))
-    write_jsonl(rows, os.path.join(out_dir, "test_log.jsonl.gz"))
-    write_run_log(rows, meta, os.path.join(out_dir, "run_log.md"), quality)
-    learned = _learned(strategies, results, meta, start, end, out_dir)
-    pl = payload(rows, meta, labels)
+    write_csv(rows, os.path.join(out_dir, "strategies_ranked.csv"), u)
+    write_jsonl(rows, os.path.join(out_dir, "test_log.jsonl.gz"), u)
+    write_run_log(rows, meta, os.path.join(out_dir, "run_log.md"), quality, u)
+    learned = _learned(strategies, results, meta, start, end, out_dir, u)
+    pl = payload(rows, meta, labels, u)
     if learned:
         per = learned["per"]
         for x, prof in zip(rows, pl["prof"]):
@@ -399,11 +528,11 @@ def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: di
           f"test_log.jsonl.gz, run_log.md", flush=True)
 
 
-def _learned(strategies, results, meta, start: dt.date, end: dt.date, out_dir: str,
-             trades_dir: str = os.path.join("runs", "trades")):
+def _learned(strategies, results, meta, start: dt.date, end: dt.date, out_dir: str, u: Universe = RUN1):
     """Macro-regime analysis for the 'What we learned' page (skipped if trades or macro data are missing)."""
+    trades_dir = u.trades_dir
     if not os.path.isdir(trades_dir):
-        print("what we learned: no per-trade logs in runs/trades, skipping the macro page", flush=True)
+        print(f"what we learned: no per-trade logs in {trades_dir}, skipping the macro page", flush=True)
         return None
     try:
         from .insights import analyse
@@ -412,7 +541,7 @@ def _learned(strategies, results, meta, start: dt.date, end: dt.date, out_dir: s
     except Exception as exc:  # noqa: BLE001 - the explorer still builds without it
         print(f"what we learned: macro data unavailable ({exc}); skipping the macro page", flush=True)
         return None
-    learned = analyse(strategies, results, macro, trades_dir, start, end)
+    learned = analyse(strategies, results, macro, trades_dir, start, end, u.groups, list(u.markets))
     # The daily regime table, for anyone who wants to check a tag.
     days = np.arange((start - dt.date(1970, 1, 1)).days, (end - dt.date(1970, 1, 1)).days + 1)
     tags = tag_days(days, macro)

@@ -213,6 +213,14 @@ table.heat{border-collapse:separate;border-spacing:2px;font-variant-numeric:tabu
 .fam-note{font-size:12px;color:var(--ink-2);margin:8px 0 0}
 .fam-note b{color:var(--ink);font-weight:600}
 .scwrap{position:relative}
+.hbars{display:flex;flex-direction:column;gap:5px}
+.hb{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 92px;gap:10px;align-items:center;font-size:12px;font-variant-numeric:tabular-nums}
+.hb .hl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-2)}
+.hb .ht{height:12px;position:relative}
+.hb .hf{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--accent)}
+.hb .hv{text-align:right}
+.acct tbody tr{cursor:pointer}
+.acct tbody tr:hover td{background:var(--hover)}
 #lScatter{width:100%;display:block;cursor:crosshair}
 
 /* ---------------------------------------------------------------- responsive */
@@ -247,11 +255,12 @@ table.heat{border-collapse:separate;border-spacing:2px;font-variant-numeric:tabu
 
 <div class="app">
   <header class="bar">
-    <div class="brand">Confluence Trade Explorer</div>
+    <div class="brand" id="brand">Confluence Trade Explorer</div>
     <nav class="tabs" role="tablist" aria-label="Views">
       <button class="tab" role="tab" data-view="strategies" aria-selected="true" id="t-strategies">All strategies</button>
       <button class="tab" role="tab" data-view="families" aria-selected="false" id="t-families">Families</button>
       <button class="tab" role="tab" data-view="dimensions" aria-selected="false" id="t-dimensions">Groups &amp; dimensions</button>
+      <button class="tab" role="tab" data-view="accounts" aria-selected="false" id="t-accounts" hidden>Prop accounts</button>
       <button class="tab" role="tab" data-view="learned" aria-selected="false" id="t-learned">What we learned</button>
       <button class="tab" role="tab" data-view="guide" aria-selected="false" id="t-guide">How to read</button>
     </nav>
@@ -264,7 +273,7 @@ table.heat{border-collapse:separate;border-spacing:2px;font-variant-numeric:tabu
       <button class="btn more-toggle" id="moreBtn" type="button" aria-expanded="false">Filters</button>
       <label class="fld opt"><span>Market</span><select id="fMkt"></select></label>
       <label class="fld opt"><span>Timeframe</span><select id="fTf"></select></label>
-      <label class="fld opt"><span>Group</span><select id="fGrp"></select></label>
+      <label class="fld opt"><span id="fGrpLab">Group</span><select id="fGrp"></select></label>
       <label class="fld opt"><span>Family</span><select id="fFam"></select></label>
       <label class="fld opt"><span>Session</span><select id="fSes"></select></label>
       <label class="fld opt"><span>Entry</span><select id="fEnt"></select></label>
@@ -272,6 +281,9 @@ table.heat{border-collapse:separate;border-spacing:2px;font-variant-numeric:tabu
       <label class="fld opt"><span>Target</span><select id="fTgt"></select></label>
       <label class="fld num opt"><span>Min trades</span><input id="fMin" type="number" min="0" step="10" value="30"></label>
       <label class="fld num opt"><span>Max / week</span><input id="fMaxW" type="number" min="0" step="0.5" placeholder="any"></label>
+      <label class="fld num opt"><span>Win % ≥</span><input id="fWinMin" type="number" min="0" max="100" step="5" placeholder="any"></label>
+      <label class="fld num opt"><span>Win % ≤</span><input id="fWinMax" type="number" min="0" max="100" step="5" placeholder="any"></label>
+      <label class="fld opt" id="fAccWrap" hidden><span>Best account</span><select id="fAcc"></select></label>
       <label class="fld opt"><span>Show</span><select id="fOnly">
         <option value="all">everything</option>
         <option value="noctrl">hide random controls</option>
@@ -304,6 +316,7 @@ table.heat{border-collapse:separate;border-spacing:2px;font-variant-numeric:tabu
 
   <main class="view" id="v-families" hidden><div class="famwrap"><table class="fam" id="famTbl"><thead></thead><tbody></tbody></table></div></main>
   <main class="view scroll" id="v-dimensions" hidden><p class="dnote" id="dimNote"></p><div class="dcard" id="mktTf" style="margin-bottom:12px"></div><div class="dimgrid" id="dims"></div></main>
+  <main class="view scroll" id="v-accounts" hidden><div class="learned" id="accounts"></div></main>
   <main class="view scroll" id="v-learned" hidden><div class="learned" id="learned"></div></main>
   <main class="view scroll" id="v-guide" hidden><div class="doc" id="guide"></div></main>
 </div>
@@ -340,11 +353,21 @@ const C = {}; D.cols.forEach((c, i) => C[c] = i);
 const R = D.rows, P = D.prof, N = R.length, MIN_T = 30;
 const CTRL = D.groups.indexOf("Control");
 const famName = n => D.fams[n].name;
+const RUN2 = !!D.plans;
+const planShort = k => { const p = D.plans && D.plans[k]; if (!p) return k || "–"; return p.firm === "Topstep" ? `Topstep ${p.size / 1000}K` : `FN ${p.name}`; };
+const planCost = p => p.monthly ? `$${p.price}/month + $${p.activation} activation` : `$${p.price} one-time`;
+if (RUN2){
+  $("brand").textContent = "Futures Confluence Explorer";
+  document.title = "Futures Confluence Explorer";
+  $("t-accounts").hidden = false; $("fAccWrap").hidden = false;
+  $("t-dimensions").textContent = "Categories & dimensions";
+  $("fGrpLab").textContent = "Category";
+}
 
 // ------------------------------------------------------------------ header
 const nCtrl = R.filter(r => r[C.grp] === CTRL).length;
 const totTrades = R.reduce((a, r) => a + r[C.trades], 0);
-$("meta").textContent = `${N.toLocaleString()} strategies (${nCtrl.toLocaleString()} random controls) · ${(totTrades / 1e6).toFixed(1)}M trades · ${D.meta.start} → ${D.meta.end} · score weights 8y ${D.weights["8y"]} · 3y ${D.weights["3y"]} · 6m ${D.weights["6m"]}`;
+$("meta").textContent = `${RUN2 ? "Topstep · FundedNext futures · " : ""}${N.toLocaleString()} strategies (${nCtrl.toLocaleString()} random controls) · ${(totTrades / 1e6).toFixed(1)}M trades · ${D.meta.start} → ${D.meta.end} · score weights 8y ${D.weights["8y"]} · 3y ${D.weights["3y"]} · 6m ${D.weights["6m"]}`;
 $("t-families").textContent = `Families (${Object.keys(D.fams).length})`;
 
 // ------------------------------------------------------------------ columns
@@ -379,9 +402,24 @@ const COLS = {
   pf:{h:"PF", w:56, f:v => num(v, 2), tip:"profit factor: gross wins ÷ gross losses"},
   pp:{h:"P(pass)", w:72, f:v => pc(v, 1), p:1, tip:"Monte Carlo odds of passing a 50K-style evaluation"},
   ppay:{h:"P(payout)", w:80, f:v => pc(v, 1), p:1, tip:"odds of passing and then reaching a first payout"},
+  acc:{h:"Best account", w:150, l:1, f:v => v ? planShort(v) : "–", tip:"the Topstep or FundedNext plan with the highest expected value per attempt for this strategy"},
+  risk:{h:"Risk / trade", w:90, f:usd, tip:"dollar risk per trade (entry to stop) that maximises the expected value on that account"},
+  ctr:{h:"Contracts", w:120, l:1, f:v => v || "–", tip:"median position at that risk, e.g. 1 NQ + 4 MNQ (10 micros are bought as one mini)"},
+  apass:{h:"Acct pass", w:80, f:v => pc(v), p:1, tip:"chance of passing that account's evaluation within 120 trading days"},
+  abust:{h:"Acct bust", w:80, f:v => pc(v), tip:"chance of hitting the evaluation's max loss; the rest run out of time"},
+  apay:{h:"Acct payout", w:88, f:v => pc(v), p:1, tip:"chance of passing and then being paid at least once within 120 funded days"},
+  ev:{h:"EV / attempt", w:98, f:usdS, c:1, tip:"expected payouts to you minus the fees of one attempt"},
+  aroi:{h:"EV ÷ cost", w:78, f:v => v == null ? "–" : num(v, 1) + "×", c:1, tip:"expected value per dollar of fees"},
+  adays:{h:"Days to pass", w:90, f:v => v == null ? "–" : num(v, 0), tip:"median trading days to pass, when it passes"},
 };
 const FROZEN = ["rank", "id", "name"];
-const PRESETS = {
+const PRESETS = RUN2 ? {
+  Core:["rank","id","name","mkt","tf","ses","trades","win","net","e6","score","acc","risk","apass","ev"],
+  Account:["rank","id","name","mkt","tf","ses","win","net","e6","acc","risk","ctr","apass","abust","apay","ev","aroi","adays"],
+  Costs:["rank","id","name","mkt","tf","ses","trades","win","rr","net","gross","cost","tot","usd","dd","pf","t","edge","et"],
+  Recency:["rank","id","name","mkt","tf","ses","trades","net","r12","e3y","e6","score","spre","yp","uday","dp10"],
+  All:["rank","id","name","mkt","tf","ses","trades","pw","win","rr","net","gross","tot","usd","dd","cost","r12","e3y","e6","score","spre","uday","dp10","yp","edge","et","t","pf","acc","risk","ctr","apass","abust","apay","ev","aroi","adays"],
+} : {
   Core:["rank","id","name","mkt","tf","ses","trades","win","net","e3y","e6","score","uday","pp"],
   Costs:["rank","id","name","mkt","tf","ses","trades","win","rr","net","gross","cost","tot","usd","dd","pf","t","edge","et"],
   Recency:["rank","id","name","mkt","tf","ses","trades","net","r12","e3y","e6","score","spre","yp","uday","dp10"],
@@ -389,7 +427,8 @@ const PRESETS = {
   All:["rank","id","name","mkt","tf","ses","trades","pw","win","rr","net","gross","tot","usd","dd","cost","r12","e3y","e6","score","spre","uday","dp10","yp","edge","et","t","pf","pp","ppay"],
 };
 Object.entries(COLS).forEach(([k, c]) => { c.k = k; c.i = C[k]; });
-let preset = PRESETS[store.get("cte.preset")] ? store.get("cte.preset") : "Core";
+const PKEY = RUN2 ? "cte2.preset" : "cte.preset";
+let preset = PRESETS[store.get(PKEY)] ? store.get(PKEY) : "Core";
 
 // ------------------------------------------------------------------ filters
 function fill(el, items, label = x => x, any = "any"){
@@ -404,6 +443,14 @@ fill($("fEnt"), Object.keys(D.text.entry));
 fill($("fStp"), Object.keys(D.text.stop));
 fill($("fTgt"), Object.keys(D.text.target));
 fill($("fSort"), PRESETS.All.filter(k => k !== "rank"), k => COLS[k].h, "");
+if (RUN2){
+  const pk = Object.keys(D.plans);
+  $("fAcc").innerHTML = `<option value="">any</option><option value="firm:Topstep">Topstep, any size</option><option value="firm:FundedNext">FundedNext, any plan</option>` +
+    pk.map(k => `<option value="${esc(k)}">${esc(planShort(k))}</option>`).join("");
+  const o = $("fOnly"), prop = o.querySelector('option[value="prop"]');
+  prop.textContent = "account pass at least 50%";
+  prop.insertAdjacentHTML("afterend", `<option value="ev">positive EV per prop attempt</option><option value="evbar">EV above the random-control bar</option>`);
+}
 $("preset").innerHTML = Object.keys(PRESETS).map(p => `<button type="button" data-p="${p}" aria-pressed="${p === preset}">${p}</button>`).join("");
 
 const state = {sort: "score", dir: -1, view: [], sel: -1};
@@ -412,7 +459,9 @@ const hay = R.map(r => `${r[C.id]} ${r[C.name]} ${famName(r[C.fam])} ${r[C.mkt]}
 function apply(keepSel = true){
   const q = $("q").value.trim().toLowerCase(), mk = $("fMkt").value, tf = $("fTf").value, gr = $("fGrp").value,
         fa = $("fFam").value, se = $("fSes").value, en = $("fEnt").value, st = $("fStp").value, tg = $("fTgt").value,
-        mn = +$("fMin").value || 0, mw = $("fMaxW").value === "" ? null : +$("fMaxW").value, only = $("fOnly").value;
+        mn = +$("fMin").value || 0, mw = $("fMaxW").value === "" ? null : +$("fMaxW").value, only = $("fOnly").value,
+        w0 = $("fWinMin").value === "" ? null : +$("fWinMin").value / 100, w1 = $("fWinMax").value === "" ? null : +$("fWinMax").value / 100,
+        ac = RUN2 ? $("fAcc").value : "";
   const out = [];
   for (let i = 0; i < N; i++){
     const r = R[i];
@@ -427,13 +476,21 @@ function apply(keepSel = true){
     if (tg && r[C.tgt] !== tg) continue;
     if (r[C.trades] < mn) continue;
     if (mw != null && r[C.pw] > mw) continue;
+    if (w0 != null && !(r[C.win] >= w0 - 1e-9)) continue;
+    if (w1 != null && !(r[C.win] <= w1 + 1e-9)) continue;
+    if (ac){
+      const a = r[C.acc]; if (!a) continue;
+      if (ac.startsWith("firm:") ? D.plans[a].firm !== ac.slice(5) : a !== ac) continue;
+    }
     const isC = r[C.grp] === CTRL;
     if (only === "noctrl" && isC) continue;
     if (only === "ctrl" && !isC) continue;
     if (only === "net" && !(r[C.tot] > 0)) continue;
     if (only === "allwin" && !(r[C.tot] > 0 && (r[C.e3y] || 0) > 0 && (r[C.e6] || 0) > 0)) continue;
     if (only === "beat" && !(r[C.edge] > 0 && r[C.et] > D.t95 && r[C.trades] >= MIN_T)) continue;
-    if (only === "prop" && !(r[C.pp] >= 0.5)) continue;
+    if (only === "prop" && !((RUN2 ? r[C.apass] : r[C.pp]) >= 0.5)) continue;
+    if (only === "ev" && !(r[C.ev] > 0)) continue;
+    if (only === "evbar" && !(r[C.ev] > D.evbar && r[C.trades] >= MIN_T)) continue;
     if (only === "active" && !(r[C.pw] >= 1)) continue;
     out.push(i);
   }
@@ -518,7 +575,7 @@ function renderCards(){
     h += `<div class="card ${ri === state.sel ? "sel" : ""}" data-i="${ri}" style="top:${p * cardH}px;height:${cardH}px">
       <div class="t1"><span><span class="id">${esc(r[C.id])}</span> · ${esc(r[C.mkt])} ${r[C.tf]}m · ${esc(r[C.ses])}</span><span>#${p + 1}</span></div>
       <div class="t2">${r[C.grp] === CTRL ? '<span class="tag">CTRL</span>' : ""}${esc(r[C.name])}</div>
-      <div class="t3"><span>Net <b class="${tone(r[C.net])}">${sgn(r[C.net], 3)}R</b></span><span>Win <b>${pc(r[C.win])}</b></span><span>Trades <b>${r[C.trades].toLocaleString()}</b></span><span>Score <b class="${tone(r[C.score])}">${sgn(r[C.score], 3)}</b></span></div></div>`;
+      <div class="t3"><span>Net <b class="${tone(r[C.net])}">${sgn(r[C.net], 3)}R</b></span><span>Win <b>${pc(r[C.win])}</b></span><span>Trades <b>${r[C.trades].toLocaleString()}</b></span>${RUN2 ? `<span>EV <b class="${tone(r[C.ev])}">${usdS(r[C.ev])}</b></span>` : `<span>Score <b class="${tone(r[C.score])}">${sgn(r[C.score], 3)}</b></span>`}</div></div>`;
   }
   cardsEl.innerHTML = h;
   $("foot").textContent = n ? `${n.toLocaleString()} strategies · sorted by ${COLS[state.sort].h}` : "No strategy matches these filters.";
@@ -538,16 +595,16 @@ $("fSort").addEventListener("change", e => { state.sort = e.target.value; state.
 gwrap.addEventListener("click", e => { const el = e.target.closest("[data-i]"); if (el) select(+el.dataset.i, true); });
 $("preset").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
-  preset = b.dataset.p; store.set("cte.preset", preset);
+  preset = b.dataset.p; store.set(PKEY, preset);
   $("preset").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
   head(); renderList();
 });
-["q", "fMin", "fMaxW"].forEach(id => $(id).addEventListener("input", () => apply()));
-["fMkt","fTf","fGrp","fFam","fSes","fEnt","fStp","fTgt","fOnly"].forEach(id => $(id).addEventListener("change", () => apply()));
+["q", "fMin", "fMaxW", "fWinMin", "fWinMax"].forEach(id => $(id).addEventListener("input", () => apply()));
+["fMkt","fTf","fGrp","fFam","fSes","fEnt","fStp","fTgt","fOnly","fAcc"].forEach(id => $(id).addEventListener("change", () => apply()));
 $("reset").addEventListener("click", () => resetFilters());
 function resetFilters(){
-  $("q").value = ""; ["fMkt","fTf","fGrp","fFam","fSes","fEnt","fStp","fTgt"].forEach(id => $(id).value = "");
-  $("fMin").value = 30; $("fMaxW").value = ""; $("fOnly").value = "all"; state.sort = "score"; state.dir = -1; head(); apply(false);
+  $("q").value = ""; ["fMkt","fTf","fGrp","fFam","fSes","fEnt","fStp","fTgt","fAcc"].forEach(id => $(id).value = "");
+  $("fMin").value = 30; $("fMaxW").value = ""; $("fWinMin").value = ""; $("fWinMax").value = ""; $("fOnly").value = "all"; state.sort = "score"; state.dir = -1; head(); apply(false);
 }
 $("moreBtn").addEventListener("click", () => { const t = $("toolbar").classList.toggle("open"); $("moreBtn").setAttribute("aria-expanded", t); });
 
@@ -636,6 +693,7 @@ function renderInspector(){
       ${tile("Score", sgn(r[C.score], 3), tone(r[C.score]), `six months ago ${sgn(r[C.spre], 3)}`)}
     </div>
     <div class="sec"><h3>Equity, cumulative net R <em>shaded: last 3 years, last 6 months</em></h3><div class="chart" id="eqChart"></div></div>
+    ${RUN2 ? accountSection(r, p) : ""}
     <div class="two">
       <div class="sec"><h3>Windows</h3>
         <table class="mini"><tr><th class="l">window</th><th>trades</th><th>R/trade</th><th>total R</th></tr>
@@ -658,12 +716,12 @@ function renderInspector(){
       <dt>typical range, P10 … P90</dt><dd>${usdS(r[C.dp10])} … ${usdS(r[C.dp90])}</dd>
       <dt>worst · best day</dt><dd><span class="neg">${usdS(p.dmin)}</span> · <span class="pos">${usdS(p.dmax)}</span></dd></dl></div>
     <div class="sec"><h3>Rules <em>long side</em></h3><ol class="rules">${rules.map(x => `<li>${x}</li>`).join("")}</ol></div>
-    <div class="two">
-      <div class="sec"><h3>Prop evaluation</h3><dl class="kv">
+    <div class="${RUN2 ? "" : "two"}">
+      ${RUN2 ? "" : `<div class="sec"><h3>Prop evaluation</h3><dl class="kv">
         <dt>P(pass eval)</dt><dd class="${pclass(r[C.pp])}">${pc(r[C.pp], 1)}</dd>
         <dt>P(pass + payout)</dt><dd class="${pclass(r[C.ppay])}">${pc(r[C.ppay], 1)}</dd>
         <dt>median days to pass</dt><dd>${p.pd == null ? "–" : num(p.pd, 0)}</dd>
-        <dt>target · trailing DD</dt><dd>$${D.prop.target.toLocaleString()} · $${D.prop.mll.toLocaleString()}</dd></dl></div>
+        <dt>target · trailing DD</dt><dd>$${D.prop.target.toLocaleString()} · $${D.prop.mll.toLocaleString()}</dd></dl></div>`}
       <div class="sec"><h3>Exits and sides</h3><dl class="kv">
         <dt>stop · target</dt><dd>${ex[0].toLocaleString()} · ${ex[1].toLocaleString()}</dd>
         <dt>trail · time</dt><dd>${ex[2].toLocaleString()} · ${ex[3].toLocaleString()}</dd>
@@ -685,6 +743,54 @@ function renderInspector(){
   drawHist($("histChart"), p.hist || []);
   if ($("rgRows")) drawRegimes($("rgRows"), p);
   drawDays($("dayChart"), p);
+  if (RUN2 && p.acct) drawAccountCurves(p);
+}
+
+// ------------------------------------------------------------------ prop account (second run)
+const AK = ["plan","risk","p_pass","p_bust","p_payout","ev","cost","paid_if","pay_n","days_pass","f_bust","contracts","skipped"];
+const aobj = arr => Object.fromEntries(AK.map((k, i) => [k, arr[i]]));
+function accountSection(r, p){
+  const a = p.acct;
+  if (!a) return `<div class="sec"><h3>Prop account</h3><p class="mut">Fewer than 20 trades over 8 years, so it was not sized for an account.</p></div>`;
+  const b = aobj(a.best), pl = D.plans[b.plan], beat = b.ev > D.evbar;
+  const rows = a.plans.map(aobj).sort((x, y) => y.ev - x.ev);
+  const rules = [`target $${pl.target.toLocaleString()}`, `max loss $${pl.mll.toLocaleString()} (end-of-day trailing)`,
+    `${pl.cap} minis / ${pl.cap * 10} micros`, pl.dll ? `daily loss limit $${pl.dll.toLocaleString()}` : null,
+    pl.cons ? `consistency ${Math.round(pl.cons * 100)}%` : null, `payouts up to $${pl.paycap.toLocaleString()} each, ${Math.round(pl.split * 100)}% to you`].filter(Boolean).join(" · ");
+  return `<div class="sec"><h3>Best prop account <em>highest expected value per attempt</em></h3>
+    <div class="tiles">
+      ${tile("Account", planShort(b.plan), "", planCost(pl))}
+      ${tile("Risk per trade", usd(b.risk), "", b.contracts + (b.skipped > 0.005 ? ` · ${pc(b.skipped)} skipped` : ""))}
+      ${tile("EV per attempt", usdS(b.ev), tone(b.ev), `fees ${usd(b.cost)} · ${beat ? "above" : "within"} luck bar ${usdS(D.evbar)}`)}
+      ${tile("Pass evaluation", pc(b.p_pass), pclass(b.p_pass), `bust ${pc(b.p_bust)} · ${b.days_pass == null ? "–" : num(b.days_pass, 0)} days`)}
+      ${tile("Paid at least once", pc(b.p_payout), pclass(b.p_payout), `${usd(b.paid_if)} on average when paid`)}
+      ${tile("Funded account lost", pc(b.f_bust), "", `${num(b.pay_n, 1)} payouts per funded account`)}
+    </div>
+    <p class="thesis" style="margin-top:8px;font-size:12px">${esc(pl.label)}: ${esc(rules)}. Headline odds from 3,000 simulated attempts; the curves and the table from 300 per point.</p>
+    ${safeLine(a, b)}
+    <h3 style="margin-top:12px">Risk per trade on ${esc(planShort(b.plan))} <em>EV per attempt</em></h3>
+    <div class="chart" id="evChart"></div>
+    <h3 style="margin-top:10px">Odds by risk per trade</h3>
+    <div class="legend"><span><i class="line" style="background:var(--gain)"></i>pass</span><span><i class="line" style="background:var(--loss)"></i>bust</span><span><i class="line" style="background:var(--accent)"></i>paid at least once</span></div>
+    <div class="chart" id="odChart"></div>
+    <h3 style="margin-top:12px">Every plan at its best risk</h3>
+    <div class="tw"><table class="mini" style="white-space:nowrap"><tr><th class="l">plan</th><th>risk</th><th class="l">contracts</th><th>pass</th><th>bust</th><th>paid</th><th>EV</th></tr>
+    ${rows.map(x => `<tr${x.plan === b.plan ? ' style="font-weight:600"' : ""}><td class="l">${esc(planShort(x.plan))}</td><td>${usd(x.risk)}</td><td class="l">${esc(x.contracts)}</td><td>${pc(x.p_pass)}</td><td>${pc(x.p_bust)}</td><td>${pc(x.p_payout)}</td><td class="${tone(x.ev)}">${usdS(x.ev)}</td></tr>`).join("")}</table></div>
+  </div>`;
+}
+function safeLine(a, b){
+  if (b.p_bust <= 0.35) return `<p class="thesis" style="font-size:12px">This pick already busts no more than 35% of evaluations.</p>`;
+  if (!a.safe) return `<p class="thesis" style="font-size:12px">No plan and risk keeps the evaluation bust rate at or under 35% with a positive EV.</p>`;
+  const s = aobj(a.safe);
+  return `<p class="thesis" style="font-size:12px"><b style="color:var(--ink)">Lower-risk alternative:</b> ${esc(planShort(s.plan))} at ${usd(s.risk)} a trade (${esc(s.contracts)}): pass ${pc(s.p_pass)}, bust ${pc(s.p_bust)}, paid ${pc(s.p_payout)}, EV <span class="${tone(s.ev)}">${usdS(s.ev)}</span>.</p>`;
+}
+function drawAccountCurves(p){
+  const c = p.acct.curve, b = aobj(p.acct.best), labels = c.map(x => x[0]);
+  const mark = labels.indexOf(b.risk), kf = v => "$" + (v >= 1000 ? (v / 1000) + "K" : v);
+  lineChart($("evChart"), {labels, series: [{name: "EV per attempt", vals: c.map(x => x[1]), color: "var(--accent)", area: true}], H: 150, yZero: true, dots: true, mark, markLabel: "chosen",
+    xtick: kf, xfmt: v => `risk $${v.toLocaleString()} per trade`, fmt: v => usdS(v), tickfmt: v => usd(v), aria: "Expected value per attempt by risk per trade"});
+  lineChart($("odChart"), {labels, series: [{name: "pass", vals: c.map(x => x[2]), color: "var(--gain)"}, {name: "bust", vals: c.map(x => x[3]), color: "var(--loss)"}, {name: "paid at least once", vals: c.map(x => x[4]), color: "var(--accent)"}],
+    H: 140, yZero: true, dots: true, xtick: kf, xfmt: v => `risk $${v.toLocaleString()} per trade`, fmt: v => pc(v), tickfmt: v => pc(v), aria: "Pass, bust and payout odds by risk per trade"});
 }
 
 // ------------------------------------------------------------------ charts
@@ -793,14 +899,18 @@ function lineChart(host, o){
     g += `<rect x="${x(a)}" y="${pt}" width="${Math.max(x(z) - x(a), 3)}" height="${H - pt - pb}" fill="${b.fill || "var(--band-6m)"}"/><text x="${x(a) + 3}" y="${pt - 5}">${esc(b.label)}</text>`;
   });
   ticks.forEach(t => { g += `<line x1="${pl}" x2="${W - pr}" y1="${y(t)}" y2="${y(t)}" stroke="${t === 0 && o.yZero ? "var(--ink-3)" : "var(--line)"}"/><text x="${pl - 6}" y="${y(t) + 3.5}" text-anchor="end">${(o.tickfmt || (v => num(v, 1)))(t)}</text>`; });
-  labels.forEach((m, k) => { if (m.endsWith("-01")) g += `<text x="${x(k)}" y="${H - 6}" text-anchor="middle">${m.slice(0, 4)}</text>`; });
+  labels.forEach((m, k) => { const t = o.xtick ? o.xtick(m, k) : (String(m).endsWith("-01") ? String(m).slice(0, 4) : null);
+    if (t != null) g += `<text x="${x(k)}" y="${H - 6}" text-anchor="middle">${esc(t)}</text>`; });
   o.series.forEach(s => {
     let d = "", pen = false;
     s.vals.forEach((v, i) => { if (v == null){ pen = false; return; } d += `${pen ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`; pen = true; });
     if (s.area){ const f = s.vals.findIndex(v => v != null), l = s.vals.length - 1 - [...s.vals].reverse().findIndex(v => v != null);
       g += `<path d="${d}L${x(l).toFixed(1)},${y(Math.max(y0, Math.min(0, y1))).toFixed(1)}L${x(f).toFixed(1)},${y(Math.max(y0, Math.min(0, y1))).toFixed(1)}Z" fill="${s.color}" fill-opacity=".10"/>`; }
     g += `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    if (o.dots) s.vals.forEach((v, i) => { if (v != null) g += `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="${i === o.mark ? 5 : 3}" fill="${s.color}" stroke="var(--panel)" stroke-width="2"/>`; });
   });
+  if (o.mark != null && o.mark >= 0 && o.series[0].vals[o.mark] != null)
+    g += `<text class="lab" x="${x(o.mark)}" y="${y(o.series[0].vals[o.mark]) - 10}" text-anchor="middle">${esc(o.markLabel || "")}</text>`;
   g += `<line class="cx" y1="${pt}" y2="${H - pb}" stroke="var(--ink-2)" visibility="hidden"/><rect class="hit" x="${pl}" y="0" width="${W - pl - pr}" height="${H}" fill="transparent"/>`;
   host.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria || "line chart")}">${g}</svg><div class="tip"></div>`;
   const svg = host.querySelector("svg"), tip = host.querySelector(".tip"), cx = svg.querySelector(".cx");
@@ -810,7 +920,7 @@ function lineChart(host, o){
     cx.setAttribute("x1", x(i)); cx.setAttribute("x2", x(i)); cx.setAttribute("visibility", "visible");
     tip.style.display = "block"; tip.style.left = (x(i) * b.width / W) + "px"; tip.style.top = (pt * b.height / H + 30) + "px";
     tip.textContent = "";
-    const head = document.createElement("span"); head.textContent = labels[i]; head.style.marginLeft = "0"; tip.append(head);
+    const head = document.createElement("span"); head.textContent = o.xfmt ? o.xfmt(labels[i]) : labels[i]; head.style.marginLeft = "0"; tip.append(head);
     o.series.forEach(s => { const row = document.createElement("div"); const k = document.createElement("i"); k.className = "lk"; k.style.background = s.color;
       const v = document.createElement("b"); v.textContent = s.vals[i] == null ? "–" : (o.fmt || (z => num(z, 2)))(s.vals[i]);
       const nm = document.createElement("span"); nm.textContent = s.name; row.append(k, v, nm); tip.append(row); });
@@ -986,12 +1096,13 @@ function drawScatter(){
 }
 
 // ------------------------------------------------------------------ views
-const VIEWS = ["strategies", "families", "dimensions", "learned", "guide"];
+const VIEWS = ["strategies", "families", "dimensions", "accounts", "learned", "guide"];
 function show(v){
   VIEWS.forEach(x => { $("v-" + x).hidden = x !== v; $("t-" + x).setAttribute("aria-selected", x === v); });
   if (v === "families") renderFamilies();
   if (v === "dimensions") renderDims();
   if (v === "learned") renderLearned();
+  if (v === "accounts") renderAccounts();
   if (v === "strategies"){ renderList(); renderInspector(); }
   try { history.replaceState(null, "", "#" + v); } catch (e) {}
 }
@@ -1013,7 +1124,7 @@ function renderFamilies(){
         edge: median(e.map(i => R[i][C.edge])), beat: share(e, i => R[i][C.edge] > 0 && R[i][C.et] > D.t95), best, bscore: best == null ? null : R[best][C.score]};
     });
   }
-  const H = [["fid","#",1],["name","Family",1],["grp","Group",1],["count","Strategies"],["pw","Trades / wk"],["win","Win %"],["prof","% profitable"],["net","Median net R/tr"],["edge","Median edge"],["beat","% clear luck bar"],["bscore","Best score"]];
+  const H = [["fid","#",1],["name","Family",1],["grp",RUN2 ? "Category" : "Group",1],["count","Strategies"],["pw","Trades / wk"],["win","Win %"],["prof","% profitable"],["net","Median net R/tr"],["edge","Median edge"],["beat","% clear luck bar"],["bscore","Best score"]];
   const rows = famRows.slice().sort((a, b) => { const x = a[famSort.k], y = b[famSort.k]; if (x == null) return 1; if (y == null) return -1; return typeof x === "string" ? famSort.d * x.localeCompare(y) : famSort.d * (x - y); });
   const t = $("famTbl");
   t.querySelector("thead").innerHTML = "<tr>" + H.map(([k, h, l]) => `<th class="${l ? "l" : ""}" data-k="${k}"${famSort.k === k ? ` aria-sort="${famSort.d < 0 ? "descending" : "ascending"}"` : ""}>${h}${famSort.k === k ? (famSort.d < 0 ? " ▼" : " ▲") : ""}</th>`).join("") + `<th class="l">Best strategy (click a row to list the family)</th></tr>`;
@@ -1039,7 +1150,9 @@ function renderDims(){
   $("mktTf").innerHTML = `<h3>Market × timeframe</h3><p class="dnote">Median net R per trade of the confluence strategies in each cell. Costs dominate the left columns; the right columns show what the setups do when friction is small.</p><div class="tw"><table class="heat big"><tr><th class="l">market</th>${tfs.map(t => `<th class="vh">${t}m</th>`).join("")}</tr>${mks.map((mk, a) => `<tr><th class="l">${mk}</th>${grid[a].map((v, b) => `<td style="background:${heatBg(v, gm)}" title="${mk} ${tfs[b]}m: ${sgn(v, 3)}R">${v == null ? "·" : sgn(v, 2)}</td>`).join("")}</tr>`).join("")}</table></div>`;
   $("dimNote").textContent = `Strategies with at least ${MIN_T} trades (${idx.length.toLocaleString()} of ${N.toLocaleString()}). Bars show the median net R per trade around zero; edge compares gross R with random controls in the same market and exit style.`;
   const dims = [
-    ["Group", i => D.groups[R[i][C.grp]]], ["Market", i => R[i][C.mkt]], ["Timeframe", i => R[i][C.tf] + "m"],
+    [RUN2 ? "Category" : "Group", i => D.groups[R[i][C.grp]]], ["Market", i => R[i][C.mkt]], ["Timeframe", i => R[i][C.tf] + "m"],
+    ["Win rate", i => { const w = R[i][C.win]; return w < 0.3 ? "under 30%" : w < 0.4 ? "30–40%" : w < 0.5 ? "40–50%" : w < 0.6 ? "50–60%" : "60% or more"; }],
+    ...(RUN2 ? [["Best prop account", i => R[i][C.acc] ? planShort(R[i][C.acc]) : "not sized"]] : []),
     ["Session", i => R[i][C.ses]], ["Entry order", i => R[i][C.ent]], ["Stop", i => R[i][C.stp]], ["Target or exit", i => R[i][C.tgt]],
     ["Confluence legs", i => R[i][C.grp] === CTRL ? "random control" : R[i][C.legs] + " legs"],
     ["Extra filter", i => R[i][C.grp] === CTRL ? "random control" : (R[i][C.xtra] ? D.legs[R[i][C.xtra]].label : "none")],
@@ -1056,6 +1169,46 @@ function renderDims(){
   }).join("");
 }
 
+// ------------------------------------------------------------------ prop accounts page (second run)
+let accDone = false;
+function hbars(items, fmt){
+  const mx = Math.max(1e-9, ...items.map(it => it.v || 0));
+  return `<div class="hbars">${items.map(it => `<div class="hb" title="${esc(it.tip || "")}"><span class="hl">${esc(it.label)}</span><span class="ht"><span class="hf" style="width:${(100 * (it.v || 0) / mx).toFixed(1)}%;${it.color ? `background:${it.color}` : ""}"></span></span><span class="hv">${esc(fmt(it.v, it))}</span></div>`).join("")}</div>`;
+}
+function renderAccounts(){
+  if (accDone) return; accDone = true;
+  const box = $("accounts"), keys = Object.keys(D.plans);
+  const idx = enough([...Array(N).keys()]).filter(i => R[i][C.acc]);
+  const real = idx.filter(i => R[i][C.grp] !== CTRL), ctrl = idx.filter(i => R[i][C.grp] === CTRL);
+  const good = real.filter(i => R[i][C.ev] > D.evbar), pos = real.filter(i => R[i][C.ev] > 0);
+  const base = good.length ? good : pos;
+  const by = {}; keys.forEach(k => by[k] = []); base.forEach(i => by[R[i][C.acc]].push(i));
+  const rows = keys.map(k => { const a = by[k]; let best = null; a.forEach(i => { if (best == null || R[i][C.ev] > R[best][C.ev]) best = i; });
+    return {k, p: D.plans[k], n: a.length, ev: median(a.map(i => R[i][C.ev])), pass: median(a.map(i => R[i][C.apass])), bust: median(a.map(i => R[i][C.abust])), risk: median(a.map(i => R[i][C.risk])), best}; });
+  const risks = [...new Set(base.map(i => R[i][C.risk]))].sort((a, b) => a - b);
+  const byMkt = {}; base.forEach(i => (byMkt[R[i][C.mkt]] ||= []).push(i));
+  const firm = f => base.filter(i => D.plans[R[i][C.acc]].firm === f).length;
+  const cpos = share(ctrl, i => R[i][C.ev] > 0);
+  box.innerHTML = `
+  <div class="lhead"><h2>Prop accounts</h2>
+    <p class="dnote">Every strategy with 20 or more trades was re-priced in dollars for each of the ${keys.length} Topstep and FundedNext plans on sale, at ${D.risks.length} risk levels from $${D.risks[0]} to $${D.risks[D.risks.length - 1].toLocaleString()} per trade, and run through the plan's evaluation and funded rules 300 times per combination. The combination with the highest expected value per attempt (payouts to you minus fees) was run again 3,000 times. The ${ctrl.length.toLocaleString()} random controls went through the same search: ${pc(cpos)} of them show a positive EV, and their 95th percentile, ${usdS(D.evbar)}, is the luck bar. Below, "strategies" means the ${base.length.toLocaleString()} confluence strategies with 30+ trades ${good.length ? "whose EV clears that bar" : "with a positive EV"}.</p></div>
+  <div class="lgrid">
+    <div class="dcard"><h3>Which account wins</h3><p class="dnote">Strategies for which each plan has the highest expected value. Topstep ${firm("Topstep").toLocaleString()} · FundedNext ${firm("FundedNext").toLocaleString()}.</p>
+      ${hbars(rows.filter(r => r.n).sort((a, b) => b.n - a.n).map(r => ({label: planShort(r.k), v: r.n, tip: `${r.n} strategies, median EV ${usdS(r.ev)}`})), v => v.toLocaleString())}</div>
+    <div class="dcard"><h3>Risk per trade that maximises EV</h3><p class="dnote">A prop attempt can lose only its fee, so more risk often raises the expected value while blowing more accounts. Median evaluation bust rate at each level in brackets.</p>
+      ${hbars(risks.map(rk => { const a = base.filter(i => R[i][C.risk] === rk); return {label: "$" + rk.toLocaleString() + " per trade", v: a.length, b: median(a.map(i => R[i][C.abust]))}; }), (v, it) => `${v.toLocaleString()} (${pc(it.b)})`)}</div>
+    <div class="dcard"><h3>By market</h3><p class="dnote">Strategies per underlying, with their median EV per attempt.</p>
+      ${hbars(Object.entries(byMkt).sort((a, b) => b[1].length - a[1].length).map(([m, a]) => ({label: m + " · " + D.markets[m].name, v: a.length, e: median(a.map(i => R[i][C.ev]))})), (v, it) => `${v} · ${usdS(it.e)}`)}</div>
+  </div>
+  <div class="dcard"><h3>The plans</h3><p class="dnote">Rules as simulated (from the firms' pages, 26 Sep 2026). Click a row to list its strategies, best EV first.</p>
+    <div class="tw"><table class="mini acct"><tr><th class="l">plan</th><th class="l">cost</th><th>target</th><th>max loss</th><th>contracts (eval · funded)</th><th>daily limit</th><th>consistency</th><th>payout cap · split</th><th>strategies</th><th>median EV</th><th>median pass</th><th>median bust</th><th>median risk</th><th class="l">best strategy</th></tr>
+    ${rows.map(r => { const p = r.p, b = r.best != null ? R[r.best] : null;
+      return `<tr data-acc="${esc(r.k)}"><td class="l">${esc(planShort(r.k))}</td><td class="l">${esc(planCost(p))}</td><td>${usd(p.target)}</td><td>${usd(p.mll)}</td><td>${p.cap} · ${p.fcaps.join("/")}</td><td>${p.dll ? usd(p.dll) : "–"}</td><td>${p.cons ? Math.round(100 * p.cons) + "%" : "–"}</td><td>${usd(p.paycap)} · ${Math.round(100 * p.split)}%</td><td>${r.n.toLocaleString()}</td><td class="${tone(r.ev)}">${usdS(r.ev)}</td><td>${pc(r.pass)}</td><td>${pc(r.bust)}</td><td>${usd(r.risk)}</td><td class="l">${b ? esc(`${b[C.id]} · ${b[C.mkt]} ${b[C.tf]}m · ${usdS(b[C.ev])}`) : "–"}</td></tr>`; }).join("")}</table></div></div>
+  <div class="lessons">${lessonCards(D.lessons.filter(l => /account|luck bar for|risk per trade/i.test(l.title)))}</div>`;
+  box.querySelector(".acct").addEventListener("click", e => { const tr = e.target.closest("tr[data-acc]"); if (!tr) return;
+    resetFilters(); $("fAcc").value = tr.dataset.acc; state.sort = "ev"; state.dir = -1; head(); apply(false); show("strategies"); });
+}
+
 const TONE = {good: ["var(--gain)", "Finding"], warn: ["var(--warn)", "Caution"], info: ["var(--accent)", "Context"]};
 const lessonCards = list => list.map(l => { const t = TONE[l.tone] || TONE.info; return `<div class="lcard"><div class="kind" style="color:${t[0]}"><i style="background:${t[0]}"></i>${t[1]}</div><h3>${esc(l.title)}</h3><p>${esc(l.body)}</p></div>`; }).join("");
 (function guide(){
@@ -1068,29 +1221,34 @@ const lessonCards = list => list.map(l => { const t = TONE[l.tone] || TONE.info;
   const colrows = PRESETS.All.filter(k => COLS[k].tip).map(k => `<tr><td>${esc(COLS[k].h)}</td><td>${esc(COLS[k].tip)}</td></tr>`).join("");
   $("guide").innerHTML = `
   <h2>What this is</h2>
-  <p>${N.toLocaleString()} rule-based intraday strategies built from confluence. Each needs a bias (trend or regime), a location (a level, zone, sweep or breakout) and a trigger (the candle that says "now"), sometimes with one extra filter. All were backtested on 8 years of 1-minute data (${esc(D.meta.start)} → ${esc(D.meta.end)}) with realistic costs. Nothing was optimised: every variant was fixed before it was tested, and every one is shown, losers included.</p>
+  ${RUN2 ? `<p>${N.toLocaleString()} rule-based intraday futures strategies. Each family is built around one of 19 confluence categories (${esc(D.groups.filter(g => g !== "Control").join(", "))}) and combines it with at least one other kind of confluence. They trade the ${Object.keys(D.markets).length} CME products that Topstep or FundedNext allow, on timeframes from 1 minute to 4 hours, in every session, and are always flat by 4:05 PM New York time because both firms require it by 3:10 PM Chicago. For each strategy the Prop accounts model picks the plan, the risk per trade and the contracts with the highest expected value per attempt.</p>` : ""}
+  <p${RUN2 ? " hidden" : ""}>${N.toLocaleString()} rule-based intraday strategies built from confluence. Each needs a bias (trend or regime), a location (a level, zone, sweep or breakout) and a trigger (the candle that says "now"), sometimes with one extra filter. All were backtested on 8 years of 1-minute data (${esc(D.meta.start)} → ${esc(D.meta.end)}) with realistic costs. Nothing was optimised: every variant was fixed before it was tested, and every one is shown, losers included.</p>
   <h2>Moving around</h2>
   <ul><li>Scroll the table in any direction. The header and the ID and strategy columns stay in place.</li>
   <li>Click a row, or press <code>↑</code> <code>↓</code> (<code>PgUp</code> <code>PgDn</code>, <code>Home</code> <code>End</code> to jump), to show it in the panel on the right.</li>
   <li>Press <code>/</code> to search. Click a column header to sort; click it again to reverse.</li>
-  <li>Column sets: Core fits beside the detail panel on a laptop screen. Costs, Recency and Prop swap in the columns for those questions. All shows everything; scroll sideways and the ID and strategy columns stay put.</li>
+  <li>Column sets: Core fits beside the detail panel on a laptop screen. ${RUN2 ? "Account, Costs and Recency" : "Costs, Recency and Prop"} swap in the columns for those questions. All shows everything; scroll sideways and the ID and strategy columns stay put.</li>
+  <li>Win % ≥ and Win % ≤ keep only strategies whose share of winning trades is inside that range${RUN2 ? "; Best account keeps only strategies whose best plan is at that firm or is that plan" : ""}.</li>
   <li>Min trades starts at 30 so a strategy with one lucky trade cannot top the table. Set it to 0 to see everything.</li></ul>
   <h2>Columns</h2><div class="tw"><table><tr><th>column</th><th>meaning</th></tr>${colrows}</table></div>
   <h2>The score</h2>
   <p>score = ${w["8y"]} × E(8y) + ${w["3y"]} × E(3y) + ${w["6m"]} × E(6m), where E is the total net R in the window divided by (trades in the window + ${D.shrink}). The last 6 months weigh a little more than the last 3 years, and both more than the full 8. The added ${D.shrink} pulls strategies with few trades toward zero.</p>
   <h2>Luck bar and random controls</h2>
   <p>The random controls enter on a coin flip but use the same markets, sessions, stops, targets and costs. A strategy's edge is its gross R per trade minus the median of the controls with the same market and exit style. The luck bar, ${D.t95.toFixed(2)}, is the 95th percentile of the controls' own edge t-statistic. Below it, chance explains the result as well as skill does.</p>
-  <h2>Prop evaluation model</h2>
-  <p>2,000 Monte Carlo runs: reach +$${pr.target.toLocaleString()} before a $${pr.mll.toLocaleString()} end-of-day trailing drawdown within ${pr.days} trading days, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score. Payout: after passing, a fresh account with the same drawdown must reach ${pr.wins} winning days of $${pr.winusd}+ and $${pr.payout.toLocaleString()} profit within ${pr.fdays} days.</p>
+  ${RUN2 ? `<h2>Prop account model</h2>
+  <p>Each trade's stop distance is known, so every trade is re-priced for real contracts: the number of the smallest contract the firm allows (MNQ, MES, MCL, MGC …) that risks the chosen dollars, with ten micros bought as one mini. Commissions (Topstep's published table; FundedNext estimated from its one NQ example) and 2 ticks of slippage per contract are charged. Sizes are capped by the plan's contract limit, Topstep's product limits and, once funded at Topstep, its scaling plan; a trade whose stop is too wide for one contract at that risk is skipped.</p>
+  <p>Each plan is then simulated attempt by attempt, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score: an evaluation of up to 120 trading days (end-of-day trailing max loss checked against the day's worst realised point, the consistency rule that raises the target, minimum days, the Rapid Daily soft daily limit, and about 21 idle trading days ending the account), then 120 funded days that request each payout as soon as the plan allows. EV per attempt is what reaches you after the split (and a 3.5% processing fee at FundedNext) minus the fees; Topstep's monthly fee is charged every 21 trading days until the evaluation ends, plus $149 on passing. Not modelled: resets, the optional Topstep daily loss limit, live-account call-ups, and intraday drawdown inside a trade.</p>` : ""}
+  <h2${RUN2 ? " hidden" : ""}>Prop evaluation model</h2>
+  <p${RUN2 ? " hidden" : ""}>2,000 Monte Carlo runs: reach +$${pr.target.toLocaleString()} before a $${pr.mll.toLocaleString()} end-of-day trailing drawdown within ${pr.days} trading days, drawing 5-day blocks of the strategy's daily P&amp;L with the same recency weights as the score. Payout: after passing, a fresh account with the same drawdown must reach ${pr.wins} winning days of $${pr.winusd}+ and $${pr.payout.toLocaleString()} profit within ${pr.fdays} days.</p>
   <h2>Markets, data and costs</h2>
-  <p>1-minute history comes from histdata.com, checked month by month against Dukascopy and filled from Dukascopy where histdata is missing, thin, or filed under the wrong instrument. MNQ and MES use the index CFD feed that tracks the same underlying, charged futures costs. The last column checks each feed against the real contract on Yahoo (5-minute returns, last 60 days).</p>
+  <p>${RUN2 ? "1-minute bid candles with tick volume from Dukascopy, for the CFD or spot instrument that tracks each future (6J, 6C and 6S are inverted from USD/JPY, USD/CAD and USD/CHF). The backtest's cost in R uses the smallest contract's Topstep commission plus 2 ticks of slippage; the account model re-prices each trade for the contracts actually traded." : "1-minute history comes from histdata.com, checked month by month against Dukascopy and filled from Dukascopy where histdata is missing, thin, or filed under the wrong instrument. MNQ and MES use the index CFD feed that tracks the same underlying, charged futures costs. The last column checks each feed against the real contract on Yahoo (5-minute returns, last 60 days)."}</p>
   <div class="tw"><table><tr><th>market</th><th>instrument</th><th>feed</th><th>round-trip cost</th><th>check vs real contract</th></tr>${mk}</table></div>
   <ul>${tv}</ul>
   <h2>Sessions, New York time</h2><div class="tw"><table><tr><th>session</th><th>entries</th><th>flat by</th></tr>${ses}</table></div>
   <h2>How trades are simulated</h2>
   <ul><li>Signals are read on a bar's close and orders work from the next bar. Stops, targets, trailing stops and session exits are walked through the 1-minute bars underneath; when a stop and a target fall in the same minute, the stop counts first.</li>
   <li>Entries: market (next open), stop (1 tick through the signal bar, valid 3 bars) or limit (signal-bar midpoint, valid 3 bars). Stops are never tighter than 0.3 ATR.</li>
-  <li>One position at a time, at most 4 trades a day, always flat by the session exit and never held across a data gap. VWAP is range-weighted because the feeds carry no reliable volume.</li></ul>
+  <li>One position at a time, at most 4 trades a day, always flat by the session exit and never held across a data gap. ${RUN2 ? "Volume legs use Dukascopy tick volume (price updates per minute), a proxy for traded volume. Elliott, harmonic, Fibonacci, trend-line and Gann legs use swing points confirmed by a 1.5 ATR reversal, so every pattern is known when it is traded." : "VWAP is range-weighted because the feeds carry no reliable volume."}</li></ul>
   <h2>Before trusting a number</h2>
   <p>Out of ${N.toLocaleString()} tests some will look excellent by chance. Prefer strategies profitable in all three windows whose edge clears the luck bar, compare them with the random controls, and read the blind test in Lessons. A backtest is a hypothesis, not a forecast.</p>`;
 })();

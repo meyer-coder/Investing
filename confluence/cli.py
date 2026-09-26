@@ -6,6 +6,13 @@
     python -m confluence.cli run                    # generate, backtest, log, build the explorer
     python -m confluence.cli explorer               # rebuild the explorer / CSV from the last run
     python -m confluence.cli show 22-091            # one strategy's rules and numbers
+
+Second run — the Topstep / FundedNext futures universe:
+
+    python -m confluence.cli futures-fetch          # 20 Dukascopy feeds with tick volume
+    python -m confluence.cli futures-run            # ~20,000 strategies, 19 confluence categories
+    python -m confluence.cli futures-accounts       # best prop account, size and risk for each
+    python -m confluence.cli futures-explorer       # results/futures/explorer.html and logs
 """
 from __future__ import annotations
 
@@ -20,6 +27,9 @@ import time
 from typing import Optional, Sequence
 
 RESULTS_PKL = os.path.join("runs", "results.pkl.gz")
+RUN2_DIR = os.path.join("runs", "futures")
+RUN2_PKL = os.path.join(RUN2_DIR, "results.pkl.gz")
+ACCOUNTS_PKL = os.path.join(RUN2_DIR, "accounts.pkl.gz")
 
 
 def _dates(args) -> tuple:
@@ -148,6 +158,99 @@ def cmd_show(args) -> int:
     return 0
 
 
+# ------------------------------------------------------------------ second run: futures
+
+def universe2(accounts=None):
+    from .accounts import PLANS
+    from .bars import PROP_SESSIONS
+    from .components2 import CATEGORY
+    from .families2 import FAMILIES2, GROUPS2
+    from .futures import backtest_markets
+    from .report import Universe
+    plans = {p.key: {"label": p.label, "firm": p.firm, "name": p.name, "size": p.size, "price": p.price,
+                     "monthly": p.monthly, "activation": p.activation, "target": p.target, "mll": p.mll,
+                     "cap": p.cap, "fcaps": list(p.f_caps), "dll": p.dll, "cons": p.cons,
+                     "paycap": p.pay_cap, "split": p.split} for p in PLANS}
+    return Universe("run2", "Futures confluence run (Topstep / FundedNext)", list(GROUPS2), list(FAMILIES2),
+                    backtest_markets(), dict(PROP_SESSIONS), os.path.join(RUN2_DIR, "trades"), accounts, plans,
+                    dict(CATEGORY))
+
+
+def cmd_futures_fetch(args) -> int:
+    from .data import build_duka_feed
+    from .futures import DUKA_SCALE, UNDERLYINGS
+    end = dt.date.fromisoformat(args.end) if args.end else dt.date.today() - dt.timedelta(days=1)
+    wanted = {f.strip().upper() for f in args.feeds.split(",")} if args.feeds else None
+    for u in UNDERLYINGS.values():
+        if wanted and u.code not in wanted and u.feed not in wanted:
+            continue
+        scale, inv = DUKA_SCALE[u.feed]
+        m = build_duka_feed(u.feed, u.duka, scale, dt.date.fromisoformat(args.start), end, invert=inv,
+                            threads=args.threads)
+        print(f"{u.code:4s} {u.feed:6s} {len(m):>10,} minutes  {m.sources}")
+    return 0
+
+
+def _last_day(feeds) -> dt.date:
+    from .data import load_feed
+    last = [dt.datetime.fromtimestamp(int(load_feed(f).t[-1]) * 60, dt.timezone.utc).date() for f in feeds]
+    return min(last)
+
+
+def cmd_futures_run(args) -> int:
+    from .families2 import generate2
+    from .runner import run_all
+    u = universe2()
+    feeds = sorted({m.feed for m in u.markets.values()})
+    end = dt.date.fromisoformat(args.end) if args.end else _last_day(feeds)
+    start = dt.date(end.year - args.years, end.month, end.day) + dt.timedelta(days=1)
+    strategies = generate2(per_family=args.per_family, controls_per_cell=args.controls_per_cell)
+    if args.markets:
+        keep = {m.strip().upper() for m in args.markets.split(",")}
+        strategies = [s for s in strategies if s.market.upper() in keep]
+    if args.limit:
+        strategies = strategies[:: max(1, len(strategies) // args.limit)][: args.limit]
+    print(f"{len(strategies):,} strategies · test {start} .. {end} · {args.workers} workers", flush=True)
+    t0 = time.time()
+    results = run_all(strategies, start, end, workers=args.workers, trades_dir=u.trades_dir,
+                      markets=u.markets, sessions=u.sessions)
+    elapsed = time.time() - t0
+    meta = {"start": start.isoformat(), "end": end.isoformat(), "elapsed_s": round(elapsed, 1),
+            "generated": dt.datetime.now().strftime("%Y-%m-%d %H:%M"), "workers": args.workers,
+            "per_family": args.per_family, "controls_per_cell": args.controls_per_cell}
+    os.makedirs(RUN2_DIR, exist_ok=True)
+    with gzip.open(RUN2_PKL, "wb") as fh:
+        pickle.dump({"meta": meta, "strategies": strategies, "results": results}, fh)
+    print(f"backtested {len(results):,} strategies in {elapsed / 60:.1f} min -> {RUN2_PKL}", flush=True)
+    return 0
+
+
+def cmd_futures_accounts(args) -> int:
+    from .accounts import optimise_all
+    with gzip.open(RUN2_PKL, "rb") as fh:
+        blob = pickle.load(fh)
+    u = universe2()
+    t0 = time.time()
+    acc = optimise_all(blob["strategies"], u.markets, u.trades_dir, workers=args.workers)
+    with gzip.open(ACCOUNTS_PKL, "wb") as fh:
+        pickle.dump(acc, fh)
+    print(f"accounts for {len(acc):,} strategies in {(time.time() - t0) / 60:.1f} min -> {ACCOUNTS_PKL}", flush=True)
+    return 0
+
+
+def cmd_futures_explorer(args) -> int:
+    from .report import write_all
+    with gzip.open(RUN2_PKL, "rb") as fh:
+        blob = pickle.load(fh)
+    acc = {}
+    if os.path.exists(ACCOUNTS_PKL):
+        with gzip.open(ACCOUNTS_PKL, "rb") as fh:
+            acc = pickle.load(fh)
+    meta = dict(blob["meta"])
+    write_all(blob["strategies"], blob["results"], meta, out_dir=args.out, u=universe2(acc))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="confluence", description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -182,6 +285,27 @@ def build_parser() -> argparse.ArgumentParser:
     e = sub.add_parser("explorer", help="rebuild the explorer from the last run")
     e.add_argument("--out", default="results")
     e.set_defaults(func=cmd_explorer)
+    ff = sub.add_parser("futures-fetch", help="second run: Dukascopy 1-minute feeds for the 20 futures underlyings")
+    ff.add_argument("--start", default="2018-01-01")
+    ff.add_argument("--end")
+    ff.add_argument("--feeds", help="only these underlyings or feeds, e.g. NQ,CL")
+    ff.add_argument("--threads", type=int, default=7)
+    ff.set_defaults(func=cmd_futures_fetch)
+    fr = sub.add_parser("futures-run", help="second run: generate and backtest ~20,000 strategies")
+    fr.add_argument("--years", type=int, default=8)
+    fr.add_argument("--end")
+    fr.add_argument("--per-family", type=int, default=240)
+    fr.add_argument("--controls-per-cell", type=int, default=8)
+    fr.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2)))
+    fr.add_argument("--markets", help="comma separated underlyings, e.g. NQ,ES")
+    fr.add_argument("--limit", type=int)
+    fr.set_defaults(func=cmd_futures_run)
+    fa = sub.add_parser("futures-accounts", help="second run: best prop account / size / risk per strategy")
+    fa.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2)))
+    fa.set_defaults(func=cmd_futures_accounts)
+    fe = sub.add_parser("futures-explorer", help="second run: explorer, CSV and logs")
+    fe.add_argument("--out", default=os.path.join("results", "futures"))
+    fe.set_defaults(func=cmd_futures_explorer)
     s = sub.add_parser("show", help="print one strategy")
     s.add_argument("sid")
     s.set_defaults(func=cmd_show)

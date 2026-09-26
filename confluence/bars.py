@@ -15,7 +15,7 @@ window ended, so no bar ever sees a level that its own prices helped form.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 import numpy as np
 
@@ -37,6 +37,10 @@ SESSIONS: Dict[str, Tuple[int, int, int]] = {
 }
 SESSION_ORDER = list(SESSIONS)
 
+# Prop-firm futures accounts (Topstep, FundedNext) must be flat by 3:10 PM CT
+# (4:10 PM ET), so the second run's "all" session goes flat at 4:05 PM ET.
+PROP_SESSIONS: Dict[str, Tuple[int, int, int]] = dict(SESSIONS, all=(_tdm(18, 5), _tdm(15, 30), _tdm(16, 5)))
+
 # Level windows (trading-day minutes), available from the window's end.
 ASIA = (_tdm(19), _tdm(0))
 LONDON = (_tdm(2), _tdm(5))
@@ -48,7 +52,12 @@ NY_OPEN = _tdm(9, 30)
 
 # Round-number grid per feed, for the "round number" confluence.
 ROUND_STEP = {"NSXUSD": 100.0, "SPXUSD": 25.0, "WTIUSD": 1.0, "EURUSD": 0.005,
-              "GBPUSD": 0.005, "USDJPY": 0.5, "XAUUSD": 10.0, "GRXEUR": 100.0}
+              "GBPUSD": 0.005, "USDJPY": 0.5, "XAUUSD": 10.0, "GRXEUR": 100.0,
+              # second run (futures universe; 6J / 6C / 6S are quoted as USD per unit)
+              "F_NQ": 100.0, "F_ES": 25.0, "F_YM": 250.0, "F_RTY": 25.0, "F_NKD": 500.0,
+              "F_CL": 1.0, "F_NG": 0.1, "F_GC": 10.0, "F_SI": 0.5, "F_HG": 0.05,
+              "F_6E": 0.005, "F_6B": 0.005, "F_6J": 0.00005, "F_6A": 0.005, "F_6C": 0.005,
+              "F_6S": 0.005, "F_6N": 0.005, "F_ZB": 1.0, "F_ZS": 10.0, "F_ETH": 100.0}
 
 
 @dataclass
@@ -95,6 +104,7 @@ class Frame:
     day: np.ndarray
     clock: MinuteClock
     m1_bar: np.ndarray       # 1-minute index -> bar index
+    v: Optional[np.ndarray] = None   # bar tick volume (None when the feed has no volume)
     cache: Dict[str, np.ndarray] = field(default_factory=dict)
 
     @property
@@ -103,26 +113,32 @@ class Frame:
 
 
 def resample(clock: MinuteClock, tf: int) -> Frame:
+    """Bars of ``tf`` minutes aligned to the trading day (18:00 ET), so no bar
+    ever straddles two sessions — 120 and 240-minute bars included."""
     m = clock.m
+    tdm = clock.tdm.astype(np.int64)
+    vol = getattr(m, "v", None)
     if tf == 1:
         lo = np.arange(m.t.size, dtype=np.int64)
         hi = lo + 1
         t, o, h, l, c = m.t, m.o, m.h, m.l, m.c
+        v = vol
+        tdm_open = tdm.copy()
     else:
-        # Buckets are aligned to UTC; every tf used here divides 60, and 18:00 ET
-        # is always on the hour, so no bar straddles two trading days.
-        bucket = m.t // tf
+        bucket = clock.day.astype(np.int64) * 1440 + (tdm // tf) * tf
         lo = np.flatnonzero(np.concatenate(([True], np.diff(bucket) != 0))).astype(np.int64)
         hi = np.append(lo[1:], m.t.size).astype(np.int64)
-        t = bucket[lo] * tf
+        tdm_open = (tdm[lo] // tf) * tf
+        t = m.t[lo] - (tdm[lo] - tdm_open)
         o = m.o[lo]
         c = m.c[hi - 1]
         h = np.maximum.reduceat(m.h, lo)
         l = np.minimum.reduceat(m.l, lo)
-    tdm_open = ((clock.tdm[lo].astype(np.int64) - (m.t[lo] - t)) % 1440).astype(np.int16)
-    tdm_close = np.minimum(tdm_open.astype(np.int64) + tf, 1440).astype(np.int16)
+        v = np.add.reduceat(vol, lo) if vol is not None else None
+    tdm_close = np.minimum(tdm_open + tf, 1440).astype(np.int16)
     m1_bar = np.repeat(np.arange(lo.size, dtype=np.int32), (hi - lo).astype(np.int64))
-    return Frame(m.feed, tf, t, o, h, l, c, lo, hi, tdm_open, tdm_close, clock.day[lo], clock, m1_bar)
+    return Frame(m.feed, tf, t, o, h, l, c, lo, hi, tdm_open.astype(np.int16), tdm_close,
+                 clock.day[lo], clock, m1_bar, v)
 
 
 # ------------------------------------------------------------------ levels

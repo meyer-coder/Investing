@@ -62,6 +62,7 @@ class Minutes:
     l: np.ndarray
     c: np.ndarray
     sources: Dict[str, str]
+    v: Optional[np.ndarray] = None      # tick volume, when the feed has it
 
     def __len__(self) -> int:
         return int(self.t.size)
@@ -493,7 +494,8 @@ def load_feed(feed: str) -> Minutes:
     if not os.path.exists(path):
         raise DataError(f"{feed}: not cached — run `python -m confluence.cli fetch` first")
     z = np.load(path)
-    return Minutes(feed, z["t"], z["o"], z["h"], z["l"], z["c"], json.loads(str(z["sources"])))
+    v = z["v"] if "v" in z.files else None
+    return Minutes(feed, z["t"], z["o"], z["h"], z["l"], z["c"], json.loads(str(z["sources"])), v)
 
 
 # ------------------------------------------------------------------ proxy cross-check
@@ -524,3 +526,89 @@ def crosscheck(feed: Minutes, yahoo_symbol: str) -> Dict[str, object]:
         "median_abs_ret_gap_bp": round(float(np.median(np.abs(fr - yr))) * 1e4, 3),
         "median_level_ratio": round(float(np.median(ya / fa)), 5),
     }
+
+
+# ------------------------------------------------------------------ Dukascopy-only feeds (with tick volume)
+
+def build_duka_feed(name: str, duka: str, scale: float, start: dt.date, end: dt.date, *,
+                    invert: bool = False, threads: int = 6, weekends: bool = False) -> "Minutes":
+    """A full feed from Dukascopy 1-minute bid candles, keeping tick volume.
+
+    Used for the futures universe: every CME product maps to the Dukascopy
+    instrument that tracks its underlying (``futures.py``).  ``invert`` turns
+    a USD/XXX pair into the XXX/USD quote the CME contract uses (6J, 6C, 6S).
+    Saved as ``m1/<name>.npz`` with a ``v`` array next to OHLC.
+    """
+    days = [start + dt.timedelta(days=i) for i in range((end - start).days + 1)]
+    days = [d for d in days if weekends or d.weekday() != 5]
+    got = _duka_many_v(duka, days, scale, threads=threads)
+    parts = [g for g in got if g is not None and g[0].size]
+    if not parts:
+        raise DataError(f"{name}: Dukascopy returned no data for {duka}")
+    cols = [np.concatenate([p[i] for p in parts]) for i in range(6)]
+    order = np.argsort(cols[0], kind="stable")
+    cols = [c[order] for c in cols]
+    keep = np.concatenate(([True], np.diff(cols[0]) > 0))
+    t, o, h, l, c, v = (x[keep] for x in cols)
+    if invert:
+        o, h, l, c = 1.0 / o, 1.0 / l, 1.0 / h, 1.0 / c
+    missing = sum(1 for g in got if g is None)
+    sources = {"dukascopy": f"{duka} {_fmt(t[0])} .. {_fmt(t[-1])}, {len(t):,} minutes"
+                            + (", inverted" if invert else "") + (f", {missing} days failed" if missing else "")}
+    os.makedirs(M1, exist_ok=True)
+    np.savez(os.path.join(M1, f"{name}.npz"), t=t, o=o, h=h, l=l, c=c, v=v, sources=json.dumps(sources))
+    _log(f"{name}: {sources['dukascopy']}")
+    return Minutes(name, t, o, h, l, c, sources)
+
+
+def _duka_day_v(sym: str, day: dt.date, scale: float):
+    """Like dukascopy_day but also returns tick volume."""
+    os.makedirs(os.path.join(RAW, "dukascopy"), exist_ok=True)
+    path = os.path.join(RAW, "dukascopy", f"{sym}_{day.isoformat()}.bi5")
+    try:
+        if os.path.exists(path):
+            with open(path, "rb") as fh:
+                raw = fh.read()
+        else:
+            raw = _duka_get(_DUKA.format(sym=sym, y=day.year, m=day.month - 1, d=day.day))
+            if day < dt.datetime.now(dt.timezone.utc).date():
+                with open(path, "wb") as fh:
+                    fh.write(raw)
+    except DataError as exc:
+        if "404" in str(exc):
+            return tuple(np.empty(0) for _ in range(6))
+        _log(f"dukascopy {sym} {day}: {exc}")
+        return None
+    empty = tuple(np.empty(0) for _ in range(6))
+    if not raw:
+        return empty
+    data = lzma.decompress(raw)
+    n = len(data) // 24
+    if n == 0:
+        return empty
+    rec = np.frombuffer(data[:n * 24], dtype=np.dtype([("t", ">i4"), ("o", ">i4"), ("c", ">i4"),
+                                                      ("l", ">i4"), ("h", ">i4"), ("v", ">f4")]))
+    rec = rec[rec["v"] > 0]
+    base = int(dt.datetime(day.year, day.month, day.day, tzinfo=dt.timezone.utc).timestamp()) // 60
+    return (base + rec["t"].astype(np.int64) // 60, rec["o"] / scale, rec["h"] / scale, rec["l"] / scale,
+            rec["c"] / scale, rec["v"].astype(np.float64))
+
+
+def _duka_many_v(sym: str, days: List[dt.date], scale: float, threads: int = 6):
+    done = [0]
+
+    def one(d):
+        r = _duka_day_v(sym, d, scale)
+        done[0] += 1
+        if done[0] % 250 == 0:
+            _log(f"dukascopy {sym}: {done[0]}/{len(days)} days")
+        return r
+
+    with ThreadPoolExecutor(threads) as ex:
+        return list(ex.map(one, days))
+
+
+def load_volume(feed: str) -> Optional[np.ndarray]:
+    path = os.path.join(M1, f"{feed}.npz")
+    z = np.load(path)
+    return z["v"] if "v" in z.files else None
