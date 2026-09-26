@@ -22,10 +22,10 @@ TEMPLATE = os.path.join(os.path.dirname(__file__), "templates", "fxr_strategy.js
 
 # Sessions as New York hh*60+mm for the script (see bars.PROP_SESSIONS).
 CONFIGS: Dict[str, dict] = {
-    "36-221": dict(TITLE="36-221 Swing Support Engulf + ATR calm · NQ 15m · London + New York", TF="15",
+    "36-221": dict(TITLE="36-221 Swing Support Engulf + ATR calm - NQ 15m - London + New York", TF="15",
                    SIGNAL="swingEngulf", ENTRY="stop", STOPATR="1.5", TRAIL="false",
                    SESFROM="2 * 60", SESTO="11 * 60 + 30", FLAT="16 * 60"),
-    "21-155": dict(TITLE="21-155 Inverse FVG Retest + strong close · NQ 60m · all sessions", TF="60",
+    "21-155": dict(TITLE="21-155 Inverse FVG Retest + strong close - NQ 60m - all sessions", TF="60",
                    SIGNAL="ifvgRetest", ENTRY="market", STOPATR="1.0", TRAIL="true",
                    SESFROM="18 * 60 + 5", SESTO="15 * 60 + 30", FLAT="16 * 60 + 5"),
 }

@@ -50,6 +50,12 @@ inside them:
 If the marks look 4–5 hours off, the platform's bar times are not UTC. Report it
 and the clock conversion can be adjusted.
 
+If something fails inside FX Replay, the script keeps running where it can and
+puts a red box on the chart with the error message. Send that message (or a
+screenshot of the editor's error) to get it fixed. "Trades kept on chart"
+(default 100) limits how many past trades stay drawn, so long histories don't
+flood the chart.
+
 `36-221_trades.csv` and `21-155_trades.csv` list every trade the backtest took,
 26 Sep 2018 → 25 Sep 2026. Regenerate them, or export any other strategy, with
 
