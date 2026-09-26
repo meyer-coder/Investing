@@ -271,3 +271,35 @@ def test_explorer_embeds_a_decodable_payload():
     assert data == {"rows": [[1, None]], "cols": ["a", "b"]}
     frag = render({"x": 1}, standalone=False)
     assert frag.startswith("<title>") and "<html" not in frag
+
+
+def test_macro_tags_only_use_information_from_before_the_day():
+    from confluence.macro import DIM_BY_KEY, tag_days
+
+    ep = dt.date(1970, 1, 1)
+    day = lambda s: (dt.date.fromisoformat(s) - ep).days
+    flat = {f"2024-01-{d:02d}": 100.0 for d in range(1, 32)}
+    macro = {
+        "series": {"vix": {"2024-03-04": 12.0, "2024-03-05": 35.0}, "vix3m": {"2024-03-04": 14.0, "2024-03-05": 30.0},
+                   "irx": flat, "tnx": flat, "dxy": flat, "spx": flat},
+        "cpi": {"2024-01": 3.0, "2024-02": 5.0}, "fomc": ["2024-03-20"], "nfp": ["2024-03-08"]}
+    days = np.array([day("2024-03-05"), day("2024-03-06"), day("2024-03-14"), day("2024-03-15"),
+                     day("2024-03-20"), day("2024-03-08")])
+    t = tag_days(days, macro)
+    vix = DIM_BY_KEY["vix"].order
+    # On 03-05 only the 03-04 close (12) is known; the 35 print counts from 03-06.
+    assert vix[t["vix"][0]] == "VIX < 15" and vix[t["vix"][1]] == "VIX ≥ 30"
+    assert DIM_BY_KEY["curve"].order[t["curve"][1]] == "backwardation"
+    # February's CPI (5%) is only known from March 15.
+    cpi = DIM_BY_KEY["cpi"].order
+    assert cpi[t["cpi"][2]] == "CPI 2.5–4%" and cpi[t["cpi"][4]] == "CPI ≥ 4%"
+    ev = DIM_BY_KEY["event"].order
+    assert ev[t["event"][4]] == "FOMC day" and ev[t["event"][5]] == "jobs report day"
+
+
+def test_nfp_rule_matches_known_release_days():
+    from confluence.macro import nfp_dates
+
+    got = set(nfp_dates(dt.date(2020, 1, 1), dt.date(2025, 3, 1)))
+    for d in ("2024-10-04", "2025-02-07", "2020-08-07", "2020-07-02", "2021-04-02"):
+        assert d in got

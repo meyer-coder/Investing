@@ -383,12 +383,68 @@ def write_all(strategies: Sequence[Strategy], results: Dict[str, dict], meta: di
     write_csv(rows, os.path.join(out_dir, "strategies_ranked.csv"))
     write_jsonl(rows, os.path.join(out_dir, "test_log.jsonl.gz"))
     write_run_log(rows, meta, os.path.join(out_dir, "run_log.md"), quality)
+    learned = _learned(strategies, results, meta, start, end, out_dir)
+    pl = payload(rows, meta, labels)
+    if learned:
+        per = learned["per"]
+        for x, prof in zip(rows, pl["prof"]):
+            prof.update(per.get(x["s"].sid, {}))
+        pl["learned"] = learned["page"]
+        _append_learned_log(os.path.join(out_dir, "run_log.md"), learned["page"])
     from .explorer_html import render
-    html = render(payload(rows, meta, labels))
+    html = render(pl)
     with open(os.path.join(out_dir, "explorer.html"), "w") as fh:
         fh.write(html)
     print(f"wrote {out_dir}/explorer.html ({len(html) / 1e6:.1f} MB), strategies_ranked.csv, "
           f"test_log.jsonl.gz, run_log.md", flush=True)
+
+
+def _learned(strategies, results, meta, start: dt.date, end: dt.date, out_dir: str,
+             trades_dir: str = os.path.join("runs", "trades")):
+    """Macro-regime analysis for the 'What we learned' page (skipped if trades or macro data are missing)."""
+    if not os.path.isdir(trades_dir):
+        print("what we learned: no per-trade logs in runs/trades, skipping the macro page", flush=True)
+        return None
+    try:
+        from .insights import analyse
+        from .macro import DIMENSIONS, fetch_all, tag_days
+        macro = fetch_all(dt.date(start.year - 1, 1, 1), end)
+    except Exception as exc:  # noqa: BLE001 - the explorer still builds without it
+        print(f"what we learned: macro data unavailable ({exc}); skipping the macro page", flush=True)
+        return None
+    learned = analyse(strategies, results, macro, trades_dir, start, end)
+    # The daily regime table, for anyone who wants to check a tag.
+    days = np.arange((start - dt.date(1970, 1, 1)).days, (end - dt.date(1970, 1, 1)).days + 1)
+    tags = tag_days(days, macro)
+    with open(os.path.join(out_dir, "macro_regimes.csv"), "w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["date"] + [d.key for d in DIMENSIONS])
+        for i, d in enumerate(days):
+            day = dt.date(1970, 1, 1) + dt.timedelta(days=int(d))
+            if day.weekday() >= 5:
+                continue
+            w.writerow([day.isoformat()] + [d_.order[tags[d_.key][i]] if tags[d_.key][i] >= 0 else ""
+                                            for d_ in DIMENSIONS])
+    return learned
+
+
+def _append_learned_log(path: str, page: dict) -> None:
+    lines = ["", "## What we learned: results by macro regime", "",
+             "Median net R per trade across confluence strategies (30+ trades overall, 10+ in the regime), "
+             "with the random controls alongside.", ""]
+    for d in page["dims"]:
+        lines += [f"**{d['title']}** ({d['note']})", "", "| regime | days | strategies | median R/trade | controls | edge | cost R |",
+                  "|---|---|---|---|---|---|---|"]
+        for r in page["agg"][d["key"]]["rows"]:
+            sg = lambda v: "n/a" if v is None else f"{v:+.3f}"
+            cost = "n/a" if r["cost"] is None else f"{r['cost']:.3f}"
+            lines.append(f"| {r['value']} | {100 * r['days']:.0f}% | {r['strategies']:,} | {sg(r['med'])} | "
+                         f"{sg(r['ctrl'])} | {sg(r['edge'])} | {cost} |")
+        lines.append("")
+    for fnd in page["findings"]:
+        lines += [f"**{fnd['title']}.** {fnd['body']}", ""]
+    with open(path, "a") as fh:
+        fh.write("\n".join(lines) + "\n")
 
 
 def _month_labels(start: dt.date, end: dt.date) -> List[str]:

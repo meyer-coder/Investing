@@ -16,7 +16,8 @@ Two research tools live here:
 pip install -r requirements.txt            # numpy, numba, pandas
 python -m confluence.cli fetch             # 8+ years of 1-minute bars for every market (~10 min)
 python -m confluence.cli crosscheck        # how closely each feed tracks the real contract
-python -m confluence.cli run               # generate, backtest, log, build the explorer (~3 min, 4 cores)
+python -m confluence.cli macro             # VIX, yields, dollar, S&P, CPI, FOMC and jobs-report days
+python -m confluence.cli run               # generate, backtest, log, build the explorer (~4 min, 4 cores)
 open results/explorer.html                 # or double-click it; no server needed
 python -m confluence.cli show 22-091       # one strategy's rules and numbers in the terminal
 ```
@@ -26,6 +27,8 @@ python -m confluence.cli show 22-091       # one strategy's rules and numbers in
 | file | what it is |
 |---|---|
 | `results/explorer.html` | self-contained explorer (6 MB, opens from disk): a one-screen table with a frozen header and ID/strategy columns that scrolls smoothly through every strategy, a docked detail panel (rules, equity curve with the 3y/6m windows shaded, yearly bars, $/day distribution, prop-eval odds, last trades), arrow-key navigation (`↑` `↓`, `/` to search), column sets (Core / Costs / Recency / Prop / All), filters by market / timeframe / group / family / session / entry / stop / target / min trades / max trades per week, and a card layout on phones. Tabs: All strategies, Families, Groups & dimensions, Lessons, How to read |
+| explorer tab **What we learned** | every trade tagged with the macro regime it was entered in (VIX level and term structure, Fed cycle, 10-year yield trend, dollar, S&P 500 trend, CPI, FOMC and jobs-report days), each regime compared with random controls in the same regime; findings, an 8-year timeline with regime strips, per-regime charts, group × regime and market × regime heatmaps, named episodes (COVID crash, 2022 bear, April 2025 tariffs), and a before/after-6-months scatter |
+| `results/macro_regimes.csv` | the regime tag of every trading day, so any tag can be checked |
 | `results/strategies_ranked.csv` | the same table for Excel, ranked by the recency-weighted score, with each strategy's rules |
 | `results/test_log.jsonl.gz` | the test log: one JSON line per strategy — definition, rules, every metric, yearly results, equity curve |
 | `results/run_log.md` | what ran, on what data, how long it took, the top 25, and the lessons |
@@ -92,6 +95,11 @@ stop or target was hit first; if both fall inside one minute the stop wins. Stop
 than 0.3 ATR, one position at a time, at most four trades a day, always flat at the session exit and
 never across a data gap. The engine was checked on synthetic random walks: with a near-continuous
 price path, random entries average ~0R gross for every entry and exit type.
+
+### Presentation standard
+
+Pages in this repo follow [`docs/presentation-standard.md`](docs/presentation-standard.md); the explorer
+(`confluence/templates/explorer.html`) is the reference implementation.
 
 ### Read the results with care
 

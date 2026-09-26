@@ -2,6 +2,7 @@
 
     python -m confluence.cli fetch                  # 8+ years of 1-minute bars for every market
     python -m confluence.cli crosscheck             # how well each feed tracks the real contract
+    python -m confluence.cli macro                  # VIX, yields, dollar, S&P, CPI, FOMC and jobs days
     python -m confluence.cli run                    # generate, backtest, log, build the explorer
     python -m confluence.cli explorer               # rebuild the explorer / CSV from the last run
     python -m confluence.cli show 22-091            # one strategy's rules and numbers
@@ -79,6 +80,19 @@ def cmd_crosscheck(args) -> int:
     return 0
 
 
+def cmd_macro(args) -> int:
+    from .macro import DIMENSIONS, fetch_all
+    end = dt.date.fromisoformat(args.end) if args.end else dt.date.today()
+    m = fetch_all(dt.date.fromisoformat(args.start), end, refresh=args.refresh)
+    for k, v in m["series"].items():
+        ks = sorted(v)
+        print(f"{k:6s} {len(v):>5} days  {ks[0]} .. {ks[-1]}")
+    print(f"FOMC statement days: {len(m['fomc'])} · jobs-report days: {len(m['nfp'])} · "
+          f"CPI months: {len(m['cpi'])} (last {max(m['cpi'])})")
+    print("regimes: " + ", ".join(d.title for d in DIMENSIONS))
+    return 0
+
+
 def cmd_run(args) -> int:
     from .families import generate
     from .runner import run_all
@@ -149,6 +163,11 @@ def build_parser() -> argparse.ArgumentParser:
     f.set_defaults(func=cmd_fetch)
     c = sub.add_parser("crosscheck", help="compare each feed with the real contract on Yahoo")
     c.set_defaults(func=cmd_crosscheck)
+    mc = sub.add_parser("macro", help="download macro data (VIX, yields, dollar, S&P, CPI, FOMC and jobs days)")
+    mc.add_argument("--start", default="2017-01-01")
+    mc.add_argument("--end")
+    mc.add_argument("--refresh", action="store_true")
+    mc.set_defaults(func=cmd_macro)
     r = sub.add_parser("run", help="generate every strategy, backtest, log, build the explorer")
     r.add_argument("--years", type=int, default=8)
     r.add_argument("--end", help="last day of the test (default: last day with data)")

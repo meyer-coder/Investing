@@ -74,3 +74,84 @@
 
 **Prop evaluations reward variance as well as edge.** With $250 risked per trade, a $3,000 target is 12R and the $2,000 trailing drawdown is 8R. Random controls average 4.6% P(pass) (95th percentile 19.1%), because frequent trading alone gives a coin-flip a real chance to hit +12R before -8R. 570 strategies beat the 95th-percentile control; judge P(pass) against that, not against zero.
 
+
+## What we learned: results by macro regime
+
+Median net R per trade across confluence strategies (30+ trades overall, 10+ in the regime), with the random controls alongside.
+
+**Volatility (VIX)** (prior day's VIX close)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| VIX < 15 | 22% | 8,663 | -0.175 | -0.234 | +0.060 | 0.168 |
+| VIX 15–20 | 40% | 9,069 | -0.129 | -0.168 | +0.040 | 0.123 |
+| VIX 20–30 | 30% | 8,965 | -0.123 | -0.146 | +0.023 | 0.104 |
+| VIX ≥ 30 | 7% | 7,137 | -0.092 | -0.097 | +0.005 | 0.086 |
+
+**VIX term structure** (prior day's VIX ÷ VIX3M; above 1 (backwardation) marks acute stress)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| contango | 92% | 9,086 | -0.127 | -0.165 | +0.038 | 0.128 |
+| backwardation | 8% | 7,205 | -0.108 | -0.121 | +0.012 | 0.095 |
+
+**Fed policy cycle** (63-day change in the 3-month T-bill yield: above +0.25 pt hiking, below −0.25 pt cutting)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| hiking | 21% | 8,664 | -0.113 | -0.151 | +0.038 | 0.104 |
+| on hold | 59% | 9,086 | -0.135 | -0.166 | +0.032 | 0.130 |
+| cutting | 19% | 8,544 | -0.146 | -0.192 | +0.046 | 0.135 |
+
+**10-year yield trend** (63-day change in the 10-year Treasury yield, ±0.30 pt)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| yields falling | 21% | 8,695 | -0.140 | -0.182 | +0.042 | 0.137 |
+| yields flat | 52% | 9,085 | -0.141 | -0.177 | +0.036 | 0.128 |
+| yields rising | 26% | 8,832 | -0.106 | -0.147 | +0.041 | 0.110 |
+
+**US dollar trend** (dollar index vs its 50-day average)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| dollar weak | 45% | 9,079 | -0.135 | -0.171 | +0.036 | 0.124 |
+| dollar strong | 55% | 9,085 | -0.120 | -0.163 | +0.043 | 0.124 |
+
+**Equity trend** (S&P 500 vs its 200-day average)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| S&P above 200d | 78% | 9,086 | -0.134 | -0.175 | +0.041 | 0.132 |
+| S&P below 200d | 22% | 8,715 | -0.097 | -0.131 | +0.034 | 0.098 |
+
+**Inflation** (latest published US CPI, year over year)
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| CPI < 2.5% | 37% | 9,025 | -0.151 | -0.184 | +0.033 | 0.145 |
+| CPI 2.5–4% | 33% | 8,997 | -0.124 | -0.165 | +0.041 | 0.116 |
+| CPI ≥ 4% | 31% | 8,955 | -0.118 | -0.148 | +0.030 | 0.107 |
+
+**Event days** (FOMC statement days (federalreserve.gov) and NFP days (BLS rule))
+
+| regime | days | strategies | median R/trade | controls | edge | cost R |
+|---|---|---|---|---|---|---|
+| normal day | 92% | 9,086 | -0.120 | -0.161 | +0.041 | 0.125 |
+| FOMC day | 3% | 5,846 | -0.278 | -0.228 | -0.050 | 0.147 |
+| jobs report day | 4% | 5,932 | -0.176 | -0.199 | +0.023 | 0.139 |
+
+**Volatility decides how much the costs hurt.** With VIX under 15 the median strategy made -0.175R per trade and paid a median 0.168R in costs; with VIX at 30 or more it made -0.092R and paid 0.086R. Wider ranges mean wider stops, so the same commission and spread are a smaller slice of each trade. Random controls moved from -0.234R to -0.097R, so most of that shift is the market, not the setups.
+
+**Different setups for calm and panic.** Measured against random entries in the same regime, the best group when VIX was 30 or more was Momentum (+0.025R edge) and the weakest Liquidity sweep (-0.020R). With VIX under 15 the best was Session / ICT (+0.092R) and the weakest Mean reversion (+0.010R).
+
+**The Fed cycle mattered less than volatility.** By policy cycle the median strategy ranged from -0.146R per trade (cutting) to -0.113R (hiking); edge over random stayed between +0.032R and +0.046R. Hiking months: 2018-09 to 2018-11, 2022-02 to 2023-07. Cutting months: 2019-07 to 2019-12, 2020-03 to 2020-05, 2024-09 to 2025-01, 2025-09 to 2026-01.
+
+**Bear tapes paid the median strategy more than bull tapes.** With the S&P 500 below its 200-day average the median strategy made -0.097R per trade (29% of strategies profitable) against -0.134R (15%) above it. Controls: -0.131R vs -0.175R.
+
+**Hot inflation years.** When the latest CPI print was 4% or higher the median strategy made -0.118R per trade, versus -0.151R below 2.5% (controls -0.148R and -0.184R). CPI was 4% or more in 2021-05 to 2023-06, 2026-07 to 2026-09, which overlaps the 2022 bear market and its high VIX, so this is not an independent effect.
+
+**FOMC and jobs-report days.** Median net R per trade: normal days -0.120R, FOMC days -0.278R, jobs-report days -0.176R. Only strategies with at least 10 trades on those days count, so these rest on 5,846 and 5,932 strategies. Controls: -0.228R and -0.199R.
+
+**Named episodes.** COVID crash (2020-02-20 to 2020-04-30): median -0.071R, 41% of strategies profitable, controls -0.126R; 2022 rate-hike bear market (2022-01-03 to 2022-10-12): median -0.097R, 33% of strategies profitable, controls -0.119R; April 2025 tariff shock (2025-04-02 to 2025-04-30): median -0.076R, 42% of strategies profitable, controls -0.104R. Across the whole 8 years the median was -0.124R.
+
