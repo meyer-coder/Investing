@@ -254,3 +254,20 @@ def test_generator_is_balanced_and_unique():
     for s in strats[:50]:
         assert s.market in s.name and f"{s.tf}m" in s.name
         assert all(code in LEGS for code in s.legs)
+
+
+def test_explorer_embeds_a_decodable_payload():
+    import base64
+    import gzip
+    import json
+    import re
+
+    from confluence.explorer_html import render
+
+    html = render({"rows": [[1, float("nan")]], "cols": ["a", "b"]})
+    assert html.startswith("<!doctype html>") and "<title>Confluence Trade Explorer</title>" in html
+    blob = re.search(r'<script id="data" type="text/plain">([^<]+)</script>', html).group(1)
+    data = json.loads(gzip.decompress(base64.b64decode(blob)))
+    assert data == {"rows": [[1, None]], "cols": ["a", "b"]}
+    frag = render({"x": 1}, standalone=False)
+    assert frag.startswith("<title>") and "<html" not in frag

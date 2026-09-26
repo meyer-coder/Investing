@@ -25,7 +25,7 @@ python -m confluence.cli show 22-091       # one strategy's rules and numbers in
 
 | file | what it is |
 |---|---|
-| `results/explorer.html` | self-contained explorer: sort any column, filter by market / timeframe / group / family / session / entry / stop / target / min trades / max trades per week, click a row for the full profile (rules, equity curve, windows, $/day distribution, prop-eval odds, last trades). Tabs: All strategies, Families, Groups & dimensions, Lessons, How to read |
+| `results/explorer.html` | self-contained explorer (6 MB, opens from disk): a one-screen table with a frozen header and ID/strategy columns that scrolls smoothly through every strategy, a docked detail panel (rules, equity curve with the 3y/6m windows shaded, yearly bars, $/day distribution, prop-eval odds, last trades), arrow-key navigation (`↑` `↓`, `/` to search), column sets (Core / Costs / Recency / Prop / All), filters by market / timeframe / group / family / session / entry / stop / target / min trades / max trades per week, and a card layout on phones. Tabs: All strategies, Families, Groups & dimensions, Lessons, How to read |
 | `results/strategies_ranked.csv` | the same table for Excel, ranked by the recency-weighted score, with each strategy's rules |
 | `results/test_log.jsonl.gz` | the test log: one JSON line per strategy — definition, rules, every metric, yearly results, equity curve |
 | `results/run_log.md` | what ran, on what data, how long it took, the top 25, and the lessons |
