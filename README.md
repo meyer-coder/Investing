@@ -21,6 +21,8 @@ fill is simulated.
 > - [`shortbot/`](shortbot/README.md) is an MNQ day-trading bot built for
 >   Topstep's Combine rules. It has short setups plus a basic two-way setup. It includes a backtester and a TopstepX
 >   connection that runs as a dry run by default.
+> - [`research/SCOREBOARD.md`](research/SCOREBOARD.md) is the one-page list of what works and what
+>   doesn't, updated after every test.
 > - [`research/`](research/candle-moves-findings.md) holds the candle-move study
 >   the bot's setups came from. It also holds the 13-year minute-data studies:
 >   - the Three MNQ Setups ([findings](research/three-setups-findings.md));
